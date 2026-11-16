@@ -1,6 +1,6 @@
 # Comparaison des bibliotheques : memes exercices, facons de faire differentes
 
-Genere le 2026-11-16 14:03. Les bibliotheques du dossier de cours se recouvrent (copies d'exercices) mais le code n'est pas toujours le meme. 96 membres existent dans plusieurs bibliotheques : 59 avec des versions **differentes** (page de comparaison), 37 copies **identiques**. Les noms de bibliotheques sont anonymises (BIBnn).
+Genere le 2026-11-16 14:34. Les bibliotheques du dossier de cours se recouvrent (copies d'exercices) mais le code n'est pas toujours le meme. 97 membres existent dans plusieurs bibliotheques : 59 avec des versions **differentes** (page de comparaison), 38 copies **identiques**. Les noms de bibliotheques sont anonymises (BIBnn).
 
 Les contributions de collaborateurs sont comparees dans [VARIANTES](VARIANTES.md). Exemples du cycle RPG : [CYCLE-GAP-EXEMPLES](CYCLE-GAP-EXEMPLES.md).
 
@@ -59,6 +59,7 @@ Les contributions de collaborateurs sont comparees dans [VARIANTES](VARIANTES.md
 | [MNUDEV1QQ](comparaisons/MNUDEV1QQ.md) | BIB06, BIB10 | 2 | 8-8 |  | Menus |
 | [MODFC](comparaisons/MODFC.md) | BIB02, BIB05 | 3 | 9-24 | full free, procedures (dcl-proc), prototypes (dcl-pr) | Autres/Service-programs, RPG/RPG-ILE |
 | [MODULE1](comparaisons/MODULE1.md) | BIB02, BIB20 | 2 | 32-53 | full free, SQL embarque | RPG/RPG-ILE |
+| NONE | BIB06, BIB10 | 1 (copies identiques) | 48 | - | - |
 | [PGM2D](comparaisons/PGM2D.md) | BIB02, BIB20 | 2 | 27-57 |  | DDS |
 | POEI26L | BIB06, BIB10 | 1 (copies identiques) | 2 | - | - |
 | POEI26L2 | BIB06, BIB10 | 1 (copies identiques) | 3 | - | - |
@@ -67,9 +68,9 @@ Les contributions de collaborateurs sont comparees dans [VARIANTES](VARIANTES.md
 | POEIMTP26 | BIB06, BIB10 | 1 (copies identiques) | 10 | - | - |
 | PR_CLP | BIB06, BIB10 | 1 (copies identiques) | 6 | - | - |
 | [PRETIMMO](comparaisons/PRETIMMO.md) | BIB13, BIB17, BIB20 | 3 | 69-83 |  | DDS |
-| [PRETMAIN](comparaisons/PRETMAIN.md) | BIB03, BIB17 | 2 | 95-106 | indicateurs *INxx | RPG/RPG-ILE |
-| [PRETMOD](comparaisons/PRETMOD.md) | BIB03, BIB13, BIB17 | 3 | 41-168 | boucle DOW/DOU/FOR, structure de donnees | RPG/RPG-ILE |
-| [PRETMODP](comparaisons/PRETMODP.md) | BIB03, BIB13 | 2 | 16-92 |  | RPG/Copy |
+| [PRETMAIN](comparaisons/PRETMAIN.md) | BIB03, BIB13, BIB17 | 3 | 95-167 | indicateurs *INxx | RPG/RPG-ILE |
+| [PRETMOD](comparaisons/PRETMOD.md) | BIB03, BIB13, BIB17 | 3 | 41-195 | boucle DOW/DOU/FOR, structure de donnees | RPG/RPG-ILE |
+| [PRETMODP](comparaisons/PRETMODP.md) | BIB03, BIB13 | 2 | 16-97 |  | RPG/Copy |
 | [PRETSRV](comparaisons/PRETSRV.md) | BIB03, BIB13, BIB17 | 3 | 4-22 |  | Autres/Service-programs |
 | [PRODUITS](comparaisons/PRODUITS.md) | BIB02, BIB17 | 2 | 1-6 |  | DDS, RPG/RPG-ILE |
 | [PRRPG](comparaisons/PRRPG.md) | BIB06, BIB10 | 2 | 20-24 |  | RPG/RPG-III-400 |
@@ -101,4 +102,4 @@ Les contributions de collaborateurs sont comparees dans [VARIANTES](VARIANTES.md
 | USERFM | BIB06, BIB10 | 1 (copies identiques) | 46 | - | - |
 | USRFORMCBL | BIB01, BIB20 | 1 (copies identiques) | 38 | - | - |
 | USRFORMD | BIB01, BIB20 | 1 (copies identiques) | 47 | - | - |
-| [WESH](comparaisons/WESH.md) | BIB04, BIB11 | 2 | 94-167 | procedures (dcl-proc), prototypes (dcl-pr) | RPG/RPG-ILE |
+| [WESH](comparaisons/WESH.md) | BIB04, BIB11, BIB16 | 3 | 99-175 | procedures (dcl-proc), prototypes (dcl-pr) | RPG/RPG-ILE |

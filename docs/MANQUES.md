@@ -1,18 +1,18 @@
 # Ce qui manque dans les fiches (utilise dans le code, absent des fiches)
 
-Genere le 2026-11-16 14:28 a partir de 1060 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
+Genere le 2026-11-16 14:34 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
 
-## Commandes CL : 69 manquants sur 105 utilises
+## Commandes CL : 68 manquants sur 104 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
 | CHGVAR | 310 | 13 |
-| ENDPGM | 138 | 14 |
-| GOTO | 93 | 9 |
+| ENDPGM | 142 | 14 |
+| GOTO | 94 | 9 |
 | WHEN | 92 | 4 |
 | SNDPGMMSG | 73 | 9 |
-| SNDRCVF | 51 | 8 |
-| DLTOVR | 42 | 6 |
+| SNDRCVF | 53 | 8 |
+| DLTOVR | 44 | 6 |
 | RCVF | 38 | 6 |
 | DSPATR | 33 | 1 |
 | LEAVE | 28 | 1 |
@@ -21,72 +21,72 @@ Genere le 2026-11-16 14:28 a partir de 1060 sources. Un terme est 'manquant' s'i
 | STRSEU | 14 | 2 |
 | RTVJOBA | 13 | 9 |
 | CHGCURLIB | 11 | 5 |
-| CLRPFM | 11 | 5 |
 | CLOF | 10 | 4 |
+| CLRPFM | 10 | 5 |
 | RCVMSG | 10 | 6 |
-| CPYSRCF | 9 | 3 |
-| FTP | 9 | 5 |
 | DCLPRCOPT | 9 | 1 |
-| COPYRIGHT | 8 | 1 |
-| RTVOBJD | 8 | 4 |
+| FTP | 9 | 5 |
+| CPYSRCF | 9 | 3 |
 | OPNQRYF | 8 | 4 |
+| RTVOBJD | 8 | 4 |
 | RMVDIR | 7 | 6 |
-| ENDMOD | 6 | 1 |
-| CLOSE | 6 | 3 |
+| COPYRIGHT | 7 | 1 |
 | RTVUSRPRF | 6 | 5 |
+| CLOSE | 6 | 3 |
 | CPYTOSTMF | 6 | 5 |
-| STRSBS | 5 | 3 |
+| ENDMOD | 6 | 1 |
 | DOUNTIL | 5 | 4 |
 | CRTDIR | 5 | 4 |
-| RMVLIBLE | 5 | 4 |
 | CRTCLPGM | 5 | 3 |
 | RTVMBRD | 5 | 2 |
-| RCLRSC | 4 | 3 |
+| RMVLIBLE | 5 | 4 |
+| STRSBS | 5 | 3 |
 | ITERATE | 4 | 3 |
 | DLYJOB | 4 | 2 |
-| SUBR | 4 | 3 |
 | CALLSUBR | 4 | 3 |
+| RCLRSC | 4 | 3 |
+| SUBR | 4 | 3 |
 | ENDSUBR | 4 | 3 |
-| WRKSPLF | 3 | 3 |
-| CRTDSPF | 3 | 3 |
 | STRPCCMD | 3 | 1 |
 | RUNSQLSTM | 3 | 1 |
+| CRTDSPF | 3 | 3 |
+| WRKSPLF | 3 | 3 |
 
 ## Instructions / fonctions RPG (reconnues par job-i) : 44 manquants sur 102 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
-| LEAVE | 465 | 10 |
-| ELSE | 407 | 14 |
-| %ADDR | 188 | 8 |
-| DCL-C | 158 | 9 |
-| WORKSTN | 154 | 11 |
+| LEAVE | 475 | 12 |
+| ELSE | 414 | 15 |
+| %ADDR | 190 | 9 |
+| DCL-C | 161 | 11 |
+| WORKSTN | 158 | 13 |
 | DELETE | 134 | 7 |
-| OPEN | 130 | 10 |
-| ITER | 112 | 10 |
-| PARM | 103 | 6 |
-| COMMIT | 94 | 9 |
-| %TRIMR | 82 | 4 |
+| OPEN | 131 | 11 |
+| ITER | 114 | 11 |
+| PARM | 105 | 6 |
+| COMMIT | 95 | 10 |
+| %TRIMR | 85 | 5 |
 | %ERROR | 43 | 2 |
 | QUALIFIED | 41 | 8 |
+| SND-MSG | 26 | 8 |
 | OVERLAY | 24 | 5 |
-| SND-MSG | 21 | 7 |
-| BASED | 19 | 8 |
+| BASED | 21 | 9 |
 | %SCANRPL | 16 | 3 |
 | %XLATE | 14 | 1 |
 | %DIV | 13 | 2 |
+| %DECH | 10 | 4 |
 | READP | 10 | 2 |
-| %DECH | 9 | 4 |
 | %DAYS | 8 | 1 |
 | UNLOCK | 8 | 1 |
 | SETGT | 7 | 2 |
 | %STR | 6 | 1 |
 | %STATUS | 5 | 3 |
-| %OPEN | 5 | 3 |
 | %SUBARR | 5 | 3 |
+| %OPEN | 5 | 3 |
 | WRKSPLF | 4 | 2 |
-| %TIMESTAMP | 4 | 1 |
 | %UPPER | 4 | 3 |
+| %TIMESTAMP | 4 | 1 |
 | READPE | 3 | 2 |
 | %XFOOT | 3 | 1 |
 | %ALLOC | 2 | 1 |
@@ -181,25 +181,26 @@ Genere le 2026-11-16 14:28 a partir de 1060 sources. Un terme est 'manquant' s'i
 | QSYS2.IFS_REMOVE_FILE | 1 | 1 |
 | QSYS2.HTTP_DELETE | 1 | 1 |
 
-## Mots-cles DDS / ecran : 78 manquants sur 96 utilises
+## Mots-cles DDS / ecran : 84 manquants sur 102 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
-| COLOR | 2108 | 14 |
+| COLOR | 2152 | 14 |
 | DSPATR | 1017 | 11 |
 | CHECK | 185 | 9 |
-| DSPSIZ | 177 | 16 |
+| DSPSIZ | 178 | 16 |
 | CA03 | 102 | 12 |
-| CF03 | 99 | 9 |
+| CF03 | 100 | 9 |
+| OVERLAY | 84 | 13 |
 | CA12 | 83 | 10 |
-| OVERLAY | 80 | 13 |
 | CF23 | 71 | 8 |
 | ERRMSG | 61 | 8 |
-| CF12 | 51 | 7 |
+| SFLCOLUMN | 58 | 1 |
+| CF12 | 52 | 7 |
 | WINDOW | 40 | 10 |
 | INDARA | 39 | 9 |
-| CA06 | 37 | 6 |
 | SFLCR | 37 | 2 |
+| CA06 | 37 | 6 |
 | REFFLD | 30 | 4 |
 | CF06 | 29 | 7 |
 | CHGINPDFT | 26 | 8 |
@@ -210,42 +211,41 @@ Genere le 2026-11-16 14:28 a partir de 1060 sources. Un terme est 'manquant' s'i
 | CF21 | 15 | 5 |
 | SFLMAX | 14 | 2 |
 | CF02 | 13 | 7 |
-| CA08 | 12 | 2 |
 | CF07 | 12 | 6 |
+| CA08 | 12 | 2 |
 | CF24 | 12 | 5 |
-| SFLDROP | 11 | 4 |
-| CA01 | 11 | 2 |
 | SFLLIN | 11 | 2 |
+| CA01 | 11 | 2 |
 | EDTWRD | 11 | 3 |
+| SFLDROP | 11 | 4 |
 | SFLOPT | 10 | 1 |
+| CF22 | 10 | 5 |
 | CF08 | 10 | 4 |
 | SFLLCK | 10 | 1 |
 | CF09 | 10 | 5 |
-| CF22 | 10 | 5 |
+| CF20 | 9 | 4 |
+| CF04 | 9 | 4 |
 | CF13 | 9 | 4 |
 | CF15 | 9 | 4 |
-| CF04 | 9 | 4 |
-| CF20 | 9 | 4 |
 | SFLNXTCHG | 8 | 5 |
-| CF14 | 8 | 3 |
-| CF19 | 8 | 3 |
-| CF17 | 8 | 3 |
+| CF16 | 8 | 3 |
+| CF18 | 8 | 3 |
 
 ## Sources par type et bibliotheque
 
 | Type | Sources |
 |---|---|
-| DDS | 381 |
-| RPG/RPG-ILE | 281 |
-| CL/CL-procedural | 124 |
-| RPG/RPG-III-400 | 123 |
+| DDS | 382 |
+| RPG/RPG-ILE | 291 |
+| CL/CL-procedural | 128 |
+| RPG/RPG-III-400 | 124 |
 | CL/CL-ILE | 50 |
 | SQL | 31 |
 | COBOL | 26 |
 | Autres/Service-programs | 14 |
 | Menus | 14 |
-| RPG/Copy | 9 |
+| RPG/Copy | 11 |
+| Autres/Web | 5 |
 | Autres/Commandes | 4 |
 | Autres/Aide | 1 |
-| Autres/Web | 1 |
 | Autres/Panneaux-UIM | 1 |

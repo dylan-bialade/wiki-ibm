@@ -1,6 +1,6 @@
 # Verification par rapport a job-i.fr
 
-Genere le 2026-11-16 14:04. Reference : 1830 commandes CL, 196 termes RPG.
+Genere le 2026-11-16 14:33. Reference : 1830 commandes CL, 196 termes RPG.
 
 ## Commandes CL utilisees
 
@@ -10,17 +10,16 @@ Genere le 2026-11-16 14:04. Reference : 1830 commandes CL, 196 termes RPG.
 | ADDJOBQE | 2 | verifiee | [https://job-i.fr/commandes-ibm-i/addjobqe](https://job-i.fr/commandes-ibm-i/addjobqe) |
 | ADDLIBLE | 27 | verifiee | [https://job-i.fr/commandes-ibm-i/addlible](https://job-i.fr/commandes-ibm-i/addlible) |
 | ADDRTGE | 2 | verifiee | [https://job-i.fr/commandes-ibm-i/addrtge](https://job-i.fr/commandes-ibm-i/addrtge) |
-| CALL | 28 | verifiee | [https://job-i.fr/commandes-ibm-i/call](https://job-i.fr/commandes-ibm-i/call) |
+| CALL | 27 | verifiee | [https://job-i.fr/commandes-ibm-i/call](https://job-i.fr/commandes-ibm-i/call) |
 | CHGCURLIB | 13 | verifiee | [https://job-i.fr/commandes-ibm-i/chgcurlib](https://job-i.fr/commandes-ibm-i/chgcurlib) |
 | CHGDTAARA | 8 | verifiee | [https://job-i.fr/commandes-ibm-i/chgdtaara](https://job-i.fr/commandes-ibm-i/chgdtaara) |
-| CHGPF | 1 | verifiee | [https://job-i.fr/commandes-ibm-i/chgpf](https://job-i.fr/commandes-ibm-i/chgpf) |
 | CHGUSRPRF | 3 | verifiee | [https://job-i.fr/commandes-ibm-i/chgusrprf](https://job-i.fr/commandes-ibm-i/chgusrprf) |
 | CHKOBJ | 42 | verifiee | [https://job-i.fr/commandes-ibm-i/chkobj](https://job-i.fr/commandes-ibm-i/chkobj) |
 | CLOF | 10 | verifiee | [https://job-i.fr/commandes-ibm-i/clof](https://job-i.fr/commandes-ibm-i/clof) |
 | CLOSE | 4 | verifiee | [https://job-i.fr/commandes-ibm-i/close](https://job-i.fr/commandes-ibm-i/close) |
-| CLRPFM | 11 | verifiee | [https://job-i.fr/commandes-ibm-i/clrpfm](https://job-i.fr/commandes-ibm-i/clrpfm) |
+| CLRPFM | 10 | verifiee | [https://job-i.fr/commandes-ibm-i/clrpfm](https://job-i.fr/commandes-ibm-i/clrpfm) |
 | COMMIT | 1 | verifiee | [https://job-i.fr/commandes-ibm-i/commit](https://job-i.fr/commandes-ibm-i/commit) |
-| COPYRIGHT | 8 | verifiee | [https://job-i.fr/commandes-ibm-i/copyright](https://job-i.fr/commandes-ibm-i/copyright) |
+| COPYRIGHT | 7 | verifiee | [https://job-i.fr/commandes-ibm-i/copyright](https://job-i.fr/commandes-ibm-i/copyright) |
 | CPYF | 4 | verifiee | [https://job-i.fr/commandes-ibm-i/cpyf](https://job-i.fr/commandes-ibm-i/cpyf) |
 | CPYSPLF | 1 | verifiee | [https://job-i.fr/commandes-ibm-i/cpysplf](https://job-i.fr/commandes-ibm-i/cpysplf) |
 | CPYSRCF | 9 | verifiee | [https://job-i.fr/commandes-ibm-i/cpysrcf](https://job-i.fr/commandes-ibm-i/cpysrcf) |
@@ -47,7 +46,7 @@ Genere le 2026-11-16 14:04. Reference : 1830 commandes CL, 196 termes RPG.
 | DLTJRN | 1 | verifiee | [https://job-i.fr/commandes-ibm-i/dltjrn](https://job-i.fr/commandes-ibm-i/dltjrn) |
 | DLTLIB | 3 | verifiee | [https://job-i.fr/commandes-ibm-i/dltlib](https://job-i.fr/commandes-ibm-i/dltlib) |
 | DLTOBJ | 2 | verifiee | [https://job-i.fr/commandes-ibm-i/dltobj](https://job-i.fr/commandes-ibm-i/dltobj) |
-| DLTOVR | 42 | verifiee | [https://job-i.fr/commandes-ibm-i/dltovr](https://job-i.fr/commandes-ibm-i/dltovr) |
+| DLTOVR | 44 | verifiee | [https://job-i.fr/commandes-ibm-i/dltovr](https://job-i.fr/commandes-ibm-i/dltovr) |
 | DLTSPLF | 2 | verifiee | [https://job-i.fr/commandes-ibm-i/dltsplf](https://job-i.fr/commandes-ibm-i/dltsplf) |
 | DLTUSRPRF | 1 | verifiee | [https://job-i.fr/commandes-ibm-i/dltusrprf](https://job-i.fr/commandes-ibm-i/dltusrprf) |
 | DLYJOB | 4 | verifiee | [https://job-i.fr/commandes-ibm-i/dlyjob](https://job-i.fr/commandes-ibm-i/dlyjob) |
@@ -55,15 +54,15 @@ Genere le 2026-11-16 14:04. Reference : 1830 commandes CL, 196 termes RPG.
 | DOWHILE | 1 | verifiee | [https://job-i.fr/commandes-ibm-i/dowhile](https://job-i.fr/commandes-ibm-i/dowhile) |
 | DSPFD | 10 | verifiee | [https://job-i.fr/commandes-ibm-i/dspfd](https://job-i.fr/commandes-ibm-i/dspfd) |
 | DSPFFD | 1 | verifiee | [https://job-i.fr/commandes-ibm-i/dspffd](https://job-i.fr/commandes-ibm-i/dspffd) |
-| DSPOBJD | 6 | verifiee | [https://job-i.fr/commandes-ibm-i/dspobjd](https://job-i.fr/commandes-ibm-i/dspobjd) |
-| DSPPGMREF | 3 | verifiee | [https://job-i.fr/commandes-ibm-i/dsppgmref](https://job-i.fr/commandes-ibm-i/dsppgmref) |
+| DSPOBJD | 7 | verifiee | [https://job-i.fr/commandes-ibm-i/dspobjd](https://job-i.fr/commandes-ibm-i/dspobjd) |
+| DSPPGMREF | 1 | verifiee | [https://job-i.fr/commandes-ibm-i/dsppgmref](https://job-i.fr/commandes-ibm-i/dsppgmref) |
 | DSPUSRPRF | 3 | verifiee | [https://job-i.fr/commandes-ibm-i/dspusrprf](https://job-i.fr/commandes-ibm-i/dspusrprf) |
 | ENDJRNPF | 1 | verifiee | [https://job-i.fr/commandes-ibm-i/endjrnpf](https://job-i.fr/commandes-ibm-i/endjrnpf) |
 | FTP | 9 | verifiee | [https://job-i.fr/commandes-ibm-i/ftp](https://job-i.fr/commandes-ibm-i/ftp) |
 | ITERATE | 4 | verifiee | [https://job-i.fr/commandes-ibm-i/iterate](https://job-i.fr/commandes-ibm-i/iterate) |
 | MKDIR | 1 | verifiee | [https://job-i.fr/commandes-ibm-i/mkdir](https://job-i.fr/commandes-ibm-i/mkdir) |
 | OPNQRYF | 8 | verifiee | [https://job-i.fr/commandes-ibm-i/opnqryf](https://job-i.fr/commandes-ibm-i/opnqryf) |
-| OVRDBF | 46 | verifiee | [https://job-i.fr/commandes-ibm-i/ovrdbf](https://job-i.fr/commandes-ibm-i/ovrdbf) |
+| OVRDBF | 48 | verifiee | [https://job-i.fr/commandes-ibm-i/ovrdbf](https://job-i.fr/commandes-ibm-i/ovrdbf) |
 | RCLRSC | 4 | verifiee | [https://job-i.fr/commandes-ibm-i/rclrsc](https://job-i.fr/commandes-ibm-i/rclrsc) |
 | RCVF | 38 | verifiee | [https://job-i.fr/commandes-ibm-i/rcvf](https://job-i.fr/commandes-ibm-i/rcvf) |
 | RCVMSG | 10 | verifiee | [https://job-i.fr/commandes-ibm-i/rcvmsg](https://job-i.fr/commandes-ibm-i/rcvmsg) |
@@ -83,7 +82,7 @@ Genere le 2026-11-16 14:04. Reference : 1830 commandes CL, 196 termes RPG.
 | SBMJOB | 1 | verifiee | [https://job-i.fr/commandes-ibm-i/sbmjob](https://job-i.fr/commandes-ibm-i/sbmjob) |
 | SNDBRKMSG | 1 | verifiee | [https://job-i.fr/commandes-ibm-i/sndbrkmsg](https://job-i.fr/commandes-ibm-i/sndbrkmsg) |
 | SNDMSG | 2 | verifiee | [https://job-i.fr/commandes-ibm-i/sndmsg](https://job-i.fr/commandes-ibm-i/sndmsg) |
-| SNDRCVF | 51 | verifiee | [https://job-i.fr/commandes-ibm-i/sndrcvf](https://job-i.fr/commandes-ibm-i/sndrcvf) |
+| SNDRCVF | 53 | verifiee | [https://job-i.fr/commandes-ibm-i/sndrcvf](https://job-i.fr/commandes-ibm-i/sndrcvf) |
 | SNDUSRMSG | 1 | verifiee | [https://job-i.fr/commandes-ibm-i/sndusrmsg](https://job-i.fr/commandes-ibm-i/sndusrmsg) |
 | STRDFU | 1 | verifiee | [https://job-i.fr/commandes-ibm-i/strdfu](https://job-i.fr/commandes-ibm-i/strdfu) |
 | STRPCCMD | 3 | verifiee | [https://job-i.fr/commandes-ibm-i/strpccmd](https://job-i.fr/commandes-ibm-i/strpccmd) |
@@ -94,34 +93,34 @@ Genere le 2026-11-16 14:04. Reference : 1830 commandes CL, 196 termes RPG.
 
 ### A controler manuellement (absentes de la liste job-i : variable, label, objet utilisateur ?)
 
-absente, AFFOBJDCL, AFFOBJDFM, AFFSPOOL, AFFTAPYCST, AFFUSRDCL, AFFUSRDFM, ALWAYS, AMIMAUXCL, AND, ANIMALCL, ANIMALFM, ANIMAU1, ANIMAUX, ANIMAUX9, ANIMAUXCLP, ANIMAUXDSP, ANNUAIRE, ANNUAIRE1, APPELTEST, BCLMSG, BIB01, BIB02, BIB05, BIB06, BIB07, BIB09, BIB10, BIB13, BIB14, BIB16, BIB17, BIB19, BIB20, BIB21, BIERCOUNT, BIEREDSP, BONBONCL, BONJOUR, CALCCL, CALCDSP, CALCFM, CALCIMPOT, CALCU, CALCULATRI, CFGLIBL, CHAR, CHATIZI, CHECKOBJ, CHECKSRV, CHGLIBCURR, CLBONBON, CLDESCPRF, CLIENTCRL, CLIENTCRT, CLIENTINS, CLIENTLPA, CLMSG, CLP1, CLPRF, CLPTP, CLSQL, CLT, CLTP, CLV, CLVAR, CMD, CMDLBL, commande, COMPILEPF, condition, CRTENV, CRTENVCLP, CRTFILE, CURLIB, dans, DBXFIL, DBXTXT, DEBUT, DECIMAL, DETAIL, DEVENVCLP, DIRCLN, DLTLME, DONE, DSPOBJDCL, DSPOBJDDSP, DSPUSRCLP, DSPUSRDSP, DSPUSRSLP, DTAARA, DTACPR, DTARAIMPOT, END, ENDIDBGC, ENDIF, ENVAUTO, EOF, erreurs, existe, EXPCSVPF, EXPSRCIFS, EXPSRCIFSC, EXPSRCIFSD, fichier, FILE, FIN, FMTOPT, FROM, FROMMBR, GENERATED, GETPTF, GPT, GPTQCM, HELLOWORLD, https, IBM, IDBGPYC, IDENTITY, IFNULL, IMPOCL, IMPOTCL, INFOL, INIENV, INLPGM, installee, int, INTEGER, interdite, JEU1, JOBD, JOBDLIB, JOBQ, JUSTPRCLP, JUSTPRDSP, KTEPE, LANCEDEMO, LEFT, LEN, LIBLIST, lignes, lors, LSTMBR, LSTMBRCL, LSTMBRCL2, MBR, MBRLIST, MBRLST, MBROPT, MDSPLYCL, membre, MENUCL, MENUECL, MENUFM, MIN, modifie, MON1ERCLP, MSGDTA, MSGF, MSGID, MSGTYPE, MYFIRSTCL, NOT, NOWTRS, NULL, OBJ, OBJCHECK, OBJLSTC, OBJTYPE, ONDMI, OPNSRC, OPTION, OUTFILE, OUTPUT, OUTQ, PARM, pas, patienter, PGMAMARI, PGMDSP, plus, POINTEUR, pour, printf, PROMPT, PSSR, PWDEXP, QCLESRC, QCLLESRC, QCLPSRC, QCLSRC, QEXOSRC, QILE, QSOURCES, QSRC, QSRCRACE, QSTRUP, QSYS, QTESTSRC, RACEC, RCDDLM, READ, REDTA, REFPGCL, REPLACE, RICKROLL, RICKROLL2, RMV, RMVSYMLNK, RTNVAR, RTVINFOPGM, RTVUSR1, RTVUSRCLP, sauvegarde, SAVACT, SAVECL, SAVECL2, SAVECLS, SAVELIB, SAVELIV, SAVF, SAVL, SELECTDFU, SEQNBR, session, source, sources, SQL0000, SQLCLP1, SQLCLP2, SQLINSDSP, SRCFILE, SRCFLIB, SRCLST, SRCMBR, SRCPDFCL, START, STARTQQ, STMFOPT, STOPEDJOB, STRIDBGC, STRRDOI, SUITEIF, SUITEPW, table, TEST, TESTCL, TESTCO, TESTPARM, TESTSQLBAT, TEXT, THEN, TIMFMT, TOFILE, TOLIB, TOMBR, tools, TOSTMF, TOUSR, TSTADRIEN, TSTGPT4, type, USERCL, USERFM, utilisez, valeur, VALUE, VALUES, VAR, VARCHAR, VEUILLEZ, WHLNAM
+absente, AFFOBJDCL, AFFOBJDFM, AFFSPOOL, AFFTAPYCST, AFFUSRDCL, AFFUSRDFM, ALWAYS, AMIMAUXCL, AND, ANIMALCL, ANIMALFM, ANIMAU1, ANIMAUX, ANIMAUX9, ANIMAUXCLP, ANIMAUXDSP, ANNUAIRE, ANNUAIRE1, APPELTEST, BCLMSG, BIB01, BIB02, BIB05, BIB06, BIB07, BIB09, BIB10, BIB13, BIB14, BIB16, BIB17, BIB19, BIB20, BIB21, BIERCOUNT, BIEREDSP, BONBONCL, BONJOUR, CALCCL, CALCDSP, CALCFM, CALCIMPOT, CALCU, CALCULATRI, CFGLIBL, CHAR, CHATIZI, CHECKOBJ, CHECKSRV, CHGLIBCURR, CL2ECRAN, CLBONBON, CLDESCPRF, CLECRETPF, CLIENTCRL, CLIENTCRT, CLIENTINS, CLIENTLPA, CLMSG, CLOVRDBF, CLOVRDBFMB, CLP1, CLPRF, CLPTP, CLSQL, CLT, CLTP, CLV, CLVAR, CMD, CMDLBL, commande, COMPILEPF, condition, CRTENV, CRTENVCLP, CRTFILE, CURLIB, dans, DBXFIL, DBXTXT, DEBUT, DECIMAL, DETAIL, DEVENVCLP, DIRCLN, DLTLME, DONE, DSPOBJDCL, DSPOBJDDSP, DSPUSRCLP, DSPUSRDSP, DSPUSRSLP, DTAARA, DTACPR, DTARAIMPOT, END, ENDIDBGC, ENDIF, ENVAUTO, EOF, erreurs, existe, EXPCSVPF, EXPSRCIFS, EXPSRCIFSC, EXPSRCIFSD, fichier, FILE, FIN, FMTOPT, FROM, FROMMBR, GENERATED, GETPTF, GPT, GPTQCM, HELLOWORLD, HINTSRC19, https, IBM, IDBGPYC, IDENTITY, IFNULL, IMPOCL, IMPOTCL, INFOL, INIENV, INLPGM, installee, int, INTEGER, interdite, JEU1, JOBD, JOBDLIB, JOBQ, JUSTPRCLP, JUSTPRDSP, KTEPE, LANCEDEMO, LEFT, LEN, LIBLIST, lignes, lors, LSTMBR, LSTMBRCL, LSTMBRCL2, MBR, MBRLIST, MBRLST, MBROPT, MDSPLYCL, membre, MENUCL, MENUECL, MENUFM, MIN, modifie, MON1ERCLP, MSGDTA, MSGF, MSGID, MSGTYPE, MYFIRSTCL, NOT, NOWTRS, NULL, OBJ, OBJCHECK, OBJLSTC, OBJTYPE, ONDMI, OPNSRC, OPTION, OUTFILE, OUTPUT, OUTQ, PARM, pas, patienter, PGMAMARI, PGMDSP, plus, POINTEUR, pour, printf, PROMPT, PSSR, PWDEXP, QCLESRC, QCLLESRC, QCLPSRC, QCLSRC, QEXOSRC, QILE, QSOURCES, QSRC, QSRCRACE, QSTRUP, QSYS, QTESTSRC, RACEC, RCDDLM, READ, REDTA, REFPGCL, REPLACE, RICKROLL, RICKROLL2, RMV, RMVSYMLNK, RTNVAR, RTVINFOPGM, RTVUSR1, RTVUSRCLP, sauvegarde, SAVACT, SAVECL, SAVECL2, SAVECLS, SAVELIB, SAVELIV, SAVF, SAVL, SELECTDFU, SEQNBR, session, source, sources, SQL0000, SQLCLP1, SQLCLP2, SQLINSDSP, SRCFILE, SRCFLIB, SRCLST, SRCMBR, SRCPDFCL, START, STARTQQ, STMFOPT, STOPEDJOB, STRIDBGC, STRRDOI, SUITEIF, SUITEPW, table, TEST, TESTCL, TESTCO, TESTPARM, TESTSQLBAT, TEXT, THEN, TIMFMT, TOFILE, TOLIB, TOMBR, tools, TOSTMF, TOUSR, TSTADRIEN, TSTGPT4, type, USERCL, USERFM, utilisez, valeur, VALUE, VALUES, VAR, VARCHAR, VEUILLEZ, WHLNAM
 
 ## Instructions / fonctions RPG reconnues
 
 | Terme | Occurrences |
 |---|---|
 | %ABS | 41 |
-| %ADDR | 189 |
+| %ADDR | 191 |
 | %ALLOC | 3 |
-| %CHAR | 168 |
+| %CHAR | 171 |
 | %CHECK | 1 |
 | %CHECKR | 1 |
 | %DATE | 16 |
 | %DAYS | 8 |
 | %DEC | 2 |
-| %DECH | 9 |
+| %DECH | 10 |
 | %DIFF | 2 |
 | %DIV | 13 |
-| %EDITC | 61 |
-| %EDITW | 5 |
+| %EDITC | 62 |
+| %EDITW | 10 |
 | %ELEM | 20 |
-| %EOF | 137 |
+| %EOF | 141 |
 | %EQUAL | 2 |
 | %ERROR | 43 |
 | %FIELDS | 1 |
 | %FOUND | 90 |
 | %INT | 1 |
-| %LEN | 215 |
+| %LEN | 216 |
 | %LIST | 2 |
 | %LOOKUP | 6 |
 | %LOWER | 2 |
@@ -130,90 +129,90 @@ absente, AFFOBJDCL, AFFOBJDFM, AFFSPOOL, AFFTAPYCST, AFFUSRDCL, AFFUSRDFM, ALWAY
 | %PADDR | 1 |
 | %PARMS | 3 |
 | %REM | 30 |
-| %SCAN | 18 |
+| %SCAN | 19 |
 | %SCANRPL | 16 |
 | %SIZE | 276 |
 | %STATUS | 5 |
 | %STR | 6 |
 | %SUBARR | 8 |
-| %SUBST | 222 |
+| %SUBST | 223 |
 | %TARGET | 2 |
 | %TIMESTAMP | 4 |
 | %TRIM | 279 |
 | %TRIML | 1 |
-| %TRIMR | 83 |
+| %TRIMR | 86 |
 | %UPPER | 5 |
 | %XFOOT | 9 |
 | %XLATE | 14 |
-| BASED | 20 |
-| BEGSR | 322 |
+| BASED | 22 |
+| BEGSR | 326 |
 | CALLP | 77 |
-| CHAIN | 224 |
-| CLEAR | 761 |
-| COMMIT | 91 |
-| CONST | 595 |
+| CHAIN | 225 |
+| CLEAR | 763 |
+| COMMIT | 92 |
+| CONST | 625 |
 | CRTPF | 1 |
 | CRTRPGPGM | 2 |
-| CTL-OPT | 175 |
-| DCL-C | 140 |
-| DCL-DS | 223 |
+| CTL-OPT | 185 |
+| DCL-C | 143 |
+| DCL-DS | 226 |
 | DCL-ENUM | 2 |
-| DCL-F | 156 |
-| DCL-PI | 197 |
-| DCL-PR | 202 |
-| DCL-PROC | 484 |
-| DCL-S | 901 |
-| DELETE | 128 |
-| DIM | 100 |
-| DISK | 179 |
-| DOU | 102 |
-| DOW | 321 |
-| DOWEQ | 133 |
-| DSPLY | 264 |
-| ELSE | 399 |
-| ENDDO | 580 |
-| ENDIF | 2186 |
+| DCL-F | 163 |
+| DCL-PI | 211 |
+| DCL-PR | 210 |
+| DCL-PROC | 504 |
+| DCL-S | 926 |
+| DELETE | 129 |
+| DIM | 101 |
+| DISK | 180 |
+| DOU | 106 |
+| DOW | 327 |
+| DOWEQ | 136 |
+| DSPLY | 279 |
+| ELSE | 406 |
+| ENDDO | 594 |
+| ENDIF | 2214 |
 | EVAL | 746 |
-| EXFMT | 307 |
+| EXFMT | 313 |
 | F11 | 2 |
 | F23 | 100 |
 | FMT | 41 |
-| FOR | 186 |
+| FOR | 191 |
 | FOR-EACH | 4 |
 | INS | 9 |
-| INZ | 527 |
-| ITER | 101 |
-| LEAVE | 442 |
+| INZ | 536 |
+| ITER | 103 |
+| LEAVE | 452 |
 | LIKE | 90 |
 | MONITOR | 34 |
-| MOVE | 477 |
+| MOVE | 478 |
 | MOVEL | 301 |
-| OPEN | 105 |
+| OPEN | 106 |
 | OPTIONS | 120 |
 | OVERLAY | 20 |
-| PARM | 119 |
-| PLIST | 53 |
+| PARM | 122 |
+| PLIST | 55 |
 | QRPGSRC | 189 |
 | QUALIFIED | 44 |
-| READ | 257 |
+| READ | 265 |
 | READE | 81 |
 | READP | 17 |
 | READPE | 3 |
 | RESET | 2 |
-| RETURN | 295 |
-| RPG | 661 |
-| SELECT | 402 |
+| RETURN | 324 |
+| RPG | 687 |
+| SELECT | 406 |
 | SETGT | 8 |
 | SETLL | 127 |
 | SETOF | 153 |
-| SETON | 400 |
-| SND-MSG | 21 |
+| SETON | 401 |
+| SND-MSG | 26 |
 | SORTA | 5 |
-| TEST | 28 |
+| TEST | 29 |
 | UNLOCK | 8 |
 | UPDAT | 2 |
-| UPDATE | 173 |
-| WORKSTN | 149 |
-| WRITE | 478 |
+| UPDATE | 174 |
+| WORKSTN | 153 |
+| WRITE | 486 |
 | WRKSPLF | 7 |
 | Z-ADD | 221 |

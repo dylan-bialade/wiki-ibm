@@ -3,8 +3,8 @@ bibliotheque: BIB13
 fichier_source: QCPYSRC
 membre: PRETMODP
 type: RPG/Copy
-longueur_enregistrement: 120
-lignes: 92
+longueur_enregistrement: 114
+lignes: 97
 modifie: 2026-11-16
 ---
 
@@ -14,93 +14,98 @@ modifie: 2026-11-16
 **free
 
 
-                                                                                                /if not defined(PRETMODP
-)
-                                                                                    /define PRETMODP
+
+/if not defined(PRETMODP)
+
+/define PRETMODP
 
 
 
-                                                            dcl-pr nbmois packed(4:0);
+dcl-pr nbmois packed(4:0);
 
-                                                  annee packed(3:0)const;
+  annee packed(3:0)const;
 
-                                    end-pr;
+end-pr;
 
 
 
 
 
 dcl-pr calcTotInteret packed(12:2);
-                                                                                                              annee pack
-ed(3:0)const;
-                                                                                                  taux  packed(4:2)const
-;
-                                                                                      montant packed(10:0)const;
 
-                                                                        end-pr;
+  annee packed(3:0)const;
 
+  taux  packed(4:2)const;
 
-
-                                                dcl-pr calcMensualite packed(6:2);
-
-                                      montant packed(10:2)const;
-
-                          taux packed(4:2)const;
-
-              annee packed(3:0)const;
+  montant packed(10:0)const;
 
 end-pr;
 
 
-                                                                                                dcl-pr interetsMois pack
-ed(6:2);
-                                                                                      taux packed(4:2)const;
 
-                                                                          capital packed(12:2)const;
+dcl-pr calcMensualite packed(6:2);
 
-                                                            end-pr;
+  montant packed(10:2)const;
 
+  taux packed(4:2)const;
 
-
-                                    dcl-pr ammotismois packed(6:2);
-
-                          interet packed(6:2) const;
-
-              mens packed(6:2) const;
+  annee packed(3:0)const;
 
 end-pr;
 
 
-                                                                                                dcl-pr capitalRestant pa
-cked(12:2);
-                                                                                      capital packed(12:2) const;
 
-                                                                          ammortis packed(6:2) const;
+dcl-pr interetsMois packed(6:2);
 
-                                                            end-pr;
+  taux packed(4:2)const;
 
-
-
-                                    dcl-pr calcammorti packed(6:2);
-
-                          montant packed(12:2)const;
-
-              annee packed(3:0)const;
+  capital packed(12:2)const;
 
 end-pr;
 
 
-                                                                                                dcl-pr mensualite packed
-(6:2);
-                                                                                      ammorti packed(6:2) const;
 
-                                                                          interet packed(6:2)const;
+dcl-pr ammotismois packed(6:2);
 
-                                                            end-pr;
+  interet packed(6:2) const;
 
+  mens packed(6:2) const;
 
-
+end-pr;
 
 
-                        /endif
+
+dcl-pr capitalRestant packed(12:2);
+
+  capital packed(12:2) const;
+
+  ammortis packed(6:2) const;
+
+end-pr;
+
+
+
+dcl-pr calcammorti packed(6:2);
+
+  montant packed(12:2)const;
+
+  annee packed(3:0)const;
+
+end-pr;
+
+
+
+dcl-pr mensualite packed(6:2);
+
+  ammorti packed(6:2) const;
+
+  interet packed(6:2)const;
+
+end-pr;
+
+
+
+
+
+/endif
 ```

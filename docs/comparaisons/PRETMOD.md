@@ -5,7 +5,7 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
 | BIB03 | QRPGLESRC | RPG/RPG-ILE | 41 | 100 % | full free, procedures (dcl-proc), prototypes (dcl-pr) | [PRETMOD.md](../../sources/RPG/RPG-ILE/BIB03/PRETMOD.md) |
-| BIB13 | QRPGLESRC | RPG/RPG-ILE | 168 | 7 % | full free, procedures (dcl-proc), prototypes (dcl-pr) | [PRETMOD.md](../../sources/RPG/RPG-ILE/BIB13/PRETMOD.md) |
+| BIB13 | QRPGLESRC | RPG/RPG-ILE | 195 | 8 % | full free, procedures (dcl-proc), prototypes (dcl-pr) | [PRETMOD.md](../../sources/RPG/RPG-ILE/BIB13/PRETMOD.md) |
 | BIB17 | QRPGLESRC | RPG/RPG-ILE | 145 | 4 % | full free, boucle DOW/DOU/FOR, procedures (dcl-proc), prototypes (dcl-pr), structure de donnees | [PRETMOD.md](../../sources/RPG/RPG-ILE/BIB17/PRETMOD.md) |
 
 ## Differences
@@ -61,7 +61,7 @@ dcl-proc interetMois export;
 end-proc;
 ```
 
-### BIB13 (RPG/RPG-ILE, 168 lignes)
+### BIB13 (RPG/RPG-ILE, 195 lignes)
 
 _Long : voir [PRETMOD.md](../../sources/RPG/RPG-ILE/BIB13/PRETMOD.md)._
 

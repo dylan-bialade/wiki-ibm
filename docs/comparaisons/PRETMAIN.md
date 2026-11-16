@@ -1,10 +1,11 @@
-# PRETMAIN : 2 versions differentes dans 2 bibliotheques
+# PRETMAIN : 3 versions differentes dans 3 bibliotheques
 
 Meme nom de membre, code different : facons de faire ou de penser differentes. Similarite = part de lignes (normalisees) en commun avec la premiere version. Retour : [index des comparaisons](../COMPARAISON-BIBLIOTHEQUES.md).
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
 | BIB03 | QRPGLESRC | RPG/RPG-ILE | 95 | 100 % | full free, sous-fichier, ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc), structure de donnees | [PRETMAIN.md](../../sources/RPG/RPG-ILE/BIB03/PRETMAIN.md) |
+| BIB13 | QRPGLESRC | RPG/RPG-ILE | 167 | 9 % | full free, sous-fichier, ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc), structure de donnees | [PRETMAIN.md](../../sources/RPG/RPG-ILE/BIB13/PRETMAIN.md) |
 | BIB17 | QRPGLESRC | RPG/RPG-ILE | 106 | 6 % | full free, sous-fichier, ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc), structure de donnees, indicateurs *INxx | [PRETMAIN.md](../../sources/RPG/RPG-ILE/BIB17/PRETMAIN.md) |
 
 ## Differences
@@ -113,6 +114,10 @@ dcl-proc afficherTableau;
   exfmt PRETCTL;                                  // F12 ou F3 : retour a la saisie
 end-proc;
 ```
+
+### BIB13 (RPG/RPG-ILE, 167 lignes)
+
+_Long : voir [PRETMAIN.md](../../sources/RPG/RPG-ILE/BIB13/PRETMAIN.md)._
 
 ### BIB17 (RPG/RPG-ILE, 106 lignes)
 

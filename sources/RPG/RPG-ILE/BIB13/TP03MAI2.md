@@ -3,8 +3,8 @@ bibliotheque: BIB13
 fichier_source: QRPGLESRC
 membre: TP03MAI2
 type: RPG/RPG-ILE
-longueur_enregistrement: 96
-lignes: 53
+longueur_enregistrement: 114
+lignes: 45
 modifie: 2026-11-16
 ---
 
@@ -13,55 +13,47 @@ modifie: 2026-11-16
 ```rpg
 **free
 
-                                    ctl-opt option(*srcstmt:*nodebugio);
+ctl-opt option(*srcstmt:*nodebugio);
 
 
 
-
-            /include QCPYSRC,TP03MODP
-
+/include QCPYSRC,TP03MODP
 
 
 
 
 
-                        afficher(1);
+afficher(1);
 
-                                                            afficher(2);
-
+afficher(2);
 
 afficher(3);
 
-                                    *inlr=*on;
+*inlr=*on;
 
 
 
 
 
+dcl-proc afficher;
 
-                                                dcl-proc afficher;
+  dcl-pi *n ;
 
-                                                                                      dcl-pi *n
-;
+    num packed(5:0)const;
 
-                            num packed(5:0)const;
-
-                                                              end-pi;
-
+  end-pi;
 
   dsply (%trim(nomClient(num))+'- '+%trim(villeclient(num)));
 
-                                      if peutCommander(num:500);
+  if peutCommander(num:500);
 
-                                                                            dsply 'Commande de 5
-00.00 € : Acceptée';
+    dsply 'Commande de 500.00 € : Acceptée';
 
-              else;
+  else;
 
-                                                    dsply 'Commande de 500.00 € : Refusée';
+    dsply 'Commande de 500.00 € : Refusée';
 
-                                                                                      endif;
+  endif;
 
-
-                        end-proc;
+end-proc;
 ```

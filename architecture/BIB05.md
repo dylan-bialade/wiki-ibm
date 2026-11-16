@@ -1,7 +1,7 @@
 # Bibliotheque BIB05
 
-- Sources converties : 149
-- Membres de donnees / non-source : 92
+- Sources converties : 153
+- Membres de donnees / non-source : 88
 
 ## Repartition par type
 
@@ -12,7 +12,7 @@
 | RPG\RPG-ILE | 79 |
 | DDS | 6 |
 | RPG\RPG-III-400 | 36 |
-| Autres\Web | 1 |
+| Autres\Web | 5 |
 
 ## Fichiers de donnees / objets (membres non-source)
 
@@ -46,7 +46,6 @@
 - **QUIZJOU** : QUIZJOU
 - **QUIZQST** : QUIZQST
 - **QUIZREP** : QUIZREP
-- **QWEBSRC** : DB1W1FM, DB1W2FM, DB1W3FM, NEW_4
 - **RACECHIEN** : RACECHIEN
 - **SOLDAT** : SOLDAT
 - **SQLRPGLE** : REQUETTE

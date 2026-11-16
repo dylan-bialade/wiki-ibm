@@ -3,8 +3,8 @@ bibliotheque: BIB13
 fichier_source: QCPYSRC
 membre: TP02MODP
 type: RPG/Copy
-longueur_enregistrement: 120
-lignes: 37
+longueur_enregistrement: 114
+lignes: 39
 modifie: 2026-11-16
 ---
 
@@ -14,38 +14,40 @@ modifie: 2026-11-16
 **free
 
 
-                                                                                                /if not defined(TP02MODP
-)
-                                                                                    /define TP02MODP
+
+/if not defined(TP02MODP)
+
+/define TP02MODP
 
 
 
 
 
-                                                dcl-pr stockArticle packed(7:0);
+dcl-pr stockArticle packed(7:0);
 
-                                      code char(6) const;
+  code char(6) const;
 
-                        end-pr;
+end-pr;
 
 
 
 dcl-pr valeurStock packed(11:2);
-                                                                                                              code char(
-6) const;
-                                                                                                end-pr;
+
+  code char(6) const;
+
+end-pr;
 
 
 
-                                                                        dcl-pr estDisponible ind;
+dcl-pr estDisponible ind;
 
-                                                              code char(6) const;
+  code char(6) const;
 
-                                                  qte packed(7:0) const;
+  qte packed(7:0) const;
 
-                                    end-pr;
+end-pr;
 
 
 
-            /endif
+/endif
 ```

@@ -1,18 +1,18 @@
 # Bibliotheque BIB10
 
-- Sources converties : 95
-- Membres de donnees / non-source : 43
+- Sources converties : 102
+- Membres de donnees / non-source : 36
 
 ## Repartition par type
 
 | Type | Nombre |
 |---|---|
+| CL\CL-procedural | 25 |
+| DDS | 40 |
+| RPG\RPG-III-400 | 22 |
 | CL\CL-ILE | 5 |
-| CL\CL-procedural | 21 |
-| DDS | 39 |
 | Menus | 3 |
-| RPG\RPG-ILE | 6 |
-| RPG\RPG-III-400 | 21 |
+| RPG\RPG-ILE | 7 |
 
 ## Fichiers de donnees / objets (membres non-source)
 
@@ -28,7 +28,7 @@
 - **EVFEVENT** : TESTRNIND
 - **EXEMPLOYES** : EMPLOYES
 - **FICCLI** : CLIENTS
-- **HINTSRC19** : CL2ECRAN, CLECRETPF, CLOVRDBF, CLOVRDBFMB, MONECR, MONFIC, RPGCRUD
+- **HINTSRC19** : MONFIC
 - **IN_FTP** : IN_FTP
 - **LIVRES** : LIVRES
 - **LIVRES_PF** : LIVRES_PF
@@ -43,7 +43,6 @@
 - **POEIMTP26** : POEIMTP26
 - **QAUOOPT** : QAUOOPT
 - **RACECHIEN** : RACECHIEN
-- **RPGLESRCNO** : NONE
 - **SALAI00001** : SALAI00001
 - **SALAIRES** : SALAIRES
 - **SAVEFTP** : IN_FTP, OUT_FTP

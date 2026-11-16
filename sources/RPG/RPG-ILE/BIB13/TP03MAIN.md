@@ -3,8 +3,8 @@ bibliotheque: BIB13
 fichier_source: QRPGLESRC
 membre: TP03MAIN
 type: RPG/RPG-ILE
-longueur_enregistrement: 120
-lignes: 35
+longueur_enregistrement: 114
+lignes: 37
 modifie: 2026-11-16
 ---
 
@@ -12,38 +12,40 @@ modifie: 2026-11-16
 
 ```rpg
 **free
-                                                                                                            ctl-opt opti
-on(*srcstmt:*nodebugio);
 
-
-                                                                                    /include QCPYSRC,TP03MODP
+ctl-opt option(*srcstmt:*nodebugio);
 
 
 
-
-
-                                                afficher(1);
-
-                                    afficher(2);
-
-                        afficher(9);
-
-            *inlr=*on;
+/include QCPYSRC,TP03MODP
 
 
 
 
-                                                                                                dcl-proc afficher;
 
-                                                                                      dcl-pi *n ;
+afficher(1);
 
-                                                                            num packed(5:0)const;
+afficher(2);
 
-                                                              end-pi;
+afficher(9);
 
-                                                  dsply (%char(num)+' '+nomClient(num));
+*inlr=*on;
 
-                                      dsply ('Encours: '+%char(encoursClient(num))+'- crédit: '+%char(creditDispo(num)))
-;
-                        end-proc;
+
+
+
+
+dcl-proc afficher;
+
+  dcl-pi *n ;
+
+    num packed(5:0)const;
+
+  end-pi;
+
+  dsply (%char(num)+' '+nomClient(num));
+
+  dsply ('Encours: '+%char(encoursClient(num))+'- crédit: '+%char(creditDispo(num)));
+
+end-proc;
 ```

@@ -6,7 +6,7 @@ param(
 )
 $ErrorActionPreference = "Stop"
 $enc = [Text.Encoding]::GetEncoding(1147)   # EBCDIC francais
-$widths = 100,112,92,80,120,132,96,160       # longueurs d'enregistrement candidates (ordre de preference)
+$widths = 100,112,92,80,120,132,96,160,102,108,114,124,152       # longueurs d'enregistrement candidates (ordre de preference)
 
 $typeMap = @{
   QRPGLESRC="RPG\RPG-ILE"; QRPGSRC="RPG\RPG-III-400"; QCLPSRC="CL\CL-procedural"; QCLLESRC="CL\CL-ILE";
@@ -69,7 +69,7 @@ function Get-NameType([string]$f) {
   }
   return $null
 }
-$mixedRx = '^(QSRC|QSOURCES?|QVSRC|QILESRC|QILE|QEXOSRC|QTESTSRC|QTPSRC|QAPI|QCHATGPT|QVINCI|QVSCODE|QTMABUG|QMOD|QERROR|QSRCRACE)$'
+$mixedRx = '^(QSRC|QSOURCES?|QVSRC|QILESRC|QILE|QEXOSRC|QTESTSRC|QTPSRC|QAPI|QCHATGPT|QVINCI|QVSCODE|QTMABUG|QMOD|QERROR|QSRCRACE|HINTSRC\d*|RPGLESRCNO|\w*SRC\w*)$'
 function Get-ContentType($lines) {
   $t = ($lines -join "`n"); $n = [Math]::Max(1, @($lines).Count)
   if ($t -match '(?im)^\s*\*\*free|\bdcl-(s|ds|f|pr|pi|proc)\b|\bctl-opt\b') { return 'RPG\RPG-ILE' }
