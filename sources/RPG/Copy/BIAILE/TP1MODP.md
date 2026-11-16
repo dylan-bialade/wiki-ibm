@@ -1,4 +1,4 @@
-﻿---
+---
 bibliotheque: BIAILE
 fichier_source: QCPYSRC
 membre: TP1MODP

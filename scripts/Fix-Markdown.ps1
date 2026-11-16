@@ -17,6 +17,7 @@ foreach ($f in $files) {
     [void]$out.Add($l); $prevTable = $isTable; $prevBlank = $isBlank
   }
   $new = (($out -join "`n") -replace "`n{3,}", "`n`n").TrimEnd() + "`n"
-  if ($new -ne $src) { [IO.File]::WriteAllText($f.FullName, $new, (New-Object Text.UTF8Encoding($false))); $fixed++; Write-Output "corrige : $($f.FullName.Substring($Wiki.Length+1))" }
+  $hasBom = ([IO.File]::ReadAllBytes($f.FullName) | Select-Object -First 3) -join ',' -eq '239,187,191'
+  if ($new -ne $src -or $hasBom) { [IO.File]::WriteAllText($f.FullName, $new, (New-Object Text.UTF8Encoding($false))); $fixed++; Write-Output "corrige : $($f.FullName.Substring($Wiki.Length+1))" }
 }
 Write-Output "$fixed fichier(s) corrige(s) sur $($files.Count)."

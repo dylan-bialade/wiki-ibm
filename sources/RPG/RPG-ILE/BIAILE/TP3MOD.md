@@ -1,4 +1,4 @@
-﻿---
+---
 bibliotheque: BIAILE
 fichier_source: QRPGLESRC
 membre: TP3MOD

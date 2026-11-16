@@ -1,4 +1,4 @@
-﻿---
+---
 bibliotheque: BIALADE2
 fichier_source: QMNUSRC
 membre: MNUDEV1QQ

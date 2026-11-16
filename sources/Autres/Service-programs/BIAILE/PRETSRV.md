@@ -1,4 +1,4 @@
-﻿---
+---
 bibliotheque: BIAILE
 fichier_source: QSRVSRC
 membre: PRETSRV

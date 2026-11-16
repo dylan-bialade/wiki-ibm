@@ -1,4 +1,4 @@
-﻿---
+---
 bibliotheque: BIALADE2
 fichier_source: QDDSSRC
 membre: LIVRES_LF

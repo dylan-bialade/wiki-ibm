@@ -1,4 +1,4 @@
-﻿---
+---
 bibliotheque: BIALA
 fichier_source: QRPGLESRC
 membre: WESH

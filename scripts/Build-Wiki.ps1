@@ -58,7 +58,7 @@ foreach ($lib in $libs) {
         $ruler = @("Repere de colonnes :","","``````text",$t1,$t2,"``````","")
       }
       $md = @("---","bibliotheque: $($lib.BaseName)","fichier_source: $fname","membre: $mname","type: $($type.Replace('\','/'))","longueur_enregistrement: $w","lignes: $($lines.Count)","modifie: $($m.LastWriteTime.ToString('yyyy-MM-dd'))","---","","# $($lib.BaseName)/$fname/$mname","") + $ruler + @("``````$lang") + $lines + @("``````")
-      $md | Set-Content (Join-Path $dir "$mname.md") -Encoding utf8
+      [IO.File]::WriteAllLines((Join-Path $dir "$mname.md"), [string[]]$md, (New-Object Text.UTF8Encoding($false)))   # UTF-8 SANS BOM : sinon GitHub ne reconnait pas l'en-tete YAML
       [void]$rows.Add([pscustomobject]@{Type=$type;Lib=$lib.BaseName;File=$fname;Member=$mname;Lines=$lines.Count;Width=$w;Path="sources/$($type.Replace('\','/'))/$($lib.BaseName)/$mname.md"})
     }
   }

@@ -1,4 +1,4 @@
-﻿---
+---
 bibliotheque: BIALADE
 fichier_source: QRPGLESRC
 membre: IMPOT

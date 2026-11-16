@@ -1,4 +1,4 @@
-﻿---
+---
 bibliotheque: BIALADE3
 fichier_source: QCLLESRC
 membre: TSTADRIEN
