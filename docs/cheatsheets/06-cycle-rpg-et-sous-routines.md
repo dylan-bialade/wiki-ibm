@@ -48,7 +48,7 @@
 
 ### Exemple : liste de personnes avec cycle, rupture L1, tableau MSG, `*INZSR` et sortie (DSPLY seul)
 
-> Statut : **proposé, partiellement validé par le compilateur** : la dernière compilation a échoué uniquement à cause de deux lignes de repère collées dans le membre (QRG2001) et de `*INKC` (QRG7030), tous deux retirés ci-dessous ; **non recompilé depuis**. Dérivé de l'exercice « BONBON » du cycle, avec le fichier `PERSO`. Sans fichier écran : tout passe par `DSPLY`.
+> Statut : **compile** (RPG/400, compilation réussie le 16/11/2026 après correction de QRG2001 et QRG7030). Exécution et comportement de `CL1` à la sortie : à confirmer. Dérivé de l'exercice « BONBON » du cycle, avec le fichier `PERSO`. Sans fichier écran : tout passe par `DSPLY`.
 
 - **Consigne** : reprendre l'exemple du cycle (fichier primaire `IP`) avec `PERSO` ; afficher **nom et prénom** ; quitter si `UNIVERS` vaut 5 ; pouvoir quitter avant la fin du fichier ; afficher « NOUVEL UNIVERS » à chaque changement d'univers (tableau chargé à la compilation) et au départ (sous-routine `*INZSR`) ; afficher le nombre de personnes à la fin.
 - **Repère de colonnes** (pour contrôler l'alignement ; **ne pas le copier dans le membre** : chaque ligne de repère donne une erreur QRG2001) :
@@ -94,6 +94,6 @@ NOUVEL UNIVERS
 - **Format du fichier `PERSO`** (listage du compilateur) : format `PERSOF` ; `NOM` alphanumérique 15, `PRENOM` alphanumérique 15, `UNIVERS` numérique 4 chiffres (renommé `UNIV`), `TEMPS` numérique 20 chiffres ; enregistrement de 54 octets.
 - **Pièges rencontrés** : `UNIVERS` fait 7 caractères, or un nom de zone RPG III en fait 6 au maximum : il faut le **renommer** dans la spécification I (`UNIV`) sinon le compilateur l'ignore (QRG4052 puis QRG7030) ; `*INKC` sans fichier écran → QRG7030 ; une ligne de repère collée dans le source → QRG2001 ; un fichier écran déclaré mais non créé → QRG2120 / QRG5154 / QRG7064 ; `CRTRPGPGM` avec `REPLACE(*NO)` sur un programme existant → QRG0012.
 - **Comportement du cycle** : au premier enregistrement, les calculs de total (`CL1`) sont sautés, d'où le message du départ dans `*INZSR` ; en fin de fichier `LR` allume aussi `L1` : le message s'affiche une dernière fois.
-- **À tester** : ce que fait `CL1` quand `SETON LR` arrête le programme ; la rupture `L1` suppose les enregistrements **groupés par `UNIVERS`** (sinon lire la LF [PRSOLF](../../sources/DDS/BIB12/PRSOLF.md), à clé `UNIVERS`, dont le format est `PERSOFM`).
+- **À confirmer à l'exécution** : ce que fait `CL1` quand `SETON LR` arrête le programme ; la rupture `L1` suppose les enregistrements **groupés par `UNIVERS`** (sinon lire la LF [PRSOLF](../../sources/DDS/BIB12/PRSOLF.md), à clé `UNIVERS`, dont le format est `PERSOFM`).
 - **Création** : `CRTRPGPGM PGM(MABIB/PERSOCYC) SRCFILE(MABIB/QRPGSRC)` ; test : `CALL PERSOCYC`.
 - **Modèles complets du cycle** : [CYCDEMO](../../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md), [CYCLE-GAP-EXEMPLES](../CYCLE-GAP-EXEMPLES.md).
