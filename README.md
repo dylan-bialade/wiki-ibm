@@ -17,6 +17,8 @@
 | Structure d'une bibliothèque (types, objets de données) | `architecture/<BIBLIOTHEQUE>.md` |
 | Si une commande/instruction du code existe sur job-i.fr | [docs/VERIFICATION-JOB-I.md](docs/VERIFICATION-JOB-I.md) |
 | Ajouter mes propres notes/exemples | [docs/apports/README.md](docs/apports/README.md) |
+| Règles de lecture, de vérification et de mise à jour (prompt système) | [docs/PROMPT-SYSTEME.md](docs/PROMPT-SYSTEME.md) (chargé via [CLAUDE.md](CLAUDE.md)) |
+| Ce qui a changé sur job-i.fr depuis la dernière vérification | [docs/JOBI-CHANGES.md](docs/JOBI-CHANGES.md) (présent seulement s'il y a des changements) |
 
 ## Arborescence
 
@@ -83,4 +85,6 @@ modifie: 2026-11-16
 | `wiki-ibmi-regeneration` | tous les jours 18h | `scripts\Run-All.bat` (convertit, vérifie job-i) → intègre `docs/apports/` → commit → `git push` → Drive |
 | `cheatsheet-job-i-mensuel` | le 1er du mois | met à jour les blocs AUTO depuis job-i.fr → commit → push |
 
-Scripts : `Build-Wiki.ps1` (EBCDIC CCSID 1147 → Markdown), `Verify-JobI.ps1` (compare avec les 1 830 commandes et termes RPG de job-i.fr), `Push-Wiki.ps1` (push manuel avec confirmation), `Run-All.bat`.
+Chaque jour, `scripts\Check-JobIUpdates.ps1` compare job-i.fr (sitemaps + pages sources) à `docs/.jobi-state.json` ; en cas de changement, les blocs AUTO des fiches concernées sont mis à jour.
+
+Scripts : `Check-JobIUpdates.ps1` (détection de mises à jour job-i.fr), `Build-Wiki.ps1` (EBCDIC CCSID 1147 → Markdown), `Verify-JobI.ps1` (compare avec les 1 830 commandes et termes RPG de job-i.fr), `Push-Wiki.ps1` (push manuel avec confirmation), `Run-All.bat`.
