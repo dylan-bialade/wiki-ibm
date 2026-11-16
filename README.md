@@ -87,4 +87,6 @@ modifie: 2026-11-16
 
 Chaque jour, `scripts\Check-JobIUpdates.ps1` compare job-i.fr (sitemaps + pages sources) à `docs/.jobi-state.json` ; en cas de changement, les blocs AUTO des fiches concernées sont mis à jour.
 
-Scripts : `Check-JobIUpdates.ps1` (détection de mises à jour job-i.fr), `Build-Wiki.ps1` (EBCDIC CCSID 1147 → Markdown), `Verify-JobI.ps1` (compare avec les 1 830 commandes et termes RPG de job-i.fr), `Push-Wiki.ps1` (push manuel avec confirmation), `Run-All.bat`.
+Contrôle de code neuf : `scripts\Verify-Code.ps1 -Path <fichier.clp|.rpgle>` vérifie commandes CL, instructions et fonctions RPG contre job-i.fr.
+
+Scripts : `Verify-Code.ps1` (vérifie un code que vous écrivez), `Check-JobIUpdates.ps1` (détection de mises à jour job-i.fr), `Build-Wiki.ps1` (EBCDIC CCSID 1147 → Markdown), `Verify-JobI.ps1` (compare avec les 1 830 commandes et termes RPG de job-i.fr), `Push-Wiki.ps1` (push manuel avec confirmation), `Run-All.bat`.
