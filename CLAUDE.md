@@ -68,7 +68,16 @@ Termine toute réponse technique par une ligne « Vérifié : <ce qui a été co
 
 - Après mise à jour : `git add -A`, commit, puis push **uniquement si l'utilisateur l'a autorisé** (jamais `--force`, jamais de token ou mot de passe dans une commande).
 
-## 5. Interdits
-- Ne modifie pas à la main `sources/`, `architecture/`, `docs/INDEX-SOURCES.md`, `docs/sources.csv` (régénérés par `scripts/Run-All.bat`).
+## 5. Contributions des collaborateurs (à chaque merge)
+Les collaborateurs ajoutent leur bibliothèque dans `contributions/<pseudo>/` (voir `contributions/README.md` : `contribution.json` + dossier `<BIBLIOTHEQUE>/<FICHIER-SOURCE>/<MEMBRE>.<ext>`) par Pull Request ; ils ne modifient jamais `main`. **Après chaque merge** (ou à la demande), fais dans l'ordre :
+1. `git pull origin main`, puis repère les contributions nouvelles ou modifiées (`git log --stat`, `contributions/`).
+2. **Vérifier que ce qui a été mergé existe réellement** : `scripts/Verify-Contributions.ps1` (ajoute `-Jobi` pour contrôler commandes CL / instructions RPG sur job-i.fr). Lis `docs/VERIFICATION-CONTRIBUTIONS.md` : toute **erreur** (fichier déclaré inexistant, vide, binaire, secret, chemin sorti de la bibliothèque) = tu le signales au propriétaire, tu ne corriges pas le code d'un autre à sa place ; les **avertissements** (fichier non déclaré, objet référencé ni fourni ni déclaré) sont à lister dans ta réponse.
+3. Ouvre et **relis le code** de chaque exercice nouveau : la consigne et le `resultat_attendu` correspondent-ils au code ? Une solution qui ne fait pas ce qu'elle annonce est signalée, pas intégrée en silence.
+4. **Ajouter les différences** : `scripts/Build-Variantes.ps1` regroupe les exercices de même `id` dans `docs/VARIANTES.md` et `docs/variantes/<id>.md` (comparatif, techniques en propre, codes). Ajoute ensuite ton analyse de fond (choix de structure, avantages/limites de chaque variante) **à la fin de la page, sous `## Analyse`** : le script conserve cette section quand il régénère la page. Si deux contributeurs ont le même `id` mais des consignes ou résultats différents, signale-le : l'`id` doit être séparé.
+5. Quand tu cites une solution d'un collaborateur, indique **l'auteur** et le chemin `contributions/<pseudo>/…`. Pour proposer des alternatives à l'utilisateur, appuie-toi sur `docs/VARIANTES.md` et présente plusieurs structures quand elles existent.
+6. Termine : `git add -A`, commit, push (règle habituelle, jamais `--force`).
+
+## 6. Interdits
+- Ne modifie pas à la main `sources/`, `architecture/`, `docs/INDEX-SOURCES.md`, `docs/sources.csv` (régénérés par `scripts/Run-All.bat`), ni `docs/VARIANTES.md`, `docs/variantes/`, `docs/VERIFICATION-CONTRIBUTIONS.md` (générés ; seule la section `## Analyse` d'une page de variantes est conservée). Ne modifie pas le code d'un contributeur dans `contributions/<pseudo>/` : signale le problème.
 - N'exécute ni n'extrais zips ou `.exe` des ressources brutes ; ne publie pas de secret, d'identifiant ni de donnée personnelle ; ne reproduis pas de longs passages de job-i.fr ou d'IBM.
 - N'invente pas de commande CL, de message ou de fonction : vérifie sur job-i.fr.

@@ -19,6 +19,9 @@
 ## Controle et apports
 - [Verification job-i](docs/VERIFICATION-JOB-I.md): commandes/instructions du code reconnues sur job-i.fr
 - [Apports](docs/apports/README.md): notes de l'utilisateur, integrees dans "Mes exemples"
+- [Variantes](docs/VARIANTES.md): meme exercice, plusieurs solutions de collaborateurs (structure et code compares)
+- [Contributions](contributions/README.md): comment un collaborateur ajoute sa bibliotheque
+- [Verification des contributions](docs/VERIFICATION-CONTRIBUTIONS.md): fichiers declares = fichiers reels
 
 ## Regles
 - Ne pas editer sources/, architecture/, docs/INDEX-SOURCES.md (regeneres chaque jour).

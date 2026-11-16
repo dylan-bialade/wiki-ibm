@@ -1,0 +1,17 @@
+name: Verifier les contributions
+on:
+  pull_request:
+    paths: ['contributions/**']
+permissions:
+  contents: read
+jobs:
+  verif:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verification (fichiers declares = fichiers presents)
+        shell: pwsh
+        run: ./scripts/Verify-Contributions.ps1
+      - name: Previsualisation des variantes
+        shell: pwsh
+        run: ./scripts/Build-Variantes.ps1

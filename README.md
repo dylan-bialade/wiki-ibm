@@ -17,6 +17,8 @@
 | Structure d'une bibliothèque (types, objets de données) | `architecture/<BIBLIOTHEQUE>.md` |
 | Si une commande/instruction du code existe sur job-i.fr | [docs/VERIFICATION-JOB-I.md](docs/VERIFICATION-JOB-I.md) |
 | Ajouter mes propres notes/exemples | [docs/apports/README.md](docs/apports/README.md) |
+| Plusieurs solutions pour un même exercice | [docs/VARIANTES.md](docs/VARIANTES.md) |
+| Ajouter ma bibliothèque (collaborateur) | [contributions/README.md](contributions/README.md) |
 | Règles de lecture, de vérification et de mise à jour (prompt système) | [docs/PROMPT-SYSTEME.md](docs/PROMPT-SYSTEME.md) (chargé via [CLAUDE.md](CLAUDE.md)) |
 | Ce qui a changé sur job-i.fr depuis la dernière vérification | [docs/JOBI-CHANGES.md](docs/JOBI-CHANGES.md) (présent seulement s'il y a des changements) |
 
@@ -31,6 +33,8 @@ docs/
   sources.csv                ← Type;Lib;File;Member;Lines;Width;Path
   VERIFICATION-JOB-I.md      ← code vs référence job-i.fr
   apports/                   ← notes de l'utilisateur à intégrer
+  variantes/                 ← un exercice = une page comparant les solutions (généré)
+contributions/               ← bibliothèques des collaborateurs (PR) : <pseudo>/contribution.json + <BIB>/…
 architecture/<LIB>.md        ← une page par bibliothèque (BIAILE, BIALA, BIALADE, BIALADE2, BIALADE3, BIALADE4)
 sources/<TYPE>/<LIB>/<MEMBRE>.md   ← code converti, un fichier par membre
 scripts/                     ← génération et automatisation (PowerShell)

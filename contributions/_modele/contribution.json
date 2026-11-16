@@ -1,0 +1,16 @@
+{
+  "auteur": "votre-pseudo",
+  "bibliotheque": "MABIB",
+  "exercices": [
+    {
+      "id": "exemple-affichage-message",
+      "titre": "Exemple : afficher un message à l'écran",
+      "consigne": "Programme qui affiche le message « Bonjour IBM i » puis se termine.",
+      "resultat_attendu": "Le message Bonjour IBM i est affiché, le programme se termine sans erreur.",
+      "langage": "RPG-free",
+      "approche": "Full free, une seule instruction DSPLY.",
+      "dependances": [],
+      "fichiers": ["QRPGLESRC/HELLO.rpgle"]
+    }
+  ]
+}
