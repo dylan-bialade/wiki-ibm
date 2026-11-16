@@ -48,14 +48,19 @@
 
 ### Exemple : liste de personnes avec cycle, rupture L1, tableau MSG, `*INZSR` et sortie (DSPLY seul)
 
-> Statut : **proposé, non compilé** (à tester sur l'IBM i). Dérivé de l'exercice « BONBON » du cycle, avec le fichier `PERSO`. Sans fichier écran : tout passe par `DSPLY`.
+> Statut : **proposé, partiellement validé par le compilateur** : la dernière compilation a échoué uniquement à cause de deux lignes de repère collées dans le membre (QRG2001) et de `*INKC` (QRG7030), tous deux retirés ci-dessous ; **non recompilé depuis**. Dérivé de l'exercice « BONBON » du cycle, avec le fichier `PERSO`. Sans fichier écran : tout passe par `DSPLY`.
 
 - **Consigne** : reprendre l'exemple du cycle (fichier primaire `IP`) avec `PERSO` ; afficher **nom et prénom** ; quitter si `UNIVERS` vaut 5 ; pouvoir quitter avant la fin du fichier ; afficher « NOUVEL UNIVERS » à chaque changement d'univers (tableau chargé à la compilation) et au départ (sous-routine `*INZSR`) ; afficher le nombre de personnes à la fin.
-- **Programme RPG III** (`PERSOCYC`, source `QRPGSRC`) :
+- **Repère de colonnes** (pour contrôler l'alignement ; **ne pas le copier dans le membre** : chaque ligne de repère donne une erreur QRG2001) :
 
 ```	ext
          1         2         3         4         5         6         7         8
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
+```
+
+- **Programme RPG III** (`PERSOCYC`, source `QRPGSRC` ou autre fichier source) :
+
+```	ext
      FPERSO   IP  E                    DISK
       *
      E                    MSG     1   1 52
@@ -70,7 +75,6 @@
      C           UNIV      IFEQ 5
      C           REP       OREQ 'Q'
      C           REP       OREQ 'q'
-     C           *INKC     OREQ *ON
      C                     SETON                     LR
      C                     ENDIF
       *
@@ -86,9 +90,10 @@ NOUVEL UNIVERS
 ```
 
 - **Pause à chaque personne** : la zone résultat `REP` de `DSPLY` fait **attendre la réponse** de l'utilisateur ; Entrée affiche la personne suivante. Sans zone résultat, les messages défilent sans pause.
-- **Sortie anticipée** : taper `Q` puis Entrée (`REP`) est la sortie **sûre**. Le test `*INKC` (F3) est conservé, mais d'après job-i.fr `DSPLY` « ne modifie aucun indicateur » et la page ne parle pas des touches de fonction : F3 peut ne rien faire avec `DSPLY`. F3 est fiable avec un fichier écran et `EXFMT` (voir [TP3](../../sources/RPG/RPG-ILE/BIB05/TP3.md)).
-- **Pièges rencontrés** : `UNIVERS` fait 7 caractères, or un nom de zone RPG III en fait 6 au maximum : il faut le **renommer** dans la spécification I (`UNIV`) sinon le compilateur l'ignore (messages QRG4052 puis QRG7030) ; `K` sur la ligne F seulement si `PERSO` est à clé ; un fichier écran déclaré mais non créé donne QRG2120 / QRG5154 / QRG7064.
+- **Sortie anticipée** : taper `Q` puis Entrée (`REP`). **F3 n'est pas possible avec `DSPLY` seul** : le compilateur refuse `*INKC` (QRG7030, l'indicateur KC n'est défini par aucun fichier) et job-i.fr indique que `DSPLY` « ne modifie aucun indicateur ». F3 demande un fichier écran et `EXFMT` (voir [TP3](../../sources/RPG/RPG-ILE/BIB05/TP3.md)).
+- **Format du fichier `PERSO`** (listage du compilateur) : format `PERSOF` ; `NOM` alphanumérique 15, `PRENOM` alphanumérique 15, `UNIVERS` numérique 4 chiffres (renommé `UNIV`), `TEMPS` numérique 20 chiffres ; enregistrement de 54 octets.
+- **Pièges rencontrés** : `UNIVERS` fait 7 caractères, or un nom de zone RPG III en fait 6 au maximum : il faut le **renommer** dans la spécification I (`UNIV`) sinon le compilateur l'ignore (QRG4052 puis QRG7030) ; `*INKC` sans fichier écran → QRG7030 ; une ligne de repère collée dans le source → QRG2001 ; un fichier écran déclaré mais non créé → QRG2120 / QRG5154 / QRG7064 ; `CRTRPGPGM` avec `REPLACE(*NO)` sur un programme existant → QRG0012.
 - **Comportement du cycle** : au premier enregistrement, les calculs de total (`CL1`) sont sautés, d'où le message du départ dans `*INZSR` ; en fin de fichier `LR` allume aussi `L1` : le message s'affiche une dernière fois.
-- **À tester** : F3 avec `DSPLY` ; ce que fait `CL1` quand `SETON LR` arrête le programme ; la rupture `L1` suppose les enregistrements **groupés par `UNIVERS`** (sinon lire la LF [PRSOLF](../../sources/DDS/BIB12/PRSOLF.md), à clé `UNIVERS`, dont le format est `PERSOFM`).
+- **À tester** : ce que fait `CL1` quand `SETON LR` arrête le programme ; la rupture `L1` suppose les enregistrements **groupés par `UNIVERS`** (sinon lire la LF [PRSOLF](../../sources/DDS/BIB12/PRSOLF.md), à clé `UNIVERS`, dont le format est `PERSOFM`).
 - **Création** : `CRTRPGPGM PGM(MABIB/PERSOCYC) SRCFILE(MABIB/QRPGSRC)` ; test : `CALL PERSOCYC`.
 - **Modèles complets du cycle** : [CYCDEMO](../../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md), [CYCLE-GAP-EXEMPLES](../CYCLE-GAP-EXEMPLES.md).
