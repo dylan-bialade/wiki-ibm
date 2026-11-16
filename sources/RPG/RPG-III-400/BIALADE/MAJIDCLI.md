@@ -17,7 +17,7 @@ Repere de colonnes :
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
 ```
 
-```rpg
+```text
      FIDCFL   UF  E           K        DISK                      A
      C                     SETON                     LR
      C*          003       SETLLCLIENTS

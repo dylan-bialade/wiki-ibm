@@ -10,7 +10,7 @@ modifie: 2026-11-16
 
 # BIALADE/QRPGLESRC/BEERRI
 
-```rpg
+```text
       *NOMPGM:
       *NOMPROP:
       *FILLEDEPEND:

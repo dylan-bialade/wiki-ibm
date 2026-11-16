@@ -10,6 +10,6 @@ modifie: 2026-11-16
 
 # BIALADE/QRPGLESRC/MYFIRST
 
-```rpg
+```text
      f
 ```

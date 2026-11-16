@@ -10,7 +10,7 @@ modifie: 2026-11-16
 
 # BIALADE/QRPGLESRC/BEERPF
 
-```rpg
+```text
      FCLIENF    IF   E           K DISK
      FQPRINT    O    F  132        PRINTER
      C                   EXCEPT    ENT

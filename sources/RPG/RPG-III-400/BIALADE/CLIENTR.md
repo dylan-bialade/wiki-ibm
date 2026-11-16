@@ -17,7 +17,7 @@ Repere de colonnes :
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
 ```
 
-```rpg
+```text
      FCLIENTL IF  E           K        DISK
      C                     SETON                     LR
      C           ''       CAT  'MAJEURE' MSG1    8

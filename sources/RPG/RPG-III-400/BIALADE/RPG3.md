@@ -17,7 +17,7 @@ Repere de colonnes :
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
 ```
 
-```rpg
+```text
      C                     SETON                     LR
      * HEY SI TU COPIE SA TA COPIER BIALADE
 ```

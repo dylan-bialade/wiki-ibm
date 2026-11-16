@@ -49,6 +49,8 @@ foreach ($lib in $libs) {
       while ($lines.Count -gt 0 -and $lines[-1] -eq "") { $lines = $lines[0..($lines.Count-2)] }
       $type = $typeMap[$fname]; $top = $type.Split('\')[0]
       $lang = switch ($top) { "RPG" {"rpg"} "CL" {"cl"} "SQL" {"sql"} default {"text"} }
+      # Format colonne (RPG III, RPG IV non **free) : "text" = police fixe sans coloration (la coloration GitHub casse l'alignement des colonnes)
+      if ($top -eq "RPG" -and -not ($lines.Count -gt 0 -and $lines[0] -match '^\*\*FREE')) { $lang = "text" }
       $dir = Join-Path $out "$type\$($lib.BaseName)"
       New-Item -ItemType Directory -Force $dir | Out-Null
       $ruler = @()

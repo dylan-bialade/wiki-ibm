@@ -10,7 +10,7 @@ modifie: 2026-11-16
 
 # BIAILE/QRPGLESRC/PRETDSP
 
-```rpg
+```text
      A                                      DSPSIZ(24 80 *DS3)
      A                                      INDARA
      A          R SAISIE

@@ -10,7 +10,7 @@ modifie: 2026-11-16
 
 # BIALADE/QRPGLESRC/IMPOT
 
-```rpg
+```text
      FIMP       CF   E             WORKSTN
      dImpot            S             15P 4 inz(0)
      dReste            S             15P 4 inz(0)

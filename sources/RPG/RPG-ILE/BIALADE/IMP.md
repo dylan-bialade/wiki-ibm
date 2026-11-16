@@ -10,7 +10,7 @@ modifie: 2026-11-16
 
 # BIALADE/QRPGLESRC/IMP
 
-```rpg
+```text
      A*%%TS  SD  20261021  095619  DYLAN2      REL-V7R5M0  5770-WDS
      A*%%EC
      A                                      DSPSIZ(24 80 *DS3)
