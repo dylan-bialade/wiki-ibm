@@ -1,0 +1,25 @@
+# Wiki IBM i (RPG, CL, DDS, Db2 for i) - langue : francais
+
+> Documentation personnelle IBM i : fiches memo issues de job-i.fr + code reel converti en Markdown. Lire README.md pour la carte complete.
+
+## Fiches memo
+- [Index des fiches](docs/cheatsheets/README.md)
+- [Comprendre IBM i](docs/cheatsheets/01-comprendre-ibm-i.md): objets, ILE, travaux, profils, securite, PTF, performances
+- [Reference systeme](docs/cheatsheets/02-reference-systeme.md): commandes CL, messages CPF/MCH, valeurs systeme
+- [RPG par version](docs/cheatsheets/03-rpg-par-version.md): RPG III, RPG IV, full free, PR/PI, sous-fichiers, DTAARA, API
+- [Db2 for i et SQL](docs/cheatsheets/04-db2-for-i-et-sql.md): PF, LF, services SQL, recettes, Node.js
+- [Emploi et formation](docs/cheatsheets/05-emploi-et-formation.md)
+
+## Code reel
+- [Index des sources](docs/INDEX-SOURCES.md): un lien par membre, groupes par type
+- [sources.csv](docs/sources.csv): Type,Lib,File,Member,Lines,Width,Path
+- sources/<TYPE>/<LIB>/<MEMBRE>.md: TYPE parmi RPG/RPG-ILE, RPG/RPG-III-400, RPG/Copy, CL/CL-procedural, CL/CL-ILE, DDS, Menus, Autres
+- architecture/<LIB>.md: contenu et repartition d'une bibliotheque
+
+## Controle et apports
+- [Verification job-i](docs/VERIFICATION-JOB-I.md): commandes/instructions du code reconnues sur job-i.fr
+- [Apports](docs/apports/README.md): notes de l'utilisateur, integrees dans "Mes exemples"
+
+## Regles
+- Ne pas editer sources/, architecture/, docs/INDEX-SOURCES.md (regeneres chaque jour).
+- Blocs AUTO des fiches regeneres chaque mois ; la section "Mes exemples" est preservee.
