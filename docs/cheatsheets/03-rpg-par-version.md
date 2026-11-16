@@ -12,7 +12,7 @@
 | **RPG IV full free** (`**FREE`, 7.2 TR3+) | `QRPGLESRC` | `CRTBNDRPG` | `STRDBG` | `DCL-S`, `DCL-F`, `DCL-PI`, sans colonnes |
 
 ## RPG III  ([source](https://job-i.fr/coder-rpg-iii))
-- Spécif. en colonne 6 : **H** contrôle, **F** fichiers, **E** tableaux, **I** entrées, **C** calculs, **O** sorties.
+- Spécif. en colonne 6 : **H** contrôle, **F** fichiers, **E** tableaux, **L** saut (citée sans explication), **I** entrées, **C** calculs, **O** sorties.
 - Spécification **C** (calculs), colonne par colonne :
 
 | Colonnes | Contenu |
@@ -105,4 +105,4 @@
 - **Full free + prototypes + module** : copie [TP3MODP](../../sources/RPG/Copy/BIB03/TP3MODP.md) (`DCL-PR`, garde `/if not defined`) et module [TP3MOD](../../sources/RPG/RPG-ILE/BIB03/TP3MOD.md) (`ctl-opt nomain`, `dcl-proc`).
 - **Cycle RPG (GAP)** : [CYCDEMO](../../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md) (fichier primaire + secondaire, niveaux L1/L2, concordance M1/MR, 1P, OF, totaux), [FILMCYC](../../sources/RPG/RPG-III-400/BIB21/FILMCYC.md) (L1 à L3), [LIVGAP1](../../sources/RPG/RPG-III-400/BIB01/LIVGAP1.md) et [LIVGAP2](../../sources/RPG/RPG-III-400/BIB01/LIVGAP2.md) (rupture L1). Liste complète : [CYCLE-GAP-EXEMPLES](../CYCLE-GAP-EXEMPLES.md).
 - **Mêmes exercices, façons différentes** : [COMPARAISON-BIBLIOTHEQUES](../COMPARAISON-BIBLIOTHEQUES.md).
-- **Les 7 spécifications du RPG III : « HFELICO »** (cours RPG/400, type en colonne 6, dans cet ordre dans le source) : **H** contrôle (options globales : format de date, séparateur décimal) ; **F** fichiers (obligatoire dès qu'un fichier est utilisé) ; **E** extension (tableaux et tables) ; **L** saut (règles de saut de page des impressions) ; **I** entrée (description des enregistrements lus, indicateurs d'enregistrement, zones de contrôle L1-L9, renommage de zones) ; **C** calcul (traitement, sous-routines) ; **O** sortie (mise en forme des impressions). Le bloc ci-dessus (issu de job-i.fr) ne cite pas la spécification **L**. Exemple dans le dépôt : [fiche 06](06-cycle-rpg-et-sous-routines.md) (F, E, I, C, O) ; détail des colonnes de **C** plus haut.
+- **Les 7 spécifications du RPG III : « HFELICO »** (cours RPG/400, type en colonne 6, dans cet ordre dans le source) : **H** contrôle (options globales : format de date, séparateur décimal) ; **F** fichiers (obligatoire dès qu'un fichier est utilisé) ; **E** extension (tableaux et tables) ; **L** saut (règles de saut de page des impressions) ; **I** entrée (description des enregistrements lus, indicateurs d'enregistrement, zones de contrôle L1-L9, renommage de zones) ; **C** calcul (traitement, sous-routines) ; **O** sortie (mise en forme des impressions). job-i.fr cite la spécification **L** dans sa liste mais ne l'explique pas (ni **H**, **E**, **I**, **O** : seule **C** est détaillée colonne par colonne). Exemple dans le dépôt : [fiche 06](06-cycle-rpg-et-sous-routines.md) (F, E, I, C, O) ; détail des colonnes de **C** plus haut.
