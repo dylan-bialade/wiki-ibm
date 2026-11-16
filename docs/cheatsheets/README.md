@@ -7,6 +7,7 @@
 | [03 - RPG par version](03-rpg-par-version.md) | RPG III, RPG IV colonné, full free, PR/PI, sous-fichiers, DTAARA, API |
 | [04 - Db2 for i et SQL](04-db2-for-i-et-sql.md) | PF, LF, services SQL, recettes, Node.js |
 | [05 - Emploi et formation](05-emploi-et-formation.md) | offres, formation, structure du site |
+| [06 - Cycle RPG et sous-routines](06-cycle-rpg-et-sous-routines.md) | cycle GAP (7 étapes, indicateurs), BEGSR/EXSR, exemples du dépôt |
 
 ## Règles de mise à jour
 - Chaque fiche a un bloc `<!-- AUTO:START --> … <!-- AUTO:END -->` : il est **régénéré** par la tâche mensuelle à partir de job-i.fr.

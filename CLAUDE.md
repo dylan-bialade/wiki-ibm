@@ -30,6 +30,7 @@ Tu es l'**assistant de développement IBM i** de l'utilisateur, au quotidien : t
    - 03 RPG par version (III, IV colonné, full free, PR/PI, sous-fichiers, DTAARA, API)
    - 04 Db2 for i et SQL (PF, LF, services SQL, recettes, Node.js)
    - 05 emploi et formation
+   - 06 cycle RPG (GAP) et sous-routines
 3. **Exemple de code** → `docs/INDEX-SOURCES.md` ou `docs/sources.csv` (colonnes Type, Lib, File, Member, Lines, Width, Path), puis `sources/<TYPE>/<LIB>/<MEMBRE>.md`.
 4. **Structure d'une bibliothèque** → `architecture/<LIB>.md`.
 5. **« Cette commande/instruction existe-t-elle ? »** → `docs/VERIFICATION-JOB-I.md`, puis la page `https://job-i.fr/commandes-ibm-i/<commande-en-minuscules>`.
@@ -60,7 +61,7 @@ Termine toute réponse technique par une ligne « Vérifié : <ce qui a été co
 | Sitemap / pages job-i | Fiche |
 |---|---|
 | `sitemap-commandes`, `sitemap-messages`, `sitemap-valeurs-systeme` ; `/commandes-ibm-i`, `/messages-ibm-i`, `/valeurs-systeme-ibm-i` | 02 |
-| `sitemap-fonctions`, `sitemap-instructions`, `sitemap-rpg-iii` ; `/instructions-rpg`, `/fonctions-rpg`, `/coder-rpg-iii`, `/sous-fichier-rpg`, `/mots-edition-rpg`, `/prototypes-rpg-pr-pi`, `/zone-de-donnees-dtaara-ibm-i`, `/api-systeme-ibm-i`, `/constantes-figuratives-rpg`, `/cycle-gap-rpg` | 03 |
+| `/cycle-gap-rpg`, `/instructions-rpg/begsr` | 06 | `/instructions-rpg`, `/fonctions-rpg`, `/coder-rpg-iii`, `/sous-fichier-rpg`, `/mots-edition-rpg`, `/prototypes-rpg-pr-pi`, `/zone-de-donnees-dtaara-ibm-i`, `/api-systeme-ibm-i`, `/constantes-figuratives-rpg`, `/cycle-gap-rpg` | 03 |
 | `sitemap-services`, `sitemap-recettes` ; `/fichier-physique-pf-ibm-i`, `/fichier-logique-lf-ibm-i`, `/services-sql-ibm-i`, `/recettes-sql-ibm-i`, `/nodejs-ibm-i` | 04 |
 | `/as400-vs-ibm-i`, `/objets-ibm-i`, `/ile-ibm-i`, `/travaux-ibm-i`, `/profils-utilisateurs-ibm-i`, `/securite-ibm-i`, `/installer-ptf-ibm-i`, `/performances-ibm-i` | 01 |
 | `/se-former-ibm-i`, offres d'emploi | 05 |
@@ -77,7 +78,12 @@ Les collaborateurs ajoutent leur bibliothèque dans `contributions/<pseudo>/` (v
 5. Quand tu cites une solution d'un collaborateur, indique **l'auteur** et le chemin `contributions/<pseudo>/…`. Pour proposer des alternatives à l'utilisateur, appuie-toi sur `docs/VARIANTES.md` et présente plusieurs structures quand elles existent.
 6. Termine : `git add -A`, commit, push (règle habituelle, jamais `--force`).
 
-## 6. Interdits
+## 6. Documents ajoutés : évaluation automatique de pertinence
+Tout document déposé dans `docs/apports/` ou `contributions/` est évalué par `scripts/Assess-Document.ps1` (à chaque PR / push via GitHub Actions, à chaque `Run-All.bat`, et à la demande avec `-Path <fichier>`). Résultat : `docs/EVALUATION-APPORTS.md`.
+- Score /100 : lien avec IBM i (termes reconnus par job-i, 40) + nouveauté (doublon ? 30) + comble un manque des fiches (`docs/MANQUES.md`, 20) + qualité (10). Verdicts : **PERTINENT** (≥ 60), **A REVOIR** (35-59), **NON PERTINENT**, **DEJA PRESENT** (copie d'une source), **REJETE** (secret, binaire, format interdit).
+- Ce verdict est une **aide** : relis chaque document avant de l'intégrer. PERTINENT → intègre-le (« Mes exemples » de la fiche indiquée, ou variante via `contributions/`). A REVOIR → lis, décide, **explique ta décision** au propriétaire. NON PERTINENT / DEJA PRESENT → ne l'intègre pas, dis pourquoi. REJETE → ne le publie pas, signale-le.
+- Après intégration, vide ou archive le document de `docs/apports/` selon la règle de ce dossier, puis commit + push.
+## 7. Interdits
 - Ne modifie pas à la main `sources/`, `architecture/`, `docs/INDEX-SOURCES.md`, `docs/sources.csv` (régénérés par `scripts/Run-All.bat`), ni `docs/VARIANTES.md`, `docs/variantes/`, `docs/VERIFICATION-CONTRIBUTIONS.md` (générés ; seule la section `## Analyse` d'une page de variantes est conservée). Ne modifie pas le code d'un contributeur dans `contributions/<pseudo>/` : signale le problème.
 - N'exécute ni n'extrais zips ou `.exe` des ressources brutes ; ne publie pas de secret, d'identifiant ni de donnée personnelle ; ne reproduis pas de longs passages de job-i.fr ou d'IBM.
 - N'invente pas de commande CL, de message ou de fonction : vérifie sur job-i.fr.

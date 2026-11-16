@@ -1,0 +1,17 @@
+name: Evaluer les documents ajoutes
+on:
+  pull_request:
+    paths: ['docs/apports/**', 'contributions/**']
+  push:
+    branches: [main]
+    paths: ['docs/apports/**', 'contributions/**']
+permissions:
+  contents: read
+jobs:
+  evaluer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Evaluation de pertinence (resume du job)
+        shell: pwsh
+        run: ./scripts/Assess-Document.ps1 -Summary
