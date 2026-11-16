@@ -2,13 +2,20 @@
 bibliotheque: BIALADE
 fichier_source: QRPGSRC
 membre: LIVRESDS
-type: RPG\RPG-III-400
+type: RPG/RPG-III-400
 longueur_enregistrement: 80
 lignes: 80
 modifie: 2026-11-16
 ---
 
 # BIALADE/QRPGSRC/LIVRESDS
+
+Repere de colonnes :
+
+```text
+         1         2         3         4         5         6         7         8
+12345678901234567890123456789012345678901234567890123456789012345678901234567890
+```
 
 ```rpg
      A*%%TS  SD  20261007  155506  DYLAN2      REL-V7R5M0  5770-WDS

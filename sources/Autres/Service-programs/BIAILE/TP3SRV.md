@@ -2,7 +2,7 @@
 bibliotheque: BIAILE
 fichier_source: QSRVSRC
 membre: TP3SRV
-type: Autres\Service-programs
+type: Autres/Service-programs
 longueur_enregistrement: 100
 lignes: 13
 modifie: 2026-11-16

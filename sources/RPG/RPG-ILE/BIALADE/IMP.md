@@ -2,7 +2,7 @@
 bibliotheque: BIALADE
 fichier_source: QRPGLESRC
 membre: IMP
-type: RPG\RPG-ILE
+type: RPG/RPG-ILE
 longueur_enregistrement: 100
 lignes: 81
 modifie: 2026-11-16

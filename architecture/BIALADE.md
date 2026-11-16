@@ -1,4 +1,4 @@
-﻿# Bibliotheque BIALADE
+# Bibliotheque BIALADE
 
 - Sources converties : 68
 - Membres de donnees / non-source : 173
@@ -56,4 +56,3 @@
 - **SQLRPGLE** : REQUETTE
 - **UNIVERS** : UNIVERS
 - **VX** : VX, VXR
-

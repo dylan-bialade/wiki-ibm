@@ -2,7 +2,7 @@
 bibliotheque: BIALADE3
 fichier_source: QCLLESRC
 membre: TSTADRIEN
-type: CL\CL-ILE
+type: CL/CL-ILE
 longueur_enregistrement: 100
 lignes: 49
 modifie: 2026-11-16

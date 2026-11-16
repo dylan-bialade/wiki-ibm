@@ -2,13 +2,20 @@
 bibliotheque: BIALADE
 fichier_source: QRPGSRC
 membre: CLIENTR
-type: RPG\RPG-III-400
+type: RPG/RPG-III-400
 longueur_enregistrement: 80
 lignes: 15
 modifie: 2026-11-16
 ---
 
 # BIALADE/QRPGSRC/CLIENTR
+
+Repere de colonnes :
+
+```text
+         1         2         3         4         5         6         7         8
+12345678901234567890123456789012345678901234567890123456789012345678901234567890
+```
 
 ```rpg
      FCLIENTL IF  E           K        DISK

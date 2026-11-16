@@ -4,6 +4,7 @@
 
 <!-- AUTO:START -->
 ## Quelle version ?
+
 | Version | Source | Compilateur | Débogage | Forme |
 |---|---|---|---|---|
 | **RPG III / RPG/400** | `QRPGSRC` | `CRTRPGPGM` | `STRISDB` | tout en colonnes (H F E I C O) |
@@ -12,7 +13,30 @@
 
 ## RPG III  ([source](https://job-i.fr/coder-rpg-iii))
 - Spécif. en colonne 6 : **H** contrôle, **F** fichiers, **E** tableaux, **I** entrées, **C** calculs, **O** sorties.
-- Spécif. C : 7-8 niveau (L1-L9, LR, SR) · 9-17 indicateurs · 18-27 facteur 1 · 28-32 opération · 33-42 facteur 2 · 43-48 résultat · 49-51 longueur · 52 décimales · 54-59 indicateurs résultants.
+- Spécification **C** (calculs), colonne par colonne :
+
+| Colonnes | Contenu |
+|---|---|
+| 6 | `C` (spécification de calcul) ; `*` en colonne 7 = commentaire |
+| 7-8 | niveau de rupture (L1-L9, LR) ou SR |
+| 9-17 | indicateurs de condition (`N` = négation) |
+| 18-27 | facteur 1 |
+| 28-32 | code opération (5 car. max) |
+| 33-42 | facteur 2 |
+| 43-48 | résultat (6 car. max) |
+| 49-51 | longueur |
+| 52 | décimales |
+| 53 | extension (`H`, `N`, `P`) |
+| 54-59 | 3 paires d'indicateurs résultants |
+| 60-74 | commentaire |
+
+- Repère de colonnes (à placer au-dessus d'un source RPG III en police fixe) :
+
+```text
+         1         2         3         4         5         6         7
+1234567890123456789012345678901234567890123456789012345678901234567890123456789
+     C           PCODE     CHAINARTICLE              91
+```
 - Cycle : `SETON LR` pour terminer (sinon boucle).
 - Opérations : `MOVE`/`MOVEL`, `Z-ADD`, `SUB`, `IFEQ…ENDIF`, `DOWEQ…ENDDO`, `CHAIN`, `SETLL`, `READ`, `UPDAT`, `EXFMT`, `DSPLY`, `SETON`/`SETOF`.
 - Piège : en RPG III, fichier/format/zone doivent avoir des noms distincts ; littéral de 8 car. utiles en facteurs.
@@ -26,6 +50,7 @@
 ```
 
 ## Instructions RPG IV full free  ([source](https://job-i.fr/instructions-rpg))
+
 | Famille | Instructions |
 |---|---|
 | Déclarations | `DCL-S`, `DCL-DS`, `DCL-F`, `DCL-PR`, `DCL-PI`, `DCL-PROC` |
@@ -35,6 +60,7 @@
 | Calcul | `EVAL` |
 
 ## Fonctions intégrées  ([source](https://job-i.fr/fonctions-rpg))
+
 | Fonction | Rôle |
 |---|---|
 | `%SUBST`, `%TRIM`, `%SCAN`, `%REPLACE`, `%CHECK`, `%LEN` | chaînes |

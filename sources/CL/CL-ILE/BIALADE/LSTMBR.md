@@ -2,7 +2,7 @@
 bibliotheque: BIALADE
 fichier_source: QCLLESRC
 membre: LSTMBR
-type: CL\CL-ILE
+type: CL/CL-ILE
 longueur_enregistrement: 100
 lignes: 7
 modifie: 2026-11-16

@@ -2,7 +2,7 @@
 bibliotheque: BIAILE
 fichier_source: QCPYSRC
 membre: TP3MODP
-type: RPG\Copy
+type: RPG/Copy
 longueur_enregistrement: 100
 lignes: 26
 modifie: 2026-11-16

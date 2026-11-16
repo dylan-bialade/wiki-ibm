@@ -1,4 +1,4 @@
-﻿# Wiki IBM i (RPG / CL / DDS / Db2 for i)
+# Wiki IBM i (RPG / CL / DDS / Db2 for i)
 
 > **Pour les LLM et les humains : lire ce fichier en premier.** Il décrit où trouver chaque ressource en 1 saut. Tous les chemins sont relatifs à la racine du dépôt. Langue des documents : français.
 
@@ -38,6 +38,7 @@ depot/sauvegardes/           ← dépôt d'exports ACS (ignoré par Git)
 ```
 
 ### Types de sources (`sources/`)
+
 | Dossier | Contenu | Fichier source IBM i d'origine |
 |---|---|---|
 | `RPG/RPG-ILE` | RPG IV (colonné ou `**free`) | QRPGLESRC |
@@ -58,7 +59,7 @@ Remarque : certains DDS peuvent se trouver dans `CL/` (membres rangés dans un m
 bibliotheque: BIALADE
 fichier_source: QRPGLESRC
 membre: BECRUD
-type: RPG\RPG-ILE
+type: RPG/RPG-ILE
 longueur_enregistrement: 100
 lignes: 71
 modifie: 2026-11-16

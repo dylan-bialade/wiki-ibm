@@ -1,6 +1,6 @@
-﻿# Index des sources
+# Index des sources
 
-Genere le 2026-11-16 10:56 - 129 sources, 212 membres de donnees (non convertis).
+Genere le 2026-11-16 11:56 - 129 sources, 212 membres de donnees (non convertis).
 
 ## Autres\Service-programs (2)
 
@@ -175,5 +175,3 @@ Genere le 2026-11-16 10:56 - 129 sources, 212 membres de donnees (non convertis)
 | BIALADE | MYFIRST | 1 | [MYFIRST](../sources/RPG/RPG-ILE/BIALADE/MYFIRST.md) |
 | BIALADE | SQUELLETTE | 25 | [SQUELLETTE](../sources/RPG/RPG-ILE/BIALADE/SQUELLETTE.md) |
 | BIALADE2 | NONE | 48 | [NONE](../sources/RPG/RPG-ILE/BIALADE2/NONE.md) |
-
-

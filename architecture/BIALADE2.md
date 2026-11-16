@@ -1,4 +1,4 @@
-﻿# Bibliotheque BIALADE2
+# Bibliotheque BIALADE2
 
 - Sources converties : 45
 - Membres de donnees / non-source : 25
@@ -37,4 +37,3 @@
 - **SAVEFTP** : IN_FTP, OUT_FTP
 - **SNDCLIMB** : SNDCLIMB
 - **TSTJRN** : TSTJRN
-

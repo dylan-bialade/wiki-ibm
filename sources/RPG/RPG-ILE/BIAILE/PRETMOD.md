@@ -2,7 +2,7 @@
 bibliotheque: BIAILE
 fichier_source: QRPGLESRC
 membre: PRETMOD
-type: RPG\RPG-ILE
+type: RPG/RPG-ILE
 longueur_enregistrement: 100
 lignes: 41
 modifie: 2026-11-16

@@ -2,7 +2,7 @@
 bibliotheque: BIALADE
 fichier_source: QWEBSRC
 membre: POKEDEX
-type: Autres\Web
+type: Autres/Web
 longueur_enregistrement: 92
 lignes: 112
 modifie: 2026-11-16

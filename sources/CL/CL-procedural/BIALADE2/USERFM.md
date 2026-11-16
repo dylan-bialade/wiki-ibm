@@ -2,7 +2,7 @@
 bibliotheque: BIALADE2
 fichier_source: QCLPSRC
 membre: USERFM
-type: CL\CL-procedural
+type: CL/CL-procedural
 longueur_enregistrement: 160
 lignes: 46
 modifie: 2026-11-16

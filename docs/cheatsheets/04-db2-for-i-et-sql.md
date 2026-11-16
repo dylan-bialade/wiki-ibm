@@ -21,6 +21,7 @@
 
 ## Services SQL  ([source](https://job-i.fr/services-sql-ibm-i)) — 390 services
 Schémas : **QSYS2** (principal), **SYSTOOLS**, **SYSIBMADM**. Catalogue : `SELECT * FROM QSYS2.SERVICES_INFO`.
+
 | Service | Usage |
 |---|---|
 | `QSYS2.ACTIVE_JOB_INFO` | travaux actifs |

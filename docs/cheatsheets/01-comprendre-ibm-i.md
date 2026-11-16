@@ -11,6 +11,7 @@
 
 ## Objets  ([source](https://job-i.fr/objets-ibm-i))
 - Objet = nom (10 car.) + type + bibliothèque ; résolution par `*LIBL`.
+
 | Type | Rôle |
 |---|---|
 | `*FILE` PF / LF / DSPF / PRTF / SAVF | table / vue-index / écran / impression / sauvegarde |
@@ -18,6 +19,7 @@
 | `*CMD`, `*DTAARA`, `*DTAQ` | commande, zone de données, file de données |
 | `*JRN`/`*JRNRCV`, `*JOBQ`, `*OUTQ`, `*SBSD` | journal, file de travaux, file de sortie, sous-système |
 | `*LIB`, `*USRPRF`, `*AUTL` | bibliothèque, profil, liste d'autorisation |
+
 - Commandes : `WRKOBJ`, `DSPOBJD`, `CRTDUPOBJ`, `MOVOBJ`, `RNMOBJ`, `DLTOBJ`, `DSPOBJAUT`, `GRTOBJAUT`, `SAVOBJ`/`RSTOBJ`, `DSPLIBL`, `ADDLIBLE`.
 - Erreurs : `CPF4101` fichier introuvable dans *LIBL, `CPF1023` doublon.
 

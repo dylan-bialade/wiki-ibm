@@ -51,7 +51,13 @@ foreach ($lib in $libs) {
       $lang = switch ($top) { "RPG" {"rpg"} "CL" {"cl"} "SQL" {"sql"} default {"text"} }
       $dir = Join-Path $out "$type\$($lib.BaseName)"
       New-Item -ItemType Directory -Force $dir | Out-Null
-      $md = @("---","bibliotheque: $($lib.BaseName)","fichier_source: $fname","membre: $mname","type: $type","longueur_enregistrement: $w","lignes: $($lines.Count)","modifie: $($m.LastWriteTime.ToString('yyyy-MM-dd'))","---","","# $($lib.BaseName)/$fname/$mname","","``````$lang") + $lines + @("``````")
+      $ruler = @()
+      if ($type -like "RPG\RPG-III*") {   # repere de colonnes pour le format colonne (aligne sur le bloc de code ci-dessous)
+        $t1 = -join (1..80 | % { if ($_ % 10 -eq 0) { [string]([int]($_/10) % 10) } else { ' ' } })
+        $t2 = -join (1..80 | % { [string]($_ % 10) })
+        $ruler = @("Repere de colonnes :","","``````text",$t1,$t2,"``````","")
+      }
+      $md = @("---","bibliotheque: $($lib.BaseName)","fichier_source: $fname","membre: $mname","type: $($type.Replace('\','/'))","longueur_enregistrement: $w","lignes: $($lines.Count)","modifie: $($m.LastWriteTime.ToString('yyyy-MM-dd'))","---","","# $($lib.BaseName)/$fname/$mname","") + $ruler + @("``````$lang") + $lines + @("``````")
       $md | Set-Content (Join-Path $dir "$mname.md") -Encoding utf8
       [void]$rows.Add([pscustomobject]@{Type=$type;Lib=$lib.BaseName;File=$fname;Member=$mname;Lines=$lines.Count;Width=$w;Path="sources/$($type.Replace('\','/'))/$($lib.BaseName)/$mname.md"})
     }

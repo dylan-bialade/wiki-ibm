@@ -2,7 +2,7 @@
 bibliotheque: BIAILE
 fichier_source: QRPGLESRC
 membre: PRETDSP
-type: RPG\RPG-ILE
+type: RPG/RPG-ILE
 longueur_enregistrement: 100
 lignes: 43
 modifie: 2026-11-16

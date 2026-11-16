@@ -1,4 +1,4 @@
-﻿# Bibliotheque BIALADE4
+# Bibliotheque BIALADE4
 
 - Sources converties : 0
 - Membres de donnees / non-source : 0
@@ -11,4 +11,3 @@
 ## Fichiers de donnees / objets (membres non-source)
 
 _aucun_
-

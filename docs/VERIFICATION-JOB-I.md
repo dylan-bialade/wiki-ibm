@@ -1,4 +1,4 @@
-﻿# Verification par rapport a job-i.fr
+# Verification par rapport a job-i.fr
 
 Genere le 2026-11-16 10:56. Reference : 1830 commandes CL, 196 termes RPG.
 
@@ -123,7 +123,6 @@ AFFOBJDCL, AFFOBJDFM, AFFSPOOL, AFFUSRDCL, AFFUSRDFM, AND, ANIMALCL, ANIMALFM, A
 | WORKSTN | 15 |
 | WRITE | 29 |
 | Z-ADD | 10 |
-
 
 ## Conclusion sur les commandes « à contrôler »
 
