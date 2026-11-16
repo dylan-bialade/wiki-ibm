@@ -1,0 +1,5 @@
+depot/sauvegardes/*
+!depot/sauvegardes/.gitkeep
+*.zip
+*.tmp
+

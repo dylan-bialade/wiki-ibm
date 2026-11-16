@@ -1,0 +1,29 @@
+﻿---
+bibliotheque: BIALADE
+fichier_source: QRPGSRC
+membre: CLIENTR
+type: RPG\RPG-III-400
+longueur_enregistrement: 80
+lignes: 15
+modifie: 2026-11-16
+---
+
+# BIALADE/QRPGSRC/CLIENTR
+
+```rpg
+     FCLIENTL IF  E           K        DISK
+     C                     SETON                     LR
+     C           ''       CAT  'MAJEURE' MSG1    8
+     C           ''       CAT  'MINEURE' MSG2    8
+     C           PRECLI    CAT  MSGTO     MSGTO  38
+     C                     READ CLIENTL                  90
+     C           *IN90     DOWEQ'0'
+     C           AGE       IFGE 18
+     C           MSG1      CAT  NOMCLI:1  MSGTO
+     C                     ELSE
+     C           MSG2      CAT  NOMCLI:1  MSGTO
+     C                     END
+     C           MSGTO     DSPLY
+     C                     READ CLIENTL                  90
+     C                     ENDDO
+```
