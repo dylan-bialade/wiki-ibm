@@ -35,7 +35,7 @@ docs/
   apports/                   ← notes de l'utilisateur à intégrer
   variantes/                 ← un exercice = une page comparant les solutions (généré)
 contributions/               ← bibliothèques des collaborateurs (PR) : <pseudo>/contribution.json + <BIB>/…
-architecture/<LIB>.md        ← une page par bibliothèque (BIAILE, BIALA, BIALADE, BIALADE2, BIALADE3, BIALADE4)
+architecture/<LIB>.md        ← une page par bibliothèque (BIB01 … BIB23, noms anonymisés)
 sources/<TYPE>/<LIB>/<MEMBRE>.md   ← code converti, un fichier par membre
 scripts/                     ← génération et automatisation (PowerShell)
 depot/sauvegardes/           ← dépôt d'exports ACS (ignoré par Git)
@@ -60,7 +60,7 @@ Remarque : certains DDS peuvent se trouver dans `CL/` (membres rangés dans un m
 ## Format d'un fichier de `sources/`
 ```
 ---
-bibliotheque: BIALADE
+bibliotheque: BIB05
 fichier_source: QRPGLESRC
 membre: BECRUD
 type: RPG/RPG-ILE
@@ -68,7 +68,7 @@ longueur_enregistrement: 100
 lignes: 71
 modifie: 2026-11-16
 ---
-# BIALADE/QRPGLESRC/BECRUD
+# BIB05/QRPGLESRC/BECRUD
 ```rpg ... ```      ← code intégral dans un bloc de code (rpg | cl | sql | text)
 ```
 - Grep utile : `bibliotheque:`, `membre:`, `type:` dans l'en-tête ; le code est dans l'unique bloc de code.
@@ -80,7 +80,7 @@ modifie: 2026-11-16
 - Pages job-i utiles : fiche commande `https://job-i.fr/commandes-ibm-i/<commande-minuscule>` ; recherche `https://job-i.fr/aller?q=<terme>`.
 
 ## Conventions
-- Noms IBM i en MAJUSCULES (`CRTPF`, `QRPGLESRC`). Bibliothèques : `BIALADE*` (exercices et scripts personnels), `BIAILE` (TP ILE), `BIALA`.
+- Noms IBM i en MAJUSCULES (`CRTPF`, `QRPGLESRC`). Bibliothèques : noms **anonymisés** `BIBnn` (la correspondance avec les noms réels reste privée, hors dépôt).
 - Ne pas modifier les fichiers de `sources/`, `architecture/` et `docs/INDEX-SOURCES.md` à la main : ils sont régénérés. Les modifications durables vont dans `docs/apports/` ou dans « Mes exemples ».
 - Les ressources brutes (PDF, zips de cours, exports ACS) restent **hors dépôt** dans `Documents\cour et autre` ; elles ne sont jamais extraites ni exécutées par l'automatisation.
 

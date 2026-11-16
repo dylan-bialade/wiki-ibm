@@ -100,6 +100,6 @@
 <!-- AUTO:END -->
 
 ## Mes exemples
-- **RPG III (colonné, boucles, CHAIN)** : [BECRUD](../../sources/RPG/RPG-ILE/BIALADE/BECRUD.md) (CRUD écran + fichier clé), [GESTLIVRE](../../sources/RPG/RPG-III-400/BIALADE/GESTLIVRE.md), [MAJIDCLI](../../sources/RPG/RPG-III-400/BIALADE/MAJIDCLI.md).
-- **Sous-fichier en RPG** : [EXAMPLESF](../../sources/RPG/RPG-ILE/BIALADE/EXAMPLESF.md) (`SFILE(SFL1:RRN)`, `SETLL *LOVAL`, chargement par `READ`).
-- **Full free + prototypes + module** : copie [TP3MODP](../../sources/RPG/Copy/BIAILE/TP3MODP.md) (`DCL-PR`, garde `/if not defined`) et module [TP3MOD](../../sources/RPG/RPG-ILE/BIAILE/TP3MOD.md) (`ctl-opt nomain`, `dcl-proc`).
+- **RPG III (colonné, boucles, CHAIN)** : [BECRUD](../../sources/RPG/RPG-ILE/BIB05/BECRUD.md) (CRUD écran + fichier clé), [GESTLIVRE](../../sources/RPG/RPG-III-400/BIB05/GESTLIVRE.md), [MAJIDCLI](../../sources/RPG/RPG-III-400/BIB05/MAJIDCLI.md).
+- **Sous-fichier en RPG** : [EXAMPLESF](../../sources/RPG/RPG-ILE/BIB05/EXAMPLESF.md) (`SFILE(SFL1:RRN)`, `SETLL *LOVAL`, chargement par `READ`).
+- **Full free + prototypes + module** : copie [TP3MODP](../../sources/RPG/Copy/BIB03/TP3MODP.md) (`DCL-PR`, garde `/if not defined`) et module [TP3MOD](../../sources/RPG/RPG-ILE/BIB03/TP3MOD.md) (`ctl-opt nomain`, `dcl-proc`).

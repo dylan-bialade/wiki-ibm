@@ -51,5 +51,5 @@ Catégories : Sécurité (42), Contrôle système (62), Allocation (14), Date/he
 <!-- AUTO:END -->
 
 ## Mes exemples
-- **Gestion de liste de bibliothèques** : [CFGLIBL](../../sources/CL/CL-procedural/BIALADE2/CFGLIBL.md), [CHGLIBCURR](../../sources/CL/CL-procedural/BIALADE/CHGLIBCURR.md).
+- **Gestion de liste de bibliothèques** : [CFGLIBL](../../sources/CL/CL-procedural/BIB06/CFGLIBL.md), [CHGLIBCURR](../../sources/CL/CL-procedural/BIB05/CHGLIBCURR.md).
 - **Commandes vérifiées dans mon code** : voir [VERIFICATION-JOB-I](../VERIFICATION-JOB-I.md).

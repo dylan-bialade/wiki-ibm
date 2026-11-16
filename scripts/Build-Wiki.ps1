@@ -33,20 +33,36 @@ $out = Join-Path $Wiki "sources"
 Get-ChildItem $out -Directory -ErrorAction SilentlyContinue | Remove-Item -Recurse -Force   # regeneration propre
 $rows = New-Object System.Collections.ArrayList
 $data = New-Object System.Collections.ArrayList
-$libs = Get-ChildItem $Source -Directory -Filter *.LIB | ForEach-Object { [pscustomobject]@{ BaseName = ($_.Name -replace '\.LIB$',''); FullName = $_.FullName } }
+# --- Anonymisation : les noms reels de bibliotheques ne sont JAMAIS publies. Table de correspondance privee, hors depot (stable d'une execution a l'autre).
+$aliasFile = Join-Path (Split-Path $Wiki -Parent) "lib-alias.private.json"
+$alias = @{}
+if (Test-Path $aliasFile) { (Get-Content $aliasFile -Raw -Encoding UTF8 | ConvertFrom-Json).PSObject.Properties | ForEach-Object { $alias[$_.Name] = [string]$_.Value } }
+$real = @(Get-ChildItem $Source -Directory -Filter *.LIB | ForEach-Object { $_.Name -replace '\.LIB$','' } | Sort-Object)
+$nextNo = 1 + [int]@($alias.Values | ForEach-Object { if ($_ -match '^BIB(\d+)$') { [int]$Matches[1] } else { 0 } } | Measure-Object -Maximum).Maximum
+foreach ($n in $real) { if (-not $alias.ContainsKey($n)) { $alias[$n] = ('BIB' + ([int]$nextNo).ToString('00')); $nextNo++ } }
+$ordered = [ordered]@{}; foreach ($k in ($alias.Keys | Sort-Object)) { $ordered[$k] = $alias[$k] }
+[IO.File]::WriteAllText($aliasFile, ($ordered | ConvertTo-Json), (New-Object Text.UTF8Encoding($false)))
+$libs = Get-ChildItem $Source -Directory -Filter *.LIB | ForEach-Object { $r = ($_.Name -replace '\.LIB$',''); [pscustomobject]@{ BaseName = $alias[$r]; Real = $r; FullName = $_.FullName } }
+$realRx = '(?i)(?<![A-Z0-9_#@$])(' + (($real | Sort-Object Length -Descending | ForEach-Object { [regex]::Escape($_) }) -join '|') + ')(?![A-Z0-9_#@$])'
+$script:aliasMap = $alias
+$realRxC = New-Object Text.RegularExpressions.Regex($realRx, 'Compiled')
+$maskEval = [Text.RegularExpressions.MatchEvaluator]{ param($m) $script:aliasMap[$m.Value.ToUpper()] }
+function Mask([string]$s) { if ($s.Length -lt 4) { return $s }; $realRxC.Replace($s, $maskEval) }
 
 foreach ($lib in $libs) {
   foreach ($sf in Get-ChildItem $lib.FullName -Directory -Filter *.FILE) {
     $fname = $sf.Name -replace '\.FILE$',''
     foreach ($m in Get-ChildItem $sf.FullName -File -Filter *.MBR) {
       $mname = $m.BaseName
+      if ($m.Length -gt 3MB) { [void]$data.Add([pscustomobject]@{Lib=$lib.BaseName;File=$fname;Member=$mname;Size=$m.Length}); continue }
       $bytes = [IO.File]::ReadAllBytes($m.FullName)
       if ($bytes.Length -eq 0) { continue }
+      if ($bytes.Length -gt 3MB) { [void]$data.Add([pscustomobject]@{Lib=$lib.BaseName;File=$fname;Member=$mname;Size=$bytes.Length}); continue }   # trop gros pour un source : traite comme donnee
       $w = $null
       if ($typeMap.ContainsKey($fname)) { $w = Get-Width $bytes }
       if (-not $w) { [void]$data.Add([pscustomobject]@{Lib=$lib.BaseName;File=$fname;Member=$mname;Size=$bytes.Length}); continue }
-      $lines = for ($i = 0; $i -lt $bytes.Length; $i += $w) { $enc.GetString($bytes, $i, $w).TrimEnd() }
-      while ($lines.Count -gt 0 -and $lines[-1] -eq "") { $lines = $lines[0..($lines.Count-2)] }
+      $lines = for ($i = 0; $i -lt $bytes.Length; $i += $w) { Mask ($enc.GetString($bytes, $i, $w).TrimEnd()) }
+      $lines = @($lines); $n = $lines.Count; while ($n -gt 0 -and $lines[$n-1] -eq "") { $n-- }; if ($n -eq 0) { continue }; $lines = @($lines[0..($n-1)])   # un membre entierement blanc est ignore
       $type = $typeMap[$fname]; $top = $type.Split('\')[0]
       $lang = switch ($top) { "RPG" {"rpg"} "CL" {"cl"} "SQL" {"sql"} default {"text"} }
       # Format colonne (RPG III, RPG IV non **free) : "text" = police fixe sans coloration (la coloration GitHub casse l'alignement des colonnes)

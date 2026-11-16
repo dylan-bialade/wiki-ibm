@@ -1,0 +1,20 @@
+---
+bibliotheque: BIB02
+fichier_source: QCLLESRC
+membre: GETPTF
+type: CL/CL-ILE
+longueur_enregistrement: 80
+lignes: 6
+modifie: 2026-11-16
+---
+
+# BIB02/QCLLESRC/GETPTF
+
+```cl
+PGM
+OVRDBF FILE(INPUT) TOFILE(BIB02/FTPCMD) MBR(GETPTF)
+OVRDBF FILE(OUTPUT) TOFILE(QGPL/FTPLOG) MBR(GETPTF)
+FTP RMTSYS('delivery01-mul.dhe.ibm.com') SECCNN(*SSL)
+DLTOVR FILE(INPUT OUTPUT)
+ENDPGM
+```

@@ -56,4 +56,4 @@ SELECT OBJNAME, OBJTYPE, OBJSIZE FROM TABLE(QSYS2.OBJECT_STATISTICS('MABIB','*AL
 ## Mes exemples
 - **DDS de fichiers logiques / physiques** : voir `sources/DDS/` ([index](../INDEX-SOURCES.md)).
 - **SQL examen** : fichiers `Sans titre 1.sql` et `sqlexamen.sql` dans `Documents` (à déposer dans `docs/apports/`).
-- **Création de fichier client** : [CLIENTCRT](../../sources/CL/CL-procedural/BIALADE2/CLIENTCRT.md), [CLIENTINS](../../sources/CL/CL-procedural/BIALADE2/CLIENTINS.md).
+- **Création de fichier client** : [CLIENTCRT](../../sources/CL/CL-procedural/BIB06/CLIENTCRT.md), [CLIENTINS](../../sources/CL/CL-procedural/BIB06/CLIENTINS.md).

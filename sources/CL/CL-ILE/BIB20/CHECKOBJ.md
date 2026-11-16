@@ -1,0 +1,27 @@
+---
+bibliotheque: BIB20
+fichier_source: QCLLESRC
+membre: CHECKOBJ
+type: CL/CL-ILE
+longueur_enregistrement: 100
+lignes: 13
+modifie: 2026-11-16
+---
+
+# BIB20/QCLLESRC/CHECKOBJ
+
+```cl
+PGM PARM(&OBJ &BIB &SORTIE)
+
+    DCL VAR(&OBJ) TYPE(*CHAR) LEN(10)
+    DCL VAR(&BIB) TYPE(*CHAR) LEN(10)
+    DCL VAR(&SORTIE) TYPE(*DEC) LEN(1)
+
+    CHKOBJ OBJ(&BIB/&OBJ) OBJTYPE(*PGM)
+
+    MONMSG MSGID(CPF9801) EXEC(CHGVAR VAR(&SORTIE) VALUE(0))
+
+    MONMSG MSGID(CPF9810) EXEC(CHGVAR VAR(&SORTIE) VALUE(1))
+
+ENDPGM
+```

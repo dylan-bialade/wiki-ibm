@@ -1,0 +1,29 @@
+---
+bibliotheque: BIB05
+fichier_source: QCLPSRC
+membre: IMPOCL
+type: CL/CL-procedural
+longueur_enregistrement: 80
+lignes: 15
+modifie: 2026-11-16
+---
+
+# BIB05/QCLPSRC/IMPOCL
+
+```cl
+PGM
+
+    DCL VAR(&NOMDTA) TYPE(*CHAR) LEN(10) VALUE(REVDTA)
+
+    /* CRÉE LA DTAARA SEULEMENT SI ELLE N'EXISTE PAS */
+    CHKOBJ OBJ(BIB05/REVDTA) OBJTYPE(*DTAARA)
+    MONMSG MSGID(CPF9801) EXEC(DO)
+        CRTDTAARA DTAARA(BIB05/REVDTA) TYPE(*DEC) LEN(10 0) +
+                    VALUE(123456)
+    ENDDO
+
+    /* PASSE LE NOM DE LA DTAARA AU RPG */
+    CALL PGM(BIB05/IMPORP) PARM(&NOMDTA)
+
+ENDPGM
+```

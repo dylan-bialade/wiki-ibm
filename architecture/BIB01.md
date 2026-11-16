@@ -1,0 +1,39 @@
+# Bibliotheque BIB01
+
+- Sources converties : 48
+- Membres de donnees / non-source : 44
+
+## Repartition par type
+
+| Type | Nombre |
+|---|---|
+| CL\CL-ILE | 4 |
+| DDS | 16 |
+| Menus | 5 |
+| RPG\RPG-ILE | 7 |
+| RPG\RPG-III-400 | 11 |
+| SQL | 4 |
+| Autres\Service-programs | 1 |
+
+## Fichiers de donnees / objets (membres non-source)
+
+- **ATESTER** : EBONBON, PGMBONBON
+- **BONBON** : BONBON, BONBON2
+- **CODPOS** : CODPOS
+- **CODPOSPF** : CODPOSPF
+- **CPOSTAUX** : CPOSTAUX
+- **DSPUSRPRF** : DSPUSRPRF
+- **EVFEVENT** : MDSPLYRPG, MULBAT, MULCL, MULCLD, MULRPGD, SFL001CBLD, STATCBL002, STATCBL003, STATCBL004
+- **JOUEUR** : JOUEUR
+- **MOIS** : MOIS
+- **PARTIE** : PARTIE
+- **QCBLLESRC** : SFL001CBLD, SFL001LF, SFL001PF, STATCBL001, STATCBL002, STATCBL003, STATCBL004, STATCBLSAV, USRFORMCBL, USRFORMD
+- **QCLSRC** : AMIMAUXCL, BONBONCL, MON1ERCLP, QSTRUP, SRCPDFCL
+- **QCMDSRC** : SRCPDF
+- **QDDSSRC92** : BONBONFM, TSTADRIEND
+- **QILE** : MDSPLYCL
+- **QSQDSRC** : CPYSRCIFS
+- **SCORE** : SCORE
+- **SEMAINE** : SEMAINE
+- **SFL001PF** : SFL001PF
+- **TLIVP1** : TLIVP1

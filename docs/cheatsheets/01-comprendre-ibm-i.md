@@ -59,6 +59,6 @@
 ## Mes exemples
 _Exemples tirés de mon travail (compléter via `docs/apports/`)._
 
-- **Sauvegarde d'une bibliothèque en SAVF** : [SAVECL](../../sources/CL/CL-procedural/BIALADE/SAVECL.md) — `CRTSAVF` + `MONMSG CPF7302` + `SAVOBJ DEV(*SAVF)`.
-- **Environnement automatisé** (JOBQ, OUTQ, JOBD, SBS, CLS) : [ENVAUTO](../../sources/CL/CL-procedural/BIALADE/ENVAUTO.md).
-- **Export de sources vers l'IFS** : [EXPSRCIFS](../../sources/CL/CL-procedural/BIALADE/EXPSRCIFS.md).
+- **Sauvegarde d'une bibliothèque en SAVF** : [SAVECL](../../sources/CL/CL-procedural/BIB05/SAVECL.md) — `CRTSAVF` + `MONMSG CPF7302` + `SAVOBJ DEV(*SAVF)`.
+- **Environnement automatisé** (JOBQ, OUTQ, JOBD, SBS, CLS) : [ENVAUTO](../../sources/CL/CL-procedural/BIB05/ENVAUTO.md).
+- **Export de sources vers l'IFS** : [EXPSRCIFS](../../sources/CL/CL-procedural/BIB05/EXPSRCIFS.md).

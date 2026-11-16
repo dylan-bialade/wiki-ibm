@@ -1,0 +1,22 @@
+---
+bibliotheque: BIB17
+fichier_source: QMNUSRC
+membre: MNUTESTQQ
+type: Menus
+longueur_enregistrement: 80
+lignes: 8
+modifie: 2026-11-16
+---
+
+# BIB17/QMNUSRC/MNUTESTQQ
+
+```text
+MNUTESTQQ,1
+0001 STRPDM
+0002 STRSDA
+0003 ?SNDMSG
+0004 WRKMSG
+0007 WRKUSRJOB
+0009 WRKSPLF
+0010 DLTSPLF FILE(*SELECT)
+```
