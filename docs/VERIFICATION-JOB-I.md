@@ -1,6 +1,6 @@
 ﻿# Verification par rapport a job-i.fr
 
-Genere le 2026-11-16 10:53. Reference : 1830 commandes CL, 196 termes RPG.
+Genere le 2026-11-16 10:56. Reference : 1830 commandes CL, 196 termes RPG.
 
 ## Commandes CL utilisees
 
@@ -124,3 +124,7 @@ AFFOBJDCL, AFFOBJDFM, AFFSPOOL, AFFUSRDCL, AFFUSRDFM, AND, ANIMALCL, ANIMALFM, A
 | WRITE | 29 |
 | Z-ADD | 10 |
 
+
+## Conclusion sur les commandes « à contrôler »
+
+Les 101 tokens « à contrôler » ne sont pas de vraies commandes CL absentes de job-i. Ce sont presque tous des faux positifs de l'analyse : noms de programmes et d'écrans écrits pendant la formation (ANIMALCL, CALCFM, MENUCL, SAVECL…), mots-clés de paramètres (FROM, TOFILE, SRCFILE, OUTQ, MSGDTA…), mots SQL (AND, NOT, NULL, VALUES, IFNULL, IDENTITY…), noms de bibliothèques ou de fichiers source (QSYS, QCLLESRC, QCLPSRC) et mots français tirés des commentaires (commande, membre, lignes…). Seule CHGLIBCURR pourrait être une coquille de CHGCURLIB : c'est à vérifier dans le source. Toutes les commandes CL système réellement utilisées sont référencées sur job-i.fr.
