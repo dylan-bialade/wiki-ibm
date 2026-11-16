@@ -1,14 +1,17 @@
 # Bibliotheque BIB01
 
-- Sources converties : 48
-- Membres de donnees / non-source : 44
+- Sources converties : 67
+- Membres de donnees / non-source : 25
 
 ## Repartition par type
 
 | Type | Nombre |
 |---|---|
+| COBOL | 10 |
 | CL\CL-ILE | 4 |
-| DDS | 16 |
+| CL\CL-procedural | 6 |
+| Autres\Commandes | 1 |
+| DDS | 18 |
 | Menus | 5 |
 | RPG\RPG-ILE | 7 |
 | RPG\RPG-III-400 | 11 |
@@ -27,11 +30,6 @@
 - **JOUEUR** : JOUEUR
 - **MOIS** : MOIS
 - **PARTIE** : PARTIE
-- **QCBLLESRC** : SFL001CBLD, SFL001LF, SFL001PF, STATCBL001, STATCBL002, STATCBL003, STATCBL004, STATCBLSAV, USRFORMCBL, USRFORMD
-- **QCLSRC** : AMIMAUXCL, BONBONCL, MON1ERCLP, QSTRUP, SRCPDFCL
-- **QCMDSRC** : SRCPDF
-- **QDDSSRC92** : BONBONFM, TSTADRIEND
-- **QILE** : MDSPLYCL
 - **QSQDSRC** : CPYSRCIFS
 - **SCORE** : SCORE
 - **SEMAINE** : SEMAINE

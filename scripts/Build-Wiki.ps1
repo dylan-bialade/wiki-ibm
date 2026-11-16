@@ -49,6 +49,41 @@ $realRxC = New-Object Text.RegularExpressions.Regex($realRx, 'Compiled')
 $maskEval = [Text.RegularExpressions.MatchEvaluator]{ param($m) $script:aliasMap[$m.Value.ToUpper()] }
 function Mask([string]$s) { if ($s.Length -lt 4) { return $s }; $realRxC.Replace($s, $maskEval) }
 
+# --- Type d'un fichier source : par son nom (QRPGLESRC, QRPGLESRC2, QSQLRPGLE, QCBLLESRC...) ou, pour les fichiers "fourre-tout" (QSRC...), par le contenu
+function Get-NameType([string]$f) {
+  switch -regex ($f) {
+    '^(QRPGLESRC\d*|QFREERPGLE|QSQLRPGLE|QRPGLE\w*)$' { return 'RPG\RPG-ILE' }
+    '^QRPGSRC\d*$'                                       { return 'RPG\RPG-III-400' }
+    '^(QCLPSRC|QCLSRC)\d*$'                              { return 'CL\CL-procedural' }
+    '^(QCLLESRC|QCLESRC)\d*$'                            { return 'CL\CL-ILE' }
+    '^(QDDSSRC\d*|QDDSRC|QDDSLESRC|QLFSRC|QPFSRC|QDSPSRC|QDSPFSRC|QPRTSRC|QSFSRC)$' { return 'DDS' }
+    '^QMNUSRC$'                                          { return 'Menus' }
+    '^QCPYSRC$'                                          { return 'RPG\Copy' }
+    '^(QSRVSRC|QBNDSRC)$'                                { return 'Autres\Service-programs' }
+    '^QWEBSRC$'                                          { return 'Autres\Web' }
+    '^(QSQLSRC|QSQDSRC)$'                                { return 'SQL' }
+    '^QCBLLESRC$'                                        { return 'COBOL' }
+    '^QCMDSRC$'                                          { return 'Autres\Commandes' }
+    '^QPNLSRC$'                                          { return 'Autres\Panneaux-UIM' }
+    '^QHLPSRC$'                                          { return 'Autres\Aide' }
+  }
+  return $null
+}
+$mixedRx = '^(QSRC|QSOURCES?|QVSRC|QILESRC|QILE|QEXOSRC|QTESTSRC|QTPSRC|QAPI|QCHATGPT|QVINCI|QVSCODE|QTMABUG|QMOD|QERROR|QSRCRACE)$'
+function Get-ContentType($lines) {
+  $t = ($lines -join "`n"); $n = [Math]::Max(1, @($lines).Count)
+  if ($t -match '(?im)^\s*\*\*free|\bdcl-(s|ds|f|pr|pi|proc)\b|\bctl-opt\b') { return 'RPG\RPG-ILE' }
+  if ($t -match '(?i)IDENTIFICATION\s+DIVISION|PROGRAM-ID') { return 'COBOL' }
+  if ($t -match '(?im)^\s*(PGM\b|DCLF\b|MONMSG\b)') { return 'CL\CL-procedural' }
+  $dds = @($lines | Where-Object { $_.Length -gt 6 -and $_[5] -eq 'A' }).Count
+  $rpg = @($lines | Where-Object { $_.Length -gt 6 -and $_[5] -match '[HFDCIOEL]' -and $_[6] -ne '*' }).Count
+  if ($dds / $n -gt 0.5) { return 'DDS' }
+  if ($rpg / $n -gt 0.5) { if ($t -match '(?i)\bEVAL\b|%[A-Z]+|\bDCL-') { return 'RPG\RPG-ILE' } else { return 'RPG\RPG-III-400' } }
+  if ($t -match '(?is)\bCREATE\s+(TABLE|VIEW|INDEX|PROCEDURE)|\bSELECT\b.+\bFROM\b') { return 'SQL' }
+  return $null
+}
+$written = New-Object 'System.Collections.Generic.HashSet[string]'
+
 foreach ($lib in $libs) {
   foreach ($sf in Get-ChildItem $lib.FullName -Directory -Filter *.FILE) {
     $fname = $sf.Name -replace '\.FILE$',''
@@ -59,11 +94,14 @@ foreach ($lib in $libs) {
       if ($bytes.Length -eq 0) { continue }
       if ($bytes.Length -gt 3MB) { [void]$data.Add([pscustomobject]@{Lib=$lib.BaseName;File=$fname;Member=$mname;Size=$bytes.Length}); continue }   # trop gros pour un source : traite comme donnee
       $w = $null
-      if ($typeMap.ContainsKey($fname)) { $w = Get-Width $bytes }
+      $type = Get-NameType $fname
+      $isMixed = (-not $type) -and ($fname -match $mixedRx)
+      if ($type -or $isMixed) { $w = Get-Width $bytes }
       if (-not $w) { [void]$data.Add([pscustomobject]@{Lib=$lib.BaseName;File=$fname;Member=$mname;Size=$bytes.Length}); continue }
       $lines = for ($i = 0; $i -lt $bytes.Length; $i += $w) { Mask ($enc.GetString($bytes, $i, $w).TrimEnd()) }
       $lines = @($lines); $n = $lines.Count; while ($n -gt 0 -and $lines[$n-1] -eq "") { $n-- }; if ($n -eq 0) { continue }; $lines = @($lines[0..($n-1)])   # un membre entierement blanc est ignore
-      $type = $typeMap[$fname]; $top = $type.Split('\')[0]
+      if ($isMixed) { $type = Get-ContentType $lines; if (-not $type) { [void]$data.Add([pscustomobject]@{Lib=$lib.BaseName;File=$fname;Member=$mname;Size=$bytes.Length}); continue } }
+      $top = $type.Split('\')[0]
       $lang = switch ($top) { "RPG" {"rpg"} "CL" {"cl"} "SQL" {"sql"} default {"text"} }
       # Format colonne (RPG III, RPG IV non **free) : "text" = police fixe sans coloration (la coloration GitHub casse l'alignement des colonnes)
       if ($top -eq "RPG" -and -not ($lines.Count -gt 0 -and $lines[0] -match '^\*\*FREE')) { $lang = "text" }
@@ -75,9 +113,11 @@ foreach ($lib in $libs) {
         $t2 = -join (1..80 | % { [string]($_ % 10) })
         $ruler = @("Repere de colonnes :","","``````text",$t1,$t2,"``````","")
       }
+      $mfile = $mname
+      if (-not $written.Add("$type|$($lib.BaseName)|$mfile")) { $mfile = "$mname~$fname"; [void]$written.Add("$type|$($lib.BaseName)|$mfile") }   # meme nom dans deux fichiers sources de la bibliotheque
       $md = @("---","bibliotheque: $($lib.BaseName)","fichier_source: $fname","membre: $mname","type: $($type.Replace('\','/'))","longueur_enregistrement: $w","lignes: $($lines.Count)","modifie: $($m.LastWriteTime.ToString('yyyy-MM-dd'))","---","","# $($lib.BaseName)/$fname/$mname","") + $ruler + @("``````$lang") + $lines + @("``````")
-      [IO.File]::WriteAllLines((Join-Path $dir "$mname.md"), [string[]]$md, (New-Object Text.UTF8Encoding($false)))   # UTF-8 SANS BOM : sinon GitHub ne reconnait pas l'en-tete YAML
-      [void]$rows.Add([pscustomobject]@{Type=$type;Lib=$lib.BaseName;File=$fname;Member=$mname;Lines=$lines.Count;Width=$w;Path="sources/$($type.Replace('\','/'))/$($lib.BaseName)/$mname.md"})
+      [IO.File]::WriteAllLines((Join-Path $dir "$mfile.md"), [string[]]$md, (New-Object Text.UTF8Encoding($false)))   # UTF-8 SANS BOM : sinon GitHub ne reconnait pas l'en-tete YAML
+      [void]$rows.Add([pscustomobject]@{Type=$type;Lib=$lib.BaseName;File=$fname;Member=$mname;Lines=$lines.Count;Width=$w;Path="sources/$($type.Replace('\','/'))/$($lib.BaseName)/$mfile.md"})
     }
   }
 }

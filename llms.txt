@@ -20,6 +20,8 @@
 - [Verification job-i](docs/VERIFICATION-JOB-I.md): commandes/instructions du code reconnues sur job-i.fr
 - [Apports](docs/apports/README.md): notes de l'utilisateur, integrees dans "Mes exemples"
 - [Variantes](docs/VARIANTES.md): meme exercice, plusieurs solutions de collaborateurs (structure et code compares)
+- [Comparaison des bibliotheques](docs/COMPARAISON-BIBLIOTHEQUES.md): meme membre dans plusieurs bibliotheques, versions identiques ou differentes
+- [Exemples du cycle RPG](docs/CYCLE-GAP-EXEMPLES.md): sources avec fichier primaire (IP), L1-L9, 1P, OF
 - [Contributions](contributions/README.md): comment un collaborateur ajoute sa bibliotheque
 - [Verification des contributions](docs/VERIFICATION-CONTRIBUTIONS.md): fichiers declares = fichiers reels
 

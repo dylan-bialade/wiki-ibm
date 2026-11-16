@@ -1,39 +1,21 @@
 ---
 bibliotheque: BIB05
-fichier_source: QRPGLESRC
+fichier_source: QFREERPGLE
 membre: SQUELLETTE
 type: RPG/RPG-ILE
 longueur_enregistrement: 100
-lignes: 25
+lignes: 7
 modifie: 2026-11-16
 ---
 
-# BIB05/QRPGLESRC/SQUELLETTE
+# BIB05/QFREERPGLE/SQUELLETTE
 
 ```text
       *NOMPGM:
       *NOMPROP:
       *FILLEDEPEND:
-    * SI TU VOIS SA TU A COPIER BIB05
-      *carte h
-      *carte f
-      *fNomFichier
-      *carte d
-     dAlpha1           S             20a
-     dtot              s             50
-     dprint            s             50a
-     duser             s             20a
-     dheure            s               t   inz(*sys)
-     dh                s              8a
-      *carte c
-     C                   eval      LR=1
-     c                   eval      h=%char(heure)
-     c                   eval      user='dylan2 il est '
-     c                   eval      alpha1='bonjour, '
-     c                   eval      print=alpha1+%trim(user)+h
-     c     print         dsply
-
-      *carte o
-
-      *carte p
+       //free
+      *dcl message varchar(50) inz();
+          dsply 'Hello World !';
+          *inlr=*on;
 ```

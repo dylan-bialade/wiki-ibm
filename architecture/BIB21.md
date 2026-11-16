@@ -1,13 +1,15 @@
 # Bibliotheque BIB21
 
-- Sources converties : 2
-- Membres de donnees / non-source : 8
+- Sources converties : 6
+- Membres de donnees / non-source : 4
 
 ## Repartition par type
 
 | Type | Nombre |
 |---|---|
-| DDS | 2 |
+| CL\CL-procedural | 1 |
+| DDS | 3 |
+| RPG\RPG-III-400 | 2 |
 
 ## Fichiers de donnees / objets (membres non-source)
 
@@ -15,5 +17,3 @@
 - **CLIENT** : CLIENT
 - **EVFEVENT** : RPGPERSO42
 - **FILMCAST** : FILMCAST
-- **QCLSRC** : LANCEDEMO
-- **QEXOSRC** : FILMCASI, FILMCAST, FILMCYC

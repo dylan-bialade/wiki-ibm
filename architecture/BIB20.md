@@ -1,15 +1,18 @@
 # Bibliotheque BIB20
 
-- Sources converties : 99
-- Membres de donnees / non-source : 98
+- Sources converties : 131
+- Membres de donnees / non-source : 66
 
 ## Repartition par type
 
 | Type | Nombre |
 |---|---|
+| COBOL | 7 |
 | CL\CL-ILE | 6 |
-| DDS | 47 |
-| RPG\RPG-ILE | 24 |
+| DDS | 64 |
+| CL\CL-procedural | 3 |
+| Autres\Aide | 1 |
+| RPG\RPG-ILE | 28 |
 | RPG\RPG-III-400 | 22 |
 
 ## Fichiers de donnees / objets (membres non-source)
@@ -28,15 +31,7 @@
 - **LOGJRN** : LOGJRN
 - **MARBON** : MARKBON
 - **MARQP** : MARQP
-- **QCBLLESRC** : SFL001CBLD, SFL001LF, SFL001PF, STATCBL001, STATCBL002, USRFORMCBL, USRFORMD
-- **QDDSLESRC** : CLIENT, CLIENT1, CLIENT2, TPILEECR
-- **QEXOSRC** : CLDESCPRF, CLPRF, ECRANPRF, ECRDESCPRF
-- **QHLPSRC** : BONBONHLP
-- **QILESRC** : MAIN, MODULE1, PRETIMMO, PRETIMMOD, SRVPGM2, TP2MAIN
-- **QPRTSRC** : BONPRT, BONRPG, BONRPGFREE, MARQP, MENUBONB, MENUBONBQQ
-- **QSQLRPGLE** : SFLTEST, TPBONBON
-- **QTESTSRC** : TESTCO, TESTCOECR
-- **QTPSRC** : AUTEURSSAL, AUTEURS_PF, LIVRES_LF, LIVRES_PF
+- **QILESRC** : PRETIMMO, PRETIMMOD, SRVPGM2, TP2MAIN
 - **RACEP** : RACEP
 - **RESULTAT** : RESULTAT
 - **SFL001PF** : SFL001PF

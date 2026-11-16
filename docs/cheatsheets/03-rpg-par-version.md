@@ -103,3 +103,5 @@
 - **RPG III (colonné, boucles, CHAIN)** : [BECRUD](../../sources/RPG/RPG-ILE/BIB05/BECRUD.md) (CRUD écran + fichier clé), [GESTLIVRE](../../sources/RPG/RPG-III-400/BIB05/GESTLIVRE.md), [MAJIDCLI](../../sources/RPG/RPG-III-400/BIB05/MAJIDCLI.md).
 - **Sous-fichier en RPG** : [EXAMPLESF](../../sources/RPG/RPG-ILE/BIB05/EXAMPLESF.md) (`SFILE(SFL1:RRN)`, `SETLL *LOVAL`, chargement par `READ`).
 - **Full free + prototypes + module** : copie [TP3MODP](../../sources/RPG/Copy/BIB03/TP3MODP.md) (`DCL-PR`, garde `/if not defined`) et module [TP3MOD](../../sources/RPG/RPG-ILE/BIB03/TP3MOD.md) (`ctl-opt nomain`, `dcl-proc`).
+- **Cycle RPG (GAP)** : [CYCDEMO](../../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md) (fichier primaire + secondaire, niveaux L1/L2, concordance M1/MR, 1P, OF, totaux), [FILMCYC](../../sources/RPG/RPG-III-400/BIB21/FILMCYC.md) (L1 à L3), [LIVGAP1](../../sources/RPG/RPG-III-400/BIB01/LIVGAP1.md) et [LIVGAP2](../../sources/RPG/RPG-III-400/BIB01/LIVGAP2.md) (rupture L1). Liste complète : [CYCLE-GAP-EXEMPLES](../CYCLE-GAP-EXEMPLES.md).
+- **Mêmes exercices, façons différentes** : [COMPARAISON-BIBLIOTHEQUES](../COMPARAISON-BIBLIOTHEQUES.md).

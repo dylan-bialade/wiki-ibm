@@ -1,12 +1,13 @@
 # Bibliotheque BIB17
 
-- Sources converties : 134
-- Membres de donnees / non-source : 64
+- Sources converties : 135
+- Membres de donnees / non-source : 63
 
 ## Repartition par type
 
 | Type | Nombre |
 |---|---|
+| CL\CL-ILE | 1 |
 | CL\CL-procedural | 34 |
 | RPG\Copy | 2 |
 | DDS | 44 |
@@ -46,7 +47,6 @@
 - **PERSO** : PERSO
 - **POEIMTP26** : POEIMTP26
 - **QAUOOPT** : QAUOOPT
-- **QCLESRC** : LSTMBRCL
 - **RACECHIEN** : RACECHIEN
 - **RECETTE** : RECETTE
 - **RECIPE** : RECETTE

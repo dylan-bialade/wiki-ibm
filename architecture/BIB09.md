@@ -1,12 +1,16 @@
 # Bibliotheque BIB09
 
-- Sources converties : 0
-- Membres de donnees / non-source : 53
+- Sources converties : 19
+- Membres de donnees / non-source : 34
 
 ## Repartition par type
 
 | Type | Nombre |
 |---|---|
+| RPG\RPG-ILE | 5 |
+| DDS | 12 |
+| CL\CL-procedural | 1 |
+| RPG\RPG-III-400 | 1 |
 
 ## Fichiers de donnees / objets (membres non-source)
 
@@ -19,4 +23,4 @@
 - **FILM** : FILM
 - **LIVRES** : LIVRES
 - **OBJLSTP** : OBJLSTP
-- **QSOURCES** : CALCTTC, CALCTTCC, CLIENT, CLIENTS, CONTRATS, CONTRATSL1, ECNREAP, ELIVRES, FILM, FILMD, FILMR, LFCLIENTS1, LIVREF, LIVRES, LSTCLI, OBJLSTC, OBJLSTD, OBJLSTM, OBJLSTR, PGREAP, PLIVRES, PRODLIB, PRODUIT, TESTCALC
+- **QSOURCES** : CALCTTCC, CONTRATSL1, LIVREF, LSTCLI, PGREAP

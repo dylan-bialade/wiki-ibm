@@ -17,7 +17,8 @@
 | Structure d'une bibliothèque (types, objets de données) | `architecture/<BIBLIOTHEQUE>.md` |
 | Si une commande/instruction du code existe sur job-i.fr | [docs/VERIFICATION-JOB-I.md](docs/VERIFICATION-JOB-I.md) |
 | Ajouter mes propres notes/exemples | [docs/apports/README.md](docs/apports/README.md) |
-| Plusieurs solutions pour un même exercice | [docs/VARIANTES.md](docs/VARIANTES.md) |
+| Plusieurs solutions pour un même exercice | [docs/VARIANTES.md](docs/VARIANTES.md) (collaborateurs), [docs/COMPARAISON-BIBLIOTHEQUES.md](docs/COMPARAISON-BIBLIOTHEQUES.md) (bibliothèques du cours) |
+| Exemples du cycle RPG (fichier primaire, L1-L9, 1P, OF) | [docs/CYCLE-GAP-EXEMPLES.md](docs/CYCLE-GAP-EXEMPLES.md) |
 | Ajouter ma bibliothèque (collaborateur) | [contributions/README.md](contributions/README.md) |
 | Règles de lecture, de vérification et de mise à jour (prompt système) | [docs/PROMPT-SYSTEME.md](docs/PROMPT-SYSTEME.md) (chargé via [CLAUDE.md](CLAUDE.md)) |
 | Ce qui a changé sur job-i.fr depuis la dernière vérification | [docs/JOBI-CHANGES.md](docs/JOBI-CHANGES.md) (présent seulement s'il y a des changements) |
