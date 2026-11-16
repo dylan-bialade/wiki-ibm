@@ -97,3 +97,54 @@ NOUVEL UNIVERS
 - **À confirmer à l'exécution** : ce que fait `CL1` quand `SETON LR` arrête le programme ; la rupture `L1` suppose les enregistrements **groupés par `UNIVERS`** (sinon lire la LF [PRSOLF](../../sources/DDS/BIB12/PRSOLF.md), à clé `UNIVERS`, dont le format est `PERSOFM`).
 - **Création** : `CRTRPGPGM PGM(MABIB/PERSOCYC) SRCFILE(MABIB/QRPGSRC)` ; test : `CALL PERSOCYC`.
 - **Modèles complets du cycle** : [CYCDEMO](../../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md), [CYCLE-GAP-EXEMPLES](../CYCLE-GAP-EXEMPLES.md).
+
+### Variante : impression avec cartes O à la place de DSPLY
+
+> Statut : **compile** (RPG/400, 16/11/2026). Rendu à l'impression à confirmer sur le spool. Même fichier `PERSO` et même cycle que l'exemple précédent, mais le résultat part dans un **fichier imprimante** (`QSYSPRT`) : plus de `DSPLY`, plus de tableau `MSG`, **plus de limite à `UNIVERS = 5`** (tout le fichier est lu, le cycle s'arrête seul à la fin).
+
+- **Repère de colonnes** (**ne pas le copier dans le membre**) :
+
+```	ext
+         1         2         3         4         5         6         7         8
+12345678901234567890123456789012345678901234567890123456789012345678901234567890
+```
+
+- **Programme RPG III** (source `QRPGSRC` ou autre fichier source) :
+
+```	ext
+     FPERSO   IP  E                    DISK
+     FQSYSPRT O   F     132     OF     PRINTER
+      *
+     IPERSOF      01
+     I              UNIVERS                         UNIV  L1
+      *
+     C   01                ADD  1         NB      30
+      *
+      * SOUS ROUTINE INIT
+     C           *INZSR    BEGSR
+     C                     Z-ADD0         NB
+     C                     ENDSR
+      *
+     OQSYSPRT H  101   1P
+     O       OR        OF
+     O                                   40 'NOUVELLE ANIME'
+     O                                   70 'Page'
+     O                         PAGE  Z   75
+     OQSYSPRT D 11     L1
+     O                                    8 'UNIVERS'
+     O                         UNIV  Z   12
+     OQSYSPRT D  1     01
+     O                         NOM       16
+     O                         PRENOM    34
+     OQSYSPRT T 2      LR
+     O                                   22 'NOMBRE DE PERSONNES'
+     O                         NB    Z   26
+```
+
+- **En-tête** : le titre « NOUVELLE ANIME » et le numéro de page (zone réservée `PAGE`) sont imprimés sur la première page (`1P`) et à chaque débordement (`OF`), comme dans [CYCDEMO](../../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md).
+- **Rupture `L1`** : une ligne « UNIVERS nn » est imprimée avant la première personne de chaque groupe (ligne de détail conditionnée par `L1`, placée **avant** la ligne de détail `01` dans les spécifications O). Pour afficher « NOUVELLE ANIME » à chaque changement d'anime plutôt qu'en titre, remplacer la constante `'UNIVERS'` par `'NOUVELLE ANIME'`.
+- **Détail** : nom (fin en position 16) et prénom (fin en position 34), une ligne par personne ; **total** « NOMBRE DE PERSONNES » à `LR`.
+- **Sous-routine `*INZSR`** conservée : elle ne fait plus que remettre `NB` à zéro.
+- **Spécifications O** : fichier `QSYSPRT` déclaré en spécification F (`O   F     132     OF     PRINTER`), indicateur d'en-tête `1P` / `OR OF`, colonnes de fin de zone en 40-43 et constante à partir de la colonne 45 ; mise en page reprise de [CYCDEMO](../../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md).
+- **Création et lecture** : `CRTRPGPGM PGM(BIALADE/CYCLEIMP) SRCFILE(BIALADE/ANIME) SRCMBR(CYCLEIMP)` (un nouveau membre évite QRG0012 si le programme existe déjà, ou `REPLACE(*YES)`) ; `CALL` puis `WRKSPLF` pour ouvrir l'impression.
+- **À confirmer** : la rupture `L1` suppose les enregistrements **groupés par `UNIVERS`**.
