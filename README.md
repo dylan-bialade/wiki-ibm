@@ -17,7 +17,7 @@
 | Structure d'une bibliothèque (types, objets de données) | `architecture/<BIBLIOTHEQUE>.md` |
 | Si une commande/instruction du code existe sur job-i.fr | [docs/VERIFICATION-JOB-I.md](docs/VERIFICATION-JOB-I.md) |
 | Ajouter mes propres notes/exemples | [docs/apports/README.md](docs/apports/README.md) |
-| Ce qui manque dans les fiches (utilisé dans le code, absent des fiches) | [docs/MANQUES.md](docs/MANQUES.md) | [docs/VARIANTES.md](docs/VARIANTES.md) (collaborateurs), [docs/COMPARAISON-BIBLIOTHEQUES.md](docs/COMPARAISON-BIBLIOTHEQUES.md) (bibliothèques du cours) |
+| Énoncés de TP et d'examens résumés (anonymisés) | [docs/enonces/README.md](docs/enonces/README.md) | (utilisé dans le code, absent des fiches) | [docs/MANQUES.md](docs/MANQUES.md) | [docs/VARIANTES.md](docs/VARIANTES.md) (collaborateurs), [docs/COMPARAISON-BIBLIOTHEQUES.md](docs/COMPARAISON-BIBLIOTHEQUES.md) (bibliothèques du cours) |
 | Cycle RPG (cours) ou sous-routines | [fiche 06](docs/cheatsheets/06-cycle-rpg-et-sous-routines.md) | [docs/CYCLE-GAP-EXEMPLES.md](docs/CYCLE-GAP-EXEMPLES.md) |
 | Ajouter ma bibliothèque (collaborateur) | [contributions/README.md](contributions/README.md) |
 | Règles de lecture, de vérification et de mise à jour (prompt système) | [docs/PROMPT-SYSTEME.md](docs/PROMPT-SYSTEME.md) (chargé via [CLAUDE.md](CLAUDE.md)) |

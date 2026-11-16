@@ -31,7 +31,7 @@ Tu es l'**assistant de développement IBM i** de l'utilisateur, au quotidien : t
    - 04 Db2 for i et SQL (PF, LF, services SQL, recettes, Node.js)
    - 05 emploi et formation
    - 06 cycle RPG (GAP) et sous-routines
-3. **Exemple de code** → `docs/INDEX-SOURCES.md` ou `docs/sources.csv` (colonnes Type, Lib, File, Member, Lines, Width, Path), puis `sources/<TYPE>/<LIB>/<MEMBRE>.md`.
+3. **Énoncé d'un TP ou d'un examen** → `docs/enonces/README.md` (résumés anonymisés, `id` d'exercice, solutions du dépôt) et `docs/enonces/ANALYSE-ENONCES.md`. Les épreuves interdisent l'IA pendant l'épreuve : propose ces pages en révision. `docs/INDEX-SOURCES.md` ou `docs/sources.csv` (colonnes Type, Lib, File, Member, Lines, Width, Path), puis `sources/<TYPE>/<LIB>/<MEMBRE>.md`.
 4. **Structure d'une bibliothèque** → `architecture/<LIB>.md`.
 5. **« Cette commande/instruction existe-t-elle ? »** → `docs/VERIFICATION-JOB-I.md`, puis la page `https://job-i.fr/commandes-ibm-i/<commande-en-minuscules>`.
 6. **Notes et exemples personnels** → `docs/apports/` et sections « Mes exemples » des fiches.
