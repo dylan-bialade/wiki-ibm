@@ -46,28 +46,30 @@
 - Liste détectée automatiquement : [CYCLE-GAP-EXEMPLES](../CYCLE-GAP-EXEMPLES.md).
 - **Sous-routines** (RPG III, `BEGSR`/`EXSR`) : [EDBOR](../../sources/RPG/RPG-III-400/BIB20/EDBOR.md) (21 sous-routines), [FICCLIRPG](../../sources/RPG/RPG-III-400/BIB17/FICCLIRPG.md), [BIERERPG](../../sources/RPG/RPG-III-400/BIB17/BIERERPG.md) ; avec écran : [RPGSFLOPT](../../sources/RPG/RPG-ILE/BIB20/RPGSFLOPT.md).
 
-### Exemple : liste de personnes avec cycle, rupture L1, tableau MSG, `*INZSR` et F3
+### Exemple : liste de personnes avec cycle, rupture L1, tableau MSG, `*INZSR` et sortie (DSPLY seul)
 
-> Statut : **proposé, non compilé** (à tester sur l'IBM i). Dérivé de l'exercice « BONBON » du cycle, avec le fichier `PERSO`.
+> Statut : **proposé, non compilé** (à tester sur l'IBM i). Dérivé de l'exercice « BONBON » du cycle, avec le fichier `PERSO`. Sans fichier écran : tout passe par `DSPLY`.
 
-- **Consigne** : reprendre l'exemple du cycle (fichier primaire `IP`) avec `PERSO` ; afficher **nom et prénom** ; quitter si `UNIVERS` vaut 5 ; quitter aussi avec **F3** avant la fin du fichier ; afficher « NOUVEL UNIVERS » à chaque changement d'univers (tableau chargé à la compilation) et au départ (sous-routine `*INZSR`) ; afficher le nombre de personnes à la fin.
+- **Consigne** : reprendre l'exemple du cycle (fichier primaire `IP`) avec `PERSO` ; afficher **nom et prénom** ; quitter si `UNIVERS` vaut 5 ; pouvoir quitter avant la fin du fichier ; afficher « NOUVEL UNIVERS » à chaque changement d'univers (tableau chargé à la compilation) et au départ (sous-routine `*INZSR`) ; afficher le nombre de personnes à la fin.
 - **Programme RPG III** (`PERSOCYC`, source `QRPGSRC`) :
 
 ```	ext
          1         2         3         4         5         6         7         8
 12345678901234567890123456789012345678901234567890123456789012345678901234567890
      FPERSO   IP  E                    DISK
-     FPERSODSPCF  E                    WORKSTN
       *
      E                    MSG     1   1 52
       *
      IPERSOF      01
      I              UNIVERS                         UNIV  L1
       *
-     C   01                EXFMTPERSOE1
+     C   01      NOM       CAT  PRENOM:1  NOMPRE 31 P
+     C   01      NOMPRE    DSPLY          REP     1
      C   01                ADD  1         NB      30
       *
      C           UNIV      IFEQ 5
+     C           REP       OREQ 'Q'
+     C           REP       OREQ 'q'
      C           *INKC     OREQ *ON
      C                     SETON                     LR
      C                     ENDIF
@@ -83,24 +85,10 @@
 NOUVEL UNIVERS
 ```
 
-- **Écran DDS** (`PERSODSP`, source `QDDSSRC`) : un format `PERSOE1` avec `CF03(03)`, les zones `NOM` et `PRENOM` référencées sur `PERSO` (mêmes attributs que le fichier, ce qui évite un conflit de définition) :
-
-```	ext
-     A                                      DSPSIZ(24 80 *DS3)
-     A          R PERSOE1
-     A                                      CF03(03)
-     A                                 1  2 SYSNAME
-     A                                 1 30 'Liste des personnes'
-     A                                 4  2 'Nom.......:'
-     A            NOM       R        O 4 14 REFFLD(PERSOF/NOM *LIBL/PERSO)
-     A                                 5  2 'Prenom....:'
-     A            PRENOM    R        O 5 14 REFFLD(PERSOF/PRENOM *LIBL/PERSO)
-     A                                23  2 'F3=Quitter   Entree=Suivant'
-```
-
-- **Pourquoi `EXFMT` et non `DSPLY` pour F3** : d'après job-i.fr, `DSPLY` « ne modifie aucun indicateur » et ne parle pas des touches de fonction. `*INKC` (F3) est positionné par un écran : même mécanisme que dans vos TP de gestion des livres ([TP3](../../sources/RPG/RPG-ILE/BIB05/TP3.md), [EXO3](../../sources/RPG/RPG-ILE/BIB05/EXO3.md)).
-- **Pièges rencontrés** : `UNIVERS` fait 7 caractères, or un nom de zone RPG III en fait 6 au maximum : il faut le **renommer** dans la spécification I (`UNIV`) sinon le compilateur l'ignore (messages QRG4052 puis QRG7030) ; `K` sur la ligne F seulement si `PERSO` est à clé.
+- **Pause à chaque personne** : la zone résultat `REP` de `DSPLY` fait **attendre la réponse** de l'utilisateur ; Entrée affiche la personne suivante. Sans zone résultat, les messages défilent sans pause.
+- **Sortie anticipée** : taper `Q` puis Entrée (`REP`) est la sortie **sûre**. Le test `*INKC` (F3) est conservé, mais d'après job-i.fr `DSPLY` « ne modifie aucun indicateur » et la page ne parle pas des touches de fonction : F3 peut ne rien faire avec `DSPLY`. F3 est fiable avec un fichier écran et `EXFMT` (voir [TP3](../../sources/RPG/RPG-ILE/BIB05/TP3.md)).
+- **Pièges rencontrés** : `UNIVERS` fait 7 caractères, or un nom de zone RPG III en fait 6 au maximum : il faut le **renommer** dans la spécification I (`UNIV`) sinon le compilateur l'ignore (messages QRG4052 puis QRG7030) ; `K` sur la ligne F seulement si `PERSO` est à clé ; un fichier écran déclaré mais non créé donne QRG2120 / QRG5154 / QRG7064.
 - **Comportement du cycle** : au premier enregistrement, les calculs de total (`CL1`) sont sautés, d'où le message du départ dans `*INZSR` ; en fin de fichier `LR` allume aussi `L1` : le message s'affiche une dernière fois.
-- **À tester** : ce que fait `CL1` quand `SETON LR` arrête le programme (`UNIVERS = 5` ou F3) ; la rupture `L1` suppose les enregistrements **groupés par `UNIVERS`** (sinon lire la LF [PRSOLF](../../sources/DDS/BIB12/PRSOLF.md), à clé `UNIVERS`, dont le format est `PERSOFM`).
-- **Création** : `CRTDSPF FILE(MABIB/PERSODSP) SRCFILE(MABIB/QDDSSRC)` puis `CRTRPGPGM PGM(MABIB/PERSOCYC) SRCFILE(MABIB/QRPGSRC)` ; test : `CALL PERSOCYC`.
+- **À tester** : F3 avec `DSPLY` ; ce que fait `CL1` quand `SETON LR` arrête le programme ; la rupture `L1` suppose les enregistrements **groupés par `UNIVERS`** (sinon lire la LF [PRSOLF](../../sources/DDS/BIB12/PRSOLF.md), à clé `UNIVERS`, dont le format est `PERSOFM`).
+- **Création** : `CRTRPGPGM PGM(MABIB/PERSOCYC) SRCFILE(MABIB/QRPGSRC)` ; test : `CALL PERSOCYC`.
 - **Modèles complets du cycle** : [CYCDEMO](../../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md), [CYCLE-GAP-EXEMPLES](../CYCLE-GAP-EXEMPLES.md).
