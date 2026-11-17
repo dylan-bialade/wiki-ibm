@@ -147,5 +147,5 @@ NOUVEL UNIVERS
 - **Détail** : nom (fin en position 16) et prénom (fin en position 34), une ligne par personne ; **total** « NOMBRE DE PERSONNES » à `LR`.
 - **Sous-routine `*INZSR`** conservée : elle ne fait plus que remettre `NB` à zéro.
 - **Spécifications O** : fichier `QSYSPRT` déclaré en spécification F (`O   F     132     OF     PRINTER`), indicateur d'en-tête `1P` / `OR OF`, colonnes de fin de zone en 40-43 et constante à partir de la colonne 45 ; mise en page reprise de [CYCDEMO](../../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md).
-- **Création et lecture** : `CRTRPGPGM PGM(BIALADE/CYCLEIMP) SRCFILE(BIALADE/ANIME) SRCMBR(CYCLEIMP)` (un nouveau membre évite QRG0012 si le programme existe déjà, ou `REPLACE(*YES)`) ; `CALL` puis `WRKSPLF` pour ouvrir l'impression.
+- **Création et lecture** : `CRTRPGPGM PGM(MABIB/CYCLEIMP) SRCFILE(MABIB/QRPGSRC) SRCMBR(CYCLEIMP)` (un nouveau membre évite QRG0012 si le programme existe déjà, ou `REPLACE(*YES)`) ; `CALL` puis `WRKSPLF` pour ouvrir l'impression.
 - **À confirmer** : la rupture `L1` suppose les enregistrements **groupés par `UNIVERS`**.
