@@ -27,6 +27,8 @@
 | Exemples du cycle RPG (fichier primaire, L1-L9, 1P, OF) | [docs/CYCLE-GAP-EXEMPLES.md](docs/CYCLE-GAP-EXEMPLES.md) |
 | Cours du cycle RPG III (7 étapes, ruptures, spéc. O, rapprochement) + exemples | [docs/CYCLE-RPG-COURS.md](docs/CYCLE-RPG-COURS.md) |
 | Réécrire un état à cycle en full free (retour d'expérience, spool) | [docs/IMPRESSION-FULLFREE.md](docs/IMPRESSION-FULLFREE.md) |
+| Cycle RPG III -> full free : table de correspondance | [docs/CYCLE-VERS-FULLFREE.md](docs/CYCLE-VERS-FULLFREE.md) |
+| PRTCTL (contrôle d'impression RPG) : ce qui est documenté ou non | [docs/PRTCTL.md](docs/PRTCTL.md) |
 | Ajouter ma bibliothèque (collaborateur) | [contributions/README.md](contributions/README.md) |
 | Règles de lecture, de vérification et de mise à jour (prompt système) | [docs/PROMPT-SYSTEME.md](docs/PROMPT-SYSTEME.md) (chargé via [CLAUDE.md](CLAUDE.md)) |
 | Ce qui a changé sur job-i.fr depuis la dernière vérification | [docs/JOBI-CHANGES.md](docs/JOBI-CHANGES.md) (présent seulement s'il y a des changements) |

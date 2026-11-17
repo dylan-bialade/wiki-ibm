@@ -37,3 +37,5 @@ Fichier `QSYSPRT PRINTER(132)`, une DS `LEN(132) INZ` par type de ligne, zones p
 - **Ce que le dépôt n'a pas** : aucun `CRTPRTF`, `OVRPRTF` ni `CHGSPLFA` dans vos sources CL, aucune explication des mots-clés DDS d'impression ni des spécifications `O` (job-i.fr non plus) : voir [MANQUES](../MANQUES.md).
 
 > Retour d'expérience (état à cycle réécrit en full free, spools mesurés) : [IMPRESSION-FULLFREE](../IMPRESSION-FULLFREE.md).
+
+> PRTCTL : ce qui est documenté ou non : [PRTCTL](../PRTCTL.md).

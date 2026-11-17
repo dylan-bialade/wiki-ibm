@@ -1,9 +1,9 @@
 # Wiki IBM i : contexte complet pour un assistant
 
-Genere le 2026-11-17 11:00 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Genere le 2026-11-17 11:03 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
 Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
 
-ATTENTION : ce fichier fait environ 130 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
+ATTENTION : ce fichier fait environ 138 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
 Table des matieres (ordre du fichier) :
 - README.md (8 Ko)
 - CLAUDE.md (15 Ko)
@@ -31,6 +31,8 @@ Table des matieres (ordre du fichier) :
 - docs/CYCLE-GAP-EXEMPLES.md (1 Ko)
 - docs/CYCLE-RPG-COURS.md (12 Ko)
 - docs/IMPRESSION-FULLFREE.md (8 Ko)
+- docs/CYCLE-VERS-FULLFREE.md (5 Ko)
+- docs/PRTCTL.md (3 Ko)
 - docs/PORTABILITE.md (6 Ko)
 - contributions/README.md (4 Ko)
 - docs/apports/README.md (1 Ko)
@@ -66,6 +68,8 @@ Table des matieres (ordre du fichier) :
 | Exemples du cycle RPG (fichier primaire, L1-L9, 1P, OF) | [docs/CYCLE-GAP-EXEMPLES.md](docs/CYCLE-GAP-EXEMPLES.md) |
 | Cours du cycle RPG III (7 étapes, ruptures, spéc. O, rapprochement) + exemples | [docs/CYCLE-RPG-COURS.md](docs/CYCLE-RPG-COURS.md) |
 | Réécrire un état à cycle en full free (retour d'expérience, spool) | [docs/IMPRESSION-FULLFREE.md](docs/IMPRESSION-FULLFREE.md) |
+| Cycle RPG III -> full free : table de correspondance | [docs/CYCLE-VERS-FULLFREE.md](docs/CYCLE-VERS-FULLFREE.md) |
+| PRTCTL (contrôle d'impression RPG) : ce qui est documenté ou non | [docs/PRTCTL.md](docs/PRTCTL.md) |
 | Ajouter ma bibliothèque (collaborateur) | [contributions/README.md](contributions/README.md) |
 | Règles de lecture, de vérification et de mise à jour (prompt système) | [docs/PROMPT-SYSTEME.md](docs/PROMPT-SYSTEME.md) (chargé via [CLAUDE.md](CLAUDE.md)) |
 | Ce qui a changé sur job-i.fr depuis la dernière vérification | [docs/JOBI-CHANGES.md](docs/JOBI-CHANGES.md) (présent seulement s'il y a des changements) |
@@ -808,6 +812,8 @@ NOUVEL UNIVERS
 
 > Synthèse d'un cours complet sur le cycle (7 étapes, ruptures en cascade, spécification O, rapprochement) et exemples proposés : [CYCLE-RPG-COURS](../CYCLE-RPG-COURS.md).
 
+> Traduire un état à cycle en full free : [CYCLE-VERS-FULLFREE](../CYCLE-VERS-FULLFREE.md).
+
 
 === FICHIER : docs/cheatsheets/07-sql-embarque-en-rpg.md ===
 # 07 - SQL embarqué en RPG et exécution de SQL
@@ -879,6 +885,8 @@ Fichier `QSYSPRT PRINTER(132)`, une DS `LEN(132) INZ` par type de ligne, zones p
 - **Ce que le dépôt n'a pas** : aucun `CRTPRTF`, `OVRPRTF` ni `CHGSPLFA` dans vos sources CL, aucune explication des mots-clés DDS d'impression ni des spécifications `O` (job-i.fr non plus) : voir [MANQUES](../MANQUES.md).
 
 > Retour d'expérience (état à cycle réécrit en full free, spools mesurés) : [IMPRESSION-FULLFREE](../IMPRESSION-FULLFREE.md).
+
+> PRTCTL : ce qui est documenté ou non : [PRTCTL](../PRTCTL.md).
 
 
 === FICHIER : docs/enonces/README.md ===
@@ -1603,6 +1611,88 @@ Points **non vérifiés** (ni dans le wiki ni sur job-i) : `SKIPB(1)` en tête d
 
 ## 8. Variante sans DDS : `QSYSPRT` avec une DS par type de ligne
 [CYCLEQSYS.rpgle](exemples-cycle/CYCLEQSYS.rpgle) : `DCL-F QSYSPRT PRINTER(132)` et `WRITE QSYSPRT <ds>` avec une DS de 132 caractères par type de ligne (`dsEntete`, `dsUnivers`, `dsDetail`, `dsTotUni`, `dsTotGen`), les zones placées par `POS(...)` aux colonnes du spool de référence. Espacements = lignes blanches (`dsVide`) selon le modèle du curseur (section 3). **Compilé et testé par l'utilisateur : spool identique à la référence.** `POS` sur les sous-zones d'une DS `LEN(132)`, `INZ` des constantes de sous-zone et plusieurs DS de même longueur écrites dans `QSYSPRT` sont donc validés.
+
+
+=== FICHIER : docs/CYCLE-VERS-FULLFREE.md ===
+# Du cycle RPG III au full free : table de correspondance
+
+> Chaque ligne indique son **statut** : *validé* = utilisé dans un programme compilé dont le spool est identique à la référence ([CYCLEQSYS.rpgle](exemples-cycle/CYCLEQSYS.rpgle), voir [IMPRESSION-FULLFREE](IMPRESSION-FULLFREE.md)) ; *proposé* = raisonnement non testé ; *non vérifié* = à confirmer. Contexte : [cours du cycle](CYCLE-RPG-COURS.md), [fiche 06](cheatsheets/06-cycle-rpg-et-sous-routines.md).
+
+## 1. Fichiers et indicateurs
+| RPG III (cycle) | Full free | Statut |
+|---|---|---|
+| Fichier primaire `IP` (F col. 16) | `DCL-F fichier DISK(*EXT) USAGE(*INPUT);` + `READ format;` dans `DOW NOT %EOF(fichier);` | validé |
+| Lecture automatique à chaque tour | `READ` en tête de boucle, puis `READ` à la fin de chaque tour | validé |
+| Indicateur d'enregistrement `01` | inutile : on est dans la boucle, l'enregistrement est lu | validé |
+| `LR` (fin de fichier, `SETON LR`) | `*INLR = *ON; RETURN;` après la boucle | validé |
+| Calculs `LR` / lignes `T` `LR` | instructions placées après `ENDDO` (totaux généraux) | validé |
+| Fichiers secondaires `IS`, rapprochement `M1`-`M9`, `MR` | non traduit : lecture explicite de deux fichiers, comparaison des clés à la main (`SETLL`/`CHAIN` ou fusion) | non vérifié |
+
+## 2. Ruptures `L1`-`L9`
+| RPG III | Full free | Statut |
+|---|---|---|
+| Zone de contrôle `L1` (I col. 59-60) | variable `univPrec LIKE(zone)` et `rupture = (premier OR zone <> univPrec);` | validé |
+| Calculs `L1` (total, avant le détail du nouveau groupe) | bloc `IF rupture AND NOT premier;` placé **avant** le traitement de l'enregistrement | validé |
+| Cascade `L2` → `L1` | tester d'abord le niveau le plus fin ; si le niveau supérieur change, déclencher aussi le niveau inférieur | proposé |
+| Remise à zéro des totaux (`B` en O col. 39 ou calcul détail) | `IF rupture; NBU = 0; ENDIF;` après le total | validé |
+| Premier enregistrement (aucune rupture) | indicateur `premier IND INZ(*ON)` remis à `*OFF` après le premier tour | validé |
+
+## 3. Lignes de sortie (spécification O)
+| RPG III | Full free | Statut |
+|---|---|---|
+| Fichier `PRINTER` col. 40-46, `OF` col. 33-34 | `DCL-F QSYSPRT PRINTER(132) USAGE(*OUTPUT) OFLIND(*INOF);` | validé |
+| Ligne `D`/`T`/`H` avec zones + constantes | une DS `LEN(132) INZ` par type de ligne, zones placées par `POS(n)`, constantes `INZ('…')`, puis `WRITE QSYSPRT <ds>;` | validé |
+| Position de fin (O col. 40-43) | `POS` = début : fin − longueur + 1 (longueurs de zone connues) | validé |
+| Code d'édition `Z` | `%EDITC(zone : 'Z')` dans une zone caractère de la DS | validé |
+| Espace avant / après (O col. 17-18) | lignes blanches écrites (`dsVide`) selon le modèle du curseur : ligne = curseur + avant ; curseur après = ligne + après | validé |
+| Saut `01` (nouvelle page) | remplir de lignes blanches jusqu'à la ligne 66 après dépassement de la ligne 60, puis curseur = 1 | validé |
+| `PRTCTL(ds:*COMPAT)` pour l'espacement | **a donné un spool faux** avec des `'000'` : voir [PRTCTL](PRTCTL.md) | non vérifié |
+| Fichier imprimante DDS (`SPACEB`, `SKIPB`, `PAGNBR`, formats) | variante [CYCLEIMP](exemples-cycle/CYCLEIMP.rpgle) + [CYCLEPRT](exemples-cycle/CYCLEPRT.prtf) | non vérifié |
+| Ligne `E` + `EXCPT` | une procédure qui écrit la DS correspondante | proposé |
+| `B` col. 39 (blank after) | affecter la zone à blanc/0 après le `WRITE` | proposé |
+
+## 4. Page, date, dépassement
+| RPG III | Full free | Statut |
+|---|---|---|
+| `1P` (en-tête de la 1re page) | appel de la procédure `Entete` avant la boucle | validé |
+| `OF` (dépassement) | `Debordement()` appelé **au moment d'un enregistrement**, pas avant les totaux (mesure sur le spool de référence) | validé |
+| `OR OF` sur ligne `H` | `IF ligneCour > 60;` (OVRFLW par défaut) puis nouvel en-tête | validé |
+| `PAGE` | compteur `numPage PACKED(4:0)` incrémenté à chaque en-tête | validé |
+| `UDATE`, `*DATE`, `D/J` (spéc. H) | non testé : `%DATE()` / `%EDITC` à vérifier | non vérifié |
+| Spécification `L` (longueur de page, ligne de débordement) | constantes `LIGNE_DEBORD 60`, `LIGNES_PAGE 66` (défauts documentés en fiche 08) | validé |
+
+## 5. Pièges propres au full free
+- `NB += 1` sur une zone trop courte provoque une erreur d'exécution (RNQ0103, **non vérifié** dans le wiki) alors que RPG III tronque en silence : dimensionner la zone (`PACKED(4:0)` pour 400) ou utiliser `%REM`.
+- Le débordement n'est pas automatique avec `OFLIND` : le programme doit finir la page lui-même.
+- Comparer le **spool**, pas seulement l'absence d'erreur de compilation.
+
+## 6. Fichier vide
+Comportement du cycle RPG III sur un fichier primaire vide : **non vérifié**. Avec `CYCLEQSYS`, un fichier vide donne : en-tête, puis `TOTAL UNIVERS` et `TOTAL GENERAL` avec des zéros supprimés par le code d'édition `Z` (analyse du code, non testé). Test à faire : lancer le programme sur un fichier vide et comparer au programme RPG III d'origine.
+
+
+=== FICHIER : docs/PRTCTL.md ===
+# PRTCTL : contrôle dynamique d'impression en RPG
+
+> Page de **synthèse prudente**. Ce que le wiki, job-i.fr et la documentation IBM consultée permettent d'affirmer est séparé de ce qui n'est pas confirmé. Résultat d'un test réel : [IMPRESSION-FULLFREE](IMPRESSION-FULLFREE.md).
+
+## 1. Ce qui est documenté
+- **IBM** (référence ILE RPG, [mot-clé PRTCTL, IBM i 7.1](https://www.ibm.com/support/knowledgecenter/en/ssw_ibm_i_71/rzasd/sc092508474.htm)) : `PRTCTL(structure)` active le contrôle dynamique de l'impression ; la structure contient des informations de contrôle de formulaire et une valeur de compteur de lignes ; **valide seulement pour un fichier décrit dans le programme** ; `*COMPAT` rend la structure compatible avec RPG III ; sans `*COMPAT`, la structure par défaut est de format **étendu**.
+- **job-i.fr** : `PRTCTL`, `OFLIND` et `OVRFLW` n'apparaissent ni dans l'index des commandes ni dans la page des instructions RPG full free (recherche du 2026-11-17, lectures partielles).
+- **Ce wiki** : `OVRFLW` seul est documenté (fiche 08 : ligne qui déclenche le saut de page, défaut 60).
+
+## 2. Ce qui n'est pas confirmé
+La mise en page exacte de la structure (noms, longueurs, ordre, valeurs permises, blanc ou `'000'`) n'a **pas été trouvée dans un texte IBM consulté** (les pages lues ne détaillent pas les sous-zones). Un message d'un forum communautaire (IBM Ideas) donne 4 sous-zones `CHAR(3)` (espace avant, espace après, saut avant, saut après) ; c'est une source **non officielle**.
+
+## 3. Constat de terrain
+Un programme full free avec `PRTCTL(prtCtl:*COMPAT)` et une DS `CHAR(3)` ×4 + `ZONED(3:0)` remplie de `'000'` / `'001'` **compilait et s'exécutait**, mais produisait un spool faux (40 pages au lieu de 8 : détails superposés sur une même ligne, `UNIVERS` en ligne ~10). L'explication la plus probable est une valeur `'000'` mal interprétée comme un saut à la ligne 0, mais ce n'est **qu'une hypothèse**.
+
+## 4. Recommandation
+- Ne pas utiliser `PRTCTL` sans avoir lu les tableaux de la référence ILE RPG (sections « PRTCTL » et « Printer control data structure ») et testé le spool.
+- Alternative **validée** : `WRITE QSYSPRT <ds>` avec espacement par lignes blanches ([CYCLE-VERS-FULLFREE](CYCLE-VERS-FULLFREE.md), [CYCLEQSYS](exemples-cycle/CYCLEQSYS.rpgle)).
+- Alternative habituelle de tes bibliothèques (non testée ici) : fichier imprimante décrit en DDS.
+
+## 5. À compléter (quand la source officielle sera lue)
+Disposition de la structure (`*COMPAT` et étendue), valeurs permises pour `blanc` et `0`, rôle du compteur de lignes.
 
 
 === FICHIER : docs/PORTABILITE.md ===

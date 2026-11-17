@@ -24,6 +24,8 @@
 - [Exemples du cycle RPG](docs/CYCLE-GAP-EXEMPLES.md): sources avec fichier primaire (IP), L1-L9, 1P, OF
 - [Cours du cycle RPG III](docs/CYCLE-RPG-COURS.md): 7 étapes, ruptures L1-L9, spécification O, rapprochement MR, exemples non compilés
 - [Impression full free](docs/IMPRESSION-FULLFREE.md): réécrire un état à cycle, mesures de spool, piège PRTCTL, code CYCLETOTO.rpgle
+- [Cycle vers full free](docs/CYCLE-VERS-FULLFREE.md): correspondance L1, LR, 1P, OF, PAGE, spec O vers full free, avec statut validé / proposé / non vérifié
+- [PRTCTL](docs/PRTCTL.md): documenté ou non, constat de terrain
 - [Fiche 07](docs/cheatsheets/07-sql-embarque-en-rpg.md): SQL embarque en RPG, CRTSQLRPGI, RUNSQL, RUNSQLSTM
 - [Fiche 08](docs/cheatsheets/08-impression-et-printer-ibm-i.md): impression, fichier imprimante, spool, OUTQ, CRTPRTF, OVRPRTF, CPYSPLF
 - [Fiche 06](docs/cheatsheets/06-cycle-rpg-et-sous-routines.md): cycle RPG (GAP) et sous-routines

@@ -206,3 +206,5 @@ NOUVEL UNIVERS
 - **À confirmer à l'exécution** : le total du dernier univers juste avant le total général (rendu du spool) ; la rupture `L1` suppose les enregistrements **groupés par `UNIVERS`**.
 
 > Synthèse d'un cours complet sur le cycle (7 étapes, ruptures en cascade, spécification O, rapprochement) et exemples proposés : [CYCLE-RPG-COURS](../CYCLE-RPG-COURS.md).
+
+> Traduire un état à cycle en full free : [CYCLE-VERS-FULLFREE](../CYCLE-VERS-FULLFREE.md).
