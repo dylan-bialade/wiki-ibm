@@ -1,0 +1,25 @@
+     A          R ENTETE
+     A                                      SKIPB(1)
+     A                                      SPACEA(1)
+     A                                    27'NOUVELLE ANIME'
+     A                                    67'Page'
+     A                                    72PAGNBR
+     A          R UNIVERS
+     A                                      SPACEB(1)
+     A                                      SPACEA(1)
+     A                                     2'UNIVERS'
+     A            TUNIV          4S 0O     9EDTCDE(Z)
+     A          R DETAIL
+     A                                      SPACEA(1)
+     A            TNOM          15A  O     2
+     A            TPRENOM       15A  O    20
+     A          R TOTUNI
+     A                                      SPACEB(2)
+     A                                      SPACEA(0)
+     A                                     5'TOTAL UNIVERS'
+     A            TNBU           4S 0O    18EDTCDE(Z)
+     A          R TOTGEN
+     A                                      SPACEB(2)
+     A                                      SPACEA(0)
+     A                                     5'TOTAL GENERAL'
+     A            TNB            4S 0O    18EDTCDE(Z)

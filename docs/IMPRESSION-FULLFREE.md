@@ -49,3 +49,16 @@ Une simulation de ces règles sur 20 univers de 20 enregistrements redonne le sp
 - Un programme qui **compile** et s'exécute peut produire un spool entièrement faux : toujours comparer le spool, pas seulement l'absence d'erreur.
 - `%EDITC(zone : 'Z')` et le placement par position de fin (`%SUBST` + `%LEN`) ont donné le résultat attendu sur « UNIVERS n », « Page n » et « TOTAL … » (constat sur le spool).
 - La comparaison « à l'octet près » d'un PDF est trompeuse ; comparer les lignes (ex. `CPYSPLF`, non documenté dans le wiki).
+
+## 7. Méthode habituelle de tes bibliothèques : fichier imprimante externe (recommandée)
+Recherche dans les sources du dépôt : tes impressions RPG ILE / SQLRPGLE n'utilisent **ni `PRTCTL` ni lignes blanches écrites** ; elles déclarent un fichier imprimante **décrit en DDS** et écrivent des formats d'enregistrement. Exemples (anonymisés) :
+- `sources/RPG/RPG-ILE/BIB02/PRINT.md` + `sources/DDS/BIB02/ECRANPRTF.md` : formats `ENTETE`, `TITRE`, `DETAIL`, `EJECT` ; saut de page par compteur de lignes.
+- `sources/DDS/BIB20/BONRPGFREE.md` + `sources/DDS/BIB20/BONPRT.md` : full free, `DCL-F BONPRT PRINTER OFLIND(*in60)`, `IF *in60; WRITE EJECT; WRITE TITRE; WRITE ENTETE; *in60 = *off;`. DDS : `SPACEB(001)`, `SKIPA(1)`.
+- `sources/RPG/RPG-ILE/BIB20/TPBONBON.md`, `sources/RPG/RPG-ILE/BIB17/ANIMSFSQL2.md` (`oflind(sautPage)`, `usropn`, `open/close`).
+- `sources/DDS/BIB21/PRTFEX.md` : `DATE(*Y)`, `TIME`, `EDTCDE(Z)`, `PAGNBR`, `SKIPA(1)`.
+- `sources/SQL/BIB02/PRTFSQL.md` + `PRINTSQL.md` : même schéma avec SQL.
+Seule exception : `sources/RPG/RPG-ILE/BIB19/IDBGSRV.md` (`DCL-F QSYSPRT PRINTER(132)`, `WRITE QSYSPRT prtLine`, trace de debug, sans mise en page).
+
+La version alignée sur cette méthode : [CYCLEPRT.prtf](exemples-cycle/CYCLEPRT.prtf) (DDS) + [CYCLEIMP.rpgle](exemples-cycle/CYCLEIMP.rpgle). Les 5 formats reproduisent le tableau 3 : `ENTETE` `SKIPB(1)` `SPACEA(1)` ; `UNIVERS` `SPACEB(1)` `SPACEA(1)` ; `DETAIL` `SPACEA(1)` ; `TOTUNI` et `TOTGEN` `SPACEB(2)` `SPACEA(0)`.
+Création : `CRTPRTF FILE(<BIB>/CYCLEPRT) SRCFILE(<BIB>/QPRTSRC) SRCMBR(CYCLEPRT) PAGESIZE(66 132) OVRFLW(60)`, puis `CRTBNDRPG` (non testé).
+Points **non vérifiés** (ni dans le wiki ni sur job-i) : `SKIPB(1)` en tête d'un format qui sert aussi de saut de page (alternative de tes sources : un format `EJECT` avec `SKIPA(1)` écrit avant `ENTETE`) ; `SPACEA(0)` accepté par `CRTPRTF` (sinon supprimer ces lignes) ; `PAGNBR` en colonne 72 imprimé sur 4 caractères ; `NOM` et `PRENOM` supposés de 15 caractères (déduit des colonnes du spool).
