@@ -4,14 +4,14 @@
 
 ## Résumé (à retenir)
 - **Vérifié (compilé et exécuté)** : `DCL-F QSYSPRT PRINTER(132) USAGE(*OUTPUT) OFLIND(*INOF)` ; `WRITE QSYSPRT <ds>` avec une DS `LEN(132) INZ` par type de ligne ; sous-zones placées par `POS(n)` avec constantes `INZ('...')` ; `%EDITC(zone : 'Z')` pour numéros de page, univers et totaux ; espacements par lignes blanches (`dsVide`) selon le modèle du curseur (section 3) ; saut de page par remplissage jusqu'à la ligne 66 après dépassement de la ligne 60.
-- **À éviter sans confirmation** : `PRTCTL(...:*COMPAT)` avec des `'000'` (a produit un spool faux, section 1).
+- **Cause de l'échec `PRTCTL`** : mauvaise disposition de la structure (voir [PRTCTL](PRTCTL.md)) ; version corrigée non testée : [CYCLEPRTCTL.rpgle](exemples-cycle/CYCLEPRTCTL.rpgle).
 - **Non vérifié** : mots-clés du fichier imprimante DDS de `CYCLEPRT` (`SKIPB`, `SPACEA(0)`, `PAGNBR`), comportement du cycle sur fichier vide.
 ## 1. Ce qui s'est passé
 Une première version full free utilisait `PRTCTL(prtCtl:*COMPAT)` avec une structure d'espacement remplie de `'000'` / `'001'`. Elle **compilait et s'exécutait**, mais le spool obtenu (40 pages au lieu de 8) était faux :
 - l'en-tête était en ligne 1 mais « UNIVERS 1 » en ligne ~10 ;
 - les 20 lignes de détail d'un univers étaient **superposées sur la même ligne** d'une page à part ;
 - « TOTAL UNIVERS » apparaissait sur cette même page, vers la ligne 20 ; les saut de page étaient incohérents.
-Cause probable (hypothèse) : les valeurs `'000'` de saut/espace, ou la façon dont `*COMPAT` interprète la structure, n'ont pas eu l'effet attendu (`'000'` saut avant = « ligne 0 » ?). **`PRTCTL` n'est documenté ni dans ce wiki ni sur job-i.fr** (recherche du terme, de `OFLIND` et de `OVRFLW` : introuvables ; seul `OVRFLW` figure dans la fiche 08 comme paramètre du fichier imprimante). Vérifier dans la documentation IBM avant de réutiliser `PRTCTL`.
+Cause très probable : la structure `PRTCTL` avait la **mauvaise disposition** (4 sous-zones `CHAR(3)` au lieu de `CHAR(1)`, `CHAR(1)`, `CHAR(2)`, `CHAR(2)` + compteur), donc les octets étaient lus de travers. Disposition officielle IBM et explication : [PRTCTL](PRTCTL.md). `PRTCTL` n'est pas documenté sur job-i.fr.
 
 ## 2. Mesure du spool de référence (RPG III à cycle)
 Mesures faites sur le spool d'origine (66 lignes par page, saut à la ligne 60) :

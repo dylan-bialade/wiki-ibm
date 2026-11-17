@@ -33,7 +33,7 @@
 | Code d'édition `Z` | `%EDITC(zone : 'Z')` dans une zone caractère de la DS | validé |
 | Espace avant / après (O col. 17-18) | lignes blanches écrites (`dsVide`) selon le modèle du curseur : ligne = curseur + avant ; curseur après = ligne + après | validé |
 | Saut `01` (nouvelle page) | remplir de lignes blanches jusqu'à la ligne 66 après dépassement de la ligne 60, puis curseur = 1 | validé |
-| `PRTCTL(ds:*COMPAT)` pour l'espacement | **a donné un spool faux** avec des `'000'` : voir [PRTCTL](PRTCTL.md) | non vérifié |
+| `PRTCTL(ds:*COMPAT)` pour l'espacement | structure de 9 octets (1+1+2+2+3) ; le premier essai avec des `CHAR(3)` a donné un spool faux : voir [PRTCTL](PRTCTL.md) ; version corrigée [CYCLEPRTCTL](exemples-cycle/CYCLEPRTCTL.rpgle) | disposition : documentée IBM ; programme : non testé |
 | Fichier imprimante DDS (`SPACEB`, `SKIPB`, `PAGNBR`, formats) | variante [CYCLEIMP](exemples-cycle/CYCLEIMP.rpgle) + [CYCLEPRT](exemples-cycle/CYCLEPRT.prtf) | non vérifié |
 | Ligne `E` + `EXCPT` | une procédure qui écrit la DS correspondante | proposé |
 | `B` col. 39 (blank after) | affecter la zone à blanc/0 après le `WRITE` | proposé |
