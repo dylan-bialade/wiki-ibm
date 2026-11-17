@@ -4,60 +4,20 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB10 | QDSPSRC | DDS | 35 | 100 % | DDS (R/K/PFILE) | [BONCRUD.md](../../sources/DDS/BIB10/BONCRUD.md) |
 | BIB05 | QRPGSRC2 | RPG/RPG-III-400 | 57 | 0 % | ecran (WORKSTN) | [BONCRUD.md](../../sources/RPG/RPG-III-400/BIB05/BONCRUD.md) |
-| BIB10 | QRPGSRC | RPG/RPG-III-400 | 111 | 0 % | ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc) | [BONCRUD.md](../../sources/RPG/RPG-III-400/BIB10/BONCRUD.md) |
 | BIB05 | QRPGLESRC | RPG/RPG-ILE | 57 | 0 % | ecran (WORKSTN), CHAIN | [BONCRUD.md](../../sources/RPG/RPG-ILE/BIB05/BONCRUD.md) |
+| BIB10 | QDSPSRC | DDS | 35 | 100 % | DDS (R/K/PFILE) | [BONCRUD.md](../../sources/DDS/BIB10/BONCRUD.md) |
+| BIB10 | QRPGSRC | RPG/RPG-III-400 | 111 | 0 % | ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc) | [BONCRUD.md](../../sources/RPG/RPG-III-400/BIB10/BONCRUD.md) |
 
 ## Differences
 
-- **BIB10** en propre : DDS (R/K/PFILE)
 - **BIB05** en propre : ecran (WORKSTN)
-- **BIB10** en propre : ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc)
 - **BIB05** en propre : ecran (WORKSTN), CHAIN
+- **BIB10** en propre : DDS (R/K/PFILE)
+- **BIB10** en propre : ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc)
 - Langages / types differents : DDS, RPG/RPG-III-400, RPG/RPG-ILE
 
 ## Codes
-
-### BIB10 (DDS, 35 lignes)
-
-```text
-     A*%%TS  SD  20261013  134220  XUAN        REL-V7R5M0  5770-WDS                  A*%%EC
-     A                                      DSPSIZ(24 80 *DS3)                       A          R FMT1
-     A*%%TS  SD  20261013  115114  XUAN        REL-V7R5M0  5770-WDS                  A                                      CF03(03)
-     A                                      CF12(12)                                 A                                  1  3'SYS'
-     A                                      COLOR(BLU)                               A                                  1  7SYSNAME
-     A                                  1 67'DATE'                                   A                                      COLOR(BLU)
-     A                                  1 72DATE                                     A                                      EDTCDE(Y)
-     A                                  2  3'USR'                                    A                                      COLOR(BLU)
-     A                                  2  7USER                                     A                                  2 67'TIME'
-     A                                      COLOR(BLU)                               A                                  2 72TIME
-     A                                 24  4'F3=Exit'                                A                                      COLOR(BLU)
-     A                                 24 13'F12=Annuler'                            A                                      COLOR(BLU)
-     A                                 24 26'F23=Valider'                            A                                      COLOR(BLU)
-     A                                  9 13'NOM:'                                   A            CNOM      R        B  9 20REFFLD(FBONBON/NOM BIB10/BONBONF)
-     A  50                                  DSPATR(PR)                               A                                      CHECK(LC)
-     A  81                                  ERRMSG('Nom Obligatoire !!' 81)         A                                 11 10'MARQUE:'
-     A            CMRQ      R        B 11 20REFFLD(FBONBON/MARQUE BIB10/BONBONF)      A  50                                  DSPATR(PR)
-     A  82                                  ERRMSG('Marque obligatoire' 82)         A                                      CHECK(LC)
-     A                                 13  9'COULEUR:'                               A            CCOUL     R        B 13 20REFFLD(FBONBON/COULEUR BIB10/BONBONF)
-     A  50                                  DSPATR(PR)                               A                                      CHECK(LC)
-     A                                 15 12'PRIX:'                                  A            CPRX      R        B 15 20REFFLD(FBONBON/PRIX BIB10/BONBONF)
-     A                                      EDTCDE(N)                                A  50                                  DSPATR(PR)
-     A  83                                  ERRMSG('Prix Obligatoire !!' 83)        A                                  7 10'NUMBER:'
-     A            CNUM      R        O  7 20REFFLD(FBONBON/NUMBER BIB10/BONBONF)      A                                  1 35'Fiche bonbon'
-     A                                      COLOR(BLU)                               A            CMOD          20A  O  2 31COLOR(WHT)
-     A                                 23  3'F3=exit'                                A                                      COLOR(BLU)
-     A                                 23 27'Entree=Valider  F12=Annuler'            A                                      COLOR(BLU)
-     A                                 23 65'F20=impression'                         A                                      COLOR(BLU)
-     A          R WFMT1                                                              A*%%TS  SD  20261013  134220  XUAN        REL-V7R5M0  5770-WDS
-     A                                      WINDOW(6 12 10 50)                       A                                  1 21'Suppression'
-     A                                  4  4'Vous etes sur le point de supprime-     A                                      r:'
-     A            CNOM          20A  O  5  4                                         A                                  9  4'Confirmer la suppression:'
-     A            CVER           3   B  9 31                                         A                                  9 35'(OUI/NON)'
-     A          R DUMMY                                                              A*%%TS  SD  20261013  132108  XUAN        REL-V7R5M0  5770-WDS
-     A                                      ASSUME                                   A                                  1  3' '
-```
 
 ### BIB05 (RPG/RPG-III-400, 57 lignes)
 
@@ -119,6 +79,108 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
      C                     WRITEFBONBON
      C                     ENDIF
       *CALL PGM(BIB05/BONCRUD) PARM((000001 (*DEC 6 0)) (2 (*CHAR 1)))
+```
+
+### BIB05 (RPG/RPG-ILE, 57 lignes)
+
+```text
+      *NOMPGM:
+      *NOMPROP:
+      *FILLEDEPEND:
+     * SI TU VOIS SA TU A COPIER BIB05
+     FBONBONSF  CF   E             WORKSTN
+     FBONBKNU   UF A E           K DISK
+     IFBONBON
+     I              COULEUR                     COUL
+     C                   SETON                                        LR
+     C     *ENTRY        PLIST
+     C                   PARM                    OPT               1
+     C                   PARM                    NUMBER            6 0
+      *DEBUT MODIF
+     C     OPT           IFEQ      '2'
+     C                   MOVE      'MODIF'       MSG
+     C     NUMBER        CHAIN     FBONBON                            90
+     C                   MOVEL     NOM           VAL1
+     C                   MOVEL     MARQUE        VAL2
+     C                   MOVEL     COUL          VAL3
+     C                   MOVEL     PRIX          VAL4
+     C                   EXFMT     FMT1
+     C                   MOVEL     VAL1          NOM
+     C                   MOVEL     VAL2          MARQUE
+     C                   MOVEL     VAL3          COUL
+     C                   MOVEL     VAL4          PRIX
+     C                   UPDATE    FBONBON
+     C                   ENDIF
+      *DEBUT SUPP
+     C     OPT           IFEQ      '3'
+     C                   EXFMT     WIN1
+     C     VAL7          IFEQ      'OUI'
+     C                   MOVE      'DELETE'      MSG
+     C                   MOVE      NUMBER        VAL8
+     C     NUMBER        CHAIN     FBONBON                            90
+     C                   DELETE    FBONBON
+     C                   ENDIF
+     C                   ELSE
+     C                   SETON                                        03
+     C                   ENDIF
+      *DEBUT CRÉATION
+     C     OPT           IFEQ      '4'
+     C                   MOVE      'CREATE'      MSG
+     C     *HIVAL        SETGT     FBONBON
+     C                   READP     FBONBON                                90
+     C                   ADD       1             NUMBER
+     C                   MOVEL     *BLANK        NOM
+     C                   MOVEL     *BLANK        MARQUE
+     C                   MOVEL     *BLANK        COUL
+     C                   MOVEL     *BLANK        PRIX
+     C                   EXFMT     FMT1
+     C                   MOVEL     VAL1          NOM
+     C                   MOVEL     VAL2          MARQUE
+     C                   MOVEL     VAL3          COUL
+     C                   MOVEL     VAL4          PRIX
+     C                   WRITE     FBONBON
+     C                   ENDIF
+      *CALL PGM(BIB05/BONCRUD) PARM((000001 (*DEC 6 0)) (2 (*CHAR 1)))
+```
+
+### BIB10 (DDS, 35 lignes)
+
+```text
+     A*%%TS  SD  20261013  134220  XUAN        REL-V7R5M0  5770-WDS                  A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)                       A          R FMT1
+     A*%%TS  SD  20261013  115114  XUAN        REL-V7R5M0  5770-WDS                  A                                      CF03(03)
+     A                                      CF12(12)                                 A                                  1  3'SYS'
+     A                                      COLOR(BLU)                               A                                  1  7SYSNAME
+     A                                  1 67'DATE'                                   A                                      COLOR(BLU)
+     A                                  1 72DATE                                     A                                      EDTCDE(Y)
+     A                                  2  3'USR'                                    A                                      COLOR(BLU)
+     A                                  2  7USER                                     A                                  2 67'TIME'
+     A                                      COLOR(BLU)                               A                                  2 72TIME
+     A                                 24  4'F3=Exit'                                A                                      COLOR(BLU)
+     A                                 24 13'F12=Annuler'                            A                                      COLOR(BLU)
+     A                                 24 26'F23=Valider'                            A                                      COLOR(BLU)
+     A                                  9 13'NOM:'                                   A            CNOM      R        B  9 20REFFLD(FBONBON/NOM BIB10/BONBONF)
+     A  50                                  DSPATR(PR)                               A                                      CHECK(LC)
+     A  81                                  ERRMSG('Nom Obligatoire !!' 81)         A                                 11 10'MARQUE:'
+     A            CMRQ      R        B 11 20REFFLD(FBONBON/MARQUE BIB10/BONBONF)      A  50                                  DSPATR(PR)
+     A  82                                  ERRMSG('Marque obligatoire' 82)         A                                      CHECK(LC)
+     A                                 13  9'COULEUR:'                               A            CCOUL     R        B 13 20REFFLD(FBONBON/COULEUR BIB10/BONBONF)
+     A  50                                  DSPATR(PR)                               A                                      CHECK(LC)
+     A                                 15 12'PRIX:'                                  A            CPRX      R        B 15 20REFFLD(FBONBON/PRIX BIB10/BONBONF)
+     A                                      EDTCDE(N)                                A  50                                  DSPATR(PR)
+     A  83                                  ERRMSG('Prix Obligatoire !!' 83)        A                                  7 10'NUMBER:'
+     A            CNUM      R        O  7 20REFFLD(FBONBON/NUMBER BIB10/BONBONF)      A                                  1 35'Fiche bonbon'
+     A                                      COLOR(BLU)                               A            CMOD          20A  O  2 31COLOR(WHT)
+     A                                 23  3'F3=exit'                                A                                      COLOR(BLU)
+     A                                 23 27'Entree=Valider  F12=Annuler'            A                                      COLOR(BLU)
+     A                                 23 65'F20=impression'                         A                                      COLOR(BLU)
+     A          R WFMT1                                                              A*%%TS  SD  20261013  134220  XUAN        REL-V7R5M0  5770-WDS
+     A                                      WINDOW(6 12 10 50)                       A                                  1 21'Suppression'
+     A                                  4  4'Vous etes sur le point de supprime-     A                                      r:'
+     A            CNOM          20A  O  5  4                                         A                                  9  4'Confirmer la suppression:'
+     A            CVER           3   B  9 31                                         A                                  9 35'(OUI/NON)'
+     A          R DUMMY                                                              A*%%TS  SD  20261013  132108  XUAN        REL-V7R5M0  5770-WDS
+     A                                      ASSUME                                   A                                  1  3' '
 ```
 
 ### BIB10 (RPG/RPG-III-400, 111 lignes)
@@ -235,66 +297,4 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
   MODE AFFICHAGE
  MODE MODIFICATION
  MODE SUPPRESSION
-```
-
-### BIB05 (RPG/RPG-ILE, 57 lignes)
-
-```text
-      *NOMPGM:
-      *NOMPROP:
-      *FILLEDEPEND:
-     * SI TU VOIS SA TU A COPIER BIB05
-     FBONBONSF  CF   E             WORKSTN
-     FBONBKNU   UF A E           K DISK
-     IFBONBON
-     I              COULEUR                     COUL
-     C                   SETON                                        LR
-     C     *ENTRY        PLIST
-     C                   PARM                    OPT               1
-     C                   PARM                    NUMBER            6 0
-      *DEBUT MODIF
-     C     OPT           IFEQ      '2'
-     C                   MOVE      'MODIF'       MSG
-     C     NUMBER        CHAIN     FBONBON                            90
-     C                   MOVEL     NOM           VAL1
-     C                   MOVEL     MARQUE        VAL2
-     C                   MOVEL     COUL          VAL3
-     C                   MOVEL     PRIX          VAL4
-     C                   EXFMT     FMT1
-     C                   MOVEL     VAL1          NOM
-     C                   MOVEL     VAL2          MARQUE
-     C                   MOVEL     VAL3          COUL
-     C                   MOVEL     VAL4          PRIX
-     C                   UPDATE    FBONBON
-     C                   ENDIF
-      *DEBUT SUPP
-     C     OPT           IFEQ      '3'
-     C                   EXFMT     WIN1
-     C     VAL7          IFEQ      'OUI'
-     C                   MOVE      'DELETE'      MSG
-     C                   MOVE      NUMBER        VAL8
-     C     NUMBER        CHAIN     FBONBON                            90
-     C                   DELETE    FBONBON
-     C                   ENDIF
-     C                   ELSE
-     C                   SETON                                        03
-     C                   ENDIF
-      *DEBUT CRÉATION
-     C     OPT           IFEQ      '4'
-     C                   MOVE      'CREATE'      MSG
-     C     *HIVAL        SETGT     FBONBON
-     C                   READP     FBONBON                                90
-     C                   ADD       1             NUMBER
-     C                   MOVEL     *BLANK        NOM
-     C                   MOVEL     *BLANK        MARQUE
-     C                   MOVEL     *BLANK        COUL
-     C                   MOVEL     *BLANK        PRIX
-     C                   EXFMT     FMT1
-     C                   MOVEL     VAL1          NOM
-     C                   MOVEL     VAL2          MARQUE
-     C                   MOVEL     VAL3          COUL
-     C                   MOVEL     VAL4          PRIX
-     C                   WRITE     FBONBON
-     C                   ENDIF
-      *CALL PGM(BIB05/BONCRUD) PARM((000001 (*DEC 6 0)) (2 (*CHAR 1)))
 ```

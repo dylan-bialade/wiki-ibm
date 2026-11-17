@@ -1,6 +1,6 @@
 # Wiki IBM i : contexte complet pour un assistant
 
-Genere le 2026-11-17 10:01 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Genere le 2026-11-17 10:05 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
 Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
 
 
@@ -981,266 +981,266 @@ Chaîne de restauration rapide fictive ; l'épreuve se déroule dans un environn
 === FICHIER : docs/MANQUES.md ===
 # Ce qui manque dans les fiches (utilise dans le code, absent des fiches)
 
-Genere le 2026-11-17 10:01 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
+Genere le 2026-11-17 10:05 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
 
 ## Commandes CL : 60 manquants sur 104 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
-| CRTCLS | 2 | 2 |
-| RMVDIR | 7 | 6 |
-| CALLSUBR | 4 | 3 |
-| SNDUSRMSG | 1 | 1 |
-| RCLRSC | 4 | 3 |
-| CRTJOBD | 2 | 2 |
-| DSPPGMREF | 1 | 1 |
-| CPYTOIMPF | 1 | 1 |
-| FTP | 9 | 5 |
-| RCVMSG | 10 | 6 |
-| CRTDIR | 5 | 4 |
-| ENDSELECT | 1 | 1 |
-| CHGCURLIB | 11 | 5 |
-| CRTSBSD | 2 | 2 |
-| RCVF | 38 | 6 |
-| ADDRTGE | 2 | 2 |
-| SNDRCVF | 53 | 8 |
-| ELSE | 22 | 7 |
-| SUBR | 4 | 3 |
-| ADDJOBQE | 2 | 2 |
-| COPYRIGHT | 7 | 1 |
-| ITERATE | 4 | 3 |
-| RMVLIBLE | 5 | 4 |
-| ADDENVVAR | 2 | 1 |
-| RTVJOBA | 13 | 9 |
-| STRPCCMD | 3 | 1 |
-| ENDPGM | 142 | 14 |
-| DOUNTIL | 5 | 4 |
-| CLRPFM | 10 | 5 |
-| ENDSUBR | 4 | 3 |
-| CLOF | 10 | 4 |
-| ENDMOD | 6 | 1 |
-| DCLPRCOPT | 9 | 1 |
-| WHEN | 92 | 4 |
 | CHGVAR | 310 | 13 |
+| ENDPGM | 142 | 14 |
+| GOTO | 94 | 9 |
+| WHEN | 92 | 4 |
+| SNDPGMMSG | 73 | 9 |
+| SNDRCVF | 53 | 8 |
 | DLTOVR | 44 | 6 |
-| CRTDSPF | 3 | 3 |
-| STRPCO | 1 | 1 |
+| RCVF | 38 | 6 |
 | DSPATR | 33 | 1 |
-| DLTJRN | 1 | 1 |
-| RTVOBJD | 8 | 4 |
+| LEAVE | 28 | 1 |
+| ELSE | 22 | 7 |
+| STRSEU | 14 | 2 |
+| RTVJOBA | 13 | 9 |
+| CHGCURLIB | 11 | 5 |
+| CLOF | 10 | 4 |
+| CLRPFM | 10 | 5 |
+| RCVMSG | 10 | 6 |
 | CPYSRCF | 9 | 3 |
-| DLTDTAARA | 2 | 2 |
-| MKDIR | 1 | 1 |
+| DCLPRCOPT | 9 | 1 |
+| FTP | 9 | 5 |
+| OPNQRYF | 8 | 4 |
+| RTVOBJD | 8 | 4 |
+| COPYRIGHT | 7 | 1 |
+| RMVDIR | 7 | 6 |
+| CPYTOSTMF | 6 | 5 |
+| ENDMOD | 6 | 1 |
 | RTVUSRPRF | 6 | 5 |
+| CRTCLPGM | 5 | 3 |
+| CRTDIR | 5 | 4 |
+| DOUNTIL | 5 | 4 |
+| RMVLIBLE | 5 | 4 |
+| RTVMBRD | 5 | 2 |
+| STRSBS | 5 | 3 |
+| CALLSUBR | 4 | 3 |
+| DLYJOB | 4 | 2 |
+| ENDSUBR | 4 | 3 |
+| ITERATE | 4 | 3 |
+| RCLRSC | 4 | 3 |
+| SUBR | 4 | 3 |
+| CRTDSPF | 3 | 3 |
+| STRPCCMD | 3 | 1 |
+| ADDENVVAR | 2 | 1 |
+| ADDJOBQE | 2 | 2 |
+| ADDRTGE | 2 | 2 |
+| CRTCLS | 2 | 2 |
 
 ## Instructions / fonctions RPG (reconnues par job-i) : 41 manquants sur 102 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
-| DELETE | 134 | 7 |
-| WORKSTN | 158 | 13 |
-| %ALLOC | 2 | 1 |
-| %STR | 6 | 1 |
-| %TRIMR | 85 | 5 |
-| %SCANRPL | 16 | 3 |
-| %TARGET | 2 | 1 |
-| ELSE | 414 | 15 |
-| %LIST | 2 | 2 |
-| %STATUS | 5 | 3 |
-| %TIMESTAMP | 4 | 1 |
-| READPE | 3 | 2 |
-| %CHECKR | 1 | 1 |
-| SORTA | 1 | 1 |
-| OVERLAY | 24 | 5 |
-| SETGT | 7 | 2 |
-| %XLATE | 14 | 1 |
-| %FIELDS | 1 | 1 |
-| DCL-ENUM | 2 | 2 |
-| %LOWER | 2 | 2 |
-| SND-MSG | 26 | 8 |
-| QUALIFIED | 41 | 8 |
-| READP | 10 | 2 |
-| %SUBARR | 5 | 3 |
-| %MIN | 1 | 1 |
-| %DIV | 13 | 2 |
-| %DAYS | 8 | 1 |
-| %ADDR | 190 | 9 |
-| %ERROR | 43 | 2 |
-| DCL-C | 161 | 11 |
-| BASED | 21 | 9 |
-| %UPPER | 4 | 3 |
-| %OPEN | 5 | 3 |
-| UNLOCK | 8 | 1 |
-| %DECH | 10 | 4 |
-| %EQUAL | 2 | 1 |
-| RESET | 1 | 1 |
-| ITER | 114 | 11 |
 | LEAVE | 475 | 12 |
-| %XFOOT | 3 | 1 |
+| ELSE | 414 | 15 |
+| %ADDR | 190 | 9 |
+| DCL-C | 161 | 11 |
+| WORKSTN | 158 | 13 |
+| DELETE | 134 | 7 |
+| ITER | 114 | 11 |
 | PARM | 105 | 6 |
+| %TRIMR | 85 | 5 |
+| %ERROR | 43 | 2 |
+| QUALIFIED | 41 | 8 |
+| SND-MSG | 26 | 8 |
+| OVERLAY | 24 | 5 |
+| BASED | 21 | 9 |
+| %SCANRPL | 16 | 3 |
+| %XLATE | 14 | 1 |
+| %DIV | 13 | 2 |
+| %DECH | 10 | 4 |
+| READP | 10 | 2 |
+| %DAYS | 8 | 1 |
+| UNLOCK | 8 | 1 |
+| SETGT | 7 | 2 |
+| %STR | 6 | 1 |
+| %OPEN | 5 | 3 |
+| %STATUS | 5 | 3 |
+| %SUBARR | 5 | 3 |
+| %TIMESTAMP | 4 | 1 |
+| %UPPER | 4 | 3 |
+| %XFOOT | 3 | 1 |
+| READPE | 3 | 2 |
+| %ALLOC | 2 | 1 |
+| %EQUAL | 2 | 1 |
+| %LIST | 2 | 2 |
+| %LOWER | 2 | 2 |
+| %TARGET | 2 | 1 |
+| DCL-ENUM | 2 | 2 |
+| %CHECKR | 1 | 1 |
+| %FIELDS | 1 | 1 |
+| %MIN | 1 | 1 |
+| RESET | 1 | 1 |
+| SORTA | 1 | 1 |
 
 ## Messages (MONMSG, SQLCODE...) : 60 manquants sur 68 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
-| SQL0901 | 1 | 1 |
-| CPF1064 | 2 | 2 |
-| CPF2110 | 2 | 2 |
-| CPF4203 | 1 | 1 |
-| CPF1008 | 1 | 1 |
-| CPF3323 | 2 | 2 |
-| CPF7602 | 3 | 1 |
-| CPF3142 | 1 | 1 |
-| SQL0000 | 6 | 5 |
-| EDT0223 | 12 | 1 |
-| CPF1016 | 1 | 1 |
-| CPF2817 | 6 | 2 |
-| CPF9800 | 1 | 1 |
-| CPD9817 | 4 | 4 |
-| CPFA0A9 | 4 | 2 |
-| CPF1621 | 2 | 2 |
-| CPC1221 | 2 | 1 |
-| SQL7064 | 2 | 1 |
-| CPF0864 | 47 | 7 |
-| CPF6801 | 1 | 1 |
-| CPFA0A0 | 4 | 4 |
-| CPF3353 | 2 | 2 |
-| CPF2111 | 5 | 3 |
-| MCH0000 | 14 | 5 |
-| CPF1697 | 4 | 2 |
 | CPF0000 | 82 | 11 |
-| SQL0952 | 2 | 1 |
-| CPF2551 | 6 | 2 |
-| CPF9841 | 1 | 1 |
-| CPD0000 | 5 | 4 |
-| SQL0204 | 1 | 1 |
-| CPF3CF2 | 6 | 2 |
+| CPF0864 | 47 | 7 |
+| CPF2103 | 20 | 7 |
 | CPF9897 | 20 | 5 |
-| CPFA0B7 | 3 | 2 |
-| CPF4520 | 2 | 2 |
+| CPF9898 | 16 | 5 |
+| MCH0000 | 14 | 5 |
+| EDT9007 | 13 | 2 |
+| EDT0223 | 12 | 1 |
 | CPD0071 | 10 | 2 |
-| CPFA097 | 2 | 1 |
-| SQL0301 | 1 | 1 |
+| CPF9812 | 9 | 5 |
 | CPF5813 | 8 | 2 |
-| CPF1021 | 1 | 1 |
+| CPD0084 | 6 | 1 |
+| CPF2551 | 6 | 2 |
+| CPF2817 | 6 | 2 |
+| CPF3CF2 | 6 | 2 |
+| SQL0000 | 6 | 5 |
+| CPD0000 | 5 | 4 |
+| CPD0172 | 5 | 2 |
+| CPF2111 | 5 | 3 |
+| CPD9817 | 4 | 4 |
+| CPF1697 | 4 | 2 |
+| CPFA0A0 | 4 | 4 |
+| CPFA0A9 | 4 | 2 |
 | CPF0801 | 3 | 2 |
+| CPF3012 | 3 | 3 |
+| CPF3064 | 3 | 3 |
+| CPF4174 | 3 | 1 |
+| CPF7602 | 3 | 1 |
+| CPFA0B7 | 3 | 2 |
+| IWS4010 | 3 | 1 |
+| CPC1221 | 2 | 1 |
+| CPF1064 | 2 | 2 |
+| CPF1621 | 2 | 2 |
 | CPF1696 | 2 | 2 |
 | CPF2104 | 2 | 2 |
-| CPF9812 | 9 | 5 |
-| CPF1015 | 1 | 1 |
+| CPF2110 | 2 | 2 |
+| CPF2292 | 2 | 2 |
+| CPF2816 | 2 | 1 |
+| CPF3323 | 2 | 2 |
+| CPF3353 | 2 | 2 |
+| CPF4520 | 2 | 2 |
+| CPFA097 | 2 | 1 |
+| SQL0952 | 2 | 1 |
+| SQL7064 | 2 | 1 |
+| CPF1008 | 1 | 1 |
 
 ## Services SQL (QSYS2, SYSTOOLS) : 25 manquants sur 28 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
-| SYSTOOLS.HTTPPOSTCLOB | 4 | 2 |
-| QSYS2.BOUND_SRVPGM_INFO | 2 | 2 |
-| QSYS2.SYSROUTINES | 1 | 1 |
-| QSYS2.HTTP_POST | 2 | 2 |
-| SYSTOOLS.HTTPDELETECLOBVERBOSE | 1 | 1 |
-| QSYS2.HTTP_PUT | 2 | 2 |
-| QSYS2.BOUND_MODULE_INFO | 5 | 3 |
-| QSYS2.IFS_WRITE_UTF8 | 5 | 1 |
-| QSYS2.SEND_MESSAGE | 2 | 1 |
-| QSYS2.PROGRAM_EXPORT_IMPORT_INFO | 1 | 1 |
-| SYSTOOLS.HTTPGETCLOB | 3 | 2 |
-| QSYS2.HTTP_GET | 5 | 2 |
-| QSYS2.HTTP_POST_VERBOSE | 3 | 3 |
-| QSYS2.RECEIVE_DATA_QUEUE | 1 | 1 |
-| SYSTOOLS.BASE64ENCODE | 4 | 1 |
-| QSYS2.STACK_INFO | 2 | 1 |
-| QSYS2.SEND_DATA_QUEUE | 2 | 1 |
-| QSYS2.HTTP_DELETE | 1 | 1 |
-| QSYS2.IFS_REMOVE_FILE | 1 | 1 |
-| QSYS2.SYSPARTITIONSTAT | 4 | 3 |
 | QSYS2.BASE64_ENCODE | 5 | 2 |
-| QSYS2.JOB_INFO | 1 | 1 |
-| SYSTOOLS.HTTPDELETECLOB | 1 | 1 |
-| QSYS2.IFS_READ_BINARY | 1 | 1 |
+| QSYS2.BOUND_MODULE_INFO | 5 | 3 |
+| QSYS2.HTTP_GET | 5 | 2 |
+| QSYS2.IFS_WRITE_UTF8 | 5 | 1 |
+| QSYS2.SYSPARTITIONSTAT | 4 | 3 |
+| SYSTOOLS.BASE64ENCODE | 4 | 1 |
+| SYSTOOLS.HTTPPOSTCLOB | 4 | 2 |
+| QSYS2.HTTP_POST_VERBOSE | 3 | 3 |
+| SYSTOOLS.HTTPGETCLOB | 3 | 2 |
+| QSYS2.BOUND_SRVPGM_INFO | 2 | 2 |
+| QSYS2.HTTP_POST | 2 | 2 |
+| QSYS2.HTTP_PUT | 2 | 2 |
+| QSYS2.SEND_DATA_QUEUE | 2 | 1 |
+| QSYS2.SEND_MESSAGE | 2 | 1 |
+| QSYS2.STACK_INFO | 2 | 1 |
 | SYSTOOLS.HTTPPUTCLOB | 2 | 2 |
+| QSYS2.HTTP_DELETE | 1 | 1 |
+| QSYS2.IFS_READ_BINARY | 1 | 1 |
+| QSYS2.IFS_REMOVE_FILE | 1 | 1 |
+| QSYS2.JOB_INFO | 1 | 1 |
+| QSYS2.PROGRAM_EXPORT_IMPORT_INFO | 1 | 1 |
+| QSYS2.RECEIVE_DATA_QUEUE | 1 | 1 |
+| QSYS2.SYSROUTINES | 1 | 1 |
+| SYSTOOLS.HTTPDELETECLOBVERBOSE | 1 | 1 |
+| SYSTOOLS.HTTPDELETECLOB | 1 | 1 |
 
 ## Mots-cles DDS / ecran : 84 manquants sur 102 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
-| CA13 | 1 | 1 |
-| SFLMSGRCD | 4 | 3 |
-| CA01 | 11 | 2 |
-| SFLMOD | 2 | 1 |
-| SFLMAX | 14 | 2 |
-| CF23 | 71 | 8 |
-| CF12 | 52 | 7 |
-| SFLSEARCH | 3 | 1 |
-| ERRMSG | 61 | 8 |
-| SFLSCROLL | 3 | 1 |
-| SFLOBJ | 7 | 1 |
-| CF04 | 9 | 4 |
-| CA06 | 37 | 6 |
-| CF24 | 12 | 5 |
-| SFLCBL | 3 | 1 |
-| EDTWRD | 11 | 3 |
-| CA04 | 2 | 2 |
-| CF20 | 9 | 4 |
-| CA24 | 1 | 1 |
-| CF03 | 100 | 9 |
-| CF18 | 8 | 3 |
-| SFLPAGE | 3 | 1 |
-| SFLNXTCHG | 8 | 5 |
-| SFLDSPC | 3 | 1 |
-| SFLDROP | 11 | 4 |
-| SFLABCTL | 2 | 1 |
-| SFLINZ | 7 | 3 |
-| CF15 | 9 | 4 |
-| CA03 | 102 | 12 |
-| SFLPGM | 4 | 1 |
-| CF19 | 8 | 3 |
-| CF11 | 17 | 5 |
-| SFLLIN | 11 | 2 |
-| SFLPGMQ | 8 | 3 |
-| SFLF | 2 | 1 |
+| COLOR | 2152 | 14 |
+| DSPATR | 1017 | 11 |
 | CHECK | 185 | 9 |
+| DSPSIZ | 178 | 16 |
+| CA03 | 102 | 12 |
+| CF03 | 100 | 9 |
+| OVERLAY | 84 | 13 |
+| CA12 | 83 | 10 |
+| CF23 | 71 | 8 |
+| ERRMSG | 61 | 8 |
+| SFLCOLUMN | 58 | 1 |
+| CF12 | 52 | 7 |
+| WINDOW | 40 | 10 |
+| INDARA | 39 | 9 |
+| CA06 | 37 | 6 |
 | SFLCR | 37 | 2 |
-| SFLCSRRRN | 2 | 2 |
-| SFLRRN | 4 | 2 |
-| CA05 | 20 | 6 |
+| REFFLD | 30 | 4 |
 | CF06 | 29 | 7 |
-| SFLPOS | 5 | 1 |
+| CHGINPDFT | 26 | 8 |
+| CA05 | 20 | 6 |
+| CF05 | 19 | 7 |
+| CF10 | 17 | 5 |
+| CF11 | 17 | 5 |
+| CF21 | 15 | 5 |
+| SFLMAX | 14 | 2 |
+| CF02 | 13 | 7 |
 | CA08 | 12 | 2 |
+| CF07 | 12 | 6 |
+| CF24 | 12 | 5 |
+| CA01 | 11 | 2 |
+| EDTWRD | 11 | 3 |
+| SFLDROP | 11 | 4 |
+| SFLLIN | 11 | 2 |
+| CF08 | 10 | 4 |
 | CF09 | 10 | 5 |
-| SFLDLT | 4 | 2 |
+| CF22 | 10 | 5 |
+| SFLLCK | 10 | 1 |
+| SFLOPT | 10 | 1 |
+| CF04 | 9 | 4 |
+| CF13 | 9 | 4 |
+| CF15 | 9 | 4 |
+| CF20 | 9 | 4 |
+| CF14 | 8 | 3 |
+| CF16 | 8 | 3 |
+| CF17 | 8 | 3 |
 
 ## Sources par type et bibliotheque
 
 | Type | Sources |
 |---|---|
-| Autres/Aide | 1 |
-| Autres/Commandes | 4 |
-| Autres/Panneaux-UIM | 1 |
-| Autres/Service-programs | 14 |
-| Autres/Web | 5 |
-| CL/CL-ILE | 50 |
-| CL/CL-procedural | 128 |
-| COBOL | 26 |
 | DDS | 382 |
+| RPG/RPG-ILE | 291 |
+| CL/CL-procedural | 128 |
+| RPG/RPG-III-400 | 124 |
+| CL/CL-ILE | 50 |
+| SQL | 31 |
+| COBOL | 26 |
+| Autres/Service-programs | 14 |
 | Menus | 14 |
 | RPG/Copy | 11 |
-| RPG/RPG-III-400 | 124 |
-| RPG/RPG-ILE | 291 |
-| SQL | 31 |
+| Autres/Web | 5 |
+| Autres/Commandes | 4 |
+| Autres/Aide | 1 |
+| Autres/Panneaux-UIM | 1 |
 
 
 === FICHIER : docs/CYCLE-GAP-EXEMPLES.md ===
 # Exemples du cycle RPG (cycle GAP) dans les bibliotheques
 
-Genere le 2026-11-17 10:01. Detection : un fichier **primaire** (IP) ou **secondaire** (IS) en specification F dans un source en colonnes. Explication du cycle : [fiche 03](cheatsheets/03-rpg-par-version.md) et [job-i.fr](https://job-i.fr/cycle-gap-rpg). Detection heuristique : a confirmer en ouvrant le source.
+Genere le 2026-11-17 10:04. Detection : un fichier **primaire** (IP) ou **secondaire** (IS) en specification F dans un source en colonnes. Explication du cycle : [fiche 03](cheatsheets/03-rpg-par-version.md) et [job-i.fr](https://job-i.fr/cycle-gap-rpg). Detection heuristique : a confirmer en ouvrant le source.
 
 | Bibliotheque | Membre | Type | Lignes | Primaire (IP) | Secondaire (IS) | Niveaux (L1-L9) | 1P | OF | Source |
 |---|---|---|---|---|---|---|---|---|---|
 | BIB01 | LIVGAP1 | RPG/RPG-III-400 | 78 | oui | - | L1 | oui | - | [LIVGAP1.md](../sources/RPG/RPG-III-400/BIB01/LIVGAP1.md) |
 | BIB01 | LIVGAP2 | RPG/RPG-III-400 | 109 | oui | - | L1 | - | - | [LIVGAP2.md](../sources/RPG/RPG-III-400/BIB01/LIVGAP2.md) |
 | BIB01 | SYNTAX3 | RPG/RPG-III-400 | 98 | oui | - |  | - | - | [SYNTAX3.md](../sources/RPG/RPG-III-400/BIB01/SYNTAX3.md) |
-| BIB20 | CYCDEMO | RPG/RPG-III-400 | 183 | oui | oui | L2 L1 | oui | oui | [CYCDEMO.md](../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md) |
-| BIB21 | FILMCYC | RPG/RPG-III-400 | 186 | oui | - | L3 L2 L1 | - | oui | [FILMCYC.md](../sources/RPG/RPG-III-400/BIB21/FILMCYC.md) |
+| BIB20 | CYCDEMO | RPG/RPG-III-400 | 183 | oui | oui | L1 L2 | oui | oui | [CYCDEMO.md](../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md) |
+| BIB21 | FILMCYC | RPG/RPG-III-400 | 186 | oui | - | L1 L2 L3 | - | oui | [FILMCYC.md](../sources/RPG/RPG-III-400/BIB21/FILMCYC.md) |
 
 
 === FICHIER : docs/PORTABILITE.md ===
@@ -1261,11 +1261,12 @@ Objectif : que la régénération, la détection de changements sur job-i.fr et 
 Le résultat de la régénération arrive sous forme d'une **Pull Request** (branche `auto/regeneration-AAAAMMJJ`) : un clic pour fusionner (le propriétaire contourne la règle de relecture). Les simples changements de date ne créent pas de PR.
 
 ## Résultat des essais du 17/11/2026
-- **Action GitHub** : essai complet réussi sous Linux (PowerShell 7) : les 9 étapes (job-i, vérifications, comparaisons, manques, évaluations, contexte) se terminent sans erreur et la branche `auto/regeneration-AAAAMMJJ` est poussée.
-- **Routine cloud Claude** (« Wiki IBM i : relecture quotidienne (cloud) », 06:30 UTC) : essai réussi (dépôt cloné, documents lus, décisions correctes, aucun commit inutile). Limite constatée : **`job-i.fr` n'est pas joignable depuis l'environnement cloud** tant que le domaine n'est pas autorisé (réglage 2).
-
+- **Action GitHub** : essais complets réussis sous Linux (PowerShell 7). Les 9 étapes (job-i, vérifications, comparaisons, manques, évaluations, contexte) se terminent sans erreur, la branche `auto/regeneration-AAAAMMJJ` est poussée et **la Pull Request est créée** (réglage GitHub activé).
+- **Bruit supprimé** : un premier essai a produit une PR de 64 fichiers uniquement parce que PowerShell 5.1 (Windows) et PowerShell 7 (Linux) ordonnent différemment les listes (tri sensible à la langue, égalités, JSON). Les scripts utilisent maintenant un **tri ordinal stable** (`Sort-By`) et un état job-i canonique : la même entrée donne la même sortie sous les deux versions, et l'Action ne propose une PR que s'il y a un changement de fond (les dates de génération sont ignorées).
+- **Réseau** : `job-i.fr` répond parfois par une coupure de connexion ; les scripts réessaient maintenant jusqu'à 4 fois.
+- **Routine cloud Claude** (« Wiki IBM i : relecture quotidienne (cloud) », 06:30 UTC) : deux essais réussis (dépôt cloné, documents lus, décisions correctes, aucun commit inutile). Limite : **`job-i.fr` n'est pas joignable depuis l'environnement cloud** tant que le domaine n'est pas autorisé (réglage 2) ; la routine n'en a pas eu besoin lors de ces essais.
 ## Réglages à faire une fois (sécurité : à vous)
-1. Dépôt > **Settings > Actions > General** : cocher « Allow GitHub Actions to create and approve pull requests » (**sans cela l'Action pousse la branche mais ne peut pas ouvrir la Pull Request**, constaté à l'essai ; la PR se crée alors à la main depuis la branche).
+1. Dépôt > **Settings > Actions > General** : « Allow GitHub Actions to create and approve pull requests » (**fait et vérifié** le 17/11/2026 : sans ce réglage l'Action pousse la branche mais ne peut pas ouvrir la Pull Request).
 2. Réseau de la routine cloud : claude.ai > Code > Environnements (environnement « Default ») > accès réseau : **autoriser `job-i.fr`**. Sans cela la routine ne peut pas relire les pages job-i.fr pour mettre à jour les fiches (la détection de changements, elle, fonctionne dans l'Action).
 3. Facultatif : si vous préférez que le robot fusionne seul, ajouter l'application « GitHub Actions » aux acteurs qui contournent la règle `nomain` (à éviter si des camarades peuvent proposer du code).
 ## Utiliser le wiki sur un autre ordinateur

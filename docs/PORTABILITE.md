@@ -15,11 +15,12 @@ Objectif : que la régénération, la détection de changements sur job-i.fr et 
 Le résultat de la régénération arrive sous forme d'une **Pull Request** (branche `auto/regeneration-AAAAMMJJ`) : un clic pour fusionner (le propriétaire contourne la règle de relecture). Les simples changements de date ne créent pas de PR.
 
 ## Résultat des essais du 17/11/2026
-- **Action GitHub** : essai complet réussi sous Linux (PowerShell 7) : les 9 étapes (job-i, vérifications, comparaisons, manques, évaluations, contexte) se terminent sans erreur et la branche `auto/regeneration-AAAAMMJJ` est poussée.
-- **Routine cloud Claude** (« Wiki IBM i : relecture quotidienne (cloud) », 06:30 UTC) : essai réussi (dépôt cloné, documents lus, décisions correctes, aucun commit inutile). Limite constatée : **`job-i.fr` n'est pas joignable depuis l'environnement cloud** tant que le domaine n'est pas autorisé (réglage 2).
-
+- **Action GitHub** : essais complets réussis sous Linux (PowerShell 7). Les 9 étapes (job-i, vérifications, comparaisons, manques, évaluations, contexte) se terminent sans erreur, la branche `auto/regeneration-AAAAMMJJ` est poussée et **la Pull Request est créée** (réglage GitHub activé).
+- **Bruit supprimé** : un premier essai a produit une PR de 64 fichiers uniquement parce que PowerShell 5.1 (Windows) et PowerShell 7 (Linux) ordonnent différemment les listes (tri sensible à la langue, égalités, JSON). Les scripts utilisent maintenant un **tri ordinal stable** (`Sort-By`) et un état job-i canonique : la même entrée donne la même sortie sous les deux versions, et l'Action ne propose une PR que s'il y a un changement de fond (les dates de génération sont ignorées).
+- **Réseau** : `job-i.fr` répond parfois par une coupure de connexion ; les scripts réessaient maintenant jusqu'à 4 fois.
+- **Routine cloud Claude** (« Wiki IBM i : relecture quotidienne (cloud) », 06:30 UTC) : deux essais réussis (dépôt cloné, documents lus, décisions correctes, aucun commit inutile). Limite : **`job-i.fr` n'est pas joignable depuis l'environnement cloud** tant que le domaine n'est pas autorisé (réglage 2) ; la routine n'en a pas eu besoin lors de ces essais.
 ## Réglages à faire une fois (sécurité : à vous)
-1. Dépôt > **Settings > Actions > General** : cocher « Allow GitHub Actions to create and approve pull requests » (**sans cela l'Action pousse la branche mais ne peut pas ouvrir la Pull Request**, constaté à l'essai ; la PR se crée alors à la main depuis la branche).
+1. Dépôt > **Settings > Actions > General** : « Allow GitHub Actions to create and approve pull requests » (**fait et vérifié** le 17/11/2026 : sans ce réglage l'Action pousse la branche mais ne peut pas ouvrir la Pull Request).
 2. Réseau de la routine cloud : claude.ai > Code > Environnements (environnement « Default ») > accès réseau : **autoriser `job-i.fr`**. Sans cela la routine ne peut pas relire les pages job-i.fr pour mettre à jour les fiches (la détection de changements, elle, fonctionne dans l'Action).
 3. Facultatif : si vous préférez que le robot fusionne seul, ajouter l'application « GitHub Actions » aux acteurs qui contournent la règle `nomain` (à éviter si des camarades peuvent proposer du code).
 ## Utiliser le wiki sur un autre ordinateur

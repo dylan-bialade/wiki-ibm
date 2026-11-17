@@ -4,20 +4,20 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB09 | QSOURCES | DDS | 12 | 100 % | DDS (R/K/PFILE) | [FILM.md](../../sources/DDS/BIB09/FILM.md) |
 | BIB05 | QRPGLESRC2 | RPG/RPG-ILE | 12 | 100 % | DDS (R/K/PFILE) | [FILM.md](../../sources/RPG/RPG-ILE/BIB05/FILM.md) |
+| BIB09 | QSOURCES | DDS | 12 | 100 % | DDS (R/K/PFILE) | [FILM.md](../../sources/DDS/BIB09/FILM.md) |
 | BIB17 | QSQLSRC | SQL | 75 | 0 % | jointure | [FILM.md](../../sources/SQL/BIB17/FILM.md) |
 
 ## Differences
 
-- **BIB09** en propre : DDS (R/K/PFILE)
 - **BIB05** en propre : DDS (R/K/PFILE)
+- **BIB09** en propre : DDS (R/K/PFILE)
 - **BIB17** en propre : jointure
 - Langages / types differents : DDS, RPG/RPG-ILE, SQL
 
 ## Codes
 
-### BIB09 (DDS, 12 lignes)
+### BIB05 (RPG/RPG-ILE, 12 lignes)
 
 ```text
      A*================================================================
@@ -34,7 +34,7 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
      A          K IDFILM
 ```
 
-### BIB05 (RPG/RPG-ILE, 12 lignes)
+### BIB09 (DDS, 12 lignes)
 
 ```text
      A*================================================================

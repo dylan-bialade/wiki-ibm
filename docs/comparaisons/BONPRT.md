@@ -4,8 +4,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB20 | QPRTSRC | DDS | 19 | 100 % |  | [BONPRT.md](../../sources/DDS/BIB20/BONPRT.md) |
 | BIB10 | QRPGSRC | RPG/RPG-III-400 | 53 | 0 % | SETLL / READ, boucle DOW/DOU/FOR, indicateurs *INxx | [BONPRT.md](../../sources/RPG/RPG-III-400/BIB10/BONPRT.md) |
+| BIB20 | QPRTSRC | DDS | 19 | 100 % |  | [BONPRT.md](../../sources/DDS/BIB20/BONPRT.md) |
 
 ## Differences
 
@@ -13,30 +13,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 - Langages / types differents : DDS, RPG/RPG-III-400
 
 ## Codes
-
-### BIB20 (DDS, 19 lignes)
-
-```text
-                R TITRE
-                                        2 50'LISTE DES BONBONS'
-                R ENTETE
-                                            SPACEB(001)
-                                          10'N°'
-                                          25'NOM'
-                                          55'MARQUE'
-                                          85'PRIX EXPORT'
-                R DETAILS
-                                            SPACEB(001)
-                  NUMBB          6S 0      5
-                  NOM           20A       20
-                  MARQUE        20A       50
-                  PRIX           5S 2     89
-                R ETOILE
-                                          50'********************'
-                R EJECT
-                                            SKIPA(1)
-                                         105'A SUIVRE......'
-```
 
 ### BIB10 (RPG/RPG-III-400, 53 lignes)
 
@@ -94,4 +70,28 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 +-------------------------------------------------------------------------+
 **
 IMPRESSION DISPONIBLE DANS LES SPOOLS
+```
+
+### BIB20 (DDS, 19 lignes)
+
+```text
+                R TITRE
+                                        2 50'LISTE DES BONBONS'
+                R ENTETE
+                                            SPACEB(001)
+                                          10'N°'
+                                          25'NOM'
+                                          55'MARQUE'
+                                          85'PRIX EXPORT'
+                R DETAILS
+                                            SPACEB(001)
+                  NUMBB          6S 0      5
+                  NOM           20A       20
+                  MARQUE        20A       50
+                  PRIX           5S 2     89
+                R ETOILE
+                                          50'********************'
+                R EJECT
+                                            SKIPA(1)
+                                         105'A SUIVRE......'
 ```

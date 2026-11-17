@@ -10,9 +10,11 @@ function Sort-By {
   param([object[]]$Items, [scriptblock]$Key)
   $arr = @($Items); if ($arr.Count -le 1) { return $arr }
   $keys = New-Object 'string[]' $arr.Count
-  for ($i = 0; $i -lt $arr.Count; $i++) { $keys[$i] = ([string](& $Key $arr[$i])) + '|' + $i.ToString('D8') }
-  [Array]::Sort($keys, $arr, [StringComparer]::Ordinal)
-  return $arr
+  for ($i = 0; $i -lt $arr.Count; $i++) { $keys[$i] = ([string]($arr[$i] | ForEach-Object -Process $Key)) + '|' + $i.ToString('D8') }
+  [Array]::Sort($keys, [StringComparer]::Ordinal)
+  $out = New-Object 'object[]' $arr.Count
+  for ($j = 0; $j -lt $keys.Count; $j++) { $out[$j] = $arr[[int]$keys[$j].Substring($keys[$j].Length - 8)] }
+  return $out
 }
 function New-Set { New-Object 'System.Collections.Generic.HashSet[string]' ([StringComparer]::OrdinalIgnoreCase) }
 
