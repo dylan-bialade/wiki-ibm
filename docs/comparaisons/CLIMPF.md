@@ -6,7 +6,7 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 |---|---|---|---|---|---|---|
 | BIB05 | QRPGSRC2 | RPG/RPG-III-400 | 29 | 100 % | SETLL / READ, boucle DOW/DOU/FOR, indicateurs *INxx | [CLIMPF.md](../../sources/RPG/RPG-III-400/BIB05/CLIMPF.md) |
 | BIB05 | QRPGLESRC | RPG/RPG-ILE | 29 | 65 % | SETLL / READ, boucle DOW/DOU/FOR, indicateurs *INxx | [CLIMPF.md](../../sources/RPG/RPG-ILE/BIB05/CLIMPF.md) |
-| BIB17 | QRPGSRC | RPG/RPG-III-400 | 38 | 82 % | SETLL / READ, boucle DOW/DOU/FOR, indicateurs *INxx | [CLIMPF.md](../../sources/RPG/RPG-III-400/BIB17/CLIMPF.md) |
+| BIB17 | QRPGSRC | RPG/RPG-III-400 | 38 | 90 % | SETLL / READ, boucle DOW/DOU/FOR, indicateurs *INxx | [CLIMPF.md](../../sources/RPG/RPG-III-400/BIB17/CLIMPF.md) |
 
 ## Differences
 
