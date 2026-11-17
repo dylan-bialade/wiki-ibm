@@ -4,8 +4,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB17 | QDDSSRC | DDS | 24 | 100 % | DDS (R/K/PFILE) | [ANIMEDSP.md](../../sources/DDS/BIB17/ANIMEDSP.md) |
-| BIB21 | QDDSSRC | DDS | 55 | 0 % | sous-fichier, DDS (R/K/PFILE) | [ANIMEDSP.md](../../sources/DDS/BIB21/ANIMEDSP.md) |
+| BIB21 | QDDSSRC | DDS | 55 | 100 % | sous-fichier, DDS (R/K/PFILE) | [ANIMEDSP.md](../../sources/DDS/BIB21/ANIMEDSP.md) |
+| BIB17 | QDDSSRC | DDS | 24 | 0 % | DDS (R/K/PFILE) | [ANIMEDSP.md](../../sources/DDS/BIB17/ANIMEDSP.md) |
 
 ## Differences
 
@@ -13,35 +13,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 - **BIB21** en propre : sous-fichier
 
 ## Codes
-
-### BIB17 (DDS, 24 lignes)
-
-```text
-     A*%%TS  SD  20261027  150629  REMI        REL-V7R5M0  5770-WDS
-     A*%%EC
-     A                                      DSPSIZ(24 80 *DS3)
-     A                                      INDARA
-     A          R FMT1
-     A*%%TS  SD  20261027  150629  REMI        REL-V7R5M0  5770-WDS
-     A                                      CF03(03)
-     A                                      CF10(10)
-     A                                  1  2USER
-     A                                  2  2SYSNAME
-     A                                  1 30'Selection de l''univers'
-     A                                      COLOR(WHT)
-     A                                  1 72DATE
-     A                                      EDTCDE(Y)
-     A                                  2 72TIME
-     A                                 23  4'F3=Quitter   F10=Plus de choix'
-     A                                      COLOR(BLU)
-     A                                  8  5'Choisissez un anime'
-     A                                      COLOR(WHT)
-     A            CHOIX          2Y 0B  8 26SNGCHCFLD((*NUMROW 4))
-     A                                      CHOICE(1 '>Dragon ball')
-     A                                      CHOICE(8 '>Hunter x Hunter')
-     A                                      CHOICE(11 '>Bleach')
-     A                                      CHOICE(99 '>Tous')
-```
 
 ### BIB21 (DDS, 55 lignes)
 
@@ -101,4 +72,33 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
      A                                  2  2'Option : 1 = Choisir'                   A                                      COLOR(BLU)
      A                                  4  8'Nom de l''univers'                      A                                      COLOR(WHT)
      A                                  4  3'OPT'                                    A                                      COLOR(WHT)
+```
+
+### BIB17 (DDS, 24 lignes)
+
+```text
+     A*%%TS  SD  20261027  150629  REMI        REL-V7R5M0  5770-WDS
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      INDARA
+     A          R FMT1
+     A*%%TS  SD  20261027  150629  REMI        REL-V7R5M0  5770-WDS
+     A                                      CF03(03)
+     A                                      CF10(10)
+     A                                  1  2USER
+     A                                  2  2SYSNAME
+     A                                  1 30'Selection de l''univers'
+     A                                      COLOR(WHT)
+     A                                  1 72DATE
+     A                                      EDTCDE(Y)
+     A                                  2 72TIME
+     A                                 23  4'F3=Quitter   F10=Plus de choix'
+     A                                      COLOR(BLU)
+     A                                  8  5'Choisissez un anime'
+     A                                      COLOR(WHT)
+     A            CHOIX          2Y 0B  8 26SNGCHCFLD((*NUMROW 4))
+     A                                      CHOICE(1 '>Dragon ball')
+     A                                      CHOICE(8 '>Hunter x Hunter')
+     A                                      CHOICE(11 '>Bleach')
+     A                                      CHOICE(99 '>Tous')
 ```

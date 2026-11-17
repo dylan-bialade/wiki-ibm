@@ -4,9 +4,9 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB03 | QRPGLESRC | RPG/RPG-ILE | 41 | 100 % | full free, procedures (dcl-proc), prototypes (dcl-pr) | [PRETMOD.md](../../sources/RPG/RPG-ILE/BIB03/PRETMOD.md) |
-| BIB13 | QRPGLESRC | RPG/RPG-ILE | 195 | 8 % | full free, procedures (dcl-proc), prototypes (dcl-pr) | [PRETMOD.md](../../sources/RPG/RPG-ILE/BIB13/PRETMOD.md) |
-| BIB17 | QRPGLESRC | RPG/RPG-ILE | 145 | 4 % | full free, boucle DOW/DOU/FOR, procedures (dcl-proc), prototypes (dcl-pr), structure de donnees | [PRETMOD.md](../../sources/RPG/RPG-ILE/BIB17/PRETMOD.md) |
+| BIB17 | QRPGLESRC | RPG/RPG-ILE | 145 | 100 % | full free, boucle DOW/DOU/FOR, procedures (dcl-proc), prototypes (dcl-pr), structure de donnees | [PRETMOD.md](../../sources/RPG/RPG-ILE/BIB17/PRETMOD.md) |
+| BIB13 | QRPGLESRC | RPG/RPG-ILE | 195 | 5 % | full free, procedures (dcl-proc), prototypes (dcl-pr) | [PRETMOD.md](../../sources/RPG/RPG-ILE/BIB13/PRETMOD.md) |
+| BIB03 | QRPGLESRC | RPG/RPG-ILE | 41 | 4 % | full free, procedures (dcl-proc), prototypes (dcl-pr) | [PRETMOD.md](../../sources/RPG/RPG-ILE/BIB03/PRETMOD.md) |
 
 ## Differences
 
@@ -14,56 +14,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 - **BIB17** en propre : boucle DOW/DOU/FOR, structure de donnees
 
 ## Codes
-
-### BIB03 (RPG/RPG-ILE, 41 lignes)
-
-```text
-**free
-ctl-opt nomain;
-/include QCPYSRC,PRETMODP
-
-// Mensualite constante d'un pret a taux fixe
-dcl-proc mensualite export;
-  dcl-pi *n packed(9:2);
-    capital packed(9:2) const;
-    tauxAnnuel packed(5:2) const;
-    nbMois int(10) const;
-  end-pi;
-
-  dcl-s t float(8);
-  dcl-s res packed(9:2);
-
-  if nbMois <= 0;
-    return 0;
-  endif;
-
-  if tauxAnnuel = 0;
-    eval(h) res = capital / nbMois;
-    return res;
-  endif;
-
-  t = tauxAnnuel / 100 / 12;                       // taux mensuel
-  eval(h) res = capital * t / (1 - (1 + t) ** (-nbMois));  // (h) = arrondi au centime
-  return res;
-end-proc;
-
-// Interets d'un mois sur le capital restant du
-dcl-proc interetMois export;
-  dcl-pi *n packed(9:2);
-    capitalRestant packed(9:2) const;
-    tauxAnnuel packed(5:2) const;
-  end-pi;
-
-  dcl-s res packed(9:2);
-
-  eval(h) res = capitalRestant * tauxAnnuel / 1200;  // taux/100/12
-  return res;
-end-proc;
-```
-
-### BIB13 (RPG/RPG-ILE, 195 lignes)
-
-_Long : voir [PRETMOD.md](../../sources/RPG/RPG-ILE/BIB13/PRETMOD.md)._
 
 ### BIB17 (RPG/RPG-ILE, 145 lignes)
 
@@ -212,5 +162,55 @@ dcl-proc calcCapitalConstant export;
     end-pi;
 
     return %dech(montant / (DUREE * 12) : 12 : 2);
+end-proc;
+```
+
+### BIB13 (RPG/RPG-ILE, 195 lignes)
+
+_Long : voir [PRETMOD.md](../../sources/RPG/RPG-ILE/BIB13/PRETMOD.md)._
+
+### BIB03 (RPG/RPG-ILE, 41 lignes)
+
+```text
+**free
+ctl-opt nomain;
+/include QCPYSRC,PRETMODP
+
+// Mensualite constante d'un pret a taux fixe
+dcl-proc mensualite export;
+  dcl-pi *n packed(9:2);
+    capital packed(9:2) const;
+    tauxAnnuel packed(5:2) const;
+    nbMois int(10) const;
+  end-pi;
+
+  dcl-s t float(8);
+  dcl-s res packed(9:2);
+
+  if nbMois <= 0;
+    return 0;
+  endif;
+
+  if tauxAnnuel = 0;
+    eval(h) res = capital / nbMois;
+    return res;
+  endif;
+
+  t = tauxAnnuel / 100 / 12;                       // taux mensuel
+  eval(h) res = capital * t / (1 - (1 + t) ** (-nbMois));  // (h) = arrondi au centime
+  return res;
+end-proc;
+
+// Interets d'un mois sur le capital restant du
+dcl-proc interetMois export;
+  dcl-pi *n packed(9:2);
+    capitalRestant packed(9:2) const;
+    tauxAnnuel packed(5:2) const;
+  end-pi;
+
+  dcl-s res packed(9:2);
+
+  eval(h) res = capitalRestant * tauxAnnuel / 1200;  // taux/100/12
+  return res;
 end-proc;
 ```

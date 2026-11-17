@@ -4,9 +4,9 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB03 | QRPGLESRC | RPG/RPG-ILE | 95 | 100 % | full free, sous-fichier, ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc), structure de donnees | [PRETMAIN.md](../../sources/RPG/RPG-ILE/BIB03/PRETMAIN.md) |
-| BIB13 | QRPGLESRC | RPG/RPG-ILE | 167 | 9 % | full free, sous-fichier, ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc), structure de donnees | [PRETMAIN.md](../../sources/RPG/RPG-ILE/BIB13/PRETMAIN.md) |
-| BIB17 | QRPGLESRC | RPG/RPG-ILE | 106 | 6 % | full free, sous-fichier, ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc), structure de donnees, indicateurs *INxx | [PRETMAIN.md](../../sources/RPG/RPG-ILE/BIB17/PRETMAIN.md) |
+| BIB17 | QRPGLESRC | RPG/RPG-ILE | 106 | 100 % | full free, sous-fichier, ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc), structure de donnees, indicateurs *INxx | [PRETMAIN.md](../../sources/RPG/RPG-ILE/BIB17/PRETMAIN.md) |
+| BIB13 | QRPGLESRC | RPG/RPG-ILE | 167 | 11 % | full free, sous-fichier, ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc), structure de donnees | [PRETMAIN.md](../../sources/RPG/RPG-ILE/BIB13/PRETMAIN.md) |
+| BIB03 | QRPGLESRC | RPG/RPG-ILE | 95 | 6 % | full free, sous-fichier, ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc), structure de donnees | [PRETMAIN.md](../../sources/RPG/RPG-ILE/BIB03/PRETMAIN.md) |
 
 ## Differences
 
@@ -14,110 +14,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 - **BIB17** en propre : indicateurs *INxx
 
 ## Codes
-
-### BIB03 (RPG/RPG-ILE, 95 lignes)
-
-```text
-**free
-ctl-opt decedit('0,') bnddir('BIB03/PRETBND') dftactgrp(*no);
-/include QCPYSRC,PRETMODP
-
-dcl-f PRETDSP workstn indds(ind) sfile(PRETSFL : rrn);
-
-dcl-ds ind len(99);
-  f3      ind pos(3);
-  f12     ind pos(12);
-  sfldsp  ind pos(41);
-  sfldspc ind pos(42);
-  sflclr  ind pos(43);
-  sflend  ind pos(44);
-end-ds;
-
-dcl-s rrn zoned(4:0);
-
-wcapital = 200000;
-wtaux = 3.5;
-wduree = 20;
-
-dou f3;
-  exfmt SAISIE;
-  if f3;
-    leave;
-  endif;
-
-  if wcapital <= 0 or wtaux < 0 or wduree < 1 or wduree > 30;
-    errmsg = 'Capital > 0, taux >= 0, duree de 1 a 30 ans';
-  else;
-    errmsg = *blanks;
-    afficherTableau();
-  endif;
-enddo;
-
-*inlr = *on;
-
-dcl-proc afficherTableau;
-  dcl-s nbMois int(10);
-  dcl-s i int(10);
-  dcl-s restant packed(9:2);
-  dcl-s mens packed(9:2);
-  dcl-s interet packed(9:2);
-  dcl-s remb packed(9:2);
-  dcl-s totInt packed(11:2);
-  dcl-s paiement packed(9:2);
-  dcl-s coutTot packed(11:2);
-
-  nbMois = wduree * 12;
-  mens = mensualite(wcapital : wtaux : nbMois);   // appel au programme de service
-
-  // vider le sous-fichier
-  sfldsp = *off;
-  sfldspc = *off;
-  sflclr = *on;
-  write PRETCTL;
-  sflclr = *off;
-  rrn = 0;
-
-  restant = wcapital;
-  totInt = 0;
-
-  for i = 1 to nbMois;
-    interet = interetMois(restant : wtaux);       // appel au programme de service
-    if i = nbMois;                                // dernier mois : on solde le pret
-      remb = restant;
-      paiement = restant + interet;
-    else;
-      remb = mens - interet;
-      paiement = mens;
-    endif;
-
-    smois = i;
-    srestant = %editc(restant : '1');             // montants mis en forme dans des zones alpha
-    sinteret = %editc(interet : '1');
-    sremb = %editc(remb : '1');
-    smens = %editc(paiement : '1');
-    rrn += 1;
-    write PRETSFL;
-
-    totInt += interet;
-    restant -= remb;
-  endfor;
-
-  coutTot = wcapital + totInt;
-  wmens = %editc(mens : '1');
-  wcoutint = %editc(totInt : '1');
-  wcouttot = %editc(coutTot : '1');
-
-  curpage = 1;
-  sfldsp = (rrn > 0);
-  sfldspc = *on;
-  sflend = *on;
-  exfmt PRETCTL;                                  // F12 ou F3 : retour a la saisie
-end-proc;
-```
-
-### BIB13 (RPG/RPG-ILE, 167 lignes)
-
-_Long : voir [PRETMAIN.md](../../sources/RPG/RPG-ILE/BIB13/PRETMAIN.md)._
 
 ### BIB17 (RPG/RPG-ILE, 106 lignes)
 
@@ -227,5 +123,109 @@ dcl-proc loadSfl1;
     *in31 = *on;
     *in32 = rang > 0;
     *in33 = *on;
+end-proc;
+```
+
+### BIB13 (RPG/RPG-ILE, 167 lignes)
+
+_Long : voir [PRETMAIN.md](../../sources/RPG/RPG-ILE/BIB13/PRETMAIN.md)._
+
+### BIB03 (RPG/RPG-ILE, 95 lignes)
+
+```text
+**free
+ctl-opt decedit('0,') bnddir('BIB03/PRETBND') dftactgrp(*no);
+/include QCPYSRC,PRETMODP
+
+dcl-f PRETDSP workstn indds(ind) sfile(PRETSFL : rrn);
+
+dcl-ds ind len(99);
+  f3      ind pos(3);
+  f12     ind pos(12);
+  sfldsp  ind pos(41);
+  sfldspc ind pos(42);
+  sflclr  ind pos(43);
+  sflend  ind pos(44);
+end-ds;
+
+dcl-s rrn zoned(4:0);
+
+wcapital = 200000;
+wtaux = 3.5;
+wduree = 20;
+
+dou f3;
+  exfmt SAISIE;
+  if f3;
+    leave;
+  endif;
+
+  if wcapital <= 0 or wtaux < 0 or wduree < 1 or wduree > 30;
+    errmsg = 'Capital > 0, taux >= 0, duree de 1 a 30 ans';
+  else;
+    errmsg = *blanks;
+    afficherTableau();
+  endif;
+enddo;
+
+*inlr = *on;
+
+dcl-proc afficherTableau;
+  dcl-s nbMois int(10);
+  dcl-s i int(10);
+  dcl-s restant packed(9:2);
+  dcl-s mens packed(9:2);
+  dcl-s interet packed(9:2);
+  dcl-s remb packed(9:2);
+  dcl-s totInt packed(11:2);
+  dcl-s paiement packed(9:2);
+  dcl-s coutTot packed(11:2);
+
+  nbMois = wduree * 12;
+  mens = mensualite(wcapital : wtaux : nbMois);   // appel au programme de service
+
+  // vider le sous-fichier
+  sfldsp = *off;
+  sfldspc = *off;
+  sflclr = *on;
+  write PRETCTL;
+  sflclr = *off;
+  rrn = 0;
+
+  restant = wcapital;
+  totInt = 0;
+
+  for i = 1 to nbMois;
+    interet = interetMois(restant : wtaux);       // appel au programme de service
+    if i = nbMois;                                // dernier mois : on solde le pret
+      remb = restant;
+      paiement = restant + interet;
+    else;
+      remb = mens - interet;
+      paiement = mens;
+    endif;
+
+    smois = i;
+    srestant = %editc(restant : '1');             // montants mis en forme dans des zones alpha
+    sinteret = %editc(interet : '1');
+    sremb = %editc(remb : '1');
+    smens = %editc(paiement : '1');
+    rrn += 1;
+    write PRETSFL;
+
+    totInt += interet;
+    restant -= remb;
+  endfor;
+
+  coutTot = wcapital + totInt;
+  wmens = %editc(mens : '1');
+  wcoutint = %editc(totInt : '1');
+  wcouttot = %editc(coutTot : '1');
+
+  curpage = 1;
+  sfldsp = (rrn > 0);
+  sfldspc = *on;
+  sflend = *on;
+  exfmt PRETCTL;                                  // F12 ou F3 : retour a la saisie
 end-proc;
 ```

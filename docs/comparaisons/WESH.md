@@ -4,9 +4,9 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB04 | QRPGLESRC | RPG/RPG-ILE | 175 | 100 % | full free, SETLL / READ, boucle DOW/DOU/FOR, procedures (dcl-proc), prototypes (dcl-pr) | [WESH.md](../../sources/RPG/RPG-ILE/BIB04/WESH.md) |
-| BIB11 | QRPGLESRC | RPG/RPG-ILE | 99 | 5 % | full free, SETLL / READ, boucle DOW/DOU/FOR | [WESH.md](../../sources/RPG/RPG-ILE/BIB11/WESH.md) |
-| BIB16 | QRPGLESRC | RPG/RPG-ILE | 155 | 5 % | full free, SETLL / READ, boucle DOW/DOU/FOR | [WESH.md](../../sources/RPG/RPG-ILE/BIB16/WESH.md) |
+| BIB16 | QRPGLESRC | RPG/RPG-ILE | 155 | 100 % | full free, SETLL / READ, boucle DOW/DOU/FOR | [WESH.md](../../sources/RPG/RPG-ILE/BIB16/WESH.md) |
+| BIB11 | QRPGLESRC | RPG/RPG-ILE | 99 | 4 % | full free, SETLL / READ, boucle DOW/DOU/FOR | [WESH.md](../../sources/RPG/RPG-ILE/BIB11/WESH.md) |
+| BIB04 | QRPGLESRC | RPG/RPG-ILE | 175 | 5 % | full free, SETLL / READ, boucle DOW/DOU/FOR, procedures (dcl-proc), prototypes (dcl-pr) | [WESH.md](../../sources/RPG/RPG-ILE/BIB04/WESH.md) |
 
 ## Differences
 
@@ -15,9 +15,9 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 ## Codes
 
-### BIB04 (RPG/RPG-ILE, 175 lignes)
+### BIB16 (RPG/RPG-ILE, 155 lignes)
 
-_Long : voir [WESH.md](../../sources/RPG/RPG-ILE/BIB04/WESH.md)._
+_Long : voir [WESH.md](../../sources/RPG/RPG-ILE/BIB16/WESH.md)._
 
 ### BIB11 (RPG/RPG-ILE, 99 lignes)
 
@@ -123,6 +123,6 @@ dou i > %len(strophe)-2;
 enddo;
 ```
 
-### BIB16 (RPG/RPG-ILE, 155 lignes)
+### BIB04 (RPG/RPG-ILE, 175 lignes)
 
-_Long : voir [WESH.md](../../sources/RPG/RPG-ILE/BIB16/WESH.md)._
+_Long : voir [WESH.md](../../sources/RPG/RPG-ILE/BIB04/WESH.md)._

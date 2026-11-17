@@ -4,8 +4,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB03 | QRPGLESRC | RPG/RPG-ILE | 92 | 100 % | full free, SQL embarque, procedures (dcl-proc), prototypes (dcl-pr) | [TP3MOD.md](../../sources/RPG/RPG-ILE/BIB03/TP3MOD.md) |
-| BIB18 | QRPGLESRC | RPG/RPG-ILE | 97 | 25 % | full free, SQL embarque, procedures (dcl-proc), prototypes (dcl-pr), structure de donnees | [TP3MOD.md](../../sources/RPG/RPG-ILE/BIB18/TP3MOD.md) |
+| BIB18 | QRPGLESRC | RPG/RPG-ILE | 97 | 100 % | full free, SQL embarque, procedures (dcl-proc), prototypes (dcl-pr), structure de donnees | [TP3MOD.md](../../sources/RPG/RPG-ILE/BIB18/TP3MOD.md) |
+| BIB03 | QRPGLESRC | RPG/RPG-ILE | 92 | 25 % | full free, SQL embarque, procedures (dcl-proc), prototypes (dcl-pr) | [TP3MOD.md](../../sources/RPG/RPG-ILE/BIB03/TP3MOD.md) |
 
 ## Differences
 
@@ -13,103 +13,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 - **BIB18** en propre : structure de donnees
 
 ## Codes
-
-### BIB03 (RPG/RPG-ILE, 92 lignes)
-
-```text
-**free
-ctl-opt nomain;
-
-/include QCPYSRC,TP3MODP
-
-dcl-s w_nom char(30);
-dcl-s w_ville char(20);
-dcl-s w_plafond packed(9:2);
-dcl-s w_encours packed(9:2);
-
-dcl-proc lireClient;                    // interne : pas de "export"
-    dcl-pi *n ind;
-        num packed(5:0) const;
-    end-pi;
-
-    w_nom = '';
-    w_ville = '';
-    w_plafond = 0;
-    w_encours = 0;
-
-    exec sql
-        select CLNOM, CLVILLE, CLPLAF, CLENC
-        into :w_nom, :w_ville, :w_plafond, :w_encours
-        from CLIENT
-        where CLNUM = :num;
-
-    if sqlcode = 0;
-        return *on;
-    else;
-        return *off;
-    endif;
-end-proc;
-
-dcl-proc nomClient export;
-    dcl-pi *n varchar(30);
-        num packed(5:0) const;
-    end-pi;
-    if lireClient(num);
-        return %trim(w_nom);
-    else;
-        return 'Client inconnu';
-    endif;
-end-proc;
-
-dcl-proc encoursClient export;
-    dcl-pi *n packed(9:2);
-        num packed(5:0) const;
-    end-pi;
-    if lireClient(num);
-        return w_encours;
-    else;
-        return -1;
-    endif;
-end-proc;
-
-dcl-proc creditDispo export;
-    dcl-pi *n packed(9:2);
-        num packed(5:0) const;
-    end-pi;
-    if lireClient(num);
-        return w_plafond - w_encours;
-    else;
-        return 0;
-    endif;
-end-proc;
-
-dcl-proc peutCommander export;          // NOUVEAU (ex. 2)
-    dcl-pi *n ind;
-        num packed(5:0) const;
-        montant packed(9:2) const;
-    end-pi;
-    if lireClient(num);
-        if montant <= (w_plafond - w_encours);   // le montant rentre dans le crédit dispo
-            return *on;
-        else;
-            return *off;
-        endif;
-    else;
-        return *off;                    // client inconnu : refusé
-    endif;
-end-proc;
-
-dcl-proc villeClient export;            // NOUVEAU (ex. 2)
-    dcl-pi *n varchar(20);
-        num packed(5:0) const;
-    end-pi;
-    if lireClient(num);
-        return %trim(w_ville);
-    else;
-        return 'Ville inconnue';
-    endif;
-end-proc;
-```
 
 ### BIB18 (RPG/RPG-ILE, 97 lignes)
 
@@ -210,5 +113,102 @@ dcl-proc villeClient export;
 
     return cli.ville;
 
+end-proc;
+```
+
+### BIB03 (RPG/RPG-ILE, 92 lignes)
+
+```text
+**free
+ctl-opt nomain;
+
+/include QCPYSRC,TP3MODP
+
+dcl-s w_nom char(30);
+dcl-s w_ville char(20);
+dcl-s w_plafond packed(9:2);
+dcl-s w_encours packed(9:2);
+
+dcl-proc lireClient;                    // interne : pas de "export"
+    dcl-pi *n ind;
+        num packed(5:0) const;
+    end-pi;
+
+    w_nom = '';
+    w_ville = '';
+    w_plafond = 0;
+    w_encours = 0;
+
+    exec sql
+        select CLNOM, CLVILLE, CLPLAF, CLENC
+        into :w_nom, :w_ville, :w_plafond, :w_encours
+        from CLIENT
+        where CLNUM = :num;
+
+    if sqlcode = 0;
+        return *on;
+    else;
+        return *off;
+    endif;
+end-proc;
+
+dcl-proc nomClient export;
+    dcl-pi *n varchar(30);
+        num packed(5:0) const;
+    end-pi;
+    if lireClient(num);
+        return %trim(w_nom);
+    else;
+        return 'Client inconnu';
+    endif;
+end-proc;
+
+dcl-proc encoursClient export;
+    dcl-pi *n packed(9:2);
+        num packed(5:0) const;
+    end-pi;
+    if lireClient(num);
+        return w_encours;
+    else;
+        return -1;
+    endif;
+end-proc;
+
+dcl-proc creditDispo export;
+    dcl-pi *n packed(9:2);
+        num packed(5:0) const;
+    end-pi;
+    if lireClient(num);
+        return w_plafond - w_encours;
+    else;
+        return 0;
+    endif;
+end-proc;
+
+dcl-proc peutCommander export;          // NOUVEAU (ex. 2)
+    dcl-pi *n ind;
+        num packed(5:0) const;
+        montant packed(9:2) const;
+    end-pi;
+    if lireClient(num);
+        if montant <= (w_plafond - w_encours);   // le montant rentre dans le crédit dispo
+            return *on;
+        else;
+            return *off;
+        endif;
+    else;
+        return *off;                    // client inconnu : refusé
+    endif;
+end-proc;
+
+dcl-proc villeClient export;            // NOUVEAU (ex. 2)
+    dcl-pi *n varchar(20);
+        num packed(5:0) const;
+    end-pi;
+    if lireClient(num);
+        return %trim(w_ville);
+    else;
+        return 'Ville inconnue';
+    endif;
 end-proc;
 ```

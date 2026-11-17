@@ -4,14 +4,18 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB13 | QDDSSRC | DDS | 49 | 100 % | sous-fichier, DDS (R/K/PFILE) | [SRVDSP.md](../../sources/DDS/BIB13/SRVDSP.md) |
-| BIB14 | QDDSSRC | DDS | 156 | 29 % | sous-fichier, DDS (R/K/PFILE) | [SRVDSP.md](../../sources/DDS/BIB14/SRVDSP.md) |
+| BIB14 | QDDSSRC | DDS | 156 | 100 % | sous-fichier, DDS (R/K/PFILE) | [SRVDSP.md](../../sources/DDS/BIB14/SRVDSP.md) |
+| BIB13 | QDDSSRC | DDS | 49 | 29 % | sous-fichier, DDS (R/K/PFILE) | [SRVDSP.md](../../sources/DDS/BIB13/SRVDSP.md) |
 
 ## Differences
 
 - Techniques communes : sous-fichier, DDS (R/K/PFILE)
 
 ## Codes
+
+### BIB14 (DDS, 156 lignes)
+
+_Long : voir [SRVDSP.md](../../sources/DDS/BIB14/SRVDSP.md)._
 
 ### BIB13 (DDS, 49 lignes)
 
@@ -66,7 +70,3 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
      A N33                                  SFLMSG('(Aucun module lié a se SRVP-
      A                                      GM)' 33)
 ```
-
-### BIB14 (DDS, 156 lignes)
-
-_Long : voir [SRVDSP.md](../../sources/DDS/BIB14/SRVDSP.md)._

@@ -4,8 +4,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB06 | QMNUSRC | Menus | 114 | 100 % | DDS (R/K/PFILE) | [MNUDEV1.md](../../sources/Menus/BIB06/MNUDEV1.md) |
-| BIB10 | QMNUSRC | Menus | 114 | 91 % | DDS (R/K/PFILE) | [MNUDEV1.md](../../sources/Menus/BIB10/MNUDEV1.md) |
+| BIB10 | QMNUSRC | Menus | 114 | 100 % | DDS (R/K/PFILE) | [MNUDEV1.md](../../sources/Menus/BIB10/MNUDEV1.md) |
+| BIB06 | QMNUSRC | Menus | 114 | 91 % | DDS (R/K/PFILE) | [MNUDEV1.md](../../sources/Menus/BIB06/MNUDEV1.md) |
 
 ## Differences
 
@@ -13,11 +13,11 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 ## Codes
 
-### BIB06 (Menus, 114 lignes)
+### BIB10 (Menus, 114 lignes)
 
 ```text
      A* Menu de format libre : MNUDEV1
-     A*%%TS  SD  20261002  111457  XUAN        REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20261116  094452  XUAN        REL-V7R5M0  5770-WDS
      A*%%EC
      A                                      DSPSIZ(24 80 *DS3                  -
      A                                             27 132 *DS4)
@@ -25,7 +25,7 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
      A                                      INDARA
      A                                      PRINT(*LIBL/QSYSPRT)
      A          R MNUDEV1
-     A*%%TS  SD  20261002  110329  XUAN        REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20261102  105321  XUAN        REL-V7R5M0  5770-WDS
      A                                      DSPMOD(*DS3)
      A                                      LOCK
      A                                      SLNO(01)
@@ -48,8 +48,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
      A                                  2 18'(    \(  __)/ )( \  ( \/ )(  __)( -
      A                                       ( \/ )( \ '
      A                                      COLOR(RED)
-     A                                  3 19') D ( ) _) \ \/ /  / \/ \ ) _) /  -
-     A                                        /) \/ ( '
+     A                                  3 19') D ( ) _) \ \/ /  / \/ \ ) _) / ,-
+     A                                      '' /) \/ ( '
      A                                      COLOR(RED)
      A                                  4 18'(____/(____) \__/   \_)(_/(____)\_-
      A                                      )__)\____/ '
@@ -132,11 +132,11 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
      A                                      DSPATR(UL)
 ```
 
-### BIB10 (Menus, 114 lignes)
+### BIB06 (Menus, 114 lignes)
 
 ```text
      A* Menu de format libre : MNUDEV1
-     A*%%TS  SD  20261116  094452  XUAN        REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20261002  111457  XUAN        REL-V7R5M0  5770-WDS
      A*%%EC
      A                                      DSPSIZ(24 80 *DS3                  -
      A                                             27 132 *DS4)
@@ -144,7 +144,7 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
      A                                      INDARA
      A                                      PRINT(*LIBL/QSYSPRT)
      A          R MNUDEV1
-     A*%%TS  SD  20261102  105321  XUAN        REL-V7R5M0  5770-WDS
+     A*%%TS  SD  20261002  110329  XUAN        REL-V7R5M0  5770-WDS
      A                                      DSPMOD(*DS3)
      A                                      LOCK
      A                                      SLNO(01)
@@ -167,8 +167,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
      A                                  2 18'(    \(  __)/ )( \  ( \/ )(  __)( -
      A                                       ( \/ )( \ '
      A                                      COLOR(RED)
-     A                                  3 19') D ( ) _) \ \/ /  / \/ \ ) _) / ,-
-     A                                      '' /) \/ ( '
+     A                                  3 19') D ( ) _) \ \/ /  / \/ \ ) _) /  -
+     A                                        /) \/ ( '
      A                                      COLOR(RED)
      A                                  4 18'(____/(____) \__/   \_)(_/(____)\_-
      A                                      )__)\____/ '

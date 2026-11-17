@@ -4,52 +4,18 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB09 | QSOURCES | DDS | 12 | 100 % | DDS (R/K/PFILE) | [FILM.md](../../sources/DDS/BIB09/FILM.md) |
-| BIB05 | QRPGLESRC2 | RPG/RPG-ILE | 12 | 100 % | DDS (R/K/PFILE) | [FILM.md](../../sources/RPG/RPG-ILE/BIB05/FILM.md) |
-| BIB17 | QSQLSRC | SQL | 75 | 0 % | jointure | [FILM.md](../../sources/SQL/BIB17/FILM.md) |
+| BIB17 | QSQLSRC | SQL | 75 | 100 % | jointure | [FILM.md](../../sources/SQL/BIB17/FILM.md) |
+| BIB05 | QRPGLESRC2 | RPG/RPG-ILE | 12 | 0 % | DDS (R/K/PFILE) | [FILM.md](../../sources/RPG/RPG-ILE/BIB05/FILM.md) |
+| BIB09 | QSOURCES | DDS | 12 | 0 % | DDS (R/K/PFILE) | [FILM.md](../../sources/DDS/BIB09/FILM.md) |
 
 ## Differences
 
-- **BIB09** en propre : DDS (R/K/PFILE)
-- **BIB05** en propre : DDS (R/K/PFILE)
 - **BIB17** en propre : jointure
-- Langages / types differents : DDS, RPG/RPG-ILE, SQL
+- **BIB05** en propre : DDS (R/K/PFILE)
+- **BIB09** en propre : DDS (R/K/PFILE)
+- Langages / types differents : SQL, RPG/RPG-ILE, DDS
 
 ## Codes
-
-### BIB09 (DDS, 12 lignes)
-
-```text
-     A*================================================================
-     A* Fichier : FILM
-     A* Type    : PF (Fichier Physique)
-     A* Desc    : Table des films
-     A*================================================================
-     A                                      UNIQUE
-     A          R FILMFMT                   TEXT('Format fichier films')
-     A            IDFILM         5P 0       COLHDG('ID' 'Film')
-     A                                      TEXT('Identifiant du film')
-     A            TITREFILM     50A         COLHDG('Titre' 'du film')
-     A                                      TEXT('Titre du film')
-     A          K IDFILM
-```
-
-### BIB05 (RPG/RPG-ILE, 12 lignes)
-
-```text
-     A*================================================================
-     A* Fichier : FILM
-     A* Type    : PF (Fichier Physique)
-     A* Desc    : Table des films
-     A*================================================================
-     A                                      UNIQUE
-     A          R FILMFMT                   TEXT('Format fichier films')
-     A            IDFILM         5P 0       COLHDG('ID' 'Film')
-     A                                      TEXT('Identifiant du film')
-     A            TITREFILM     50A         COLHDG('Titre' 'du film')
-     A                                      TEXT('Titre du film')
-     A          K IDFILM
-```
 
 ### BIB17 (SQL, 75 lignes)
 
@@ -129,4 +95,38 @@ SELECT COUNT(ID_casting) Nombre_acteurs,
          RIGHT JOIN qf_sql.films f
              ON f.id_film = c.id_film
     GROUP BY f.id_film, f.titre;
+```
+
+### BIB05 (RPG/RPG-ILE, 12 lignes)
+
+```text
+     A*================================================================
+     A* Fichier : FILM
+     A* Type    : PF (Fichier Physique)
+     A* Desc    : Table des films
+     A*================================================================
+     A                                      UNIQUE
+     A          R FILMFMT                   TEXT('Format fichier films')
+     A            IDFILM         5P 0       COLHDG('ID' 'Film')
+     A                                      TEXT('Identifiant du film')
+     A            TITREFILM     50A         COLHDG('Titre' 'du film')
+     A                                      TEXT('Titre du film')
+     A          K IDFILM
+```
+
+### BIB09 (DDS, 12 lignes)
+
+```text
+     A*================================================================
+     A* Fichier : FILM
+     A* Type    : PF (Fichier Physique)
+     A* Desc    : Table des films
+     A*================================================================
+     A                                      UNIQUE
+     A          R FILMFMT                   TEXT('Format fichier films')
+     A            IDFILM         5P 0       COLHDG('ID' 'Film')
+     A                                      TEXT('Identifiant du film')
+     A            TITREFILM     50A         COLHDG('Titre' 'du film')
+     A                                      TEXT('Titre du film')
+     A          K IDFILM
 ```

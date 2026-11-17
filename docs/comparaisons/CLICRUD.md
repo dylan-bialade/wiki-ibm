@@ -4,93 +4,19 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB05 | QRPGSRC2 | RPG/RPG-III-400 | 69 | 100 % | ecran (WORKSTN), indicateurs *INxx | [CLICRUD.md](../../sources/RPG/RPG-III-400/BIB05/CLICRUD.md) |
-| BIB10 | QRPGSRC | RPG/RPG-III-400 | 104 | 4 % | ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc) | [CLICRUD.md](../../sources/RPG/RPG-III-400/BIB10/CLICRUD.md) |
-| BIB05 | QRPGLESRC | RPG/RPG-ILE | 69 | 32 % | ecran (WORKSTN), CHAIN, indicateurs *INxx | [CLICRUD.md](../../sources/RPG/RPG-ILE/BIB05/CLICRUD.md) |
+| BIB10 | QRPGSRC | RPG/RPG-III-400 | 104 | 100 % | ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc) | [CLICRUD.md](../../sources/RPG/RPG-III-400/BIB10/CLICRUD.md) |
+| BIB05 | QRPGSRC2 | RPG/RPG-III-400 | 69 | 4 % | ecran (WORKSTN), indicateurs *INxx | [CLICRUD.md](../../sources/RPG/RPG-III-400/BIB05/CLICRUD.md) |
+| BIB05 | QRPGLESRC | RPG/RPG-ILE | 69 | 3 % | ecran (WORKSTN), CHAIN, indicateurs *INxx | [CLICRUD.md](../../sources/RPG/RPG-ILE/BIB05/CLICRUD.md) |
 
 ## Differences
 
 - Techniques communes : ecran (WORKSTN)
-- **BIB05** en propre : indicateurs *INxx
 - **BIB10** en propre : boucle DOW/DOU/FOR, procedures (dcl-proc)
+- **BIB05** en propre : indicateurs *INxx
 - **BIB05** en propre : CHAIN, indicateurs *INxx
 - Langages / types differents : RPG/RPG-III-400, RPG/RPG-ILE
 
 ## Codes
-
-### BIB05 (RPG/RPG-III-400, 69 lignes)
-
-```text
-      *NOMPGM:
-      *NOMPROP:
-      *FILLEDEPEND:
-     * SI TU VOIS SA TU A COPIER BIB05
-     FCLIENSF CF  E                    WORKSTN
-     FCLIENF  UF  E           K        DISK                      A
-     C                     SETON                     LR
-     C           *ENTRY    PLIST
-     C                     PARM           OPT     1
-     C                     PARM           CLIDCL  60
-      *DEBUT MODIF
-     C           OPT       IFEQ '2'
-     C                     MOVE 'MODIF'   MSG
-     C           CLIDCL    CHAINCLIENTSF             90
-     C                     MOVELCLNOCL    VAL1
-     C*                    MOVELCLADCL    VAL
-     C                     MOVELCLCPCL    VAL2
-     C                     MOVELCLVICL    VAL3
-     C                     TESTN          CLTECL     55
-     C           *IN55     IFEQ *ON
-     C                     MOVELCLTECL    VAL4
-     C                     ENDIF
-     C                     MOVELCLMACL    VAL50
-     C*                    MOVELCLSICL    VAL
-     C                     EXFMTFMT1
-     C                     MOVELVAL1      CLNOCL
-     C*                    MOVELVAL       CLADCL
-     C                     MOVELVAL2      CLCPCL
-     C                     MOVELVAL3      CLVICL
-     C                     MOVELVAL4      CLTECL
-     C                     MOVELVAL50     CLMACL
-     C*                    MOVELVAL       CLSICL
-     C                     UPDATCLIENTSF
-     C                     ENDIF
-      *DEBUT SUPP
-     C           OPT       IFEQ '3'
-     C                     EXFMTWIN1
-     C           VALOUI    IFEQ 'OUI'
-     C                     MOVE 'DELETE'  MSG
-     C                     MOVE CLIDCL    VALWIN
-     C           CLIDCL    CHAINCLIENTSF             90
-     C                     DELETCLIENTSF
-     C                     ENDIF
-     C                     ELSE
-     C                     SETON                     03
-     C                     ENDIF
-      *DEBUT CRÉATION
-     C           OPT       IFEQ '4'
-     C                     MOVE 'CREATE'  MSG
-     C           *HIVAL    SETGTCLIENTSF
-     C                     READPCLIENTSF                 90
-     C                     ADD  1         CLIDCL
-     C                     MOVEL*BLANK    CLNOCL
-     C                     MOVEL*BLANK    CLADCL
-     C                     MOVEL*BLANK    CLCPCL
-     C                     MOVEL*BLANK    CLVICL
-     C                     MOVEL*BLANK    CLTECL
-     C                     MOVEL*BLANK    CLMACL
-     C*                    MOVEL*BLANK    CLSICL
-     C                     EXFMTFMT1
-     C                     MOVELVAL1      CLNOCL
-     C*                    MOVELVAL       CLADCL
-     C                     MOVELVAL2      CLCPCL
-     C                     MOVELVAL3      CLVICL
-     C                     MOVELVAL4      CLTECL
-     C                     MOVELVAL50     CLMACL
-     C*                    MOVELVAL       CLSICL
-     C                     WRITECLIENTSF
-     C                     ENDIF
-```
 
 ### BIB10 (RPG/RPG-III-400, 104 lignes)
 
@@ -199,6 +125,80 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
   MODE AFFICHAGE
  MODE MODIFICATION
  MODE SUPPRESSION
+```
+
+### BIB05 (RPG/RPG-III-400, 69 lignes)
+
+```text
+      *NOMPGM:
+      *NOMPROP:
+      *FILLEDEPEND:
+     * SI TU VOIS SA TU A COPIER BIB05
+     FCLIENSF CF  E                    WORKSTN
+     FCLIENF  UF  E           K        DISK                      A
+     C                     SETON                     LR
+     C           *ENTRY    PLIST
+     C                     PARM           OPT     1
+     C                     PARM           CLIDCL  60
+      *DEBUT MODIF
+     C           OPT       IFEQ '2'
+     C                     MOVE 'MODIF'   MSG
+     C           CLIDCL    CHAINCLIENTSF             90
+     C                     MOVELCLNOCL    VAL1
+     C*                    MOVELCLADCL    VAL
+     C                     MOVELCLCPCL    VAL2
+     C                     MOVELCLVICL    VAL3
+     C                     TESTN          CLTECL     55
+     C           *IN55     IFEQ *ON
+     C                     MOVELCLTECL    VAL4
+     C                     ENDIF
+     C                     MOVELCLMACL    VAL50
+     C*                    MOVELCLSICL    VAL
+     C                     EXFMTFMT1
+     C                     MOVELVAL1      CLNOCL
+     C*                    MOVELVAL       CLADCL
+     C                     MOVELVAL2      CLCPCL
+     C                     MOVELVAL3      CLVICL
+     C                     MOVELVAL4      CLTECL
+     C                     MOVELVAL50     CLMACL
+     C*                    MOVELVAL       CLSICL
+     C                     UPDATCLIENTSF
+     C                     ENDIF
+      *DEBUT SUPP
+     C           OPT       IFEQ '3'
+     C                     EXFMTWIN1
+     C           VALOUI    IFEQ 'OUI'
+     C                     MOVE 'DELETE'  MSG
+     C                     MOVE CLIDCL    VALWIN
+     C           CLIDCL    CHAINCLIENTSF             90
+     C                     DELETCLIENTSF
+     C                     ENDIF
+     C                     ELSE
+     C                     SETON                     03
+     C                     ENDIF
+      *DEBUT CRÉATION
+     C           OPT       IFEQ '4'
+     C                     MOVE 'CREATE'  MSG
+     C           *HIVAL    SETGTCLIENTSF
+     C                     READPCLIENTSF                 90
+     C                     ADD  1         CLIDCL
+     C                     MOVEL*BLANK    CLNOCL
+     C                     MOVEL*BLANK    CLADCL
+     C                     MOVEL*BLANK    CLCPCL
+     C                     MOVEL*BLANK    CLVICL
+     C                     MOVEL*BLANK    CLTECL
+     C                     MOVEL*BLANK    CLMACL
+     C*                    MOVEL*BLANK    CLSICL
+     C                     EXFMTFMT1
+     C                     MOVELVAL1      CLNOCL
+     C*                    MOVELVAL       CLADCL
+     C                     MOVELVAL2      CLCPCL
+     C                     MOVELVAL3      CLVICL
+     C                     MOVELVAL4      CLTECL
+     C                     MOVELVAL50     CLMACL
+     C*                    MOVELVAL       CLSICL
+     C                     WRITECLIENTSF
+     C                     ENDIF
 ```
 
 ### BIB05 (RPG/RPG-ILE, 69 lignes)

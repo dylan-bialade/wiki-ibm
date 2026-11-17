@@ -4,26 +4,16 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB09 | QSOURCES | DDS | 5 | 100 % | DDS (R/K/PFILE) | [LIVRES.md](../../sources/DDS/BIB09/LIVRES.md) |
-| BIB17 | QSQLSRC | SQL | 97 | 0 % | curseur SQL, boucle DOW/DOU/FOR | [LIVRES.md](../../sources/SQL/BIB17/LIVRES.md) |
+| BIB17 | QSQLSRC | SQL | 97 | 100 % | curseur SQL, boucle DOW/DOU/FOR | [LIVRES.md](../../sources/SQL/BIB17/LIVRES.md) |
+| BIB09 | QSOURCES | DDS | 5 | 0 % | DDS (R/K/PFILE) | [LIVRES.md](../../sources/DDS/BIB09/LIVRES.md) |
 
 ## Differences
 
-- **BIB09** en propre : DDS (R/K/PFILE)
 - **BIB17** en propre : curseur SQL, boucle DOW/DOU/FOR
-- Langages / types differents : DDS, SQL
+- **BIB09** en propre : DDS (R/K/PFILE)
+- Langages / types differents : SQL, DDS
 
 ## Codes
-
-### BIB09 (DDS, 5 lignes)
-
-```text
-     A          R LIVRESF
-     A            ISBN           5P 0       COLHDG('ISBN')
-     A            TITRE         30A         COLHDG('TITRE')
-     A            AUTEUR        30A         COLHDG('AUTEUR')
-     A          K ISBN
-```
 
 ### BIB17 (SQL, 97 lignes)
 
@@ -125,4 +115,14 @@ END;
 
 SELECT *
     FROM BIB17.livres;
+```
+
+### BIB09 (DDS, 5 lignes)
+
+```text
+     A          R LIVRESF
+     A            ISBN           5P 0       COLHDG('ISBN')
+     A            TITRE         30A         COLHDG('TITRE')
+     A            AUTEUR        30A         COLHDG('AUTEUR')
+     A          K ISBN
 ```

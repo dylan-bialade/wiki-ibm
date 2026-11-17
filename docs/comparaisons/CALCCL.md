@@ -4,8 +4,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB06 | QCLPSRC | CL/CL-procedural | 39 | 100 % | boucle DOW/DOU/FOR, CL : DCLF | [CALCCL.md](../../sources/CL/CL-procedural/BIB06/CALCCL.md) |
 | BIB10 | QCLPSRC | CL/CL-procedural | 39 | 100 % | boucle DOW/DOU/FOR, CL : DCLF | [CALCCL.md](../../sources/CL/CL-procedural/BIB10/CALCCL.md) |
+| BIB06 | QCLPSRC | CL/CL-procedural | 39 | 100 % | boucle DOW/DOU/FOR, CL : DCLF | [CALCCL.md](../../sources/CL/CL-procedural/BIB06/CALCCL.md) |
 | BIB17 | QCLPSRC | CL/CL-procedural | 29 | 4 % | boucle DOW/DOU/FOR, CL : DCLF | [CALCCL.md](../../sources/CL/CL-procedural/BIB17/CALCCL.md) |
 
 ## Differences
@@ -14,7 +14,7 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 ## Codes
 
-### BIB06 (CL/CL-procedural, 39 lignes)
+### BIB10 (CL/CL-procedural, 39 lignes)
 
 ```text
              PGM
@@ -58,7 +58,7 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
  FIN:        ENDPGM
 ```
 
-### BIB10 (CL/CL-procedural, 39 lignes)
+### BIB06 (CL/CL-procedural, 39 lignes)
 
 ```text
              PGM

@@ -4,46 +4,14 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB02 | QDDSRC | DDS | 27 | 100 % | DDS (R/K/PFILE) | [PGM2D.md](../../sources/DDS/BIB02/PGM2D.md) |
-| BIB20 | QDDSSRC | DDS | 57 | 37 % | DDS (R/K/PFILE) | [PGM2D.md](../../sources/DDS/BIB20/PGM2D.md) |
+| BIB20 | QDDSSRC | DDS | 57 | 100 % | DDS (R/K/PFILE) | [PGM2D.md](../../sources/DDS/BIB20/PGM2D.md) |
+| BIB02 | QDDSRC | DDS | 27 | 37 % | DDS (R/K/PFILE) | [PGM2D.md](../../sources/DDS/BIB02/PGM2D.md) |
 
 ## Differences
 
 - Techniques communes : DDS (R/K/PFILE)
 
 ## Codes
-
-### BIB02 (DDS, 27 lignes)
-
-```text
-     A*%%EC
-     A                                      DSPSIZ(24 80 *DS3)
-     A                                      CA03(03 'Fin de travail')
-     A          R FMT6
-     A                                      CA12(12 'Retour')
-     A                                  1 32'Consultation des courses'
-     A                                      DSPATR(HI)
-     A                                      COLOR(PNK)
-     A                                      DSPATR(RI)
-     A                                  5  3'Numéro courses...:'
-     A                                  7  3'Nom de la course :'
-     A            NORACE    R        O  5 23REFFLD(NORACE BIB02/RACEP)
-     A                                      DSPATR(HI)
-     A            NMRACE    R        O  7 23REFFLD(NMRACE BIB02/RACEP)
-     A                                      DSPATR(HI)
-     A                                  1  2USER
-     A                                      COLOR(BLU)
-     A                                  1 70COLOR(BLU)
-     A                                      DATE
-     A                                      EDTCDE(Y)
-     A                                 23  3'F3=Fin de travail'
-     A                                      COLOR(BLU)
-     A                                 23 23'F12=Retour'
-     A                                      COLOR(BLU)
-     A                                  8  3'Résultat.........:'
-     A            T1RACE    R        O  8 23REFFLD(RACEFMT/T1RACE RACES/RACEP)
-     A                                      DSPATR(HI)
-```
 
 ### BIB20 (DDS, 57 lignes)
 
@@ -105,4 +73,36 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
      A*%%TS  SD  20251007  131718  GGEOFFREY   REL-V7R5M0  5770-WDS
      A                                  9  5'Type de la course :'
      A            TYPECOURSE     3   B  9 27
+```
+
+### BIB02 (DDS, 27 lignes)
+
+```text
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A                                      CA03(03 'Fin de travail')
+     A          R FMT6
+     A                                      CA12(12 'Retour')
+     A                                  1 32'Consultation des courses'
+     A                                      DSPATR(HI)
+     A                                      COLOR(PNK)
+     A                                      DSPATR(RI)
+     A                                  5  3'Numéro courses...:'
+     A                                  7  3'Nom de la course :'
+     A            NORACE    R        O  5 23REFFLD(NORACE BIB02/RACEP)
+     A                                      DSPATR(HI)
+     A            NMRACE    R        O  7 23REFFLD(NMRACE BIB02/RACEP)
+     A                                      DSPATR(HI)
+     A                                  1  2USER
+     A                                      COLOR(BLU)
+     A                                  1 70COLOR(BLU)
+     A                                      DATE
+     A                                      EDTCDE(Y)
+     A                                 23  3'F3=Fin de travail'
+     A                                      COLOR(BLU)
+     A                                 23 23'F12=Retour'
+     A                                      COLOR(BLU)
+     A                                  8  3'Résultat.........:'
+     A            T1RACE    R        O  8 23REFFLD(RACEFMT/T1RACE RACES/RACEP)
+     A                                      DSPATR(HI)
 ```

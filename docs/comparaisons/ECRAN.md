@@ -4,8 +4,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB02 | QSRC | DDS | 332 | 100 % | sous-fichier, DDS (R/K/PFILE) | [ECRAN.md](../../sources/DDS/BIB02/ECRAN.md) |
-| BIB20 | QDDSSRC | DDS | 37 | 1 % | DDS (R/K/PFILE) | [ECRAN.md](../../sources/DDS/BIB20/ECRAN.md) |
+| BIB20 | QDDSSRC | DDS | 37 | 100 % | DDS (R/K/PFILE) | [ECRAN.md](../../sources/DDS/BIB20/ECRAN.md) |
+| BIB02 | QSRC | DDS | 332 | 1 % | sous-fichier, DDS (R/K/PFILE) | [ECRAN.md](../../sources/DDS/BIB02/ECRAN.md) |
 
 ## Differences
 
@@ -13,10 +13,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 - **BIB02** en propre : sous-fichier
 
 ## Codes
-
-### BIB02 (DDS, 332 lignes)
-
-_Long : voir [ECRAN.md](../../sources/DDS/BIB02/ECRAN.md)._
 
 ### BIB20 (DDS, 37 lignes)
 
@@ -59,3 +55,7 @@ _Long : voir [ECRAN.md](../../sources/DDS/BIB02/ECRAN.md)._
      A                                019002'Option ou commande                -
      A                                          '
 ```
+
+### BIB02 (DDS, 332 lignes)
+
+_Long : voir [ECRAN.md](../../sources/DDS/BIB02/ECRAN.md)._
