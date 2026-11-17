@@ -152,7 +152,7 @@ NOUVEL UNIVERS
 
 ### Variante : totaux par univers et total général (carte T avec L1 et LR)
 
-> Statut : **proposé, non compilé** (code fourni par l'utilisateur ; positions des colonnes contrôlées par script, compilation à confirmer). Même fichier `PERSO` et même impression que la variante précédente, avec deux totaux.
+> Statut : **compile** (confirmé par l'utilisateur le 17/11/2026 ; positions des colonnes aussi contrôlées par script). Rendu du spool non décrit. Même fichier `PERSO` et même impression que la variante précédente, avec deux totaux.
 
 - **Repère de colonnes** (**ne pas le copier dans le membre**) :
 
@@ -203,4 +203,4 @@ NOUVEL UNIVERS
 - **Remise à zéro par un calcul de détail** : `C   L1 … Z-ADD0 NBU` (`L1` en colonnes 9-11, comme condition) s'exécute à l'étape 7 du cycle, **après** l'impression des totaux : quand un nouvel univers est lu, `T L1` imprime d'abord le `NBU` de l'univers précédent, puis la remise à zéro et `ADD 1 NBU` comptent le premier enregistrement du nouveau groupe.
 - **Cartes T** : `T 2 L1` (total d'univers) puis `T 2 LR` (total général), dans cet ordre dans les spécifications `O` : à la fin du fichier `LR` allume aussi `L1`, donc le dernier total d'univers sort avant le total général. Au premier enregistrement les calculs et sorties de total sont sautés (job-i).
 - **Compteurs** : `NBU` (par univers) et `NB` (général) sont définis à leur première apparition (`30` = 3 chiffres, 0 décimale) ; au-delà de 999 personnes ils débordent.
-- **À confirmer à l'exécution** : le total du dernier univers juste avant le total général ; la rupture `L1` suppose les enregistrements **groupés par `UNIVERS`**.
+- **À confirmer à l'exécution** : le total du dernier univers juste avant le total général (rendu du spool) ; la rupture `L1` suppose les enregistrements **groupés par `UNIVERS`**.
