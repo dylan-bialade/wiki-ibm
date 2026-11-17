@@ -3,6 +3,24 @@
 > Source : [job-i.fr](https://job-i.fr/). Blocs `AUTO` régénérés ; écrivez dans « Mes exemples ».
 
 <!-- AUTO:START -->
+
+<!-- TOC:START -->
+**Sommaire** (retour : [sommaire general](../SOMMAIRE.md))
+
+- [Quelle version ?](#quelle-version-)
+- [RPG III  (source, codes opération)](#rpg-iii--source-codes-opération)
+- [Instructions RPG IV full free  (source)](#instructions-rpg-iv-full-free--source)
+- [Fonctions intégrées  (source)](#fonctions-intégrées--source)
+- [Cycle GAP  (source)](#cycle-gap--source)
+- [Constantes figuratives  (source)](#constantes-figuratives--source)
+- [Codes et mots d'édition  (source)](#codes-et-mots-dédition--source)
+- [Prototypes PR / PI  (source)](#prototypes-pr--pi--source)
+- [Sous-fichiers  (source)](#sous-fichiers--source)
+- [Zones de données  (source)](#zones-de-données--source)
+- [API système  (source)](#api-système--source)
+- [Mes exemples](#mes-exemples)
+<!-- TOC:END -->
+
 ## Quelle version ?
 
 | Version | Source | Compilateur | Débogage | Forme |

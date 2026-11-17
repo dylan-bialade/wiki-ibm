@@ -3,6 +3,16 @@
 > Source : [job-i.fr](https://job-i.fr/). Blocs `AUTO` régénérés ; écrivez dans « Mes exemples ». **job-i.fr n'a aucune page sur `EXEC SQL`, les curseurs, `SQLCODE` / `SQLSTATE`** (vérifié dans le plan du site le 17/11/2026) : ces points viennent donc de vos propres sources (« constat dans le code »), à confirmer dans la documentation IBM.
 
 <!-- AUTO:START -->
+
+<!-- TOC:START -->
+**Sommaire** (retour : [sommaire general](../SOMMAIRE.md))
+
+- [Compiler un source RPG contenant du SQL : CRTSQLRPGI  (source)](#compiler-un-source-rpg-contenant-du-sql--crtsqlrpgi--source)
+- [Exécuter une instruction SQL : RUNSQL  (source)](#exécuter-une-instruction-sql--runsql--source)
+- [Exécuter un script SQL : RUNSQLSTM  (source)](#exécuter-un-script-sql--runsqlstm--source)
+- [Mes exemples](#mes-exemples)
+<!-- TOC:END -->
+
 ## Compiler un source RPG contenant du SQL : CRTSQLRPGI  ([source](https://job-i.fr/commandes-ibm-i/crtsqlrpgi))
 - Lance le **précompilateur SQL** sur le source RPG, crée un membre temporaire, puis appelle le compilateur ILE RPG pour produire un programme, un module ou un programme de service.
 - Paramètres : `OBJ` (obligatoire), `SRCFILE` / `SRCMBR` (défaut `QRPGLESRC`), `SRCSTMF` (source dans l'IFS), `COMMIT`, `OBJTYPE` (`*PGM`, `*SRVPGM`, `*MODULE`), `OUTPUT` (`*PRINT` pour la liste), `DBGVIEW`, `REPLACE` (`*YES` par défaut), `COMPILEOPT`, `RPGPPOPT`.

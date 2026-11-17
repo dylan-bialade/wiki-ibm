@@ -1,0 +1,52 @@
+[
+  { "titre": "Démarrer", "intro": "Installer le wiki, le donner à un assistant, vérifier qu'il applique les règles.",
+    "entrees": [
+      { "fichier": "README.md", "titre": "README : installation, utilisation, carte rapide", "description": "Point d'entrée : prérequis, installation, variables, dépannage, carte « je cherche → je vais là ».", "sections": true },
+      { "fichier": "docs/ASSISTANT-ET-AUTOMATISATION.md", "titre": "Assistant, tests et automatisation", "description": "Texte à coller dans claude.ai, prompts de test avec grille, automatisation GitHub Actions et routine cloud.", "sections": true },
+      { "fichier": "docs/PROMPT-SYSTEME.md", "titre": "Prompt système du projet", "description": "Règles de lecture, de vérification et de mise à jour appliquées par l'assistant.", "sections": true },
+      { "fichier": "CLAUDE.md", "titre": "CLAUDE.md : instructions chargées par Claude Code", "description": "Workflow obligatoire, rigueur de lecture, sources (wiki, job-i.fr, ibm.com), remontée automatique.", "sections": true }
+    ] },
+  { "titre": "Fiches mémo (source : job-i.fr)", "intro": "Syntaxe, commandes et concepts IBM i, avec une zone « Mes exemples » par fiche.",
+    "entrees": [
+      { "fichier": "docs/cheatsheets/README.md", "titre": "Index des fiches", "description": "Liste des fiches et correspondance avec job-i.fr.", "sections": false },
+      { "fichier": "docs/cheatsheets/01-comprendre-ibm-i.md", "titre": "01 Comprendre IBM i", "description": "Objets, ILE, travaux, profils, sécurité, PTF, performances.", "sections": true },
+      { "fichier": "docs/cheatsheets/02-reference-systeme.md", "titre": "02 Référence système", "description": "Commandes CL, messages CPF/MCH, valeurs système.", "sections": true },
+      { "fichier": "docs/cheatsheets/03-rpg-par-version.md", "titre": "03 RPG par version", "description": "RPG III, IV colonné, full free, PR/PI, sous-fichiers, DTAARA, API.", "sections": true },
+      { "fichier": "docs/cheatsheets/04-db2-for-i-et-sql.md", "titre": "04 Db2 for i et SQL", "description": "PF, LF, services SQL, recettes, Node.js.", "sections": true },
+      { "fichier": "docs/cheatsheets/05-emploi-et-formation.md", "titre": "05 Emploi et formation", "description": "Se former, offres, structure de job-i.fr.", "sections": true },
+      { "fichier": "docs/cheatsheets/06-cycle-rpg-et-sous-routines.md", "titre": "06 Cycle RPG et sous-routines", "description": "Cycle GAP, BEGSR/EXSR, exemples personnels.", "sections": true },
+      { "fichier": "docs/cheatsheets/07-sql-embarque-en-rpg.md", "titre": "07 SQL embarqué en RPG", "description": "Curseur, SQLCODE, CRTSQLRPGI, RUNSQL, RUNSQLSTM.", "sections": true },
+      { "fichier": "docs/cheatsheets/08-impression-et-printer-ibm-i.md", "titre": "08 Impression et fichiers imprimante", "description": "Fichiers imprimante, spools, OUTQ, exemple validé en full free.", "sections": true }
+    ] },
+  { "titre": "RPG : cycle et impression", "intro": "Cours du cycle, passage au full free, impression et PRTCTL (sujets regroupés).",
+    "entrees": [
+      { "fichier": "docs/CYCLE-RPG.md", "titre": "Cycle RPG III : cours, exemples, passage au full free", "description": "7 étapes, indicateurs, ruptures, spécification O, rapprochement, table de correspondance vers le full free.", "sections": true },
+      { "fichier": "docs/IMPRESSION-RPG.md", "titre": "Impression en RPG : état à cycle et PRTCTL", "description": "Retour d'expérience (spools mesurés), version validée, dispositions PRTCTL officielles.", "sections": true },
+      { "fichier": "docs/CYCLE-GAP-EXEMPLES.md", "titre": "Exemples de cycle dans le code des bibliothèques", "description": "Sources avec fichier primaire, L1-L9, 1P, OF (généré).", "sections": false },
+      { "fichier": "docs/exemples-cycle/", "titre": "Dossier des exemples (RPG, DDS)", "description": "CYCLEQSYS (validé), CYCLEIMP + CYCLEPRT, CYCLEPRTCTL, CYCLETOTO, RUPT0 à RUPT2.", "sections": false }
+    ] },
+  { "titre": "Énoncés de TP", "intro": "Résumés anonymisés d'énoncés et d'examens.",
+    "entrees": [
+      { "fichier": "docs/enonces/README.md", "titre": "Index des énoncés", "description": "Un résumé par énoncé, id d'exercice, solutions du dépôt.", "sections": true },
+      { "fichier": "docs/enonces/ANALYSE-ENONCES.md", "titre": "Analyse des énoncés", "description": "Thèmes récurrents et points de vigilance.", "sections": true }
+    ] },
+  { "titre": "Exemples de code réels", "intro": "Code converti, comparaisons entre bibliothèques et contributions.",
+    "entrees": [
+      { "fichier": "docs/INDEX-SOURCES.md", "titre": "Index de toutes les sources", "description": "Un tableau par type de source (généré).", "sections": true },
+      { "fichier": "docs/COMPARAISON-BIBLIOTHEQUES.md", "titre": "Comparaison des bibliothèques", "description": "Membres communs, différents ou identiques (généré).", "sections": false },
+      { "fichier": "docs/VARIANTES.md", "titre": "Variantes des collaborateurs", "description": "Plusieurs solutions pour un même exercice (généré).", "sections": false },
+      { "fichier": "contributions/README.md", "titre": "Contribuer avec sa bibliothèque", "description": "Fork, Pull Request, contribution.json.", "sections": true }
+    ] },
+  { "titre": "Contrôles, manques et évaluations", "intro": "Ce que le wiki vérifie automatiquement et ce qui lui manque.",
+    "entrees": [
+      { "fichier": "docs/MANQUES.md", "titre": "Manques des fiches", "description": "Termes utilisés dans le code et absents des fiches (généré).", "sections": true },
+      { "fichier": "docs/VERIFICATION-JOB-I.md", "titre": "Vérification du code contre job-i.fr", "description": "Commandes et instructions reconnues ou à contrôler (généré).", "sections": true },
+      { "fichier": "docs/VERIFICATION-CONTRIBUTIONS.md", "titre": "Vérification des contributions", "description": "Erreurs et avertissements par contribution (généré).", "sections": false },
+      { "fichier": "docs/EVALUATION-APPORTS.md", "titre": "Évaluation des apports", "description": "Score de pertinence des documents ajoutés (généré).", "sections": false },
+      { "fichier": "docs/JOBI-CHANGES.md", "titre": "Changements sur job-i.fr", "description": "Pages modifiées depuis la dernière vérification (présent seulement s'il y en a).", "sections": false }
+    ] },
+  { "titre": "Apports", "intro": "Ajouter ses notes et exemples.",
+    "entrees": [
+      { "fichier": "docs/apports/README.md", "titre": "Apports personnels", "description": "Format d'un apport et évaluation automatique.", "sections": true }
+    ] }
+]

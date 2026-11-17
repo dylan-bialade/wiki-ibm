@@ -3,6 +3,21 @@
 > Source : [job-i.fr](https://job-i.fr/) (synthèse personnelle, pages liées en fin de section). Les blocs `AUTO` sont régénérés ; **écrivez uniquement dans « Mes exemples »**.
 
 <!-- AUTO:START -->
+
+<!-- TOC:START -->
+**Sommaire** (retour : [sommaire general](../SOMMAIRE.md))
+
+- [AS/400 et IBM i  (source, découverte)](#as400-et-ibm-i--source-découverte)
+- [Objets  (source)](#objets--source)
+- [ILE  (source)](#ile--source)
+- [Travaux et sous-systèmes  (source)](#travaux-et-sous-systèmes--source)
+- [Profils et droits  (source)](#profils-et-droits--source)
+- [Sécurité  (source)](#sécurité--source)
+- [PTF  (source)](#ptf--source)
+- [Performances  (source)](#performances--source)
+- [Mes exemples](#mes-exemples)
+<!-- TOC:END -->
+
 ## AS/400 et IBM i  ([source](https://job-i.fr/as400-vs-ibm-i), [découverte](https://job-i.fr/ibm-i))
 - Même système depuis 1988 : AS/400 → iSeries (2000) → i5/OS (2004) → IBM i (2008) → 7.5 (2022) → 7.6 (2025, Power11).
 - Constantes : TIMI (couche machine), stockage à un niveau, objets, base de données intégrée (Db2 for i).

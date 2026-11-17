@@ -4,11 +4,11 @@
 param([string]$Root)
 if (-not $Root) { $Root = Split-Path -Parent $PSScriptRoot }
 . (Join-Path $PSScriptRoot 'Contrib-Common.ps1')
-$list = @('README.md','CLAUDE.md','docs/cheatsheets/README.md')
+$list = @('README.md','docs/SOMMAIRE.md','CLAUDE.md','docs/cheatsheets/README.md')
 foreach ($f in (Sort-By @(Get-ChildItem (Join-Path $Root 'docs/cheatsheets') -Filter '0*.md') { $_.Name })) { $list += 'docs/cheatsheets/' + $f.Name }
 $list += 'docs/enonces/README.md'
 foreach ($f in (Sort-By @(Get-ChildItem (Join-Path $Root 'docs/enonces') -Filter '*.md' | Where-Object { $_.Name -ne 'README.md' }) { $_.Name })) { $list += 'docs/enonces/' + $f.Name }
-$list += @('docs/MANQUES.md','docs/CYCLE-GAP-EXEMPLES.md','docs/CYCLE-RPG-COURS.md','docs/IMPRESSION-FULLFREE.md','docs/CYCLE-VERS-FULLFREE.md','docs/PRTCTL.md','docs/PORTABILITE.md','contributions/README.md','docs/apports/README.md')
+$list += @('docs/MANQUES.md','docs/CYCLE-GAP-EXEMPLES.md','docs/CYCLE-RPG.md','docs/IMPRESSION-RPG.md','docs/ASSISTANT-ET-AUTOMATISATION.md','contributions/README.md','docs/apports/README.md')
 $sb = New-Object System.Text.StringBuilder
 [void]$sb.AppendLine('# Wiki IBM i : contexte complet pour un assistant')
 [void]$sb.AppendLine('')
@@ -26,7 +26,7 @@ $n = 0
 foreach ($rel in $list) {
   $p = Join-Path $Root $rel
   if (-not (Test-Path $p)) { continue }
-  $t = [IO.File]::ReadAllText($p).TrimEnd()
+  $t = [regex]::Replace([IO.File]::ReadAllText($p), '(?s)<!-- TOC:START -->.*?<!-- TOC:END -->\r?\n?', '').TrimEnd()
   [void]$sb.AppendLine(''); [void]$sb.AppendLine(''); [void]$sb.AppendLine("=== FICHIER : $rel ===")
   [void]$sb.AppendLine($t)
   $n++

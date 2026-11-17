@@ -1,6 +1,23 @@
 # Wiki IBM i (RPG / CL / DDS / Db2 for i)
 
-> **Pour les LLM et les humains : lire ce fichier en premier.** Il décrit où trouver chaque ressource en 1 saut. Tous les chemins sont relatifs à la racine du dépôt. Langue des documents : français.
+> **Pour les LLM et les humains : lire ce fichier en premier. Navigation par sujet : [sommaire général](docs/SOMMAIRE.md).** Il décrit où trouver chaque ressource en 1 saut. Tous les chemins sont relatifs à la racine du dépôt. Langue des documents : français.
+
+<!-- TOC:START -->
+**Sommaire** (retour : [sommaire general](docs/SOMMAIRE.md))
+
+- [Installation et utilisation (n'importe qui, n'importe quel appareil)](#installation-et-utilisation-nimporte-qui-nimporte-quel-appareil)
+  - [1. Prérequis](#1-prérequis)
+  - [2. Installer (3 minutes)](#2-installer-3-minutes)
+  - [3. Utiliser](#3-utiliser)
+  - [4. Variables d'environnement (facultatives)](#4-variables-denvironnement-facultatives)
+  - [5. Automatisation (propriétaire du dépôt, une fois)](#5-automatisation-propriétaire-du-dépôt-une-fois)
+  - [6. Règles à respecter (résumé de CLAUDE.md)](#6-règles-à-respecter-résumé-de-claudemd)
+  - [7. Dépannage](#7-dépannage)
+- [Carte rapide (je cherche → je vais là)](#carte-rapide-je-cherche--je-vais-là)
+- [Arborescence](#arborescence)
+  - [Types de sources (`sources/`)](#types-de-sources-sources)
+- [Format d'un fichier de `sources/`](#format-dun-fichier-de-sources)
+<!-- TOC:END -->
 
 ## Installation et utilisation (n'importe qui, n'importe quel appareil)
 
@@ -21,8 +38,8 @@ git clone https://github.com/dylan-bialade/wiki-ibm.git
 cd wiki-ibm
 ```
 - **Claude Code** : ouvrir un terminal dans ce dossier et lancer `claude`. Le fichier [CLAUDE.md](CLAUDE.md) est chargé automatiquement : règles de lecture, de vérification (wiki, job-i.fr, puis ibm.com), tableau « Élément | Statut | Source », remontée automatique des manques.
-- **Claude Code dans un autre projet** (pour avoir le wiki partout) : copier dans `~/.claude/CLAUDE.md` (`%USERPROFILE%\.claude\CLAUDE.md` sous Windows) les lignes de [docs/CONTEXTE-CLAUDE.md](docs/CONTEXTE-CLAUDE.md), section 3.
-- **claude.ai** (tous les chats) : coller le texte de la section 1 de [docs/CONTEXTE-CLAUDE.md](docs/CONTEXTE-CLAUDE.md) dans les préférences, ou créer un projet et lui donner [llms-full.txt](llms-full.txt) (URL brute : `https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt`, plus de 100 Ko : l'assistant doit le lire en entier).
+- **Claude Code dans un autre projet** (pour avoir le wiki partout) : copier dans `~/.claude/CLAUDE.md` (`%USERPROFILE%\.claude\CLAUDE.md` sous Windows) les lignes de [docs/ASSISTANT-ET-AUTOMATISATION.md](docs/ASSISTANT-ET-AUTOMATISATION.md#partie-1--donner-le-wiki-à-nimporte-quel-chat-claude), section 3.
+- **claude.ai** (tous les chats) : coller le texte de la section 1 de [docs/ASSISTANT-ET-AUTOMATISATION.md](docs/ASSISTANT-ET-AUTOMATISATION.md#partie-1--donner-le-wiki-à-nimporte-quel-chat-claude) dans les préférences, ou créer un projet et lui donner [llms-full.txt](llms-full.txt) (URL brute : `https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt`, plus de 100 Ko : l'assistant doit le lire en entier).
 
 ### 3. Utiliser
 - **Poser une question ou faire écrire du code** : l'assistant cherche dans le wiki, vérifie sur job-i.fr, puis sur ibm.com (documentation officielle) si job-i n'a pas l'information, cite ses sources, ne dit jamais « ça compile » sans votre confirmation, et signale ce qui manque.
@@ -30,7 +47,7 @@ cd wiki-ibm
 - **Régénérer les pages calculées** : `pwsh scripts/Run-All.ps1 -SansConversion` (sous Windows 5.1 : `powershell -File scripts\Run-All.ps1 -SansConversion`).
 - **Remonter une information au wiki** : automatique (l'assistant lance `scripts/Report-ToWiki.ps1`), ou à la main : déposer un fichier dans [docs/apports/](docs/apports/README.md), ou ouvrir une Issue « Apport au wiki ». Chaque apport est évalué automatiquement ([EVALUATION-APPORTS](docs/EVALUATION-APPORTS.md)).
 - **Contribuer vos exemples de bibliothèque** : [contributions/README.md](contributions/README.md) (fork + Pull Request).
-- **Vérifier que l'assistant applique bien les règles** : jouer les prompts de [docs/TEST-ASSISTANT.md](docs/TEST-ASSISTANT.md) (5 prompts + grille).
+- **Vérifier que l'assistant applique bien les règles** : jouer les prompts de [docs/ASSISTANT-ET-AUTOMATISATION.md](docs/ASSISTANT-ET-AUTOMATISATION.md#partie-2--tester-que-lassistant-applique-les-règles) (5 prompts + grille).
 
 ### 4. Variables d'environnement (facultatives)
 
@@ -43,13 +60,14 @@ cd wiki-ibm
 ### 5. Automatisation (propriétaire du dépôt, une fois)
 1. GitHub > **Settings > Actions > General** : cocher « Allow GitHub Actions to create and approve pull requests » (régénération quotidienne et Pull Requests automatiques).
 2. Routine cloud Claude (facultative) : dans claude.ai > Code > Environnements, autoriser le réseau vers **`job-i.fr`** et **`ibm.com`** pour que la routine relise les pages sources.
-3. Détails, essais et limites : [docs/PORTABILITE.md](docs/PORTABILITE.md).
+3. Détails, essais et limites : [docs/ASSISTANT-ET-AUTOMATISATION.md](docs/ASSISTANT-ET-AUTOMATISATION.md#partie-3--faire-tourner-le-wiki-depuis-nimporte-quel-appareil).
 
 ### 6. Règles à respecter (résumé de [CLAUDE.md](CLAUDE.md))
 - **Anonymat** : bibliothèques `BIBnn` uniquement ; aucun nom réel de personne, d'organisme ou de machine dans le dépôt public.
 - **Pas de secret** (mot de passe, jeton, clé) ; pas de longs extraits de job-i.fr ou d'IBM (synthèse et lien).
 - **Pas d'IA pendant un TP surprise ou un examen** : n'utiliser le wiki qu'en révision.
 - **Sources** : wiki, puis job-i.fr, puis ibm.com ; les forums et blogs sont non officiels.
+- **Organisation** : un sujet = un seul fichier ; chaque page a un sommaire en tête (généré, ne pas l'éditer) et figure dans [docs/SOMMAIRE.md](docs/SOMMAIRE.md) (configuration : scripts/sommaire.json).
 
 ### 7. Dépannage
 
@@ -84,16 +102,16 @@ cd wiki-ibm
 | Impression, fichier imprimante, spool, OUTQ | [fiche 08](docs/cheatsheets/08-impression-et-printer-ibm-i.md) |
 | Cycle RPG (cours) ou sous-routines | [fiche 06](docs/cheatsheets/06-cycle-rpg-et-sous-routines.md) |
 | Exemples du cycle RPG (fichier primaire, L1-L9, 1P, OF) | [docs/CYCLE-GAP-EXEMPLES.md](docs/CYCLE-GAP-EXEMPLES.md) |
-| Cours du cycle RPG III (7 étapes, ruptures, spéc. O, rapprochement) + exemples | [docs/CYCLE-RPG-COURS.md](docs/CYCLE-RPG-COURS.md) |
-| Réécrire un état à cycle en full free (retour d'expérience, spool) | [docs/IMPRESSION-FULLFREE.md](docs/IMPRESSION-FULLFREE.md) |
-| Cycle RPG III -> full free : table de correspondance | [docs/CYCLE-VERS-FULLFREE.md](docs/CYCLE-VERS-FULLFREE.md) |
-| PRTCTL (contrôle d'impression RPG) : ce qui est documenté ou non | [docs/PRTCTL.md](docs/PRTCTL.md) |
-| Tester que l'assistant applique les règles du wiki (prompts + grille) | [docs/TEST-ASSISTANT.md](docs/TEST-ASSISTANT.md) |
+| Cours du cycle RPG III (7 étapes, ruptures, spéc. O, rapprochement) + exemples | [docs/CYCLE-RPG.md](docs/CYCLE-RPG.md#partie-1--cours-du-cycle-rpg-iii-et-exemples) |
+| Réécrire un état à cycle en full free (retour d'expérience, spool) | [docs/IMPRESSION-RPG.md](docs/IMPRESSION-RPG.md#partie-1--réécrire-un-état-à-cycle-en-full-free-retour-dexpérience) |
+| Cycle RPG III -> full free : table de correspondance | [docs/CYCLE-RPG.md](docs/CYCLE-RPG.md#partie-2--du-cycle-rpg-iii-au-full-free-table-de-correspondance) |
+| PRTCTL (contrôle d'impression RPG) : ce qui est documenté ou non | [docs/IMPRESSION-RPG.md](docs/IMPRESSION-RPG.md#partie-2--prtctl-contrôle-dynamique-dimpression) |
+| Tester que l'assistant applique les règles du wiki (prompts + grille) | [docs/ASSISTANT-ET-AUTOMATISATION.md](docs/ASSISTANT-ET-AUTOMATISATION.md#partie-2--tester-que-lassistant-applique-les-règles) |
 | Ajouter ma bibliothèque (collaborateur) | [contributions/README.md](contributions/README.md) |
 | Règles de lecture, de vérification et de mise à jour (prompt système) | [docs/PROMPT-SYSTEME.md](docs/PROMPT-SYSTEME.md) (chargé via [CLAUDE.md](CLAUDE.md)) |
 | Ce qui a changé sur job-i.fr depuis la dernière vérification | [docs/JOBI-CHANGES.md](docs/JOBI-CHANGES.md) (présent seulement s'il y a des changements) |
-| Donner le wiki à n'importe quel chat Claude (texte à coller, projet, fichier unique) | [docs/CONTEXTE-CLAUDE.md](docs/CONTEXTE-CLAUDE.md), [llms-full.txt](llms-full.txt) |
-| Faire tourner le wiki depuis n'importe quel appareil (Actions, routine cloud, PowerShell 7) | [docs/PORTABILITE.md](docs/PORTABILITE.md) |
+| Donner le wiki à n'importe quel chat Claude (texte à coller, projet, fichier unique) | [docs/ASSISTANT-ET-AUTOMATISATION.md](docs/ASSISTANT-ET-AUTOMATISATION.md#partie-1--donner-le-wiki-à-nimporte-quel-chat-claude), [llms-full.txt](llms-full.txt) |
+| Faire tourner le wiki depuis n'importe quel appareil (Actions, routine cloud, PowerShell 7) | [docs/ASSISTANT-ET-AUTOMATISATION.md](docs/ASSISTANT-ET-AUTOMATISATION.md#partie-3--faire-tourner-le-wiki-depuis-nimporte-quel-appareil) |
 
 ## Arborescence
 

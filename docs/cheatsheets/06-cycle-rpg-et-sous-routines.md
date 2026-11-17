@@ -3,6 +3,18 @@
 > Source : [job-i.fr](https://job-i.fr/). Blocs `AUTO` régénérés ; écrivez dans « Mes exemples ».
 
 <!-- AUTO:START -->
+
+<!-- TOC:START -->
+**Sommaire** (retour : [sommaire general](../SOMMAIRE.md))
+
+- [Le cycle RPG  (source)](#le-cycle-rpg--source)
+- [Sous-routines BEGSR / ENDSR / EXSR  (source)](#sous-routines-begsr--endsr--exsr--source)
+- [Mes exemples](#mes-exemples)
+  - [Exemple : liste de personnes avec cycle, rupture L1, tableau MSG, `*INZSR` et sortie (DSPLY seul)](#exemple--liste-de-personnes-avec-cycle-rupture-l1-tableau-msg-inzsr-et-sortie-dsply-seul)
+  - [Variante : impression avec cartes O à la place de DSPLY](#variante--impression-avec-cartes-o-à-la-place-de-dsply)
+  - [Variante : totaux par univers et total général (carte T avec L1 et LR)](#variante--totaux-par-univers-et-total-général-carte-t-avec-l1-et-lr)
+<!-- TOC:END -->
+
 ## Le cycle RPG  ([source](https://job-i.fr/cycle-gap-rpg))
 - Un programme qui déclare un **fichier primaire** (spécification F, `IP`) reçoit du compilateur une boucle invisible : pas de `READ`, pas de test de fin de fichier. Le nom « GAP » (Générateur Automatique de Programmes) vient de l'ancien nom français du RPG.
 - **Sans fichier primaire, pas de cycle.** Le full free (`DCL-F`) ne peut pas avoir de fichier primaire ; `CTL-OPT MAIN(...)` et les modules `NOMAIN` non plus.
@@ -205,6 +217,6 @@ NOUVEL UNIVERS
 - **Compteurs** : `NBU` (par univers) et `NB` (général) sont définis à leur première apparition (`30` = 3 chiffres, 0 décimale) ; au-delà de 999 personnes ils débordent.
 - **À confirmer à l'exécution** : le total du dernier univers juste avant le total général (rendu du spool) ; la rupture `L1` suppose les enregistrements **groupés par `UNIVERS`**.
 
-> Synthèse d'un cours complet sur le cycle (7 étapes, ruptures en cascade, spécification O, rapprochement) et exemples proposés : [CYCLE-RPG-COURS](../CYCLE-RPG-COURS.md).
+> Synthèse d'un cours complet sur le cycle (7 étapes, ruptures en cascade, spécification O, rapprochement) et exemples proposés : [Cours du cycle RPG](../CYCLE-RPG.md#partie-1--cours-du-cycle-rpg-iii-et-exemples).
 
-> Traduire un état à cycle en full free : [CYCLE-VERS-FULLFREE](../CYCLE-VERS-FULLFREE.md).
+> Traduire un état à cycle en full free : [Cycle vers full free](../CYCLE-RPG.md#partie-2--du-cycle-rpg-iii-au-full-free-table-de-correspondance).

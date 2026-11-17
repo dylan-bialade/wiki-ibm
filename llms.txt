@@ -3,6 +3,7 @@
 > Documentation personnelle IBM i : fiches memo issues de job-i.fr + code reel converti en Markdown. Lire README.md pour la carte complete.
 
 ## Fiches memo
+- [Sommaire general](docs/SOMMAIRE.md): navigation par sujet avec les titres de chaque page
 - [Index des fiches](docs/cheatsheets/README.md)
 - [Comprendre IBM i](docs/cheatsheets/01-comprendre-ibm-i.md): objets, ILE, travaux, profils, securite, PTF, performances
 - [Reference systeme](docs/cheatsheets/02-reference-systeme.md): commandes CL, messages CPF/MCH, valeurs systeme
@@ -22,18 +23,18 @@
 - [Variantes](docs/VARIANTES.md): meme exercice, plusieurs solutions de collaborateurs (structure et code compares)
 - [Comparaison des bibliotheques](docs/COMPARAISON-BIBLIOTHEQUES.md): meme membre dans plusieurs bibliotheques, versions identiques ou differentes
 - [Exemples du cycle RPG](docs/CYCLE-GAP-EXEMPLES.md): sources avec fichier primaire (IP), L1-L9, 1P, OF
-- [Cours du cycle RPG III](docs/CYCLE-RPG-COURS.md): 7 étapes, ruptures L1-L9, spécification O, rapprochement MR, exemples non compilés
-- [Impression full free](docs/IMPRESSION-FULLFREE.md): réécrire un état à cycle, mesures de spool, piège PRTCTL, code CYCLETOTO.rpgle
-- [Cycle vers full free](docs/CYCLE-VERS-FULLFREE.md): correspondance L1, LR, 1P, OF, PAGE, spec O vers full free, avec statut validé / proposé / non vérifié
-- [PRTCTL](docs/PRTCTL.md): documenté ou non, constat de terrain
-- [Test de l'assistant](docs/TEST-ASSISTANT.md): prompts de contrôle et grille de réussite
+- [Cours du cycle RPG III](docs/CYCLE-RPG.md#partie-1--cours-du-cycle-rpg-iii-et-exemples): 7 étapes, ruptures L1-L9, spécification O, rapprochement MR, exemples non compilés
+- [Impression full free](docs/IMPRESSION-RPG.md#partie-1--réécrire-un-état-à-cycle-en-full-free-retour-dexpérience): réécrire un état à cycle, mesures de spool, piège PRTCTL, code CYCLETOTO.rpgle
+- [Cycle vers full free](docs/CYCLE-RPG.md#partie-2--du-cycle-rpg-iii-au-full-free-table-de-correspondance): correspondance L1, LR, 1P, OF, PAGE, spec O vers full free, avec statut validé / proposé / non vérifié
+- [PRTCTL](docs/IMPRESSION-RPG.md#partie-2--prtctl-contrôle-dynamique-dimpression): documenté ou non, constat de terrain
+- [Test de l'assistant](docs/ASSISTANT-ET-AUTOMATISATION.md#partie-2--tester-que-lassistant-applique-les-règles): prompts de contrôle et grille de réussite
 - [Fiche 07](docs/cheatsheets/07-sql-embarque-en-rpg.md): SQL embarque en RPG, CRTSQLRPGI, RUNSQL, RUNSQLSTM
 - [Fiche 08](docs/cheatsheets/08-impression-et-printer-ibm-i.md): impression, fichier imprimante, spool, OUTQ, CRTPRTF, OVRPRTF, CPYSPLF
 - [Fiche 06](docs/cheatsheets/06-cycle-rpg-et-sous-routines.md): cycle RPG (GAP) et sous-routines
 - [Enonces de TP et d'examens](docs/enonces/README.md): resumes anonymises, solutions presentes ou absentes du depot
 - [Analyse des enonces](docs/enonces/ANALYSE-ENONCES.md): notions requises, absentes des fiches, exercices sans solution
-- [Contexte complet en un fichier](llms-full.txt): regles, fiches, enonces, manques (a donner a un assistant) ; [mode d'emploi](docs/CONTEXTE-CLAUDE.md)
-- [Portabilite](docs/PORTABILITE.md): automatisation sans dependre d'un appareil (GitHub Actions, PowerShell 7, variables WIKI_EXPORT_DIR / WIKI_ALIAS_FILE)
+- [Contexte complet en un fichier](llms-full.txt): regles, fiches, enonces, manques (a donner a un assistant) ; [mode d'emploi](docs/ASSISTANT-ET-AUTOMATISATION.md#partie-1--donner-le-wiki-à-nimporte-quel-chat-claude)
+- [Portabilite](docs/ASSISTANT-ET-AUTOMATISATION.md#partie-3--faire-tourner-le-wiki-depuis-nimporte-quel-appareil): automatisation sans dependre d'un appareil (GitHub Actions, PowerShell 7, variables WIKI_EXPORT_DIR / WIKI_ALIAS_FILE)
 - [Manques](docs/MANQUES.md): termes utilises dans le code mais absents des fiches
 - [Evaluation des apports](docs/EVALUATION-APPORTS.md): verdict automatique (pertinent ou non) sur les documents ajoutes
 - [Contributions](contributions/README.md): comment un collaborateur ajoute sa bibliotheque

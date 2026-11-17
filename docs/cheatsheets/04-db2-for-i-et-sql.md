@@ -3,6 +3,18 @@
 > Source : [job-i.fr](https://job-i.fr/). Blocs `AUTO` régénérés ; écrivez dans « Mes exemples ».
 
 <!-- AUTO:START -->
+
+<!-- TOC:START -->
+**Sommaire** (retour : [sommaire general](../SOMMAIRE.md))
+
+- [Fichier physique (PF)  (source)](#fichier-physique-pf--source)
+- [Fichier logique (LF)  (source)](#fichier-logique-lf--source)
+- [Services SQL  (source) — 390 services](#services-sql--source--390-services)
+- [Recettes SQL d'exploitation  (source) — 36 recettes en lecture seule](#recettes-sql-dexploitation--source--36-recettes-en-lecture-seule)
+- [Node.js + Db2 for i  (source)](#nodejs--db2-for-i--source)
+- [Mes exemples](#mes-exemples)
+<!-- TOC:END -->
+
 ## Fichier physique (PF)  ([source](https://job-i.fr/fichier-physique-pf-ibm-i))
 - `*FILE` PF = table (format d'enregistrement, membres, clé). DDS (`CRTPF` sur `QDDSSRC`) ou SQL (`CREATE TABLE`, à privilégier).
 - DDS : col. 17 `R`/`K`/blanc · 19-28 nom · 30-34 longueur · 35 type (A, P, S, B, L, T, Z) · 36-37 décimales · 45-80 mots-clés (`UNIQUE`, `TEXT`, `COLHDG`, `VALUES`, `EDTCDE`).

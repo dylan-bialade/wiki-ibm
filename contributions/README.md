@@ -2,6 +2,15 @@
 
 Ce dossier reçoit le code des collaborateurs (camarades). Objectif : pour **un même exercice**, réunir **plusieurs solutions** (structures et codes différents) qui donnent **le même résultat final**, afin d'avoir un large choix d'exemples. Chaque contribution est **vérifiée** à chaque merge ([VERIFICATION-CONTRIBUTIONS](../docs/VERIFICATION-CONTRIBUTIONS.md)) puis comparée aux autres ([VARIANTES](../docs/VARIANTES.md)).
 
+<!-- TOC:START -->
+**Sommaire** (retour : [sommaire general](../docs/SOMMAIRE.md))
+
+- [Comment contribuer (fork + Pull Request)](#comment-contribuer-fork--pull-request)
+- [`contribution.json`](#contributionjson)
+- [Ce qui est vérifié à chaque merge](#ce-qui-est-vérifié-à-chaque-merge)
+- [Règles](#règles)
+<!-- TOC:END -->
+
 ## Comment contribuer (fork + Pull Request)
 
 1. Copiez le dossier [`_modele`](_modele/) en `contributions/<votre-pseudo>/` (pseudo en minuscules, chiffres, tirets : `marie-d`).

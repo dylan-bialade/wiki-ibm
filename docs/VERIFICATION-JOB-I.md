@@ -2,6 +2,14 @@
 
 Genere le 2026-11-17 10:12. Reference : 1830 commandes CL, 196 termes RPG.
 
+<!-- TOC:START -->
+**Sommaire** (retour : [sommaire general](SOMMAIRE.md))
+
+- [Commandes CL utilisees](#commandes-cl-utilisees)
+  - [A controler manuellement (absentes de la liste job-i : variable, label, objet utilisateur ?)](#a-controler-manuellement-absentes-de-la-liste-job-i--variable-label-objet-utilisateur-)
+- [Instructions / fonctions RPG reconnues](#instructions--fonctions-rpg-reconnues)
+<!-- TOC:END -->
+
 ## Commandes CL utilisees
 
 | Commande | Occurrences | Statut | Fiche job-i |

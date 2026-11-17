@@ -2,6 +2,14 @@
 
 Comparaison des [énoncés](README.md) avec les fiches (`docs/cheatsheets/`) et les sources converties. « Fiches » = le terme apparaît dans une fiche ; « Code » = nombre d'occurrences dans les sources. Comptage automatique, **à confirmer** avant d'écrire une fiche (heuristique).
 
+<!-- TOC:START -->
+**Sommaire** (retour : [sommaire general](../SOMMAIRE.md))
+
+- [1. Exercices sans solution dans le dépôt](#1-exercices-sans-solution-dans-le-dépôt)
+- [2. Notions requises par les énoncés](#2-notions-requises-par-les-énoncés)
+- [3. Limites et incohérences relevées](#3-limites-et-incohérences-relevées)
+<!-- TOC:END -->
+
 ## 1. Exercices sans solution dans le dépôt
 
 | Énoncé | Ce qui manque |

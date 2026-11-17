@@ -3,6 +3,16 @@
 > Source : [job-i.fr](https://job-i.fr/). Blocs `AUTO` régénérés ; écrivez dans « Mes exemples ».
 
 <!-- AUTO:START -->
+
+<!-- TOC:START -->
+**Sommaire** (retour : [sommaire general](../SOMMAIRE.md))
+
+- [Commandes CL  (source) — 1 830 fiches](#commandes-cl--source--1-830-fiches)
+- [Messages  (source) — 13 213 messages CPF / MCH (107 fiches « Comment s'en sortir »)](#messages--source--13-213-messages-cpf--mch-107-fiches--comment-sen-sortir-)
+- [Valeurs système  (source) — 158 valeurs (7.5)](#valeurs-système--source--158-valeurs-75)
+- [Mes exemples](#mes-exemples)
+<!-- TOC:END -->
+
 ## Commandes CL  ([source](https://job-i.fr/commandes-ibm-i)) — 1 830 fiches
 Organisation du site : blocs thématiques (fichiers, IFS, sauvegardes, spools, travaux, profils, bibliothèques, messages, zones de données, compilation, débogage, journalisation, droits, sous-systèmes, planification, valeurs système, PTF) + index A→W. Fiche : `https://job-i.fr/commandes-ibm-i/<commande>`.
 

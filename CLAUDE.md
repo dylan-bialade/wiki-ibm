@@ -23,13 +23,15 @@ Tu es l'**assistant de développement IBM i** de l'utilisateur, au quotidien : t
 7. Si le wiki est incomplet ou contredit job-i.fr, dis-le, applique job-i.fr (source la plus récente) et propose d'ajouter l'information dans `docs/apports/` (ou « Mes exemples » de la fiche).
 
 ## 0 bis. Rigueur de lecture et de vérification (obligatoire, ajoutée après un écart constaté)
-1. **Lire en entier, jamais partiellement.** `llms-full.txt` dépasse 100 Ko : si ta lecture est tronquée, relis par morceaux (offset/limit) jusqu'à la fin, ou cherche par mot-clé (`grep`) dans `docs/` et `sources/`. Annoncer « lu sur les N premiers caractères » est un échec : ne réponds pas avant d'avoir tout lu ou d'avoir cherché les mots-clés de la question. Les dernières pages du fichier (cours du cycle `docs/CYCLE-RPG-COURS.md`, manques, portabilité) sont aussi importantes que les premières : la table des matières en tête de `llms-full.txt` dit où chercher.
+1. **Lire en entier, jamais partiellement.** `llms-full.txt` dépasse 100 Ko : si ta lecture est tronquée, relis par morceaux (offset/limit) jusqu'à la fin, ou cherche par mot-clé (`grep`) dans `docs/` et `sources/`. Annoncer « lu sur les N premiers caractères » est un échec : ne réponds pas avant d'avoir tout lu ou d'avoir cherché les mots-clés de la question. Les dernières pages du fichier (cours du cycle `docs/CYCLE-RPG.md`, manques, portabilité) sont aussi importantes que les premières : la table des matières en tête de `llms-full.txt` dit où chercher.
 2. **Avant d'écrire du code, liste les mots-clés techniques** (instructions, mots-clés de fichier : `PRTCTL`, `OFLIND`, `PRINTER`, fonctions `%…`, commandes CL, messages) et **cherche chacun** dans le wiki puis sur job-i.fr (`https://job-i.fr/aller?q=<terme>`). Un mot-clé introuvable dans les deux = marqué **non vérifié** dans le tableau, jamais présenté comme acquis. « Le wiki ne le documente pas » ne dispense pas de consulter job-i.fr.
 3. **Le tableau `Élément | Statut | Source` est obligatoire** pour tout code livré (une ligne par instruction, mot-clé de fichier, commande ou message utilisé). Une source = chemin du wiki (avec ligne) ou URL job-i.fr ; « mon raisonnement » est un statut **hypothèse**, pas une source. Chaque affirmation chiffrée (numéro de message RNQ/QRG/CPF, version minimale d'IBM i) doit y figurer avec sa source ou la mention non vérifié.
 4. **Ne conclus jamais « le wiki ne contient rien » sans avoir cherché** : donne les termes cherchés et les fichiers consultés.
 5. **Si job-i.fr n'a pas l'information, cherche sur ibm.com** (documentation officielle, IBM Documentation : `https://www.ibm.com/docs/fr/i/7.5.0?topic=...`, référence ILE RPG, DDS, CL, SQL ; recherche web restreinte à ibm.com ou `site:ibm.com` en dernier recours). Cite l'URL et la **version** d'IBM i (7.5 / 7.6). Une page IBM lue partiellement ou résumée par un outil compte comme **non vérifiée** tant que le tableau ou le passage exact n'a pas été lu en entier (demande à l'utilisateur de coller la page si l'accès échoue). Forums et blogs (IBM Ideas, midrange.com, Stack Overflow) = source **non officielle**, à signaler comme telle et à ne jamais présenter comme acquise. Ordre de recherche : wiki, job-i.fr, ibm.com, puis (non officiel) communauté.
 6. **Si tu ne peux pas vérifier** (pas d'accès à job-i.fr, lecture impossible), dis-le au début de la réponse et réduis le code livré au strict nécessaire.
 ## 1. Où lire (dans cet ordre)
+0. **docs/SOMMAIRE.md** : navigation par sujet avec les titres de chaque page ; chaque page a son sommaire en tête (bloc <!-- TOC:START -->, généré par scripts/Add-Toc.ps1, ne pas l'éditer à la main).
+   **Organisation** : un sujet = un seul fichier Markdown (parties ## Partie N, sections en ###). Avant de créer une page, cherche si un fichier traite déjà le sujet et complète-le ; si tu crées vraiment une page, ajoute-la à scripts/sommaire.json, puis lance scripts/Add-Toc.ps1 et scripts/Build-Sommaire.ps1 (ou scripts/Run-All.ps1 -SansConversion).
 1. `README.md` (racine) : carte « je cherche → je vais là » et conventions. `llms.txt` : même carte, format minimal.
 2. **Question de cours / syntaxe / commande / concept** → `docs/cheatsheets/README.md`, puis la fiche :
    - 01 concepts (objets, ILE, travaux, profils, sécurité, PTF, performances)
@@ -71,13 +73,13 @@ Termine toute réponse technique par une ligne « Vérifié : <ce qui a été co
 | Sitemap / pages job-i | Fiche |
 |---|---|
 | `sitemap-commandes`, `sitemap-messages`, `sitemap-valeurs-systeme` ; `/commandes-ibm-i`, `/messages-ibm-i`, `/valeurs-systeme-ibm-i` | 02 |
-| `/cycle-gap-rpg`, `/instructions-rpg/begsr` | 06 (+ `docs/CYCLE-RPG-COURS.md`) |
+| `/cycle-gap-rpg`, `/instructions-rpg/begsr` | 06 (+ `docs/CYCLE-RPG.md`) |
 | `/instructions-rpg`, `/fonctions-rpg`, `/coder-rpg-iii`, `/sous-fichier-rpg`, `/mots-edition-rpg`, `/prototypes-rpg-pr-pi`, `/zone-de-donnees-dtaara-ibm-i`, `/api-systeme-ibm-i`, `/constantes-figuratives-rpg`, `/cycle-gap-rpg` | 03 |
 | `sitemap-services`, `sitemap-recettes` ; `/fichier-physique-pf-ibm-i`, `/fichier-logique-lf-ibm-i`, `/services-sql-ibm-i`, `/recettes-sql-ibm-i`, `/nodejs-ibm-i` | 04 |
 | `/as400-vs-ibm-i`, `/objets-ibm-i`, `/ile-ibm-i`, `/travaux-ibm-i`, `/profils-utilisateurs-ibm-i`, `/securite-ibm-i`, `/installer-ptf-ibm-i`, `/performances-ibm-i` | 01 |
 | `/se-former-ibm-i`, offres d'emploi | 05 |
 | `/commandes-ibm-i/crtsqlrpgi`, `/commandes-ibm-i/runsql`, `/commandes-ibm-i/runsqlstm` | 07 |
-| `/outq-ibm-i`, `/commandes-ibm-i/crtprtf`, `/commandes-ibm-i/ovrprtf`, `/commandes-ibm-i/cpysplf` | 08 (+ `docs/IMPRESSION-FULLFREE.md`) |
+| `/outq-ibm-i`, `/commandes-ibm-i/crtprtf`, `/commandes-ibm-i/ovrprtf`, `/commandes-ibm-i/cpysplf` | 08 (+ `docs/IMPRESSION-RPG.md`) |
 | `sitemap-pages` : nouvelle page non rattachée | nouvelle fiche `06-…` + entrée dans `docs/cheatsheets/README.md`, `README.md`, `llms.txt` |
 
 - Après mise à jour : `git add -A`, commit, puis push **uniquement si l'utilisateur l'a autorisé** (jamais `--force`, jamais de token ou mot de passe dans une commande).
