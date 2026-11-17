@@ -76,7 +76,7 @@ Termine toute réponse technique par une ligne « Vérifié : <ce qui a été co
 | `/as400-vs-ibm-i`, `/objets-ibm-i`, `/ile-ibm-i`, `/travaux-ibm-i`, `/profils-utilisateurs-ibm-i`, `/securite-ibm-i`, `/installer-ptf-ibm-i`, `/performances-ibm-i` | 01 |
 | `/se-former-ibm-i`, offres d'emploi | 05 |
 | `/commandes-ibm-i/crtsqlrpgi`, `/commandes-ibm-i/runsql`, `/commandes-ibm-i/runsqlstm` | 07 |
-| `/outq-ibm-i`, `/commandes-ibm-i/crtprtf`, `/commandes-ibm-i/ovrprtf`, `/commandes-ibm-i/cpysplf` | 08 |
+| `/outq-ibm-i`, `/commandes-ibm-i/crtprtf`, `/commandes-ibm-i/ovrprtf`, `/commandes-ibm-i/cpysplf` | 08 (+ `docs/IMPRESSION-FULLFREE.md`) |
 | `sitemap-pages` : nouvelle page non rattachée | nouvelle fiche `06-…` + entrée dans `docs/cheatsheets/README.md`, `README.md`, `llms.txt` |
 
 - Après mise à jour : `git add -A`, commit, puis push **uniquement si l'utilisateur l'a autorisé** (jamais `--force`, jamais de token ou mot de passe dans une commande).

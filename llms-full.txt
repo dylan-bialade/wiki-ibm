@@ -1,9 +1,9 @@
 # Wiki IBM i : contexte complet pour un assistant
 
-Genere le 2026-11-17 10:37 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Genere le 2026-11-17 10:47 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
 Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
 
-ATTENTION : ce fichier fait environ 121 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
+ATTENTION : ce fichier fait environ 126 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
 Table des matieres (ordre du fichier) :
 - README.md (8 Ko)
 - CLAUDE.md (15 Ko)
@@ -15,7 +15,7 @@ Table des matieres (ordre du fichier) :
 - docs/cheatsheets/05-emploi-et-formation.md (1 Ko)
 - docs/cheatsheets/06-cycle-rpg-et-sous-routines.md (15 Ko)
 - docs/cheatsheets/07-sql-embarque-en-rpg.md (5 Ko)
-- docs/cheatsheets/08-impression-et-printer-ibm-i.md (5 Ko)
+- docs/cheatsheets/08-impression-et-printer-ibm-i.md (6 Ko)
 - docs/enonces/README.md (2 Ko)
 - docs/enonces/ANALYSE-ENONCES.md (3 Ko)
 - docs/enonces/cours.md (2 Ko)
@@ -30,6 +30,7 @@ Table des matieres (ordre du fichier) :
 - docs/MANQUES.md (5 Ko)
 - docs/CYCLE-GAP-EXEMPLES.md (1 Ko)
 - docs/CYCLE-RPG-COURS.md (12 Ko)
+- docs/IMPRESSION-FULLFREE.md (5 Ko)
 - docs/PORTABILITE.md (6 Ko)
 - contributions/README.md (4 Ko)
 - docs/apports/README.md (1 Ko)
@@ -64,6 +65,7 @@ Table des matieres (ordre du fichier) :
 | Cycle RPG (cours) ou sous-routines | [fiche 06](docs/cheatsheets/06-cycle-rpg-et-sous-routines.md) |
 | Exemples du cycle RPG (fichier primaire, L1-L9, 1P, OF) | [docs/CYCLE-GAP-EXEMPLES.md](docs/CYCLE-GAP-EXEMPLES.md) |
 | Cours du cycle RPG III (7 étapes, ruptures, spéc. O, rapprochement) + exemples | [docs/CYCLE-RPG-COURS.md](docs/CYCLE-RPG-COURS.md) |
+| Réécrire un état à cycle en full free (retour d'expérience, spool) | [docs/IMPRESSION-FULLFREE.md](docs/IMPRESSION-FULLFREE.md) |
 | Ajouter ma bibliothèque (collaborateur) | [contributions/README.md](contributions/README.md) |
 | Règles de lecture, de vérification et de mise à jour (prompt système) | [docs/PROMPT-SYSTEME.md](docs/PROMPT-SYSTEME.md) (chargé via [CLAUDE.md](CLAUDE.md)) |
 | Ce qui a changé sur job-i.fr depuis la dernière vérification | [docs/JOBI-CHANGES.md](docs/JOBI-CHANGES.md) (présent seulement s'il y a des changements) |
@@ -224,7 +226,7 @@ Termine toute réponse technique par une ligne « Vérifié : <ce qui a été co
 | `/as400-vs-ibm-i`, `/objets-ibm-i`, `/ile-ibm-i`, `/travaux-ibm-i`, `/profils-utilisateurs-ibm-i`, `/securite-ibm-i`, `/installer-ptf-ibm-i`, `/performances-ibm-i` | 01 |
 | `/se-former-ibm-i`, offres d'emploi | 05 |
 | `/commandes-ibm-i/crtsqlrpgi`, `/commandes-ibm-i/runsql`, `/commandes-ibm-i/runsqlstm` | 07 |
-| `/outq-ibm-i`, `/commandes-ibm-i/crtprtf`, `/commandes-ibm-i/ovrprtf`, `/commandes-ibm-i/cpysplf` | 08 |
+| `/outq-ibm-i`, `/commandes-ibm-i/crtprtf`, `/commandes-ibm-i/ovrprtf`, `/commandes-ibm-i/cpysplf` | 08 (+ `docs/IMPRESSION-FULLFREE.md`) |
 | `sitemap-pages` : nouvelle page non rattachée | nouvelle fiche `06-…` + entrée dans `docs/cheatsheets/README.md`, `README.md`, `llms.txt` |
 
 - Après mise à jour : `git add -A`, commit, puis push **uniquement si l'utilisateur l'a autorisé** (jamais `--force`, jamais de token ou mot de passe dans une commande).
@@ -873,6 +875,8 @@ NOUVEL UNIVERS
 - **CL, spools** : conversion en PDF dans l'IFS : [SRCPDFCL](../../sources/CL/CL-procedural/BIB01/SRCPDFCL.md) (`CPYSPLF … TOFILE(*TOSTMF) SPLNBR(*LAST)` puis `DLTSPLF … SPLNBR(*LAST)`) ; création d'une OUTQ : [ENVAUTO](../../sources/CL/CL-procedural/BIB05/ENVAUTO.md) ; **à surveiller** : `DLTSPLF FILE(*SELECT)` dans [MENUECL](../../sources/CL/CL-procedural/BIB05/MENUECL.md) (supprime les spools sélectionnés sans retour arrière).
 - **Listage de compilation** : sans imprimante `PRT01`, le message `CPD4090` indique que la sortie est remplacée par `QPRINT` de `QGPL` : le spool se retrouve dans `WRKSPLF`.
 - **Ce que le dépôt n'a pas** : aucun `CRTPRTF`, `OVRPRTF` ni `CHGSPLFA` dans vos sources CL, aucune explication des mots-clés DDS d'impression ni des spécifications `O` (job-i.fr non plus) : voir [MANQUES](../MANQUES.md).
+
+> Retour d'expérience (état à cycle réécrit en full free, spools mesurés) : [IMPRESSION-FULLFREE](../IMPRESSION-FULLFREE.md).
 
 
 === FICHIER : docs/enonces/README.md ===
@@ -1523,6 +1527,57 @@ job-i décrit le cycle et cite les spécifications mais détaille peu la **spéc
 ## 13. TP types (énoncés)
 1. Rapport de ventes avec ruptures : détail, total par région (L1), total général (LR).
 2. Réécrire un rapport à cycle sans cycle : boucle `READ`, comparaison manuelle de la zone de contrôle, sortie par `EXCPT`.
+
+
+=== FICHIER : docs/IMPRESSION-FULLFREE.md ===
+# Impression en RPG full free : réécrire un état à cycle (retour d'expérience)
+
+> Page issue d'un **test réel** : un programme RPG III à cycle (état avec rupture, en-tête de page, totaux) réécrit en full free. Les constats sur les spools sont **observés** (deux PDF de spool comparés) ; les explications sont des **hypothèses** tant qu'elles ne sont pas confirmées. Code : [CYCLETOTO.rpgle](exemples-cycle/CYCLETOTO.rpgle) (version corrigée, **non encore compilée ni testée** par l'auteur du wiki). Voir aussi la [fiche 08](cheatsheets/08-impression-et-printer-ibm-i.md) et le [cours du cycle](CYCLE-RPG-COURS.md).
+
+## 1. Ce qui s'est passé
+Une première version full free utilisait `PRTCTL(prtCtl:*COMPAT)` avec une structure d'espacement remplie de `'000'` / `'001'`. Elle **compilait et s'exécutait**, mais le spool obtenu (40 pages au lieu de 8) était faux :
+- l'en-tête était en ligne 1 mais « UNIVERS 1 » en ligne ~10 ;
+- les 20 lignes de détail d'un univers étaient **superposées sur la même ligne** d'une page à part ;
+- « TOTAL UNIVERS » apparaissait sur cette même page, vers la ligne 20 ; les saut de page étaient incohérents.
+Cause probable (hypothèse) : les valeurs `'000'` de saut/espace, ou la façon dont `*COMPAT` interprète la structure, n'ont pas eu l'effet attendu (`'000'` saut avant = « ligne 0 » ?). **`PRTCTL` n'est documenté ni dans ce wiki ni sur job-i.fr** (recherche du terme, de `OFLIND` et de `OVRFLW` : introuvables ; seul `OVRFLW` figure dans la fiche 08 comme paramètre du fichier imprimante). Vérifier dans la documentation IBM avant de réutiliser `PRTCTL`.
+
+## 2. Mesure du spool de référence (RPG III à cycle)
+Mesures faites sur le spool d'origine (66 lignes par page, saut à la ligne 60) :
+| Élément | Position observée |
+|---|---|
+| En-tête (1P et débordement) | ligne 1 de chaque page, puis l'enregistrement suivant directement en ligne 2 |
+| Ligne `UNIVERS n` | une ligne après le curseur (après un en-tête : une ligne blanche entre les deux ; après un total : aucune) |
+| Détail | une ligne par enregistrement |
+| `TOTAL UNIVERS` | deux lignes blanches avant |
+| `TOTAL GENERAL` | une ligne blanche après le dernier total |
+| Débordement | en-tête de la page suivante au **prochain enregistrement**, jamais avant un total (le dernier total est imprimé à la ligne 63 puis 65 de la page 8) |
+| Total des pages | 8 pour 400 enregistrements |
+
+## 3. Modèle de spacing (celui des O-specs)
+Après une ligne écrite en `L` avec « espace après » `A`, le **curseur** est en `L + A`. Une ligne avec « espace avant » `B` s'imprime en `curseur + B`. Équivalences utilisées :
+| O-spec d'origine (déduit) | Appel |
+|---|---|
+| H (1P ou OF) : saut ligne 1, espace après 1 | `Ecrire(0 : 1)` après remise du curseur à 1 |
+| D `UNIVERS` : espace avant 1, après 1 | `Ecrire(1 : 1)` |
+| D détail : espace après 1 | `Ecrire(0 : 1)` |
+| T total : espace avant 2 | `Ecrire(2 : 0)` |
+Une simulation de ces règles sur 20 univers de 20 enregistrements redonne le spool de référence (8 pages, page 1 finie sur le 9e détail du 3e univers, `TOTAL GENERAL` ligne 65 de la page 8). C'est une vérification de la **géométrie**, pas de la compilation.
+
+## 4. Choix de la version corrigée
+- **Pas de `PRTCTL`** : les espacements sont de vraies lignes blanches écrites (`WRITE QSYSPRT ligne`) ; le saut de page = écriture de lignes blanches jusqu'à la fin de la page (66 lignes, valeur par défaut documentée en fiche 08).
+- `OFLIND(*INOF)` est conservé pour que le programme gère lui-même le débordement.
+- Le débordement n'est testé qu'au moment d'un enregistrement (comme le cycle) ; les totaux ne le testent pas.
+- Les 3 octets d'un « saut physique » ne sont pas utilisés : si ton spool montre une **page blanche** en début de page 2, c'est que le système saute lui-même à la ligne 60 : supprime alors la boucle de remplissage dans `Debordement` (garde seulement `ligneCour = 1`).
+
+## 5. Test à faire (le wiki ne peut pas compiler)
+1. `CRTBNDRPG PGM(<BIB>/CYCLETOTO) SRCFILE(<BIB>/QRPGLESRC) SRCMBR(CYCLETOTO)` ; vérifier le message de compilation (aucune erreur attendue ; ne pas conclure sans le résultat).
+2. Lancer, puis comparer le nouveau spool au spool de référence : 8 pages, `Page 8` avec `TOTAL GENERAL 400` en ligne 65, `UNIVERS 4` précédé directement du total.
+3. Renvoyer le spool en cas de différence (les écarts de ligne se corrigent avec les valeurs du tableau 3).
+
+## 6. Pièges rencontrés
+- Un programme qui **compile** et s'exécute peut produire un spool entièrement faux : toujours comparer le spool, pas seulement l'absence d'erreur.
+- `%EDITC(zone : 'Z')` et le placement par position de fin (`%SUBST` + `%LEN`) ont donné le résultat attendu sur « UNIVERS n », « Page n » et « TOTAL … » (constat sur le spool).
+- La comparaison « à l'octet près » d'un PDF est trompeuse ; comparer les lignes (ex. `CPYSPLF`, non documenté dans le wiki).
 
 
 === FICHIER : docs/PORTABILITE.md ===

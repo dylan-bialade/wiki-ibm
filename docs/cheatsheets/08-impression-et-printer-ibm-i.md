@@ -33,3 +33,5 @@
 - **CL, spools** : conversion en PDF dans l'IFS : [SRCPDFCL](../../sources/CL/CL-procedural/BIB01/SRCPDFCL.md) (`CPYSPLF … TOFILE(*TOSTMF) SPLNBR(*LAST)` puis `DLTSPLF … SPLNBR(*LAST)`) ; création d'une OUTQ : [ENVAUTO](../../sources/CL/CL-procedural/BIB05/ENVAUTO.md) ; **à surveiller** : `DLTSPLF FILE(*SELECT)` dans [MENUECL](../../sources/CL/CL-procedural/BIB05/MENUECL.md) (supprime les spools sélectionnés sans retour arrière).
 - **Listage de compilation** : sans imprimante `PRT01`, le message `CPD4090` indique que la sortie est remplacée par `QPRINT` de `QGPL` : le spool se retrouve dans `WRKSPLF`.
 - **Ce que le dépôt n'a pas** : aucun `CRTPRTF`, `OVRPRTF` ni `CHGSPLFA` dans vos sources CL, aucune explication des mots-clés DDS d'impression ni des spécifications `O` (job-i.fr non plus) : voir [MANQUES](../MANQUES.md).
+
+> Retour d'expérience (état à cycle réécrit en full free, spools mesurés) : [IMPRESSION-FULLFREE](../IMPRESSION-FULLFREE.md).
