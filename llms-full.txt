@@ -876,7 +876,7 @@ NOUVEL UNIVERS
 
 ## Mes exemples
 ### Impression full free : `WRITE QSYSPRT` avec une DS par ligne (validé)
-Fichier `QSYSPRT PRINTER(132)`, une DS `LEN(132) INZ` par type de ligne, zones placées par `POS`, espacement par lignes blanches : exemple complet et compilé dans [CYCLEQSYS.rpgle](../exemples-cycle/CYCLEQSYS.rpgle), explications et mesures dans [IMPRESSION-FULLFREE](../IMPRESSION-FULLFREE.md). `PRTCTL *COMPAT` avec des `'000'` a donné un spool faux : à éviter sans confirmation.
+Fichier `QSYSPRT PRINTER(132)`, une DS `LEN(132) INZ` par type de ligne, zones placées par `POS`, espacement par lignes blanches : exemple complet et compilé dans [CYCLEQSYS.rpgle](../exemples-cycle/CYCLEQSYS.rpgle), explications et mesures dans [IMPRESSION-FULLFREE](../IMPRESSION-FULLFREE.md). `PRTCTL(...:*COMPAT)` : structure de 9 octets (espace avant `CHAR(1)`, espace après `CHAR(1)`, saut avant `CHAR(2)`, saut après `CHAR(2)`, compteur `ZONED(3:0)`), blanc = aucun ; le premier essai avec des `CHAR(3)` a donné un spool faux : voir [PRTCTL](../PRTCTL.md).
 - **RPG III, sortie par spécifications `O` sur `QSYSPRT`** : [CYCDEMO](../../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md) (en-tête sous `1P` / `OF`, détails, totaux `L1` / `L2` / `LR`) ; variante PERSO en cartes `O` : [fiche 06](06-cycle-rpg-et-sous-routines.md). Déclaration constatée : `FQSYSPRT O   F     132     OF     PRINTER`.
 - **RPG III, fichier imprimante décrit en externe** : [RPGIMPR](../../sources/RPG/RPG-III-400/BIB20/RPGIMPR.md) (`FIMPR O E 60 PRINTER`, puis `WRITE` des formats `TITRE`, `ENTETE`, `DETAILS`, `ETOILE`) avec ses DDS [BONPRT](../../sources/DDS/BIB20/BONPRT.md) (formats `TITRE`, `ENTETE`, `DETAILS`, `ETOILE`, `EJECT` ; mots-clés `SPACEB(n)` interligne avant, `SKIPA(n)` saut après, positions de colonne en dernière zone).
 - **RPG IV, saut de page géré à la main** : [PRINT](../../sources/RPG/RPG-ILE/BIB02/PRINT.md) (`FECRANPRTF O E PRINTER`, compteur `Ligne`, `WRITE EJECT` puis `WRITE ENTETE` / `TITRE` quand la ligne atteint 56) ; autre exemple : [PRINTPAR](../../sources/RPG/RPG-ILE/BIB02/PRINTPAR.md).
@@ -1685,6 +1685,7 @@ Comportement du cycle RPG III sur un fichier primaire vide : **non vérifié**. 
 - Les valeurs de la structure sont les mêmes que celles des colonnes 40-51 de la spécification O. La structure ne sert que pour les sorties dont ces colonnes sont **à blanc** ; si elles et les sous-zones 1 à 4 sont à blanc, la valeur par défaut est **espace 1 après**. On peut changer les sous-zones pendant l'exécution.
 
 ## 2. Disposition `*COMPAT` (9 octets)
+
 | Positions | Sous-zone | Type | Valeurs valides |
 |---|---|---|---|
 | 1 | espace avant | `CHAR(1)` | blanc ou `0` à `3` |
