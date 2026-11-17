@@ -4,10 +4,11 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB06 | QRPGSRC | RPG/RPG-III-400 | 20 | 100 % |  | [PRRPG.md](../../sources/RPG/RPG-III-400/BIB06/PRRPG.md) |
-| BIB10 | QRPGSRC | RPG/RPG-III-400 | 24 | 71 % |  | [PRRPG.md](../../sources/RPG/RPG-III-400/BIB10/PRRPG.md) |
+| BIB06 | QRPGSRC | RPG/RPG-III-400 | 20 | 71 % |  | [PRRPG.md](../../sources/RPG/RPG-III-400/BIB06/PRRPG.md) |
+| BIB10 | QRPGSRC | RPG/RPG-III-400 | 24 | 100 % |  | [PRRPG.md](../../sources/RPG/RPG-III-400/BIB10/PRRPG.md) |
 
 ## Differences
+
 
 ## Codes
 

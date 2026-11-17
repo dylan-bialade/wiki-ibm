@@ -4,9 +4,9 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB13 | QDDSSRC | DDS | 83 | 100 % | sous-fichier, DDS (R/K/PFILE) | [PRETIMMO.md](../../sources/DDS/BIB13/PRETIMMO.md) |
-| BIB17 | QDDSSRC | DDS | 69 | 11 % | sous-fichier, DDS (R/K/PFILE) | [PRETIMMO.md](../../sources/DDS/BIB17/PRETIMMO.md) |
-| BIB20 | QDDSSRC | DDS | 82 | 4 % | sous-fichier, DDS (R/K/PFILE) | [PRETIMMO.md](../../sources/DDS/BIB20/PRETIMMO.md) |
+| BIB13 | QDDSSRC | DDS | 83 | 4 % | sous-fichier, DDS (R/K/PFILE) | [PRETIMMO.md](../../sources/DDS/BIB13/PRETIMMO.md) |
+| BIB17 | QDDSSRC | DDS | 69 | 8 % | sous-fichier, DDS (R/K/PFILE) | [PRETIMMO.md](../../sources/DDS/BIB17/PRETIMMO.md) |
+| BIB20 | QDDSSRC | DDS | 82 | 100 % | sous-fichier, DDS (R/K/PFILE) | [PRETIMMO.md](../../sources/DDS/BIB20/PRETIMMO.md) |
 
 ## Differences
 

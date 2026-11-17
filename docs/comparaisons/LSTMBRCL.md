@@ -4,9 +4,9 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB05 | QCLLESRC | CL/CL-ILE | 140 | 100 % | jointure, boucle DOW/DOU/FOR, gestion d erreur, CREATE TABLE/VIEW | [LSTMBRCL.md](../../sources/CL/CL-ILE/BIB05/LSTMBRCL.md) |
-| BIB10 | QCLLESRC | CL/CL-ILE | 134 | 91 % | jointure, boucle DOW/DOU/FOR, gestion d erreur, CREATE TABLE/VIEW | [LSTMBRCL.md](../../sources/CL/CL-ILE/BIB10/LSTMBRCL.md) |
-| BIB17 | QCLESRC | CL/CL-ILE | 133 | 91 % | jointure, boucle DOW/DOU/FOR, gestion d erreur, CREATE TABLE/VIEW | [LSTMBRCL.md](../../sources/CL/CL-ILE/BIB17/LSTMBRCL.md) |
+| BIB05 | QCLLESRC | CL/CL-ILE | 140 | 91 % | jointure, boucle DOW/DOU/FOR, gestion d erreur, CREATE TABLE/VIEW | [LSTMBRCL.md](../../sources/CL/CL-ILE/BIB05/LSTMBRCL.md) |
+| BIB10 | QCLLESRC | CL/CL-ILE | 134 | 100 % | jointure, boucle DOW/DOU/FOR, gestion d erreur, CREATE TABLE/VIEW | [LSTMBRCL.md](../../sources/CL/CL-ILE/BIB10/LSTMBRCL.md) |
+| BIB17 | QCLESRC | CL/CL-ILE | 133 | 98 % | jointure, boucle DOW/DOU/FOR, gestion d erreur, CREATE TABLE/VIEW | [LSTMBRCL.md](../../sources/CL/CL-ILE/BIB17/LSTMBRCL.md) |
 
 ## Differences
 
@@ -58,6 +58,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
                          MONMSG     MSGID(CPF2105)
                          DLTF       FILE(&POUTLIB/&POUTFILE)
                          MONMSG     MSGID(CPF2105)
+
+
 
           /*Create Table                                      */
              CHGVAR     VAR(&CRTTBL) VALUE('CREATE TABLE' *BCAT +

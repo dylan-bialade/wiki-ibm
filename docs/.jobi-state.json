@@ -1,82 +1,82 @@
-﻿{
-    "date":  "2026-11-17 09:46",
-    "sitemaps":  {
-                     "sitemap-rpg-iii.xml":  {
-                                                 "hash":  "A931FDFC6CE83FAF",
-                                                 "lastmod":  "2026-10-05",
-                                                 "count":  80
-                                             },
-                     "sitemap-pages.xml":  {
-                                               "hash":  "381F9D9CF14626F8",
-                                               "lastmod":  "2026-11-17",
-                                               "count":  72
-                                           },
-                     "sitemap-fonctions.xml":  {
-                                                   "hash":  "1F228DCE96B6C0A4",
-                                                   "lastmod":  "2026-10-15",
-                                                   "count":  96
-                                               },
-                     "sitemap-instructions.xml":  {
-                                                      "hash":  "737A79AAE2AA9ED5",
-                                                      "lastmod":  "2026-10-23",
-                                                      "count":  55
-                                                  },
-                     "sitemap-messages.xml":  {
-                                                  "hash":  "52329FCC2B043740",
-                                                  "lastmod":  "2026-09-30",
-                                                  "count":  13433
-                                              },
-                     "sitemap-services.xml":  {
-                                                  "hash":  "1F766A4DEBEFD0AF",
-                                                  "lastmod":  "2026-10-01",
-                                                  "count":  391
-                                              },
-                     "sitemap-recettes.xml":  {
-                                                  "hash":  "B50AE441F6650CDE",
-                                                  "lastmod":  "2026-10-01",
-                                                  "count":  37
-                                              },
-                     "sitemap-valeurs-systeme.xml":  {
-                                                         "hash":  "0B7D2DCAE2C777C3",
-                                                         "lastmod":  "2026-10-15",
-                                                         "count":  159
-                                                     },
-                     "sitemap-commandes.xml":  {
-                                                   "hash":  "2C12671ABCEF5577",
-                                                   "lastmod":  "2026-10-23",
-                                                   "count":  1830
-                                               }
-                 },
-    "pages":  {
-                  "/valeurs-systeme-ibm-i":  "33483E34A67395B1",
-                  "/sous-fichier-rpg":  "07233C19D696051F",
-                  "/rpg-iii":  "81A60B0A235F3B53",
-                  "/outq-ibm-i":  "8CAB23243EDADD05",
-                  "/installer-ptf-ibm-i":  "CE639FB3BE3E524C",
-                  "/services-sql-ibm-i":  "3FC0CCFD60B50798",
-                  "/prototypes-rpg-pr-pi":  "FA504DFF3EE9FC6A",
-                  "/performances-ibm-i":  "DC20F7FFD11011B5",
-                  "/recettes-sql-ibm-i":  "E52898BB1BEF7B1C",
-                  "/fonctions-rpg":  "1BF1913F102138E8",
-                  "/instructions-rpg":  "2F98E6350F92825E",
-                  "/profils-utilisateurs-ibm-i":  "D37EC6D45BEB75A5",
-                  "/se-former-ibm-i":  "5B9E8C7CE7AE9F5D",
-                  "/fichier-logique-lf-ibm-i":  "0FDDFBECBA38DF0D",
-                  "/ile-ibm-i":  "0BA172CC399F6CB0",
-                  "/commandes-ibm-i":  "EE547D61148DC347",
-                  "/coder-rpg-iii":  "DEE57F10A8F109AC",
-                  "/api-systeme-ibm-i":  "07C7C88D2BD1DD76",
-                  "/zone-de-donnees-dtaara-ibm-i":  "3E23855BA44CB1A8",
-                  "/fichier-physique-pf-ibm-i":  "58A768AC68056E38",
-                  "/securite-ibm-i":  "04412686D27B7B77",
-                  "/travaux-ibm-i":  "81590A80182487E7",
-                  "/objets-ibm-i":  "4650C1BAB1594160",
-                  "/as400-vs-ibm-i":  "613028DD2FB6624C",
-                  "/cycle-gap-rpg":  "FB391CAE0B36BFEA",
-                  "/constantes-figuratives-rpg":  "36568B6E1806700C",
-                  "/instructions-rpg/begsr":  "C3E8700E0601C9BF",
-                  "/mots-edition-rpg":  "8B16D6B14D63A49E",
-                  "/nodejs-ibm-i":  "3DCA14D08B955DCA",
-                  "/messages-ibm-i":  "37227B0CFEA0ED94"
-              }
+{
+  "date": "2026-11-17 08:47",
+  "sitemaps": {
+    "sitemap-recettes.xml": {
+      "hash": "B50AE441F6650CDE",
+      "count": 37,
+      "lastmod": "2026-10-01"
+    },
+    "sitemap-messages.xml": {
+      "hash": "52329FCC2B043740",
+      "count": 13433,
+      "lastmod": "2026-09-30"
+    },
+    "sitemap-instructions.xml": {
+      "hash": "737A79AAE2AA9ED5",
+      "count": 55,
+      "lastmod": "2026-10-23"
+    },
+    "sitemap-services.xml": {
+      "hash": "1F766A4DEBEFD0AF",
+      "count": 391,
+      "lastmod": "2026-10-01"
+    },
+    "sitemap-commandes.xml": {
+      "hash": "2C12671ABCEF5577",
+      "count": 1830,
+      "lastmod": "2026-10-23"
+    },
+    "sitemap-rpg-iii.xml": {
+      "hash": "A931FDFC6CE83FAF",
+      "count": 80,
+      "lastmod": "2026-10-05"
+    },
+    "sitemap-valeurs-systeme.xml": {
+      "hash": "0B7D2DCAE2C777C3",
+      "count": 159,
+      "lastmod": "2026-10-15"
+    },
+    "sitemap-pages.xml": {
+      "hash": "1A4185433A278AAB",
+      "count": 72,
+      "lastmod": "2026-11-17"
+    },
+    "sitemap-fonctions.xml": {
+      "hash": "1F228DCE96B6C0A4",
+      "count": 96,
+      "lastmod": "2026-10-15"
+    }
+  },
+  "pages": {
+    "/api-systeme-ibm-i": "07C7C88D2BD1DD76",
+    "/performances-ibm-i": "DC20F7FFD11011B5",
+    "/commandes-ibm-i": "EE547D61148DC347",
+    "/nodejs-ibm-i": "3DCA14D08B955DCA",
+    "/travaux-ibm-i": "81590A80182487E7",
+    "/se-former-ibm-i": "5B9E8C7CE7AE9F5D",
+    "/valeurs-systeme-ibm-i": "33483E34A67395B1",
+    "/instructions-rpg": "2F98E6350F92825E",
+    "/objets-ibm-i": "4650C1BAB1594160",
+    "/instructions-rpg/begsr": "C3E8700E0601C9BF",
+    "/prototypes-rpg-pr-pi": "FA504DFF3EE9FC6A",
+    "/outq-ibm-i": "8CAB23243EDADD05",
+    "/fonctions-rpg": "1BF1913F102138E8",
+    "/installer-ptf-ibm-i": "CE639FB3BE3E524C",
+    "/fichier-logique-lf-ibm-i": "0FDDFBECBA38DF0D",
+    "/profils-utilisateurs-ibm-i": "D37EC6D45BEB75A5",
+    "/messages-ibm-i": "37227B0CFEA0ED94",
+    "/rpg-iii": "81A60B0A235F3B53",
+    "/services-sql-ibm-i": "3FC0CCFD60B50798",
+    "/fichier-physique-pf-ibm-i": "58A768AC68056E38",
+    "/mots-edition-rpg": "8B16D6B14D63A49E",
+    "/as400-vs-ibm-i": "613028DD2FB6624C",
+    "/sous-fichier-rpg": "07233C19D696051F",
+    "/cycle-gap-rpg": "FB391CAE0B36BFEA",
+    "/recettes-sql-ibm-i": "E52898BB1BEF7B1C",
+    "/securite-ibm-i": "04412686D27B7B77",
+    "/constantes-figuratives-rpg": "36568B6E1806700C",
+    "/zone-de-donnees-dtaara-ibm-i": "3E23855BA44CB1A8",
+    "/coder-rpg-iii": "DEE57F10A8F109AC",
+    "/ile-ibm-i": "0BA172CC399F6CB0"
+  }
 }

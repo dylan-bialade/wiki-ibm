@@ -4,8 +4,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB03 | QCPYSRC | RPG/Copy | 26 | 100 % | full free, prototypes (dcl-pr) | [TP3MODP.md](../../sources/RPG/Copy/BIB03/TP3MODP.md) |
-| BIB18 | QCPYSRC | RPG/Copy | 29 | 64 % | full free, prototypes (dcl-pr) | [TP3MODP.md](../../sources/RPG/Copy/BIB18/TP3MODP.md) |
+| BIB03 | QCPYSRC | RPG/Copy | 26 | 64 % | full free, prototypes (dcl-pr) | [TP3MODP.md](../../sources/RPG/Copy/BIB03/TP3MODP.md) |
+| BIB18 | QCPYSRC | RPG/Copy | 29 | 100 % | full free, prototypes (dcl-pr) | [TP3MODP.md](../../sources/RPG/Copy/BIB18/TP3MODP.md) |
 
 ## Differences
 

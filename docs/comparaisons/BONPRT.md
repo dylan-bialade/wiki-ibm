@@ -4,13 +4,13 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB10 | QRPGSRC | RPG/RPG-III-400 | 53 | 0 % | SETLL / READ, boucle DOW/DOU/FOR, indicateurs *INxx | [BONPRT.md](../../sources/RPG/RPG-III-400/BIB10/BONPRT.md) |
-| BIB20 | QPRTSRC | DDS | 19 | 100 % |  | [BONPRT.md](../../sources/DDS/BIB20/BONPRT.md) |
+| BIB10 | QRPGSRC | RPG/RPG-III-400 | 53 | 100 % | SETLL / READ, boucle DOW/DOU/FOR, indicateurs *INxx | [BONPRT.md](../../sources/RPG/RPG-III-400/BIB10/BONPRT.md) |
+| BIB20 | QPRTSRC | DDS | 19 | 0 % |  | [BONPRT.md](../../sources/DDS/BIB20/BONPRT.md) |
 
 ## Differences
 
 - **BIB10** en propre : SETLL / READ, boucle DOW/DOU/FOR, indicateurs *INxx
-- Langages / types differents : DDS, RPG/RPG-III-400
+- Langages / types differents : RPG/RPG-III-400, DDS
 
 ## Codes
 

@@ -4,8 +4,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB02 | QSOURCE | DDS | 2 | 100 % | DDS (R/K/PFILE) | [BONBONLF~QSOURCE.md](../../sources/DDS/BIB02/BONBONLF~QSOURCE.md) |
 | BIB02 | QDDSRC | DDS | 2 | 100 % | DDS (R/K/PFILE) | [BONBONLF.md](../../sources/DDS/BIB02/BONBONLF.md) |
+| BIB02 | QSOURCE | DDS | 2 | 100 % | DDS (R/K/PFILE) | [BONBONLF~QSOURCE.md](../../sources/DDS/BIB02/BONBONLF~QSOURCE.md) |
 | BIB05 | QLFSRC | DDS | 8 | 0 % | DDS (R/K/PFILE) | [BONBONLF.md](../../sources/DDS/BIB05/BONBONLF.md) |
 
 ## Differences

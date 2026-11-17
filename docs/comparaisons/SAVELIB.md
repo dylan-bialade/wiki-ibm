@@ -4,11 +4,12 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB05 | QCLPSRC | CL/CL-procedural | 3 | 100 % |  | [SAVELIB.md](../../sources/CL/CL-procedural/BIB05/SAVELIB.md) |
-| BIB06 | QCLPSRC | CL/CL-procedural | 3 | 0 % |  | [SAVELIB.md](../../sources/CL/CL-procedural/BIB06/SAVELIB.md) |
-| BIB10 | QCLPSRC | CL/CL-procedural | 3 | 0 % |  | [SAVELIB.md](../../sources/CL/CL-procedural/BIB10/SAVELIB.md) |
+| BIB05 | QCLPSRC | CL/CL-procedural | 3 | 0 % |  | [SAVELIB.md](../../sources/CL/CL-procedural/BIB05/SAVELIB.md) |
+| BIB06 | QCLPSRC | CL/CL-procedural | 3 | 100 % |  | [SAVELIB.md](../../sources/CL/CL-procedural/BIB06/SAVELIB.md) |
+| BIB10 | QCLPSRC | CL/CL-procedural | 3 | 100 % |  | [SAVELIB.md](../../sources/CL/CL-procedural/BIB10/SAVELIB.md) |
 
 ## Differences
+
 
 ## Codes
 

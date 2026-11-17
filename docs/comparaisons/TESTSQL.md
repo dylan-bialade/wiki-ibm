@@ -4,14 +4,14 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB02 | QSQLSRC | SQL | 8 | 0 % | CREATE TABLE/VIEW | [TESTSQL.md](../../sources/SQL/BIB02/TESTSQL.md) |
-| BIB17 | QRPGLESRC | RPG/RPG-ILE | 31 | 100 % | full free, SQL embarque, curseur SQL, boucle DOW/DOU/FOR | [TESTSQL.md](../../sources/RPG/RPG-ILE/BIB17/TESTSQL.md) |
+| BIB02 | QSQLSRC | SQL | 8 | 100 % | CREATE TABLE/VIEW | [TESTSQL.md](../../sources/SQL/BIB02/TESTSQL.md) |
+| BIB17 | QRPGLESRC | RPG/RPG-ILE | 31 | 0 % | full free, SQL embarque, curseur SQL, boucle DOW/DOU/FOR | [TESTSQL.md](../../sources/RPG/RPG-ILE/BIB17/TESTSQL.md) |
 
 ## Differences
 
 - **BIB02** en propre : CREATE TABLE/VIEW
 - **BIB17** en propre : full free, SQL embarque, curseur SQL, boucle DOW/DOU/FOR
-- Langages / types differents : RPG/RPG-ILE, SQL
+- Langages / types differents : SQL, RPG/RPG-ILE
 
 ## Codes
 
@@ -58,6 +58,7 @@ enddo;
 
 exec sql
     close c1;
+
 
 *inlr
  = *on;

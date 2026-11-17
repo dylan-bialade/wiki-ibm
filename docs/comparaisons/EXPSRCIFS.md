@@ -4,16 +4,16 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB01 | QCLLESRC | CL/CL-ILE | 87 | 100 % | gestion d erreur, CL : DCLF | [EXPSRCIFS.md](../../sources/CL/CL-ILE/BIB01/EXPSRCIFS.md) |
-| BIB05 | QCLPSRC | CL/CL-procedural | 64 | 10 % | boucle DOW/DOU/FOR, gestion d erreur, CL : DCLF | [EXPSRCIFS.md](../../sources/CL/CL-procedural/BIB05/EXPSRCIFS.md) |
-| BIB17 | QCLPSRC | CL/CL-procedural | 68 | 6 % | boucle DOW/DOU/FOR, gestion d erreur, CL : DCLF | [EXPSRCIFS.md](../../sources/CL/CL-procedural/BIB17/EXPSRCIFS.md) |
+| BIB01 | QCLLESRC | CL/CL-ILE | 87 | 6 % | gestion d erreur, CL : DCLF | [EXPSRCIFS.md](../../sources/CL/CL-ILE/BIB01/EXPSRCIFS.md) |
+| BIB05 | QCLPSRC | CL/CL-procedural | 64 | 5 % | boucle DOW/DOU/FOR, gestion d erreur, CL : DCLF | [EXPSRCIFS.md](../../sources/CL/CL-procedural/BIB05/EXPSRCIFS.md) |
+| BIB17 | QCLPSRC | CL/CL-procedural | 68 | 100 % | boucle DOW/DOU/FOR, gestion d erreur, CL : DCLF | [EXPSRCIFS.md](../../sources/CL/CL-procedural/BIB17/EXPSRCIFS.md) |
 
 ## Differences
 
 - Techniques communes : gestion d erreur, CL : DCLF
 - **BIB05** en propre : boucle DOW/DOU/FOR
 - **BIB17** en propre : boucle DOW/DOU/FOR
-- Langages / types differents : CL/CL-ILE, CL/CL-procedural
+- Langages / types differents : CL/CL-procedural, CL/CL-ILE
 
 ## Codes
 
@@ -134,6 +134,7 @@ PGM
 TESTE:        DSPFD      FILE(&PBIB/&PFIC) TYPE(*MBR) +
                     OUTPUT(*OUTFILE) OUTFILE(QTEMP/MBRF)
 
+
               MONMSG     MSGID(CPF9801 CPF3064) EXEC(DO)
 
               CHGVAR     VAR(&IN90) VALUE('1')
@@ -149,6 +150,7 @@ TESTE:        DSPFD      FILE(&PBIB/&PFIC) TYPE(*MBR) +
              CHGVAR VAR(&IN92) VALUE('1')
              GOTO       CMDLBL(FMT1)
              ENDDO
+
 
               CHGVAR     VAR(&FILE_PATH) VALUE('/HOME/' *TCAT +
                            &USER *TCAT '/' *TCAT &PFIC)
@@ -199,10 +201,12 @@ FMT2:       SNDRCVF    RCDFMT(FMT2)
              GOTO       CMDLBL(STRFMT1)
              ENDDO
 
+
              CHGVAR     VAR(&IN91) VALUE('0')
              CHKOBJ     OBJ(&PBIB/&PFIC) OBJTYPE(*FILE)
              MONMSG     MSGID(CPF9812 CPF9801) EXEC(CHGVAR VAR(&IN91) +
                           VALUE('1'))
+
 
              IF         COND(&IN90 *EQ '1' *OR &IN91 *EQ '1') +
                           THEN(GOTO CMDLBL(STRFMT1))

@@ -4,11 +4,11 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB01 | QDDSSRC | DDS | 43 | 0 % | DDS (R/K/PFILE) | [EXPSRCIFSD.md](../../sources/DDS/BIB01/EXPSRCIFSD.md) |
-| BIB05 | QCLPSRC | CL/CL-procedural | 36 | 100 % |  | [EXPSRCIFSD.md](../../sources/CL/CL-procedural/BIB05/EXPSRCIFSD.md) |
-| BIB06 | QCLPSRC | CL/CL-procedural | 69 | 0 % | DDS (R/K/PFILE) | [EXPSRCIFSD.md](../../sources/CL/CL-procedural/BIB06/EXPSRCIFSD.md) |
-| BIB10 | QDSPSRC | DDS | 69 | 0 % | DDS (R/K/PFILE) | [EXPSRCIFSD.md](../../sources/DDS/BIB10/EXPSRCIFSD.md) |
-| BIB17 | QCLPSRC | CL/CL-procedural | 46 | 0 % | DDS (R/K/PFILE) | [EXPSRCIFSD.md](../../sources/CL/CL-procedural/BIB17/EXPSRCIFSD.md) |
+| BIB01 | QDDSSRC | DDS | 43 | 16 % | DDS (R/K/PFILE) | [EXPSRCIFSD.md](../../sources/DDS/BIB01/EXPSRCIFSD.md) |
+| BIB05 | QCLPSRC | CL/CL-procedural | 36 | 0 % |  | [EXPSRCIFSD.md](../../sources/CL/CL-procedural/BIB05/EXPSRCIFSD.md) |
+| BIB06 | QCLPSRC | CL/CL-procedural | 69 | 100 % | DDS (R/K/PFILE) | [EXPSRCIFSD.md](../../sources/CL/CL-procedural/BIB06/EXPSRCIFSD.md) |
+| BIB10 | QDSPSRC | DDS | 69 | 100 % | DDS (R/K/PFILE) | [EXPSRCIFSD.md](../../sources/DDS/BIB10/EXPSRCIFSD.md) |
+| BIB17 | QCLPSRC | CL/CL-procedural | 46 | 17 % | DDS (R/K/PFILE) | [EXPSRCIFSD.md](../../sources/CL/CL-procedural/BIB17/EXPSRCIFSD.md) |
 
 ## Differences
 

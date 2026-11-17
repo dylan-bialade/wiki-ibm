@@ -1,8 +1,7 @@
 # Changements detectes sur job-i.fr
 
-Verifie le 2026-11-17 09:46.
+Verifie le 2026-11-17 08:47.
 
-- Page source ajoutee au suivi : https://job-i.fr/outq-ibm-i
-- Page source ajoutee au suivi : https://job-i.fr/rpg-iii
+- Liste modifiee : sitemap-pages.xml, lastmod 2026-11-17 -> 2026-11-17
 
 Fiches a mettre a jour : voir la table de correspondance dans docs/PROMPT-SYSTEME.md.

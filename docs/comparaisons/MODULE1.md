@@ -4,8 +4,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB02 | QMOD | RPG/RPG-ILE | 32 | 100 % | procedures (dcl-proc), prototypes (dcl-pr) | [MODULE1.md](../../sources/RPG/RPG-ILE/BIB02/MODULE1.md) |
-| BIB20 | QILESRC | RPG/RPG-ILE | 53 | 7 % | full free, SQL embarque, procedures (dcl-proc), prototypes (dcl-pr) | [MODULE1.md](../../sources/RPG/RPG-ILE/BIB20/MODULE1.md) |
+| BIB02 | QMOD | RPG/RPG-ILE | 32 | 7 % | procedures (dcl-proc), prototypes (dcl-pr) | [MODULE1.md](../../sources/RPG/RPG-ILE/BIB02/MODULE1.md) |
+| BIB20 | QILESRC | RPG/RPG-ILE | 53 | 100 % | full free, SQL embarque, procedures (dcl-proc), prototypes (dcl-pr) | [MODULE1.md](../../sources/RPG/RPG-ILE/BIB20/MODULE1.md) |
 
 ## Differences
 
@@ -78,6 +78,7 @@ THEN true
 
                                                                                                 end-proc;
 
+
                 dcl-proc checkSecu EXPORT; // Vérifie le numéro de sécu
                                     dcl-pi *n ind; // *ON ou *OFF
                                                         secu char(100) const;
@@ -91,6 +92,7 @@ e ind;
                                                     else;
                                                                         reponse = *off;
                                                                                     endif;
+
 
     return reponse;
 

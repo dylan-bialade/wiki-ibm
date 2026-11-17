@@ -4,11 +4,12 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB03 | QSRVSRC | Autres/Service-programs | 4 | 100 % |  | [PRETSRV.md](../../sources/Autres/Service-programs/BIB03/PRETSRV.md) |
-| BIB13 | QSRVSRC | Autres/Service-programs | 18 | 7 % |  | [PRETSRV.md](../../sources/Autres/Service-programs/BIB13/PRETSRV.md) |
-| BIB17 | QSRVSRC | Autres/Service-programs | 22 | 8 % |  | [PRETSRV.md](../../sources/Autres/Service-programs/BIB17/PRETSRV.md) |
+| BIB03 | QSRVSRC | Autres/Service-programs | 4 | 8 % |  | [PRETSRV.md](../../sources/Autres/Service-programs/BIB03/PRETSRV.md) |
+| BIB13 | QSRVSRC | Autres/Service-programs | 18 | 18 % |  | [PRETSRV.md](../../sources/Autres/Service-programs/BIB13/PRETSRV.md) |
+| BIB17 | QSRVSRC | Autres/Service-programs | 22 | 100 % |  | [PRETSRV.md](../../sources/Autres/Service-programs/BIB17/PRETSRV.md) |
 
 ## Differences
+
 
 ## Codes
 

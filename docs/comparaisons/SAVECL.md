@@ -4,10 +4,10 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB05 | QCLPSRC | CL/CL-procedural | 35 | 100 % | boucle DOW/DOU/FOR, gestion d erreur, CL : DCLF | [SAVECL.md](../../sources/CL/CL-procedural/BIB05/SAVECL.md) |
-| BIB06 | QCLPSRC | CL/CL-procedural | 36 | 67 % | boucle DOW/DOU/FOR, gestion d erreur, CL : DCLF | [SAVECL.md](../../sources/CL/CL-procedural/BIB06/SAVECL.md) |
-| BIB10 | QCLPSRC | CL/CL-procedural | 36 | 67 % | boucle DOW/DOU/FOR, gestion d erreur, CL : DCLF | [SAVECL.md](../../sources/CL/CL-procedural/BIB10/SAVECL.md) |
-| BIB17 | QCLPSRC | CL/CL-procedural | 35 | 88 % | boucle DOW/DOU/FOR, gestion d erreur, CL : DCLF | [SAVECL.md](../../sources/CL/CL-procedural/BIB17/SAVECL.md) |
+| BIB05 | QCLPSRC | CL/CL-procedural | 35 | 67 % | boucle DOW/DOU/FOR, gestion d erreur, CL : DCLF | [SAVECL.md](../../sources/CL/CL-procedural/BIB05/SAVECL.md) |
+| BIB06 | QCLPSRC | CL/CL-procedural | 36 | 100 % | boucle DOW/DOU/FOR, gestion d erreur, CL : DCLF | [SAVECL.md](../../sources/CL/CL-procedural/BIB06/SAVECL.md) |
+| BIB10 | QCLPSRC | CL/CL-procedural | 36 | 100 % | boucle DOW/DOU/FOR, gestion d erreur, CL : DCLF | [SAVECL.md](../../sources/CL/CL-procedural/BIB10/SAVECL.md) |
+| BIB17 | QCLPSRC | CL/CL-procedural | 35 | 67 % | boucle DOW/DOU/FOR, gestion d erreur, CL : DCLF | [SAVECL.md](../../sources/CL/CL-procedural/BIB17/SAVECL.md) |
 
 ## Differences
 

@@ -4,9 +4,9 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB03 | QRPGLESRC | RPG/RPG-ILE | 41 | 100 % | full free, procedures (dcl-proc), prototypes (dcl-pr) | [PRETMOD.md](../../sources/RPG/RPG-ILE/BIB03/PRETMOD.md) |
-| BIB13 | QRPGLESRC | RPG/RPG-ILE | 195 | 8 % | full free, procedures (dcl-proc), prototypes (dcl-pr) | [PRETMOD.md](../../sources/RPG/RPG-ILE/BIB13/PRETMOD.md) |
-| BIB17 | QRPGLESRC | RPG/RPG-ILE | 145 | 4 % | full free, boucle DOW/DOU/FOR, procedures (dcl-proc), prototypes (dcl-pr), structure de donnees | [PRETMOD.md](../../sources/RPG/RPG-ILE/BIB17/PRETMOD.md) |
+| BIB03 | QRPGLESRC | RPG/RPG-ILE | 41 | 4 % | full free, procedures (dcl-proc), prototypes (dcl-pr) | [PRETMOD.md](../../sources/RPG/RPG-ILE/BIB03/PRETMOD.md) |
+| BIB13 | QRPGLESRC | RPG/RPG-ILE | 195 | 5 % | full free, procedures (dcl-proc), prototypes (dcl-pr) | [PRETMOD.md](../../sources/RPG/RPG-ILE/BIB13/PRETMOD.md) |
+| BIB17 | QRPGLESRC | RPG/RPG-ILE | 145 | 100 % | full free, boucle DOW/DOU/FOR, procedures (dcl-proc), prototypes (dcl-pr), structure de donnees | [PRETMOD.md](../../sources/RPG/RPG-ILE/BIB17/PRETMOD.md) |
 
 ## Differences
 
@@ -87,6 +87,7 @@ dcl-proc calcTotaux export;
     dcl-s mens packed(8:2);
     dcl-s i packed(10:0);
 
+
     crd = montant;
     mois = duree * 12;
     mens = calcMensualite(montant:taux:duree);
@@ -101,6 +102,7 @@ dcl-proc calcTotaux export;
 
     return totaux;
 end-proc;
+
 
 dcl-proc calcMensualite export;
     dcl-pi *n packed(8 : 2);
@@ -152,12 +154,14 @@ dcl-proc calcTotauxAmortConst export;
         montant packed(10:0);
     end-pi;
 
+
     dcl-ds totaux likeds(totaux_t) inz;
     dcl-s mois packed(4:0);
     dcl-s crd packed(12:2); //capital restant du
     dcl-s capRemb packed(12:2);
     dcl-s i packed(10:0);
     dcl-ds ech likeds(echeance_t);
+
 
     crd = montant;
     mois = duree * 12;
@@ -180,6 +184,7 @@ dcl-proc calcEcheanceAmortConst export;
         capRemb packed(12 : 2)  const;
         dernier ind            const;
     end-pi;
+
 
     dcl-ds ech likeds(echeance_t);
 

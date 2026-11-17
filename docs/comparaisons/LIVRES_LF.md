@@ -4,10 +4,10 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB06 | QDDSSRC | DDS | 4 | 100 % | DDS (R/K/PFILE) | [LIVRES_LF.md](../../sources/DDS/BIB06/LIVRES_LF.md) |
-| BIB10 | QDDSSRC | DDS | 4 | 100 % | DDS (R/K/PFILE) | [LIVRES_LF.md](../../sources/DDS/BIB10/LIVRES_LF.md) |
-| BIB17 | QDDSSRC | DDS | 5 | 14 % | DDS (R/K/PFILE) | [LIVRES_LF.md](../../sources/DDS/BIB17/LIVRES_LF.md) |
-| BIB20 | QTPSRC | DDS | 3 | 0 % | DDS (R/K/PFILE) | [LIVRES_LF.md](../../sources/DDS/BIB20/LIVRES_LF.md) |
+| BIB06 | QDDSSRC | DDS | 4 | 0 % | DDS (R/K/PFILE) | [LIVRES_LF.md](../../sources/DDS/BIB06/LIVRES_LF.md) |
+| BIB10 | QDDSSRC | DDS | 4 | 0 % | DDS (R/K/PFILE) | [LIVRES_LF.md](../../sources/DDS/BIB10/LIVRES_LF.md) |
+| BIB17 | QDDSSRC | DDS | 5 | 33 % | DDS (R/K/PFILE) | [LIVRES_LF.md](../../sources/DDS/BIB17/LIVRES_LF.md) |
+| BIB20 | QTPSRC | DDS | 3 | 100 % | DDS (R/K/PFILE) | [LIVRES_LF.md](../../sources/DDS/BIB20/LIVRES_LF.md) |
 
 ## Differences
 

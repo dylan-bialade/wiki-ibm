@@ -4,9 +4,9 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB05 | QRPGSRC | RPG/RPG-III-400 | 12 | 100 % |  | [CALCTTC.md](../../sources/RPG/RPG-III-400/BIB05/CALCTTC.md) |
+| BIB05 | QRPGSRC | RPG/RPG-III-400 | 12 | 14 % |  | [CALCTTC.md](../../sources/RPG/RPG-III-400/BIB05/CALCTTC.md) |
 | BIB09 | QSOURCES | RPG/RPG-ILE | 44 | 0 % | full free, prototypes (dcl-pr) | [CALCTTC.md](../../sources/RPG/RPG-ILE/BIB09/CALCTTC.md) |
-| BIB20 | QRPGSRC | RPG/RPG-III-400 | 4 | 14 % |  | [CALCTTC.md](../../sources/RPG/RPG-III-400/BIB20/CALCTTC.md) |
+| BIB20 | QRPGSRC | RPG/RPG-III-400 | 4 | 100 % |  | [CALCTTC.md](../../sources/RPG/RPG-III-400/BIB20/CALCTTC.md) |
 
 ## Differences
 

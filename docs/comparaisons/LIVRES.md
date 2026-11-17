@@ -4,14 +4,14 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB09 | QSOURCES | DDS | 5 | 100 % | DDS (R/K/PFILE) | [LIVRES.md](../../sources/DDS/BIB09/LIVRES.md) |
-| BIB17 | QSQLSRC | SQL | 97 | 0 % | curseur SQL, boucle DOW/DOU/FOR | [LIVRES.md](../../sources/SQL/BIB17/LIVRES.md) |
+| BIB09 | QSOURCES | DDS | 5 | 0 % | DDS (R/K/PFILE) | [LIVRES.md](../../sources/DDS/BIB09/LIVRES.md) |
+| BIB17 | QSQLSRC | SQL | 97 | 100 % | curseur SQL, boucle DOW/DOU/FOR | [LIVRES.md](../../sources/SQL/BIB17/LIVRES.md) |
 
 ## Differences
 
 - **BIB09** en propre : DDS (R/K/PFILE)
 - **BIB17** en propre : curseur SQL, boucle DOW/DOU/FOR
-- Langages / types differents : DDS, SQL
+- Langages / types differents : SQL, DDS
 
 ## Codes
 
@@ -42,6 +42,7 @@ SELECT *
     FROM TKT01BIB.statmois;
 SELECT *
     FROM TKT01BIB.adhcpy;
+
 
 CREATE OR REPLACE PROCEDURE PRC_CLOTURE ()
         LANGUAGE SQL
@@ -77,6 +78,7 @@ BEGIN
             WHERE DT_PRET BETWEEN V_DEB AND V_FIN;
     COMMIT;
 END;
+
 
 CREATE OR REPLACE PROCEDURE PRC_PENALITES ()
         LANGUAGE SQL
@@ -119,6 +121,7 @@ BEGIN
     END WHILE;
     CLOSE C_PRETS;
 END;
+
 
 SELECT *
     FROM BIB17.livres;

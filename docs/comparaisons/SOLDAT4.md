@@ -4,8 +4,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB05 | QRPGLESRC2 | RPG/RPG-ILE | 107 | 100 % | ecran (WORKSTN), CHAIN, SETLL / READ, boucle DOW/DOU/FOR, indicateurs *INxx | [SOLDAT4.md](../../sources/RPG/RPG-ILE/BIB05/SOLDAT4.md) |
-| BIB20 | QRPGLESRC | RPG/RPG-ILE | 97 | 38 % | ecran (WORKSTN), CHAIN, SETLL / READ, boucle DOW/DOU/FOR, indicateurs *INxx | [SOLDAT4.md](../../sources/RPG/RPG-ILE/BIB20/SOLDAT4.md) |
+| BIB05 | QRPGLESRC2 | RPG/RPG-ILE | 107 | 38 % | ecran (WORKSTN), CHAIN, SETLL / READ, boucle DOW/DOU/FOR, indicateurs *INxx | [SOLDAT4.md](../../sources/RPG/RPG-ILE/BIB05/SOLDAT4.md) |
+| BIB20 | QRPGLESRC | RPG/RPG-ILE | 97 | 100 % | ecran (WORKSTN), CHAIN, SETLL / READ, boucle DOW/DOU/FOR, indicateurs *INxx | [SOLDAT4.md](../../sources/RPG/RPG-ILE/BIB20/SOLDAT4.md) |
 
 ## Differences
 

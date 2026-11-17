@@ -4,8 +4,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB03 | QRPGLESRC | RPG/RPG-ILE | 92 | 100 % | full free, SQL embarque, procedures (dcl-proc), prototypes (dcl-pr) | [TP3MOD.md](../../sources/RPG/RPG-ILE/BIB03/TP3MOD.md) |
-| BIB18 | QRPGLESRC | RPG/RPG-ILE | 97 | 25 % | full free, SQL embarque, procedures (dcl-proc), prototypes (dcl-pr), structure de donnees | [TP3MOD.md](../../sources/RPG/RPG-ILE/BIB18/TP3MOD.md) |
+| BIB03 | QRPGLESRC | RPG/RPG-ILE | 92 | 25 % | full free, SQL embarque, procedures (dcl-proc), prototypes (dcl-pr) | [TP3MOD.md](../../sources/RPG/RPG-ILE/BIB03/TP3MOD.md) |
+| BIB18 | QRPGLESRC | RPG/RPG-ILE | 97 | 100 % | full free, SQL embarque, procedures (dcl-proc), prototypes (dcl-pr), structure de donnees | [TP3MOD.md](../../sources/RPG/RPG-ILE/BIB18/TP3MOD.md) |
 
 ## Differences
 
@@ -183,6 +183,7 @@ dcl-proc creditDispo export;
     return cli.plafond - cli.encours;
 end-proc;
 
+
 dcl-proc peutCommander export;
     dcl-pi *n ind;
         num packed(5:0) const;
@@ -192,9 +193,11 @@ dcl-proc peutCommander export;
     dcl-s credDisp packed(9:2);
     credDisp = creditDispo(num);
 
+
     return montant <= credDisp ;
 
 end-proc;
+
 
 dcl-proc villeClient export;
     dcl-pi *n  varchar(20);

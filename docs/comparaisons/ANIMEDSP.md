@@ -4,8 +4,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB17 | QDDSSRC | DDS | 24 | 100 % | DDS (R/K/PFILE) | [ANIMEDSP.md](../../sources/DDS/BIB17/ANIMEDSP.md) |
-| BIB21 | QDDSSRC | DDS | 55 | 0 % | sous-fichier, DDS (R/K/PFILE) | [ANIMEDSP.md](../../sources/DDS/BIB21/ANIMEDSP.md) |
+| BIB17 | QDDSSRC | DDS | 24 | 0 % | DDS (R/K/PFILE) | [ANIMEDSP.md](../../sources/DDS/BIB17/ANIMEDSP.md) |
+| BIB21 | QDDSSRC | DDS | 55 | 100 % | sous-fichier, DDS (R/K/PFILE) | [ANIMEDSP.md](../../sources/DDS/BIB21/ANIMEDSP.md) |
 
 ## Differences
 

@@ -4,10 +4,10 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB06 | QDDSSRC | DDS | 9 | 100 % | DDS (R/K/PFILE) | [AUTEURS_PF.md](../../sources/DDS/BIB06/AUTEURS_PF.md) |
-| BIB10 | QDDSSRC | DDS | 9 | 100 % | DDS (R/K/PFILE) | [AUTEURS_PF.md](../../sources/DDS/BIB10/AUTEURS_PF.md) |
-| BIB17 | QDDSSRC | DDS | 5 | 0 % |  | [AUTEURS_PF.md](../../sources/DDS/BIB17/AUTEURS_PF.md) |
-| BIB20 | QTPSRC | DDS | 9 | 31 % | DDS (R/K/PFILE) | [AUTEURS_PF.md](../../sources/DDS/BIB20/AUTEURS_PF.md) |
+| BIB06 | QDDSSRC | DDS | 9 | 31 % | DDS (R/K/PFILE) | [AUTEURS_PF.md](../../sources/DDS/BIB06/AUTEURS_PF.md) |
+| BIB10 | QDDSSRC | DDS | 9 | 31 % | DDS (R/K/PFILE) | [AUTEURS_PF.md](../../sources/DDS/BIB10/AUTEURS_PF.md) |
+| BIB17 | QDDSSRC | DDS | 5 | 8 % |  | [AUTEURS_PF.md](../../sources/DDS/BIB17/AUTEURS_PF.md) |
+| BIB20 | QTPSRC | DDS | 9 | 100 % | DDS (R/K/PFILE) | [AUTEURS_PF.md](../../sources/DDS/BIB20/AUTEURS_PF.md) |
 
 ## Differences
 

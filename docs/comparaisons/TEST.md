@@ -6,16 +6,16 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 |---|---|---|---|---|---|---|
 | BIB01 | QMNUSRC | Menus | 37 | 0 % | DDS (R/K/PFILE) | [TEST.md](../../sources/Menus/BIB01/TEST.md) |
 | BIB05 | QRPGLESRC2 | RPG/RPG-ILE | 67 | 0 % | full free, SQL embarque, curseur SQL, boucle DOW/DOU/FOR | [TEST.md](../../sources/RPG/RPG-ILE/BIB05/TEST.md) |
-| BIB17 | QRPGLESRC | RPG/RPG-ILE | 4 | 0 % | full free | [TEST.md](../../sources/RPG/RPG-ILE/BIB17/TEST.md) |
 | BIB17 | QCLPSRC | CL/CL-procedural | 15 | 100 % | gestion d erreur | [TEST.md](../../sources/CL/CL-procedural/BIB17/TEST.md) |
+| BIB17 | QRPGLESRC | RPG/RPG-ILE | 4 | 0 % | full free | [TEST.md](../../sources/RPG/RPG-ILE/BIB17/TEST.md) |
 
 ## Differences
 
 - **BIB01** en propre : DDS (R/K/PFILE)
 - **BIB05** en propre : full free, SQL embarque, curseur SQL, boucle DOW/DOU/FOR
-- **BIB17** en propre : full free
 - **BIB17** en propre : gestion d erreur
-- Langages / types differents : CL/CL-procedural, Menus, RPG/RPG-ILE
+- **BIB17** en propre : full free
+- Langages / types differents : CL/CL-procedural, RPG/RPG-ILE, Menus
 
 ## Codes
 
@@ -133,15 +133,6 @@ EXEC SQL CLOSE C1;
 Return;
 ```
 
-### BIB17 (RPG/RPG-ILE, 4 lignes)
-
-```text
-**free
-dcl-f univV2 usage(*input) keyed
-        extdesc('ANIME/UNIVERSV2') extfile(*extdesc);
-*inlr = *on;
-```
-
 ### BIB17 (CL/CL-procedural, 15 lignes)
 
 ```text
@@ -153,5 +144,20 @@ dcl-f univV2 usage(*input) keyed
                           /attendances') PAUSE(*NO)
              ADDLIBLE   LIB(BIB17)
 
+
+
+
+
+
+
              ENDPGM
+```
+
+### BIB17 (RPG/RPG-ILE, 4 lignes)
+
+```text
+**free
+dcl-f univV2 usage(*input) keyed
+        extdesc('ANIME/UNIVERSV2') extfile(*extdesc);
+*inlr = *on;
 ```

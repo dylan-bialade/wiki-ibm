@@ -4,8 +4,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB05 | QRPGSRC | RPG/RPG-III-400 | 64 | 100 % | ecran (WORKSTN), SETLL / READ, boucle DOW/DOU/FOR, indicateurs *INxx | [GESTLIVRE.md](../../sources/RPG/RPG-III-400/BIB05/GESTLIVRE.md) |
-| BIB10 | QRPGSRC | RPG/RPG-III-400 | 154 | 12 % | ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc), indicateurs *INxx | [GESTLIVRE.md](../../sources/RPG/RPG-III-400/BIB10/GESTLIVRE.md) |
+| BIB05 | QRPGSRC | RPG/RPG-III-400 | 64 | 12 % | ecran (WORKSTN), SETLL / READ, boucle DOW/DOU/FOR, indicateurs *INxx | [GESTLIVRE.md](../../sources/RPG/RPG-III-400/BIB05/GESTLIVRE.md) |
+| BIB10 | QRPGSRC | RPG/RPG-III-400 | 154 | 100 % | ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc), indicateurs *INxx | [GESTLIVRE.md](../../sources/RPG/RPG-III-400/BIB10/GESTLIVRE.md) |
 
 ## Differences
 

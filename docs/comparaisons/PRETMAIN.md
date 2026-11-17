@@ -4,9 +4,9 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB03 | QRPGLESRC | RPG/RPG-ILE | 95 | 100 % | full free, sous-fichier, ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc), structure de donnees | [PRETMAIN.md](../../sources/RPG/RPG-ILE/BIB03/PRETMAIN.md) |
-| BIB13 | QRPGLESRC | RPG/RPG-ILE | 167 | 9 % | full free, sous-fichier, ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc), structure de donnees | [PRETMAIN.md](../../sources/RPG/RPG-ILE/BIB13/PRETMAIN.md) |
-| BIB17 | QRPGLESRC | RPG/RPG-ILE | 106 | 6 % | full free, sous-fichier, ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc), structure de donnees, indicateurs *INxx | [PRETMAIN.md](../../sources/RPG/RPG-ILE/BIB17/PRETMAIN.md) |
+| BIB03 | QRPGLESRC | RPG/RPG-ILE | 95 | 6 % | full free, sous-fichier, ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc), structure de donnees | [PRETMAIN.md](../../sources/RPG/RPG-ILE/BIB03/PRETMAIN.md) |
+| BIB13 | QRPGLESRC | RPG/RPG-ILE | 167 | 11 % | full free, sous-fichier, ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc), structure de donnees | [PRETMAIN.md](../../sources/RPG/RPG-ILE/BIB13/PRETMAIN.md) |
+| BIB17 | QRPGLESRC | RPG/RPG-ILE | 106 | 100 % | full free, sous-fichier, ecran (WORKSTN), boucle DOW/DOU/FOR, procedures (dcl-proc), structure de donnees, indicateurs *INxx | [PRETMAIN.md](../../sources/RPG/RPG-ILE/BIB17/PRETMAIN.md) |
 
 ## Differences
 

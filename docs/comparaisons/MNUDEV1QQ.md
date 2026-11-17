@@ -4,10 +4,11 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB06 | QMNUSRC | Menus | 8 | 100 % |  | [MNUDEV1QQ.md](../../sources/Menus/BIB06/MNUDEV1QQ.md) |
-| BIB10 | QMNUSRC | Menus | 8 | 78 % |  | [MNUDEV1QQ.md](../../sources/Menus/BIB10/MNUDEV1QQ.md) |
+| BIB06 | QMNUSRC | Menus | 8 | 78 % |  | [MNUDEV1QQ.md](../../sources/Menus/BIB06/MNUDEV1QQ.md) |
+| BIB10 | QMNUSRC | Menus | 8 | 100 % |  | [MNUDEV1QQ.md](../../sources/Menus/BIB10/MNUDEV1QQ.md) |
 
 ## Differences
+
 
 ## Codes
 

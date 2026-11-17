@@ -4,8 +4,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB06 | QMNUSRC | Menus | 114 | 100 % | DDS (R/K/PFILE) | [MNUDEV1.md](../../sources/Menus/BIB06/MNUDEV1.md) |
-| BIB10 | QMNUSRC | Menus | 114 | 91 % | DDS (R/K/PFILE) | [MNUDEV1.md](../../sources/Menus/BIB10/MNUDEV1.md) |
+| BIB06 | QMNUSRC | Menus | 114 | 91 % | DDS (R/K/PFILE) | [MNUDEV1.md](../../sources/Menus/BIB06/MNUDEV1.md) |
+| BIB10 | QMNUSRC | Menus | 114 | 100 % | DDS (R/K/PFILE) | [MNUDEV1.md](../../sources/Menus/BIB10/MNUDEV1.md) |
 
 ## Differences
 

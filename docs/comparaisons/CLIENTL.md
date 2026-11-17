@@ -4,12 +4,12 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB05 | QRPGSRC | RPG/RPG-III-400 | 5 | 29 % |  | [CLIENTL.md](../../sources/RPG/RPG-III-400/BIB05/CLIENTL.md) |
-| BIB10 | QDDSSRC | DDS | 5 | 100 % |  | [CLIENTL.md](../../sources/DDS/BIB10/CLIENTL.md) |
+| BIB05 | QRPGSRC | RPG/RPG-III-400 | 5 | 100 % |  | [CLIENTL.md](../../sources/RPG/RPG-III-400/BIB05/CLIENTL.md) |
+| BIB10 | QDDSSRC | DDS | 5 | 29 % |  | [CLIENTL.md](../../sources/DDS/BIB10/CLIENTL.md) |
 
 ## Differences
 
-- Langages / types differents : DDS, RPG/RPG-III-400
+- Langages / types differents : RPG/RPG-III-400, DDS
 
 ## Codes
 

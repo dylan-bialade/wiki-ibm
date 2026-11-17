@@ -4,8 +4,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB05 | QCLPSRC | CL/CL-procedural | 18 | 100 % | gestion d erreur | [CRTENV.md](../../sources/CL/CL-procedural/BIB05/CRTENV.md) |
-| BIB10 | QCLPSRC | CL/CL-procedural | 5 | 0 % |  | [CRTENV.md](../../sources/CL/CL-procedural/BIB10/CRTENV.md) |
+| BIB05 | QCLPSRC | CL/CL-procedural | 18 | 0 % | gestion d erreur | [CRTENV.md](../../sources/CL/CL-procedural/BIB05/CRTENV.md) |
+| BIB10 | QCLPSRC | CL/CL-procedural | 5 | 100 % |  | [CRTENV.md](../../sources/CL/CL-procedural/BIB10/CRTENV.md) |
 
 ## Differences
 
