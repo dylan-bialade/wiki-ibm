@@ -5,7 +5,7 @@
 param([switch]$SansConversion)
 $ErrorActionPreference = 'Continue'
 $ps = (Get-Process -Id $PID).Path
-$steps = @('Build-Wiki','Verify-JobI','Fix-Markdown','Verify-Contributions','Build-Variantes','Build-Comparaison','Find-Gaps','Assess-Document','Add-Toc','Build-Sommaire','Build-Contexte')
+$steps = @('Build-Wiki','Verify-JobI','Verify-Contributions','Build-Variantes','Build-Comparaison','Find-Gaps','Assess-Document','Fix-Markdown','Add-Toc','Build-Sommaire','Build-Contexte')
 if ($SansConversion) { $steps = $steps | Where-Object { $_ -ne 'Build-Wiki' } }
 foreach ($s in $steps) {
   Write-Output "=== $s"
