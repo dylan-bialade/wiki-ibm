@@ -1,8 +1,8 @@
 # Ce qui manque dans les fiches (utilise dans le code, absent des fiches)
 
-Genere le 2026-11-16 14:42 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
+Genere le 2026-11-17 09:06 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
 
-## Commandes CL : 68 manquants sur 104 utilises
+## Commandes CL : 67 manquants sur 104 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
@@ -50,9 +50,9 @@ Genere le 2026-11-16 14:42 a partir de 1082 sources. Un terme est 'manquant' s'i
 | STRPCCMD | 3 | 1 |
 | RUNSQLSTM | 3 | 1 |
 | CRTDSPF | 3 | 3 |
-| WRKSPLF | 3 | 3 |
+| CRTCLS | 2 | 2 |
 
-## Instructions / fonctions RPG (reconnues par job-i) : 44 manquants sur 102 utilises
+## Instructions / fonctions RPG (reconnues par job-i) : 43 manquants sur 102 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
@@ -84,7 +84,6 @@ Genere le 2026-11-16 14:42 a partir de 1082 sources. Un terme est 'manquant' s'i
 | %STATUS | 5 | 3 |
 | %SUBARR | 5 | 3 |
 | %OPEN | 5 | 3 |
-| WRKSPLF | 4 | 2 |
 | %UPPER | 4 | 3 |
 | %TIMESTAMP | 4 | 1 |
 | READPE | 3 | 2 |

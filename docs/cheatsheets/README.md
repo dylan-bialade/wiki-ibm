@@ -1,5 +1,8 @@
 # Cheat sheets IBM i (d'après job-i.fr)
 
+Dernière mise à jour : 2026-11-17
+- Fiche 06 : page `/instructions-rpg/begsr` ajoutée au suivi ; ajout de `LEAVESR` et des instructions voisines (aucun autre changement détecté).
+
 | Fiche | Contenu |
 |---|---|
 | [01 - Comprendre IBM i](01-comprendre-ibm-i.md) | objets, ILE, travaux, profils, sécurité, PTF, performances |
