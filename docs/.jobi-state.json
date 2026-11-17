@@ -1,5 +1,5 @@
 ﻿{
-    "date":  "2026-11-17 09:07",
+    "date":  "2026-11-17 09:46",
     "sitemaps":  {
                      "sitemap-rpg-iii.xml":  {
                                                  "hash":  "A931FDFC6CE83FAF",
@@ -49,14 +49,16 @@
                  },
     "pages":  {
                   "/valeurs-systeme-ibm-i":  "33483E34A67395B1",
-                  "/instructions-rpg":  "2F98E6350F92825E",
-                  "/installer-ptf-ibm-i":  "CE639FB3BE3E524C",
                   "/sous-fichier-rpg":  "07233C19D696051F",
+                  "/rpg-iii":  "81A60B0A235F3B53",
+                  "/outq-ibm-i":  "8CAB23243EDADD05",
+                  "/installer-ptf-ibm-i":  "CE639FB3BE3E524C",
                   "/services-sql-ibm-i":  "3FC0CCFD60B50798",
                   "/prototypes-rpg-pr-pi":  "FA504DFF3EE9FC6A",
                   "/performances-ibm-i":  "DC20F7FFD11011B5",
                   "/recettes-sql-ibm-i":  "E52898BB1BEF7B1C",
                   "/fonctions-rpg":  "1BF1913F102138E8",
+                  "/instructions-rpg":  "2F98E6350F92825E",
                   "/profils-utilisateurs-ibm-i":  "D37EC6D45BEB75A5",
                   "/se-former-ibm-i":  "5B9E8C7CE7AE9F5D",
                   "/fichier-logique-lf-ibm-i":  "0FDDFBECBA38DF0D",

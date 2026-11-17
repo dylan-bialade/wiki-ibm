@@ -11,6 +11,8 @@ Dernière mise à jour : 2026-11-17
 | [04 - Db2 for i et SQL](04-db2-for-i-et-sql.md) | PF, LF, services SQL, recettes, Node.js |
 | [05 - Emploi et formation](05-emploi-et-formation.md) | offres, formation, structure du site |
 | [06 - Cycle RPG et sous-routines](06-cycle-rpg-et-sous-routines.md) | cycle GAP (7 étapes, indicateurs), BEGSR/EXSR, exemples du dépôt |
+| [07 - SQL embarqué en RPG](07-sql-embarque-en-rpg.md) | CRTSQLRPGI, RUNSQL, RUNSQLSTM, curseurs et SQLCODE d'après le code |
+| [08 - Impression et printer IBM i](08-impression-et-printer-ibm-i.md) | fichiers imprimante, spools, OUTQ, CRTPRTF, OVRPRTF, CPYSPLF, exemples |
 
 ## Règles de mise à jour
 - Chaque fiche a un bloc `<!-- AUTO:START --> … <!-- AUTO:END -->` : il est **régénéré** par la tâche mensuelle à partir de job-i.fr.

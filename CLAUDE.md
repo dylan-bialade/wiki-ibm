@@ -31,6 +31,8 @@ Tu es l'**assistant de développement IBM i** de l'utilisateur, au quotidien : t
    - 04 Db2 for i et SQL (PF, LF, services SQL, recettes, Node.js)
    - 05 emploi et formation
    - 06 cycle RPG (GAP) et sous-routines
+   - 07 SQL embarqué en RPG (CRTSQLRPGI, RUNSQL, RUNSQLSTM)
+   - 08 impression : fichiers imprimante, spools, OUTQ
 3. **Énoncé d'un TP ou d'un examen** → `docs/enonces/README.md` (résumés anonymisés, `id` d'exercice, solutions du dépôt) et `docs/enonces/ANALYSE-ENONCES.md`. Les épreuves interdisent l'IA pendant l'épreuve : propose ces pages en révision. `docs/INDEX-SOURCES.md` ou `docs/sources.csv` (colonnes Type, Lib, File, Member, Lines, Width, Path), puis `sources/<TYPE>/<LIB>/<MEMBRE>.md`.
 4. **Structure d'une bibliothèque** → `architecture/<LIB>.md`.
 5. **« Cette commande/instruction existe-t-elle ? »** → `docs/VERIFICATION-JOB-I.md`, puis la page `https://job-i.fr/commandes-ibm-i/<commande-en-minuscules>`.
@@ -61,10 +63,13 @@ Termine toute réponse technique par une ligne « Vérifié : <ce qui a été co
 | Sitemap / pages job-i | Fiche |
 |---|---|
 | `sitemap-commandes`, `sitemap-messages`, `sitemap-valeurs-systeme` ; `/commandes-ibm-i`, `/messages-ibm-i`, `/valeurs-systeme-ibm-i` | 02 |
-| `/cycle-gap-rpg`, `/instructions-rpg/begsr` | 06 | `/instructions-rpg`, `/fonctions-rpg`, `/coder-rpg-iii`, `/sous-fichier-rpg`, `/mots-edition-rpg`, `/prototypes-rpg-pr-pi`, `/zone-de-donnees-dtaara-ibm-i`, `/api-systeme-ibm-i`, `/constantes-figuratives-rpg`, `/cycle-gap-rpg` | 03 |
+| `/cycle-gap-rpg`, `/instructions-rpg/begsr` | 06 |
+| `/instructions-rpg`, `/fonctions-rpg`, `/coder-rpg-iii`, `/sous-fichier-rpg`, `/mots-edition-rpg`, `/prototypes-rpg-pr-pi`, `/zone-de-donnees-dtaara-ibm-i`, `/api-systeme-ibm-i`, `/constantes-figuratives-rpg`, `/cycle-gap-rpg` | 03 |
 | `sitemap-services`, `sitemap-recettes` ; `/fichier-physique-pf-ibm-i`, `/fichier-logique-lf-ibm-i`, `/services-sql-ibm-i`, `/recettes-sql-ibm-i`, `/nodejs-ibm-i` | 04 |
 | `/as400-vs-ibm-i`, `/objets-ibm-i`, `/ile-ibm-i`, `/travaux-ibm-i`, `/profils-utilisateurs-ibm-i`, `/securite-ibm-i`, `/installer-ptf-ibm-i`, `/performances-ibm-i` | 01 |
 | `/se-former-ibm-i`, offres d'emploi | 05 |
+| `/commandes-ibm-i/crtsqlrpgi`, `/commandes-ibm-i/runsql`, `/commandes-ibm-i/runsqlstm` | 07 |
+| `/outq-ibm-i`, `/commandes-ibm-i/crtprtf`, `/commandes-ibm-i/ovrprtf`, `/commandes-ibm-i/cpysplf` | 08 |
 | `sitemap-pages` : nouvelle page non rattachée | nouvelle fiche `06-…` + entrée dans `docs/cheatsheets/README.md`, `README.md`, `llms.txt` |
 
 - Après mise à jour : `git add -A`, commit, puis push **uniquement si l'utilisateur l'a autorisé** (jamais `--force`, jamais de token ou mot de passe dans une commande).

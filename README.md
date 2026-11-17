@@ -21,6 +21,8 @@
 | Ce qui manque dans les fiches (utilisé dans le code, absent des fiches) | [docs/MANQUES.md](docs/MANQUES.md) |
 | Verdict automatique sur un document ajouté (pertinent ou non) | [docs/EVALUATION-APPORTS.md](docs/EVALUATION-APPORTS.md) |
 | Plusieurs solutions pour un même exercice | [docs/VARIANTES.md](docs/VARIANTES.md) (collaborateurs), [docs/COMPARAISON-BIBLIOTHEQUES.md](docs/COMPARAISON-BIBLIOTHEQUES.md) (bibliothèques du cours) |
+| SQL embarqué en RPG (curseur, SQLCODE, RUNSQL) | [fiche 07](docs/cheatsheets/07-sql-embarque-en-rpg.md) |
+| Impression, fichier imprimante, spool, OUTQ | [fiche 08](docs/cheatsheets/08-impression-et-printer-ibm-i.md) |
 | Cycle RPG (cours) ou sous-routines | [fiche 06](docs/cheatsheets/06-cycle-rpg-et-sous-routines.md) |
 | Exemples du cycle RPG (fichier primaire, L1-L9, 1P, OF) | [docs/CYCLE-GAP-EXEMPLES.md](docs/CYCLE-GAP-EXEMPLES.md) |
 | Ajouter ma bibliothèque (collaborateur) | [contributions/README.md](contributions/README.md) |

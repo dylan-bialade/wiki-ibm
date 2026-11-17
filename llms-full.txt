@@ -1,6 +1,6 @@
 # Wiki IBM i : contexte complet pour un assistant
 
-Genere le 2026-11-17 09:31 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Genere le 2026-11-17 09:46 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
 Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
 
 
@@ -28,6 +28,8 @@ Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou
 | Ce qui manque dans les fiches (utilisé dans le code, absent des fiches) | [docs/MANQUES.md](docs/MANQUES.md) |
 | Verdict automatique sur un document ajouté (pertinent ou non) | [docs/EVALUATION-APPORTS.md](docs/EVALUATION-APPORTS.md) |
 | Plusieurs solutions pour un même exercice | [docs/VARIANTES.md](docs/VARIANTES.md) (collaborateurs), [docs/COMPARAISON-BIBLIOTHEQUES.md](docs/COMPARAISON-BIBLIOTHEQUES.md) (bibliothèques du cours) |
+| SQL embarqué en RPG (curseur, SQLCODE, RUNSQL) | [fiche 07](docs/cheatsheets/07-sql-embarque-en-rpg.md) |
+| Impression, fichier imprimante, spool, OUTQ | [fiche 08](docs/cheatsheets/08-impression-et-printer-ibm-i.md) |
 | Cycle RPG (cours) ou sous-routines | [fiche 06](docs/cheatsheets/06-cycle-rpg-et-sous-routines.md) |
 | Exemples du cycle RPG (fichier primaire, L1-L9, 1P, OF) | [docs/CYCLE-GAP-EXEMPLES.md](docs/CYCLE-GAP-EXEMPLES.md) |
 | Ajouter ma bibliothèque (collaborateur) | [contributions/README.md](contributions/README.md) |
@@ -145,6 +147,8 @@ Tu es l'**assistant de développement IBM i** de l'utilisateur, au quotidien : t
    - 04 Db2 for i et SQL (PF, LF, services SQL, recettes, Node.js)
    - 05 emploi et formation
    - 06 cycle RPG (GAP) et sous-routines
+   - 07 SQL embarqué en RPG (CRTSQLRPGI, RUNSQL, RUNSQLSTM)
+   - 08 impression : fichiers imprimante, spools, OUTQ
 3. **Énoncé d'un TP ou d'un examen** → `docs/enonces/README.md` (résumés anonymisés, `id` d'exercice, solutions du dépôt) et `docs/enonces/ANALYSE-ENONCES.md`. Les épreuves interdisent l'IA pendant l'épreuve : propose ces pages en révision. `docs/INDEX-SOURCES.md` ou `docs/sources.csv` (colonnes Type, Lib, File, Member, Lines, Width, Path), puis `sources/<TYPE>/<LIB>/<MEMBRE>.md`.
 4. **Structure d'une bibliothèque** → `architecture/<LIB>.md`.
 5. **« Cette commande/instruction existe-t-elle ? »** → `docs/VERIFICATION-JOB-I.md`, puis la page `https://job-i.fr/commandes-ibm-i/<commande-en-minuscules>`.
@@ -175,10 +179,13 @@ Termine toute réponse technique par une ligne « Vérifié : <ce qui a été co
 | Sitemap / pages job-i | Fiche |
 |---|---|
 | `sitemap-commandes`, `sitemap-messages`, `sitemap-valeurs-systeme` ; `/commandes-ibm-i`, `/messages-ibm-i`, `/valeurs-systeme-ibm-i` | 02 |
-| `/cycle-gap-rpg`, `/instructions-rpg/begsr` | 06 | `/instructions-rpg`, `/fonctions-rpg`, `/coder-rpg-iii`, `/sous-fichier-rpg`, `/mots-edition-rpg`, `/prototypes-rpg-pr-pi`, `/zone-de-donnees-dtaara-ibm-i`, `/api-systeme-ibm-i`, `/constantes-figuratives-rpg`, `/cycle-gap-rpg` | 03 |
+| `/cycle-gap-rpg`, `/instructions-rpg/begsr` | 06 |
+| `/instructions-rpg`, `/fonctions-rpg`, `/coder-rpg-iii`, `/sous-fichier-rpg`, `/mots-edition-rpg`, `/prototypes-rpg-pr-pi`, `/zone-de-donnees-dtaara-ibm-i`, `/api-systeme-ibm-i`, `/constantes-figuratives-rpg`, `/cycle-gap-rpg` | 03 |
 | `sitemap-services`, `sitemap-recettes` ; `/fichier-physique-pf-ibm-i`, `/fichier-logique-lf-ibm-i`, `/services-sql-ibm-i`, `/recettes-sql-ibm-i`, `/nodejs-ibm-i` | 04 |
 | `/as400-vs-ibm-i`, `/objets-ibm-i`, `/ile-ibm-i`, `/travaux-ibm-i`, `/profils-utilisateurs-ibm-i`, `/securite-ibm-i`, `/installer-ptf-ibm-i`, `/performances-ibm-i` | 01 |
 | `/se-former-ibm-i`, offres d'emploi | 05 |
+| `/commandes-ibm-i/crtsqlrpgi`, `/commandes-ibm-i/runsql`, `/commandes-ibm-i/runsqlstm` | 07 |
+| `/outq-ibm-i`, `/commandes-ibm-i/crtprtf`, `/commandes-ibm-i/ovrprtf`, `/commandes-ibm-i/cpysplf` | 08 |
 | `sitemap-pages` : nouvelle page non rattachée | nouvelle fiche `06-…` + entrée dans `docs/cheatsheets/README.md`, `README.md`, `llms.txt` |
 
 - Après mise à jour : `git add -A`, commit, puis push **uniquement si l'utilisateur l'a autorisé** (jamais `--force`, jamais de token ou mot de passe dans une commande).
@@ -217,6 +224,8 @@ Dernière mise à jour : 2026-11-17
 | [04 - Db2 for i et SQL](04-db2-for-i-et-sql.md) | PF, LF, services SQL, recettes, Node.js |
 | [05 - Emploi et formation](05-emploi-et-formation.md) | offres, formation, structure du site |
 | [06 - Cycle RPG et sous-routines](06-cycle-rpg-et-sous-routines.md) | cycle GAP (7 étapes, indicateurs), BEGSR/EXSR, exemples du dépôt |
+| [07 - SQL embarqué en RPG](07-sql-embarque-en-rpg.md) | CRTSQLRPGI, RUNSQL, RUNSQLSTM, curseurs et SQLCODE d'après le code |
+| [08 - Impression et printer IBM i](08-impression-et-printer-ibm-i.md) | fichiers imprimante, spools, OUTQ, CRTPRTF, OVRPRTF, CPYSPLF, exemples |
 
 ## Règles de mise à jour
 - Chaque fiche a un bloc `<!-- AUTO:START --> … <!-- AUTO:END -->` : il est **régénéré** par la tâche mensuelle à partir de job-i.fr.
@@ -702,6 +711,74 @@ NOUVEL UNIVERS
 - **À confirmer** : la rupture `L1` suppose les enregistrements **groupés par `UNIVERS`**.
 
 
+=== FICHIER : docs/cheatsheets/07-sql-embarque-en-rpg.md ===
+# 07 - SQL embarqué en RPG et exécution de SQL
+
+> Source : [job-i.fr](https://job-i.fr/). Blocs `AUTO` régénérés ; écrivez dans « Mes exemples ». **job-i.fr n'a aucune page sur `EXEC SQL`, les curseurs, `SQLCODE` / `SQLSTATE`** (vérifié dans le plan du site le 17/11/2026) : ces points viennent donc de vos propres sources (« constat dans le code »), à confirmer dans la documentation IBM.
+
+<!-- AUTO:START -->
+## Compiler un source RPG contenant du SQL : CRTSQLRPGI  ([source](https://job-i.fr/commandes-ibm-i/crtsqlrpgi))
+- Lance le **précompilateur SQL** sur le source RPG, crée un membre temporaire, puis appelle le compilateur ILE RPG pour produire un programme, un module ou un programme de service.
+- Paramètres : `OBJ` (obligatoire), `SRCFILE` / `SRCMBR` (défaut `QRPGLESRC`), `SRCSTMF` (source dans l'IFS), `COMMIT`, `OBJTYPE` (`*PGM`, `*SRVPGM`, `*MODULE`), `OUTPUT` (`*PRINT` pour la liste), `DBGVIEW`, `REPLACE` (`*YES` par défaut), `COMPILEOPT`, `RPGPPOPT`.
+- Pièges : si le précompilateur dépasse la gravité `GENLVL` (10 par défaut), le compilateur n'est pas appelé ; avec `SRCSTMF`, les `/COPY` ne sont pas développés sans `RPGPPOPT` ; `*SRVPGM` exige un membre de même nom dans `QSRVSRC` ; `COMMIT(*NONE)` obligatoire si le programme contient `DROP SCHEMA`.
+
+## Exécuter une instruction SQL : RUNSQL  ([source](https://job-i.fr/commandes-ibm-i/runsql))
+- Exécute **une** instruction (paramètre `SQL`, 5 000 octets maximum) en session 5250 ou dans un CL. Paramètres utiles : `COMMIT`, `NAMING` (`*SYS` bibliothèque/fichier, `*SQL` schéma.table), formats de date et d'heure.
+- Pièges : les erreurs remontent en message d'arrêt `SQLxxxx` (pas de spool) ; les erreurs de syntaxe ne sont vues qu'à l'exécution ; en CL, apostrophes doublées (`''`) et concaténation `!!` ; `DROP SCHEMA` impose `COMMIT(*NONE)` ; la page est ambiguë sur le contrôle de validation par défaut : vérifier avant de compter sur un `COMMIT` implicite.
+
+## Exécuter un script SQL : RUNSQLSTM  ([source](https://job-i.fr/commandes-ibm-i/runsqlstm))
+- Traite un **fichier source** (`SRCFILE` / `SRCMBR`) ou un fichier de l'IFS (`SRCSTMF`, marges ignorées). Paramètres : `COMMIT` (défaut `*CHG`), `NAMING`, `ERRLVL` (gravité maximale tolérée, 10 par défaut : au-delà, on s'arrête), `MARGINS` (80), `OUTPUT`, `DFTRDBCOL` (schéma par défaut, SQL statique seulement).
+- Pièges : le fichier imprimante doit faire **au moins 132 octets** ; s'exécute dans le groupe d'activation par défaut ; messages à connaître : `SQL9006`, `SQL9010` (échec de RUNSQLSTM ou RUNSQL), `SQL9014`.
+<!-- AUTO:END -->
+
+## Mes exemples
+- **Squelette d'un programme avec curseur** (constat dans le code, full free) : `ctl-opt dftactgrp(*no) actgrp(*caller);` puis `exec sql set option commit = *none;`, `exec sql declare c1 cursor for select … from …;`, `exec sql open c1;`, `exec sql fetch c1 into :v1, :v2;`, boucle `dow sqlcode = 0; … fetch … enddo;`, `exec sql close c1;`, `*inlr = *on;`. Variables hôtes précédées de `:` et déclarées avec un type compatible (`zoned`, `char`). Exemples : [T3](../../sources/RPG/RPG-ILE/BIB02/T3.md) (le plus court), [CURSEUR](../../sources/RPG/RPG-ILE/BIB05/CURSEUR.md) (avec `SET OPTION` complet et écriture dans la joblog), [ALLSTUDENT](../../sources/RPG/RPG-ILE/BIB02/ALLSTUDENT.md), [SFGPT](../../sources/RPG/RPG-ILE/BIB02/SFGPT.md).
+- **Code retour** : `sqlcode` (T3) ou `sqlcod` (CURSEUR) testés après `fetch` ; `0` = succès, comme dans les exemples. Les valeurs et `SQLSTATE` ne sont documentés nulle part dans le wiki.
+- **Message d'erreur SQL** : `exec sql get diagnostics condition 1 :msg = message_text;` ([ERRSQL](../../sources/RPG/RPG-ILE/BIB02/ERRSQL.md), [CODPOS](../../sources/RPG/RPG-ILE/BIB01/CODPOS.md)) ; **transactions** : `COMMIT` (133 occurrences dans vos sources) et `ROLLBACK` ([MOD_API](../../sources/RPG/RPG-ILE/BIB02/MOD_API.md)).
+- **Où se trouve le plus de SQL embarqué** : 52 sources dans une seule bibliothèque (`BIB02`), 23 dans `BIB05`, 8 dans `BIB20`.
+- **Énoncé qui l'exige** : [tp-le-chai](../enonces/tp-le-chai.md) (curseurs, transaction « tout ou rien », contrôle de validation).
+- **Notions SQL présentes dans votre code et absentes des fiches** : `COALESCE`, `GROUP BY`, `DISTINCT`, `CURRENT DATE - n MONTHS`, jointures externes ; voir [MANQUES](../MANQUES.md) et [ANALYSE-ENONCES](../enonces/ANALYSE-ENONCES.md). Les services SQL et les recettes d'exploitation restent dans la [fiche 04](04-db2-for-i-et-sql.md).
+- **À confirmer** : le type de membre source à utiliser (`SQLRPGLE`) et la commande exacte utilisée par votre éditeur pour compiler (CRTSQLRPGI ci-dessus) ; la page job-i ne parle pas de la convention de nommage du type.
+
+
+=== FICHIER : docs/cheatsheets/08-impression-et-printer-ibm-i.md ===
+# 08 - Impression sur IBM i : fichiers imprimante, spools, OUTQ
+
+> Source : [job-i.fr](https://job-i.fr/). Blocs `AUTO` régénérés ; écrivez dans « Mes exemples ». **job-i.fr n'a aucune page sur les DDS d'un fichier imprimante, les spécifications `O` ni `OVRPRTF` en profondeur** : ces points viennent de vos sources (« constat dans le code »).
+
+<!-- AUTO:START -->
+## Spools et files de sortie (OUTQ)  ([source](https://job-i.fr/outq-ibm-i))
+- Un programme qui écrit dans un **fichier imprimante** (`PRTF`) avec `SPOOL(*YES)` crée un **spool** sur disque : il n'attend pas l'imprimante. Une **OUTQ** est la file où attendent les spools ; un **éditeur** (travail `WTR`, sous-système `QSPL`) envoie les spools prêts (`RDY`) à l'imprimante.
+- **Où va le spool** : attribut `OUTQ` du fichier imprimante (souvent `*JOB` = file du travail). Si la file n'existe pas, le spool part dans `QGPL/QPRINT` (message `CPD4090`). Un spool survit à son travail.
+- Attributs : `PRIORITY` (1 à 9, 1 sort en premier), séquence `*FIFO` / `*JOBNBR`, `SCHEDULE` (`*FILEEND`, `*JOBEND`, `*IMMED`), nombre d'exemplaires (`CHGSPLFA`), `DEVTYPE` `*SCS` ou `*AFPDS` pour la conversion PDF.
+- Commandes : `WRKOUTQ`, `WRKSPLF`, `DSPSPLF`, `CHGSPLFA`, `HLDSPLF`, `RLSSPLF`, `CPYSPLF`, `DLTSPLF`, `CRTOUTQ`, `CLROUTQ`, éditeurs `STRPRTWTR`, `ENDWTR`, `WRKWTR`.
+- Conversion PDF : `CPYSPLF` avec `TOFILE(*TOSTMF)`, `TOSTMF` (IFS) et `WSCST(*PDF)`, via une JOBQ.
+- Services SQL : `QSYS2.OUTPUT_QUEUE_ENTRIES_BASIC`, `QSYS2.OUTPUT_QUEUE_INFO`, `QSYS2.SPOOLED_FILE_INFO`, `SYSTOOLS.SPOOLED_FILE_DATA` (contenu), `SYSTOOLS.DELETE_OLD_SPOOLED_FILES` (tester d'abord avec `PREVIEW => 'YES'`).
+- Pièges : sans éditeur actif rien ne s'imprime ; **`DLTSPLF FILE(*SELECT)` supprime tous les spools correspondant au filtre, sans retour arrière** (préférer travail + nom + `SPLNBR`) ; une file n'expose pas le contenu de ses spools par défaut (`DSPDTA(*NO)`).
+
+## Créer un fichier imprimante : CRTPRTF  ([source](https://job-i.fr/commandes-ibm-i/crtprtf))
+- Crée un fichier imprimante (aucune donnée) à partir des DDS (`SRCFILE` / `SRCMBR`) et des options de mise en file.
+- Paramètres (défaut) : `PAGESIZE` 66 132, `LPI` 6, `CPI` 10, `OVRFLW` 60 (ligne qui déclenche le saut de page), `DEVTYPE` `*SCS`, `OUTQ` `*JOB`, `SPOOL` `*YES`, `FORMTYPE` `*STD`, `SAVE` `*NO`, `MAXRCDS` 100000, `REPLACE` `*YES`.
+- Pièges : `OVRFLW` ne doit pas dépasser la hauteur de `PAGESIZE` ; `SPOOL(*NO)` ignore les autres paramètres de mise en file ; au-delà de `MAXRCDS` un message d'interrogation est envoyé ; `FOLD` ignoré hors `*SCS`.
+
+## Substituer un fichier imprimante : OVRPRTF  ([source](https://job-i.fr/commandes-ibm-i/ovrprtf))
+- Remplace, pour un programme, le fichier imprimante ou certains de ses attributs : `FILE` (ou `*PRTF`), `TOFILE`, `OUTQ`, `COPIES`, `FORMTYPE`, `HOLD`, `SAVE`, `USRDTA` (et non `USRDATA`), `SPLFNAME`, `OVRSCOPE` (`*ACTGRPDFN` par défaut, `*CALLLVL`, `*JOB`).
+- Piège : **aucun effet immédiat** : la substitution s'applique à l'**ouverture** du fichier ; un paramètre non indiqué ne change rien aux valeurs définies ailleurs.
+
+## Copier un spool : CPYSPLF  ([source](https://job-i.fr/commandes-ibm-i/cpysplf))
+- Copie un spool vers un fichier physique ou un fichier STREAM : `FILE`, `TOFILE` (`*TOSTMF` pour l'IFS), `JOB`, `SPLNBR` (`*LAST`, `*ONLY`), `TOMBR`, `MBROPT` (`*REPLACE` / `*ADD`), `CTLCHAR`.
+- Pièges : le fichier de destination doit exister ; les lignes entièrement blanches ne sont pas copiées ; la copie échoue si le spool est encore ouvert (`OPNSPLF(*NO)` par défaut) ; avec `*TOSTMF`, les répertoires du chemin doivent exister.
+<!-- AUTO:END -->
+
+## Mes exemples
+- **RPG III, sortie par spécifications `O` sur `QSYSPRT`** : [CYCDEMO](../../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md) (en-tête sous `1P` / `OF`, détails, totaux `L1` / `L2` / `LR`) ; variante PERSO en cartes `O` : [fiche 06](06-cycle-rpg-et-sous-routines.md). Déclaration constatée : `FQSYSPRT O   F     132     OF     PRINTER`.
+- **RPG III, fichier imprimante décrit en externe** : [RPGIMPR](../../sources/RPG/RPG-III-400/BIB20/RPGIMPR.md) (`FIMPR O E 60 PRINTER`, puis `WRITE` des formats `TITRE`, `ENTETE`, `DETAILS`, `ETOILE`) avec ses DDS [BONPRT](../../sources/DDS/BIB20/BONPRT.md) (formats `TITRE`, `ENTETE`, `DETAILS`, `ETOILE`, `EJECT` ; mots-clés `SPACEB(n)` interligne avant, `SKIPA(n)` saut après, positions de colonne en dernière zone).
+- **RPG IV, saut de page géré à la main** : [PRINT](../../sources/RPG/RPG-ILE/BIB02/PRINT.md) (`FECRANPRTF O E PRINTER`, compteur `Ligne`, `WRITE EJECT` puis `WRITE ENTETE` / `TITRE` quand la ligne atteint 56) ; autre exemple : [PRINTPAR](../../sources/RPG/RPG-ILE/BIB02/PRINTPAR.md).
+- **CL, spools** : conversion en PDF dans l'IFS : [SRCPDFCL](../../sources/CL/CL-procedural/BIB01/SRCPDFCL.md) (`CPYSPLF … TOFILE(*TOSTMF) SPLNBR(*LAST)` puis `DLTSPLF … SPLNBR(*LAST)`) ; création d'une OUTQ : [ENVAUTO](../../sources/CL/CL-procedural/BIB05/ENVAUTO.md) ; **à surveiller** : `DLTSPLF FILE(*SELECT)` dans [MENUECL](../../sources/CL/CL-procedural/BIB05/MENUECL.md) (supprime les spools sélectionnés sans retour arrière).
+- **Listage de compilation** : sans imprimante `PRT01`, le message `CPD4090` indique que la sortie est remplacée par `QPRINT` de `QGPL` : le spool se retrouve dans `WRKSPLF`.
+- **Ce que le dépôt n'a pas** : aucun `CRTPRTF`, `OVRPRTF` ni `CHGSPLFA` dans vos sources CL, aucune explication des mots-clés DDS d'impression ni des spécifications `O` (job-i.fr non plus) : voir [MANQUES](../MANQUES.md).
+
+
 === FICHIER : docs/enonces/README.md ===
 # Énoncés de TP et d'examens (résumés)
 
@@ -904,9 +981,9 @@ Chaîne de restauration rapide fictive ; l'épreuve se déroule dans un environn
 === FICHIER : docs/MANQUES.md ===
 # Ce qui manque dans les fiches (utilise dans le code, absent des fiches)
 
-Genere le 2026-11-17 09:23 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
+Genere le 2026-11-17 09:46 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
 
-## Commandes CL : 67 manquants sur 104 utilises
+## Commandes CL : 60 manquants sur 104 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
@@ -921,7 +998,6 @@ Genere le 2026-11-17 09:23 a partir de 1082 sources. Un terme est 'manquant' s'i
 | DSPATR | 33 | 1 |
 | LEAVE | 28 | 1 |
 | ELSE | 22 | 7 |
-| RUNSQL | 18 | 5 |
 | STRSEU | 14 | 2 |
 | RTVJOBA | 13 | 9 |
 | CHGCURLIB | 11 | 5 |
@@ -936,7 +1012,6 @@ Genere le 2026-11-17 09:23 a partir de 1082 sources. Un terme est 'manquant' s'i
 | RMVDIR | 7 | 6 |
 | COPYRIGHT | 7 | 1 |
 | RTVUSRPRF | 6 | 5 |
-| CLOSE | 6 | 3 |
 | CPYTOSTMF | 6 | 5 |
 | ENDMOD | 6 | 1 |
 | DOUNTIL | 5 | 4 |
@@ -952,11 +1027,13 @@ Genere le 2026-11-17 09:23 a partir de 1082 sources. Un terme est 'manquant' s'i
 | SUBR | 4 | 3 |
 | ENDSUBR | 4 | 3 |
 | STRPCCMD | 3 | 1 |
-| RUNSQLSTM | 3 | 1 |
 | CRTDSPF | 3 | 3 |
 | CRTCLS | 2 | 2 |
+| SNDMSG | 2 | 1 |
+| ADDJOBQE | 2 | 2 |
+| ADDENVVAR | 2 | 1 |
 
-## Instructions / fonctions RPG (reconnues par job-i) : 43 manquants sur 102 utilises
+## Instructions / fonctions RPG (reconnues par job-i) : 41 manquants sur 102 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
@@ -966,10 +1043,8 @@ Genere le 2026-11-17 09:23 a partir de 1082 sources. Un terme est 'manquant' s'i
 | DCL-C | 161 | 11 |
 | WORKSTN | 158 | 13 |
 | DELETE | 134 | 7 |
-| OPEN | 131 | 11 |
 | ITER | 114 | 11 |
 | PARM | 105 | 6 |
-| COMMIT | 95 | 10 |
 | %TRIMR | 85 | 5 |
 | %ERROR | 43 | 2 |
 | QUALIFIED | 41 | 8 |
@@ -1004,7 +1079,7 @@ Genere le 2026-11-17 09:23 a partir de 1082 sources. Un terme est 'manquant' s'i
 | RESET | 1 | 1 |
 | %CHECKR | 1 | 1 |
 
-## Messages (MONMSG, SQLCODE...) : 61 manquants sur 68 utilises
+## Messages (MONMSG, SQLCODE...) : 60 manquants sur 68 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
@@ -1036,7 +1111,6 @@ Genere le 2026-11-17 09:23 a partir de 1082 sources. Un terme est 'manquant' s'i
 | CPF3012 | 3 | 3 |
 | CPF7602 | 3 | 1 |
 | CPF4174 | 3 | 1 |
-| SQL9010 | 3 | 2 |
 | CPF3064 | 3 | 3 |
 | CPFA0B7 | 3 | 2 |
 | CPF2110 | 2 | 2 |
@@ -1053,6 +1127,7 @@ Genere le 2026-11-17 09:23 a partir de 1082 sources. Un terme est 'manquant' s'i
 | CPF2292 | 2 | 2 |
 | SQL7064 | 2 | 1 |
 | CPF4520 | 2 | 2 |
+| RNQ0000 | 1 | 1 |
 
 ## Services SQL (QSYS2, SYSTOOLS) : 25 manquants sur 28 utilises
 
@@ -1157,7 +1232,7 @@ Genere le 2026-11-17 09:23 a partir de 1082 sources. Un terme est 'manquant' s'i
 === FICHIER : docs/CYCLE-GAP-EXEMPLES.md ===
 # Exemples du cycle RPG (cycle GAP) dans les bibliotheques
 
-Genere le 2026-11-17 09:23. Detection : un fichier **primaire** (IP) ou **secondaire** (IS) en specification F dans un source en colonnes. Explication du cycle : [fiche 03](cheatsheets/03-rpg-par-version.md) et [job-i.fr](https://job-i.fr/cycle-gap-rpg). Detection heuristique : a confirmer en ouvrant le source.
+Genere le 2026-11-17 09:46. Detection : un fichier **primaire** (IP) ou **secondaire** (IS) en specification F dans un source en colonnes. Explication du cycle : [fiche 03](cheatsheets/03-rpg-par-version.md) et [job-i.fr](https://job-i.fr/cycle-gap-rpg). Detection heuristique : a confirmer en ouvrant le source.
 
 | Bibliotheque | Membre | Type | Lignes | Primaire (IP) | Secondaire (IS) | Niveaux (L1-L9) | 1P | OF | Source |
 |---|---|---|---|---|---|---|---|---|---|

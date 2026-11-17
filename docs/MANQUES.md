@@ -1,8 +1,8 @@
 # Ce qui manque dans les fiches (utilise dans le code, absent des fiches)
 
-Genere le 2026-11-17 09:23 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
+Genere le 2026-11-17 09:46 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
 
-## Commandes CL : 67 manquants sur 104 utilises
+## Commandes CL : 60 manquants sur 104 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
@@ -17,7 +17,6 @@ Genere le 2026-11-17 09:23 a partir de 1082 sources. Un terme est 'manquant' s'i
 | DSPATR | 33 | 1 |
 | LEAVE | 28 | 1 |
 | ELSE | 22 | 7 |
-| RUNSQL | 18 | 5 |
 | STRSEU | 14 | 2 |
 | RTVJOBA | 13 | 9 |
 | CHGCURLIB | 11 | 5 |
@@ -32,7 +31,6 @@ Genere le 2026-11-17 09:23 a partir de 1082 sources. Un terme est 'manquant' s'i
 | RMVDIR | 7 | 6 |
 | COPYRIGHT | 7 | 1 |
 | RTVUSRPRF | 6 | 5 |
-| CLOSE | 6 | 3 |
 | CPYTOSTMF | 6 | 5 |
 | ENDMOD | 6 | 1 |
 | DOUNTIL | 5 | 4 |
@@ -48,11 +46,13 @@ Genere le 2026-11-17 09:23 a partir de 1082 sources. Un terme est 'manquant' s'i
 | SUBR | 4 | 3 |
 | ENDSUBR | 4 | 3 |
 | STRPCCMD | 3 | 1 |
-| RUNSQLSTM | 3 | 1 |
 | CRTDSPF | 3 | 3 |
 | CRTCLS | 2 | 2 |
+| SNDMSG | 2 | 1 |
+| ADDJOBQE | 2 | 2 |
+| ADDENVVAR | 2 | 1 |
 
-## Instructions / fonctions RPG (reconnues par job-i) : 43 manquants sur 102 utilises
+## Instructions / fonctions RPG (reconnues par job-i) : 41 manquants sur 102 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
@@ -62,10 +62,8 @@ Genere le 2026-11-17 09:23 a partir de 1082 sources. Un terme est 'manquant' s'i
 | DCL-C | 161 | 11 |
 | WORKSTN | 158 | 13 |
 | DELETE | 134 | 7 |
-| OPEN | 131 | 11 |
 | ITER | 114 | 11 |
 | PARM | 105 | 6 |
-| COMMIT | 95 | 10 |
 | %TRIMR | 85 | 5 |
 | %ERROR | 43 | 2 |
 | QUALIFIED | 41 | 8 |
@@ -100,7 +98,7 @@ Genere le 2026-11-17 09:23 a partir de 1082 sources. Un terme est 'manquant' s'i
 | RESET | 1 | 1 |
 | %CHECKR | 1 | 1 |
 
-## Messages (MONMSG, SQLCODE...) : 61 manquants sur 68 utilises
+## Messages (MONMSG, SQLCODE...) : 60 manquants sur 68 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
@@ -132,7 +130,6 @@ Genere le 2026-11-17 09:23 a partir de 1082 sources. Un terme est 'manquant' s'i
 | CPF3012 | 3 | 3 |
 | CPF7602 | 3 | 1 |
 | CPF4174 | 3 | 1 |
-| SQL9010 | 3 | 2 |
 | CPF3064 | 3 | 3 |
 | CPFA0B7 | 3 | 2 |
 | CPF2110 | 2 | 2 |
@@ -149,6 +146,7 @@ Genere le 2026-11-17 09:23 a partir de 1082 sources. Un terme est 'manquant' s'i
 | CPF2292 | 2 | 2 |
 | SQL7064 | 2 | 1 |
 | CPF4520 | 2 | 2 |
+| RNQ0000 | 1 | 1 |
 
 ## Services SQL (QSYS2, SYSTOOLS) : 25 manquants sur 28 utilises
 
