@@ -1,7 +1,38 @@
 # Wiki IBM i : contexte complet pour un assistant
 
-Genere le 2026-11-17 10:29 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Genere le 2026-11-17 10:37 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
 Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
+
+ATTENTION : ce fichier fait environ 121 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
+Table des matieres (ordre du fichier) :
+- README.md (8 Ko)
+- CLAUDE.md (15 Ko)
+- docs/cheatsheets/README.md (2 Ko)
+- docs/cheatsheets/01-comprendre-ibm-i.md (5 Ko)
+- docs/cheatsheets/02-reference-systeme.md (3 Ko)
+- docs/cheatsheets/03-rpg-par-version.md (8 Ko)
+- docs/cheatsheets/04-db2-for-i-et-sql.md (4 Ko)
+- docs/cheatsheets/05-emploi-et-formation.md (1 Ko)
+- docs/cheatsheets/06-cycle-rpg-et-sous-routines.md (15 Ko)
+- docs/cheatsheets/07-sql-embarque-en-rpg.md (5 Ko)
+- docs/cheatsheets/08-impression-et-printer-ibm-i.md (5 Ko)
+- docs/enonces/README.md (2 Ko)
+- docs/enonces/ANALYSE-ENONCES.md (3 Ko)
+- docs/enonces/cours.md (2 Ko)
+- docs/enonces/examen-kebab.md (3 Ko)
+- docs/enonces/tp-calculateur-impot.md (2 Ko)
+- docs/enonces/tp-films.md (1 Ko)
+- docs/enonces/tp-le-chai.md (2 Ko)
+- docs/enonces/tp-livres.md (2 Ko)
+- docs/enonces/tp-logistock.md (1 Ko)
+- docs/enonces/tp-the-big-one.md (3 Ko)
+- docs/enonces/tp-wesh-alors.md (2 Ko)
+- docs/MANQUES.md (5 Ko)
+- docs/CYCLE-GAP-EXEMPLES.md (1 Ko)
+- docs/CYCLE-RPG-COURS.md (12 Ko)
+- docs/PORTABILITE.md (6 Ko)
+- contributions/README.md (4 Ko)
+- docs/apports/README.md (1 Ko)
 
 
 === FICHIER : README.md ===
@@ -139,6 +170,12 @@ Tu es l'**assistant de développement IBM i** de l'utilisateur, au quotidien : t
 6. Si l'utilisateur te montre une erreur (message CPF/MCH/RNF), cherche-la d'abord dans la fiche 02 et sur job-i.fr avant de proposer un correctif.
 7. Si le wiki est incomplet ou contredit job-i.fr, dis-le, applique job-i.fr (source la plus récente) et propose d'ajouter l'information dans `docs/apports/` (ou « Mes exemples » de la fiche).
 
+## 0 bis. Rigueur de lecture et de vérification (obligatoire, ajoutée après un écart constaté)
+1. **Lire en entier, jamais partiellement.** `llms-full.txt` dépasse 100 Ko : si ta lecture est tronquée, relis par morceaux (offset/limit) jusqu'à la fin, ou cherche par mot-clé (`grep`) dans `docs/` et `sources/`. Annoncer « lu sur les N premiers caractères » est un échec : ne réponds pas avant d'avoir tout lu ou d'avoir cherché les mots-clés de la question. Les dernières pages du fichier (cours du cycle `docs/CYCLE-RPG-COURS.md`, manques, portabilité) sont aussi importantes que les premières : la table des matières en tête de `llms-full.txt` dit où chercher.
+2. **Avant d'écrire du code, liste les mots-clés techniques** (instructions, mots-clés de fichier : `PRTCTL`, `OFLIND`, `PRINTER`, fonctions `%…`, commandes CL, messages) et **cherche chacun** dans le wiki puis sur job-i.fr (`https://job-i.fr/aller?q=<terme>`). Un mot-clé introuvable dans les deux = marqué **non vérifié** dans le tableau, jamais présenté comme acquis. « Le wiki ne le documente pas » ne dispense pas de consulter job-i.fr.
+3. **Le tableau `Élément | Statut | Source` est obligatoire** pour tout code livré (une ligne par instruction, mot-clé de fichier, commande ou message utilisé). Une source = chemin du wiki (avec ligne) ou URL job-i.fr ; « mon raisonnement » est un statut **hypothèse**, pas une source. Chaque affirmation chiffrée (numéro de message RNQ/QRG/CPF, version minimale d'IBM i) doit y figurer avec sa source ou la mention non vérifié.
+4. **Ne conclus jamais « le wiki ne contient rien » sans avoir cherché** : donne les termes cherchés et les fichiers consultés.
+5. **Si tu ne peux pas vérifier** (pas d'accès à job-i.fr, lecture impossible), dis-le au début de la réponse et réduis le code livré au strict nécessaire.
 ## 1. Où lire (dans cet ordre)
 1. `README.md` (racine) : carte « je cherche → je vais là » et conventions. `llms.txt` : même carte, format minimal.
 2. **Question de cours / syntaxe / commande / concept** → `docs/cheatsheets/README.md`, puis la fiche :
@@ -164,6 +201,7 @@ Tu es l'**assistant de développement IBM i** de l'utilisateur, au quotidien : t
 - Les membres de `sources/` sont des conversions EBCDIC → Markdown : le code est dans l'unique bloc de code ; l'en-tête YAML donne bibliothèque, membre, type, lignes. Certains DDS sont rangés dans `CL/` (mauvais fichier source d'origine).
 
 ## 3. Vérifier à chaque fois (checklist avant de répondre)
+0. **Lecture complète ?** Le contexte a-t-il été lu en entier (ou cherché par mots-clés) et chaque mot-clé technique a-t-il une ligne dans le tableau `Élément | Statut | Source` (section 0 bis) ?
 1. **Source trouvée ?** Le fichier cité existe et contient bien l'information (relis le passage, ne te fie pas à la mémoire).
 2. **Commande / instruction / message** cité : présent sur job-i.fr (fiche `/commandes-ibm-i/<nom>` ou `docs/VERIFICATION-JOB-I.md`) ? Sinon, signale-le.
 3. **Cohérence de version** : la syntaxe correspond-elle à la version RPG/IBM i demandée (colonne vs libre, `CRTRPGPGM` vs `CRTBNDRPG`) ?
@@ -1324,6 +1362,7 @@ Genere le 2026-11-17 10:12. Detection : un fichier **primaire** (IP) ou **second
 À retenir : les totaux d'une rupture s'exécutent **avant** le détail de l'enregistrement qui a provoqué la rupture (les zones pointent encore sur l'ancien groupe). Après `LR` (fin de fichier ou `SETON LR`) : un dernier passage des calculs totaux et lignes `T` conditionnées par `LR`, puis fin.
 
 ## 3. Indicateurs du cycle
+
 | Indicateur | Rôle |
 |---|---|
 | `1P` | Premier passage : lignes d'en-tête de première page |

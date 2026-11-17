@@ -14,6 +14,14 @@ $sb = New-Object System.Text.StringBuilder
 [void]$sb.AppendLine('')
 [void]$sb.AppendLine("Genere le $(Get-Date -Format 'yyyy-MM-dd HH:mm') a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.")
 [void]$sb.AppendLine('Usage : donne ce fichier a l''assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.')
+# Table des matieres (en tete) : taille de chaque fichier, pour ne pas lire un contexte tronque sans le savoir.
+$toc = New-Object System.Text.StringBuilder
+$tot = 0
+foreach ($rel in $list) { $p0 = Join-Path $Root $rel; if (Test-Path $p0) { $len = (Get-Item $p0).Length; $tot += $len; [void]$toc.AppendLine(("- {0} ({1} Ko)" -f $rel, [math]::Max(1,[math]::Round($len / 1KB)))) } }
+[void]$sb.AppendLine('')
+[void]$sb.AppendLine(("ATTENTION : ce fichier fait environ {0} Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers." -f [math]::Round($tot / 1KB)))
+[void]$sb.AppendLine('Table des matieres (ordre du fichier) :')
+[void]$sb.Append($toc.ToString())
 $n = 0
 foreach ($rel in $list) {
   $p = Join-Path $Root $rel
