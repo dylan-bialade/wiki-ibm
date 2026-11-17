@@ -16,7 +16,7 @@ foreach ($f in (Sort-By @(Get-ChildItem (Join-Path $Root 'sources') -Recurse -Fi
   if ($fi.Count -lt 2) { continue }
   $code = @($L[($fi[$fi.Count-2]+1)..($fi[$fi.Count-1]-1)])
   $h = @{}; foreach ($l in $L[1..12]) { if ($l -match '^(\w+): (.*)$') { $h[$Matches[1]] = $Matches[2] } }
-  $norm = @($code | ForEach-Object { ($_.Trim().ToUpper() -replace '\s+',' ') } | Where-Object { $_ -ne '' -and -not $_.StartsWith('//') -and -not $_.StartsWith('*') })
+  $norm = @($code | ForEach-Object { (([regex]::Replace($_, '[\u0080-\u009F]', '')).Trim().ToUpperInvariant() -replace '\s+',' ') } | Where-Object { $_ -ne '' -and -not $_.StartsWith('//') -and -not $_.StartsWith('*') })
   $sha = [Security.Cryptography.SHA1]::Create()
   $hash = [BitConverter]::ToString($sha.ComputeHash([Text.Encoding]::UTF8.GetBytes(($norm -join "`n")))).Replace('-','')
   $rel = $f.FullName.Substring($Root.Length + 1).Replace('\','/')

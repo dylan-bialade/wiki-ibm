@@ -33,3 +33,9 @@ Le résultat de la régénération arrive sous forme d'une **Pull Request** (bra
 - **Google Drive** : le connecteur ne sait pas remplacer le contenu d'un fichier existant, et l'envoi d'un fichier demande une validation humaine. Il ne peut donc pas être automatisé sans surveillance. La source de vérité est le dépôt GitHub ; Drive n'est qu'une copie, mise à jour à la main ou lors d'une session interactive.
 - **Index des Documents** : il décrit les fichiers d'un ordinateur donné ; il reste propre à chaque appareil (un fichier par appareil, par exemple `INDEX_Documents_<nom-de-l-appareil>.md`).
 - Les scripts ne sont **testés que sous Windows PowerShell 5.1** ; le premier passage de l'Action (Linux, PowerShell 7) confirmera leur portabilité.
+
+## Tester le workflow Git sans toucher à `main`
+- `git checkout -b test/actions-1 && git push -u origin test/actions-1` : **essai à blanc** (les 9 étapes tournent, aucune branche ni Pull Request n'est créée ; le résultat apparaît dans les annotations du run).
+- `git checkout -b test/actions-pr-1 && git commit --allow-empty -m essai && git push -u origin test/actions-pr-1` : **essai complet** (crée la branche `auto/regeneration-AAAAMMJJ` et la Pull Request si le réglage GitHub est activé). Supprimer ensuite la branche de test et la branche `auto/…` (la PR se ferme toute seule).
+- Une régénération qui ne change que les dates de génération ne crée **aucune** Pull Request. Si une PR apparaît sans cause réelle, regarder son diff : une différence d'ordre ou de format entre PowerShell 5.1 et 7 est un bug des scripts, à corriger.
+- Surveillance : l'API publique de GitHub est limitée à 60 requêtes par heure et par adresse ; pour suivre un run, ouvrir sa page dans le navigateur (onglet Actions) plutôt que d'interroger l'API en boucle.

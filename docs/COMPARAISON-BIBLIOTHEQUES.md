@@ -1,12 +1,12 @@
 # Comparaison des bibliotheques : memes exercices, facons de faire differentes
 
-Genere le 2026-11-17 10:09. Les bibliotheques du dossier de cours se recouvrent (copies d'exercices) mais le code n'est pas toujours le meme. 97 membres existent dans plusieurs bibliotheques : 59 avec des versions **differentes** (page de comparaison), 38 copies **identiques**. Les noms de bibliotheques sont anonymises (BIBnn).
+Genere le 2026-11-17 10:12. Les bibliotheques du dossier de cours se recouvrent (copies d'exercices) mais le code n'est pas toujours le meme. 97 membres existent dans plusieurs bibliotheques : 58 avec des versions **differentes** (page de comparaison), 39 copies **identiques**. Les noms de bibliotheques sont anonymises (BIBnn).
 
 Les contributions de collaborateurs sont comparees dans [VARIANTES](VARIANTES.md). Exemples du cycle RPG : [CYCLE-GAP-EXEMPLES](CYCLE-GAP-EXEMPLES.md).
 
 | Membre | Bibliotheques | Versions distinctes | Lignes | Techniques differentes | Types |
 |---|---|---|---|---|---|
-| [AFFOBJDCL](comparaisons/AFFOBJDCL.md) | BIB06, BIB10 | 2 | 34-34 |  | CL/CL-procedural |
+| AFFOBJDCL | BIB06, BIB10 | 1 (copies identiques) | 34 | - | - |
 | AFFOBJDFM | BIB06, BIB10 | 1 (copies identiques) | 35 | - | - |
 | AFFSPOOL | BIB06, BIB10 | 1 (copies identiques) | 6 | - | - |
 | AFFUSRDCL | BIB06, BIB10 | 1 (copies identiques) | 27 | - | - |

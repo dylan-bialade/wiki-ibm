@@ -63,7 +63,7 @@ foreach ($c in $cands) {
   # 2) nouveaute (0-30)
   $sNew = 30; $doublon = $false
   if ($isCode) {
-    $set = New-Set; foreach ($l in $lines) { $n = ($l.Trim().ToUpper() -replace '\s+',' '); if ($n -ne '' -and -not $n.StartsWith('//') -and -not $n.StartsWith('*')) { [void]$set.Add($n) } }
+    $set = New-Set; foreach ($l in $lines) { $n = (([regex]::Replace($l, '[\u0080-\u009F]', '')).Trim().ToUpperInvariant() -replace '\s+',' '); if ($n -ne '' -and -not $n.StartsWith('//') -and -not $n.StartsWith('*')) { [void]$set.Add($n) } }
     $best = 0.0; $bestIt = $null
     foreach ($it in $items) { $s = Get-Similarity $set $it.Norm; if ($s -gt $best) { $best = $s; $bestIt = $it } }
     if ($best -ge 0.999) { $doublon = $true; [void]$o.Reasons.Add("identique a $($bestIt.Path)") }
@@ -71,7 +71,7 @@ foreach ($c in $cands) {
     elseif ($best -ge 0.5) { $sNew = 18; [void]$o.Reasons.Add("proche ($([int](100*$best)) %) de $($bestIt.Path) : variante possible") }
     else { [void]$o.Reasons.Add('code nouveau (aucune source proche)') }
   } else {
-    $cl = @($lines | ForEach-Object { ($_.Trim().ToUpper() -replace '\s+',' ') } | Where-Object { $_.Length -ge 25 })
+    $cl = @($lines | ForEach-Object { (([regex]::Replace($_, '[\u0080-\u009F]', '')).Trim().ToUpperInvariant() -replace '\s+',' ') } | Where-Object { $_.Length -ge 25 })
     if ($cl.Count -gt 0) {
       $hit = @($cl | Where-Object { $sheetLines.Contains($_) }).Count; $frac = $hit / $cl.Count
       if ($frac -ge 0.8) { $sNew = 5; [void]$o.Reasons.Add("deja dans les fiches ($([int](100*$frac)) % des lignes)") }

@@ -63,7 +63,7 @@ function Read-SourceItems([string]$Root) {
     $code = @($L[($fi[$fi.Count-2]+1)..($fi[$fi.Count-1]-1)])
     $h = @{}; foreach ($l in $L[1..12]) { if ($l -match '^(\w+): (.*)$') { $h[$Matches[1]] = $Matches[2] } }
     $norm = New-Set
-    foreach ($c in $code) { $n = ($c.Trim().ToUpper() -replace '\s+',' '); if ($n -ne '' -and -not $n.StartsWith('//') -and -not $n.StartsWith('*')) { [void]$norm.Add($n) } }
+    foreach ($c in $code) { $n = (([regex]::Replace($c, '[\u0080-\u009F]', '')).Trim().ToUpperInvariant() -replace '\s+',' '); if ($n -ne '' -and -not $n.StartsWith('//') -and -not $n.StartsWith('*')) { [void]$norm.Add($n) } }
     [void]$items.Add([pscustomobject]@{ Lib=$h['bibliotheque']; Membre=$h['membre']; Type=$h['type']; Fichier=$h['fichier_source']; Lines=$code.Count; Code=$code; Norm=$norm; Path=($f.FullName.Substring($Root.Length + 1).Replace('\','/')) })
   }
   return ,$items

@@ -1,6 +1,6 @@
 # Wiki IBM i : contexte complet pour un assistant
 
-Genere le 2026-11-17 10:09 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Genere le 2026-11-17 10:12 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
 Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
 
 
@@ -981,7 +981,7 @@ Chaîne de restauration rapide fictive ; l'épreuve se déroule dans un environn
 === FICHIER : docs/MANQUES.md ===
 # Ce qui manque dans les fiches (utilise dans le code, absent des fiches)
 
-Genere le 2026-11-17 10:09 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
+Genere le 2026-11-17 10:12 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
 
 ## Commandes CL : 60 manquants sur 104 utilises
 
@@ -1232,7 +1232,7 @@ Genere le 2026-11-17 10:09 a partir de 1082 sources. Un terme est 'manquant' s'i
 === FICHIER : docs/CYCLE-GAP-EXEMPLES.md ===
 # Exemples du cycle RPG (cycle GAP) dans les bibliotheques
 
-Genere le 2026-11-17 10:09. Detection : un fichier **primaire** (IP) ou **secondaire** (IS) en specification F dans un source en colonnes. Explication du cycle : [fiche 03](cheatsheets/03-rpg-par-version.md) et [job-i.fr](https://job-i.fr/cycle-gap-rpg). Detection heuristique : a confirmer en ouvrant le source.
+Genere le 2026-11-17 10:12. Detection : un fichier **primaire** (IP) ou **secondaire** (IS) en specification F dans un source en colonnes. Explication du cycle : [fiche 03](cheatsheets/03-rpg-par-version.md) et [job-i.fr](https://job-i.fr/cycle-gap-rpg). Detection heuristique : a confirmer en ouvrant le source.
 
 | Bibliotheque | Membre | Type | Lignes | Primaire (IP) | Secondaire (IS) | Niveaux (L1-L9) | 1P | OF | Source |
 |---|---|---|---|---|---|---|---|---|---|
@@ -1279,6 +1279,12 @@ Le résultat de la régénération arrive sous forme d'une **Pull Request** (bra
 - **Google Drive** : le connecteur ne sait pas remplacer le contenu d'un fichier existant, et l'envoi d'un fichier demande une validation humaine. Il ne peut donc pas être automatisé sans surveillance. La source de vérité est le dépôt GitHub ; Drive n'est qu'une copie, mise à jour à la main ou lors d'une session interactive.
 - **Index des Documents** : il décrit les fichiers d'un ordinateur donné ; il reste propre à chaque appareil (un fichier par appareil, par exemple `INDEX_Documents_<nom-de-l-appareil>.md`).
 - Les scripts ne sont **testés que sous Windows PowerShell 5.1** ; le premier passage de l'Action (Linux, PowerShell 7) confirmera leur portabilité.
+
+## Tester le workflow Git sans toucher à `main`
+- `git checkout -b test/actions-1 && git push -u origin test/actions-1` : **essai à blanc** (les 9 étapes tournent, aucune branche ni Pull Request n'est créée ; le résultat apparaît dans les annotations du run).
+- `git checkout -b test/actions-pr-1 && git commit --allow-empty -m essai && git push -u origin test/actions-pr-1` : **essai complet** (crée la branche `auto/regeneration-AAAAMMJJ` et la Pull Request si le réglage GitHub est activé). Supprimer ensuite la branche de test et la branche `auto/…` (la PR se ferme toute seule).
+- Une régénération qui ne change que les dates de génération ne crée **aucune** Pull Request. Si une PR apparaît sans cause réelle, regarder son diff : une différence d'ordre ou de format entre PowerShell 5.1 et 7 est un bug des scripts, à corriger.
+- Surveillance : l'API publique de GitHub est limitée à 60 requêtes par heure et par adresse ; pour suivre un run, ouvrir sa page dans le navigateur (onglet Actions) plutôt que d'interroger l'API en boucle.
 
 
 === FICHIER : contributions/README.md ===
