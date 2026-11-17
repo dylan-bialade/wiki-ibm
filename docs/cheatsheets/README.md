@@ -1,7 +1,7 @@
 # Cheat sheets IBM i (d'après job-i.fr)
 
 Dernière mise à jour : 2026-11-17
-- Fiche 06 : page `/instructions-rpg/begsr` ajoutée au suivi ; ajout de `LEAVESR` et des instructions voisines (aucun autre changement détecté).
+- Fiche 02 : messages 13 213 (107 fiches « Comment s'en sortir »). Fiche 03 : ajout de la page `/rpg-iii` (79 codes opération en 10 familles), chiffres site (54 instructions, 95 fonctions). Fiche 05 : offres 176. Fiches 01, 04, 06 : aucun changement détecté (commandes 1 830, services SQL 390, valeurs système 158, recettes 36 inchangés).
 
 | Fiche | Contenu |
 |---|---|

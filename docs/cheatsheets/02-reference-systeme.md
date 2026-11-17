@@ -16,7 +16,7 @@ Organisation du site : blocs thématiques (fichiers, IFS, sauvegardes, spools, t
 | Profils | `CRTUSRPRF`, `DSPUSRPRF`, `CHGPWD` |
 | Système | `DSPSYSVAL`, `CHGSYSVAL` |
 
-## Messages  ([source](https://job-i.fr/messages-ibm-i)) — ~13 200 messages CPF / MCH
+## Messages  ([source](https://job-i.fr/messages-ibm-i)) — 13 213 messages CPF / MCH (107 fiches « Comment s'en sortir »)
 - **CPF** : système (commandes, objets, travaux, fichiers) ; **MCH** : erreurs machine (pointeurs, décimal, division par zéro).
 
 | Message | Sens |

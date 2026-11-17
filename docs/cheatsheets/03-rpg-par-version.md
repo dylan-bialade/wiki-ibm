@@ -11,7 +11,8 @@
 | **RPG IV (ILE) colonné** | `QRPGLESRC` | `CRTBNDRPG` / `CRTRPGMOD` | `STRDBG` | spécifications D, EVAL, BIF |
 | **RPG IV full free** (`**FREE`, 7.2 TR3+) | `QRPGLESRC` | `CRTBNDRPG` | `STRDBG` | `DCL-S`, `DCL-F`, `DCL-PI`, sans colonnes |
 
-## RPG III  ([source](https://job-i.fr/coder-rpg-iii))
+## RPG III  ([source](https://job-i.fr/coder-rpg-iii), [codes opération](https://job-i.fr/rpg-iii))
+- **79 codes opération** répartis en 10 familles (lecture fichiers 9, écriture/contrôle 12, structures 9, indicateurs/branchements 5, sous-programmes/appels 11, calculs 9, transferts 7, chaînes 6, tableaux/bits 9, écrans 2) ; chaque fiche donne un piège et l'équivalent RPG ILE. Site : 54 instructions et 95 fonctions RPG IV.
 - Spécif. en colonne 6 : **H** contrôle, **F** fichiers, **E** tableaux, **L** saut (citée sans explication), **I** entrées, **C** calculs, **O** sorties.
 - Spécification **C** (calculs), colonne par colonne :
 
