@@ -1,6 +1,6 @@
 # Wiki IBM i : contexte complet pour un assistant
 
-Genere le 2026-11-17 09:28 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Genere le 2026-11-17 09:31 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
 Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
 
 
@@ -1179,14 +1179,19 @@ Objectif : que la régénération, la détection de changements sur job-i.fr et 
 |---|---|---|
 | Régénération quotidienne (job-i, vérifications, comparaisons, manques, évaluations) | **GitHub Actions** ([regeneration-quotidienne.yml](../.github/workflows/regeneration-quotidienne.yml)) | rien (ni PC allumé ni application ouverte) |
 | Évaluation d'un apport ou d'une contribution à chaque PR | **GitHub Actions** (`evaluer-apports.yml`, `verif-contributions.yml`) | rien |
-| Mise à jour rédigée des fiches depuis job-i.fr, tri des apports | **routine cloud Claude** (optionnelle, voir ci-dessous) | compte claude.ai |
+| Mise à jour rédigée des fiches depuis job-i.fr, tri des apports | **routine cloud Claude** (lit la branche de l'Action) | compte claude.ai + domaine job-i.fr autorisé |
 | Conversion d'un **nouvel export ACS** (`*.LIB`) en Markdown | **un poste** qui a l'export | PowerShell + `Run-All.ps1` |
 | Relecture et fusion des Pull Requests | navigateur, **téléphone compris** | compte GitHub |
 
 Le résultat de la régénération arrive sous forme d'une **Pull Request** (branche `auto/regeneration-AAAAMMJJ`) : un clic pour fusionner (le propriétaire contourne la règle de relecture). Les simples changements de date ne créent pas de PR.
 
-## Réglages GitHub à faire une fois (sécurité : à vous)
-1. Dépôt > **Settings > Actions > General** : « Allow GitHub Actions to create and approve pull requests » (sinon la branche est poussée mais la PR est à ouvrir à la main).
+## Résultat des essais du 17/11/2026
+- **Action GitHub** : essai complet réussi sous Linux (PowerShell 7) : les 9 étapes (job-i, vérifications, comparaisons, manques, évaluations, contexte) se terminent sans erreur et la branche uto/regeneration-AAAAMMJJ est poussée.
+- **Routine cloud Claude** (Wiki IBM i : relecture quotidienne (cloud), 06:30 UTC) : essai réussi (dépôt cloné, documents lus, décisions correctes, aucun commit inutile). Limite constatée : **job-i.fr n'est pas joignable depuis l'environnement cloud** tant que le domaine n'est pas autorisé (voir réglage 3).
+
+## Réglages à faire une fois (sécurité : à vous)
+1. Dépôt > **Settings > Actions > General** : cocher « Allow GitHub Actions to create and approve pull requests » (**sans cela l'Action pousse la branche mais ne peut pas ouvrir la Pull Request**, constaté à l'essai ; la PR se crée alors à la main depuis la branche).
+3. Réseau de la routine cloud : claude.ai > Code > Environnements (environnement « Default ») > accès réseau : **autoriser job-i.fr**. Sans cela la routine ne peut pas relire les pages job-i.fr pour mettre à jour les fiches (la détection de changements, elle, fonctionne dans l'Action).
 2. Facultatif : si vous préférez que le robot fusionne seul, ajouter l'application « GitHub Actions » aux acteurs qui contournent la règle `nomain` (à éviter si des camarades peuvent proposer du code).
 
 ## Utiliser le wiki sur un autre ordinateur
