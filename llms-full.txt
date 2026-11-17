@@ -1,6 +1,6 @@
 # Wiki IBM i : contexte complet pour un assistant
 
-Genere le 2026-11-17 11:36 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Genere le 2026-11-17 11:41 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
 Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
 
 ATTENTION : ce fichier fait environ 190 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
@@ -1608,7 +1608,7 @@ Genere le 2026-11-17 10:12 a partir de 1082 sources. Un terme est 'manquant' s'i
 === FICHIER : docs/CYCLE-GAP-EXEMPLES.md ===
 # Exemples du cycle RPG (cycle GAP) dans les bibliotheques
 
-Genere le 2026-11-17 10:12. Detection : un fichier **primaire** (IP) ou **secondaire** (IS) en specification F dans un source en colonnes. Explication du cycle : [fiche 03](cheatsheets/03-rpg-par-version.md) et [job-i.fr](https://job-i.fr/cycle-gap-rpg). Detection heuristique : a confirmer en ouvrant le source.
+Genere le 2026-11-17 11:41. Detection : un fichier **primaire** (IP) ou **secondaire** (IS) en specification F dans un source en colonnes. Explication du cycle : [fiche 03](cheatsheets/03-rpg-par-version.md) et [job-i.fr](https://job-i.fr/cycle-gap-rpg). Detection heuristique : a confirmer en ouvrant le source.
 
 | Bibliotheque | Membre | Type | Lignes | Primaire (IP) | Secondaire (IS) | Niveaux (L1-L9) | 1P | OF | Source |
 |---|---|---|---|---|---|---|---|---|---|
