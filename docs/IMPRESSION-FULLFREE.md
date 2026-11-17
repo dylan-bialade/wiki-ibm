@@ -38,7 +38,7 @@ Une simulation de ces règles sur 20 univers de 20 enregistrements redonne le sp
 - **Pas de `PRTCTL`** : les espacements sont de vraies lignes blanches écrites (`WRITE QSYSPRT ligne`) ; le saut de page = écriture de lignes blanches jusqu'à la fin de la page (66 lignes, valeur par défaut documentée en fiche 08).
 - `OFLIND(*INOF)` est conservé pour que le programme gère lui-même le débordement.
 - Le débordement n'est testé qu'au moment d'un enregistrement (comme le cycle) ; les totaux ne le testent pas.
-- Les 3 octets d'un « saut physique » ne sont pas utilisés : si ton spool montre une **page blanche** en début de page 2, c'est que le système saute lui-même à la ligne 60 : supprime alors la boucle de remplissage dans `Debordement` (garde seulement `ligneCour = 1`).
+- Hypothèse à tester : si ton spool montre une **page blanche** en début de page 2, c'est que le système saute lui-même à la ligne 60 : supprime alors la boucle de remplissage dans `Debordement` (garde seulement `ligneCour = 1`).
 
 ## 5. Test à faire (le wiki ne peut pas compiler)
 1. `CRTBNDRPG PGM(<BIB>/CYCLETOTO) SRCFILE(<BIB>/QRPGLESRC) SRCMBR(CYCLETOTO)` ; vérifier le message de compilation (aucune erreur attendue ; ne pas conclure sans le résultat).

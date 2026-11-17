@@ -1543,6 +1543,7 @@ Cause probable (hypothèse) : les valeurs `'000'` de saut/espace, ou la façon d
 
 ## 2. Mesure du spool de référence (RPG III à cycle)
 Mesures faites sur le spool d'origine (66 lignes par page, saut à la ligne 60) :
+
 | Élément | Position observée |
 |---|---|
 | En-tête (1P et débordement) | ligne 1 de chaque page, puis l'enregistrement suivant directement en ligne 2 |
@@ -1555,19 +1556,21 @@ Mesures faites sur le spool d'origine (66 lignes par page, saut à la ligne 60) 
 
 ## 3. Modèle de spacing (celui des O-specs)
 Après une ligne écrite en `L` avec « espace après » `A`, le **curseur** est en `L + A`. Une ligne avec « espace avant » `B` s'imprime en `curseur + B`. Équivalences utilisées :
+
 | O-spec d'origine (déduit) | Appel |
 |---|---|
 | H (1P ou OF) : saut ligne 1, espace après 1 | `Ecrire(0 : 1)` après remise du curseur à 1 |
 | D `UNIVERS` : espace avant 1, après 1 | `Ecrire(1 : 1)` |
 | D détail : espace après 1 | `Ecrire(0 : 1)` |
 | T total : espace avant 2 | `Ecrire(2 : 0)` |
+
 Une simulation de ces règles sur 20 univers de 20 enregistrements redonne le spool de référence (8 pages, page 1 finie sur le 9e détail du 3e univers, `TOTAL GENERAL` ligne 65 de la page 8). C'est une vérification de la **géométrie**, pas de la compilation.
 
 ## 4. Choix de la version corrigée
 - **Pas de `PRTCTL`** : les espacements sont de vraies lignes blanches écrites (`WRITE QSYSPRT ligne`) ; le saut de page = écriture de lignes blanches jusqu'à la fin de la page (66 lignes, valeur par défaut documentée en fiche 08).
 - `OFLIND(*INOF)` est conservé pour que le programme gère lui-même le débordement.
 - Le débordement n'est testé qu'au moment d'un enregistrement (comme le cycle) ; les totaux ne le testent pas.
-- Les 3 octets d'un « saut physique » ne sont pas utilisés : si ton spool montre une **page blanche** en début de page 2, c'est que le système saute lui-même à la ligne 60 : supprime alors la boucle de remplissage dans `Debordement` (garde seulement `ligneCour = 1`).
+- Hypothèse à tester : si ton spool montre une **page blanche** en début de page 2, c'est que le système saute lui-même à la ligne 60 : supprime alors la boucle de remplissage dans `Debordement` (garde seulement `ligneCour = 1`).
 
 ## 5. Test à faire (le wiki ne peut pas compiler)
 1. `CRTBNDRPG PGM(<BIB>/CYCLETOTO) SRCFILE(<BIB>/QRPGLESRC) SRCMBR(CYCLETOTO)` ; vérifier le message de compilation (aucune erreur attendue ; ne pas conclure sans le résultat).
