@@ -8,7 +8,7 @@ $list = @('README.md','CLAUDE.md','docs/cheatsheets/README.md')
 foreach ($f in (Sort-By @(Get-ChildItem (Join-Path $Root 'docs/cheatsheets') -Filter '0*.md') { $_.Name })) { $list += 'docs/cheatsheets/' + $f.Name }
 $list += 'docs/enonces/README.md'
 foreach ($f in (Sort-By @(Get-ChildItem (Join-Path $Root 'docs/enonces') -Filter '*.md' | Where-Object { $_.Name -ne 'README.md' }) { $_.Name })) { $list += 'docs/enonces/' + $f.Name }
-$list += @('docs/MANQUES.md','docs/CYCLE-GAP-EXEMPLES.md','docs/PORTABILITE.md','contributions/README.md','docs/apports/README.md')
+$list += @('docs/MANQUES.md','docs/CYCLE-GAP-EXEMPLES.md','docs/CYCLE-RPG-COURS.md','docs/PORTABILITE.md','contributions/README.md','docs/apports/README.md')
 $sb = New-Object System.Text.StringBuilder
 [void]$sb.AppendLine('# Wiki IBM i : contexte complet pour un assistant')
 [void]$sb.AppendLine('')

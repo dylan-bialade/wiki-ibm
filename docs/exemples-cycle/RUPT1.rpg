@@ -1,0 +1,20 @@
+     FVENTES  IP  E           K        DISK
+     FQSYSPRT O   F      80     OF     PRINTER
+     IVENTEF      01
+     I                                              REGIONL1
+     C  01                 ADD  MNT       TOTREG  92
+     CL1                   ADD  TOTREG    TOTGEN  92
+     OQSYSPRT H  201   1P
+     O                                   24 'VENTES PAR REGION'
+     OQSYSPRT D  1     01
+     O                         REGION     8
+     O                         VENDEU    18
+     O                         MOIS      23
+     O                         MNT   1   35
+     OQSYSPRT T  2     L1
+     O                                   15 'TOTAL REGION'
+     O                         REGION    22
+     O                         TOTREG1B  35
+     OQSYSPRT T  1     LR
+     O                                   15 'TOTAL GENERAL'
+     O                         TOTGEN1   35

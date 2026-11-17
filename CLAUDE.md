@@ -63,7 +63,7 @@ Termine toute réponse technique par une ligne « Vérifié : <ce qui a été co
 | Sitemap / pages job-i | Fiche |
 |---|---|
 | `sitemap-commandes`, `sitemap-messages`, `sitemap-valeurs-systeme` ; `/commandes-ibm-i`, `/messages-ibm-i`, `/valeurs-systeme-ibm-i` | 02 |
-| `/cycle-gap-rpg`, `/instructions-rpg/begsr` | 06 |
+| `/cycle-gap-rpg`, `/instructions-rpg/begsr` | 06 (+ `docs/CYCLE-RPG-COURS.md`) |
 | `/instructions-rpg`, `/fonctions-rpg`, `/coder-rpg-iii`, `/sous-fichier-rpg`, `/mots-edition-rpg`, `/prototypes-rpg-pr-pi`, `/zone-de-donnees-dtaara-ibm-i`, `/api-systeme-ibm-i`, `/constantes-figuratives-rpg`, `/cycle-gap-rpg` | 03 |
 | `sitemap-services`, `sitemap-recettes` ; `/fichier-physique-pf-ibm-i`, `/fichier-logique-lf-ibm-i`, `/services-sql-ibm-i`, `/recettes-sql-ibm-i`, `/nodejs-ibm-i` | 04 |
 | `/as400-vs-ibm-i`, `/objets-ibm-i`, `/ile-ibm-i`, `/travaux-ibm-i`, `/profils-utilisateurs-ibm-i`, `/securite-ibm-i`, `/installer-ptf-ibm-i`, `/performances-ibm-i` | 01 |

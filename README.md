@@ -25,6 +25,7 @@
 | Impression, fichier imprimante, spool, OUTQ | [fiche 08](docs/cheatsheets/08-impression-et-printer-ibm-i.md) |
 | Cycle RPG (cours) ou sous-routines | [fiche 06](docs/cheatsheets/06-cycle-rpg-et-sous-routines.md) |
 | Exemples du cycle RPG (fichier primaire, L1-L9, 1P, OF) | [docs/CYCLE-GAP-EXEMPLES.md](docs/CYCLE-GAP-EXEMPLES.md) |
+| Cours du cycle RPG III (7 étapes, ruptures, spéc. O, rapprochement) + exemples | [docs/CYCLE-RPG-COURS.md](docs/CYCLE-RPG-COURS.md) |
 | Ajouter ma bibliothèque (collaborateur) | [contributions/README.md](contributions/README.md) |
 | Règles de lecture, de vérification et de mise à jour (prompt système) | [docs/PROMPT-SYSTEME.md](docs/PROMPT-SYSTEME.md) (chargé via [CLAUDE.md](CLAUDE.md)) |
 | Ce qui a changé sur job-i.fr depuis la dernière vérification | [docs/JOBI-CHANGES.md](docs/JOBI-CHANGES.md) (présent seulement s'il y a des changements) |

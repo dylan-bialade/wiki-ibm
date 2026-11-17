@@ -204,3 +204,5 @@ NOUVEL UNIVERS
 - **Cartes T** : `T 2 L1` (total d'univers) puis `T 2 LR` (total général), dans cet ordre dans les spécifications `O` : à la fin du fichier `LR` allume aussi `L1`, donc le dernier total d'univers sort avant le total général. Au premier enregistrement les calculs et sorties de total sont sautés (job-i).
 - **Compteurs** : `NBU` (par univers) et `NB` (général) sont définis à leur première apparition (`30` = 3 chiffres, 0 décimale) ; au-delà de 999 personnes ils débordent.
 - **À confirmer à l'exécution** : le total du dernier univers juste avant le total général (rendu du spool) ; la rupture `L1` suppose les enregistrements **groupés par `UNIVERS`**.
+
+> Synthèse d'un cours complet sur le cycle (7 étapes, ruptures en cascade, spécification O, rapprochement) et exemples proposés : [CYCLE-RPG-COURS](../CYCLE-RPG-COURS.md).

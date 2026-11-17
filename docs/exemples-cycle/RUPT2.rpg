@@ -1,0 +1,34 @@
+     H            D/J
+     FVENTES  IP  E           K        DISK
+     FQSYSPRT O   F      80     OF     PRINTER
+     IVENTEF      01
+     I                                              REGIONL2
+     I                                              VENDEUL1
+     C  01                 ADD  MNT       TOTVEN  92
+     CL1                   ADD  TOTVEN    TOTREG  92
+     CL2                   ADD  TOTREG    TOTGEN  92
+     OQSYSPRT H  201   1P
+     O       OR        OF
+     O                                   30 'VENTES PAR REGION'
+     O                         UDATE Y   50
+     O                                   59 'PAGE'
+     O                         PAGE  Z   64
+     OQSYSPRT H  1     1P
+     O       OR        OF
+     O                                   30 'REGION  VENDEUR   MOIS'
+     O                                   44 'MONTANT'
+     OQSYSPRT D  1     01
+     O                 L2      REGION     6
+     O                         VENDEU    16
+     O                         MOIS      23
+     O                         MNT   2   44
+     OQSYSPRT T  1     L1
+     O                                   26 'TOTAL VENDEUR'
+     O                         TOTVEN2B  44
+     OQSYSPRT T  2     L2
+     O                                   22 'TOTAL REGION'
+     O                         REGION    29
+     O                         TOTREG2B  44
+     OQSYSPRT T  1     LR
+     O                                   15 'TOTAL GENERAL'
+     O                         TOTGEN2   44

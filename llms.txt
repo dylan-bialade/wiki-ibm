@@ -22,6 +22,7 @@
 - [Variantes](docs/VARIANTES.md): meme exercice, plusieurs solutions de collaborateurs (structure et code compares)
 - [Comparaison des bibliotheques](docs/COMPARAISON-BIBLIOTHEQUES.md): meme membre dans plusieurs bibliotheques, versions identiques ou differentes
 - [Exemples du cycle RPG](docs/CYCLE-GAP-EXEMPLES.md): sources avec fichier primaire (IP), L1-L9, 1P, OF
+- [Cours du cycle RPG III](docs/CYCLE-RPG-COURS.md): 7 étapes, ruptures L1-L9, spécification O, rapprochement MR, exemples non compilés
 - [Fiche 07](docs/cheatsheets/07-sql-embarque-en-rpg.md): SQL embarque en RPG, CRTSQLRPGI, RUNSQL, RUNSQLSTM
 - [Fiche 08](docs/cheatsheets/08-impression-et-printer-ibm-i.md): impression, fichier imprimante, spool, OUTQ, CRTPRTF, OVRPRTF, CPYSPLF
 - [Fiche 06](docs/cheatsheets/06-cycle-rpg-et-sous-routines.md): cycle RPG (GAP) et sous-routines

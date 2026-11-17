@@ -1,0 +1,17 @@
+     FVENDRS  IP  E           K        DISK
+     FVENTES  IS  E           K        DISK
+     FQSYSPRT O   F      80            PRINTER
+     IVENDEF      01
+     I                                              REGION  M2
+     I                                              VENDEU  M1
+     IVENTEF      02
+     I                                              REGION  M2
+     I                                              VENDEU  M1
+     OQSYSPRT D 11     01
+     O                         REGION     6
+     O                         VENDEU    16
+     O                         NOMV      38
+     OQSYSPRT D  1     02
+     O                                   30 'VENTE'
+     O                         MOIS      33
+     O                         MNT   2   45
