@@ -1,4 +1,5 @@
 **FREE
+// VALIDE : compile et teste par l'utilisateur, spool identique a la reference RPG III (8 pages).
 // CYCLEQSYS - meme etat, sans fichier DDS : QSYSPRT + une DS de 132 car. par type de ligne.
 // Espacements = lignes blanches ecrites (modele du curseur, mesure sur le spool de reference).
 CTL-OPT DFTACTGRP(*NO);

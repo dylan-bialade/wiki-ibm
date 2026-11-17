@@ -27,6 +27,8 @@
 <!-- AUTO:END -->
 
 ## Mes exemples
+### Impression full free : `WRITE QSYSPRT` avec une DS par ligne (validé)
+Fichier `QSYSPRT PRINTER(132)`, une DS `LEN(132) INZ` par type de ligne, zones placées par `POS`, espacement par lignes blanches : exemple complet et compilé dans [CYCLEQSYS.rpgle](../exemples-cycle/CYCLEQSYS.rpgle), explications et mesures dans [IMPRESSION-FULLFREE](../IMPRESSION-FULLFREE.md). `PRTCTL *COMPAT` avec des `'000'` a donné un spool faux : à éviter sans confirmation.
 - **RPG III, sortie par spécifications `O` sur `QSYSPRT`** : [CYCDEMO](../../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md) (en-tête sous `1P` / `OF`, détails, totaux `L1` / `L2` / `LR`) ; variante PERSO en cartes `O` : [fiche 06](06-cycle-rpg-et-sous-routines.md). Déclaration constatée : `FQSYSPRT O   F     132     OF     PRINTER`.
 - **RPG III, fichier imprimante décrit en externe** : [RPGIMPR](../../sources/RPG/RPG-III-400/BIB20/RPGIMPR.md) (`FIMPR O E 60 PRINTER`, puis `WRITE` des formats `TITRE`, `ENTETE`, `DETAILS`, `ETOILE`) avec ses DDS [BONPRT](../../sources/DDS/BIB20/BONPRT.md) (formats `TITRE`, `ENTETE`, `DETAILS`, `ETOILE`, `EJECT` ; mots-clés `SPACEB(n)` interligne avant, `SKIPA(n)` saut après, positions de colonne en dernière zone).
 - **RPG IV, saut de page géré à la main** : [PRINT](../../sources/RPG/RPG-ILE/BIB02/PRINT.md) (`FECRANPRTF O E PRINTER`, compteur `Ligne`, `WRITE EJECT` puis `WRITE ENTETE` / `TITRE` quand la ligne atteint 56) ; autre exemple : [PRINTPAR](../../sources/RPG/RPG-ILE/BIB02/PRINTPAR.md).

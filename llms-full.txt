@@ -1,9 +1,9 @@
 # Wiki IBM i : contexte complet pour un assistant
 
-Genere le 2026-11-17 10:52 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Genere le 2026-11-17 11:00 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
 Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
 
-ATTENTION : ce fichier fait environ 129 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
+ATTENTION : ce fichier fait environ 130 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
 Table des matieres (ordre du fichier) :
 - README.md (8 Ko)
 - CLAUDE.md (15 Ko)
@@ -30,7 +30,7 @@ Table des matieres (ordre du fichier) :
 - docs/MANQUES.md (5 Ko)
 - docs/CYCLE-GAP-EXEMPLES.md (1 Ko)
 - docs/CYCLE-RPG-COURS.md (12 Ko)
-- docs/IMPRESSION-FULLFREE.md (7 Ko)
+- docs/IMPRESSION-FULLFREE.md (8 Ko)
 - docs/PORTABILITE.md (6 Ko)
 - contributions/README.md (4 Ko)
 - docs/apports/README.md (1 Ko)
@@ -869,6 +869,8 @@ NOUVEL UNIVERS
 <!-- AUTO:END -->
 
 ## Mes exemples
+### Impression full free : `WRITE QSYSPRT` avec une DS par ligne (validé)
+Fichier `QSYSPRT PRINTER(132)`, une DS `LEN(132) INZ` par type de ligne, zones placées par `POS`, espacement par lignes blanches : exemple complet et compilé dans [CYCLEQSYS.rpgle](../exemples-cycle/CYCLEQSYS.rpgle), explications et mesures dans [IMPRESSION-FULLFREE](../IMPRESSION-FULLFREE.md). `PRTCTL *COMPAT` avec des `'000'` a donné un spool faux : à éviter sans confirmation.
 - **RPG III, sortie par spécifications `O` sur `QSYSPRT`** : [CYCDEMO](../../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md) (en-tête sous `1P` / `OF`, détails, totaux `L1` / `L2` / `LR`) ; variante PERSO en cartes `O` : [fiche 06](06-cycle-rpg-et-sous-routines.md). Déclaration constatée : `FQSYSPRT O   F     132     OF     PRINTER`.
 - **RPG III, fichier imprimante décrit en externe** : [RPGIMPR](../../sources/RPG/RPG-III-400/BIB20/RPGIMPR.md) (`FIMPR O E 60 PRINTER`, puis `WRITE` des formats `TITRE`, `ENTETE`, `DETAILS`, `ETOILE`) avec ses DDS [BONPRT](../../sources/DDS/BIB20/BONPRT.md) (formats `TITRE`, `ENTETE`, `DETAILS`, `ETOILE`, `EJECT` ; mots-clés `SPACEB(n)` interligne avant, `SKIPA(n)` saut après, positions de colonne en dernière zone).
 - **RPG IV, saut de page géré à la main** : [PRINT](../../sources/RPG/RPG-ILE/BIB02/PRINT.md) (`FECRANPRTF O E PRINTER`, compteur `Ligne`, `WRITE EJECT` puis `WRITE ENTETE` / `TITRE` quand la ligne atteint 56) ; autre exemple : [PRINTPAR](../../sources/RPG/RPG-ILE/BIB02/PRINTPAR.md).
@@ -1532,8 +1534,12 @@ job-i décrit le cycle et cite les spécifications mais détaille peu la **spéc
 === FICHIER : docs/IMPRESSION-FULLFREE.md ===
 # Impression en RPG full free : réécrire un état à cycle (retour d'expérience)
 
-> Page issue d'un **test réel** : un programme RPG III à cycle (état avec rupture, en-tête de page, totaux) réécrit en full free. Les constats sur les spools sont **observés** (deux PDF de spool comparés) ; les explications sont des **hypothèses** tant qu'elles ne sont pas confirmées. Code : [CYCLETOTO.rpgle](exemples-cycle/CYCLETOTO.rpgle) (version corrigée, **non encore compilée ni testée** par l'auteur du wiki). Voir aussi la [fiche 08](cheatsheets/08-impression-et-printer-ibm-i.md) et le [cours du cycle](CYCLE-RPG-COURS.md).
+> Page issue d'un **test réel** : un programme RPG III à cycle (état avec rupture, en-tête de page, totaux) réécrit en full free. Les constats sur les spools sont **observés** (PDF de spool comparés). **Version validée : [CYCLEQSYS.rpgle](exemples-cycle/CYCLEQSYS.rpgle)** (`QSYSPRT` + une DS par type de ligne) : **compilée par l'utilisateur, spool identique à la référence RPG III** (8 pages, texte identique sur les 418 lignes, rendu identique au pixel près hors bruit d'anti-aliasing). Les autres variantes (`CYCLEIMP` + `CYCLEPRT`, `CYCLETOTO`) restent **non testées**. Voir aussi la [fiche 08](cheatsheets/08-impression-et-printer-ibm-i.md) et le [cours du cycle](CYCLE-RPG-COURS.md).
 
+## Résumé (à retenir)
+- **Vérifié (compilé et exécuté)** : `DCL-F QSYSPRT PRINTER(132) USAGE(*OUTPUT) OFLIND(*INOF)` ; `WRITE QSYSPRT <ds>` avec une DS `LEN(132) INZ` par type de ligne ; sous-zones placées par `POS(n)` avec constantes `INZ('...')` ; `%EDITC(zone : 'Z')` pour numéros de page, univers et totaux ; espacements par lignes blanches (`dsVide`) selon le modèle du curseur (section 3) ; saut de page par remplissage jusqu'à la ligne 66 après dépassement de la ligne 60.
+- **À éviter sans confirmation** : `PRTCTL(...:*COMPAT)` avec des `'000'` (a produit un spool faux, section 1).
+- **Non vérifié** : mots-clés du fichier imprimante DDS de `CYCLEPRT` (`SKIPB`, `SPACEA(0)`, `PAGNBR`), comportement du cycle sur fichier vide.
 ## 1. Ce qui s'est passé
 Une première version full free utilisait `PRTCTL(prtCtl:*COMPAT)` avec une structure d'espacement remplie de `'000'` / `'001'`. Elle **compilait et s'exécutait**, mais le spool obtenu (40 pages au lieu de 8) était faux :
 - l'en-tête était en ligne 1 mais « UNIVERS 1 » en ligne ~10 ;
@@ -1596,7 +1602,7 @@ Création : `CRTPRTF FILE(<BIB>/CYCLEPRT) SRCFILE(<BIB>/QPRTSRC) SRCMBR(CYCLEPRT
 Points **non vérifiés** (ni dans le wiki ni sur job-i) : `SKIPB(1)` en tête d'un format qui sert aussi de saut de page (alternative de tes sources : un format `EJECT` avec `SKIPA(1)` écrit avant `ENTETE`) ; `SPACEA(0)` accepté par `CRTPRTF` (sinon supprimer ces lignes) ; `PAGNBR` en colonne 72 imprimé sur 4 caractères ; `NOM` et `PRENOM` supposés de 15 caractères (déduit des colonnes du spool).
 
 ## 8. Variante sans DDS : `QSYSPRT` avec une DS par type de ligne
-[CYCLEQSYS.rpgle](exemples-cycle/CYCLEQSYS.rpgle) : `DCL-F QSYSPRT PRINTER(132)` et `WRITE QSYSPRT <ds>` avec une DS de 132 caractères par type de ligne (`dsEntete`, `dsUnivers`, `dsDetail`, `dsTotUni`, `dsTotGen`), les zones placées par `POS(...)` aux colonnes du spool de référence. Espacements = lignes blanches (`dsVide`) selon le modèle du curseur (section 3). **Non compilé ni testé.** Points à vérifier : `POS` sur les sous-zones d'une DS `LEN(132)`, `INZ` des constantes de sous-zone, et l'absence d'interférence entre les écritures de DS de même longueur.
+[CYCLEQSYS.rpgle](exemples-cycle/CYCLEQSYS.rpgle) : `DCL-F QSYSPRT PRINTER(132)` et `WRITE QSYSPRT <ds>` avec une DS de 132 caractères par type de ligne (`dsEntete`, `dsUnivers`, `dsDetail`, `dsTotUni`, `dsTotGen`), les zones placées par `POS(...)` aux colonnes du spool de référence. Espacements = lignes blanches (`dsVide`) selon le modèle du curseur (section 3). **Compilé et testé par l'utilisateur : spool identique à la référence.** `POS` sur les sous-zones d'une DS `LEN(132)`, `INZ` des constantes de sous-zone et plusieurs DS de même longueur écrites dans `QSYSPRT` sont donc validés.
 
 
 === FICHIER : docs/PORTABILITE.md ===
