@@ -1,6 +1,6 @@
 # Ce qui manque dans les fiches (utilise dans le code, absent des fiches)
 
-Genere le 2026-11-17 10:12 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
+Genere le 2026-11-17 10:39 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
 
 <!-- TOC:START -->
 **Sommaire** (retour : [sommaire general](SOMMAIRE.md))

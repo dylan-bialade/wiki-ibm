@@ -78,6 +78,7 @@ THEN true
 
                                                                                                 end-proc;
 
+
                 dcl-proc checkSecu EXPORT; // Vérifie le numéro de sécu
                                     dcl-pi *n ind; // *ON ou *OFF
                                                         secu char(100) const;
@@ -91,6 +92,7 @@ e ind;
                                                     else;
                                                                         reponse = *off;
                                                                                     endif;
+
 
     return reponse;
 

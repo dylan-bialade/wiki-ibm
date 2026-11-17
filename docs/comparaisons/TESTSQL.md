@@ -59,6 +59,7 @@ enddo;
 exec sql
     close c1;
 
+
 *inlr
  = *on;
 ```
