@@ -56,7 +56,7 @@ function Get-CodeTerms([string]$Text, $Ref, [string]$Kind = 'auto') {
 function Read-SourceItems([string]$Root) {
   # Sources converties (sources/**/*.md) : en-tete + code + version normalisee
   $items = New-Object System.Collections.ArrayList
-  foreach ($f in (Sort-By @(Get-ChildItem (Join-Path $Root 'sources') -Recurse -Filter *.md) { $_.FullName })) {
+  foreach ($f in (Sort-By @(Get-ChildItem (Join-Path $Root 'sources') -Recurse -Filter *.md) { $_.FullName.Replace('\','/') })) {
     $L = [IO.File]::ReadAllLines($f.FullName)
     $fi = @(); for ($i = 0; $i -lt $L.Count; $i++) { if ($L[$i].StartsWith($script:Fence)) { $fi += $i } }
     if ($fi.Count -lt 2) { continue }

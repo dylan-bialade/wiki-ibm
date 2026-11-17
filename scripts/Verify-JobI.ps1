@@ -2,6 +2,7 @@
 # Telecharge les listes de reference (commandes CL, instructions et fonctions RPG) puis compare avec le code.
 param([string]$Wiki = (Split-Path -Parent $PSScriptRoot))
 function Sort-Ord($a){ $arr=[string[]]@($a); [Array]::Sort($arr,[StringComparer]::Ordinal); $arr }
+function Sort-Files($files){ $map=@{}; foreach($f in @($files)){ $map[$f.FullName.Replace([string][char]92,'/')]=$f }; foreach($k in (Sort-Ord $map.Keys)){ $map[$k] } }
 $ErrorActionPreference = "Stop"
 $base = "https://job-i.fr"
 function Get-Page($p) { for ($try = 1; $try -le 4; $try++) { try { return (Invoke-WebRequest "$base$p" -UseBasicParsing -TimeoutSec 60).Content } catch { if ($try -eq 4) { throw }; Start-Sleep -Seconds (2 * $try) } } }
@@ -19,12 +20,12 @@ $ctl = "PGM","ENDPGM","DCL","IF","ELSE","DO","ENDDO","GOTO","MONMSG","CALLSUBR",
 $ctlSet = [System.Collections.Generic.HashSet[string]]::new([string[]]$ctl)
 
 $usedCmd = @{}; $usedRpg = @{}
-foreach ($f in Get-ChildItem (Join-Path $Wiki "sources/CL") -Recurse -Filter *.md -ErrorAction SilentlyContinue) {
+foreach ($f in Sort-Files (Get-ChildItem (Join-Path $Wiki "sources/CL") -Recurse -Filter *.md -ErrorAction SilentlyContinue)) {
   foreach ($l in (Get-Content $f.FullName -Encoding UTF8)) {
     if ($l -match '^\s*(?:[A-Z0-9_]+:\s*)?([A-Z][A-Z0-9]{2,9})\b' -and $l -notmatch '^\s*/\*') { $usedCmd[$Matches[1]] = 1 + [int]$usedCmd[$Matches[1]] }
   }
 }
-foreach ($f in Get-ChildItem (Join-Path $Wiki "sources/RPG") -Recurse -Filter *.md -ErrorAction SilentlyContinue) {
+foreach ($f in Sort-Files (Get-ChildItem (Join-Path $Wiki "sources/RPG") -Recurse -Filter *.md -ErrorAction SilentlyContinue)) {
   foreach ($l in (Get-Content $f.FullName -Encoding UTF8)) {
     foreach ($t in [regex]::Matches($l.ToUpper(), '(?<![A-Z0-9_])(%?[A-Z][A-Z0-9_-]{2,9})(?![A-Z0-9_])')) { $v = $t.Value; if ($rpgSet.Contains($v)) { $usedRpg[$v] = 1 + [int]$usedRpg[$v] } }
   }

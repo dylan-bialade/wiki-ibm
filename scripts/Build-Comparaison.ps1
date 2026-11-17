@@ -10,7 +10,7 @@ $fence = [string]([char]96) * 3
 
 # ---- lecture des sources converties
 $items = New-Object System.Collections.ArrayList
-foreach ($f in (Sort-By @(Get-ChildItem (Join-Path $Root 'sources') -Recurse -Filter *.md) { $_.FullName })) {
+foreach ($f in (Sort-By @(Get-ChildItem (Join-Path $Root 'sources') -Recurse -Filter *.md) { $_.FullName.Replace('\','/') })) {
   $L = [IO.File]::ReadAllLines($f.FullName)
   $fi = @(); for ($i = 0; $i -lt $L.Count; $i++) { if ($L[$i].StartsWith($fence)) { $fi += $i } }
   if ($fi.Count -lt 2) { continue }
