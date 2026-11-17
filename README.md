@@ -29,6 +29,7 @@
 | Réécrire un état à cycle en full free (retour d'expérience, spool) | [docs/IMPRESSION-FULLFREE.md](docs/IMPRESSION-FULLFREE.md) |
 | Cycle RPG III -> full free : table de correspondance | [docs/CYCLE-VERS-FULLFREE.md](docs/CYCLE-VERS-FULLFREE.md) |
 | PRTCTL (contrôle d'impression RPG) : ce qui est documenté ou non | [docs/PRTCTL.md](docs/PRTCTL.md) |
+| Tester que l'assistant applique les règles du wiki (prompts + grille) | [docs/TEST-ASSISTANT.md](docs/TEST-ASSISTANT.md) |
 | Ajouter ma bibliothèque (collaborateur) | [contributions/README.md](contributions/README.md) |
 | Règles de lecture, de vérification et de mise à jour (prompt système) | [docs/PROMPT-SYSTEME.md](docs/PROMPT-SYSTEME.md) (chargé via [CLAUDE.md](CLAUDE.md)) |
 | Ce qui a changé sur job-i.fr depuis la dernière vérification | [docs/JOBI-CHANGES.md](docs/JOBI-CHANGES.md) (présent seulement s'il y a des changements) |
