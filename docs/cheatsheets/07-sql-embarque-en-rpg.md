@@ -35,3 +35,4 @@
 - **Énoncé qui l'exige** : [tp-le-chai](../enonces/tp-le-chai.md) (curseurs, transaction « tout ou rien », contrôle de validation).
 - **Notions SQL présentes dans votre code et absentes des fiches** : `COALESCE`, `GROUP BY`, `DISTINCT`, `CURRENT DATE - n MONTHS`, jointures externes ; voir [MANQUES](../MANQUES.md) et [ANALYSE-ENONCES](../enonces/ANALYSE-ENONCES.md). Les services SQL et les recettes d'exploitation restent dans la [fiche 04](04-db2-for-i-et-sql.md).
 - **À confirmer** : le type de membre source à utiliser (`SQLRPGLE`) et la commande exacte utilisée par votre éditeur pour compiler (CRTSQLRPGI ci-dessus) ; la page job-i ne parle pas de la convention de nommage du type.
+- **Curseur + impression avec rupture** (proposé, non compilé) : [SQLIMPRIME.sqlrpgle](../exemples-cycle/SQLIMPRIME.sqlrpgle), détaillé dans [IMPRESSION-RPG](../IMPRESSION-RPG.md#9-variante-sql-embarqué--liste-par-univers-avec-rupture).

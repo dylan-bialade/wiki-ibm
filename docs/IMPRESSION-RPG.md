@@ -15,6 +15,7 @@
   - [6. Pièges rencontrés](#6-pièges-rencontrés)
   - [7. Méthode habituelle de tes bibliothèques : fichier imprimante externe (recommandée)](#7-méthode-habituelle-de-tes-bibliothèques--fichier-imprimante-externe-recommandée)
   - [8. Variante sans DDS : `QSYSPRT` avec une DS par type de ligne](#8-variante-sans-dds--qsysprt-avec-une-ds-par-type-de-ligne)
+  - [9. Variante SQL embarqué : liste par univers avec rupture](#9-variante-sql-embarqué--liste-par-univers-avec-rupture)
 - [Partie 2 : PRTCTL, contrôle dynamique d'impression](#partie-2--prtctl-contrôle-dynamique-dimpression)
   - [1. Principe (documenté par IBM)](#1-principe-documenté-par-ibm)
   - [2. Disposition `*COMPAT` (9 octets)](#2-disposition-compat-9-octets)
@@ -96,6 +97,15 @@ Points **non vérifiés** (ni dans le wiki ni sur job-i) : `SKIPB(1)` en tête d
 
 ### 8. Variante sans DDS : `QSYSPRT` avec une DS par type de ligne
 [CYCLEQSYS.rpgle](exemples-cycle/CYCLEQSYS.rpgle) : `DCL-F QSYSPRT PRINTER(132)` et `WRITE QSYSPRT <ds>` avec une DS de 132 caractères par type de ligne (`dsEntete`, `dsUnivers`, `dsDetail`, `dsTotUni`, `dsTotGen`), les zones placées par `POS(...)` aux colonnes du spool de référence. Espacements = lignes blanches (`dsVide`) selon le modèle du curseur (section 3). **Compilé et testé par l'utilisateur : spool identique à la référence.** `POS` sur les sous-zones d'une DS `LEN(132)`, `INZ` des constantes de sous-zone et plusieurs DS de même longueur écrites dans `QSYSPRT` sont donc validés.
+
+### 9. Variante SQL embarqué : liste par univers avec rupture
+[SQLIMPRIME.sqlrpgle](exemples-cycle/SQLIMPRIME.sqlrpgle) (**non compilé, non testé**) reprend le motif validé de `CYCLEQSYS` (`QSYSPRT` + une DS de 132 caractères par ligne, compteur de lignes, saut de page par remplissage, débordement testé au moment d'un enregistrement) avec un curseur SQL (squelette de la [fiche 07](cheatsheets/07-sql-embarque-en-rpg.md)) :
+- rupture sur le nom d'univers avec l'indicateur `premier` et la valeur précédente ; total de l'univers **avant** le traitement du nouvel enregistrement, **sans** test de débordement ; total général après la boucle, aucun total pour un résultat vide ;
+- `FETCH` vers des **variables scalaires** (pas de `FETCH INTO` d'une DS : non documenté) ;
+- `OFLIND` seul ne change pas de page : le programme finit la page lui-même (lignes blanches jusqu'à la ligne 66) puis réécrit le titre ; réécrire le titre sans cela le place au milieu de la page ;
+- nombres : `%EDITC(zone : 'Z')` dans une zone de 4 caractères (aligné à droite), pas `%CHAR` (aligné à gauche) ;
+- remplacer `BIBXX` par la bibliothèque ; types des variables hôtes à aligner sur les colonnes ; test `SQLCODE < 0` après `OPEN` non vérifié (valeurs de `SQLCODE` non documentées dans le wiki) ;
+- compilation (à tester) : `CRTSQLRPGI OBJ(<BIB>/SQLIMPRIME) SRCFILE(<BIB>/QRPGLESRC) SRCMBR(SQLIMPRIME) COMMIT(*NONE) OBJTYPE(*PGM)`, membre de type `SQLRPGLE`.
 
 ## Partie 2 : PRTCTL, contrôle dynamique d'impression
 

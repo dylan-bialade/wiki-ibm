@@ -107,7 +107,7 @@ Cours du cycle, passage au full free, impression et PRTCTL (sujets regroupés).
   - [Partie 1 : réécrire un état à cycle en full free (retour d'expérience)](IMPRESSION-RPG.md#partie-1--réécrire-un-état-à-cycle-en-full-free-retour-dexpérience)
   - [Partie 2 : PRTCTL, contrôle dynamique d'impression](IMPRESSION-RPG.md#partie-2--prtctl-contrôle-dynamique-dimpression)
 - [Exemples de cycle dans le code des bibliothèques](CYCLE-GAP-EXEMPLES.md) : Sources avec fichier primaire, L1-L9, 1P, OF (généré).
-- [Dossier des exemples (RPG, DDS)](exemples-cycle/) : CYCLEQSYS (validé), CYCLEIMP + CYCLEPRT, CYCLEPRTCTL, CYCLETOTO, RUPT0 à RUPT2.
+- [Dossier des exemples (RPG, DDS)](exemples-cycle/) : CYCLEQSYS (validé), CYCLEIMP + CYCLEPRT, CYCLEPRTCTL, CYCLETOTO, SQLIMPRIME (SQL embarqué), RUPT0 à RUPT2.
 
 ## Énoncés de TP
 

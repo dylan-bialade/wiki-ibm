@@ -1,9 +1,9 @@
 # Wiki IBM i : contexte complet pour un assistant
 
-Genere le 2026-11-17 11:41 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Genere le 2026-11-17 11:47 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
 Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
 
-ATTENTION : ce fichier fait environ 190 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
+ATTENTION : ce fichier fait environ 191 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
 Table des matieres (ordre du fichier) :
 - README.md (15 Ko)
 - docs/SOMMAIRE.md (15 Ko)
@@ -31,7 +31,7 @@ Table des matieres (ordre du fichier) :
 - docs/MANQUES.md (6 Ko)
 - docs/CYCLE-GAP-EXEMPLES.md (1 Ko)
 - docs/CYCLE-RPG.md (20 Ko)
-- docs/IMPRESSION-RPG.md (17 Ko)
+- docs/IMPRESSION-RPG.md (18 Ko)
 - docs/ASSISTANT-ET-AUTOMATISATION.md (16 Ko)
 - contributions/README.md (4 Ko)
 - docs/apports/README.md (1 Ko)
@@ -322,7 +322,7 @@ Cours du cycle, passage au full free, impression et PRTCTL (sujets regroupés).
   - [Partie 1 : réécrire un état à cycle en full free (retour d'expérience)](IMPRESSION-RPG.md#partie-1--réécrire-un-état-à-cycle-en-full-free-retour-dexpérience)
   - [Partie 2 : PRTCTL, contrôle dynamique d'impression](IMPRESSION-RPG.md#partie-2--prtctl-contrôle-dynamique-dimpression)
 - [Exemples de cycle dans le code des bibliothèques](CYCLE-GAP-EXEMPLES.md) : Sources avec fichier primaire, L1-L9, 1P, OF (généré).
-- [Dossier des exemples (RPG, DDS)](exemples-cycle/) : CYCLEQSYS (validé), CYCLEIMP + CYCLEPRT, CYCLEPRTCTL, CYCLETOTO, RUPT0 à RUPT2.
+- [Dossier des exemples (RPG, DDS)](exemples-cycle/) : CYCLEQSYS (validé), CYCLEIMP + CYCLEPRT, CYCLEPRTCTL, CYCLETOTO, SQLIMPRIME (SQL embarqué), RUPT0 à RUPT2.
 
 ## Énoncés de TP
 
@@ -1105,6 +1105,7 @@ NOUVEL UNIVERS
 - **Énoncé qui l'exige** : [tp-le-chai](../enonces/tp-le-chai.md) (curseurs, transaction « tout ou rien », contrôle de validation).
 - **Notions SQL présentes dans votre code et absentes des fiches** : `COALESCE`, `GROUP BY`, `DISTINCT`, `CURRENT DATE - n MONTHS`, jointures externes ; voir [MANQUES](../MANQUES.md) et [ANALYSE-ENONCES](../enonces/ANALYSE-ENONCES.md). Les services SQL et les recettes d'exploitation restent dans la [fiche 04](04-db2-for-i-et-sql.md).
 - **À confirmer** : le type de membre source à utiliser (`SQLRPGLE`) et la commande exacte utilisée par votre éditeur pour compiler (CRTSQLRPGI ci-dessus) ; la page job-i ne parle pas de la convention de nommage du type.
+- **Curseur + impression avec rupture** (proposé, non compilé) : [SQLIMPRIME.sqlrpgle](../exemples-cycle/SQLIMPRIME.sqlrpgle), détaillé dans [IMPRESSION-RPG](../IMPRESSION-RPG.md#9-variante-sql-embarqué--liste-par-univers-avec-rupture).
 
 
 === FICHIER : docs/cheatsheets/08-impression-et-printer-ibm-i.md ===
@@ -1951,6 +1952,15 @@ Points **non vérifiés** (ni dans le wiki ni sur job-i) : `SKIPB(1)` en tête d
 
 ### 8. Variante sans DDS : `QSYSPRT` avec une DS par type de ligne
 [CYCLEQSYS.rpgle](exemples-cycle/CYCLEQSYS.rpgle) : `DCL-F QSYSPRT PRINTER(132)` et `WRITE QSYSPRT <ds>` avec une DS de 132 caractères par type de ligne (`dsEntete`, `dsUnivers`, `dsDetail`, `dsTotUni`, `dsTotGen`), les zones placées par `POS(...)` aux colonnes du spool de référence. Espacements = lignes blanches (`dsVide`) selon le modèle du curseur (section 3). **Compilé et testé par l'utilisateur : spool identique à la référence.** `POS` sur les sous-zones d'une DS `LEN(132)`, `INZ` des constantes de sous-zone et plusieurs DS de même longueur écrites dans `QSYSPRT` sont donc validés.
+
+### 9. Variante SQL embarqué : liste par univers avec rupture
+[SQLIMPRIME.sqlrpgle](exemples-cycle/SQLIMPRIME.sqlrpgle) (**non compilé, non testé**) reprend le motif validé de `CYCLEQSYS` (`QSYSPRT` + une DS de 132 caractères par ligne, compteur de lignes, saut de page par remplissage, débordement testé au moment d'un enregistrement) avec un curseur SQL (squelette de la [fiche 07](cheatsheets/07-sql-embarque-en-rpg.md)) :
+- rupture sur le nom d'univers avec l'indicateur `premier` et la valeur précédente ; total de l'univers **avant** le traitement du nouvel enregistrement, **sans** test de débordement ; total général après la boucle, aucun total pour un résultat vide ;
+- `FETCH` vers des **variables scalaires** (pas de `FETCH INTO` d'une DS : non documenté) ;
+- `OFLIND` seul ne change pas de page : le programme finit la page lui-même (lignes blanches jusqu'à la ligne 66) puis réécrit le titre ; réécrire le titre sans cela le place au milieu de la page ;
+- nombres : `%EDITC(zone : 'Z')` dans une zone de 4 caractères (aligné à droite), pas `%CHAR` (aligné à gauche) ;
+- remplacer `BIBXX` par la bibliothèque ; types des variables hôtes à aligner sur les colonnes ; test `SQLCODE < 0` après `OPEN` non vérifié (valeurs de `SQLCODE` non documentées dans le wiki) ;
+- compilation (à tester) : `CRTSQLRPGI OBJ(<BIB>/SQLIMPRIME) SRCFILE(<BIB>/QRPGLESRC) SRCMBR(SQLIMPRIME) COMMIT(*NONE) OBJTYPE(*PGM)`, membre de type `SQLRPGLE`.
 
 ## Partie 2 : PRTCTL, contrôle dynamique d'impression
 

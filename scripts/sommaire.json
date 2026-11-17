@@ -23,7 +23,7 @@
       { "fichier": "docs/CYCLE-RPG.md", "titre": "Cycle RPG III : cours, exemples, passage au full free", "description": "7 étapes, indicateurs, ruptures, spécification O, rapprochement, table de correspondance vers le full free.", "sections": true },
       { "fichier": "docs/IMPRESSION-RPG.md", "titre": "Impression en RPG : état à cycle et PRTCTL", "description": "Retour d'expérience (spools mesurés), version validée, dispositions PRTCTL officielles.", "sections": true },
       { "fichier": "docs/CYCLE-GAP-EXEMPLES.md", "titre": "Exemples de cycle dans le code des bibliothèques", "description": "Sources avec fichier primaire, L1-L9, 1P, OF (généré).", "sections": false },
-      { "fichier": "docs/exemples-cycle/", "titre": "Dossier des exemples (RPG, DDS)", "description": "CYCLEQSYS (validé), CYCLEIMP + CYCLEPRT, CYCLEPRTCTL, CYCLETOTO, RUPT0 à RUPT2.", "sections": false }
+      { "fichier": "docs/exemples-cycle/", "titre": "Dossier des exemples (RPG, DDS)", "description": "CYCLEQSYS (validé), CYCLEIMP + CYCLEPRT, CYCLEPRTCTL, CYCLETOTO, SQLIMPRIME (SQL embarqué), RUPT0 à RUPT2.", "sections": false }
     ] },
   { "titre": "Énoncés de TP", "intro": "Résumés anonymisés d'énoncés et d'examens.",
     "entrees": [
