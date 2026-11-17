@@ -2,6 +2,65 @@
 
 > **Pour les LLM et les humains : lire ce fichier en premier.** Il décrit où trouver chaque ressource en 1 saut. Tous les chemins sont relatifs à la racine du dépôt. Langue des documents : français.
 
+## Installation et utilisation (n'importe qui, n'importe quel appareil)
+
+### 1. Prérequis
+
+| Outil | Pour quoi | Obligatoire |
+|---|---|---|
+| Un compte GitHub + [Git](https://git-scm.com/) | cloner le dépôt, proposer des apports | oui |
+| [Claude Code](https://claude.com/claude-code) **ou** un chat claude.ai | utiliser le wiki comme base de vérité | un des deux |
+| PowerShell 5.1 (Windows) ou [PowerShell 7](https://learn.microsoft.com/powershell/) (Windows, Linux, macOS) | scripts de régénération et de vérification | non (le wiki se lit sans) |
+| [GitHub CLI `gh`](https://cli.github.com/) | ouvrir une Pull Request automatiquement | non |
+
+Aucun jeton ni mot de passe n'est nécessaire ni ne doit être placé dans le dépôt.
+
+### 2. Installer (3 minutes)
+```bash
+git clone https://github.com/dylan-bialade/wiki-ibm.git
+cd wiki-ibm
+```
+- **Claude Code** : ouvrir un terminal dans ce dossier et lancer `claude`. Le fichier [CLAUDE.md](CLAUDE.md) est chargé automatiquement : règles de lecture, de vérification (wiki, job-i.fr, puis ibm.com), tableau « Élément | Statut | Source », remontée automatique des manques.
+- **Claude Code dans un autre projet** (pour avoir le wiki partout) : copier dans `~/.claude/CLAUDE.md` (`%USERPROFILE%\.claude\CLAUDE.md` sous Windows) les lignes de [docs/CONTEXTE-CLAUDE.md](docs/CONTEXTE-CLAUDE.md), section 3.
+- **claude.ai** (tous les chats) : coller le texte de la section 1 de [docs/CONTEXTE-CLAUDE.md](docs/CONTEXTE-CLAUDE.md) dans les préférences, ou créer un projet et lui donner [llms-full.txt](llms-full.txt) (URL brute : `https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt`, plus de 100 Ko : l'assistant doit le lire en entier).
+
+### 3. Utiliser
+- **Poser une question ou faire écrire du code** : l'assistant cherche dans le wiki, vérifie sur job-i.fr, puis sur ibm.com (documentation officielle) si job-i n'a pas l'information, cite ses sources, ne dit jamais « ça compile » sans votre confirmation, et signale ce qui manque.
+- **Vérifier du code** : `pwsh scripts/Verify-Code.ps1 -Path mon.rpgle` (commandes CL et instructions RPG reconnues par job-i).
+- **Régénérer les pages calculées** : `pwsh scripts/Run-All.ps1 -SansConversion` (sous Windows 5.1 : `powershell -File scripts\Run-All.ps1 -SansConversion`).
+- **Remonter une information au wiki** : automatique (l'assistant lance `scripts/Report-ToWiki.ps1`), ou à la main : déposer un fichier dans [docs/apports/](docs/apports/README.md), ou ouvrir une Issue « Apport au wiki ». Chaque apport est évalué automatiquement ([EVALUATION-APPORTS](docs/EVALUATION-APPORTS.md)).
+- **Contribuer vos exemples de bibliothèque** : [contributions/README.md](contributions/README.md) (fork + Pull Request).
+- **Vérifier que l'assistant applique bien les règles** : jouer les prompts de [docs/TEST-ASSISTANT.md](docs/TEST-ASSISTANT.md) (5 prompts + grille).
+
+### 4. Variables d'environnement (facultatives)
+
+| Variable | Rôle | Défaut |
+|---|---|---|
+| `WIKI_REPORT_MODE` | remontée automatique : `branche` (branche `apport/…` + Pull Request si `gh`), `main` (propriétaire : commit et push sur `main`), `aucun` (fichier seul) | `branche` |
+| `WIKI_EXPORT_DIR` | dossier des exports ACS `*.LIB` à convertir | aucun |
+| `WIKI_ALIAS_FILE` | fichier **privé** de correspondance des noms de bibliothèques (jamais dans le dépôt) | `../lib-alias.private.json` |
+
+### 5. Automatisation (propriétaire du dépôt, une fois)
+1. GitHub > **Settings > Actions > General** : cocher « Allow GitHub Actions to create and approve pull requests » (régénération quotidienne et Pull Requests automatiques).
+2. Routine cloud Claude (facultative) : dans claude.ai > Code > Environnements, autoriser le réseau vers **`job-i.fr`** et **`ibm.com`** pour que la routine relise les pages sources.
+3. Détails, essais et limites : [docs/PORTABILITE.md](docs/PORTABILITE.md).
+
+### 6. Règles à respecter (résumé de [CLAUDE.md](CLAUDE.md))
+- **Anonymat** : bibliothèques `BIBnn` uniquement ; aucun nom réel de personne, d'organisme ou de machine dans le dépôt public.
+- **Pas de secret** (mot de passe, jeton, clé) ; pas de longs extraits de job-i.fr ou d'IBM (synthèse et lien).
+- **Pas d'IA pendant un TP surprise ou un examen** : n'utiliser le wiki qu'en révision.
+- **Sources** : wiki, puis job-i.fr, puis ibm.com ; les forums et blogs sont non officiels.
+
+### 7. Dépannage
+
+| Symptôme | Cause probable | Que faire |
+|---|---|---|
+| L'assistant dit avoir lu seulement le début de `llms-full.txt` | fichier trop long pour une lecture | lui demander de le lire par morceaux ou de chercher le mot-clé dans `docs/` |
+| `Report-ToWiki.ps1` répond `REFUSE` | secret, nom réel de bibliothèque ou statut `verifie` sans source | corriger le contenu ; ne pas contourner |
+| La routine cloud ne lit pas job-i.fr / ibm.com | domaine non autorisé dans l'environnement | réglage 2 de la section 5 |
+| Une Pull Request automatique n'est pas créée | réglage GitHub Actions non activé | réglage 1 de la section 5 |
+| Un script PowerShell échoue sous Linux/macOS | version de PowerShell | utiliser `pwsh` (PowerShell 7) |
+
 ## Carte rapide (je cherche → je vais là)
 
 | Je cherche… | Fichier / dossier |

@@ -55,4 +55,9 @@
 - Comparer le **spool**, pas seulement l'absence d'erreur de compilation.
 
 ## 6. Fichier vide
-Comportement du cycle RPG III sur un fichier primaire vide : **non vérifié**. Avec `CYCLEQSYS`, un fichier vide donne : en-tête, puis `TOTAL UNIVERS` et `TOTAL GENERAL` avec des zéros supprimés par le code d'édition `Z` (analyse du code, non testé). Test à faire : lancer le programme sur un fichier vide et comparer au programme RPG III d'origine.
+Source IBM : [Detailed RPG IV Object Program Cycle (7.4)](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/rzasd/pgmcycobj.htm), lue le 2026-11-17.
+- Les lignes `H` et `D` sont écrites **avant** la lecture du premier enregistrement (étape 4) ; la première lecture est l'étape 15 ; sur fin de fichier, branchement à l'étape 20 ; `LR` et tous les indicateurs de rupture sont allumés (étapes 24-25) puis les totaux (étape 29) ; fermeture des fichiers aux étapes 32-40.
+- Sans fichier primaire : branchement direct à l'étape 29 (étape 14).
+- **Fichier primaire vide** : non traité explicitement par la page ; cas le plus proche : étapes 15-16 (fin de fichier dès la première lecture). **Non vérifié** : lignes `1P` imprimées ou non (la page dit seulement que `1P` est éteint à l'étape 8).
+- Avec `CYCLEQSYS` : en-tête, puis `TOTAL UNIVERS` et `TOTAL GENERAL` avec zéros supprimés (analyse du code, non testé).
+- Test à faire : exécuter l'original RPG III et la version full free sur un fichier vide et comparer les spools.
