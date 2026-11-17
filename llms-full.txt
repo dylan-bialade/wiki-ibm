@@ -1,0 +1,1283 @@
+# Wiki IBM i : contexte complet pour un assistant
+
+Genere le 2026-11-17 09:28 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
+
+
+=== FICHIER : README.md ===
+# Wiki IBM i (RPG / CL / DDS / Db2 for i)
+
+> **Pour les LLM et les humains : lire ce fichier en premier.** Il décrit où trouver chaque ressource en 1 saut. Tous les chemins sont relatifs à la racine du dépôt. Langue des documents : français.
+
+## Carte rapide (je cherche → je vais là)
+
+| Je cherche… | Fichier / dossier |
+|---|---|
+| Une fiche mémo (commande, syntaxe, concept IBM i) | [docs/cheatsheets/README.md](docs/cheatsheets/README.md) |
+| Concepts : objets, ILE, travaux, profils, sécurité, PTF, performances | [docs/cheatsheets/01-comprendre-ibm-i.md](docs/cheatsheets/01-comprendre-ibm-i.md) |
+| Commandes CL, messages CPF/MCH, valeurs système | [docs/cheatsheets/02-reference-systeme.md](docs/cheatsheets/02-reference-systeme.md) |
+| RPG III / RPG IV / full free, PR-PI, sous-fichiers, DTAARA, API | [docs/cheatsheets/03-rpg-par-version.md](docs/cheatsheets/03-rpg-par-version.md) |
+| PF, LF, services SQL, recettes SQL, Node.js | [docs/cheatsheets/04-db2-for-i-et-sql.md](docs/cheatsheets/04-db2-for-i-et-sql.md) |
+| Emploi, formation, structure de job-i.fr | [docs/cheatsheets/05-emploi-et-formation.md](docs/cheatsheets/05-emploi-et-formation.md) |
+| Un exemple de code réel (mon code) | [docs/INDEX-SOURCES.md](docs/INDEX-SOURCES.md) → `sources/` |
+| Liste machine-lisible des sources (CSV) | [docs/sources.csv](docs/sources.csv) |
+| Structure d'une bibliothèque (types, objets de données) | `architecture/<BIBLIOTHEQUE>.md` |
+| Si une commande/instruction du code existe sur job-i.fr | [docs/VERIFICATION-JOB-I.md](docs/VERIFICATION-JOB-I.md) |
+| Ajouter mes propres notes/exemples | [docs/apports/README.md](docs/apports/README.md) |
+| Énoncés de TP et d'examens résumés (anonymisés) | [docs/enonces/README.md](docs/enonces/README.md) |
+| Ce qui manque dans les fiches (utilisé dans le code, absent des fiches) | [docs/MANQUES.md](docs/MANQUES.md) |
+| Verdict automatique sur un document ajouté (pertinent ou non) | [docs/EVALUATION-APPORTS.md](docs/EVALUATION-APPORTS.md) |
+| Plusieurs solutions pour un même exercice | [docs/VARIANTES.md](docs/VARIANTES.md) (collaborateurs), [docs/COMPARAISON-BIBLIOTHEQUES.md](docs/COMPARAISON-BIBLIOTHEQUES.md) (bibliothèques du cours) |
+| Cycle RPG (cours) ou sous-routines | [fiche 06](docs/cheatsheets/06-cycle-rpg-et-sous-routines.md) |
+| Exemples du cycle RPG (fichier primaire, L1-L9, 1P, OF) | [docs/CYCLE-GAP-EXEMPLES.md](docs/CYCLE-GAP-EXEMPLES.md) |
+| Ajouter ma bibliothèque (collaborateur) | [contributions/README.md](contributions/README.md) |
+| Règles de lecture, de vérification et de mise à jour (prompt système) | [docs/PROMPT-SYSTEME.md](docs/PROMPT-SYSTEME.md) (chargé via [CLAUDE.md](CLAUDE.md)) |
+| Ce qui a changé sur job-i.fr depuis la dernière vérification | [docs/JOBI-CHANGES.md](docs/JOBI-CHANGES.md) (présent seulement s'il y a des changements) |
+| Donner le wiki à n'importe quel chat Claude (texte à coller, projet, fichier unique) | [docs/CONTEXTE-CLAUDE.md](docs/CONTEXTE-CLAUDE.md), [llms-full.txt](llms-full.txt) |
+| Faire tourner le wiki depuis n'importe quel appareil (Actions, routine cloud, PowerShell 7) | [docs/PORTABILITE.md](docs/PORTABILITE.md) |
+
+## Arborescence
+
+```
+README.md                    ← ce fichier (point d'entrée)
+llms.txt                     ← même carte, format minimal pour agents
+docs/
+  cheatsheets/01..05-*.md    ← fiches mémo (source : https://job-i.fr/)
+  INDEX-SOURCES.md           ← index de toutes les sources converties
+  sources.csv                ← Type;Lib;File;Member;Lines;Width;Path
+  VERIFICATION-JOB-I.md      ← code vs référence job-i.fr
+  apports/                   ← notes de l'utilisateur à intégrer
+  variantes/                 ← un exercice = une page comparant les solutions (généré)
+contributions/               ← bibliothèques des collaborateurs (PR) : <pseudo>/contribution.json + <BIB>/…
+architecture/<LIB>.md        ← une page par bibliothèque (BIB01 … BIB23, noms anonymisés)
+sources/<TYPE>/<LIB>/<MEMBRE>.md   ← code converti, un fichier par membre
+scripts/                     ← génération et automatisation (PowerShell)
+depot/sauvegardes/           ← dépôt d'exports ACS (ignoré par Git)
+```
+
+### Types de sources (`sources/`)
+
+| Dossier | Contenu | Fichier source IBM i d'origine |
+|---|---|---|
+| `RPG/RPG-ILE` | RPG IV (colonné ou `**free`) | QRPGLESRC |
+| `RPG/RPG-III-400` | RPG III / RPG/400 | QRPGSRC |
+| `RPG/Copy` | membres `/copy` (prototypes) | QCPYSRC |
+| `CL/CL-procedural` | CL (OPM) | QCLPSRC |
+| `CL/CL-ILE` | CLLE | QCLLESRC |
+| `DDS` | PF / LF / écrans (DSPF) | QDDSSRC, QLFSRC, QPFSRC, QDSPSRC |
+| `Menus` | menus | QMNUSRC |
+| `Autres/Service-programs` | sources de liage (EXPORT) | QSRVSRC |
+| `Autres/Web` | écrans/pages web | QWEBSRC |
+
+Remarque : certains DDS peuvent se trouver dans `CL/` (membres rangés dans un mauvais fichier source d'origine).
+
+## Format d'un fichier de `sources/`
+```
+---
+bibliotheque: BIB05
+fichier_source: QRPGLESRC
+membre: BECRUD
+type: RPG/RPG-ILE
+longueur_enregistrement: 100
+lignes: 71
+modifie: 2026-11-16
+---
+# BIB05/QRPGLESRC/BECRUD
+```rpg ... ```      ← code intégral dans un bloc de code (rpg | cl | sql | text)
+```
+- Grep utile : `bibliotheque:`, `membre:`, `type:` dans l'en-tête ; le code est dans l'unique bloc de code.
+- Les membres de **données** (fichiers physiques) ne sont pas convertis ; ils sont listés dans `architecture/<LIB>.md`.
+
+## Format d'une cheat sheet (`docs/cheatsheets/`)
+- Un bloc `<!-- AUTO:START --> … <!-- AUTO:END -->` : synthèse de job-i.fr, **régénérée** (chaque section a un lien `[source](https://job-i.fr/...)`).
+- Une section `## Mes exemples` : exemples de l'utilisateur, liens vers `sources/`, **jamais écrasée**.
+- Pages job-i utiles : fiche commande `https://job-i.fr/commandes-ibm-i/<commande-minuscule>` ; recherche `https://job-i.fr/aller?q=<terme>`.
+
+## Conventions
+- Noms IBM i en MAJUSCULES (`CRTPF`, `QRPGLESRC`). Bibliothèques : noms **anonymisés** `BIBnn` (la correspondance avec les noms réels reste privée, hors dépôt).
+- Ne pas modifier les fichiers de `sources/`, `architecture/` et `docs/INDEX-SOURCES.md` à la main : ils sont régénérés. Les modifications durables vont dans `docs/apports/` ou dans « Mes exemples ».
+- Les ressources brutes (PDF, zips de cours, exports ACS) restent **hors dépôt** dans `Documents\cour et autre` ; elles ne sont jamais extraites ni exécutées par l'automatisation.
+
+## Automatisation
+| Tâche | Fréquence | Effet |
+|---|---|---|
+| `wiki-ibmi-regeneration` | tous les jours 18h | `scripts\Run-All.bat` (convertit, vérifie job-i) → intègre `docs/apports/` → commit → `git push` → Drive |
+| `cheatsheet-job-i-mensuel` | le 1er du mois | met à jour les blocs AUTO depuis job-i.fr → commit → push |
+
+Chaque jour, `scripts\Check-JobIUpdates.ps1` compare job-i.fr (sitemaps + pages sources) à `docs/.jobi-state.json` ; en cas de changement, les blocs AUTO des fiches concernées sont mis à jour.
+
+Contrôle de code neuf : `scripts\Verify-Code.ps1 -Path <fichier.clp|.rpgle>` vérifie commandes CL, instructions et fonctions RPG contre job-i.fr.
+
+Scripts : `Verify-Code.ps1` (vérifie un code que vous écrivez), `Check-JobIUpdates.ps1` (détection de mises à jour job-i.fr), `Build-Wiki.ps1` (EBCDIC CCSID 1147 → Markdown), `Verify-JobI.ps1` (compare avec les 1 830 commandes et termes RPG de job-i.fr), `Push-Wiki.ps1` (push manuel avec confirmation), `Run-All.bat`.
+
+
+=== FICHIER : CLAUDE.md ===
+# Instructions du projet « Wiki IBM i »
+
+> Prompt système anonymisé : aucun nom, identifiant, chemin personnel ni URL de dépôt. Il s'applique à toute personne qui travaille avec ce dépôt.
+
+Tu es l'**assistant de développement IBM i** de l'utilisateur, au quotidien : tu l'aides à **écrire, corriger et comprendre du code** RPG (III / IV / full free), CL, DDS et SQL (Db2 for i). Ta base de vérité est le **Wiki IBM i** (ce dépôt), construit à partir de job-i.fr et d'exemples de code réels. **Tu ne donnes aucune commande, syntaxe, message ou nom de service que tu n'as pas vérifié dans le wiki ou sur job-i.fr.**
+
+## 0. Workflow obligatoire quand tu crées ou modifies du code
+1. **Cadrer** : version cible (RPG III / IV colonné / full free ; IBM i 7.5 ou 7.6), type d'objet (PGM, module, SRVPGM, DSPF, PF/LF, CL), nom et bibliothèque. Si une info manque et change le code, pose une seule question courte ; sinon prends l'hypothèse la plus probable et annonce-la.
+2. **Chercher dans le wiki avant d'écrire** : fiche concernée (`docs/cheatsheets/`) pour la syntaxe ; `docs/INDEX-SOURCES.md` / `docs/sources.csv` pour un exemple proche ; `architecture/<LIB>.md` pour les fichiers et bibliothèques existants (noms de PF, formats, zones). Réutilise les conventions du code existant (noms, `**free`, copies `/copy`, gestion d'erreurs `MONMSG`/`MONITOR`) plutôt que d'en inventer.
+3. **Écrire** le code minimal qui répond au besoin, dans la version demandée, avec commentaires courts en français.
+4. **Vérifier chaque élément technique** :
+   - Commandes CL, instructions et fonctions RPG : contrôle-les avec `scripts/Verify-Code.ps1 -Path <fichier>` (ou `-Code "<texte>"`), ou à la main sur `https://job-i.fr/commandes-ibm-i/<commande>` / `https://job-i.fr/aller?q=<terme>`.
+   - Messages d'erreur gérés (`MONMSG MSGID(CPF…)`) : vérifie l'ID et son sens (fiche 02, `https://job-i.fr/messages-ibm-i`).
+   - Services SQL (`QSYS2.…`, `SYSTOOLS.…`) : vérifie le nom dans la fiche 04 ou `QSYS2.SERVICES_INFO`.
+   - Paramètres, types, longueurs, indicateurs, fin de programme (`*INLR`/`RETURN`), fermeture des fichiers.
+   - Tout ce qui est marqué « à contrôler » par le script : cherche-le (job-i, fiche, exemples du dépôt) ou signale-le comme **non vérifié**. Ne le présente jamais comme sûr.
+5. **Livrer** dans ce format :
+   - le code (bloc `rpg` / `cl` / `sql`) ;
+   - **Hypothèses** (version, objets supposés existants) ;
+   - **Vérifications** : tableau `Élément | Statut (vérifié / non vérifié / corrigé) | Source` (chemin du wiki ou URL job-i.fr) ;
+   - **Compilation / test** : commande de création adaptée (`CRTBNDRPG`, `CRTRPGPGM`, `CRTCLPGM`, `CRTPF`, `RUNSQLSTM`…) et un cas de test à lancer sur l'IBM i. Tu ne peux pas compiler : dis-le, n'affirme jamais « ça compile ».
+6. Si l'utilisateur te montre une erreur (message CPF/MCH/RNF), cherche-la d'abord dans la fiche 02 et sur job-i.fr avant de proposer un correctif.
+7. Si le wiki est incomplet ou contredit job-i.fr, dis-le, applique job-i.fr (source la plus récente) et propose d'ajouter l'information dans `docs/apports/` (ou « Mes exemples » de la fiche).
+
+## 1. Où lire (dans cet ordre)
+1. `README.md` (racine) : carte « je cherche → je vais là » et conventions. `llms.txt` : même carte, format minimal.
+2. **Question de cours / syntaxe / commande / concept** → `docs/cheatsheets/README.md`, puis la fiche :
+   - 01 concepts (objets, ILE, travaux, profils, sécurité, PTF, performances)
+   - 02 référence (commandes CL, messages CPF/MCH, valeurs système)
+   - 03 RPG par version (III, IV colonné, full free, PR/PI, sous-fichiers, DTAARA, API)
+   - 04 Db2 for i et SQL (PF, LF, services SQL, recettes, Node.js)
+   - 05 emploi et formation
+   - 06 cycle RPG (GAP) et sous-routines
+3. **Énoncé d'un TP ou d'un examen** → `docs/enonces/README.md` (résumés anonymisés, `id` d'exercice, solutions du dépôt) et `docs/enonces/ANALYSE-ENONCES.md`. Les épreuves interdisent l'IA pendant l'épreuve : propose ces pages en révision. `docs/INDEX-SOURCES.md` ou `docs/sources.csv` (colonnes Type, Lib, File, Member, Lines, Width, Path), puis `sources/<TYPE>/<LIB>/<MEMBRE>.md`.
+4. **Structure d'une bibliothèque** → `architecture/<LIB>.md`.
+5. **« Cette commande/instruction existe-t-elle ? »** → `docs/VERIFICATION-JOB-I.md`, puis la page `https://job-i.fr/commandes-ibm-i/<commande-en-minuscules>`.
+6. **Notes et exemples personnels** → `docs/apports/` et sections « Mes exemples » des fiches.
+7. Ressources brutes (PDF, zips de cours, exports ACS) : conservées **hors dépôt**, en lecture seule, **jamais extraites ni exécutées**.
+
+## 2. Règles de réponse
+- Réponds en français, avec la syntaxe exacte (MAJUSCULES pour les noms IBM i) et un exemple court.
+- **Cite toujours ta source** : chemin du fichier du dépôt (et ligne si possible) ou URL job-i.fr. Pour un exemple de code, cite `sources/...` ; pour une règle générale, la fiche et son lien `[source]`.
+- Distingue clairement : *fait documenté* (fiche / job-i) · *constat dans le code du dépôt* · *hypothèse* (à marquer comme telle). Ne comble jamais un trou par une invention : dis « non documenté dans le wiki » et propose de chercher sur job-i.fr.
+- Précise la **version** concernée : RPG III (`QRPGSRC`, `CRTRPGPGM`), RPG IV colonné, full free (`**free`, `DCL-*`, 7.2 TR3+) ; version d'IBM i si pertinent (7.5 / 7.6).
+- Les membres de `sources/` sont des conversions EBCDIC → Markdown : le code est dans l'unique bloc de code ; l'en-tête YAML donne bibliothèque, membre, type, lignes. Certains DDS sont rangés dans `CL/` (mauvais fichier source d'origine).
+
+## 3. Vérifier à chaque fois (checklist avant de répondre)
+1. **Source trouvée ?** Le fichier cité existe et contient bien l'information (relis le passage, ne te fie pas à la mémoire).
+2. **Commande / instruction / message** cité : présent sur job-i.fr (fiche `/commandes-ibm-i/<nom>` ou `docs/VERIFICATION-JOB-I.md`) ? Sinon, signale-le.
+3. **Cohérence de version** : la syntaxe correspond-elle à la version RPG/IBM i demandée (colonne vs libre, `CRTRPGPGM` vs `CRTBNDRPG`) ?
+4. **Exemple de code** : paramètres, types, longueurs et indicateurs cohérents ; pas de variable non déclarée ; fin de programme (`*INLR`/`RETURN`) présente.
+5. **Fraîcheur** : regarde la date de `docs/JOBI-CHANGES.md` et du dernier commit ; si un changement non traité y figure pour la page concernée, précise que la fiche peut être périmée.
+6. **Après modification d'un fichier du dépôt** : relis-le, vérifie les liens relatifs et que la zone `## Mes exemples` est intacte.
+Termine toute réponse technique par une ligne « Vérifié : <ce qui a été contrôlé> · Non vérifié : <ce qui reste à confirmer> ».
+
+## 4. Mise à jour depuis job-i.fr
+- `scripts/Check-JobIUpdates.ps1` compare `https://job-i.fr/sitemap.xml` (lastmod, nombre d'URL, hash des listes) et le texte des pages sources des fiches avec `docs/.jobi-state.json`. Sortie `10` = changements ; rapport dans `docs/JOBI-CHANGES.md`.
+- Si changements : pour chaque page signalée, refais un WebFetch (synthèse concise, FR) et **remplace uniquement le bloc `<!-- AUTO:START --> … <!-- AUTO:END -->`** de la fiche concernée ; mets à jour les chiffres clés ; ne touche jamais à `## Mes exemples`. Synthèse personnelle + lien source, jamais de copie longue.
+- Correspondance sitemap / page → fiche :
+
+| Sitemap / pages job-i | Fiche |
+|---|---|
+| `sitemap-commandes`, `sitemap-messages`, `sitemap-valeurs-systeme` ; `/commandes-ibm-i`, `/messages-ibm-i`, `/valeurs-systeme-ibm-i` | 02 |
+| `/cycle-gap-rpg`, `/instructions-rpg/begsr` | 06 | `/instructions-rpg`, `/fonctions-rpg`, `/coder-rpg-iii`, `/sous-fichier-rpg`, `/mots-edition-rpg`, `/prototypes-rpg-pr-pi`, `/zone-de-donnees-dtaara-ibm-i`, `/api-systeme-ibm-i`, `/constantes-figuratives-rpg`, `/cycle-gap-rpg` | 03 |
+| `sitemap-services`, `sitemap-recettes` ; `/fichier-physique-pf-ibm-i`, `/fichier-logique-lf-ibm-i`, `/services-sql-ibm-i`, `/recettes-sql-ibm-i`, `/nodejs-ibm-i` | 04 |
+| `/as400-vs-ibm-i`, `/objets-ibm-i`, `/ile-ibm-i`, `/travaux-ibm-i`, `/profils-utilisateurs-ibm-i`, `/securite-ibm-i`, `/installer-ptf-ibm-i`, `/performances-ibm-i` | 01 |
+| `/se-former-ibm-i`, offres d'emploi | 05 |
+| `sitemap-pages` : nouvelle page non rattachée | nouvelle fiche `06-…` + entrée dans `docs/cheatsheets/README.md`, `README.md`, `llms.txt` |
+
+- Après mise à jour : `git add -A`, commit, puis push **uniquement si l'utilisateur l'a autorisé** (jamais `--force`, jamais de token ou mot de passe dans une commande).
+
+## 5. Contributions des collaborateurs (à chaque merge)
+Les collaborateurs ajoutent leur bibliothèque dans `contributions/<pseudo>/` (voir `contributions/README.md` : `contribution.json` + dossier `<BIBLIOTHEQUE>/<FICHIER-SOURCE>/<MEMBRE>.<ext>`) par Pull Request ; ils ne modifient jamais `main`. **Après chaque merge** (ou à la demande), fais dans l'ordre :
+1. `git pull origin main`, puis repère les contributions nouvelles ou modifiées (`git log --stat`, `contributions/`).
+2. **Vérifier que ce qui a été mergé existe réellement** : `scripts/Verify-Contributions.ps1` (ajoute `-Jobi` pour contrôler commandes CL / instructions RPG sur job-i.fr). Lis `docs/VERIFICATION-CONTRIBUTIONS.md` : toute **erreur** (fichier déclaré inexistant, vide, binaire, secret, chemin sorti de la bibliothèque) = tu le signales au propriétaire, tu ne corriges pas le code d'un autre à sa place ; les **avertissements** (fichier non déclaré, objet référencé ni fourni ni déclaré) sont à lister dans ta réponse.
+3. Ouvre et **relis le code** de chaque exercice nouveau : la consigne et le `resultat_attendu` correspondent-ils au code ? Une solution qui ne fait pas ce qu'elle annonce est signalée, pas intégrée en silence.
+4. **Ajouter les différences** : `scripts/Build-Variantes.ps1` regroupe les exercices de même `id` dans `docs/VARIANTES.md` et `docs/variantes/<id>.md` (comparatif, techniques en propre, codes). Ajoute ensuite ton analyse de fond (choix de structure, avantages/limites de chaque variante) **à la fin de la page, sous `## Analyse`** : le script conserve cette section quand il régénère la page. Si deux contributeurs ont le même `id` mais des consignes ou résultats différents, signale-le : l'`id` doit être séparé.
+5. Quand tu cites une solution d'un collaborateur, indique **l'auteur** et le chemin `contributions/<pseudo>/…`. Pour proposer des alternatives à l'utilisateur, appuie-toi sur `docs/VARIANTES.md` et présente plusieurs structures quand elles existent.
+6. Termine : `git add -A`, commit, push (règle habituelle, jamais `--force`).
+
+## 6. Documents ajoutés : évaluation automatique de pertinence
+Tout document déposé dans `docs/apports/` ou `contributions/` est évalué par `scripts/Assess-Document.ps1` (à chaque PR / push via GitHub Actions, à chaque `Run-All.bat`, et à la demande avec `-Path <fichier>`). Résultat : `docs/EVALUATION-APPORTS.md`.
+- Score /100 : lien avec IBM i (termes reconnus par job-i, 40) + nouveauté (doublon ? 30) + comble un manque des fiches (`docs/MANQUES.md`, 20) + qualité (10). Verdicts : **PERTINENT** (≥ 60), **A REVOIR** (35-59), **NON PERTINENT**, **DEJA PRESENT** (copie d'une source), **REJETE** (secret, binaire, format interdit).
+- Ce verdict est une **aide** : relis chaque document avant de l'intégrer. PERTINENT → intègre-le (« Mes exemples » de la fiche indiquée, ou variante via `contributions/`). A REVOIR → lis, décide, **explique ta décision** au propriétaire. NON PERTINENT / DEJA PRESENT → ne l'intègre pas, dis pourquoi. REJETE → ne le publie pas, signale-le.
+- Après intégration, vide ou archive le document de `docs/apports/` selon la règle de ce dossier, puis commit + push.
+## 7. Interdits
+- Ne modifie pas à la main `sources/`, `architecture/`, `docs/INDEX-SOURCES.md`, `docs/sources.csv` (régénérés par `scripts/Run-All.bat`), ni `docs/VARIANTES.md`, `docs/variantes/`, `docs/VERIFICATION-CONTRIBUTIONS.md` (générés ; seule la section `## Analyse` d'une page de variantes est conservée). Ne modifie pas le code d'un contributeur dans `contributions/<pseudo>/` : signale le problème.
+- N'exécute ni n'extrais zips ou `.exe` des ressources brutes ; ne publie pas de secret, d'identifiant ni de donnée personnelle ; ne reproduis pas de longs passages de job-i.fr ou d'IBM.
+- N'invente pas de commande CL, de message ou de fonction : vérifie sur job-i.fr.
+
+
+=== FICHIER : docs/cheatsheets/README.md ===
+# Cheat sheets IBM i (d'après job-i.fr)
+
+Dernière mise à jour : 2026-11-17
+- Fiche 02 : messages 13 213 (107 fiches « Comment s'en sortir »). Fiche 03 : ajout de la page `/rpg-iii` (79 codes opération en 10 familles), chiffres site (54 instructions, 95 fonctions). Fiche 05 : offres 176. Fiches 01, 04, 06 : aucun changement détecté (commandes 1 830, services SQL 390, valeurs système 158, recettes 36 inchangés).
+
+| Fiche | Contenu |
+|---|---|
+| [01 - Comprendre IBM i](01-comprendre-ibm-i.md) | objets, ILE, travaux, profils, sécurité, PTF, performances |
+| [02 - Référence système](02-reference-systeme.md) | commandes CL, messages, valeurs système |
+| [03 - RPG par version](03-rpg-par-version.md) | RPG III, RPG IV colonné, full free, PR/PI, sous-fichiers, DTAARA, API |
+| [04 - Db2 for i et SQL](04-db2-for-i-et-sql.md) | PF, LF, services SQL, recettes, Node.js |
+| [05 - Emploi et formation](05-emploi-et-formation.md) | offres, formation, structure du site |
+| [06 - Cycle RPG et sous-routines](06-cycle-rpg-et-sous-routines.md) | cycle GAP (7 étapes, indicateurs), BEGSR/EXSR, exemples du dépôt |
+
+## Règles de mise à jour
+- Chaque fiche a un bloc `<!-- AUTO:START --> … <!-- AUTO:END -->` : il est **régénéré** par la tâche mensuelle à partir de job-i.fr.
+- La section **« Mes exemples »** (sous le bloc) n'est **jamais écrasée** : c'est là que vont vos exemples.
+- Vos apports : déposez notes, fichiers, extraits dans [`../apports/`](../apports/README.md) ; la tâche les intègre dans « Mes exemples » de la fiche concernée.
+- Contenu de job-i.fr : synthèses personnelles avec lien vers la page source, pas de copie intégrale.
+
+
+=== FICHIER : docs/cheatsheets/01-comprendre-ibm-i.md ===
+# 01 - Comprendre IBM i
+
+> Source : [job-i.fr](https://job-i.fr/) (synthèse personnelle, pages liées en fin de section). Les blocs `AUTO` sont régénérés ; **écrivez uniquement dans « Mes exemples »**.
+
+<!-- AUTO:START -->
+## AS/400 et IBM i  ([source](https://job-i.fr/as400-vs-ibm-i), [découverte](https://job-i.fr/ibm-i))
+- Même système depuis 1988 : AS/400 → iSeries (2000) → i5/OS (2004) → IBM i (2008) → 7.5 (2022) → 7.6 (2025, Power11).
+- Constantes : TIMI (couche machine), stockage à un niveau, objets, base de données intégrée (Db2 for i).
+- Vocabulaire : **OPM** (ancien modèle) / **ILE**, **LPAR** (partition), **PASE** (runtime AIX : Python, git), **TR/PTF** (Technology Refresh / correctifs).
+- RPG entièrement libre depuis 7.2 TR3 (2015).
+
+## Objets  ([source](https://job-i.fr/objets-ibm-i))
+- Objet = nom (10 car.) + type + bibliothèque ; résolution par `*LIBL`.
+
+| Type | Rôle |
+|---|---|
+| `*FILE` PF / LF / DSPF / PRTF / SAVF | table / vue-index / écran / impression / sauvegarde |
+| `*PGM`, `*MODULE`, `*SRVPGM`, `*BNDDIR` | programme, module, programme de service, répertoire de liage |
+| `*CMD`, `*DTAARA`, `*DTAQ` | commande, zone de données, file de données |
+| `*JRN`/`*JRNRCV`, `*JOBQ`, `*OUTQ`, `*SBSD` | journal, file de travaux, file de sortie, sous-système |
+| `*LIB`, `*USRPRF`, `*AUTL` | bibliothèque, profil, liste d'autorisation |
+
+- Commandes : `WRKOBJ`, `DSPOBJD`, `CRTDUPOBJ`, `MOVOBJ`, `RNMOBJ`, `DLTOBJ`, `DSPOBJAUT`, `GRTOBJAUT`, `SAVOBJ`/`RSTOBJ`, `DSPLIBL`, `ADDLIBLE`.
+- Erreurs : `CPF4101` fichier introuvable dans *LIBL, `CPF1023` doublon.
+
+## ILE  ([source](https://job-i.fr/ile-ibm-i))
+- Compilateur ILE → `*MODULE` → liage → `*PGM` ou `*SRVPGM` ; `*BNDDIR` = où le lieur cherche.
+- `CRTRPGMOD`/`CRTCLMOD`/`CRTCMOD`, `CRTPGM`, `CRTSRVPGM` (source de liage EXPORT), `CRTBNDRPG` (compile + lie en une étape).
+- Liage par copie (`UPDPGM`) ou par référence (`UPDSRVPGM`). `DFTACTGRP(*NO)` requis pour `ACTGRP`/`BNDDIR`.
+- Ajouter les nouvelles procédures **en fin** de liste d'export (compatibilité).
+
+## Travaux et sous-systèmes  ([source](https://job-i.fr/travaux-ibm-i))
+- Job = `numéro/utilisateur/nom`. INT (QINTER, prio 20, `DSPW` au repos) ; BCH (`SBMJOB` → JOBQ → QBATCH, prio 50, `MSGW` si erreur).
+- États : `RUN`, `DSPW`, `MSGW` (à traiter), `DEQW`, `DLYW`, `LCKW`.
+- Commandes : `WRKACTJOB`, `WRKJOB`, `WRKSBMJOB`, `WRKUSRJOB`, `SBMJOB`, `DSPJOBLOG`, `CHGJOB`, `HLDJOB`, `RLSJOB`, `ENDJOB`.
+- SQL : `QSYS2.ACTIVE_JOB_INFO`, `JOB_INFO`, `JOBLOG_INFO`.
+
+## Profils et droits  ([source](https://job-i.fr/profils-utilisateurs-ibm-i))
+- `*USRPRF` : classe (`USRCLS`), `CURLIB`, `INLMNU`, `LMTCPB`, `JOBD`, groupes (`GRPPRF`/`SUPGRPPRF`), `AUT` public (`*EXCLUDE`).
+- Désactiver (`STATUS(*DISABLED)`) plutôt que supprimer ; créer demande `*SECADM`.
+- `SBMJOB JOBD(*USRPRF)` : ajouter `INLLIBL(*JOBD) CURLIB(*USRPRF)`.
+- Commandes : `CRTUSRPRF`, `CHGUSRPRF`, `DSPUSRPRF`, `DLTUSRPRF OWNOBJOPT(...)`, `ANZDFTPWD`, `GRTOBJAUT`. SQL : `QSYS2.USER_INFO`.
+
+## Sécurité  ([source](https://job-i.fr/securite-ibm-i))
+- `QSECURITY` : 40 recommandé (50 = très strict) ; effet au prochain IPL.
+- Mots de passe : `QPWDLVL` 4, 15 car. min, 90 jours ; connexion : `QMAXSIGN` 3, `QLMTSECOFR` 1, `QINACTITV` 15 ; audit : `QAUDCTL`/`QAUDLVL`.
+- Outils : `PRTSYSSECA`, `CHGSECAUD`, `ANZPRFACT`. 7.6 : MFA via `CHGSECA ADLSGNFAC`.
+
+## PTF  ([source](https://job-i.fr/installer-ptf-ibm-i))
+- Installer par groupes ; microcode côté B ; jamais `INSTYP(*DLYALL)`.
+- Séquence : `CRTIMGCLG` → `VFYIMGCLG` → `INSPTF ... INSTYP(*IMMDLY)` → `PWRDWNSYS OPTION(*CNTRLD) DELAY(600) RESTART(*YES) IPLSRC(B)` → `APYPTF ... APY(*PERM)` après quelques semaines. SQL : `QSYS2.GROUP_PTF_INFO`.
+
+## Performances  ([source](https://job-i.fr/performances-ibm-i))
+- Mesurer avant de régler : Collection Services, `ACTIVE_JOB_INFO`, `MEMORY_POOL_INFO`, `WRKSYSACT`.
+- Leviers : `OVRDBF ... SEQONLY(*YES 2000)`, éviter `ACTGRP(*NEW)` sur appels fréquents, `*INLR` seulement en fin, `SAVLIB DTACPR(*MEDIUM)`.
+- Valeurs : `QDYNPTYSCD`=1, `QDYNPTYADJ`=1, `QPFRADJ`=2.
+<!-- AUTO:END -->
+
+## Mes exemples
+_Exemples tirés de mon travail (compléter via `docs/apports/`)._
+
+- **Sauvegarde d'une bibliothèque en SAVF** : [SAVECL](../../sources/CL/CL-procedural/BIB05/SAVECL.md) — `CRTSAVF` + `MONMSG CPF7302` + `SAVOBJ DEV(*SAVF)`.
+- **Environnement automatisé** (JOBQ, OUTQ, JOBD, SBS, CLS) : [ENVAUTO](../../sources/CL/CL-procedural/BIB05/ENVAUTO.md).
+- **Export de sources vers l'IFS** : [EXPSRCIFS](../../sources/CL/CL-procedural/BIB05/EXPSRCIFS.md).
+
+
+=== FICHIER : docs/cheatsheets/02-reference-systeme.md ===
+# 02 - Référence système (CL, messages, valeurs système)
+
+> Source : [job-i.fr](https://job-i.fr/). Blocs `AUTO` régénérés ; écrivez dans « Mes exemples ».
+
+<!-- AUTO:START -->
+## Commandes CL  ([source](https://job-i.fr/commandes-ibm-i)) — 1 830 fiches
+Organisation du site : blocs thématiques (fichiers, IFS, sauvegardes, spools, travaux, profils, bibliothèques, messages, zones de données, compilation, débogage, journalisation, droits, sous-systèmes, planification, valeurs système, PTF) + index A→W. Fiche : `https://job-i.fr/commandes-ibm-i/<commande>`.
+
+| Thème | Commandes courantes |
+|---|---|
+| Fichiers | `CRTPF`, `CRTSRCPF`, `CPYF`, `DSPFD`, `DSPFFD`, `DSPPFM`, `DLTF`, `DCLF` |
+| Bibliothèques | `CRTLIB`, `DLTLIB`, `DSPLIBL`, `EDTLIBL`, `ADDLIBLE` |
+| Objets | `CRTDUPOBJ`, `DLTOBJ`, `DSPOBJD`, `CHKOBJ` |
+| Données | `CRTDTAARA`, `CRTJOBQ` |
+| Travaux | `WRKACTJOB`, `DSPJOBLOG`, `ENDJOB` |
+| Profils | `CRTUSRPRF`, `DSPUSRPRF`, `CHGPWD` |
+| Système | `DSPSYSVAL`, `CHGSYSVAL` |
+
+## Messages  ([source](https://job-i.fr/messages-ibm-i)) — 13 213 messages CPF / MCH (107 fiches « Comment s'en sortir »)
+- **CPF** : système (commandes, objets, travaux, fichiers) ; **MCH** : erreurs machine (pointeurs, décimal, division par zéro).
+
+| Message | Sens |
+|---|---|
+| CPF9801 / CPF2105 | objet introuvable |
+| CPF9810 | bibliothèque introuvable |
+| CPF9802 | pas autorisé à l'objet |
+| CPF4131 | niveau de format différent (recompiler) |
+| CPF5027 / CPF3130 / CPF3202 | enregistrement / membre / fichier utilisé par un autre travail |
+| CPF5026 | clé en double |
+| CPF0001 | erreur dans la commande |
+| CPF9999 | erreur non interceptée |
+| MCH3601 | pointeur non initialisé |
+| MCH1210 / MCH1211 | zone trop petite / division par zéro |
+| MCH1202 | paramètres incohérents (type/longueur) |
+
+- Piège : `MONMSG MSGID(CPFxxxx)` pour intercepter dans un CL.
+
+## Valeurs système  ([source](https://job-i.fr/valeurs-systeme-ibm-i)) — 158 valeurs (7.5)
+Catégories : Sécurité (42), Contrôle système (62), Allocation (14), Date/heure (15), Messages/journalisation (10), Stockage (7), Édition (5), Liste de bibliothèques (3).
+
+| Valeur | Rôle |
+|---|---|
+| QSECURITY, QPWDLVL, QPWDMINLEN, QPWDEXPITV | niveau sécurité, règles de mot de passe |
+| QMAXSIGN, QINACTITV, QLMTSECOFR | tentatives, inactivité, accès privilégiés |
+| QAUDLVL, QCRTAUT | audit, droits publics par défaut |
+| QCCSID, QLANGID, QCNTRYID, QKBDTYPE | jeu de caractères, langue, pays, clavier |
+| QDATFMT, QDATSEP, QDECFMT, QCURSYM, QTIMZON | formats date/décimal/monnaie/fuseau |
+| QMAXJOB, QUSRLIBL | nb max de travaux, bibliothèques utilisateur |
+
+- SQL : `SELECT * FROM QSYS2.SYSTEM_VALUE_INFO` (filtrer les valeurs changées).
+<!-- AUTO:END -->
+
+## Mes exemples
+- **Gestion de liste de bibliothèques** : [CFGLIBL](../../sources/CL/CL-procedural/BIB06/CFGLIBL.md), [CHGLIBCURR](../../sources/CL/CL-procedural/BIB05/CHGLIBCURR.md).
+- **Commandes vérifiées dans mon code** : voir [VERIFICATION-JOB-I](../VERIFICATION-JOB-I.md).
+
+
+=== FICHIER : docs/cheatsheets/03-rpg-par-version.md ===
+# 03 - RPG par version (RPG III / RPG IV colonné / full free)
+
+> Source : [job-i.fr](https://job-i.fr/). Blocs `AUTO` régénérés ; écrivez dans « Mes exemples ».
+
+<!-- AUTO:START -->
+## Quelle version ?
+
+| Version | Source | Compilateur | Débogage | Forme |
+|---|---|---|---|---|
+| **RPG III / RPG/400** | `QRPGSRC` | `CRTRPGPGM` | `STRISDB` | tout en colonnes (H F E I C O) |
+| **RPG IV (ILE) colonné** | `QRPGLESRC` | `CRTBNDRPG` / `CRTRPGMOD` | `STRDBG` | spécifications D, EVAL, BIF |
+| **RPG IV full free** (`**FREE`, 7.2 TR3+) | `QRPGLESRC` | `CRTBNDRPG` | `STRDBG` | `DCL-S`, `DCL-F`, `DCL-PI`, sans colonnes |
+
+## RPG III  ([source](https://job-i.fr/coder-rpg-iii), [codes opération](https://job-i.fr/rpg-iii))
+- **79 codes opération** répartis en 10 familles (lecture fichiers 9, écriture/contrôle 12, structures 9, indicateurs/branchements 5, sous-programmes/appels 11, calculs 9, transferts 7, chaînes 6, tableaux/bits 9, écrans 2) ; chaque fiche donne un piège et l'équivalent RPG ILE. Site : 54 instructions et 95 fonctions RPG IV.
+- Spécif. en colonne 6 : **H** contrôle, **F** fichiers, **E** tableaux, **L** saut (citée sans explication), **I** entrées, **C** calculs, **O** sorties.
+- Spécification **C** (calculs), colonne par colonne :
+
+| Colonnes | Contenu |
+|---|---|
+| 6 | `C` (spécification de calcul) ; `*` en colonne 7 = commentaire |
+| 7-8 | niveau de rupture (L1-L9, LR) ou SR |
+| 9-17 | indicateurs de condition (`N` = négation) |
+| 18-27 | facteur 1 |
+| 28-32 | code opération (5 car. max) |
+| 33-42 | facteur 2 |
+| 43-48 | résultat (6 car. max) |
+| 49-51 | longueur |
+| 52 | décimales |
+| 53 | extension (`H`, `N`, `P`) |
+| 54-59 | 3 paires d'indicateurs résultants |
+| 60-74 | commentaire |
+
+- Repère de colonnes (à placer au-dessus d'un source RPG III en police fixe) :
+
+```text
+         1         2         3         4         5         6         7
+1234567890123456789012345678901234567890123456789012345678901234567890123456789
+     C           PCODE     CHAINARTICLE              91
+```
+- Cycle : `SETON LR` pour terminer (sinon boucle).
+- Opérations : `MOVE`/`MOVEL`, `Z-ADD`, `SUB`, `IFEQ…ENDIF`, `DOWEQ…ENDDO`, `CHAIN`, `SETLL`, `READ`, `UPDAT`, `EXFMT`, `DSPLY`, `SETON`/`SETOF`.
+- Piège : en RPG III, fichier/format/zone doivent avoir des noms distincts ; littéral de 8 car. utiles en facteurs.
+```
+     FARTICLE UF  E           K        DISK
+     C           PCODE     CHAINARTICLE              91
+     C           *IN91     IFEQ '1'
+     C                     MOVE 'INC'     PRET
+     C                     ENDIF
+     C                     SETON                     LR
+```
+
+## Instructions RPG IV full free  ([source](https://job-i.fr/instructions-rpg))
+
+| Famille | Instructions |
+|---|---|
+| Déclarations | `DCL-S`, `DCL-DS`, `DCL-F`, `DCL-PR`, `DCL-PI`, `DCL-PROC` |
+| Contrôle | `IF`, `SELECT`, `DOW`, `DOU`, `FOR`, `FOR-EACH` |
+| Procédures / erreurs | `CALLP`, `RETURN`, `MONITOR` |
+| Fichiers | `CHAIN`, `READE`, `SETLL`, `WRITE`, `UPDATE` |
+| Calcul | `EVAL` |
+
+## Fonctions intégrées  ([source](https://job-i.fr/fonctions-rpg))
+
+| Fonction | Rôle |
+|---|---|
+| `%SUBST`, `%TRIM`, `%SCAN`, `%REPLACE`, `%CHECK`, `%LEN` | chaînes |
+| `%DEC`, `%INT`, `%CHAR`, `%EDITC` | conversions / édition |
+| `%DATE`, `%DIFF` | dates |
+| `%ELEM`, `%LOOKUP`, `%MAX` | tableaux / max |
+| `%EOF`, `%FOUND` | état fichier après lecture/CHAIN |
+| `%ABS`, `%REM`, `%SQRT` | calcul |
+
+## Cycle GAP  ([source](https://job-i.fr/cycle-gap-rpg))
+- Boucle ajoutée avec un fichier primaire (`IP`) : entêtes/détail → lecture + ruptures → calculs de total (L1-L9, LR) → sorties de total → fin si LR → transfert zones → calculs de détail.
+- Indicateurs : `1P` premier cycle, `01` enregistrement lu, `L1-L9` ruptures, `OF` fin de page, `LR` fin. Full free : pas de fichier primaire.
+
+## Constantes figuratives  ([source](https://job-i.fr/constantes-figuratives-rpg))
+`*BLANKS`, `*ZEROS`, `*HIVAL` (x'FF' / max numérique), `*LOVAL`, `*ALL'xx'`, `*ON`/`*OFF`, `*NULL`. Piège : `*BLANKS` sur DS à sous-zones numériques → erreur décimale ; utiliser `CLEAR`/`INZ`.
+
+## Codes et mots d'édition  ([source](https://job-i.fr/mots-edition-rpg))
+- Code `J` : virgule décimale + signe négatif à droite (1234,5 → `1.234,50`).
+- Mot d'édition : gabarit (blanc = chiffre, `0`/`*` arrêt de suppression des zéros, `$`, `&`, `CR`/`-`). Full free : `%EDITW(zone : mot)`, `%EDITC(zone : 'J')`.
+
+## Prototypes PR / PI  ([source](https://job-i.fr/prototypes-rpg-pr-pi))
+- `DCL-PR` = appel (`EXTPGM`/`EXTPROC`), `DCL-PI` = paramètres reçus (remplace `*ENTRY PLIST`).
+- Passage : défaut par référence · `CONST` lecture seule (accepte littéraux) · `VALUE` par copie (procédures) · `OPTIONS(*NOPASS)` facultatif (`%PARMS`).
+- Partager le PR via `/COPY` ; erreurs : RNF3764 (PI≠PR), RNF7542 (littéral sans CONST), MCH1202 à l'exécution.
+
+## Sous-fichiers  ([source](https://job-i.fr/sous-fichier-rpg))
+- DDS : formats `SFL` + `SFLCTL` ; mots-clés `SFLSIZ`, `SFLPAG`, `SFLDSPCTL`, `SFLDSP`, `SFLCLR`, `SFLEND(*MORE)`, `SFLRCDNBR`.
+- RPG : `SFILE(SFL1:RANG)`, `WRITE SFL1`, `EXFMT SF1CTL`, `READC SFL1`. Chargement statique recommandé (SFLSIZ > SFLPAG).
+- Piège : `SFLMSG` invisible si `SFLDSP` coupé.
+
+## Zones de données  ([source](https://job-i.fr/zone-de-donnees-dtaara-ibm-i))
+- `CRTDTAARA`, `RTVDTAARA`, `CHGDTAARA`, `DSPDTAARA` ; `*LDA` (par job). RPG : `dcl-s v packed(7:0) dtaara('LIB/NOM'); in *lock v; ... out v;`. SQL : `QSYS2.DATA_AREA_INFO`.
+
+## API système  ([source](https://job-i.fr/api-systeme-ibm-i))
+- Familles `*PGM` (`EXTPGM`, ex. `QCMDEXC`, `QUSROBJD`, `QSNDDTAQ`) et procédures ILE (`EXTPROC`). Dernier paramètre : structure d'erreur (octets fournis `inz(%size(ds))`, disponibles, ID CPFxxxx).
+- `QCMDEXC(cmd : %len(cmd))` à entourer de `MONITOR`.
+<!-- AUTO:END -->
+
+## Mes exemples
+- **RPG III (colonné, boucles, CHAIN)** : [BECRUD](../../sources/RPG/RPG-ILE/BIB05/BECRUD.md) (CRUD écran + fichier clé), [GESTLIVRE](../../sources/RPG/RPG-III-400/BIB05/GESTLIVRE.md), [MAJIDCLI](../../sources/RPG/RPG-III-400/BIB05/MAJIDCLI.md).
+- **Sous-fichier en RPG** : [EXAMPLESF](../../sources/RPG/RPG-ILE/BIB05/EXAMPLESF.md) (`SFILE(SFL1:RRN)`, `SETLL *LOVAL`, chargement par `READ`).
+- **Full free + prototypes + module** : copie [TP3MODP](../../sources/RPG/Copy/BIB03/TP3MODP.md) (`DCL-PR`, garde `/if not defined`) et module [TP3MOD](../../sources/RPG/RPG-ILE/BIB03/TP3MOD.md) (`ctl-opt nomain`, `dcl-proc`).
+- **Cycle RPG (GAP)** : [CYCDEMO](../../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md) (fichier primaire + secondaire, niveaux L1/L2, concordance M1/MR, 1P, OF, totaux), [FILMCYC](../../sources/RPG/RPG-III-400/BIB21/FILMCYC.md) (L1 à L3), [LIVGAP1](../../sources/RPG/RPG-III-400/BIB01/LIVGAP1.md) et [LIVGAP2](../../sources/RPG/RPG-III-400/BIB01/LIVGAP2.md) (rupture L1). Liste complète : [CYCLE-GAP-EXEMPLES](../CYCLE-GAP-EXEMPLES.md).
+- **Mêmes exercices, façons différentes** : [COMPARAISON-BIBLIOTHEQUES](../COMPARAISON-BIBLIOTHEQUES.md).
+- **Les 7 spécifications du RPG III : « HFELICO »** (cours RPG/400, type en colonne 6, dans cet ordre dans le source) : **H** contrôle (options globales : format de date, séparateur décimal) ; **F** fichiers (obligatoire dès qu'un fichier est utilisé) ; **E** extension (tableaux et tables) ; **L** saut (règles de saut de page des impressions) ; **I** entrée (description des enregistrements lus, indicateurs d'enregistrement, zones de contrôle L1-L9, renommage de zones) ; **C** calcul (traitement, sous-routines) ; **O** sortie (mise en forme des impressions). job-i.fr cite la spécification **L** dans sa liste mais ne l'explique pas (ni **H**, **E**, **I**, **O** : seule **C** est détaillée colonne par colonne). Exemple dans le dépôt : [fiche 06](06-cycle-rpg-et-sous-routines.md) (F, E, I, C, O) ; détail des colonnes de **C** plus haut.
+
+
+=== FICHIER : docs/cheatsheets/04-db2-for-i-et-sql.md ===
+# 04 - Db2 for i et SQL spécifique IBM i
+
+> Source : [job-i.fr](https://job-i.fr/). Blocs `AUTO` régénérés ; écrivez dans « Mes exemples ».
+
+<!-- AUTO:START -->
+## Fichier physique (PF)  ([source](https://job-i.fr/fichier-physique-pf-ibm-i))
+- `*FILE` PF = table (format d'enregistrement, membres, clé). DDS (`CRTPF` sur `QDDSSRC`) ou SQL (`CREATE TABLE`, à privilégier).
+- DDS : col. 17 `R`/`K`/blanc · 19-28 nom · 30-34 longueur · 35 type (A, P, S, B, L, T, Z) · 36-37 décimales · 45-80 mots-clés (`UNIQUE`, `TEXT`, `COLHDG`, `VALUES`, `EDTCDE`).
+```
+     A          R CLIENTR                   TEXT('Client')
+     A            NUMCLI         5P 0       COLHDG('Numero' 'client')
+     A            NOM           30A
+     A          K NUMCLI
+```
+- Commandes : `CRTLIB`, `CRTSRCPF`, `CRTPF`, `UPDDTA`, `STRDFU`, `DSPPFM`, `RGZPFM`, `CPYF`, `STRJRNPF`. Piège : `VALUES` ne contrôle que la saisie écran (données invalides → `MCH1202` à la lecture).
+
+## Fichier logique (LF)  ([source](https://job-i.fr/fichier-logique-lf-ibm-i))
+- Aucune donnée : change l'ordre, filtre, choisit des zones, joint. DDS : `PFILE`, `K`, `S ... COMP(EQ ...)`, `JFILE`, `JOIN`/`JFLD`, `JREF`, `JDFTVAL`.
+- SQL ↔ DDS : `CREATE INDEX` = clé ; `CREATE VIEW ... WHERE` = sélection ; `LEFT JOIN` = `JDFTVAL`.
+- `CRTLF`, `DSPDBR` (relations), `MAINT(*IMMED)`. Un SELECT sur LF n'est pas trié → `ORDER BY`. LF de jointure = lecture seule.
+
+## Services SQL  ([source](https://job-i.fr/services-sql-ibm-i)) — 390 services
+Schémas : **QSYS2** (principal), **SYSTOOLS**, **SYSIBMADM**. Catalogue : `SELECT * FROM QSYS2.SERVICES_INFO`.
+
+| Service | Usage |
+|---|---|
+| `QSYS2.ACTIVE_JOB_INFO` | travaux actifs |
+| `QSYS2.USER_INFO` / `USER_STORAGE` | profils / stockage par profil |
+| `QSYS2.JOBLOG_INFO`, `HISTORY_LOG_INFO` | historiques |
+| `QSYS2.OUTPUT_QUEUE_ENTRIES` | spools |
+| `QSYS2.PTF_INFO`, `GROUP_PTF_INFO` | PTF |
+| `QSYS2.OBJECT_STATISTICS('LIB','*ALL')` | objets d'une bibliothèque |
+| `QSYS2.SYSTEM_STATUS_INFO`, `SYSLIMITS`, `NETSTAT_INFO` | état système / limites / réseau |
+| `QSYS2.OBJECT_PRIVILEGES` | droits |
+| `CALL QSYS2.QCMDEXC('cmd')` | exécuter du CL |
+| `SYSTOOLS.ENDED_JOB_INFO` | travaux terminés |
+
+## Recettes SQL d'exploitation  ([source](https://job-i.fr/recettes-sql-ibm-i)) — 36 recettes en lecture seule
+Thèmes : travaux (7), sécurité (6), stockage (6), messages (4), PTF/licences (4), journaux (3), base de données (3), spool (2), sauvegarde (1).
+```sql
+-- Travaux bloqués
+SELECT JOB_NAME, JOB_USER, SUBSYSTEM FROM TABLE(QSYS2.ACTIVE_JOB_INFO()) A WHERE JOB_STATUS = 'MSGW';
+-- Top CPU
+SELECT JOB_NAME, CPU_TIME FROM TABLE(QSYS2.ACTIVE_JOB_INFO()) A ORDER BY CPU_TIME DESC FETCH FIRST 10 ROWS ONLY;
+-- Profils *ALLOBJ
+SELECT USER_NAME FROM QSYS2.USER_INFO WHERE SPECIAL_AUTHORITIES LIKE '%ALLOBJ%';
+-- Plus gros objets d'une bibliothèque
+SELECT OBJNAME, OBJTYPE, OBJSIZE FROM TABLE(QSYS2.OBJECT_STATISTICS('MABIB','*ALL')) X ORDER BY OBJSIZE DESC FETCH FIRST 10 ROWS ONLY;
+```
+(Requêtes adaptées : vérifier les noms de colonnes sur votre version.)
+
+## Node.js + Db2 for i  ([source](https://job-i.fr/nodejs-ibm-i))
+- `yum -y install nodejs24`, `node -p process.platform` → `os400` ; connexion `idb-pconnector` (`*LOCAL`) avec `enableNumericTypeConversion: true` ; toujours des marqueurs `?`.
+<!-- AUTO:END -->
+
+## Mes exemples
+- **DDS de fichiers logiques / physiques** : voir `sources/DDS/` ([index](../INDEX-SOURCES.md)).
+- **SQL examen** : fichiers `Sans titre 1.sql` et `sqlexamen.sql` dans `Documents` (à déposer dans `docs/apports/`).
+- **Création de fichier client** : [CLIENTCRT](../../sources/CL/CL-procedural/BIB06/CLIENTCRT.md), [CLIENTINS](../../sources/CL/CL-procedural/BIB06/CLIENTINS.md).
+
+
+=== FICHIER : docs/cheatsheets/05-emploi-et-formation.md ===
+# 05 - Emploi et formation IBM i
+
+> Source : [job-i.fr](https://job-i.fr/). Blocs `AUTO` régénérés ; écrivez dans « Mes exemples ».
+
+<!-- AUTO:START -->
+## Offres d'emploi  ([toutes](https://job-i.fr/offres-emploi-ibm-i), [par département](https://job-i.fr/emploi-ibm-i))
+- Veille des offres IBM i en France (sources : API France Travail et Adzuna, sans scraping) ; 176 offres au 2026-11-17 (page de liste : ~24 offres récentes, surtout Nord, Ille-et-Vilaine, Mayenne, Paris ; CDI majoritaires, salaires publiés ~30-60 k€/an ou 220-400 €/j en freelance).
+- Profils recherchés : RPG, CL, SQL, COBOL ; relève des développeurs historiques.
+
+## Se former  ([source](https://job-i.fr/se-former-ibm-i))
+- NOTOS (Montpellier, groupe Armonie) : alternance RNCP niveau 6 sans prérequis IBM i ; POEI France Travail ; formations courtes.
+- Autres : OCSI Academy (bootcamp consultant IBM i), Volubis (formation continue), CFD Innovation (PHP, Node.js, DB2 Web Query).
+- Étapes : identifier le statut/financement → consulter les programmes → candidater.
+
+## Structure du site (pour retrouver une fiche)
+- Recherche directe : `https://job-i.fr/aller?q=<terme>` (commande, message, valeur système).
+- Documentation : Comprendre IBM i · Référence système · Programmer en RPG · Base de données et SQL.
+<!-- AUTO:END -->
+
+## Mes exemples
+- Parcours suivi, projets réalisés, TP (LOGISTOCK, SURPRISE FILMS, THE BIG ONE, LeChai…) : à compléter via `docs/apports/`.
+
+
+=== FICHIER : docs/cheatsheets/06-cycle-rpg-et-sous-routines.md ===
+# 06 - Cycle RPG (GAP) et sous-routines
+
+> Source : [job-i.fr](https://job-i.fr/). Blocs `AUTO` régénérés ; écrivez dans « Mes exemples ».
+
+<!-- AUTO:START -->
+## Le cycle RPG  ([source](https://job-i.fr/cycle-gap-rpg))
+- Un programme qui déclare un **fichier primaire** (spécification F, `IP`) reçoit du compilateur une boucle invisible : pas de `READ`, pas de test de fin de fichier. Le nom « GAP » (Générateur Automatique de Programmes) vient de l'ancien nom français du RPG.
+- **Sans fichier primaire, pas de cycle.** Le full free (`DCL-F`) ne peut pas avoir de fichier primaire ; `CTL-OPT MAIN(...)` et les modules `NOMAIN` non plus.
+
+| Étape | Ce qui se passe |
+|---|---|
+| 1 | Sorties d'en-tête et de détail (lignes `H` et `D`). Au premier cycle, seules les en-têtes sous `1P`. |
+| 2 | Lecture du fichier primaire ; comparaison des zones de contrôle (allume `L1`-`L9`) ; fin de fichier → `LR`. |
+| 3 | Calculs de **total** (conditionnés par `L1`-`L9` / `LR`). Ils voient encore les valeurs du groupe précédent. Sautés au 1er enregistrement. |
+| 4 | Sorties de **total** (lignes `T`), puis en-tête de débordement si `OF`. |
+| 5 | Test de `LR` : s'il est allumé, fermeture des fichiers et arrêt. |
+| 6 | Transfert des zones de l'enregistrement lu vers les variables. |
+| 7 | Calculs de **détail** (sans niveau), puis retour à l'étape 1. |
+
+- Point clé : le total d'un groupe est calculé et imprimé **avant** le transfert des zones du nouvel enregistrement.
+
+| Indicateur | Rôle |
+|---|---|
+| `1P` | premier cycle |
+| `01`… | enregistrement du format concerné lu |
+| `L1`-`L9` | rupture d'une zone de contrôle ; `LR` allume tous les niveaux |
+| `LR` | fin de fichier |
+| `OF` | débordement de page |
+
+- Pièges : ne pas initialiser un calcul `L1` avant le premier groupe (utiliser `1P` ou des calculs de détail conditionnés) ; une zone éditée peut en recouvrir une autre sans message ; en RPG/400 avec fichier externe, la ligne I porte le nom externe et le nom RPG aux bonnes positions ; sans cycle, mettre `*INLR = *ON` ou `RETURN` (sinon boucle ; `RETURN` seul laisse les fichiers ouverts).
+- Pour le code neuf, job-i conseille la boucle explicite : `READ` + `DOW NOT %EOF`.
+- L'indicateur `MR` et les fichiers secondaires ne sont pas détaillés sur la page job-i : voir l'exemple `CYCDEMO` ci-dessous (constat dans le code du dépôt, non documenté par job-i).
+
+## Sous-routines BEGSR / ENDSR / EXSR  ([source](https://job-i.fr/instructions-rpg/begsr))
+- `BEGSR nom;` … `LEAVESR;` … `ENDSR;` délimite un sous-programme **interne** ; `EXSR nom;` l'appelle depuis le même programme ou la même procédure. L'exécution reprend après `EXSR`.
+- Un sous-programme n'a **ni paramètres ni variables locales** : il partage toutes les variables de l'appelant. Un `DCL-S` après `BEGSR` est refusé (RNF0724).
+- Piège : un même indice de boucle utilisé par l'appelant et le sous-programme donne un résultat faux sans erreur ; nommer à part les variables du sous-programme.
+- `LEAVESR` quitte le sous-programme immédiatement ; aucun indicateur ni fonction d'état n'est positionné ; les zones modifiées restent modifiées. Instructions voisines citées par la page : `EXSR`, `ENDSR`, `RETURN`, `CALLP`, `MONITOR`.
+- Pour le code neuf, job-i recommande une **procédure** (`DCL-PROC`) plutôt qu'un sous-programme. `*INZSR` et `CASxx` ne sont pas traités par la page.
+- La page détaille la forme full free ; la syntaxe en colonnes existe (`BEGSR`/`ENDSR` en code opération) mais n'y est pas décrite.
+<!-- AUTO:END -->
+
+## Mes exemples
+- **Cycle complet** : [CYCDEMO](../../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md) : fichier primaire `IP` + secondaire `IS`, niveaux `L1`/`L2`, concordance `M1`/`MR`, indicateur de zone, `1P`, `OF`, lignes `H`/`D`/`T`, remise à zéro `B`, pas de `SETON LR`. Les commentaires donnent l'ordre d'un tour de cycle.
+- **Trois niveaux** : [FILMCYC](../../sources/RPG/RPG-III-400/BIB21/FILMCYC.md) (`L1` à `L3`, `OF`).
+- **Rupture simple `L1`** : [LIVGAP1](../../sources/RPG/RPG-III-400/BIB01/LIVGAP1.md), [LIVGAP2](../../sources/RPG/RPG-III-400/BIB01/LIVGAP2.md), [SYNTAX3](../../sources/RPG/RPG-III-400/BIB01/SYNTAX3.md).
+- Liste détectée automatiquement : [CYCLE-GAP-EXEMPLES](../CYCLE-GAP-EXEMPLES.md).
+- **Sous-routines** (RPG III, `BEGSR`/`EXSR`) : [EDBOR](../../sources/RPG/RPG-III-400/BIB20/EDBOR.md) (21 sous-routines), [FICCLIRPG](../../sources/RPG/RPG-III-400/BIB17/FICCLIRPG.md), [BIERERPG](../../sources/RPG/RPG-III-400/BIB17/BIERERPG.md) ; avec écran : [RPGSFLOPT](../../sources/RPG/RPG-ILE/BIB20/RPGSFLOPT.md).
+
+### Exemple : liste de personnes avec cycle, rupture L1, tableau MSG, `*INZSR` et sortie (DSPLY seul)
+
+> Statut : **compile** (RPG/400, compilation réussie le 16/11/2026 après correction de QRG2001 et QRG7030). Exécution et comportement de `CL1` à la sortie : à confirmer. Dérivé de l'exercice « BONBON » du cycle, avec le fichier `PERSO`. Sans fichier écran : tout passe par `DSPLY`.
+
+- **Consigne** : reprendre l'exemple du cycle (fichier primaire `IP`) avec `PERSO` ; afficher **nom et prénom** ; quitter si `UNIVERS` vaut 5 ; pouvoir quitter avant la fin du fichier ; afficher « NOUVEL UNIVERS » à chaque changement d'univers (tableau chargé à la compilation) et au départ (sous-routine `*INZSR`) ; afficher le nombre de personnes à la fin.
+- **Repère de colonnes** (pour contrôler l'alignement ; **ne pas le copier dans le membre** : chaque ligne de repère donne une erreur QRG2001) :
+
+```	ext
+         1         2         3         4         5         6         7         8
+12345678901234567890123456789012345678901234567890123456789012345678901234567890
+```
+
+- **Programme RPG III** (`PERSOCYC`, source `QRPGSRC` ou autre fichier source) :
+
+```	ext
+     FPERSO   IP  E                    DISK
+      *
+     E                    MSG     1   1 52
+      *
+     IPERSOF      01
+     I              UNIVERS                         UNIV  L1
+      *
+     C   01      NOM       CAT  PRENOM:1  NOMPRE 31 P
+     C   01      NOMPRE    DSPLY          REP     1
+     C   01                ADD  1         NB      30
+      *
+     C           UNIV      IFEQ 5
+     C           REP       OREQ 'Q'
+     C           REP       OREQ 'q'
+     C                     SETON                     LR
+     C                     ENDIF
+      *
+     CL1         MSG,1     DSPLY
+     CLR         NB        DSPLY
+      *
+      * SOUS ROUTINE INIT
+     C           *INZSR    BEGSR
+     C           MSG,1     DSPLY
+     C                     ENDSR
+**
+NOUVEL UNIVERS
+```
+
+- **Pause à chaque personne** : la zone résultat `REP` de `DSPLY` fait **attendre la réponse** de l'utilisateur ; Entrée affiche la personne suivante. Sans zone résultat, les messages défilent sans pause.
+- **Sortie anticipée** : taper `Q` puis Entrée (`REP`). **F3 n'est pas possible avec `DSPLY` seul** : le compilateur refuse `*INKC` (QRG7030, l'indicateur KC n'est défini par aucun fichier) et job-i.fr indique que `DSPLY` « ne modifie aucun indicateur ». F3 demande un fichier écran et `EXFMT` (voir [TP3](../../sources/RPG/RPG-ILE/BIB05/TP3.md)).
+- **Format du fichier `PERSO`** (listage du compilateur) : format `PERSOF` ; `NOM` alphanumérique 15, `PRENOM` alphanumérique 15, `UNIVERS` numérique 4 chiffres (renommé `UNIV`), `TEMPS` numérique 20 chiffres ; enregistrement de 54 octets.
+- **Pièges rencontrés** : `UNIVERS` fait 7 caractères, or un nom de zone RPG III en fait 6 au maximum : il faut le **renommer** dans la spécification I (`UNIV`) sinon le compilateur l'ignore (QRG4052 puis QRG7030) ; `*INKC` sans fichier écran → QRG7030 ; une ligne de repère collée dans le source → QRG2001 ; un fichier écran déclaré mais non créé → QRG2120 / QRG5154 / QRG7064 ; `CRTRPGPGM` avec `REPLACE(*NO)` sur un programme existant → QRG0012.
+- **Comportement du cycle** : au premier enregistrement, les calculs de total (`CL1`) sont sautés, d'où le message du départ dans `*INZSR` ; en fin de fichier `LR` allume aussi `L1` : le message s'affiche une dernière fois.
+- **À confirmer à l'exécution** : ce que fait `CL1` quand `SETON LR` arrête le programme ; la rupture `L1` suppose les enregistrements **groupés par `UNIVERS`** (sinon lire la LF [PRSOLF](../../sources/DDS/BIB12/PRSOLF.md), à clé `UNIVERS`, dont le format est `PERSOFM`).
+- **Création** : `CRTRPGPGM PGM(MABIB/PERSOCYC) SRCFILE(MABIB/QRPGSRC)` ; test : `CALL PERSOCYC`.
+- **Modèles complets du cycle** : [CYCDEMO](../../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md), [CYCLE-GAP-EXEMPLES](../CYCLE-GAP-EXEMPLES.md).
+
+### Variante : impression avec cartes O à la place de DSPLY
+
+> Statut : **compile** (RPG/400, 16/11/2026). Rendu à l'impression à confirmer sur le spool. Même fichier `PERSO` et même cycle que l'exemple précédent, mais le résultat part dans un **fichier imprimante** (`QSYSPRT`) : plus de `DSPLY`, plus de tableau `MSG`, **plus de limite à `UNIVERS = 5`** (tout le fichier est lu, le cycle s'arrête seul à la fin).
+
+- **Repère de colonnes** (**ne pas le copier dans le membre**) :
+
+```	ext
+         1         2         3         4         5         6         7         8
+12345678901234567890123456789012345678901234567890123456789012345678901234567890
+```
+
+- **Programme RPG III** (source `QRPGSRC` ou autre fichier source) :
+
+```	ext
+     FPERSO   IP  E                    DISK
+     FQSYSPRT O   F     132     OF     PRINTER
+      *
+     IPERSOF      01
+     I              UNIVERS                         UNIV  L1
+      *
+     C   01                ADD  1         NB      30
+      *
+      * SOUS ROUTINE INIT
+     C           *INZSR    BEGSR
+     C                     Z-ADD0         NB
+     C                     ENDSR
+      *
+     OQSYSPRT H  101   1P
+     O       OR        OF
+     O                                   40 'NOUVELLE ANIME'
+     O                                   70 'Page'
+     O                         PAGE  Z   75
+     OQSYSPRT D 11     L1
+     O                                    8 'UNIVERS'
+     O                         UNIV  Z   12
+     OQSYSPRT D  1     01
+     O                         NOM       16
+     O                         PRENOM    34
+     OQSYSPRT T 2      LR
+     O                                   22 'NOMBRE DE PERSONNES'
+     O                         NB    Z   26
+```
+
+- **En-tête** : le titre « NOUVELLE ANIME » et le numéro de page (zone réservée `PAGE`) sont imprimés sur la première page (`1P`) et à chaque débordement (`OF`), comme dans [CYCDEMO](../../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md).
+- **Rupture `L1`** : une ligne « UNIVERS nn » est imprimée avant la première personne de chaque groupe (ligne de détail conditionnée par `L1`, placée **avant** la ligne de détail `01` dans les spécifications O). Pour afficher « NOUVELLE ANIME » à chaque changement d'anime plutôt qu'en titre, remplacer la constante `'UNIVERS'` par `'NOUVELLE ANIME'`.
+- **Détail** : nom (fin en position 16) et prénom (fin en position 34), une ligne par personne ; **total** « NOMBRE DE PERSONNES » à `LR`.
+- **Sous-routine `*INZSR`** conservée : elle ne fait plus que remettre `NB` à zéro.
+- **Spécifications O** : fichier `QSYSPRT` déclaré en spécification F (`O   F     132     OF     PRINTER`), indicateur d'en-tête `1P` / `OR OF`, colonnes de fin de zone en 40-43 et constante à partir de la colonne 45 ; mise en page reprise de [CYCDEMO](../../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md).
+- **Création et lecture** : `CRTRPGPGM PGM(MABIB/CYCLEIMP) SRCFILE(MABIB/QRPGSRC) SRCMBR(CYCLEIMP)` (un nouveau membre évite QRG0012 si le programme existe déjà, ou `REPLACE(*YES)`) ; `CALL` puis `WRKSPLF` pour ouvrir l'impression.
+- **À confirmer** : la rupture `L1` suppose les enregistrements **groupés par `UNIVERS`**.
+
+
+=== FICHIER : docs/enonces/README.md ===
+# Énoncés de TP et d'examens (résumés)
+
+Résumés **personnels et anonymisés** des énoncés du dossier de cours : objectif, données, règles, résultat attendu, compétences, et **où trouver des solutions dans ce dépôt**. Les énoncés originaux restent hors dépôt (droits du centre de formation) ; aucun nom de personne, d'organisme, d'adresse ou de machine n'est repris. Le champ `id` sert aussi d'identifiant d'exercice dans [`contributions/`](../../contributions/README.md) : mêmes `id` = mêmes consignes, donc variantes comparables ([VARIANTES](../VARIANTES.md)).
+
+> **Règle des épreuves** : le TP surprise et l'examen interdisent l'aide d'une IA (et limitent la documentation autorisée) **pendant l'épreuve**. Ces pages servent à la **révision** après coup, pas à passer une épreuve en cours.
+
+| `id` | Énoncé | Langage / thème | Solutions dans le dépôt |
+|---|---|---|---|
+| [tp-logistock](tp-logistock.md) | Gestion d'articles en sous-fichier (créer, modifier, supprimer, fenêtre) | RPG + DDS écran, PF/LF | écrans DDS seulement ; programme RPG **non identifié** |
+| [tp-films](tp-films.md) | Afficher les titres de films triés par DSPLY (30 min) | RPG IV colonné, LF | 2 sources proches |
+| [tp-livres](tp-livres.md) | Gestion de livres : saisie ISBN, modification, suppression, ajout | RPG IV/400 + DSPF, PF/LF | nombreuses variantes (RPG III et IV) |
+| [tp-wesh-alors](tp-wesh-alors.md) | Mettre en forme un texte et l'écrire dans la joblog | RPG full free, `SND-MSG`, BIF | 3 variantes ([comparaison](../comparaisons/WESH.md)) |
+| [tp-calculateur-impot](tp-calculateur-impot.md) | Calculateur d'impôt (barème progressif, quotient familial) | RPG + DSPF, CL | plusieurs versions (RPG, CL, DDS) |
+| [examen-kebab](examen-kebab.md) | Examen de mi-parcours de 7 h : environnement, DDS, CL, SQL, RPG III | CL, DDS, SQL, RPG III | **aucune solution** |
+| [tp-the-big-one](tp-the-big-one.md) | Reprise d'un héritage RPG III (GOTO) puis modernisation en RPG IV, par équipes | RPG III → RPG IV, CL, DTAARA | **aucune solution** (sauf diaporama d'équipe, hors dépôt) |
+| [tp-le-chai](tp-le-chai.md) | Réception des vendanges : rétro-ingénierie d'un programme et programme de traitement | SQLRPGLE full free, SQL embarqué | débuts liés à `VX100` seulement |
+
+Cours résumés : [cours.md](cours.md). Écarts entre énoncés et code existant : [docs/MANQUES.md](../MANQUES.md) et [ANALYSE-ENONCES](ANALYSE-ENONCES.md).
+
+
+=== FICHIER : docs/enonces/ANALYSE-ENONCES.md ===
+# Analyse : ce que les énoncés demandent et ce que le dépôt contient
+
+Comparaison des [énoncés](README.md) avec les fiches (`docs/cheatsheets/`) et les sources converties. « Fiches » = le terme apparaît dans une fiche ; « Code » = nombre d'occurrences dans les sources. Comptage automatique, **à confirmer** avant d'écrire une fiche (heuristique).
+
+## 1. Exercices sans solution dans le dépôt
+
+| Énoncé | Ce qui manque |
+|---|---|
+| [examen-kebab](examen-kebab.md) | tout : environnement (profil, `JOBD`, `JOBQ`, `OUTQ`, `MSGQ`, sous-système), DDS `PRODUIT` / `COMMANDE` / LF avec sélection, CL `*OUTFILE` + écran, SQL jointure externe, RPG III de consultation |
+| [tp-the-big-one](tp-the-big-one.md) | héritage RPG III (`NUMMAI`, `CALDEV`, `GESMAI`) et sa version RPG IV, CL `DEVIS` |
+| [tp-le-chai](tp-le-chai.md) | programme `CHAI` (SQL embarqué, transaction « tout ou rien ») |
+| [tp-logistock](tp-logistock.md) | programme RPG du sous-fichier avec fenêtre et confirmation F23 (seuls les écrans DDS sont là) |
+
+## 2. Notions requises par les énoncés
+
+| Notion | Énoncé(s) | Fiches | Code | Action |
+|---|---|---|---|---|
+| `SND-MSG` (message dans la joblog) | wesh-alors | non | 26 | à ajouter (fiche 03) |
+| `%XLATE`, `%SCAN`, `%REPLACE` | wesh-alors | `%XLATE` non ; `%REPLACE` oui mais jamais utilisé dans le code | 14 / 19 / 0 | exemples de `%REPLACE` manquants |
+| `KLIST`, `CASEQ`, `SELEC`/`WHEQ`, `READP`, `MVR` (RPG III) | livres, examen-kebab, cours | non | 32 / 41 / 20-39 / 17 / 3 | fiche 03 : instructions RPG III |
+| `TAG`, `GOTO`, `CABxx` | the-big-one | non | 85 / 460 / 0 | à documenter ; **aucun exemple de `CABxx`** dans le code |
+| `UNLOCK`, `DTAARA` (`IN`/`OUT`) | the-big-one | `DTAARA` oui, `UNLOCK` non | 10 / 80 | compléter |
+| SQL embarqué (`DECLARE … CURSOR`, `COMMIT`, `ROLLBACK`, `GET DIAGNOSTICS`) | le-chai | non | 104 / 133 / 9 / 12 | **nouvelle fiche** (priorité) |
+| `COALESCE`, `GROUP BY`, `DISTINCT`, `CURRENT DATE - n MONTHS` | examen-kebab | non | 29 / 4 / 5 / 7 | fiche 04 : requêtes d'analyse |
+| `LEFT JOIN` | examen-kebab | oui (équivalence LF) | 8 | exemple chiffré manquant |
+| `OUTFILE` (`DSPOBJD`, etc.) | examen-kebab | `DSPOBJD` oui, `OUTFILE` non | 65 | fiche 02 : sorties dans un fichier |
+| `CRTSBSD`, `ADDRTGE`, `ADDJOBQE`, `CRTJOBD`, `CRTMSGQ` | examen-kebab | non | 2 / 2 / 2 / 4 / **0** | fiche 02 : environnement de travail ; pas d'exemple `CRTMSGQ` |
+| `CPYSRCF`, `RUNSQLSTM` | the-big-one, le-chai | non | 13 / 9 | fiche 02 |
+| `WINDOW`, `DSPATR`, `CHECK`, `DATFMT`, `TIMFMT` (DDS écran) | logistock, impôt | non | 47 / 1 019 / 191 / 120 / 83 | **nouvelle fiche DDS d'écran** |
+| `FNDSTRPDM` | the-big-one | non | **0** | à documenter |
+
+## 3. Limites et incohérences relevées
+- **Calculateur d'impôt** : les trois exemples chiffrés de l'énoncé (3 617,34 / 1 305,70 / 198,55 €) ne se retrouvent pas avec le barème fourni (calcul direct : 3 617,75 / 1 305,92 / 198,88 €) et la maquette affiche encore 198,66 € : voir [tp-calculateur-impot](tp-calculateur-impot.md).
+- **Supports non lus** : cours RPG full free et sous-fichier (images), fin du cours DB2 (voir [cours](cours.md)). Les énoncés d'exercices de ces cours ne sont donc pas résumés.
+- **Contenu à ne pas diffuser** : les énoncés originaux (droits d'auteur) et les noms de personnes, d'organisme, d'adresses et de machines restent hors dépôt.
+
+
+=== FICHIER : docs/enonces/cours.md ===
+# Cours du dossier (sommaires)
+
+Les supports eux-mêmes restent hors dépôt. Ce tableau indique ce que chacun couvre et ce qui a pu être lu.
+
+| Support | Contenu | État de lecture |
+|---|---|---|
+| **RPG/400 (RPG III)**, 125 diapositives | histoire du RPG (I, II, III, RPG/400, « GAP » en France) ; PDM/SEU ; spécifications **H, F, E, L, I, C, O** ; `SETON LR`, `DSPLY`, `MOVE`/`MOVEL` ; indicateurs ; `IF`/`SELEC`/`WHEN` ; boucles `DOW`/`DO`/`GOTO` ; `AND`/`OR` ; arithmétique (`ADD`, `SUB`, `MULT`, `DIV`, `MVR`, `Z-ADD`) ; `COMP` ; accès base (`SETLL`, `SETGT`, `READ`/`READE`/`READP`/`READC`, `CHAIN`, `WRITE`, `UPDAT`, `DELET`, `KLIST`) ; `EXSR`/`CASxx` ; `PLIST` et appel externe ; `EXFMT` ; tableaux (`MOVEA`) ; **TP 1 à 4** (Hello World, prix TTC, passage de paramètres, gestion des livres, gestion des commandes avec `EXSR`) | texte complet lu |
+| **DB2 for i** (≈ 80 pages) | modèle relationnel (Codd, System R, DB2), clés, intégrité, manipulation par l'éditeur écran vert | début lu ; reste non analysé |
+| **Développement web** (outil de conception d'écrans web pour IBM i, ≈ 35 pages) | écran fiche (boutons, civilité, date de naissance, contrôle du nom, onglets), écran sous-fichier (colonnes variables, pagination, appel de fiche, envoi de mail, glisser-déposer) | plan lu |
+| **RPG full free** (≈ 110 pages) et **sous-fichier SFL** (≈ 50 pages) | cours en images : le texte n'est pas extractible | **non lus** |
+| Diaporama d'équipe pour [tp-the-big-one](tp-the-big-one.md) | répartition des rôles, atelier commun, bugs, modernisation | lu (résumé dans la page du TP) |
+
+Constats : le cours RPG III couvre `CASxx`, `KLIST`, `READP` qui sont **utilisés dans le code mais absents des fiches** ; les fiches 03 et 06 n'en parlent pas ([MANQUES](../MANQUES.md)).
+
+
+=== FICHIER : docs/enonces/examen-kebab.md ===
+# examen-kebab : examen de mi-parcours (7 h, 100 points)
+
+Chaîne de restauration rapide fictive ; l'épreuve se déroule dans un environnement personnel sur la machine de formation ; livrables : une **sauvegarde (SAVF) de la bibliothèque** et la **requête SQL**.
+
+| Partie | Contenu | Points |
+|---|---|---|
+| 1 | **Environnement** : bibliothèque, profil de test copié de `QPGMR` (ne pas compiler avec lui), `JOBD` (avec `JOBQ`, `OUTQ`, `MSGQ` personnelles), sous-système distinct (entrée de file de travaux + poste de routage), bibliothèque d'examen dans la liste initiale de la `JOBD` | 15 |
+| 2 | **Fichiers sources** `QDDSSRC`, `QCLPSRC`, `QRPGSRC` | 3 |
+| 3 | **DDS** : PF `PRODUIT` (code 7A clé, libellé, catégorie, prix HT/TTC `5P 2`, dispo O/N) et `COMMANDE` (n° `7P 0` clé, date ISO, heure ISO, mangeur, code produit, quantité, montant TTC `7P 2`, sauce, livraison O/N) ; LF `LFPRDCAT` (tri catégorie puis libellé) et `LFCMDVIP` (**sélection** : montant TTC ≥ 12 €, tri mangeur puis date) ; données copiées d'une bibliothèque fournie | 7 |
+| 4 | **CL** : lister les `*PGM` d'une bibliothèque dans un `*OUTFILE` en `QTEMP`, les afficher **un par un** sur un écran 5250 (système, rang / total, nom, attribut, description, créateur) ; **F3** quitte, Entrée = suivant, fin après le dernier | 20 |
+| 5 | **SQL** : chiffre d'affaires par catégorie sur les **12 derniers mois** : jointure externe pour garder les produits sans commande récente (une ligne « Aucune vente »), `GROUP BY`, nombre de produits distincts, total des quantités, chiffre d'affaires TTC, tri décroissant | 5 |
+| 6 | **RPG III** : consulter les commandes VIP via `LFCMDVIP` (mangeur puis date), chercher le produit par clé dans `PRODUIT` (« PRODUIT INCONNU » si absent), afficher les champs dont le **mode de service** (LIVRAISON / SUR PLACE) ; Entrée = suivante ; fin de fichier + Entrée ou F3 = fin | 50 |
+
+- **Compétences** : `CRTLIB`, `CRTUSRPRF`, `CRTJOBD`, `CRTJOBQ`, `CRTOUTQ`, `CRTMSGQ`, `CRTSBSD`, `ADDJOBQE`, `ADDRTGE`, `CRTSRCPF` ; DDS (dates/heures, `S`/`COMP`, clés composées) ; `DSPOBJD OUTPUT(*OUTFILE)`, `DCLF`, `RCVF`, `SNDRCVF` ; `LEFT JOIN`, `COALESCE`, `GROUP BY`, `CURRENT DATE - 12 MONTHS` ; RPG III (`CHAIN`, `READ`, `EXFMT`, indicateurs de touches).
+- **Dans le dépôt** : **aucune solution** de cet examen. Briques proches : CL [OBJLSTC](../../sources/CL/CL-procedural/BIB09/OBJLSTC.md) (liste d'objets), [AFFOBJDCL](../../sources/CL/CL-procedural/BIB06/AFFOBJDCL.md) ; RPG III lecture + `CHAIN` : [GESTLIVRE](../../sources/RPG/RPG-III-400/BIB10/GESTLIVRE.md).
+
+
+=== FICHIER : docs/enonces/tp-calculateur-impot.md ===
+# tp-calculateur-impot : calcul d'impôt sur le revenu (barème 2020)
+
+- **Objectif** : transformer une explication en algorithme : un formulaire (2 écrans) calcule l'impôt et la somme restante. Hors périmètre : réductions, crédits, contribution hauts revenus, décote. Barème **2020** (pas 2023/2024).
+- **Niveaux** : **0** créer les écrans ; **1** célibataire ; **2** case Oui/Non « pacsé/marié » ; **3** nombre d'enfants.
+- **Écrans** : saisie (revenu net imposable annuel, pacsé/marié Oui/Non, nombre d'enfants ; F3) puis résultat (« Pour un salaire net imposable de… », impôt, « Il vous restera… » ; F3, F12).
+- **Méthode** : quotient familial = revenu net imposable ÷ nombre de parts ; appliquer le barème progressif au quotient ; **multiplier** le résultat par le nombre de parts.
+- **Barème 2020 (par part)** : 0 % jusqu'à 10 064 € ; 11 % de 10 064 à 25 659 € ; 30 % de 25 659 à 73 369 € ; 41 % de 73 369 à 157 806 € ; 45 % au-delà.
+- **Parts** (seul / en couple) : sans enfant 1 / 2 ; 1 enfant 1,5 / 2,5 ; 2 enfants 2 / 3 ; 3 enfants 3 / 4 ; 4 enfants 4 / 5 ; 5 enfants 5 / 6 ; 6 enfants 6 (seul).
+- **Exemples de l'énoncé** (revenu 32 000 €) : célibataire 3 617,34 € ; couple 1 305,70 € ; couple + 2 enfants (3 parts) 198,55 €.
+- **Incohérence relevée** : avec le barème donné, un calcul direct donne 3 617,75 € (1 part), 1 305,92 € (2 parts) et 198,88 € (3 parts) ; la maquette d'écran affiche 198,66 € pour le dernier cas, le texte 198,55 €. Les écarts viennent probablement d'arrondis ou d'un simulateur officiel : **ne pas utiliser ces trois valeurs comme jeu d'essai sans confirmer** avec l'enseignant.
+- **Compétences** : DSPF (boutons radio `CHECK`/`RANGE`, zones numériques), calcul par tranches (`SELECT`/`WHEN` ou table), `%DEC`/`%DECH` (arrondi), `DIV` avec `(H)`.
+- **Dans le dépôt** : RPG [IMPOT](../../sources/RPG/RPG-ILE/BIB05/IMPOT.md), [IMPOTS](../../sources/RPG/RPG-ILE/BIB17/IMPOTS.md), [CALCIMPOT](../../sources/RPG/RPG-ILE/BIB10/CALCIMPOT.md), [IMPOTFRCL](../../sources/RPG/RPG-ILE/BIB10/IMPOTFRCL.md) ; écrans [IMPOTDSP](../../sources/DDS/BIB10/IMPOTDSP.md), [IMPOTDSP (BIB17)](../../sources/DDS/BIB17/IMPOTDSP.md) ; CL [IMPOTCL](../../sources/CL/CL-ILE/BIB10/IMPOTCL.md), [DTARAIMPOT](../../sources/CL/CL-procedural/BIB17/DTARAIMPOT.md) (barème en zone de données).
+
+
+=== FICHIER : docs/enonces/tp-films.md ===
+# tp-films : titres de films triés avec DSPLY (épreuve de 30 minutes)
+
+- **Objectif** : programme qui affiche, par `DSPLY`, le titre de **tous les films** d'un PF, **triés par titre** ; à chaque appui sur Entrée, titre suivant.
+- **Données** : PF `FILMS`, format `FILMF` : `NUMFILM` `5P 0` (clé unique), `TITFILM` `50A` ; DDS fourni (`UNIQUE`, `R FILMF`, `COLHDG`, `K NUMFILM`). Copier le PF dans une bibliothèque personnelle.
+- **Règles** : **RPG IV en colonnes**, **SQL interdit**, un **LF** est autorisé (c'est la clé : LF trié sur `TITFILM`) ; documentation limitée (cours + job-i.fr) ; **IA interdite pendant l'épreuve**.
+- **Compétences** : DDS d'un LF (`PFILE`, clé sur une autre zone), spécification F (fichier en entrée, clé), lecture séquentielle (`READ` + `%EOF`), `DSPLY` avec attente, `*INLR`.
+- **Piège** : `TITFILM` fait 50 caractères, `DSPLY` coupe à 52 : le titre passe, mais pas d'étiquette longue.
+- **Dans le dépôt** : [FILM (RPG, BIB05)](../../sources/RPG/RPG-ILE/BIB05/FILM.md), [FILM (DDS, BIB09)](../../sources/DDS/BIB09/FILM.md) ; version RPG IV colonné [TPS](../../sources/RPG/RPG-ILE/BIB02/TPS.md) (à confirmer).
+
+
+=== FICHIER : docs/enonces/tp-le-chai.md ===
+# tp-le-chai : réception des vendanges (SQL embarqué en RPG ILE full free)
+
+- **Contexte** : cave coopérative fictive ; un programme compilé `VX100` dont le **source a disparu** doit être compris, puis un programme `CHAI` doit traiter en fin de journée les lots de raisin en attente.
+- **Environnement** : tables dans une bibliothèque commune au groupe (toujours qualifiées, ex. `TPVIN.APPORTS`), programmes fournis compilés `VX100` et `VERIFVX` (à ne pas modifier), table de prédictions pour les essais, script `INIT` de remise à zéro lancé par `RUNSQLSTM` (**avant chaque campagne de tests** ; les tables sont partagées : prévenir le groupe).
+- **Tables** : appellations, cépages, cépages autorisés par appellation, parcelles, cuves, apports (lots), journal d'encuvage, registre de chaptalisation (obligatoire), alertes, bilan (une ligne par exécution).
+- **Mission 1 – l'enquête** : deviner ce que fait `VX100` par **boîte noire** (hypothèses → vérificateur fourni → score), puis produire les prédictions et la description.
+- **Mission 2 – le programme `CHAI`** : parcourir les lots en attente ; règles par lot : contrôle sanitaire, classement (appellation / déclassement), chaptalisation, choix de la cuve, encuvage, registres, alertes ; **« tout ou rien »** par lot (transaction : `COMMIT` / `ROLLBACK`) ; fin de traitement : ligne de bilan. Facultatif : tableau de bord des vendanges.
+- **Contraintes techniques** : `SQLRPGLE` en **full free**, SQL embarqué (curseurs, `SQLCODE` / `SQLSTATE`), contrôle de validation.
+- **Compétences** : `EXEC SQL` (curseur `DECLARE`/`OPEN`/`FETCH`/`CLOSE`, `INSERT`, `UPDATE`), `SET OPTION COMMIT`, `COMMIT`/`ROLLBACK`, `GET DIAGNOSTICS`, tests de conditions métier.
+- **Dans le dépôt** : seulement des débuts liés à `VX100` : [VINVX100](../../sources/RPG/RPG-ILE/BIB12/VINVX100.md), [TEXTVX100](../../sources/RPG/RPG-ILE/BIB17/TEXTVX100.md). **Pas de programme `CHAI`.**
+- **Notion manquante dans les fiches** : le SQL embarqué (≈ 290 `EXEC SQL` dans le code) n'est expliqué nulle part ([MANQUES](../MANQUES.md)).
+
+
+=== FICHIER : docs/enonces/tp-livres.md ===
+# tp-livres : gestion d'une base de livres (écran + PF/LF)
+
+- **Objectif** : programme RPG IV (« RPG 400 ») pour gérer des livres avec un écran DSPF, un PF et un LF ; exercice **en binôme**, bibliothèque commune (initiales des deux prénoms), fichiers sources `QRPGLESRC` et `QDDSSRC`, pas de `QTEMP`.
+- **Données** : PF `LIVRES` : `ISBN` `5P 0`, `TITRE` `30A`, `AUTEUR` `30A` ; LF `LIVREF` : clé `ISBN`, `PFILE(LIVRES)`.
+- **Écran** : deux formats, `FMT1` (saisie de l'ISBN) et `FMT2` (ISBN, titre, auteur, en entrée/sortie).
+- **Comportement** :
+  - Entrée sur FMT1 → FMT2 avec les infos ;
+  - **F3** quitte ; **F12** retourne de FMT2 à FMT1 ;
+  - **F13** (depuis FMT2) supprime ; **F6** (depuis FMT1) ajoute un livre ;
+  - FMT2 permet la modification.
+- **Consigne de style** : utiliser `%EOF`, `%FOUND` (pas de style « 1987 »).
+- **Critères** : bibliothèque et fichiers propres ; navigation fluide ; ajout, modification et suppression fonctionnels.
+- **Compétences** : `EXFMT`, `CHAIN` + `%FOUND`, `WRITE`/`UPDATE`/`DELETE`, indicateurs de touches de fonction, deux formats d'écran.
+- **Dans le dépôt (variantes)** : [GESTLIVRE](../../sources/RPG/RPG-III-400/BIB05/GESTLIVRE.md) (64 lignes), [GESTLIVRE](../../sources/RPG/RPG-III-400/BIB10/GESTLIVRE.md) (154), [PLIVRES](../../sources/RPG/RPG-III-400/BIB09/PLIVRES.md) (126), [LIVRESRPG3](../../sources/RPG/RPG-III-400/BIB17/LIVRESRPG3.md) (245) ; DDS : [LIVRES_PF](../../sources/DDS/BIB17/LIVRES_PF.md), [LIVDSP](../../sources/DDS/BIB17/LIVDSP.md). Comparaisons : [index](../COMPARAISON-BIBLIOTHEQUES.md).
+
+
+=== FICHIER : docs/enonces/tp-logistock.md ===
+# tp-logistock : gestion d'articles en sous-fichier
+
+- **Objectif** : programme RPG avec un écran sous-fichier pour gérer des articles de stock : **F6** créer, **option 2** modifier, **option 4** supprimer, **option 5** afficher dans une **fenêtre pop-up**.
+- **Règles** :
+  - un **format d'écran distinct** par option ;
+  - modification et suppression se **confirment par F23** (pas par Entrée) ;
+  - une zone « Afficher à partir de » (code produit) positionne le sous-fichier : l'ordre est celui de la **base** (clé alphanumérique), pas l'ordre numérique ;
+  - le client exige un écran **identique à la maquette** (liste avec Opt, Code, Nom, Quantité, Date ; F3 = Exit, F6 = Créer).
+- **Données** : table (SQL ou PF) au format `ENTREPOTF` : code produit `5A`, nom `30A`, quantité `3S 0`, date du dernier inventaire (DATE ISO) ; un **LF** à clé triée sur le code produit ; données copiées d'une table fournie.
+- **Compétences** : sous-fichier (`SFL`, `SFLCTL`, `SFLDSP`, `SFLEND`), `SETLL` + lecture sur clé caractère, `WRITE`/`UPDATE`/`DELETE`, touches de fonction (`CAnn`/`CFnn`), `WINDOW` (fenêtre).
+- **Ressources du wiki** : fiche [03 sous-fichiers](../cheatsheets/03-rpg-par-version.md), [MANQUES](../MANQUES.md) (mots-clés DDS d'écran `WINDOW`, `OVERLAY`, `CHGINPDFT` à documenter).
+- **Dans le dépôt** : table et LF `ENTREPOT*` (DDS) et écrans `ENTREDSP*` / `ENTRETP*` ; le programme RPG correspondant n'est pas identifié.
+
+
+=== FICHIER : docs/enonces/tp-the-big-one.md ===
+# tp-the-big-one : reprendre un héritage RPG III, puis le moderniser en RPG IV
+
+- **Contexte** : un constructeur de maisons fictif ; un développeur historique part à la retraite et laisse une bibliothèque : fichiers (maisons, composants), **2 data areas**, **3 programmes RPG III**, **2 CL**. Deux équipes de six travaillent chacune sur leur copie, puis se **relisent en croix**.
+- **Programmes** : `NUMMAI` (numérotation des maisons via zone de données), `CALDEV` (calcul de devis), `GESMAI` (écran de gestion), CL `DEVIS` et une commande de changement de TVA.
+- **Rôles** (un par membre) : chef de chantier, fichiers PF/LF, data areas et CL, programme de calcul, numérotation, écran. Règles de collaboration : un seul membre à la fois sur un source, journal de bord, commentaire daté dans chaque modification, bibliothèque de référence en **lecture seule**, une bibliothèque par équipe.
+- **Étapes** (barème sur 20) :
+  1. **Mettre en place** : environnement d'équipe (profil de groupe, bibliothèque partagée en `*ALL` pour le groupe et `*USE` pour le public), copie des sources (`CPYSRCF`, longueur 112), des fichiers (`CRTPF`, `CRTLF`, `CPYF`), création des data areas.
+  2. **Comprendre** : plan de câblage (qui appelle qui, qui lit quoi) et inventaire des `GOTO` / `TAG` / `CABxx` ; **enquête sur 2 bugs**.
+  3. **Maintenir** : 3 évolutions (E1 à E3) avec impact sur `DEVISMAI` et la commande de TVA.
+  4. **Moderniser** en RPG IV : plus aucun `GOTO`, `TAG`, `CABxx`, `COMP` ni indicateur numérique hors touches de fonction ; pas de SQL ni de format libre ; zones déclarées en spécifications D ; `DOW`, `SELECT`/`WHEN`, `DCL-PR`/`DCL-PI`.
+  5. **Revue croisée** : cahier des charges vérifié par recherche (`FNDSTRPDM`).
+- **Pièges documentés** : un indicateur (50) réutilisé pour deux sens ; code mort ; **troncature au lieu d'arrondi** (le `DIV` sans `(H)` donne 889,56 au lieu de 889,57) ; 24 / 9 / 21 `GOTO` / `CAB` / `TAG` annoncés.
+- **Data areas** : `TBONUM` (compteur) et `TBOPARM` (TVA en 4 positions avec 2 décimales, taux horaire en 5 positions avec 2 décimales, société ; positions 1-4, 5-9, 10-39) ; appel d'un CL avec paramètre numérique à zéros de tête et apostrophes.
+- **Compétences** : lecture/maintenance de RPG III, `DTAARA` (`IN`, `OUT`, `UNLOCK`, `*DTAARA DEFINE`), `PLIST`/`PARM`, passage RPG III → RPG IV (`*ENTRY PLIST` → `DCL-PI`), arrondi `H`, `CPYSRCF`.
+- **Dans le dépôt** : **aucune solution**. Fiches utiles : [03 (RPG III, PR/PI, DTAARA)](../cheatsheets/03-rpg-par-version.md), [06 (sous-routines)](../cheatsheets/06-cycle-rpg-et-sous-routines.md).
+
+
+=== FICHIER : docs/enonces/tp-wesh-alors.md ===
+# tp-wesh-alors : mettre en forme un texte et l'écrire dans la joblog
+
+- **Objectif** : un programme `WESH` (RPG **full free**) lit une table d'**une seule ligne** (colonne `TEXTE_BRUT`, `VARCHAR(1000)` CCSID 1147) et écrit le poème mis en forme dans la **joblog**, un vers par message (18 messages attendus).
+- **Règles de mise en forme** :
+  - **deux espaces consécutifs** = saut de strophe, matérialisé par une ligne de 20 tirets ;
+  - une **majuscule précédée de « . » ou de « , » suivi d'un espace** = passage à la ligne ;
+  - chaque `!` est remplacé par `V`.
+- **Contraintes** : instructions **RPG natives uniquement** (ni SQL ni API) ; le source de départ fourni **ne doit pas être modifié** (on ajoute à la suite) ; programme nommé `WESH` ; source de longueur **240** (lignes de plus de 100 caractères) ; le code doit être simple, lisible, optimisé.
+- **Indice de l'énoncé** : `DSPLY` coupe à 52 caractères → utiliser **`SND-MSG`** (message dans la joblog) et les **fonctions intégrées** de chaînes ([job-i.fr/fonctions-rpg](https://job-i.fr/fonctions-rpg)).
+- **Vérification** : `CALL WESH`, puis `DSPJOBLOG` et F10 pour les messages détaillés.
+- **Compétences** : `SND-MSG`, `%SCAN`, `%SUBST`, `%REPLACE` / `%XLATE`, boucle `DOW` sur la position, `%TRIM`, `VARCHAR`, lecture d'un champ sans SQL (la table est lue par fichier : `DCL-F`).
+- **Dans le dépôt (3 façons de faire)** : [WESH BIB04](../../sources/RPG/RPG-ILE/BIB04/WESH.md) (175 lignes), [WESH BIB11](../../sources/RPG/RPG-ILE/BIB11/WESH.md) (99), [WESH BIB16](../../sources/RPG/RPG-ILE/BIB16/WESH.md) (155). Comparatif automatique : [comparaisons/WESH](../comparaisons/WESH.md).
+- **Notion manquante dans les fiches** : `SND-MSG` et plusieurs BIF de chaînes sont utilisés dans le code mais absents des fiches ([MANQUES](../MANQUES.md)).
+
+
+=== FICHIER : docs/MANQUES.md ===
+# Ce qui manque dans les fiches (utilise dans le code, absent des fiches)
+
+Genere le 2026-11-17 09:23 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
+
+## Commandes CL : 67 manquants sur 104 utilises
+
+| Terme | Occurrences | Bibliotheques |
+|---|---|---|
+| CHGVAR | 310 | 13 |
+| ENDPGM | 142 | 14 |
+| GOTO | 94 | 9 |
+| WHEN | 92 | 4 |
+| SNDPGMMSG | 73 | 9 |
+| SNDRCVF | 53 | 8 |
+| DLTOVR | 44 | 6 |
+| RCVF | 38 | 6 |
+| DSPATR | 33 | 1 |
+| LEAVE | 28 | 1 |
+| ELSE | 22 | 7 |
+| RUNSQL | 18 | 5 |
+| STRSEU | 14 | 2 |
+| RTVJOBA | 13 | 9 |
+| CHGCURLIB | 11 | 5 |
+| CLOF | 10 | 4 |
+| CLRPFM | 10 | 5 |
+| RCVMSG | 10 | 6 |
+| DCLPRCOPT | 9 | 1 |
+| FTP | 9 | 5 |
+| CPYSRCF | 9 | 3 |
+| OPNQRYF | 8 | 4 |
+| RTVOBJD | 8 | 4 |
+| RMVDIR | 7 | 6 |
+| COPYRIGHT | 7 | 1 |
+| RTVUSRPRF | 6 | 5 |
+| CLOSE | 6 | 3 |
+| CPYTOSTMF | 6 | 5 |
+| ENDMOD | 6 | 1 |
+| DOUNTIL | 5 | 4 |
+| CRTDIR | 5 | 4 |
+| CRTCLPGM | 5 | 3 |
+| RTVMBRD | 5 | 2 |
+| RMVLIBLE | 5 | 4 |
+| STRSBS | 5 | 3 |
+| ITERATE | 4 | 3 |
+| DLYJOB | 4 | 2 |
+| CALLSUBR | 4 | 3 |
+| RCLRSC | 4 | 3 |
+| SUBR | 4 | 3 |
+| ENDSUBR | 4 | 3 |
+| STRPCCMD | 3 | 1 |
+| RUNSQLSTM | 3 | 1 |
+| CRTDSPF | 3 | 3 |
+| CRTCLS | 2 | 2 |
+
+## Instructions / fonctions RPG (reconnues par job-i) : 43 manquants sur 102 utilises
+
+| Terme | Occurrences | Bibliotheques |
+|---|---|---|
+| LEAVE | 475 | 12 |
+| ELSE | 414 | 15 |
+| %ADDR | 190 | 9 |
+| DCL-C | 161 | 11 |
+| WORKSTN | 158 | 13 |
+| DELETE | 134 | 7 |
+| OPEN | 131 | 11 |
+| ITER | 114 | 11 |
+| PARM | 105 | 6 |
+| COMMIT | 95 | 10 |
+| %TRIMR | 85 | 5 |
+| %ERROR | 43 | 2 |
+| QUALIFIED | 41 | 8 |
+| SND-MSG | 26 | 8 |
+| OVERLAY | 24 | 5 |
+| BASED | 21 | 9 |
+| %SCANRPL | 16 | 3 |
+| %XLATE | 14 | 1 |
+| %DIV | 13 | 2 |
+| %DECH | 10 | 4 |
+| READP | 10 | 2 |
+| %DAYS | 8 | 1 |
+| UNLOCK | 8 | 1 |
+| SETGT | 7 | 2 |
+| %STR | 6 | 1 |
+| %STATUS | 5 | 3 |
+| %SUBARR | 5 | 3 |
+| %OPEN | 5 | 3 |
+| %UPPER | 4 | 3 |
+| %TIMESTAMP | 4 | 1 |
+| READPE | 3 | 2 |
+| %XFOOT | 3 | 1 |
+| %ALLOC | 2 | 1 |
+| %EQUAL | 2 | 1 |
+| DCL-ENUM | 2 | 2 |
+| %LIST | 2 | 2 |
+| %TARGET | 2 | 1 |
+| %LOWER | 2 | 2 |
+| %MIN | 1 | 1 |
+| SORTA | 1 | 1 |
+| %FIELDS | 1 | 1 |
+| RESET | 1 | 1 |
+| %CHECKR | 1 | 1 |
+
+## Messages (MONMSG, SQLCODE...) : 61 manquants sur 68 utilises
+
+| Terme | Occurrences | Bibliotheques |
+|---|---|---|
+| CPF0000 | 82 | 11 |
+| CPF0864 | 47 | 7 |
+| CPF9897 | 20 | 5 |
+| CPF2103 | 20 | 7 |
+| CPF9898 | 16 | 5 |
+| MCH0000 | 14 | 5 |
+| EDT9007 | 13 | 2 |
+| EDT0223 | 12 | 1 |
+| CPD0071 | 10 | 2 |
+| CPF9812 | 9 | 5 |
+| CPF5813 | 8 | 2 |
+| SQL0000 | 6 | 5 |
+| CPD0084 | 6 | 1 |
+| CPF2551 | 6 | 2 |
+| CPF2817 | 6 | 2 |
+| CPF3CF2 | 6 | 2 |
+| CPD0000 | 5 | 4 |
+| CPF2111 | 5 | 3 |
+| CPD0172 | 5 | 2 |
+| CPD9817 | 4 | 4 |
+| CPF1697 | 4 | 2 |
+| CPFA0A9 | 4 | 2 |
+| CPFA0A0 | 4 | 4 |
+| IWS4010 | 3 | 1 |
+| CPF0801 | 3 | 2 |
+| CPF3012 | 3 | 3 |
+| CPF7602 | 3 | 1 |
+| CPF4174 | 3 | 1 |
+| SQL9010 | 3 | 2 |
+| CPF3064 | 3 | 3 |
+| CPFA0B7 | 3 | 2 |
+| CPF2110 | 2 | 2 |
+| CPF2816 | 2 | 1 |
+| CPF1696 | 2 | 2 |
+| CPF2104 | 2 | 2 |
+| CPF1064 | 2 | 2 |
+| CPFA097 | 2 | 1 |
+| CPF3353 | 2 | 2 |
+| CPF1621 | 2 | 2 |
+| SQL0952 | 2 | 1 |
+| CPC1221 | 2 | 1 |
+| CPF3323 | 2 | 2 |
+| CPF2292 | 2 | 2 |
+| SQL7064 | 2 | 1 |
+| CPF4520 | 2 | 2 |
+
+## Services SQL (QSYS2, SYSTOOLS) : 25 manquants sur 28 utilises
+
+| Terme | Occurrences | Bibliotheques |
+|---|---|---|
+| QSYS2.IFS_WRITE_UTF8 | 5 | 1 |
+| QSYS2.BOUND_MODULE_INFO | 5 | 3 |
+| QSYS2.BASE64_ENCODE | 5 | 2 |
+| QSYS2.HTTP_GET | 5 | 2 |
+| SYSTOOLS.HTTPPOSTCLOB | 4 | 2 |
+| QSYS2.SYSPARTITIONSTAT | 4 | 3 |
+| SYSTOOLS.BASE64ENCODE | 4 | 1 |
+| SYSTOOLS.HTTPGETCLOB | 3 | 2 |
+| QSYS2.HTTP_POST_VERBOSE | 3 | 3 |
+| QSYS2.HTTP_POST | 2 | 2 |
+| QSYS2.STACK_INFO | 2 | 1 |
+| QSYS2.BOUND_SRVPGM_INFO | 2 | 2 |
+| SYSTOOLS.HTTPPUTCLOB | 2 | 2 |
+| QSYS2.SEND_DATA_QUEUE | 2 | 1 |
+| QSYS2.SEND_MESSAGE | 2 | 1 |
+| QSYS2.HTTP_PUT | 2 | 2 |
+| QSYS2.JOB_INFO | 1 | 1 |
+| QSYS2.PROGRAM_EXPORT_IMPORT_INFO | 1 | 1 |
+| QSYS2.IFS_READ_BINARY | 1 | 1 |
+| SYSTOOLS.HTTPDELETECLOB | 1 | 1 |
+| QSYS2.SYSROUTINES | 1 | 1 |
+| SYSTOOLS.HTTPDELETECLOBVERBOSE | 1 | 1 |
+| QSYS2.RECEIVE_DATA_QUEUE | 1 | 1 |
+| QSYS2.IFS_REMOVE_FILE | 1 | 1 |
+| QSYS2.HTTP_DELETE | 1 | 1 |
+
+## Mots-cles DDS / ecran : 84 manquants sur 102 utilises
+
+| Terme | Occurrences | Bibliotheques |
+|---|---|---|
+| COLOR | 2152 | 14 |
+| DSPATR | 1017 | 11 |
+| CHECK | 185 | 9 |
+| DSPSIZ | 178 | 16 |
+| CA03 | 102 | 12 |
+| CF03 | 100 | 9 |
+| OVERLAY | 84 | 13 |
+| CA12 | 83 | 10 |
+| CF23 | 71 | 8 |
+| ERRMSG | 61 | 8 |
+| SFLCOLUMN | 58 | 1 |
+| CF12 | 52 | 7 |
+| WINDOW | 40 | 10 |
+| INDARA | 39 | 9 |
+| SFLCR | 37 | 2 |
+| CA06 | 37 | 6 |
+| REFFLD | 30 | 4 |
+| CF06 | 29 | 7 |
+| CHGINPDFT | 26 | 8 |
+| CA05 | 20 | 6 |
+| CF05 | 19 | 7 |
+| CF11 | 17 | 5 |
+| CF10 | 17 | 5 |
+| CF21 | 15 | 5 |
+| SFLMAX | 14 | 2 |
+| CF02 | 13 | 7 |
+| CF07 | 12 | 6 |
+| CA08 | 12 | 2 |
+| CF24 | 12 | 5 |
+| SFLLIN | 11 | 2 |
+| CA01 | 11 | 2 |
+| EDTWRD | 11 | 3 |
+| SFLDROP | 11 | 4 |
+| SFLOPT | 10 | 1 |
+| CF22 | 10 | 5 |
+| CF08 | 10 | 4 |
+| SFLLCK | 10 | 1 |
+| CF09 | 10 | 5 |
+| CF20 | 9 | 4 |
+| CF04 | 9 | 4 |
+| CF13 | 9 | 4 |
+| CF15 | 9 | 4 |
+| SFLNXTCHG | 8 | 5 |
+| CF16 | 8 | 3 |
+| CF18 | 8 | 3 |
+
+## Sources par type et bibliotheque
+
+| Type | Sources |
+|---|---|
+| DDS | 382 |
+| RPG/RPG-ILE | 291 |
+| CL/CL-procedural | 128 |
+| RPG/RPG-III-400 | 124 |
+| CL/CL-ILE | 50 |
+| SQL | 31 |
+| COBOL | 26 |
+| Autres/Service-programs | 14 |
+| Menus | 14 |
+| RPG/Copy | 11 |
+| Autres/Web | 5 |
+| Autres/Commandes | 4 |
+| Autres/Aide | 1 |
+| Autres/Panneaux-UIM | 1 |
+
+
+=== FICHIER : docs/CYCLE-GAP-EXEMPLES.md ===
+# Exemples du cycle RPG (cycle GAP) dans les bibliotheques
+
+Genere le 2026-11-17 09:23. Detection : un fichier **primaire** (IP) ou **secondaire** (IS) en specification F dans un source en colonnes. Explication du cycle : [fiche 03](cheatsheets/03-rpg-par-version.md) et [job-i.fr](https://job-i.fr/cycle-gap-rpg). Detection heuristique : a confirmer en ouvrant le source.
+
+| Bibliotheque | Membre | Type | Lignes | Primaire (IP) | Secondaire (IS) | Niveaux (L1-L9) | 1P | OF | Source |
+|---|---|---|---|---|---|---|---|---|---|
+| BIB01 | LIVGAP1 | RPG/RPG-III-400 | 78 | oui | - | L1 | oui | - | [LIVGAP1.md](../sources/RPG/RPG-III-400/BIB01/LIVGAP1.md) |
+| BIB01 | LIVGAP2 | RPG/RPG-III-400 | 109 | oui | - | L1 | - | - | [LIVGAP2.md](../sources/RPG/RPG-III-400/BIB01/LIVGAP2.md) |
+| BIB01 | SYNTAX3 | RPG/RPG-III-400 | 98 | oui | - |  | - | - | [SYNTAX3.md](../sources/RPG/RPG-III-400/BIB01/SYNTAX3.md) |
+| BIB20 | CYCDEMO | RPG/RPG-III-400 | 183 | oui | oui | L1 L2 | oui | oui | [CYCDEMO.md](../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md) |
+| BIB21 | FILMCYC | RPG/RPG-III-400 | 186 | oui | - | L1 L2 L3 | - | oui | [FILMCYC.md](../sources/RPG/RPG-III-400/BIB21/FILMCYC.md) |
+
+
+=== FICHIER : docs/PORTABILITE.md ===
+# Faire tourner le wiki depuis n'importe quel appareil
+
+Objectif : que la régénération, la détection de changements sur job-i.fr et les évaluations **ne dépendent d'aucun ordinateur en particulier**.
+
+## Ce qui tourne où
+
+| Tâche | Où | Besoin |
+|---|---|---|
+| Régénération quotidienne (job-i, vérifications, comparaisons, manques, évaluations) | **GitHub Actions** ([regeneration-quotidienne.yml](../.github/workflows/regeneration-quotidienne.yml)) | rien (ni PC allumé ni application ouverte) |
+| Évaluation d'un apport ou d'une contribution à chaque PR | **GitHub Actions** (`evaluer-apports.yml`, `verif-contributions.yml`) | rien |
+| Mise à jour rédigée des fiches depuis job-i.fr, tri des apports | **routine cloud Claude** (optionnelle, voir ci-dessous) | compte claude.ai |
+| Conversion d'un **nouvel export ACS** (`*.LIB`) en Markdown | **un poste** qui a l'export | PowerShell + `Run-All.ps1` |
+| Relecture et fusion des Pull Requests | navigateur, **téléphone compris** | compte GitHub |
+
+Le résultat de la régénération arrive sous forme d'une **Pull Request** (branche `auto/regeneration-AAAAMMJJ`) : un clic pour fusionner (le propriétaire contourne la règle de relecture). Les simples changements de date ne créent pas de PR.
+
+## Réglages GitHub à faire une fois (sécurité : à vous)
+1. Dépôt > **Settings > Actions > General** : « Allow GitHub Actions to create and approve pull requests » (sinon la branche est poussée mais la PR est à ouvrir à la main).
+2. Facultatif : si vous préférez que le robot fusionne seul, ajouter l'application « GitHub Actions » aux acteurs qui contournent la règle `nomain` (à éviter si des camarades peuvent proposer du code).
+
+## Utiliser le wiki sur un autre ordinateur
+1. `git clone` le dépôt.
+2. PowerShell 5.1 (Windows) ou **PowerShell 7** (Windows, Linux, macOS) : `pwsh scripts/Run-All.ps1 -SansConversion` régénère tout sauf la conversion des exports.
+3. Pour convertir des exports ACS : définir `WIKI_EXPORT_DIR` (dossier des `*.LIB`) puis `Run-All.ps1`.
+4. **Fichier de correspondance des noms de bibliothèques** (`lib-alias.private.json`, privé, jamais dans le dépôt) : à copier sur chaque poste qui convertit, ou à indiquer par `WIKI_ALIAS_FILE`. Sans lui, les alias `BIBnn` seraient renumérotés et ne correspondraient plus à ceux du dépôt.
+
+## Limites connues
+- **Google Drive** : le connecteur ne sait pas remplacer le contenu d'un fichier existant, et l'envoi d'un fichier demande une validation humaine. Il ne peut donc pas être automatisé sans surveillance. La source de vérité est le dépôt GitHub ; Drive n'est qu'une copie, mise à jour à la main ou lors d'une session interactive.
+- **Index des Documents** : il décrit les fichiers d'un ordinateur donné ; il reste propre à chaque appareil (un fichier par appareil, par exemple `INDEX_Documents_<nom-de-l-appareil>.md`).
+- Les scripts ne sont **testés que sous Windows PowerShell 5.1** ; le premier passage de l'Action (Linux, PowerShell 7) confirmera leur portabilité.
+
+
+=== FICHIER : contributions/README.md ===
+# Contributions : ajouter votre bibliothèque
+
+Ce dossier reçoit le code des collaborateurs (camarades). Objectif : pour **un même exercice**, réunir **plusieurs solutions** (structures et codes différents) qui donnent **le même résultat final**, afin d'avoir un large choix d'exemples. Chaque contribution est **vérifiée** à chaque merge ([VERIFICATION-CONTRIBUTIONS](../docs/VERIFICATION-CONTRIBUTIONS.md)) puis comparée aux autres ([VARIANTES](../docs/VARIANTES.md)).
+
+## Comment contribuer (fork + Pull Request)
+
+1. Copiez le dossier [`_modele`](_modele/) en `contributions/<votre-pseudo>/` (pseudo en minuscules, chiffres, tirets : `marie-d`).
+2. Placez vos sources (texte UTF-8, pas d'export EBCDIC) dans `contributions/<pseudo>/<BIBLIOTHEQUE>/<FICHIER-SOURCE>/<MEMBRE>.<ext>` ; exemple : `contributions/marie-d/MABIB/QRPGLESRC/CLIENT.rpgle`.
+3. Décrivez chaque exercice dans `contributions/<pseudo>/contribution.json` (champs ci-dessous).
+4. Ouvrez une Pull Request vers `main`. La vérification automatique tourne ; corrigez les erreurs éventuelles.
+
+## `contribution.json`
+
+```json
+{
+  "auteur": "marie-d",
+  "bibliotheque": "MABIB",
+  "exercices": [
+    {
+      "id": "gestion-clients-crud",
+      "titre": "Gestion de clients : consulter, ajouter, modifier, supprimer",
+      "consigne": "Écran qui permet de gérer la table CLIENT (clé NUMCLI).",
+      "resultat_attendu": "Un client ajouté apparaît à la consultation ; supprimé, il disparaît.",
+      "langage": "RPG-ILE",
+      "approche": "Sous-fichier + CHAIN, une procédure par action.",
+      "dependances": ["CLIENT"],
+      "fichiers": ["QRPGLESRC/CLIENT.rpgle", "QDSPSRC/CLIENTD.dspf"]
+    }
+  ]
+}
+```
+
+| Champ | Règle |
+|---|---|
+| `auteur` | identique au nom de votre dossier |
+| `bibliotheque` | nom de la bibliothèque, MAJUSCULES, 10 caractères max ; le dossier du même nom doit exister |
+| `id` | **identifiant de l'exercice**. Pour la même consigne, utilisez le **même `id`** que les autres : c'est ce qui regroupe les variantes (voir [VARIANTES](../docs/VARIANTES.md)) |
+| `titre`, `consigne`, `resultat_attendu`, `approche` | texte libre (5 caractères minimum) ; `resultat_attendu` doit décrire le résultat **observable** |
+| `langage` | `RPG-III`, `RPG-ILE`, `RPG-free`, `CL`, `DDS`, `SQL` ou `Autre` |
+| `dependances` | objets utilisés mais non fournis (ex. `CLIENT`, `QSYS2/QCMDEXC`) |
+| `fichiers` | chemins relatifs au dossier de la bibliothèque ; **chaque fichier doit exister** |
+
+## Ce qui est vérifié à chaque merge
+
+- le JSON est valide et complet ; l'`auteur` correspond au dossier ;
+- **chaque fichier déclaré existe réellement** dans la bibliothèque, n'est pas vide ni binaire, a une extension autorisée (`.rpgle .rpg .sqlrpgle .rpgleinc .clp .clle .cl .dds .pf .lf .dspf .prtf .sql .txt .md .cpy .mnu`) ;
+- aucun chemin hors de la bibliothèque (`..`), aucun secret (clé, jeton) ;
+- les fichiers présents mais **non déclarés** sont signalés (orphelins) ;
+- les objets référencés (fichiers `DCLF`/`dcl-f`/spécification F, `/COPY`, `CALL`) sont **fournis** ou déclarés dans `dependances` (avertissement sinon) ;
+- les commandes CL, instructions et fonctions RPG sont contrôlées contre job-i.fr (`Verify-Code.ps1`, option `-Jobi`).
+
+Pour vérifier avant d'ouvrir la PR : `powershell -File scripts/Verify-Contributions.ps1 -Only <pseudo>`.
+
+## Règles
+
+- Ne mettez **jamais** de mot de passe, jeton ou donnée personnelle.
+- Un fichier = un membre source en texte ; pas d'archive, d'exécutable ni de binaire.
+- Vous ne pouvez pas modifier `main` directement : tout passe par une Pull Request relue par le propriétaire du dépôt.
+
+
+=== FICHIER : docs/apports/README.md ===
+# Apports personnels
+
+Déposez ici ce que vous voulez ajouter aux fiches (notes, extraits de code, captures, sujets de TP).
+
+## Format conseillé (un fichier .md par apport)
+```
+---
+fiche: 03-rpg-par-version      # 01 à 05, voir ../cheatsheets/README.md
+titre: Ma gestion de sous-fichier
+---
+Ce que j'ai fait, le contexte, l'extrait de code ou le lien vers ../../sources/...
+```
+
+La tâche d'automatisation copie chaque apport dans la section « Mes exemples » de la fiche indiquée par `fiche:`, puis le marque comme intégré (`integre: oui`).
+
+## Évaluation automatique
+
+Chaque document déposé ici est évalué automatiquement (pertinence pour IBM i, doublon, apport par rapport aux fiches) : résultat dans [EVALUATION-APPORTS](../EVALUATION-APPORTS.md). Formats acceptés : texte (.md, .txt, .sql, sources .rpgle .clp .dds…) ; pas de PDF, archive ni binaire.

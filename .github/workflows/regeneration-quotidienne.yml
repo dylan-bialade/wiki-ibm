@@ -2,10 +2,13 @@ name: Regeneration quotidienne du wiki
 # Tourne chez GitHub (aucun appareil personnel requis). Regenere les documents derives a partir du depot,
 # detecte les changements de job-i.fr, puis propose le resultat dans une Pull Request a relire et fusionner.
 # Lancement manuel possible : onglet Actions > "Regeneration quotidienne du wiki" > Run workflow.
+# Essais : un push sur test/actions-* fait un essai a blanc (aucune branche ni PR) ; sur test/actions-pr-* il fait tout, PR comprise.
 on:
   schedule:
     - cron: '0 5 * * *'   # 05:00 UTC (06:00 a Paris en hiver, 07:00 en ete)
   workflow_dispatch:
+  push:
+    branches: ['test/actions-*']
 permissions:
   contents: write
   pull-requests: write
@@ -15,13 +18,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Regenerer (job-i, verifications, comparaisons, manques, evaluations)
+      - name: Regenerer (job-i, verifications, comparaisons, manques, evaluations, contexte)
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Continue'
-          ./scripts/Check-JobIUpdates.ps1           # code 10 = changements sur job-i.fr (pas une erreur)
-          Write-Output "Check-JobIUpdates : code $LASTEXITCODE"
-          ./scripts/Run-All.ps1 -SansConversion      # pas d'exports ACS dans le depot : la conversion est faite sur un poste local
+          $ps = (Get-Process -Id $PID).Path
+          "PowerShell $($PSVersionTable.PSVersion) sur $($PSVersionTable.OS)"
+          $steps = @('Check-JobIUpdates','Verify-JobI','Fix-Markdown','Verify-Contributions','Build-Variantes','Build-Comparaison','Find-Gaps','Assess-Document','Build-Contexte')
+          foreach ($s in $steps) {
+            $out = & $ps -NoProfile -File "./scripts/$s.ps1" 2>&1 | Out-String
+            $rc = $LASTEXITCODE
+            $last = (($out -split "`n" | Where-Object { $_.Trim() } | Select-Object -Last 3) -join ' | ')
+            if ($s -eq 'Check-JobIUpdates' -and $rc -eq 10) { $rc = 0 }   # 10 = changements sur job-i.fr, pas une erreur
+            if ($rc -eq 0) { Write-Output "::notice title=$s::OK $last" } else { Write-Output "::warning title=$s::code $rc : $last" }
+          }
           exit 0
 
       - name: Proposer les changements par Pull Request (seulement s'il y a du fond)
@@ -30,11 +40,17 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -u
-          # Ignore les simples changements de date de generation.
           git add -A
+          git diff --cached --stat | tail -n 25 || true
           SUBSTANCE=$(git diff --cached -U0 | grep -E '^[+-]' | grep -vE '^(\+\+\+|---)' | grep -vE 'Genere le|Verifie le|Derniere mise a jour|Dernière mise à jour' || true)
           if [ -z "$SUBSTANCE" ]; then
-            echo "Aucun changement de fond : rien a proposer."
+            echo "::notice title=PR::Aucun changement de fond : rien a proposer."
+            exit 0
+          fi
+          NB=$(printf '%s\n' "$SUBSTANCE" | wc -l)
+          echo "::notice title=PR::$NB ligne(s) de changement de fond."
+          if [ "${GITHUB_EVENT_NAME}" = "push" ] && [[ "${GITHUB_REF_NAME}" != test/actions-pr-* ]]; then
+            echo "::notice title=PR::Essai a blanc (push) : pas de branche ni de Pull Request."
             exit 0
           fi
           BR="auto/regeneration-$(date -u +%Y%m%d)"
@@ -42,8 +58,15 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BR"
           git commit -m "Regeneration automatique $(date -u +%F)"
-          git push origin "$BR" || { echo "Branche $BR deja presente : non poussee."; exit 0; }
-          gh pr create --base main --head "$BR" \
+          if ! git push origin "$BR"; then
+            echo "::warning::Branche $BR non poussee (deja presente ?)."
+            exit 0
+          fi
+          echo "::notice title=PR::Branche $BR poussee."
+          if gh pr create --base main --head "$BR" \
             --title "Regeneration automatique $(date -u +%F)" \
-            --body "Regeneration quotidienne : documents derives, detection des changements de job-i.fr (voir docs/JOBI-CHANGES.md), evaluations et manques. A relire, puis fusionner (le proprietaire peut le faire depuis n'importe quel appareil)." \
-            || echo "Pull Request non creee (activer Settings > Actions > General > Allow GitHub Actions to create pull requests) : la branche $BR est poussee."
+            --body "Regeneration quotidienne : documents derives, detection des changements de job-i.fr (voir docs/JOBI-CHANGES.md), evaluations et manques. A relire, puis fusionner (le proprietaire peut le faire depuis n'importe quel appareil)."; then
+            echo "::notice title=PR::Pull Request creee."
+          else
+            echo "::warning title=PR::Pull Request non creee : activer Settings > Actions > General > Allow GitHub Actions to create and approve pull requests. La branche $BR est poussee."
+          fi

@@ -26,6 +26,7 @@
 | Ajouter ma bibliothèque (collaborateur) | [contributions/README.md](contributions/README.md) |
 | Règles de lecture, de vérification et de mise à jour (prompt système) | [docs/PROMPT-SYSTEME.md](docs/PROMPT-SYSTEME.md) (chargé via [CLAUDE.md](CLAUDE.md)) |
 | Ce qui a changé sur job-i.fr depuis la dernière vérification | [docs/JOBI-CHANGES.md](docs/JOBI-CHANGES.md) (présent seulement s'il y a des changements) |
+| Donner le wiki à n'importe quel chat Claude (texte à coller, projet, fichier unique) | [docs/CONTEXTE-CLAUDE.md](docs/CONTEXTE-CLAUDE.md), [llms-full.txt](llms-full.txt) |
 | Faire tourner le wiki depuis n'importe quel appareil (Actions, routine cloud, PowerShell 7) | [docs/PORTABILITE.md](docs/PORTABILITE.md) |
 
 ## Arborescence
