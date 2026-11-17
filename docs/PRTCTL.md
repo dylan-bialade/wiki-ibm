@@ -41,6 +41,22 @@ Source : [IBM i 7.1, Extended Length PRTCTL Data Structure](https://www.ibm.com/
 | 13-15 | compteur de lignes | zoné 3,0 | numérique |
 
 Les noms de sous-zones (`spaceB`, `spaceA`, `skipB`, `skipA`, `lineCnt`) sont libres. Le cadrage des valeurs (`'  1'` ou `'1  '`) n'est pas précisé : à tester sur le spool.
+## 2 ter. Variante vue en cours : sous-zones `ZONED(3:0)` (disposition étendue)
+Un exemple de formateur déclare la structure sans `*COMPAT`, donc en disposition **étendue** (section 2 bis), mais avec des sous-zones numériques :
+```rpgle
+dcl-ds ctlImpr len(15);
+  espAvant   zoned(3:0);    // espace avant  (colonnes 40-42 de la spécification O RPG IV)
+  espApres   zoned(3:0);    // espace après  (43-45)
+  sautAvant  zoned(3:0);    // saut avant    (46-48)
+  sautApres  zoned(3:0);    // saut après    (49-51)
+  ligneCour  zoned(3:0);    // ligne courante (rendue par le système)
+end-ds;
+dcl-f QSYSPRT printer(132) prtctl(ctlImpr);
+```
+- **Cohérent avec IBM** : 15 octets, 5 × 3 positions, mêmes positions que la section 2 bis, et sans `*COMPAT`. Les largeurs rappellent la spécification O : RPG IV = 3 positions chacun (colonnes 40-51), RPG III = 1+1+2+2 (colonnes 17-22), qui est la disposition `*COMPAT`.
+- **Différence avec IBM** : IBM décrit les quatre premières sous-zones en **caractère** (« blanc ou 0-255 »), pas en numérique. Pour une valeur positive, un zoné de 3 chiffres occupe les mêmes 3 octets que le texte `'001'` : le résultat est équivalent pour 1 à 255 (raisonnement, non testé).
+- **Point à surveiller** : un zoné à 0 contient `'000'` et non des blancs. IBM donne « blanc ou 1-255 » pour le **saut** : 0 n'y figure pas. Pour « aucun saut », utiliser des blancs (`CHAR(3)` et `*BLANKS`) ou tester le spool avant de s'y fier. Le blanc reste la valeur documentée pour « aucune action ».
+- **Statut** : exemple rapporté, **non compilé ni testé ici**. Aucune explication du formateur n'est écrite dans le wiki : seule la déclaration est reprise.
 ## 3. Cause de l'échec observé (très probable)
 Le premier programme déclarait **quatre sous-zones `CHAR(3)`** (c'est la disposition *étendue*, appliquée à tort avec `*COMPAT`) (`spaceB`, `spaceA`, `skipB`, `skipA`) puis `ZONED(3:0)`, soit une structure de 15 octets, et les remplissait de `'000'` / `'001'`. Avec la disposition réelle (1+1+2+2+3), les octets étaient lus de travers : par exemple `'000' '001' '000' '000'` donne « saut après = 01 » (saut à la ligne 1 après chaque écriture) et le compteur de lignes écrasé. Cela est cohérent avec le spool observé (saut de page à tort, lignes superposées), sans l'avoir prouvé octet par octet. La disposition à `CHAR(3)` est correcte **sans** `*COMPAT` (section 2 bis), pas avec. (Constat de terrain : le programme compilait et s'exécutait.)
 
