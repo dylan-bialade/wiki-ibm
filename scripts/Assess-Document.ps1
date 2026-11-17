@@ -32,7 +32,7 @@ if ($Path) {
   $p = (Resolve-Path $Path).Path
   if (Test-Path $p -PathType Container) { foreach ($f in (Get-ChildItem $p -Recurse -File)) { Load-File $f.FullName $f.Name } } else { Load-File $p (Split-Path $p -Leaf) }
 } else {
-  $ap = Join-Path $Root 'docs\apports'
+  $ap = Join-Path $Root 'docs/apports'
   if (Test-Path $ap) { foreach ($f in (Get-ChildItem $ap -Recurse -File | Where-Object { $_.Name -ne 'README.md' })) { Load-File $f.FullName ('docs/apports/' + $f.FullName.Substring($ap.Length + 1).Replace('\','/')) } }
   $cb = Join-Path $Root 'contributions'
   if (Test-Path $cb) { foreach ($d in (Get-ChildItem $cb -Directory | Where-Object { $_.Name -notlike '_*' })) { foreach ($f in (Get-ChildItem $d.FullName -Recurse -File | Where-Object { $_.Name -ne 'contribution.json' })) { Load-File $f.FullName ('contributions/' + $d.Name + '/' + $f.FullName.Substring($d.FullName.Length + 1).Replace('\','/')) } } }
@@ -113,7 +113,7 @@ if ($res.Count -eq 0) { [void]$md.Add('_Aucun document a evaluer pour le moment 
   foreach ($o in ($res | Sort-Object Verdict, @{e='Score';Descending=$true})) { [void]$md.Add("| $($o.Doc) | $($o.Kind) | **$($o.Verdict)** | $($o.Score) | $((($o.Reasons -join ' ; ') -replace '\|','/')) | $($o.Dest) |") }
 }
 $report = (($md -join "`n").TrimEnd() + "`n")
-if (-not $Path) { [IO.File]::WriteAllText((Join-Path $Root 'docs\EVALUATION-APPORTS.md'), $report, (New-Object Text.UTF8Encoding($false))) }
+if (-not $Path) { [IO.File]::WriteAllText((Join-Path $Root 'docs/EVALUATION-APPORTS.md'), $report, (New-Object Text.UTF8Encoding($false))) }
 if ($Summary -and $env:GITHUB_STEP_SUMMARY) { Add-Content -Path $env:GITHUB_STEP_SUMMARY -Value $report }
 foreach ($o in $res) { Write-Output ("{0,-14} {1,3}  {2}  ({3})" -f $o.Verdict, $o.Score, $o.Doc, ($o.Reasons -join ' ; ')) }
 Write-Output "Documents evalues : $($res.Count)"

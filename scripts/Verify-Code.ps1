@@ -8,7 +8,7 @@ if ($Path) { $Code = Get-Content $Path -Raw -Encoding UTF8; if ($Lang -eq "auto"
 if (-not $Code) { throw "Fournir -Path ou -Code" }
 if ($Lang -eq "auto") { $Lang = if ($Code -match '(?im)^\s*PGM\b|DCLF|MONMSG') {"cl"} else {"rpg"} }
 
-$cache = Join-Path $env:TEMP "jobi-ref-cache.json"
+$cache = Join-Path ([IO.Path]::GetTempPath()) "jobi-ref-cache.json"
 if ((Test-Path $cache) -and ((Get-Item $cache).LastWriteTime -gt (Get-Date).AddHours(-24))) { $ref = Get-Content $cache -Raw | ConvertFrom-Json }
 else {
   function Page($p) { (Invoke-WebRequest "$base$p" -UseBasicParsing -TimeoutSec 60).Content }

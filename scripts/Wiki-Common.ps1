@@ -20,7 +20,7 @@ function Get-JobiRef {
 
 function Get-SheetsText([string]$Root) {
   $t = ''
-  foreach ($f in (Get-ChildItem (Join-Path $Root 'docs\cheatsheets') -Filter '0*.md' -ErrorAction SilentlyContinue)) { $t += "`n" + [IO.File]::ReadAllText($f.FullName) }
+  foreach ($f in (Get-ChildItem (Join-Path $Root 'docs/cheatsheets') -Filter '0*.md' -ErrorAction SilentlyContinue)) { $t += "`n" + [IO.File]::ReadAllText($f.FullName) }
   return $t.ToUpper()
 }
 

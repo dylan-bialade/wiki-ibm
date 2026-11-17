@@ -1,6 +1,6 @@
 # Verification par rapport a job-i.fr
 
-Genere le 2026-11-17 09:06. Reference : 1830 commandes CL, 196 termes RPG.
+Genere le 2026-11-17 09:23. Reference : 1830 commandes CL, 196 termes RPG.
 
 ## Commandes CL utilisees
 
@@ -216,7 +216,3 @@ absente, AFFOBJDCL, AFFOBJDFM, AFFSPOOL, AFFTAPYCST, AFFUSRDCL, AFFUSRDFM, ALWAY
 | WRITE | 486 |
 | WRKSPLF | 7 |
 | Z-ADD | 221 |
-
-## Conclusion (2026-11-17)
-
-La liste « à contrôler » mêle surtout des noms de programmes, de fichiers, de paramètres et de variables du code analysé (ex. `MSGID`, `OUTFILE`, `SRCFILE`, noms de membres), des mots de texte libre et des opérateurs (`AND`, `NOT`, `THEN`) : ce ne sont pas des commandes CL, donc leur absence de la liste job-i n'est pas une anomalie. Les 67 commandes absentes des fiches (voir MANQUES.md : `CHGVAR`, `ENDPGM`, `GOTO`, `SNDPGMMSG`…) sont, elles, bien des commandes ou instructions réelles à documenter. Aucune commande douteuse n'est à corriger ; en cas de doute sur un terme, vérifier `https://job-i.fr/commandes-ibm-i/<terme>`. Contrôle fait sur les listes, sans compilation ni exécution.

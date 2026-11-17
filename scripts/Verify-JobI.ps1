@@ -1,6 +1,6 @@
 # Verify-JobI.ps1 - Recoupe le code du wiki avec les references du site https://job-i.fr/
 # Telecharge les listes de reference (commandes CL, instructions et fonctions RPG) puis compare avec le code.
-param([string]$Wiki = "C:\Users\ARM-NOTOS\Documents\IBM\wiki-ibmi")
+param([string]$Wiki = (Split-Path -Parent $PSScriptRoot))
 $ErrorActionPreference = "Stop"
 $base = "https://job-i.fr"
 function Get-Page($p) { (Invoke-WebRequest "$base$p" -UseBasicParsing -TimeoutSec 60).Content }
@@ -18,12 +18,12 @@ $ctl = "PGM","ENDPGM","DCL","IF","ELSE","DO","ENDDO","GOTO","MONMSG","CALLSUBR",
 $ctlSet = [System.Collections.Generic.HashSet[string]]::new([string[]]$ctl)
 
 $usedCmd = @{}; $usedRpg = @{}
-foreach ($f in Get-ChildItem (Join-Path $Wiki "sources\CL") -Recurse -Filter *.md -ErrorAction SilentlyContinue) {
+foreach ($f in Get-ChildItem (Join-Path $Wiki "sources/CL") -Recurse -Filter *.md -ErrorAction SilentlyContinue) {
   foreach ($l in (Get-Content $f.FullName -Encoding UTF8)) {
     if ($l -match '^\s*(?:[A-Z0-9_]+:\s*)?([A-Z][A-Z0-9]{2,9})\b' -and $l -notmatch '^\s*/\*') { $usedCmd[$Matches[1]] = 1 + [int]$usedCmd[$Matches[1]] }
   }
 }
-foreach ($f in Get-ChildItem (Join-Path $Wiki "sources\RPG") -Recurse -Filter *.md -ErrorAction SilentlyContinue) {
+foreach ($f in Get-ChildItem (Join-Path $Wiki "sources/RPG") -Recurse -Filter *.md -ErrorAction SilentlyContinue) {
   foreach ($l in (Get-Content $f.FullName -Encoding UTF8)) {
     foreach ($t in [regex]::Matches($l.ToUpper(), '(?<![A-Z0-9_])(%?[A-Z][A-Z0-9_-]{2,9})(?![A-Z0-9_])')) { $v = $t.Value; if ($rpgSet.Contains($v)) { $usedRpg[$v] = 1 + [int]$usedRpg[$v] } }
   }
@@ -42,5 +42,5 @@ foreach ($k in ($usedCmd.Keys | Sort-Object)) {
 if ($unk) { [void]$sb.AppendLine(($unk -join ", ")) } else { [void]$sb.AppendLine("_aucune_") }
 [void]$sb.AppendLine("`n## Instructions / fonctions RPG reconnues`n"); [void]$sb.AppendLine("| Terme | Occurrences |"); [void]$sb.AppendLine("|---|---|")
 foreach ($k in ($usedRpg.Keys | Sort-Object)) { [void]$sb.AppendLine("| $k | $($usedRpg[$k]) |") }
-$sb.ToString() | Set-Content (Join-Path $Wiki "docs\VERIFICATION-JOB-I.md") -Encoding utf8
+$sb.ToString() | Set-Content (Join-Path $Wiki "docs/VERIFICATION-JOB-I.md") -Encoding utf8
 "OK : $(@($usedCmd.Keys).Count) tokens CL analyses, $($unk.Count) a controler ; $(@($usedRpg.Keys).Count) termes RPG reconnus."

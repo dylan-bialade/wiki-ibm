@@ -1,7 +1,7 @@
 # Fix-Markdown.ps1 - Corrige la mise en page Markdown : ligne vide avant/apres chaque tableau (hors blocs de code),
 # supprime les espaces de fin de ligne et normalise les fins de ligne. Ne touche pas au contenu des blocs de code.
-param([string]$Wiki = "C:\Users\ARM-NOTOS\Documents\IBM\wiki-ibmi")
-$files = @(Get-ChildItem $Wiki -Recurse -Filter *.md | Where-Object { $_.FullName -notmatch '\\(sources|\.git)\\' })
+param([string]$Wiki = (Split-Path -Parent $PSScriptRoot))
+$files = @(Get-ChildItem $Wiki -Recurse -Filter *.md | Where-Object { $_.FullName -notmatch '[\\/](sources|\.git)[\\/]' })
 $fixed = 0
 foreach ($f in $files) {
   $src = (Get-Content $f.FullName -Raw -Encoding UTF8) -replace "`r`n", "`n"

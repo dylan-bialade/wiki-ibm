@@ -1,10 +1,10 @@
 # Check-JobIUpdates.ps1 - Detecte les mises a jour de https://job-i.fr/ (sitemaps + contenu des pages sources des fiches).
 # Code de sortie : 0 = rien de nouveau (ou premiere execution : base creee) ; 10 = changements detectes.
 # Ecrit : docs\.jobi-state.json (etat) et docs\JOBI-CHANGES.md (rapport, ecrase a chaque changement).
-param([string]$Wiki = "C:\Users\ARM-NOTOS\Documents\IBM\wiki-ibmi")
+param([string]$Wiki = (Split-Path -Parent $PSScriptRoot))
 $ErrorActionPreference = "Stop"
 $base = "https://job-i.fr"
-$stateFile = Join-Path $Wiki "docs\.jobi-state.json"
+$stateFile = Join-Path $Wiki "docs/.jobi-state.json"
 function Get-Raw($url) { (Invoke-WebRequest $url -UseBasicParsing -TimeoutSec 60).Content }
 function Get-Hash($s) { $sha = [Security.Cryptography.SHA256]::Create(); ([BitConverter]::ToString($sha.ComputeHash([Text.Encoding]::UTF8.GetBytes($s)))).Replace("-","").Substring(0,16) }
 
@@ -18,7 +18,7 @@ foreach ($m in [regex]::Matches($idx, '<loc>([^<]+)</loc>\s*<lastmod>([^<]+)</la
 }
 
 # --- 2. Pages sources des fiches : hash du texte (hors scripts/styles/balises)
-$pages = Get-ChildItem (Join-Path $Wiki "docs\cheatsheets") -Filter "0*.md" | % { Get-Content $_.FullName -Raw -Encoding UTF8 } |
+$pages = Get-ChildItem (Join-Path $Wiki "docs/cheatsheets") -Filter "0*.md" | % { Get-Content $_.FullName -Raw -Encoding UTF8 } |
   % { [regex]::Matches($_, 'https://job-i\.fr(/[a-z0-9\-/]+)') | % { $_.Groups[1].Value } } |
   Where-Object { $_ -notmatch '^/(aller|offres|emploi|ibm-i$|commandes-ibm-i/)' } | Sort-Object -Unique
 $pageHash = @{}
@@ -56,7 +56,7 @@ if (Test-Path $stateFile) {
 } else { $mode = "base initiale creee" }
 
 $new | ConvertTo-Json -Depth 5 | Set-Content $stateFile -Encoding utf8
-$report = Join-Path $Wiki "docs\JOBI-CHANGES.md"
+$report = Join-Path $Wiki "docs/JOBI-CHANGES.md"
 if ($changes.Count -gt 0) {
   $lines = @("# Changements detectes sur job-i.fr", "", "Verifie le $($new.date).", "")
   $lines += ($changes | % { "- $_" })

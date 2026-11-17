@@ -4,7 +4,7 @@ param([string]$Root)
 if (-not $Root) { $Root = Split-Path -Parent $PSScriptRoot }
 . (Join-Path $PSScriptRoot 'Contrib-Common.ps1')
 $list = Read-Contributions -Root $Root
-$vdir = Join-Path $Root 'docs\variantes'
+$vdir = Join-Path $Root 'docs/variantes'
 New-Item -ItemType Directory -Force $vdir | Out-Null
 $analyse = @{}   # conserve la section "## Analyse" ajoutee a la main sous chaque page
 foreach ($old in (Get-ChildItem $vdir -Filter *.md -ErrorAction SilentlyContinue)) {
@@ -85,5 +85,5 @@ $m = New-Object System.Collections.ArrayList
 [void]$m.Add('')
 if ($idx.Count -eq 0) { [void]$m.Add('_Aucune variante pour le moment._') }
 else { [void]$m.Add('| Exercice | Titre | Variantes | Langages | Auteurs |'); [void]$m.Add('|---|---|---|---|---|'); foreach ($r in $idx) { [void]$m.Add($r) } }
-[IO.File]::WriteAllText((Join-Path $Root 'docs\VARIANTES.md'), (($m -join "`n").TrimEnd() + "`n"), $utf8)
+[IO.File]::WriteAllText((Join-Path $Root 'docs/VARIANTES.md'), (($m -join "`n").TrimEnd() + "`n"), $utf8)
 Write-Output "OK : $($vars.Count) variante(s) sur $($idx.Count) exercice(s)."

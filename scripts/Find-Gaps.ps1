@@ -39,6 +39,6 @@ foreach ($c in 'cl','rpg','msg','svc','dds') {
 [void]$md.Add('| Type | Sources |'); [void]$md.Add('|---|---|')
 foreach ($g in ($items | Group-Object Type | Sort-Object Count -Descending)) { [void]$md.Add("| $($g.Name) | $($g.Count) |") }
 [void]$md.Add('')
-[IO.File]::WriteAllText((Join-Path $Root 'docs\MANQUES.md'), (($md -join "`n").TrimEnd() + "`n"), (New-Object Text.UTF8Encoding($false)))
+[IO.File]::WriteAllText((Join-Path $Root 'docs/MANQUES.md'), (($md -join "`n").TrimEnd() + "`n"), (New-Object Text.UTF8Encoding($false)))
 $summary | ForEach-Object { Write-Output $_ }
 Write-Output "Detail : docs/MANQUES.md"

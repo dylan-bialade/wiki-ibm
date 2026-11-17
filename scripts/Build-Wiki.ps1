@@ -1,9 +1,11 @@
 # Build-Wiki.ps1 - Transforme les exports ACS (*.LIB) en documents Markdown classes.
 # Lecture seule sur la source : rien n'est execute, rien n'est modifie dans "cour et autre".
 param(
-  [string]$Source = "C:\Users\ARM-NOTOS\Documents\cour et autre",
-  [string]$Wiki   = "C:\Users\ARM-NOTOS\Documents\IBM\wiki-ibmi"
+  # Dossier des exports ACS (*.LIB) : variable d'environnement WIKI_EXPORT_DIR, sinon "Documents/cour et autre" de l'utilisateur courant
+  [string]$Source = $(if ($env:WIKI_EXPORT_DIR) { $env:WIKI_EXPORT_DIR } else { Join-Path ([Environment]::GetFolderPath('MyDocuments')) 'cour et autre' }),
+  [string]$Wiki   = (Split-Path -Parent $PSScriptRoot)
 )
+if (-not (Test-Path $Source)) { Write-Output "Aucun dossier d'exports ACS ($Source) : rien a convertir (definir WIKI_EXPORT_DIR). Les sources deja converties du depot sont conservees."; exit 0 }
 $ErrorActionPreference = "Stop"
 $enc = [Text.Encoding]::GetEncoding(1147)   # EBCDIC francais
 $widths = 100,112,92,80,120,132,96,160,102,108,114,124,152       # longueurs d'enregistrement candidates (ordre de preference)
@@ -34,7 +36,7 @@ Get-ChildItem $out -Directory -ErrorAction SilentlyContinue | Remove-Item -Recur
 $rows = New-Object System.Collections.ArrayList
 $data = New-Object System.Collections.ArrayList
 # --- Anonymisation : les noms reels de bibliotheques ne sont JAMAIS publies. Table de correspondance privee, hors depot (stable d'une execution a l'autre).
-$aliasFile = Join-Path (Split-Path $Wiki -Parent) "lib-alias.private.json"
+$aliasFile = $(if ($env:WIKI_ALIAS_FILE) { $env:WIKI_ALIAS_FILE } else { Join-Path (Split-Path $Wiki -Parent) "lib-alias.private.json" })   # fichier PRIVE (jamais dans le depot) : a copier sur chaque appareil qui convertit des exports
 $alias = @{}
 if (Test-Path $aliasFile) { (Get-Content $aliasFile -Raw -Encoding UTF8 | ConvertFrom-Json).PSObject.Properties | ForEach-Object { $alias[$_.Name] = [string]$_.Value } }
 $real = @(Get-ChildItem $Source -Directory -Filter *.LIB | ForEach-Object { $_.Name -replace '\.LIB$','' } | Sort-Object)
@@ -105,7 +107,7 @@ foreach ($lib in $libs) {
       $lang = switch ($top) { "RPG" {"rpg"} "CL" {"cl"} "SQL" {"sql"} default {"text"} }
       # Format colonne (RPG III, RPG IV non **free) : "text" = police fixe sans coloration (la coloration GitHub casse l'alignement des colonnes)
       if ($top -eq "RPG" -and -not ($lines.Count -gt 0 -and $lines[0] -match '^\*\*FREE')) { $lang = "text" }
-      $dir = Join-Path $out "$type\$($lib.BaseName)"
+      $dir = Join-Path $out ($type.Replace('\','/') + '/' + $lib.BaseName)
       New-Item -ItemType Directory -Force $dir | Out-Null
       $ruler = @()
       if ($type -like "RPG\RPG-III*") {   # repere de colonnes pour le format colonne (aligne sur le bloc de code ci-dessous)
@@ -133,7 +135,7 @@ foreach ($g in $groups) {
   [void]$idx.AppendLine("")
 }
 New-Item -ItemType Directory -Force (Join-Path $Wiki "docs") | Out-Null
-$idx.ToString() | Set-Content (Join-Path $Wiki "docs\INDEX-SOURCES.md") -Encoding utf8
+$idx.ToString() | Set-Content (Join-Path $Wiki "docs/INDEX-SOURCES.md") -Encoding utf8
 
 # --- architecture : une page par bibliotheque
 $arch = Join-Path $Wiki "architecture"; New-Item -ItemType Directory -Force $arch | Out-Null
@@ -148,5 +150,5 @@ foreach ($lib in $libs) {
   if ($dat) { $dat | Group-Object File | ForEach-Object { [void]$sb.AppendLine("- **$($_.Name)** : $((($_.Group | Select -Expand Member) -join ', '))") } } else { [void]$sb.AppendLine("_aucun_") }
   $sb.ToString() | Set-Content (Join-Path $arch "$n.md") -Encoding utf8
 }
-$rows | Export-Csv (Join-Path $Wiki "docs\sources.csv") -NoTypeInformation -Encoding utf8
+$rows | Export-Csv (Join-Path $Wiki "docs/sources.csv") -NoTypeInformation -Encoding utf8
 "OK : $($rows.Count) sources converties, $($data.Count) membres non-source, $(@($libs).Count) bibliotheques."

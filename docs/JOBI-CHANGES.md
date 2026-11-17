@@ -1,4 +1,4 @@
-﻿# Changements detectes sur job-i.fr
+# Changements detectes sur job-i.fr
 
 Verifie le 2026-11-17 09:07.
 

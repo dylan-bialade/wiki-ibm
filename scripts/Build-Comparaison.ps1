@@ -25,7 +25,7 @@ foreach ($f in (Get-ChildItem (Join-Path $Root 'sources') -Recurse -Filter *.md)
 }
 
 # ---- 1) meme membre dans plusieurs bibliotheques
-$cdir = Join-Path $Root 'docs\comparaisons'
+$cdir = Join-Path $Root 'docs/comparaisons'
 New-Item -ItemType Directory -Force $cdir | Out-Null
 Get-ChildItem $cdir -Filter *.md -ErrorAction SilentlyContinue | Remove-Item -Force
 $idx = New-Object System.Collections.ArrayList
@@ -72,7 +72,7 @@ $m = New-Object System.Collections.ArrayList
 [void]$m.Add(''); [void]$m.Add('Les contributions de collaborateurs sont comparees dans [VARIANTES](VARIANTES.md). Exemples du cycle RPG : [CYCLE-GAP-EXEMPLES](CYCLE-GAP-EXEMPLES.md).'); [void]$m.Add('')
 [void]$m.Add('| Membre | Bibliotheques | Versions distinctes | Lignes | Techniques differentes | Types |'); [void]$m.Add('|---|---|---|---|---|---|')
 foreach ($r in $idx) { [void]$m.Add($r) }
-[IO.File]::WriteAllText((Join-Path $Root 'docs\COMPARAISON-BIBLIOTHEQUES.md'), (($m -join "`n").TrimEnd() + "`n"), $utf8)
+[IO.File]::WriteAllText((Join-Path $Root 'docs/COMPARAISON-BIBLIOTHEQUES.md'), (($m -join "`n").TrimEnd() + "`n"), $utf8)
 
 # ---- 2) exemples du cycle RPG
 $cy = New-Object System.Collections.ArrayList
@@ -104,5 +104,5 @@ if ($cy.Count -eq 0) { [void]$c.Add('_Aucun source avec fichier primaire detecte
     [void]$c.Add("| $($x.It.Lib) | $($x.It.Membre) | $($x.It.Type) | $($x.It.Lines) | $(& $yn $x.IP) | $(& $yn $x.IS) | $(($x.Lv -join ' ')) | $(& $yn $x.P1) | $(& $yn $x.OF) | [$($x.It.Path.Split('/')[-1])](../$($x.It.Path)) |")
   }
 }
-[IO.File]::WriteAllText((Join-Path $Root 'docs\CYCLE-GAP-EXEMPLES.md'), (($c -join "`n").TrimEnd() + "`n"), $utf8)
+[IO.File]::WriteAllText((Join-Path $Root 'docs/CYCLE-GAP-EXEMPLES.md'), (($c -join "`n").TrimEnd() + "`n"), $utf8)
 Write-Output "OK : $($items.Count) sources lues ; $($groups.Count) membres communs ($nDiff differents, $nIdent identiques) ; $($cy.Count) source(s) avec cycle (fichier primaire/secondaire)."

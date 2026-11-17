@@ -9,7 +9,7 @@ $list = Read-Contributions -Root $Root -Only $Only
 
 # Objets connus du wiki (membres convertis) : une reference vers eux est consideree comme existante
 $known = New-Set
-$csv = Join-Path $Root 'docs\sources.csv'
+$csv = Join-Path $Root 'docs/sources.csv'
 if (Test-Path $csv) { foreach ($r in (Import-Csv $csv)) { [void]$known.Add($r.Member); [void]$known.Add($r.File) } }
 
 $md = New-Object System.Collections.ArrayList
@@ -67,7 +67,7 @@ else {
   [void]$md.Add('')
   if ($detail.Count) { [void]$md.Add('## Details'); [void]$md.Add(''); foreach ($x in $detail) { [void]$md.Add($x) } }
 }
-$out = Join-Path $Root 'docs\VERIFICATION-CONTRIBUTIONS.md'
+$out = Join-Path $Root 'docs/VERIFICATION-CONTRIBUTIONS.md'
 if (-not $Only) { [IO.File]::WriteAllText($out, (($md -join "`n").TrimEnd() + "`n"), (New-Object Text.UTF8Encoding($false))) }
 Write-Output "Contributions : $($list.Count) | exercices : $exTotal | erreurs : $errTotal | avertissements : $warnTotal"
 foreach ($c in $list) {
