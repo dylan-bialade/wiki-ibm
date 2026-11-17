@@ -5,6 +5,15 @@ $script:Langs      = @('RPG-III','RPG-ILE','RPG-free','CL','DDS','SQL','Autre')
 $script:SecretHard = 'github_pat_[A-Za-z0-9_]{20,}|ghp_[A-Za-z0-9]{30,}|AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY'
 $script:SecretSoft = '(?i)\b(password|passwd|mot_?de_?passe|token|secret|api[_-]?key)\b\s*[=:]\s*[''"]?\w{4,}'
 
+function Sort-By {
+  # Tri ORDINAL et stable, identique sous Windows PowerShell 5.1 et PowerShell 7 (evite les differences de collation et de tri des egalites).
+  param([object[]]$Items, [scriptblock]$Key)
+  $arr = @($Items); if ($arr.Count -le 1) { return $arr }
+  $keys = New-Object 'string[]' $arr.Count
+  for ($i = 0; $i -lt $arr.Count; $i++) { $keys[$i] = ([string](& $Key $arr[$i])) + '|' + $i.ToString('D8') }
+  [Array]::Sort($keys, $arr, [StringComparer]::Ordinal)
+  return $arr
+}
 function New-Set { New-Object 'System.Collections.Generic.HashSet[string]' ([StringComparer]::OrdinalIgnoreCase) }
 
 function Get-Refs([string]$Text, [string]$Ext) {

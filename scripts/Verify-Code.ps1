@@ -11,7 +11,7 @@ if ($Lang -eq "auto") { $Lang = if ($Code -match '(?im)^\s*PGM\b|DCLF|MONMSG') {
 $cache = Join-Path ([IO.Path]::GetTempPath()) "jobi-ref-cache.json"
 if ((Test-Path $cache) -and ((Get-Item $cache).LastWriteTime -gt (Get-Date).AddHours(-24))) { $ref = Get-Content $cache -Raw | ConvertFrom-Json }
 else {
-  function Page($p) { (Invoke-WebRequest "$base$p" -UseBasicParsing -TimeoutSec 60).Content }
+  function Page($p) { for ($try = 1; $try -le 4; $try++) { try { return (Invoke-WebRequest "$base$p" -UseBasicParsing -TimeoutSec 60).Content } catch { if ($try -eq 4) { throw }; Start-Sleep -Seconds (2 * $try) } } }
   $cmds = [regex]::Matches((Page "/commandes-ibm-i"), 'data-code="([A-Z0-9_]+)"') | % { $_.Groups[1].Value } | Sort-Object -Unique
   $rpg = @(); foreach ($p in "/instructions-rpg","/fonctions-rpg","/coder-rpg-iii") { $rpg += [regex]::Matches((Page $p), '>(%?[A-Z][A-Z0-9_-]{1,10})<') | % { $_.Groups[1].Value } }
   $ref = [pscustomobject]@{ cmds = @($cmds); rpg = @($rpg | Sort-Object -Unique) }

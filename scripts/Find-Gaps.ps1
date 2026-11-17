@@ -24,7 +24,7 @@ $md = New-Object System.Collections.ArrayList
 [void]$md.Add('')
 $summary = @()
 foreach ($c in 'cl','rpg','msg','svc','dds') {
-  $all = $cat[$c].GetEnumerator() | Sort-Object Value -Descending
+  $all = Sort-By @($cat[$c].GetEnumerator()) { (999999 - [int]$_.Value).ToString('D6') + '|' + $_.Key }
   $gap = @($all | Where-Object { -not (Test-InSheets $sheets $_.Key) })
   $summary += "$($names[$c]) : $($gap.Count) manquants sur $(@($all).Count) utilises"
   [void]$md.Add("## $($names[$c]) : $($gap.Count) manquants sur $(@($all).Count) utilises"); [void]$md.Add('')
@@ -37,7 +37,7 @@ foreach ($c in 'cl','rpg','msg','svc','dds') {
 # couverture par type
 [void]$md.Add('## Sources par type et bibliotheque'); [void]$md.Add('')
 [void]$md.Add('| Type | Sources |'); [void]$md.Add('|---|---|')
-foreach ($g in ($items | Group-Object Type | Sort-Object Count -Descending)) { [void]$md.Add("| $($g.Name) | $($g.Count) |") }
+foreach ($g in (Sort-By @($items | Group-Object Type) { (999999 - $_.Count).ToString('D6') + '|' + $_.Name })) { [void]$md.Add("| $($g.Name) | $($g.Count) |") }
 [void]$md.Add('')
 [IO.File]::WriteAllText((Join-Path $Root 'docs/MANQUES.md'), (($md -join "`n").TrimEnd() + "`n"), (New-Object Text.UTF8Encoding($false)))
 $summary | ForEach-Object { Write-Output $_ }

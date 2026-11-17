@@ -3,10 +3,11 @@
 # Lecture seule sur le depot sauf llms-full.txt. Fonctionne sous Windows PowerShell 5.1 et PowerShell 7. ASCII uniquement.
 param([string]$Root)
 if (-not $Root) { $Root = Split-Path -Parent $PSScriptRoot }
+. (Join-Path $PSScriptRoot 'Contrib-Common.ps1')
 $list = @('README.md','CLAUDE.md','docs/cheatsheets/README.md')
-foreach ($f in (Get-ChildItem (Join-Path $Root 'docs/cheatsheets') -Filter '0*.md' | Sort-Object Name)) { $list += 'docs/cheatsheets/' + $f.Name }
+foreach ($f in (Sort-By @(Get-ChildItem (Join-Path $Root 'docs/cheatsheets') -Filter '0*.md') { $_.Name })) { $list += 'docs/cheatsheets/' + $f.Name }
 $list += 'docs/enonces/README.md'
-foreach ($f in (Get-ChildItem (Join-Path $Root 'docs/enonces') -Filter '*.md' | Where-Object { $_.Name -ne 'README.md' } | Sort-Object Name)) { $list += 'docs/enonces/' + $f.Name }
+foreach ($f in (Sort-By @(Get-ChildItem (Join-Path $Root 'docs/enonces') -Filter '*.md' | Where-Object { $_.Name -ne 'README.md' }) { $_.Name })) { $list += 'docs/enonces/' + $f.Name }
 $list += @('docs/MANQUES.md','docs/CYCLE-GAP-EXEMPLES.md','docs/PORTABILITE.md','contributions/README.md','docs/apports/README.md')
 $sb = New-Object System.Text.StringBuilder
 [void]$sb.AppendLine('# Wiki IBM i : contexte complet pour un assistant')

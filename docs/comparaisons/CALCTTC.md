@@ -5,8 +5,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
 | BIB05 | QRPGSRC | RPG/RPG-III-400 | 12 | 100 % |  | [CALCTTC.md](../../sources/RPG/RPG-III-400/BIB05/CALCTTC.md) |
-| BIB09 | QSOURCES | RPG/RPG-ILE | 44 | 0 % | full free, prototypes (dcl-pr) | [CALCTTC.md](../../sources/RPG/RPG-ILE/BIB09/CALCTTC.md) |
 | BIB20 | QRPGSRC | RPG/RPG-III-400 | 4 | 14 % |  | [CALCTTC.md](../../sources/RPG/RPG-III-400/BIB20/CALCTTC.md) |
+| BIB09 | QSOURCES | RPG/RPG-ILE | 44 | 0 % | full free, prototypes (dcl-pr) | [CALCTTC.md](../../sources/RPG/RPG-ILE/BIB09/CALCTTC.md) |
 
 ## Differences
 
@@ -30,6 +30,15 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
      C           PRIXTT    DSPLY
      C           PRIXHT    DSPLY
      C           TVA       DSPLY
+```
+
+### BIB20 (RPG/RPG-III-400, 4 lignes)
+
+```text
+     C           *ENTRY    PLIST
+     C                     PARM           PRIX    52
+     C           PRIX      MULT 1.20      PRIX
+     C                     SETON                         LR
 ```
 
 ### BIB09 (RPG/RPG-ILE, 44 lignes)
@@ -79,13 +88,4 @@ codeRetour = 0;
 
 *inlr = *on;
 return;
-```
-
-### BIB20 (RPG/RPG-III-400, 4 lignes)
-
-```text
-     C           *ENTRY    PLIST
-     C                     PARM           PRIX    52
-     C           PRIX      MULT 1.20      PRIX
-     C                     SETON                         LR
 ```

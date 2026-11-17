@@ -10,7 +10,7 @@ $fence = [string]([char]96) * 3
 
 # ---- lecture des sources converties
 $items = New-Object System.Collections.ArrayList
-foreach ($f in (Get-ChildItem (Join-Path $Root 'sources') -Recurse -Filter *.md)) {
+foreach ($f in (Sort-By @(Get-ChildItem (Join-Path $Root 'sources') -Recurse -Filter *.md) { $_.FullName })) {
   $L = [IO.File]::ReadAllLines($f.FullName)
   $fi = @(); for ($i = 0; $i -lt $L.Count; $i++) { if ($L[$i].StartsWith($fence)) { $fi += $i } }
   if ($fi.Count -lt 2) { continue }
@@ -29,11 +29,11 @@ $cdir = Join-Path $Root 'docs/comparaisons'
 New-Item -ItemType Directory -Force $cdir | Out-Null
 Get-ChildItem $cdir -Filter *.md -ErrorAction SilentlyContinue | Remove-Item -Force
 $idx = New-Object System.Collections.ArrayList
-$groups = $items | Group-Object { $_.Membre.ToUpper() } | Where-Object { @($_.Group | ForEach-Object { $_.Lib } | Select-Object -Unique).Count -gt 1 } | Sort-Object Name
+$groups = Sort-By @($items | Group-Object { $_.Membre.ToUpper() } | Where-Object { @($_.Group | ForEach-Object { $_.Lib } | Select-Object -Unique).Count -gt 1 }) { $_.Name }
 $nIdent = 0; $nDiff = 0
 foreach ($g in $groups) {
   $vers = @($g.Group | Group-Object Hash)
-  $libs = @($g.Group | ForEach-Object { $_.Lib } | Select-Object -Unique | Sort-Object)
+  $libs = @(Sort-By @($g.Group | ForEach-Object { $_.Lib } | Select-Object -Unique) { $_ })
   $ls = @($g.Group | ForEach-Object { $_.Lines })
   if ($vers.Count -le 1) { $nIdent++; [void]$idx.Add("| $($g.Name) | $($libs -join ', ') | 1 (copies identiques) | $($ls[0]) | - | - |"); continue }
   $nDiff++
@@ -42,7 +42,7 @@ foreach ($g in $groups) {
   [void]$p.Add("# $($g.Name) : $($vers.Count) versions differentes dans $($libs.Count) bibliotheques"); [void]$p.Add('')
   [void]$p.Add('Meme nom de membre, code different : facons de faire ou de penser differentes. Similarite = part de lignes (normalisees) en commun avec la premiere version. Retour : [index des comparaisons](../COMPARAISON-BIBLIOTHEQUES.md).'); [void]$p.Add('')
   [void]$p.Add('| Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |'); [void]$p.Add('|---|---|---|---|---|---|---|')
-  foreach ($v in ($g.Group | Sort-Object Lib)) {
+  foreach ($v in (Sort-By @($g.Group) { $_.Lib + '|' + $_.Path })) {
     $inter = 0; foreach ($x in $v.Set) { if ($ref.Set.Contains($x)) { $inter++ } }
     $union = $v.Set.Count + $ref.Set.Count - $inter; $sim = if ($union -gt 0) { [int](100 * $inter / $union) } else { 100 }
     [void]$p.Add("| $($v.Lib) | $($v.Fichier) | $($v.Type) | $($v.Lines) | $sim % | $($v.Tech -join ', ') | [$($v.Path.Split('/')[-1])](../../$($v.Path)) |")
@@ -52,11 +52,11 @@ foreach ($g in $groups) {
   $common = @($all | Where-Object { $t = $_; @($g.Group | Where-Object { $_.Tech -contains $t }).Count -eq $g.Count })
   [void]$p.Add('## Differences'); [void]$p.Add('')
   if ($common.Count) { [void]$p.Add("- Techniques communes : $($common -join ', ')") }
-  foreach ($v in ($g.Group | Sort-Object Lib)) { $own = @($v.Tech | Where-Object { $common -notcontains $_ }); if ($own.Count) { [void]$p.Add("- **$($v.Lib)** en propre : $($own -join ', ')") } }
+  foreach ($v in (Sort-By @($g.Group) { $_.Lib + '|' + $_.Path })) { $own = @($v.Tech | Where-Object { $common -notcontains $_ }); if ($own.Count) { [void]$p.Add("- **$($v.Lib)** en propre : $($own -join ', ')") } }
   $types = @($g.Group | ForEach-Object { $_.Type } | Select-Object -Unique); if ($types.Count -gt 1) { [void]$p.Add("- Langages / types differents : $($types -join ', ')") }
   [void]$p.Add('')
   [void]$p.Add('## Codes'); [void]$p.Add('')
-  foreach ($v in ($g.Group | Sort-Object Lib)) {
+  foreach ($v in (Sort-By @($g.Group) { $_.Lib + '|' + $_.Path })) {
     [void]$p.Add("### $($v.Lib) ($($v.Type), $($v.Lines) lignes)"); [void]$p.Add('')
     if ($v.Lines -le 150) { [void]$p.Add($fence + 'text'); foreach ($c in $v.Code) { [void]$p.Add($c) }; [void]$p.Add($fence) } else { [void]$p.Add("_Long : voir [$($v.Path.Split('/')[-1])](../../$($v.Path))._") }
     [void]$p.Add('')
@@ -91,7 +91,7 @@ foreach ($it in ($items | Where-Object { $_.Type -like 'RPG/*' -and $_.Type -not
       if ($l -match '(?<![A-Z0-9])OF(?![A-Z0-9])') { $hasOF = $true }
     }
   }
-  if ($ip -or $is) { [void]$cy.Add([pscustomobject]@{ It=$it; IP=$ip; IS=$is; Lv=($lv | Sort-Object); P1=$has1P; OF=$hasOF }) }
+  if ($ip -or $is) { [void]$cy.Add([pscustomobject]@{ It=$it; IP=$ip; IS=$is; Lv=(Sort-By @($lv) { $_ }); P1=$has1P; OF=$hasOF }) }
 }
 $c = New-Object System.Collections.ArrayList
 [void]$c.Add('# Exemples du cycle RPG (cycle GAP) dans les bibliotheques'); [void]$c.Add('')
@@ -99,7 +99,7 @@ $c = New-Object System.Collections.ArrayList
 [void]$c.Add('')
 if ($cy.Count -eq 0) { [void]$c.Add('_Aucun source avec fichier primaire detecte._') } else {
   [void]$c.Add('| Bibliotheque | Membre | Type | Lignes | Primaire (IP) | Secondaire (IS) | Niveaux (L1-L9) | 1P | OF | Source |'); [void]$c.Add('|---|---|---|---|---|---|---|---|---|---|')
-  foreach ($x in ($cy | Sort-Object { $_.It.Lib }, { $_.It.Membre })) {
+  foreach ($x in (Sort-By @($cy) { $_.It.Lib + '|' + $_.It.Membre + '|' + $_.It.Path })) {
     $yn = { param($b) if ($b) { 'oui' } else { '-' } }
     [void]$c.Add("| $($x.It.Lib) | $($x.It.Membre) | $($x.It.Type) | $($x.It.Lines) | $(& $yn $x.IP) | $(& $yn $x.IS) | $(($x.Lv -join ' ')) | $(& $yn $x.P1) | $(& $yn $x.OF) | [$($x.It.Path.Split('/')[-1])](../$($x.It.Path)) |")
   }

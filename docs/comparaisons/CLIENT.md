@@ -5,8 +5,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
 | BIB09 | QSOURCES | DDS | 8 | 100 % | DDS (R/K/PFILE) | [CLIENT.md](../../sources/DDS/BIB09/CLIENT.md) |
-| BIB20 | QDDSSRC | DDS | 4 | 0 % |  | [CLIENT~QDDSSRC.md](../../sources/DDS/BIB20/CLIENT~QDDSSRC.md) |
 | BIB20 | QDDSLESRC | DDS | 7 | 0 % | DDS (R/K/PFILE) | [CLIENT.md](../../sources/DDS/BIB20/CLIENT.md) |
+| BIB20 | QDDSSRC | DDS | 4 | 0 % |  | [CLIENT~QDDSSRC.md](../../sources/DDS/BIB20/CLIENT~QDDSSRC.md) |
 
 ## Differences
 
@@ -28,15 +28,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
      A          K CLICOD
 ```
 
-### BIB20 (DDS, 4 lignes)
-
-```text
-                                            REF(EMPLOYE)
-                R CLIENT
-                  NOMEMP    R
-                  NOMCLI        50A
-```
-
 ### BIB20 (DDS, 7 lignes)
 
 ```text
@@ -47,4 +38,13 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
      A            PRENOM        30A
      A            FONCTION      30A
                 K ID
+```
+
+### BIB20 (DDS, 4 lignes)
+
+```text
+                                            REF(EMPLOYE)
+                R CLIENT
+                  NOMEMP    R
+                  NOMCLI        50A
 ```

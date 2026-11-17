@@ -4,8 +4,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB02 | QSQLSRC | SQL | 8 | 0 % | CREATE TABLE/VIEW | [EMPLOYE.md](../../sources/SQL/BIB02/EMPLOYE.md) |
 | BIB20 | QDDSSRC | DDS | 3 | 100 % |  | [EMPLOYE.md](../../sources/DDS/BIB20/EMPLOYE.md) |
+| BIB02 | QSQLSRC | SQL | 8 | 0 % | CREATE TABLE/VIEW | [EMPLOYE.md](../../sources/SQL/BIB02/EMPLOYE.md) |
 
 ## Differences
 
@@ -13,6 +13,14 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 - Langages / types differents : DDS, SQL
 
 ## Codes
+
+### BIB20 (DDS, 3 lignes)
+
+```text
+                R EMPLOYE
+                  NOMEMP       100A
+                  AGEEMP         3P 0
+```
 
 ### BIB02 (SQL, 8 lignes)
 
@@ -25,12 +33,4 @@ CREATE TABLE BIBO.EMPLOYE1 (
     Age NUMERIC(3, 0),
     Poste VARCHAR(50)
 );
-```
-
-### BIB20 (DDS, 3 lignes)
-
-```text
-                R EMPLOYE
-                  NOMEMP       100A
-                  AGEEMP         3P 0
 ```

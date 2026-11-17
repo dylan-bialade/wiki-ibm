@@ -110,7 +110,7 @@ $md = New-Object System.Collections.ArrayList
 [void]$md.Add('')
 if ($res.Count -eq 0) { [void]$md.Add('_Aucun document a evaluer pour le moment (deposer dans docs/apports/ ou contributions/)._') } else {
   [void]$md.Add('| Document | Type | Verdict | Score | Raisons | Destination suggeree |'); [void]$md.Add('|---|---|---|---|---|---|')
-  foreach ($o in ($res | Sort-Object Verdict, @{e='Score';Descending=$true})) { [void]$md.Add("| $($o.Doc) | $($o.Kind) | **$($o.Verdict)** | $($o.Score) | $((($o.Reasons -join ' ; ') -replace '\|','/')) | $($o.Dest) |") }
+  foreach ($o in (Sort-By @($res) { $_.Verdict + '|' + (999 - [int]$_.Score).ToString('D3') + '|' + $_.Doc })) { [void]$md.Add("| $($o.Doc) | $($o.Kind) | **$($o.Verdict)** | $($o.Score) | $((($o.Reasons -join ' ; ') -replace '\|','/')) | $($o.Dest) |") }
 }
 $report = (($md -join "`n").TrimEnd() + "`n")
 if (-not $Path) { [IO.File]::WriteAllText((Join-Path $Root 'docs/EVALUATION-APPORTS.md'), $report, (New-Object Text.UTF8Encoding($false))) }

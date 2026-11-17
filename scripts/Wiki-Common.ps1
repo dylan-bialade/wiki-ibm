@@ -9,7 +9,7 @@ function Get-JobiRef {
   if (Test-Path $cache) { try { return (Get-Content $cache -Raw | ConvertFrom-Json) } catch {} }
   try {
     $base = 'https://job-i.fr'
-    function Page($p) { (Invoke-WebRequest "$base$p" -UseBasicParsing -TimeoutSec 60).Content }
+    function Page($p) { for ($try = 1; $try -le 4; $try++) { try { return (Invoke-WebRequest "$base$p" -UseBasicParsing -TimeoutSec 60).Content } catch { if ($try -eq 4) { throw }; Start-Sleep -Seconds (2 * $try) } } }
     $cmds = [regex]::Matches((Page '/commandes-ibm-i'), 'data-code="([A-Z0-9_]+)"') | ForEach-Object { $_.Groups[1].Value } | Sort-Object -Unique
     $rpg = @(); foreach ($p in '/instructions-rpg','/fonctions-rpg','/coder-rpg-iii') { $rpg += [regex]::Matches((Page $p), '>(%?[A-Z][A-Z0-9_-]{1,10})<') | ForEach-Object { $_.Groups[1].Value } }
     $ref = [pscustomobject]@{ cmds = @($cmds); rpg = @($rpg | Sort-Object -Unique) }
@@ -56,7 +56,7 @@ function Get-CodeTerms([string]$Text, $Ref, [string]$Kind = 'auto') {
 function Read-SourceItems([string]$Root) {
   # Sources converties (sources/**/*.md) : en-tete + code + version normalisee
   $items = New-Object System.Collections.ArrayList
-  foreach ($f in (Get-ChildItem (Join-Path $Root 'sources') -Recurse -Filter *.md)) {
+  foreach ($f in (Sort-By @(Get-ChildItem (Join-Path $Root 'sources') -Recurse -Filter *.md) { $_.FullName })) {
     $L = [IO.File]::ReadAllLines($f.FullName)
     $fi = @(); for ($i = 0; $i -lt $L.Count; $i++) { if ($L[$i].StartsWith($script:Fence)) { $fi += $i } }
     if ($fi.Count -lt 2) { continue }

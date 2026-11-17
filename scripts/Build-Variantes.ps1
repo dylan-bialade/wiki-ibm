@@ -28,7 +28,7 @@ function Norm([string]$s) { ($s.ToLower() -replace '\s+', ' ').Trim() }
 function Fence([string]$lang) { if ($lang -in 'RPG-ILE','RPG-III') { 'text' } elseif ($lang -eq 'RPG-free') { 'rpg' } elseif ($lang -eq 'CL') { 'cl' } elseif ($lang -eq 'SQL') { 'sql' } else { 'text' } }
 
 $idx = New-Object System.Collections.ArrayList
-foreach ($g in ($vars | Group-Object Id | Sort-Object Name)) {
+foreach ($g in (Sort-By @($vars | Group-Object Id) { $_.Name })) {
   $first = $g.Group[0].Ex
   $p = New-Object System.Collections.ArrayList
   [void]$p.Add("# $($first.Titre)"); [void]$p.Add('')
@@ -45,7 +45,7 @@ foreach ($g in ($vars | Group-Object Id | Sort-Object Name)) {
   [void]$p.Add('')
   [void]$p.Add('## Comparatif'); [void]$p.Add('')
   [void]$p.Add('| Auteur | Bibliotheque | Langage | Fichiers | Lignes | Techniques | Approche |'); [void]$p.Add('|---|---|---|---|---|---|---|')
-  foreach ($v in ($g.Group | Sort-Object Lines)) {
+  foreach ($v in (Sort-By @($g.Group) { $_.Lines.ToString('D8') + '|' + $_.Auteur })) {
     [void]$p.Add("| $($v.Auteur) | $($v.Bib) | $($v.Ex.Langage) | $($v.Ex.Files.Count) | $($v.Lines) | $($v.Tech -join ', ') | $(($v.Ex.Approche.Trim() -replace '\|','/' -replace '\r?\n',' ')) |")
   }
   [void]$p.Add('')
@@ -60,7 +60,7 @@ foreach ($g in ($vars | Group-Object Id | Sort-Object Name)) {
     }
     $langs = @($g.Group | ForEach-Object { $_.Ex.Langage } | Select-Object -Unique)
     if ($langs.Count -gt 1) { [void]$p.Add("- Langages differents : $($langs -join ', ')") }
-    $s = $g.Group | Sort-Object Lines
+    $s = Sort-By @($g.Group) { $_.Lines.ToString('D8') + '|' + $_.Auteur }
     [void]$p.Add("- Taille : de $($s[0].Lines) lignes ($($s[0].Auteur)) a $($s[-1].Lines) lignes ($($s[-1].Auteur))")
     [void]$p.Add('')
   }

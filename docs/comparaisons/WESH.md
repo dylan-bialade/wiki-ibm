@@ -68,27 +68,39 @@ ule + espace (', ')
 
 ctl-opt dftactgrp(*no) actgrp(*new);
 
+
+
 dcl-f meftxtf00 disk usage(*input);
 
 dcl-c maj 'ABCDEFGHIJKLMNOPKRSTUVWXYZ';
 
 dcl-s strophe char(2000);
 
+
+
 dcl-s ligne char(240);
+
+
 
 dcl-s i packed(4:0) inz(1);
 
 dcl-s iold packed(4:0)inz(1);
 
+
+
 *inlr=*on;
 
 read meftxtf00;
+
+
 
 // gestion des saut de stroph
 
 strophe = %scanrpl('  ':'--------------------':TEXTE_BRUT);
 
 strophe = %scanrpl('!':'V':strophe);
+
+
 
 dou i > %len(strophe)-2;
 

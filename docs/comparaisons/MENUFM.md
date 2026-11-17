@@ -6,8 +6,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 |---|---|---|---|---|---|---|
 | BIB05 | QCLPSRC | CL/CL-procedural | 36 | 100 % | DDS (R/K/PFILE) | [MENUFM.md](../../sources/CL/CL-procedural/BIB05/MENUFM.md) |
 | BIB06 | QCLPSRC | CL/CL-procedural | 76 | 7 % | DDS (R/K/PFILE) | [MENUFM.md](../../sources/CL/CL-procedural/BIB06/MENUFM.md) |
-| BIB10 | QDSPSRC | DDS | 76 | 7 % | DDS (R/K/PFILE) | [MENUFM.md](../../sources/DDS/BIB10/MENUFM.md) |
 | BIB17 | QCLPSRC | CL/CL-procedural | 23 | 10 % | DDS (R/K/PFILE) | [MENUFM.md](../../sources/CL/CL-procedural/BIB17/MENUFM.md) |
+| BIB10 | QDSPSRC | DDS | 76 | 7 % | DDS (R/K/PFILE) | [MENUFM.md](../../sources/DDS/BIB10/MENUFM.md) |
 
 ## Differences
 
@@ -138,6 +138,34 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
      A                                      COLOR(RED)
 ```
 
+### BIB17 (CL/CL-procedural, 23 lignes)
+
+```text
+     A*%%TS  SD  20260922  113503  REMI        REL-V7R5M0  5770-WDS
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A          R FMT1
+     A*%%TS  SD  20260922  113503  REMI        REL-V7R5M0  5770-WDS
+     A                                      CF03(03)
+     A                                  1  2SYSNAME
+     A                                  2  2USER
+     A                                  1 70DATE
+     A                                      EDTCDE(Y)
+     A                                  2 70TIME
+     A                                  1 36'Menu Rémy'
+     A                                  5  3'1. PDM avec'
+     A                                  6  3'2. PDM avec'
+     A                                  7  3'3. Démarrer SDA'
+     A                                  8  3'4. Démarrer PDM'
+     A                                  9  3'5. WRKUSRJOB'
+     A                                 12  3'Option:'
+     A                                      COLOR(BLU)
+     A                                      DSPATR(UL)
+     A                                 20 36'F3=Quitter'
+     A                                      COLOR(BLU)
+     A            OPT            1S 0B 12 12
+```
+
 ### BIB10 (DDS, 76 lignes)
 
 ```text
@@ -217,32 +245,4 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
      A            OPT            1S 0B 15 11
      A  99                             19 10'Option non définie !!!'
      A                                      COLOR(RED)
-```
-
-### BIB17 (CL/CL-procedural, 23 lignes)
-
-```text
-     A*%%TS  SD  20260922  113503  REMI        REL-V7R5M0  5770-WDS
-     A*%%EC
-     A                                      DSPSIZ(24 80 *DS3)
-     A          R FMT1
-     A*%%TS  SD  20260922  113503  REMI        REL-V7R5M0  5770-WDS
-     A                                      CF03(03)
-     A                                  1  2SYSNAME
-     A                                  2  2USER
-     A                                  1 70DATE
-     A                                      EDTCDE(Y)
-     A                                  2 70TIME
-     A                                  1 36'Menu Rémy'
-     A                                  5  3'1. PDM avec'
-     A                                  6  3'2. PDM avec'
-     A                                  7  3'3. Démarrer SDA'
-     A                                  8  3'4. Démarrer PDM'
-     A                                  9  3'5. WRKUSRJOB'
-     A                                 12  3'Option:'
-     A                                      COLOR(BLU)
-     A                                      DSPATR(UL)
-     A                                 20 36'F3=Quitter'
-     A                                      COLOR(BLU)
-     A            OPT            1S 0B 12 12
 ```
