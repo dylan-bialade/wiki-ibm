@@ -9,7 +9,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 ## Differences
 
-
 ## Codes
 
 ### BIB02 (DDS, 5 lignes)

@@ -39,7 +39,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
          EXFMT FMT1;
 
-
          // Selon cas
          SELECT;
 
@@ -61,7 +60,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
            *inlr=*on;
 
          ENDSL;
-
 
          // récupère un enregistrement à partir de entrepotlf
          chain scodpro entrepotlf;
@@ -89,7 +87,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
          ENDIF;
 
        ENDDO;
-
 
        *INLR = *ON;
 

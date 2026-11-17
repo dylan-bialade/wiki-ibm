@@ -87,7 +87,6 @@ dcl-proc calcTotaux export;
     dcl-s mens packed(8:2);
     dcl-s i packed(10:0);
 
-
     crd = montant;
     mois = duree * 12;
     mens = calcMensualite(montant:taux:duree);
@@ -102,7 +101,6 @@ dcl-proc calcTotaux export;
 
     return totaux;
 end-proc;
-
 
 dcl-proc calcMensualite export;
     dcl-pi *n packed(8 : 2);
@@ -154,14 +152,12 @@ dcl-proc calcTotauxAmortConst export;
         montant packed(10:0);
     end-pi;
 
-
     dcl-ds totaux likeds(totaux_t) inz;
     dcl-s mois packed(4:0);
     dcl-s crd packed(12:2); //capital restant du
     dcl-s capRemb packed(12:2);
     dcl-s i packed(10:0);
     dcl-ds ech likeds(echeance_t);
-
 
     crd = montant;
     mois = duree * 12;
@@ -184,7 +180,6 @@ dcl-proc calcEcheanceAmortConst export;
         capRemb packed(12 : 2)  const;
         dernier ind            const;
     end-pi;
-
 
     dcl-ds ech likeds(echeance_t);
 

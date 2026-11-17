@@ -1,6 +1,6 @@
 # Wiki IBM i : contexte complet pour un assistant
 
-Genere le 2026-11-17 10:12 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Genere le 2026-11-17 10:18 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
 Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
 
 
@@ -709,6 +709,61 @@ NOUVEL UNIVERS
 - **Spécifications O** : fichier `QSYSPRT` déclaré en spécification F (`O   F     132     OF     PRINTER`), indicateur d'en-tête `1P` / `OR OF`, colonnes de fin de zone en 40-43 et constante à partir de la colonne 45 ; mise en page reprise de [CYCDEMO](../../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md).
 - **Création et lecture** : `CRTRPGPGM PGM(MABIB/CYCLEIMP) SRCFILE(MABIB/QRPGSRC) SRCMBR(CYCLEIMP)` (un nouveau membre évite QRG0012 si le programme existe déjà, ou `REPLACE(*YES)`) ; `CALL` puis `WRKSPLF` pour ouvrir l'impression.
 - **À confirmer** : la rupture `L1` suppose les enregistrements **groupés par `UNIVERS`**.
+
+### Variante : totaux par univers et total général (carte T avec L1 et LR)
+
+> Statut : **proposé, non compilé** (code fourni par l'utilisateur ; positions des colonnes contrôlées par script, compilation à confirmer). Même fichier `PERSO` et même impression que la variante précédente, avec deux totaux.
+
+- **Repère de colonnes** (**ne pas le copier dans le membre**) :
+
+``text
+         1         2         3         4         5         6         7         8
+12345678901234567890123456789012345678901234567890123456789012345678901234567890
+``
+
+- **Programme RPG III** :
+
+``text
+     FPERSO   IP  E                    DISK
+     FQSYSPRT O   F     132     OF     PRINTER
+      *
+     IPERSOF      01
+     I              UNIVERS                         UNIV  L1
+      *
+      * RAZ DU COMPTEUR UNIVERS (CALCUL DE DETAIL CONDITIONNE PAR L1)
+     C   L1                Z-ADD0         NBU     30
+      * COMPTEURS PAR UNIVERS ET TOTAL
+     C   01                ADD  1         NBU
+     C   01                ADD  1         NB      30
+      *
+      * SOUS ROUTINE INIT
+     C           *INZSR    BEGSR
+     C                     Z-ADD0         NB
+     C                     ENDSR
+      *
+     OQSYSPRT H  101   1P
+     O       OR        OF
+     O                                   40 'NOUVELLE ANIME'
+     O                                   70 'Page'
+     O                         PAGE  Z   75
+     OQSYSPRT D 11     L1
+     O                                    8 'UNIVERS'
+     O                         UNIV  Z   12
+     OQSYSPRT D  1     01
+     O                         NOM       16
+     O                         PRENOM    34
+     OQSYSPRT T 2      L1
+     O                                   17 'TOTAL UNIVERS'
+     O                         NBU   Z   21
+     OQSYSPRT T 2      LR
+     O                                   17 'TOTAL GENERAL'
+     O                         NB    Z   21
+``
+
+- **Remise à zéro par un calcul de détail** : `C   L1 … Z-ADD0 NBU` (`L1` en colonnes 9-11, comme condition) s'exécute à l'étape 7 du cycle, **après** l'impression des totaux : quand un nouvel univers est lu, `T L1` imprime d'abord le `NBU` de l'univers précédent, puis la remise à zéro et `ADD 1 NBU` comptent le premier enregistrement du nouveau groupe.
+- **Cartes T** : `T 2 L1` (total d'univers) puis `T 2 LR` (total général), dans cet ordre dans les spécifications `O` : à la fin du fichier `LR` allume aussi `L1`, donc le dernier total d'univers sort avant le total général. Au premier enregistrement les calculs et sorties de total sont sautés (job-i).
+- **Compteurs** : `NBU` (par univers) et `NB` (général) sont définis à leur première apparition (`30` = 3 chiffres, 0 décimale) ; au-delà de 999 personnes ils débordent.
+- **À confirmer à l'exécution** : le total du dernier univers juste avant le total général ; la rupture `L1` suppose les enregistrements **groupés par `UNIVERS`**.
 
 
 === FICHIER : docs/cheatsheets/07-sql-embarque-en-rpg.md ===
