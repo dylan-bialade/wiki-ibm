@@ -1,0 +1,101 @@
+      * CYC09 - Cout de traitement par pesee (referentiel des flux)
+     H            D/J
+     FPESEE   IP  E           K        DISK
+     FQSYSPRT O   F     132     OF     PRINTER
+     E                    FLX     1   6  3
+     E                    LIB     1   6 20
+     E                    COU     1   6  5 2
+     IPESEER      01
+     I                                              PSSEC L2
+     I                                              PSTRN L1
+      * Poids net de la pesee
+     C   01      PSBRU     SUB  PSTAR     NET     60
+      * Date AAAAMMJJ -> JJMMAAAA
+     C   01                MOVE PSDAT     WMMJJ   40
+     C   01                MOVELPSDAT     WAAAA   40
+     C   01                MOVE WMMJJ     WJJ     20
+     C   01                MOVELWMMJJ     WMM     20
+     C   01      WJJ       MULT 1000000   DATJMA  80
+     C   01      WMM       MULT 10000     W8      80
+     C   01                ADD  W8        DATJMA
+     C   01                ADD  WAAAA     DATJMA
+      * Referentiel des flux : rang IX (6 = hors referentiel)
+     C   01                Z-ADD1         X       20
+     C   01      PSFLX     LOKUPFLX,X                    40
+     C   01N40             Z-ADD6         X
+      * Cout de traitement : net (kg) x cout a la tonne / 1000
+     C   01      NET       MULT COU,X     WCOUT  112
+     C   01      WCOUT     DIV  1000      COUT    72H
+      * Cumuls
+     C   01      NET       ADD  NET1      NET1    90
+     C   01      COUT      ADD  COU1      COU1   112
+      * Temps total
+     CL1         NET1      ADD  NET2      NET2    90
+     CL1         COU1      ADD  COU2      COU2   112
+     CL2         NET2      ADD  NETG      NETG    90
+     CL2         COU2      ADD  COUG      COUG   112
+     OQSYSPRT H  101   1P
+     O       OR        OF
+     O                                   24 'SYNDICAT DE COLLECTE SUD'
+     O                                   72 'COÛT DE TRAITEMENT'
+     O                                  109 'Édité le'
+     O                         UDATE Y  118
+     O                                  125 'Page'
+     O                         PAGE  Z  130
+     OQSYSPRT H  2     1P
+     O       OR        OF
+     O                                   23 'Pont-bascule de site A1'
+     OQSYSPRT H  2     1P
+     O       OR        OF
+     O                                    6 'Ticket'
+     O                                   15 'Tournée'
+     O                                   26 'Date'
+     O                                   31 'Flux'
+     O                                   41 'Libellé'
+     O                                   63 'Net kg'
+     O                                   74 '€ / tonne'
+     O                                   88 'Coût €'
+     OQSYSPRT D  1     01
+     O                         PSTKT      6
+     O                         PSTRN     13
+     O                         DATJMA    26 '0  /  /    '
+     O                         PSFLX     31
+     O                         LIB,X     54
+     O                         NET   3   63
+     O                         COU,X 3   74
+     O                         COUT  3   88
+     OQSYSPRT T  2     L1
+     O                                   19 'Total tournée'
+     O                         PSTRN     24
+     O                         NET1  3B  63
+     O                         COU1  3B  88
+     OQSYSPRT T  2     L2
+     O                                   19 'TOTAL SECTEUR'
+     O                         PSSEC     22
+     O                         NET2  3B  63
+     O                         COU2  3B  88
+     OQSYSPRT T  1     LR
+     O                                   19 'TOTAL GÉNÉRAL'
+     O                         NETG  3   63
+     O                         COUG  3   88
+**
+OMR
+EMB
+VER
+BIO
+ENC
+***
+**
+Ordures ménagères
+Emballages
+Verre
+Biodéchets
+Encombrants
+Hors référentiel
+**
+14200
+09850
+01200
+06100
+16500
+00000

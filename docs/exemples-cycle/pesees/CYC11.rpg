@@ -1,0 +1,93 @@
+      * CYC11 - Synthese par secteur (acces direct a SECTEUR)
+      * 90 secteur absent du referentiel
+     H            D/J
+     FPESEE   IP  E           K        DISK
+     FSECTEUR IF  E           K        DISK
+     FQSYSPRT O   F     132     OF     PRINTER
+     E                    FLX     1   6  3
+     E                    COU     1   6  5 2
+     IPESEER      01
+     I                                              PSSEC L1
+      * Nouveau secteur : lecture du referentiel
+     C   L1      PSSEC     CHAINSECTEUR              90
+     C   L1 90             MOVEL'Inconnu' SECNOM    P
+     C   L1 90             MOVE *BLANK    SECRES
+     C   L1 90             Z-ADD0         SECPOP
+      * Poids net de la pesee
+     C   01      PSBRU     SUB  PSTAR     NET     60
+      * Referentiel des flux : rang IX (6 = hors referentiel)
+     C   01                Z-ADD1         X       20
+     C   01      PSFLX     LOKUPFLX,X                    40
+     C   01N40             Z-ADD6         X
+      * Cout de traitement : net (kg) x cout a la tonne / 1000
+     C   01      NET       MULT COU,X     WCOUT  112
+     C   01      WCOUT     DIV  1000      COUT    72H
+     C   01      1         ADD  NBP1      NBP1    50
+     C   01      NET       ADD  NET1      NET1    90
+     C   01      COUT      ADD  COU1      COU1   112
+      * Temps total secteur : ratios par habitant
+     CL1                   Z-ADD0         KGH1    72
+     CL1                   Z-ADD0         EUH1    72
+     CL1         SECPOP    COMP 0                    91
+     CL1 91      NET1      DIV  SECPOP    KGH1      H
+     CL1 91      COU1      DIV  SECPOP    EUH1      H
+     CL1         SECPOP    ADD  POPG      POPG    70
+     CL1         NBP1      ADD  NBPG      NBPG    50
+     CL1         NET1      ADD  NETG      NETG    90
+     CL1         COU1      ADD  COUG      COUG   112
+     CLR         NETG      DIV  POPG      KGHG    72H
+     CLR         COUG      DIV  POPG      EUHG    72H
+     OQSYSPRT H  101   1P
+     O       OR        OF
+     O                                   24 'SYNDICAT DE COLLECTE SUD'
+     O                                   72 'SYNTHÈSE PAR SECTEUR'
+     O                                  109 'Édité le'
+     O                         UDATE Y  118
+     O                                  125 'Page'
+     O                         PAGE  Z  130
+     OQSYSPRT H  2     1P
+     O       OR        OF
+     O                                   23 'Pont-bascule de site A1'
+     OQSYSPRT H  2     1P
+     O       OR        OF
+     O                                    3 'Sec'
+     O                                   12 'Nom'
+     O                                   41 'Responsable'
+     O                                   57 'Habitants'
+     O                                   65 'Pesées'
+     O                                   78 'Net kg'
+     O                                   88 'kg/hab'
+     O                                  102 'Coût €'
+     O                                  112 '€/hab'
+     OQSYSPRT T  1     L1
+     O                         PSSEC      2
+     O                         SECNOM    24
+     O                         SECRES    46
+     O                         SECPOP3   57
+     O                         NBP1  3B  65
+     O                         NET1  3B  78
+     O                         KGH1  3   88
+     O                         COU1  3B 102
+     O                         EUH1  3  112
+     OQSYSPRT T 11     LR
+     O                                   18 'TOTAL GÉNÉRAL'
+     O                         POPG  3   57
+     O                         NBPG  3   65
+     O                         NETG  3   78
+     O                         KGHG  3   88
+     O                         COUG  3  102
+     O                         EUHG  3  112
+**
+OMR
+EMB
+VER
+BIO
+ENC
+***
+**
+14200
+09850
+01200
+06100
+16500
+00000

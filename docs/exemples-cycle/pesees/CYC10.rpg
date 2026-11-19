@@ -1,0 +1,83 @@
+      * CYC10 - Recapitulatif par flux edite en fin de traitement
+     H            D/J
+     FPESEE   IP  E           K        DISK
+     FQSYSPRT O   F     132     OF     PRINTER
+     E                    FLX     1   6  3
+     E                    LIB     1   6 20
+     E                    COU     1   6  5 2
+     E                    NBF         6  5 0
+     E                    TONF        6  9 0
+     E                    COUF        6 11 2
+     IPESEER      01
+      * Poids net de la pesee
+     C   01      PSBRU     SUB  PSTAR     NET     60
+      * Referentiel des flux : rang IX (6 = hors referentiel)
+     C   01                Z-ADD1         X       20
+     C   01      PSFLX     LOKUPFLX,X                    40
+     C   01N40             Z-ADD6         X
+      * Cout de traitement : net (kg) x cout a la tonne / 1000
+     C   01      NET       MULT COU,X     WCOUT  112
+     C   01      WCOUT     DIV  1000      COUT    72H
+      * Cumuls par flux et generaux
+     C   01      1         ADD  NBF,X     NBF,X
+     C   01      NET       ADD  TONF,X    TONF,X
+     C   01      COUT      ADD  COUF,X    COUF,X
+     C   01      1         ADD  NBPG      NBPG    50
+     C   01      NET       ADD  NETG      NETG    90
+     C   01      COUT      ADD  COUG      COUG   112
+      * Fin de fichier : une ligne par flux
+     CLR         1         DO   6         I       20
+     CLR         TONF,I    MULT 100       W      130
+     CLR         W         DIV  NETG      PCT     41H
+     CLR                   EXCPTDETF
+     CLR                   END
+     OQSYSPRT H  101   1P
+     O                                   24 'SYNDICAT DE COLLECTE SUD'
+     O                                   72 'RÉCAPITULATIF PAR FLUX'
+     O                                  109 'Édité le'
+     O                         UDATE Y  118
+     O                                  125 'Page'
+     O                         PAGE  Z  130
+     OQSYSPRT H  2     1P
+     O                                   23 'Pont-bascule de site A1'
+     OQSYSPRT H  2     1P
+     O                                    4 'Flux'
+     O                                   25 'Libellé'
+     O                                   39 'Pesées'
+     O                                   54 'Tonnage kg'
+     O                                   64 'Part %'
+     O                                   80 'Coût €'
+     OQSYSPRT E  1             DETF
+     O                         FLX,I      3
+     O                         LIB,I     25
+     O                         NBF,I 3   39
+     O                         TONF,I3   54
+     O                         PCT   3   64
+     O                         COUF,I3   80
+     OQSYSPRT T 11     LR
+     O                                   19 'TOTAL'
+     O                         NBPG  3   39
+     O                         NETG  3   54
+     O                                   64 '100,0'
+     O                         COUG  3   80
+**
+OMR
+EMB
+VER
+BIO
+ENC
+***
+**
+Ordures ménagères
+Emballages
+Verre
+Biodéchets
+Encombrants
+Hors référentiel
+**
+14200
+09850
+01200
+06100
+16500
+00000

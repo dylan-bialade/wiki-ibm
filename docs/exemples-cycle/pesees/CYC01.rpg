@@ -1,0 +1,13 @@
+      * CYC01 - Liste brute des pesees (le cycle seul)
+     FPESEE   IP  E           K        DISK
+     FQSYSPRT O   F     132            PRINTER
+     IPESEER      01
+     OQSYSPRT D  1     01
+     O                         PSTKT      6
+     O                         PSTRN     13
+     O                         PSDAT     24
+     O                         PSHEU     30
+     O                         PSCAM     41
+     O                         PSFLX     46
+     O                         PSBRU     54
+     O                         PSTAR     62

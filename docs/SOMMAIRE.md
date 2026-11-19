@@ -100,14 +100,15 @@ Syntaxe, commandes et concepts IBM i, avec une zone « Mes exemples » par fiche
 
 Cours du cycle, passage au full free, impression et PRTCTL (sujets regroupés).
 
-- [Cycle RPG III : cours, exemples, passage au full free](CYCLE-RPG.md) : 7 étapes, indicateurs, ruptures, spécification O, rapprochement, table de correspondance vers le full free.
+- [Cycle RPG III : cours, exemples, passage au full free](CYCLE-RPG.md) : 7 étapes, indicateurs, ruptures, spécification O, rapprochement, table de correspondance vers le full free, série de 14 programmes progressifs.
   - [Partie 1 : cours du cycle RPG III et exemples](CYCLE-RPG.md#partie-1--cours-du-cycle-rpg-iii-et-exemples)
   - [Partie 2 : du cycle RPG III au full free (table de correspondance)](CYCLE-RPG.md#partie-2--du-cycle-rpg-iii-au-full-free-table-de-correspondance)
+  - [Partie 3 : série de 14 programmes progressifs (corrigé, pesées de collecte)](CYCLE-RPG.md#partie-3--série-de-14-programmes-progressifs-corrigé-pesées-de-collecte)
 - [Impression en RPG : état à cycle et PRTCTL](IMPRESSION-RPG.md) : Retour d'expérience (spools mesurés), version validée, dispositions PRTCTL officielles.
   - [Partie 1 : réécrire un état à cycle en full free (retour d'expérience)](IMPRESSION-RPG.md#partie-1--réécrire-un-état-à-cycle-en-full-free-retour-dexpérience)
   - [Partie 2 : PRTCTL, contrôle dynamique d'impression](IMPRESSION-RPG.md#partie-2--prtctl-contrôle-dynamique-dimpression)
 - [Exemples de cycle dans le code des bibliothèques](CYCLE-GAP-EXEMPLES.md) : Sources avec fichier primaire, L1-L9, 1P, OF (généré).
-- [Dossier des exemples (RPG, DDS)](exemples-cycle/) : CYCLEQSYS (validé), CYCLEIMP + CYCLEPRT, CYCLEPRTCTL, CYCLETOTO, SQLIMPRIME (SQL embarqué), RUPT0 à RUPT2.
+- [Dossier des exemples (RPG, DDS)](exemples-cycle/) : CYCLEQSYS (validé), CYCLEIMP + CYCLEPRT, CYCLEPRTCTL, CYCLETOTO, SQLIMPRIME (SQL embarqué), RUPT0 à RUPT2, et pesees/ (série CYC01 à CYC14 sur le cycle).
 
 ## Énoncés de TP
 
