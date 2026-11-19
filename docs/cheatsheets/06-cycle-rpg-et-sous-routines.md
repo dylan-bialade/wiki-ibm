@@ -41,8 +41,8 @@
 
 - Pièges : ne pas initialiser un calcul `L1` avant le premier groupe (utiliser `1P` ou des calculs de détail conditionnés) ; une zone éditée peut en recouvrir une autre sans message ; en RPG/400 avec fichier externe, la ligne I porte le nom externe et le nom RPG aux bonnes positions ; sans cycle, mettre `*INLR = *ON` ou `RETURN` (sinon boucle ; `RETURN` seul laisse les fichiers ouverts).
 - Pour le code neuf, job-i conseille la boucle explicite : `READ` + `DOW NOT %EOF`.
-- **MR** : concordance avec un fichier secondaire (IS) sur les zones M1 à M9. **Erreur RPG1031** : le fichier secondaire n'est pas trié sur la zone de concordance ; en batch, la réponse par défaut annule le programme. Exemple de concordance : CYCDEMO ci-dessous (constat dans le code du dépôt).
-- **Aujourd'hui** : le cycle tourne toujours sur IBM i 7.5 et 7.6 ; une boucle explicite (READ + DOW) reste préférable pour du code qui évolue souvent. Le débogueur s'arrête aussi sur des lignes non exécutées : seules les lignes de sortie prouvent qu'un total est imprimé.
+- **`MR`** : concordance avec un fichier secondaire (`IS`) sur les zones `M1` à `M9`. **Erreur RPG1031** : le fichier secondaire n'est pas trié sur la zone de concordance ; en batch, la réponse par défaut annule le programme. Exemple de concordance : `CYCDEMO` ci-dessous (constat dans le code du dépôt).
+- **Aujourd'hui** : le cycle tourne toujours sur IBM i 7.5 et 7.6 ; une boucle explicite (`READ` + `DOW`) reste préférable pour du code qui évolue souvent. Le débogueur s'arrête aussi sur des lignes non exécutées : seules les lignes de sortie prouvent qu'un total est imprimé.
 
 ## Sous-routines BEGSR / ENDSR / EXSR  ([source](https://job-i.fr/instructions-rpg/begsr))
 - `BEGSR nom;` … `LEAVESR;` … `ENDSR;` délimite un sous-programme **interne** ; `EXSR nom;` l'appelle depuis le même programme ou la même procédure. L'exécution reprend après `EXSR`.
