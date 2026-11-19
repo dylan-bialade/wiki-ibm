@@ -41,15 +41,16 @@
 
 - Pièges : ne pas initialiser un calcul `L1` avant le premier groupe (utiliser `1P` ou des calculs de détail conditionnés) ; une zone éditée peut en recouvrir une autre sans message ; en RPG/400 avec fichier externe, la ligne I porte le nom externe et le nom RPG aux bonnes positions ; sans cycle, mettre `*INLR = *ON` ou `RETURN` (sinon boucle ; `RETURN` seul laisse les fichiers ouverts).
 - Pour le code neuf, job-i conseille la boucle explicite : `READ` + `DOW NOT %EOF`.
-- L'indicateur `MR` et les fichiers secondaires ne sont pas détaillés sur la page job-i : voir l'exemple `CYCDEMO` ci-dessous (constat dans le code du dépôt, non documenté par job-i).
+- **MR** : concordance avec un fichier secondaire (IS) sur les zones M1 à M9. **Erreur RPG1031** : le fichier secondaire n'est pas trié sur la zone de concordance ; en batch, la réponse par défaut annule le programme. Exemple de concordance : CYCDEMO ci-dessous (constat dans le code du dépôt).
+- **Aujourd'hui** : le cycle tourne toujours sur IBM i 7.5 et 7.6 ; une boucle explicite (READ + DOW) reste préférable pour du code qui évolue souvent. Le débogueur s'arrête aussi sur des lignes non exécutées : seules les lignes de sortie prouvent qu'un total est imprimé.
 
 ## Sous-routines BEGSR / ENDSR / EXSR  ([source](https://job-i.fr/instructions-rpg/begsr))
 - `BEGSR nom;` … `LEAVESR;` … `ENDSR;` délimite un sous-programme **interne** ; `EXSR nom;` l'appelle depuis le même programme ou la même procédure. L'exécution reprend après `EXSR`.
 - Un sous-programme n'a **ni paramètres ni variables locales** : il partage toutes les variables de l'appelant. Un `DCL-S` après `BEGSR` est refusé (RNF0724).
 - Piège : un même indice de boucle utilisé par l'appelant et le sous-programme donne un résultat faux sans erreur ; nommer à part les variables du sous-programme.
 - `LEAVESR` quitte le sous-programme immédiatement ; aucun indicateur ni fonction d'état n'est positionné ; les zones modifiées restent modifiées. Instructions voisines citées par la page : `EXSR`, `ENDSR`, `RETURN`, `CALLP`, `MONITOR`.
-- Pour le code neuf, job-i recommande une **procédure** (`DCL-PROC`) plutôt qu'un sous-programme. `*INZSR` et `CASxx` ne sont pas traités par la page.
-- La page détaille la forme full free ; la syntaxe en colonnes existe (`BEGSR`/`ENDSR` en code opération) mais n'y est pas décrite.
+- Pour le code neuf, job-i recommande une **procédure** (`DCL-PROC`) plutôt qu'un sous-programme. **`*INZSR`** : nom réservé, jamais appelé par `EXSR` ; il s'exécute une seule fois, à l'initialisation du programme, avant le premier calcul. `CASxx` n'est pas traité par la page.
+- La page donne ses exemples en full free et en colonné (testés sur IBM i 7.5) ; en RPG III, le nom d'un sous-programme est limité à 6 caractères (selon la page, résumé non relu en entier).
 <!-- AUTO:END -->
 
 ## Mes exemples

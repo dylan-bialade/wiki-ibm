@@ -1,9 +1,9 @@
 # Wiki IBM i : contexte complet pour un assistant
 
-Genere le 2026-11-19 13:24 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Genere le 2026-11-19 13:26 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
 Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
 
-ATTENTION : ce fichier fait environ 198 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
+ATTENTION : ce fichier fait environ 200 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
 Table des matieres (ordre du fichier) :
 - README.md (15 Ko)
 - docs/SOMMAIRE.md (15 Ko)
@@ -11,7 +11,7 @@ Table des matieres (ordre du fichier) :
 - docs/cheatsheets/README.md (2 Ko)
 - docs/cheatsheets/01-comprendre-ibm-i.md (5 Ko)
 - docs/cheatsheets/02-reference-systeme.md (3 Ko)
-- docs/cheatsheets/03-rpg-par-version.md (9 Ko)
+- docs/cheatsheets/03-rpg-par-version.md (10 Ko)
 - docs/cheatsheets/04-db2-for-i-et-sql.md (4 Ko)
 - docs/cheatsheets/05-emploi-et-formation.md (2 Ko)
 - docs/cheatsheets/06-cycle-rpg-et-sous-routines.md (16 Ko)
@@ -507,7 +507,8 @@ Dès que tu détectes, **pendant n'importe quelle tâche**, une information qui 
 === FICHIER : docs/cheatsheets/README.md ===
 # Cheat sheets IBM i (d'après job-i.fr)
 
-Dernière mise à jour : 2026-11-17
+Dernière mise à jour : 2026-11-19
+- 2026-11-19 : fiche 06 mise à jour (job-i : concordance MR et erreur RPG1031, *INZSR, cycle toujours valable en 7.5 / 7.6) ; fiche 03 : apports %LOWER / %UPPER et tableaux CTDATA / ALT (vérifiés sur ibm.com, limites non vérifiées signalées).
 - Fiche 02 : messages 13 213 (107 fiches « Comment s'en sortir »). Fiche 03 : ajout de la page `/rpg-iii` (79 codes opération en 10 familles), chiffres site (54 instructions, 95 fonctions). Fiche 05 : offres 176. Fiches 01, 04, 06 : aucun changement détecté (commandes 1 830, services SQL 390, valeurs système 158, recettes 36 inchangés).
 
 | Fiche | Contenu |
@@ -769,6 +770,8 @@ Catégories : Sécurité (42), Contrôle système (62), Allocation (14), Date/he
 - **Cycle RPG (GAP)** : [CYCDEMO](../../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md) (fichier primaire + secondaire, niveaux L1/L2, concordance M1/MR, 1P, OF, totaux), [FILMCYC](../../sources/RPG/RPG-III-400/BIB21/FILMCYC.md) (L1 à L3), [LIVGAP1](../../sources/RPG/RPG-III-400/BIB01/LIVGAP1.md) et [LIVGAP2](../../sources/RPG/RPG-III-400/BIB01/LIVGAP2.md) (rupture L1). Liste complète : [CYCLE-GAP-EXEMPLES](../CYCLE-GAP-EXEMPLES.md).
 - **Mêmes exercices, façons différentes** : [COMPARAISON-BIBLIOTHEQUES](../COMPARAISON-BIBLIOTHEQUES.md).
 - **Les 7 spécifications du RPG III : « HFELICO »** (cours RPG/400, type en colonne 6, dans cet ordre dans le source) : **H** contrôle (options globales : format de date, séparateur décimal) ; **F** fichiers (obligatoire dès qu'un fichier est utilisé) ; **E** extension (tableaux et tables) ; **L** saut (règles de saut de page des impressions) ; **I** entrée (description des enregistrements lus, indicateurs d'enregistrement, zones de contrôle L1-L9, renommage de zones) ; **C** calcul (traitement, sous-routines) ; **O** sortie (mise en forme des impressions). job-i.fr cite la spécification **L** dans sa liste mais ne l'explique pas (ni **H**, **E**, **I**, **O** : seule **C** est détaillée colonne par colonne). Exemple dans le dépôt : [fiche 06](06-cycle-rpg-et-sous-routines.md) (F, E, I, C, O) ; détail des colonnes de **C** plus haut.
+- **`%LOWER` / `%UPPER`** (apport 2026-11-17) : les fonctions existent (index job-i des fonctions RPG, section chaînes de caractères : « Passer en minuscules / en majuscules »). IBM (« What's New in 7.5 », [source](https://www.ibm.com/docs/en/ssw_ibm_i_75/rzasd/rpgrelv7r5.htm)) : `%LOWER` convertit la casse d'une chaîne caractère ou UCS-2, avec conversion partielle possible (position et longueur), et renvoie la chaîne entière ; un PTF d'exécution est requis sur tout système qui exécute un programme utilisant `%LOWER`, `%UPPER` ou `%SPLIT` ; introduites avec IBM i 7.4 TR4 (article de presse, source secondaire). **Syntaxe exacte non vérifiée** : lire /fonctions-rpg/lower sur job-i et la référence IBM avant usage.
+- **Tableaux de compilation `CTDATA` et `ALT`** (apport 2026-11-18) : vérifié sur IBM i 7.4 (« Defining Related Arrays », [source](https://www.ibm.com/docs/ssw_ibm_i_74/rzasd/defrel.htm)) : `ALT` sur la définition du tableau alterné charge deux tableaux de compilation (ou de pré-exécution) en format alterné ; le principal porte `CTDATA` ; `PERRCD`, `FROMFILE`, `TOFILE` et `CTDATA` sont interdits sur le tableau alterné ; les données sont alternées en commençant par le principal. **Non vérifié** : la limite « un seul `ALT` par tableau principal » et les messages RNF3454 et RNF8045 (aucune source IBM ou job-i trouvée) ; RNF3442 est cité par un forum (non officiel) quand `ALT` est utilisé sans `CTDATA` ni `FROMFILE`. Exemples de tableaux dans les sources : ASYNTAXTAB, VISMOIS.
 
 
 === FICHIER : docs/cheatsheets/04-db2-for-i-et-sql.md ===
@@ -895,15 +898,16 @@ SELECT OBJNAME, OBJTYPE, OBJSIZE FROM TABLE(QSYS2.OBJECT_STATISTICS('MABIB','*AL
 
 - Pièges : ne pas initialiser un calcul `L1` avant le premier groupe (utiliser `1P` ou des calculs de détail conditionnés) ; une zone éditée peut en recouvrir une autre sans message ; en RPG/400 avec fichier externe, la ligne I porte le nom externe et le nom RPG aux bonnes positions ; sans cycle, mettre `*INLR = *ON` ou `RETURN` (sinon boucle ; `RETURN` seul laisse les fichiers ouverts).
 - Pour le code neuf, job-i conseille la boucle explicite : `READ` + `DOW NOT %EOF`.
-- L'indicateur `MR` et les fichiers secondaires ne sont pas détaillés sur la page job-i : voir l'exemple `CYCDEMO` ci-dessous (constat dans le code du dépôt, non documenté par job-i).
+- **MR** : concordance avec un fichier secondaire (IS) sur les zones M1 à M9. **Erreur RPG1031** : le fichier secondaire n'est pas trié sur la zone de concordance ; en batch, la réponse par défaut annule le programme. Exemple de concordance : CYCDEMO ci-dessous (constat dans le code du dépôt).
+- **Aujourd'hui** : le cycle tourne toujours sur IBM i 7.5 et 7.6 ; une boucle explicite (READ + DOW) reste préférable pour du code qui évolue souvent. Le débogueur s'arrête aussi sur des lignes non exécutées : seules les lignes de sortie prouvent qu'un total est imprimé.
 
 ## Sous-routines BEGSR / ENDSR / EXSR  ([source](https://job-i.fr/instructions-rpg/begsr))
 - `BEGSR nom;` … `LEAVESR;` … `ENDSR;` délimite un sous-programme **interne** ; `EXSR nom;` l'appelle depuis le même programme ou la même procédure. L'exécution reprend après `EXSR`.
 - Un sous-programme n'a **ni paramètres ni variables locales** : il partage toutes les variables de l'appelant. Un `DCL-S` après `BEGSR` est refusé (RNF0724).
 - Piège : un même indice de boucle utilisé par l'appelant et le sous-programme donne un résultat faux sans erreur ; nommer à part les variables du sous-programme.
 - `LEAVESR` quitte le sous-programme immédiatement ; aucun indicateur ni fonction d'état n'est positionné ; les zones modifiées restent modifiées. Instructions voisines citées par la page : `EXSR`, `ENDSR`, `RETURN`, `CALLP`, `MONITOR`.
-- Pour le code neuf, job-i recommande une **procédure** (`DCL-PROC`) plutôt qu'un sous-programme. `*INZSR` et `CASxx` ne sont pas traités par la page.
-- La page détaille la forme full free ; la syntaxe en colonnes existe (`BEGSR`/`ENDSR` en code opération) mais n'y est pas décrite.
+- Pour le code neuf, job-i recommande une **procédure** (`DCL-PROC`) plutôt qu'un sous-programme. **`*INZSR`** : nom réservé, jamais appelé par `EXSR` ; il s'exécute une seule fois, à l'initialisation du programme, avant le premier calcul. `CASxx` n'est pas traité par la page.
+- La page donne ses exemples en full free et en colonné (testés sur IBM i 7.5) ; en RPG III, le nom d'un sous-programme est limité à 6 caractères (selon la page, résumé non relu en entier).
 <!-- AUTO:END -->
 
 ## Mes exemples
