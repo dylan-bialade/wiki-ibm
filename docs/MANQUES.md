@@ -1,12 +1,12 @@
 # Ce qui manque dans les fiches (utilise dans le code, absent des fiches)
 
-Genere le 2026-11-17 10:12 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
+Genere le 2026-11-19 14:12 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
 
 <!-- TOC:START -->
 **Sommaire** (retour : [sommaire general](SOMMAIRE.md))
 
 - [Commandes CL : 60 manquants sur 104 utilises](#commandes-cl--60-manquants-sur-104-utilises)
-- [Instructions / fonctions RPG (reconnues par job-i) : 41 manquants sur 102 utilises](#instructions--fonctions-rpg-reconnues-par-job-i--41-manquants-sur-102-utilises)
+- [Instructions / fonctions RPG (reconnues par job-i) : 39 manquants sur 102 utilises](#instructions--fonctions-rpg-reconnues-par-job-i--39-manquants-sur-102-utilises)
 - [Messages (MONMSG, SQLCODE...) : 60 manquants sur 68 utilises](#messages-monmsg-sqlcode--60-manquants-sur-68-utilises)
 - [Services SQL (QSYS2, SYSTOOLS) : 25 manquants sur 28 utilises](#services-sql-qsys2-systools--25-manquants-sur-28-utilises)
 - [Mots-cles DDS / ecran : 84 manquants sur 102 utilises](#mots-cles-dds--ecran--84-manquants-sur-102-utilises)
@@ -63,7 +63,7 @@ Genere le 2026-11-17 10:12 a partir de 1082 sources. Un terme est 'manquant' s'i
 | ADDRTGE | 2 | 2 |
 | CRTCLS | 2 | 2 |
 
-## Instructions / fonctions RPG (reconnues par job-i) : 41 manquants sur 102 utilises
+## Instructions / fonctions RPG (reconnues par job-i) : 39 manquants sur 102 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
@@ -94,13 +94,11 @@ Genere le 2026-11-17 10:12 a partir de 1082 sources. Un terme est 'manquant' s'i
 | %STATUS | 5 | 3 |
 | %SUBARR | 5 | 3 |
 | %TIMESTAMP | 4 | 1 |
-| %UPPER | 4 | 3 |
 | %XFOOT | 3 | 1 |
 | READPE | 3 | 2 |
 | %ALLOC | 2 | 1 |
 | %EQUAL | 2 | 1 |
 | %LIST | 2 | 2 |
-| %LOWER | 2 | 2 |
 | %TARGET | 2 | 1 |
 | DCL-ENUM | 2 | 2 |
 | %CHECKR | 1 | 1 |
