@@ -153,7 +153,7 @@ Ce que le wiki vérifie automatiquement et ce qui lui manque.
 
 - [Manques des fiches](MANQUES.md) : Termes utilisés dans le code et absents des fiches (généré).
   - [Commandes CL : 60 manquants sur 104 utilises](MANQUES.md#commandes-cl--60-manquants-sur-104-utilises)
-  - [Instructions / fonctions RPG (reconnues par job-i) : 41 manquants sur 102 utilises](MANQUES.md#instructions--fonctions-rpg-reconnues-par-job-i--41-manquants-sur-102-utilises)
+  - [Instructions / fonctions RPG (reconnues par job-i) : 39 manquants sur 102 utilises](MANQUES.md#instructions--fonctions-rpg-reconnues-par-job-i--39-manquants-sur-102-utilises)
   - [Messages (MONMSG, SQLCODE...) : 60 manquants sur 68 utilises](MANQUES.md#messages-monmsg-sqlcode--60-manquants-sur-68-utilises)
   - [Services SQL (QSYS2, SYSTOOLS) : 25 manquants sur 28 utilises](MANQUES.md#services-sql-qsys2-systools--25-manquants-sur-28-utilises)
   - [Mots-cles DDS / ecran : 84 manquants sur 102 utilises](MANQUES.md#mots-cles-dds--ecran--84-manquants-sur-102-utilises)
