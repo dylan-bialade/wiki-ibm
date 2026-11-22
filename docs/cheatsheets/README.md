@@ -1,6 +1,7 @@
 # Cheat sheets IBM i (d'après job-i.fr)
 
-Dernière mise à jour : 2026-11-19
+Dernière mise à jour : 2026-11-22
+- 2026-11-22 : fiche 01 (PTF) complétée d'après job-i (état des lieux, contrôles, précautions) ; fiche 06 relue : pages cycle GAP et BEGSR déjà couvertes, aucun changement.
 - 2026-11-19 : fiche 06 mise à jour (job-i : concordance `MR` et erreur RPG1031, `*INZSR`, cycle toujours valable en 7.5 / 7.6) ; fiche 03 : apports `%LOWER` / `%UPPER` et tableaux `CTDATA` / `ALT` (vérifiés sur ibm.com, limites non vérifiées signalées).
 - Fiche 02 : messages 13 213 (107 fiches « Comment s'en sortir »). Fiche 03 : ajout de la page `/rpg-iii` (79 codes opération en 10 familles), chiffres site (54 instructions, 95 fonctions). Fiche 05 : offres 176. Fiches 01, 04, 06 : aucun changement détecté (commandes 1 830, services SQL 390, valeurs système 158, recettes 36 inchangés).
 
