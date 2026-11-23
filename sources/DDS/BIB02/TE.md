@@ -12,7 +12,7 @@ modifie: 2026-11-16
 
 ```text
 **FREE
-ctl-opt copyright('(C) ARMONIE 2023.') usrprf(*owner)
+ctl-opt copyright('(C) ORGFORM 2023.') usrprf(*owner)
 option(*srcstmt) dftactgrp(*no) optimize(*none)
 actgrp(*caller) datfmt(*iso) timfmt(*iso) alloc(*stgmdl)
 stgmdl(*inherit) thread(*serialize) DECEDIT('0.');
@@ -21,7 +21,7 @@ stgmdl(*inherit) thread(*serialize) DECEDIT('0.');
 // Programme : FFSFR
 // BIB02 SYLVAIN - JE TEST LE %CHAR
 // date      - 23/08/2023
-// Copyright - ARMONIE sqd
+// Copyright - ORGFORM sqd
 // *****************************************************************
 
 

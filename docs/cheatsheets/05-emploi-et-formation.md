@@ -18,7 +18,7 @@
 - Profils recherchés : RPG, CL, SQL, COBOL ; relève des développeurs historiques.
 
 ## Se former  ([source](https://job-i.fr/se-former-ibm-i))
-- NOTOS (Montpellier, groupe Armonie) : alternance RNCP niveau 6 sans prérequis IBM i ; POEI France Travail ; formations courtes.
+- Un centre de formation de Montpellier (nom masqué) : alternance RNCP niveau 6 sans prérequis IBM i ; POEI France Travail ; formations courtes.
 - Autres : OCSI Academy (bootcamp consultant IBM i), Volubis (formation continue), CFD Innovation (PHP, Node.js, DB2 Web Query).
 - Étapes : identifier le statut/financement → consulter les programmes → candidater.
 

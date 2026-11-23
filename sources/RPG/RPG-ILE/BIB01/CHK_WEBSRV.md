@@ -12,7 +12,7 @@ modifie: 2026-11-16
 
 ```text
 
-       CTL-OPT COPYRIGHT('(C) ARMONIE 2022.') USRPRF(*OWNER) OPTIMIZE(*NONE)
+       CTL-OPT COPYRIGHT('(C) ORGFORM 2022.') USRPRF(*OWNER) OPTIMIZE(*NONE)
        DFTACTGRP(*NO) ACTGRP(*CALLER) DATFMT(*ISO) TIMFMT(*ISO)
        ALLOC(*STGMDL) STGMDL(*INHERIT) BNDDIR('BNDCRA');
 
@@ -41,7 +41,7 @@ modifie: 2026-11-16
           http_text char(64);
         end-pr;
 
-        dcl-pr PUT_CRAARMONIE extproc('PUT_CRAARMONIE');
+        dcl-pr PUT_CRAORGFORM extproc('PUT_CRAORGFORM');
           schbdg zoned(10:0);
           cradat zoned(8:0);
           p_JSON like(JSON_DATA);
@@ -613,7 +613,7 @@ modifie: 2026-11-16
        Clear http_code;
        Clear http_text;
       //
-       CallP(e) PUT_CRAARMONIE(schbdg:cradat:JSON_DATA:http_code:http_text);
+       CallP(e) PUT_CRAORGFORM(schbdg:cradat:JSON_DATA:http_code:http_text);
        *InLr=%error();
        If *InLr;
        LeaveSr;

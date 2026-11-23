@@ -1,6 +1,6 @@
 # Wiki IBM i : contexte complet pour un assistant
 
-Genere le 2026-11-23 14:36 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Genere le 2026-11-23 14:46 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
 Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
 
 ATTENTION : ce fichier fait environ 279 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
@@ -1179,7 +1179,7 @@ SELECT OBJNAME, OBJTYPE, OBJSIZE FROM TABLE(QSYS2.OBJECT_STATISTICS('MABIB','*AL
 - Profils recherchés : RPG, CL, SQL, COBOL ; relève des développeurs historiques.
 
 ## Se former  ([source](https://job-i.fr/se-former-ibm-i))
-- NOTOS (Montpellier, groupe Armonie) : alternance RNCP niveau 6 sans prérequis IBM i ; POEI France Travail ; formations courtes.
+- Un centre de formation de Montpellier (nom masqué) : alternance RNCP niveau 6 sans prérequis IBM i ; POEI France Travail ; formations courtes.
 - Autres : OCSI Academy (bootcamp consultant IBM i), Volubis (formation continue), CFD Innovation (PHP, Node.js, DB2 Web Query).
 - Étapes : identifier le statut/financement → consulter les programmes → candidater.
 
@@ -1612,7 +1612,7 @@ Chaîne de restauration rapide fictive ; l'épreuve se déroule dans un environn
 # tp-le-chai : réception des vendanges (SQL embarqué en RPG ILE full free)
 
 - **Contexte** : cave coopérative fictive ; un programme compilé `VX100` dont le **source a disparu** doit être compris, puis un programme `CHAI` doit traiter en fin de journée les lots de raisin en attente.
-- **Environnement** : tables dans une bibliothèque commune au groupe (toujours qualifiées, ex. `TPVIN.APPORTS`), programmes fournis compilés `VX100` et `VERIFVX` (à ne pas modifier), table de prédictions pour les essais, script `INIT` de remise à zéro lancé par `RUNSQLSTM` (**avant chaque campagne de tests** ; les tables sont partagées : prévenir le groupe).
+- **Environnement** : tables dans une bibliothèque commune au groupe (toujours qualifiées, ex. `BIB24.APPORTS`), programmes fournis compilés `VX100` et `VERIFVX` (à ne pas modifier), table de prédictions pour les essais, script `INIT` de remise à zéro lancé par `RUNSQLSTM` (**avant chaque campagne de tests** ; les tables sont partagées : prévenir le groupe).
 - **Tables** : appellations, cépages, cépages autorisés par appellation, parcelles, cuves, apports (lots), journal d'encuvage, registre de chaptalisation (obligatoire), alertes, bilan (une ligne par exécution).
 - **Mission 1 – l'enquête** : deviner ce que fait `VX100` par **boîte noire** (hypothèses → vérificateur fourni → score), puis produire les prédictions et la description.
 - **Mission 2 – le programme `CHAI`** : parcourir les lots en attente ; règles par lot : contrôle sanitaire, classement (appellation / déclassement), chaptalisation, choix de la cuve, encuvage, registres, alertes ; **« tout ou rien »** par lot (transaction : `COMMIT` / `ROLLBACK`) ; fin de traitement : ligne de bilan. Facultatif : tableau de bord des vendanges.

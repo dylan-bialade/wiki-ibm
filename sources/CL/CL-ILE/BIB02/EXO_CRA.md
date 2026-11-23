@@ -12,7 +12,7 @@ modifie: 2026-11-16
 
 ```cl
              PGM        PARM(&LIB)
-             COPYRIGHT  TEXT('(C) ARMONIE 2023.')
+             COPYRIGHT  TEXT('(C) ORGFORM 2023.')
              DCLPRCOPT  USRPRF(*OWNER) DFTACTGRP(*NO) ACTGRP(*CALLER)
 
 

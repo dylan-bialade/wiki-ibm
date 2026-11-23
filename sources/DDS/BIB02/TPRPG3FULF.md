@@ -12,7 +12,7 @@ modifie: 2026-11-16
 
 ```text
 **free
-ctl-opt copyright('(C) ARMONIE 2024.') dftactgrp(*no) actgrp(*caller) ;
+ctl-opt copyright('(C) ORGFORM 2024.') dftactgrp(*no) actgrp(*caller) ;
 
 
 Dcl-F saisagn WORKSTN;
