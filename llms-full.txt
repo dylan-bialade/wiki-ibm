@@ -1,9 +1,9 @@
 # Wiki IBM i : contexte complet pour un assistant
 
-Genere le 2026-11-23 14:23 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Genere le 2026-11-23 14:27 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
 Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
 
-ATTENTION : ce fichier fait environ 276 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
+ATTENTION : ce fichier fait environ 277 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
 Table des matieres (ordre du fichier) :
 - README.md (16 Ko)
 - docs/SOMMAIRE.md (19 Ko)
@@ -825,6 +825,7 @@ Dès que tu détectes, **pendant n'importe quelle tâche**, une information qui 
 # Cheat sheets IBM i (d'après job-i.fr)
 
 Dernière mise à jour : 2026-11-23
+- 2026-11-23 (relecture après la détection `Check-JobIUpdates` : 25 pages signalées modifiées depuis le 17/11) : tous les nombres des blocs AUTO des fiches 01, 02, 03, 04, 06 et 08 ont été recherchés dans le texte actuel de leurs pages job-i sources (34 pages relues) : **aucun nombre périmé** (hors exemples de code de la fiche 08 et règle de colonnes de la fiche 03, qui ne viennent pas d'une page). Fiche 05 : 133 offres localisées dans 30 départements relevées plus tard le même jour. **Non contrôlé** : les changements de texte sans nombre (reformulations, nouveaux paragraphes) : seul le contrôle des chiffres a été fait.
 - 2026-11-23 : fiche 01 : ajout de la nouvelle page job-i `/navigator-for-i` (IBM Navigator for i : ports, STRTCPSVR `*ADMIN`, NAV_300068). Fiche 05 : offres 176 → 144. Chiffres inchangés : commandes 1 830, messages 13 213 (107 fiches), services SQL 390, valeurs système 158, recettes 36, instructions RPG 54, fonctions 95, codes RPG III 79. Pas de nouvelle version RPG/IBM i annoncée par job-i (7.5 ; 7.6 mentionnée sur cycle GAP). Incohérences relevées sur job-i (non reprises) : performances 580/47 ms vs 544/45 ms, PTF HIPER 109→111→112, Node.js 118 vs 107 tests.
 - 2026-11-19 : fiche 06 mise à jour (job-i : concordance `MR` et erreur RPG1031, `*INZSR`, cycle toujours valable en 7.5 / 7.6) ; fiche 03 : apports `%LOWER` / `%UPPER` et tableaux `CTDATA` / `ALT` (vérifiés sur ibm.com, limites non vérifiées signalées).
 - Fiche 02 : messages 13 213 (107 fiches « Comment s'en sortir »). Fiche 03 : ajout de la page `/rpg-iii` (79 codes opération en 10 familles), chiffres site (54 instructions, 95 fonctions). Fiche 05 : offres 176. Fiches 01, 04, 06 : aucun changement détecté (commandes 1 830, services SQL 390, valeurs système 158, recettes 36 inchangés).
@@ -1173,7 +1174,7 @@ SELECT OBJNAME, OBJTYPE, OBJSIZE FROM TABLE(QSYS2.OBJECT_STATISTICS('MABIB','*AL
 
 
 ## Offres d'emploi  ([toutes](https://job-i.fr/offres-emploi-ibm-i), [par département](https://job-i.fr/emploi-ibm-i))
-- Veille des offres IBM i en France (sources : API France Travail et Adzuna, sans scraping) ; 144 offres au 2026-11-23 (176 le 2026-11-17 ; page de liste : 24 offres du 17 au 22/11, départements les plus fournis : Paris, Hauts-de-Seine, Rhône, Loire-Atlantique, Ille-et-Vilaine ; CDI majoritaires, salaires publiés ~36-60 k€/an ou 400-450 €/j en freelance).
+- Veille des offres IBM i en France (sources : API France Travail et Adzuna, sans scraping) ; 144 offres au 2026-11-23 en début d'après-midi, puis **133 offres localisées dans 30 départements** sur la page « par département » relevée plus tard le même jour (le nombre varie : mises à jour plusieurs fois par jour) ; 176 le 2026-11-17 ; page de liste : 24 offres du 17 au 22/11, départements les plus fournis : Paris, Hauts-de-Seine, Rhône, Loire-Atlantique, Ille-et-Vilaine ; CDI majoritaires, salaires publiés ~36-60 k€/an ou 400-450 €/j en freelance).
 - Profils recherchés : RPG, CL, SQL, COBOL ; relève des développeurs historiques.
 
 ## Se former  ([source](https://job-i.fr/se-former-ibm-i))
