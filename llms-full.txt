@@ -1,16 +1,16 @@
 # Wiki IBM i : contexte complet pour un assistant
 
-Genere le 2026-11-23 13:48 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Genere le 2026-11-23 14:23 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
 Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
 
-ATTENTION : ce fichier fait environ 274 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
+ATTENTION : ce fichier fait environ 276 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
 Table des matieres (ordre du fichier) :
 - README.md (16 Ko)
 - docs/SOMMAIRE.md (19 Ko)
 - docs/formation/README.md (32 Ko)
 - CLAUDE.md (19 Ko)
-- docs/cheatsheets/README.md (2 Ko)
-- docs/cheatsheets/01-comprendre-ibm-i.md (5 Ko)
+- docs/cheatsheets/README.md (3 Ko)
+- docs/cheatsheets/01-comprendre-ibm-i.md (6 Ko)
 - docs/cheatsheets/02-reference-systeme.md (3 Ko)
 - docs/cheatsheets/03-rpg-par-version.md (10 Ko)
 - docs/cheatsheets/04-db2-for-i-et-sql.md (4 Ko)
@@ -290,6 +290,7 @@ Syntaxe, commandes et concepts IBM i, avec une zone « Mes exemples » par fiche
   - [Sécurité  (source)](cheatsheets/01-comprendre-ibm-i.md#sécurité--source)
   - [PTF  (source)](cheatsheets/01-comprendre-ibm-i.md#ptf--source)
   - [Performances  (source)](cheatsheets/01-comprendre-ibm-i.md#performances--source)
+  - [Navigator for i  (source)](cheatsheets/01-comprendre-ibm-i.md#navigator-for-i--source)
   - [Mes exemples](cheatsheets/01-comprendre-ibm-i.md#mes-exemples)
 - [02 Référence système](cheatsheets/02-reference-systeme.md) : Commandes CL, messages CPF/MCH, valeurs système.
   - [Commandes CL  (source) — 1 830 fiches](cheatsheets/02-reference-systeme.md#commandes-cl--source--1-830-fiches)
@@ -823,7 +824,8 @@ Dès que tu détectes, **pendant n'importe quelle tâche**, une information qui 
 === FICHIER : docs/cheatsheets/README.md ===
 # Cheat sheets IBM i (d'après job-i.fr)
 
-Dernière mise à jour : 2026-11-19
+Dernière mise à jour : 2026-11-23
+- 2026-11-23 : fiche 01 : ajout de la nouvelle page job-i `/navigator-for-i` (IBM Navigator for i : ports, STRTCPSVR `*ADMIN`, NAV_300068). Fiche 05 : offres 176 → 144. Chiffres inchangés : commandes 1 830, messages 13 213 (107 fiches), services SQL 390, valeurs système 158, recettes 36, instructions RPG 54, fonctions 95, codes RPG III 79. Pas de nouvelle version RPG/IBM i annoncée par job-i (7.5 ; 7.6 mentionnée sur cycle GAP). Incohérences relevées sur job-i (non reprises) : performances 580/47 ms vs 544/45 ms, PTF HIPER 109→111→112, Node.js 118 vs 107 tests.
 - 2026-11-19 : fiche 06 mise à jour (job-i : concordance `MR` et erreur RPG1031, `*INZSR`, cycle toujours valable en 7.5 / 7.6) ; fiche 03 : apports `%LOWER` / `%UPPER` et tableaux `CTDATA` / `ALT` (vérifiés sur ibm.com, limites non vérifiées signalées).
 - Fiche 02 : messages 13 213 (107 fiches « Comment s'en sortir »). Fiche 03 : ajout de la page `/rpg-iii` (79 codes opération en 10 familles), chiffres site (54 instructions, 95 fonctions). Fiche 05 : offres 176. Fiches 01, 04, 06 : aucun changement détecté (commandes 1 830, services SQL 390, valeurs système 158, recettes 36 inchangés).
 
@@ -904,6 +906,13 @@ Dernière mise à jour : 2026-11-19
 - Mesurer avant de régler : Collection Services, `ACTIVE_JOB_INFO`, `MEMORY_POOL_INFO`, `WRKSYSACT`.
 - Leviers : `OVRDBF ... SEQONLY(*YES 2000)`, éviter `ACTGRP(*NEW)` sur appels fréquents, `*INLR` seulement en fin, `SAVLIB DTACPR(*MEDIUM)`.
 - Valeurs : `QDYNPTYSCD`=1, `QDYNPTYADJ`=1, `QPFRADJ`=2.
+
+## Navigator for i  ([source](https://job-i.fr/navigator-for-i))
+- Interface web d'administration livrée avec IBM i (instance HTTP `*ADMIN`) : `http://<système>:2002/Navigator` (2003 en HTTPS une fois TLS configuré) ; connexion avec un profil IBM i.
+- Démarrer / arrêter : `STRTCPSVR SERVER(*HTTP) HTTPSVR(*ADMIN)` / `ENDTCPSVR SERVER(*HTTP) HTTPSVR(*ADMIN)` ; arrêter `*ADMIN` coupe aussi DCM (certificats).
+- Erreur de première connexion NAV_300068 (nom d'hôte complet introuvable) : pas de DNS ni d'entrée dans la table d'hôtes → `ADDTCPHTE` (IP + nom complet + nom court).
+- Chaque liste a un bouton SQL qui montre le service Db2 sous-jacent (ex. `QSYS2.ACTIVE_JOB_INFO`) ; 14 rubriques de menu, pas de rubrique Base de données. Rester en HTTP sur réseau ouvert expose profil et mot de passe.
+- Non vérifié ailleurs : page job-i seule consultée (relevés chiffrés sur une machine de formation 7.5 TR8).
 <!-- AUTO:END -->
 
 ## Mes exemples
@@ -1164,7 +1173,7 @@ SELECT OBJNAME, OBJTYPE, OBJSIZE FROM TABLE(QSYS2.OBJECT_STATISTICS('MABIB','*AL
 
 
 ## Offres d'emploi  ([toutes](https://job-i.fr/offres-emploi-ibm-i), [par département](https://job-i.fr/emploi-ibm-i))
-- Veille des offres IBM i en France (sources : API France Travail et Adzuna, sans scraping) ; 176 offres au 2026-11-17 (page de liste : ~24 offres récentes, surtout Nord, Ille-et-Vilaine, Mayenne, Paris ; CDI majoritaires, salaires publiés ~30-60 k€/an ou 220-400 €/j en freelance).
+- Veille des offres IBM i en France (sources : API France Travail et Adzuna, sans scraping) ; 144 offres au 2026-11-23 (176 le 2026-11-17 ; page de liste : 24 offres du 17 au 22/11, départements les plus fournis : Paris, Hauts-de-Seine, Rhône, Loire-Atlantique, Ille-et-Vilaine ; CDI majoritaires, salaires publiés ~36-60 k€/an ou 400-450 €/j en freelance).
 - Profils recherchés : RPG, CL, SQL, COBOL ; relève des développeurs historiques.
 
 ## Se former  ([source](https://job-i.fr/se-former-ibm-i))
@@ -1680,7 +1689,7 @@ Chaîne de restauration rapide fictive ; l'épreuve se déroule dans un environn
 === FICHIER : docs/MANQUES.md ===
 # Ce qui manque dans les fiches (utilise dans le code, absent des fiches)
 
-Genere le 2026-11-23 11:59 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
+Genere le 2026-11-23 14:23 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
 
 
 ## Commandes CL : 60 manquants sur 104 utilises
@@ -1929,7 +1938,7 @@ Genere le 2026-11-23 11:59 a partir de 1082 sources. Un terme est 'manquant' s'i
 === FICHIER : docs/CYCLE-GAP-EXEMPLES.md ===
 # Exemples du cycle RPG (cycle GAP) dans les bibliotheques
 
-Genere le 2026-11-17 11:41. Detection : un fichier **primaire** (IP) ou **secondaire** (IS) en specification F dans un source en colonnes. Explication du cycle : [fiche 03](cheatsheets/03-rpg-par-version.md) et [job-i.fr](https://job-i.fr/cycle-gap-rpg). Detection heuristique : a confirmer en ouvrant le source.
+Genere le 2026-11-23 14:23. Detection : un fichier **primaire** (IP) ou **secondaire** (IS) en specification F dans un source en colonnes. Explication du cycle : [fiche 03](cheatsheets/03-rpg-par-version.md) et [job-i.fr](https://job-i.fr/cycle-gap-rpg). Detection heuristique : a confirmer en ouvrant le source.
 
 | Bibliotheque | Membre | Type | Lignes | Primaire (IP) | Secondaire (IS) | Niveaux (L1-L9) | 1P | OF | Source |
 |---|---|---|---|---|---|---|---|---|---|

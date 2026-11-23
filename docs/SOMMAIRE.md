@@ -69,6 +69,7 @@ Syntaxe, commandes et concepts IBM i, avec une zone « Mes exemples » par fiche
   - [Sécurité  (source)](cheatsheets/01-comprendre-ibm-i.md#sécurité--source)
   - [PTF  (source)](cheatsheets/01-comprendre-ibm-i.md#ptf--source)
   - [Performances  (source)](cheatsheets/01-comprendre-ibm-i.md#performances--source)
+  - [Navigator for i  (source)](cheatsheets/01-comprendre-ibm-i.md#navigator-for-i--source)
   - [Mes exemples](cheatsheets/01-comprendre-ibm-i.md#mes-exemples)
 - [02 Référence système](cheatsheets/02-reference-systeme.md) : Commandes CL, messages CPF/MCH, valeurs système.
   - [Commandes CL  (source) — 1 830 fiches](cheatsheets/02-reference-systeme.md#commandes-cl--source--1-830-fiches)

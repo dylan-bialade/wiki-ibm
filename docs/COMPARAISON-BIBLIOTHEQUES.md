@@ -1,6 +1,6 @@
 # Comparaison des bibliotheques : memes exercices, facons de faire differentes
 
-Genere le 2026-11-17 11:41. Les bibliotheques du dossier de cours se recouvrent (copies d'exercices) mais le code n'est pas toujours le meme. 97 membres existent dans plusieurs bibliotheques : 58 avec des versions **differentes** (page de comparaison), 39 copies **identiques**. Les noms de bibliotheques sont anonymises (BIBnn).
+Genere le 2026-11-23 14:23. Les bibliotheques du dossier de cours se recouvrent (copies d'exercices) mais le code n'est pas toujours le meme. 97 membres existent dans plusieurs bibliotheques : 58 avec des versions **differentes** (page de comparaison), 39 copies **identiques**. Les noms de bibliotheques sont anonymises (BIBnn).
 
 Les contributions de collaborateurs sont comparees dans [VARIANTES](VARIANTES.md). Exemples du cycle RPG : [CYCLE-GAP-EXEMPLES](CYCLE-GAP-EXEMPLES.md).
 
