@@ -262,7 +262,8 @@ Puis déployer `WSBONBON` avec l'assistant IWS (partie 2) : `get_bonbon` en `GET
 | Tableau de sortie `DIM(n)` avec `OPTIONS(*VARSIZE)` : sans paramètre de **nombre d'éléments** (`10i 0`) désigné dans l'assistant, la réponse contient les éléments vides | vérifié (2015) | Part 3 |
 | Informations de transport passées par variables d'environnement : `REMOTE_ADDR`, `HTTP_<EN-TÊTE>` en majuscules | vérifié (2015) | Parts 2 et 3 |
 | Bibliothèques de la liste en début ou en fin de partie utilisateur | vérifié (2015) | Parts 2 et 3 |
-| Paramètres `varchar`, packed et zoned ; `PGMINFO` en `CTL-OPT` (format libre) ; échappement d'une chaîne JSON dans un `varchar` de sortie ; texte du statut HTTP (reason phrase) | **non vérifié** (non couvert par les pages) | — |
+| Paramètres `varchar`, packed et zoned dans IWS ; échappement d'une chaîne JSON dans un `varchar` de sortie ; texte du statut HTTP (reason phrase) ; paramètre en chaîne de requête (`?numero=`) | **non vérifié** (non couvert par les pages) | — |
+| `PGMINFO` en `CTL-OPT` (format libre) | **vérifié** (IBM i 7.2, mot-clé de spécification de contrôle : voir la ligne `PGMINFO(*PCML:*MODULE:*DCLCASE)` plus haut) ; corrigé le 2026-11-23, cette ligne le donnait encore non vérifié | [PGMINFO, 7.2](https://www.ibm.com/docs/en/i/7.2.0?topic=keywords-pgminfopcml-no-dclcase-module-v6-v7) |
 | IWS 3.0 (annonce d'octobre 2025) | **non vérifié** (issu d'une recherche, page non lue) | — |
 | PDF « IWS-Building-REST-Service-Part-2 » | **non lu** (texte non extrait) | à lire localement avant de le citer |
 
