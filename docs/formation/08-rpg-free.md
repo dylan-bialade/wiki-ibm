@@ -197,7 +197,7 @@ ILE RPG Reference 7.5/7.6 : liste des opérations interdites en libre, nouveaut�
 
 #### La suppression des GOTO et des indicateurs
 
-- **job-i** : [GOTO](https://job-i.fr/commandes-ibm-i/goto)
+- **job-i** : [GOTO (opération RPG III)](https://job-i.fr/rpg-iii/goto)
 
 ### Les données et les fonctions modernes
 
