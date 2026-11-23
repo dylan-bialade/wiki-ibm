@@ -72,7 +72,7 @@ Ces pages couvrent une partie du plan ; seules leurs rubriques sont listées ici
 
 **Outils modernes**
 - **Code for IBM i** (doc du projet, communautaire) : prérequis lus : IBM i **7.4** (7.3 « may work but is not supported »), démon **SSH** démarré (`STRTCPSVR *SSHD`, produit 5733-SC1, utilisateur `QSSHD` activé), Java 8 minimum pour **Mapepire**, serveurs `*SIGNON` et `*DATABASE` actifs (ports 8471/8476, 9471/9476 en SSL). **Développement local + déploiement** : on édite dans un dossier local, un bouton *Deploy* envoie vers un répertoire IFS ; méthodes de déploiement : *Working Changes* (fichiers modifiés selon `git status`, non indexés et indexés), *Staged Changes*, *All*, *Changes* (modifiés depuis le dernier déploiement), *Compare* (sommes MD5, seule méthode qui supprime côté serveur) ; `.gitignore` respecté, `.deployignore` le supplante.
-- **Git** : cette documentation décrit l'usage avec un dossier local versionné ; l'installation de Git **sur** l'IBM i n'est pas lue.
+- **Git** : cette documentation décrit l'usage avec un dossier local versionné (côté poste de travail). **Sur l'IBM i**, la page job-i Node.js indique que, après le produit 5733-OPS, les logiciels open source s'installent par **paquets RPM avec `yum`**, « comme Python, **Git** ou Mapepire » (exemple de la page : `yum -y install nodejs24 nodever`) ; la commande exacte d'installation de Git (nom du paquet) n'est **pas** relevée : à vérifier avec `yum list available 'git*'`.
 - **JSON_TABLE** (IBM i 7.5) : fonction de table qui renvoie un résultat à partir d'**expressions de chemin SQL/JSON** : `JSON_TABLE(json-expression [FORMAT JSON | BSON], chemin AS nom COLUMNS (colonnes) [EMPTY ON ERROR | ERROR ON ERROR])` ; types de colonnes : régulières (`type PATH '…'` avec `NULL | ERROR | DEFAULT … ON EMPTY / ON ERROR`), formatées (`FORMAT JSON`, `WITH/WITHOUT ARRAY WRAPPER`, `KEEP/OMIT QUOTES`), ordinalité (`FOR ORDINALITY`) et imbriquées (`NESTED PATH`).
 - **REST** : voir [partie 13](13-web-services-et-api.md) et [ILE-ET-SERVICES-WEB](../ILE-ET-SERVICES-WEB.md) (IWS).
 
@@ -82,7 +82,7 @@ Ces pages couvrent une partie du plan ; seules leurs rubriques sont listées ici
 | Chantiers et renvois (tableau) | vérifié (renvois vers parties sourcées) | parties 02, 03, 07, 08, 10, 13 |
 | JSON_TABLE : syntaxe, types de colonnes | vérifié **partiellement** (début de page : syntaxe) | [IBM 7.5 : JSON_TABLE](https://www.ibm.com/docs/en/i/7.5.0?topic=functions-json-table) |
 | Code for IBM i : prérequis, déploiement, méthodes, `.deployignore` | vérifié (pages *Installation* et *Getting started* lues en partie) ; **source non officielle IBM** | [Installation](https://codefori.github.io/docs/install/) · [Getting started](https://codefori.github.io/docs/developing/local/getting-started/) |
-| Git sur IBM i (installation, RPM/yum) | **non lu** | à chercher sur ibm.com / docs Open Source |
+| Git sur IBM i : installé par paquet RPM via `yum` | vérifié **partiellement** (mention dans la page job-i Node.js) ; nom du paquet et procédure **non lus** | [job-i : Node.js](https://job-i.fr/nodejs-ibm-i) |
 | Méthode de décomposition, standards d'équipe, dette technique | **hypothèse** | à sourcer |
 | Conversion RPG IV → libre | **non vérifié** (`CVTRPGFREE` introuvable) | [apport du 2026-11-23](../apports/2026-11-23-cvtrpgfree-introuvable-job-i-ibm-7-5.md) |
 
@@ -156,7 +156,7 @@ Le scénario type de l'énoncé *The Big One* (RPG III hérité, deux équipes, 
 
 ### Ce qui reste à vérifier pour cette partie
 
-Aucune source de méthode : modernisation, dette technique, standards d'équipe (à chercher dans les Redbooks IBM i modernisation, par exemple) ; installation de **Git sur IBM i** ; outil de conversion RPG IV colonné → libre (RDi ?) ; mots-clés DDS `WINDOW`, `OVERLAY`, `CHGINPDFT` ; suite des pages job-i EXFMT et sous-fichier ; exemple CRUD complet RPG + SQL. Manques à signaler : aucune page job-i sur la modernisation, les standards de code, Git sur IBM i ni le CRUD.
+Aucune source de méthode : modernisation, dette technique, standards d'équipe (à chercher dans les Redbooks IBM i modernisation, par exemple) ; procédure d'installation de **Git sur IBM i** (nom du paquet `yum`) ; outil de conversion RPG IV colonné → libre (RDi ?) ; mots-clés DDS `WINDOW`, `OVERLAY`, `CHGINPDFT` ; suite des pages job-i EXFMT et sous-fichier ; exemple CRUD complet RPG + SQL. Manques à signaler : aucune page job-i sur la modernisation, les standards de code, Git sur IBM i ni le CRUD.
 
 ## Plan détaillé (index des sujets)
 
