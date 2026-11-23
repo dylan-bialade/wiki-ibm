@@ -22,8 +22,8 @@
 | `JSON_ARRAYAGG` : tableau JSON à partir d'un ensemble de valeurs, `ORDER BY` interne, `ABSENT ON NULL` (défaut) / `NULL ON NULL`, résultat `NULL` si l'ensemble est vide | vérifié | [JSON_ARRAYAGG, 7.5](https://www.ibm.com/docs/fr/i/7.5?topic=functions-json-arrayagg) |
 | `FORMAT JSON` : sans lui, une chaîne est mise entre guillemets et ses caractères spéciaux sont échappés ; avec lui (ou si l'expression est elle-même un `JSON_OBJECT` / `JSON_ARRAYAGG`…), elle est traitée comme du JSON déjà formé | vérifié | pages `JSON_OBJECT` et `JSON_ARRAYAGG` |
 | Exemple `JSON_ARRAYAGG(JSON_OBJECT(…) ORDER BY …)` avec `GROUP BY` | vérifié (existence de la forme) | exemple de la page `JSON_ARRAYAGG` |
-| `CAST(… AS VARCHAR(30000))` d'un résultat `CLOB` | **non vérifié** | page `CAST` non lue |
-| Identifiant `"NUMBER"` entre guillemets | **non vérifié** | règles des identifiants non lues |
+| `CAST(… AS VARCHAR(30000))` d'un résultat `CLOB` | **compilé** (confirmé par l'utilisateur, exemple de la page ILE) ; résultat à l'exécution non confirmé ; page `CAST` non lue | [ILE-ET-SERVICES-WEB](ILE-ET-SERVICES-WEB.md) |
+| Identifiant `"NUMBER"` entre guillemets | **compilé** (confirmé par l'utilisateur) ; règles des identifiants non lues | idem |
 | Exemple ci-dessous | **non exécuté** | — |
 
 ### Points à retenir

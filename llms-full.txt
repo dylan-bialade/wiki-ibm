@@ -1,9 +1,9 @@
 # Wiki IBM i : contexte complet pour un assistant
 
-Genere le 2026-11-23 12:03 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Genere le 2026-11-23 12:07 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
 Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
 
-ATTENTION : ce fichier fait environ 226 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
+ATTENTION : ce fichier fait environ 240 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
 Table des matieres (ordre du fichier) :
 - README.md (15 Ko)
 - docs/SOMMAIRE.md (17 Ko)
@@ -33,7 +33,7 @@ Table des matieres (ordre du fichier) :
 - docs/CYCLE-RPG.md (26 Ko)
 - docs/IMPRESSION-RPG.md (18 Ko)
 - docs/SQL-AVANCE.md (8 Ko)
-- docs/ILE-ET-SERVICES-WEB.md (16 Ko)
+- docs/ILE-ET-SERVICES-WEB.md (29 Ko)
 - docs/ASSISTANT-ET-AUTOMATISATION.md (16 Ko)
 - contributions/README.md (4 Ko)
 - docs/apports/README.md (1 Ko)
@@ -341,6 +341,7 @@ JSON, écriture IFS, FETCH multi-lignes, architecture ILE (modules, programme de
   - [Partie 1 : modules, programme de service, source de liage](ILE-ET-SERVICES-WEB.md#partie-1--modules-programme-de-service-source-de-liage)
   - [Partie 2 : services web REST avec Integrated Web Services (IWS)](ILE-ET-SERVICES-WEB.md#partie-2--services-web-rest-avec-integrated-web-services-iws)
   - [Partie 3 : droits et exploitation d'un service IWS](ILE-ET-SERVICES-WEB.md#partie-3--droits-et-exploitation-dun-service-iws)
+  - [Partie 4 : mémo des commandes système (ILE, IWS, exploitation)](ILE-ET-SERVICES-WEB.md#partie-4--mémo-des-commandes-système-ile-iws-exploitation)
 
 ## Énoncés de TP
 
@@ -2114,8 +2115,8 @@ Le premier programme déclarait **quatre sous-zones `CHAR(3)`** (c'est la dispos
 | `JSON_ARRAYAGG` : tableau JSON à partir d'un ensemble de valeurs, `ORDER BY` interne, `ABSENT ON NULL` (défaut) / `NULL ON NULL`, résultat `NULL` si l'ensemble est vide | vérifié | [JSON_ARRAYAGG, 7.5](https://www.ibm.com/docs/fr/i/7.5?topic=functions-json-arrayagg) |
 | `FORMAT JSON` : sans lui, une chaîne est mise entre guillemets et ses caractères spéciaux sont échappés ; avec lui (ou si l'expression est elle-même un `JSON_OBJECT` / `JSON_ARRAYAGG`…), elle est traitée comme du JSON déjà formé | vérifié | pages `JSON_OBJECT` et `JSON_ARRAYAGG` |
 | Exemple `JSON_ARRAYAGG(JSON_OBJECT(…) ORDER BY …)` avec `GROUP BY` | vérifié (existence de la forme) | exemple de la page `JSON_ARRAYAGG` |
-| `CAST(… AS VARCHAR(30000))` d'un résultat `CLOB` | **non vérifié** | page `CAST` non lue |
-| Identifiant `"NUMBER"` entre guillemets | **non vérifié** | règles des identifiants non lues |
+| `CAST(… AS VARCHAR(30000))` d'un résultat `CLOB` | **compilé** (confirmé par l'utilisateur, exemple de la page ILE) ; résultat à l'exécution non confirmé ; page `CAST` non lue | [ILE-ET-SERVICES-WEB](ILE-ET-SERVICES-WEB.md) |
+| Identifiant `"NUMBER"` entre guillemets | **compilé** (confirmé par l'utilisateur) ; règles des identifiants non lues | idem |
 | Exemple ci-dessous | **non exécuté** | — |
 
 ### Points à retenir
@@ -2190,7 +2191,7 @@ nb = SQLERRD(3);        // nombre de lignes réellement lues (nom de la zone SQL
 === FICHIER : docs/ILE-ET-SERVICES-WEB.md ===
 # Architecture ILE et services web REST : modules, programme de service, IWS
 
-> Fiche pédagogique. Sources lues en entier le 2026-11-23 : fiches `job-i.fr` des commandes (CRTSRVPGM : début de page seulement, voir le tableau) et deux tutoriels IBM de **2015** sur les services REST d'IBM i (à revalider pour 7.5). Rien n'a été compilé ni déployé. Les noms d'objets de la partie 1 sont fictifs (`BIB01`, `ARTICLE…`, `BONBON…`) ; aucun nom réel de bibliothèque, de profil ou de personne n'est publié.
+> Fiche pédagogique. Sources lues en entier le 2026-11-23 : la page job-i « ILE » (exemple testé sur IBM i 7.5), les fiches job-i des commandes (CRTSRVPGM : début de page seulement), les pages IBM sur le langage de liage, la signature et les groupes d'activation (IBM i 7.2 à 7.4) et deux tutoriels IBM de **2015** sur les services REST. **L'exemple de la partie 1 a été compilé par l'utilisateur** ; rien n'a été déployé ni exécuté à notre connaissance. Les noms d'objets de la partie 1 sont fictifs (`BIB01`, `ARTICLE…`, `BONBON…`) ; aucun nom réel de bibliothèque, de profil ou de personne n'est publié.
 
 
 ## Partie 1 : modules, programme de service, source de liage
@@ -2206,15 +2207,53 @@ nb = SQLERRD(3);        // nombre de lignes réellement lues (nom de la zone SQL
 | `RTVBNDSRC` : extrait les exportations de modules ou d'un programme de service dans un fichier, avec les instructions de langage de liage | vérifié | [job-i RTVBNDSRC](https://job-i.fr/commandes-ibm-i/rtvbndsrc) |
 | `DSPSRVPGM DETAIL(*PROCEXP)` : liste les procédures exportées définies en langage de liage (signature courante seulement) | vérifié | [job-i DSPSRVPGM](https://job-i.fr/commandes-ibm-i/dspsrvpgm) |
 | `GRTOBJAUT`, `DLTSRVPGM`, `DSPOBJD`, `DSPOBJAUT` : commandes existantes | vérifié (existence de la fiche) | job-i `/commandes-ibm-i/<commande>` |
-| `STRPGMEXP`, `ENDPGMEXP`, `EXPORT SYMBOL` (langage de liage) | **non vérifié** : pas de fiche job-i (`STRPGMEXP` donne une page introuvable) ; référence IBM du langage de liage non lue | — |
+| `STRPGMEXP PGMLVL(*CURRENT)`, `EXPORT SYMBOL(...)`, `ENDPGMEXP` (langage de liage) : liste d'export d'un programme de service ; `RTVBNDSRC` génère ce source ; `LVLCHK`, `PGMLVL(*PRV)` pour garder les anciennes interfaces | vérifié | [job-i ILE](https://job-i.fr/ile-ibm-i) (exemple testé en 7.5), [Binder Language, IBM i 7.4](https://www.ibm.com/docs/en/i/7.4.0?topic=concepts-binder-language) |
 | Nom de membre limité à 10 caractères | **non vérifié** (règle générale des noms d'objets IBM i) | — |
 | Longueur d'enregistrement minimale du fichier source pour du `**FREE` ; syntaxe `/COPY bibliothèque/fichier,membre` | **non vérifié** | — |
 
+### Concepts ILE (job-i et IBM)
+Sources : [job-i « ILE »](https://job-i.fr/ile-ibm-i) (lue en entier ; exemple construit et exécuté sur IBM i 7.5), [Binder Language, 7.4](https://www.ibm.com/docs/en/i/7.4.0?topic=concepts-binder-language), [Signature, 7.3](https://www.ibm.com/docs/en/i/7.3.0?topic=language-signature), [Service Programs and Activation Groups, 7.2](https://www.ibm.com/docs/en/i/7.2.0?topic=management-service-programs-activation-groups), [Activation Group, 7.2](https://www.ibm.com/docs/en/i/7.2.0?topic=concepts-activation-group) (toutes lues en entier). Les pages IBM sont d'éditions 7.2 à 7.4 : à revalider pour 7.5.
+
+| Objet | Rôle | Statut |
+|---|---|---|
+| `*MODULE` | résultat d'un compilateur ILE (`CRTRPGMOD`, `CRTCMOD`, `CRTCLMOD`) ; contient des procédures, ne s'exécute pas seul | vérifié (job-i) |
+| `*PGM` | modules liés dont un porte la procédure d'entrée (`ENTMOD`) ; s'appelle par `CALL` | vérifié (job-i) |
+| `*SRVPGM` | modules liés **sans** procédure d'entrée : boîte à outils de procédures partagée | vérifié (job-i) |
+| `*BNDDIR` | répertoire de liage : liste de modules et de programmes de service où le binder cherche les procédures appelées | vérifié (job-i) |
+| groupe d'activation | partie du travail où s'exécute un programme ILE (variables statiques, mémoire dynamique, fichiers ouverts, curseurs SQL locaux, définitions de validation) ; pas un objet | vérifié (job-i, IBM 7.2) |
+
+**Liage par copie ou par référence**
+
+| | Par copie (`CRTPGM MODULE(...)`) | Par référence (programme de service) |
+|---|---|---|
+| Où est le code | recopié dans chaque programme | une seule fois, dans le `*SRVPGM` |
+| Changer une procédure | recompiler le module puis `UPDPGM` pour chaque programme | `UPDSRVPGM` une fois pour tous |
+| À livrer | le programme | le programme et le programme de service |
+| Pour quoi | modules propres à un programme | procédures partagées |
+
+(job-i : dans l'exemple, après `UPDSRVPGM` le programme lié par référence voit le nouveau code, celui lié par copie garde l'ancien jusqu'à `UPDPGM`.)
+
+**Source de liage et signature** (IBM)
+- Le langage de liage est un petit jeu de commandes non exécutables : `STRPGMEXP` (début de la liste d'exports), `EXPORT SYMBOL(...)` (un symbole), `ENDPGMEXP` (fin). Les symboles du bloc `PGMLVL(*CURRENT)` définissent l'interface publique, représentée par une **signature**.
+- **Ne jamais retirer ni réordonner** les noms existants ; les nouveaux symboles s'ajoutent **à la fin** de la liste. Un retrait n'est pas compatible avec les programmes déjà liés.
+- Sans signature explicite, le binder en génère une à partir des noms et de leur ordre : il faut alors **ajouter un nouveau bloc** d'export à chaque ajout (l'ancien bloc passe en `PGMLVL(*PRV)`). Avec une signature explicite, un seul bloc suffit.
+- La signature ne valide **pas** l'interface d'une procédure : si les paramètres d'une procédure changent, recompiler tous les modules appelants et recréer les programmes et programmes de service qui les contiennent (`CRTPGM` / `CRTSRVPGM`).
+- `CRTSRVPGM` utilise ce source avec `EXPORT(*SRCFILE)` (et non le défaut `*ALL`) ; `RTVBNDSRC` génère un source de départ.
+
+**Groupes d'activation et programmes de service** (IBM 7.2 ; job-i)
+- `ACTGRP(*CALLER)` : le programme de service s'active dans le groupe de l'appelant ; appels liés optimisés, données externes et fichiers ouverts partagés, validation / annulation qui touche les autres programmes du groupe ; **pas de frontière de contrôle** (une exception non traitée remonte au client, un verbe de fin peut supprimer le groupe du client).
+- `ACTGRP(nom)` : espace séparé pour les variables, fichiers ouverts et définitions de validation séparés, partage accidentel évité ; il faut gérer l'état pour plusieurs clients.
+- Tous les programmes d'un même groupe forment « une seule application coopérative » ; à la suppression d'un groupe, les ressources sont rendues (fichiers fermés, mémoire libérée).
+- job-i : avec `ACTGRP(*ENTMOD)` (défaut de `CRTPGM`), un module d'entrée RPGLE fait tourner le programme dans le groupe `QILE` ; à privilégier, un groupe **nommé** par application plutôt que `*NEW`.
+- RPG : `ctl-opt dftactgrp(*no) actgrp('NOM') bnddir('MONREP');` ; avec `DFTACTGRP(*YES)` (compatibilité OPM), `ACTGRP` et `BNDDIR` sont interdits et un appel de procédure liée fait échouer la compilation (job-i).
+- `EXTPROC('nom')` impose la casse du nom de procédure (important pour une fonction C) ; sans lui, le nom du prototype en majuscules (job-i).
+
+**Bonnes pratiques** (job-i) : sortir du mode compatible (`DFTACTGRP(*NO)`), regrouper les procédures partagées en programmes de service par domaine, un répertoire de liage par application cité dans le `CTL-OPT`, un groupe d'activation nommé par application, noms exacts.
 ### Les quatre pièces
 1. **Modules `NOMAIN`** (un par responsabilité) : p. ex. un module d'accès aux données (`ARTICLEDAO`) et un module point d'entrée. Un module `NOMAIN` n'a pas de cycle : il exporte des procédures.
 2. **Copybooks (`/COPY`)** : prototypes (`DCL-PR`) et constantes partagés entre les modules et les appelants (`ARTICLE_H`).
 3. **Programme de service** (`WSARTICLE`) : regroupe les modules (`CRTSRVPGM MODULE(...)`). Avec `EXPORT(*ALL)`, tout ce qui est exporté par les modules l'est aussi ; avec `EXPORT(*SRCFILE)`, un **source de liage** liste précisément les procédures (et la signature).
-4. **Source de liage** : membre contenant `STRPGMEXP`, `EXPORT SYMBOL(...)`, `ENDPGMEXP` (non vérifié, voir tableau) ; on peut le générer avec `RTVBNDSRC`. `DSPSRVPGM DETAIL(*PROCEXP)` contrôle ce qui est réellement exporté.
+4. **Source de liage** : membre contenant `STRPGMEXP`, `EXPORT SYMBOL(...)`, `ENDPGMEXP` (voir « Source de liage et signature » ci-dessous) ; on peut le générer avec `RTVBNDSRC`. `DSPSRVPGM DETAIL(*PROCEXP)` contrôle ce qui est réellement exporté.
 
 ### Commandes de la chaîne (à tester)
 ```
@@ -2222,10 +2261,10 @@ CRTSQLRPGI OBJ(BIB01/ARTICLEDAO) SRCFILE(BIB01/QRPGLESRC) SRCMBR(ARTICLEDAO) OBJ
 CRTSRVPGM SRVPGM(BIB01/WSARTICLE) MODULE(BIB01/ARTICLEDAO BIB01/ARTICLE_API) EXPORT(*ALL) ACTGRP(*CALLER)
 DSPSRVPGM SRVPGM(BIB01/WSARTICLE) DETAIL(*PROCEXP)
 ```
-`CRTRPGMOD` (module sans SQL), `CRTBNDDIR` / `ADDBNDDIRE` (répertoire de liage) existent sur job-i. Pour la suppression et la recréation : `DLTSRVPGM` puis `CRTSRVPGM` (les droits sont à redonner, voir la partie 3).
+`CRTRPGMOD` (module sans SQL), `CRTBNDDIR` / `ADDBNDDIRE` (répertoire de liage) : voir le mémo des commandes (partie 4). Pour la suppression et la recréation : `DLTSRVPGM` puis `CRTSRVPGM` (les droits sont à vérifier, voir la partie 3 et le mémo de la partie 4).
 
 ### Exemple complet : liste de bonbons en JSON, exposée en service REST
-> Code fourni par l'utilisateur (4 membres, ordre de création : `BONBON_H`, `BONBONDAO`, `GETBON_H`, `GET_BONBON`), **anonymisé** : bibliothèque `BIB01`, point d'entrée et copybook renommés (`GET_BONBON`, `GETBON_H`). **Non compilé ici** ; la compilation par l'utilisateur n'est pas précisée. Table et colonnes (`BONBON` : `"NUMBER"`, `NOM`, `MARQUE`, `COULEUR`, `PRIX`) supposées d'après le code.
+> Code fourni par l'utilisateur (4 membres, ordre de création : `BONBON_H`, `BONBONDAO`, `GETBON_H`, `GET_BONBON`), **anonymisé** : bibliothèque `BIB01`, point d'entrée et copybook renommés (`GET_BONBON`, `GETBON_H`). **Compilé par l'utilisateur (les quatre membres et le programme de service)** ; l'exécution et le déploiement IWS ne sont pas confirmés. Table et colonnes (`BONBON` : `"NUMBER"`, `NOM`, `MARQUE`, `COULEUR`, `PRIX`) supposées d'après le code.
 
 **1. `BONBON_H`** (copybook : codes retour et prototype de l'accès aux données)
 ```rpgle
@@ -2368,9 +2407,9 @@ Puis déployer `WSBONBON` avec l'assistant IWS (partie 2) : `get_bonbon` en `GET
 | PCML 6.0 par défaut pour une édition cible V7R2M0 / V7R3M0 (7.0 ensuite) ; en 7.0, les champs de **longueur variable** (`varchar`) sont traités autrement qu'en 6.0 (en 6.0, générés comme structures) ; variable `QIBM_RPG_PCML_VERSION` | vérifié (IBM i 7.2) | idem |
 | Effet de cette version PCML sur un paramètre `varchar(30000)` vu par IWS | **non vérifié** | — |
 | `json_arrayagg` avec `json_object` imbriqué, `order by` interne ; résultat `NULL` si aucune ligne (d'où `ind_json < 0` = `BONBON_VIDE`) | vérifié | [SQL-AVANCE, partie 1](SQL-AVANCE.md#partie-1--sql-json-db2-for-i-75) |
-| `CAST(… AS VARCHAR(30000))` ; `"NUMBER"` entre guillemets ; `SELECT INTO :var :indicateur` | **non vérifié** | — |
-| `SET OPTION COMMIT = *NONE, CLOSQLCSR = *ENDMOD` en tête d'un module `NOMAIN` | **non vérifié** | — |
-| `**free` en première ligne d'un membre `/COPY` | **non vérifié** (à confirmer à la compilation) | — |
+| `CAST(… AS VARCHAR(30000))` ; `"NUMBER"` entre guillemets ; `SELECT INTO :var :indicateur` | **compilé** (confirmé par l'utilisateur) ; résultat à l'exécution non confirmé | — |
+| `SET OPTION COMMIT = *NONE, CLOSQLCSR = *ENDMOD` en tête d'un module `NOMAIN` | **compilé** (confirmé par l'utilisateur) | — |
+| `**free` en première ligne d'un membre `/COPY` | **compilé** (confirmé par l'utilisateur) | — |
 | Chaînes de 30000 caractères : le résultat JSON plus long serait tronqué ou en erreur | **non vérifié** | — |
 | Le JSON placé dans un paramètre `varchar` de sortie est-il renvoyé tel quel ou comme chaîne échappée par IWS ? | **non vérifié** (point à tester en premier) | — |
 | Codes HTTP 200 / 404 / 500 | vérifié (2015) | [tutoriel IWS Part 3](https://developer.ibm.com/tutorials/i-rest-web-services-server3/) |
@@ -2416,6 +2455,74 @@ Le message « Response data corresponding to field 'x' is not valid. The field m
 | Journal du serveur : `WRKACTJOB SBS(QHTTPSVR)`, option 5 puis 10 | **non vérifié** | — |
 
 Rien n'est à publier de plus tant que ces points ne sont pas confirmés dans la documentation IBM (référence IWS et droits).
+
+## Partie 4 : mémo des commandes système (ILE, IWS, exploitation)
+
+> Toutes ces commandes ont une fiche sur job-i (vérifiée le 2026-11-23, syntaxe minimale reprise de la fiche). Dans une session 5250 : taper la commande puis **F4** pour l'invite, **F1** sur un paramètre pour l'aide. Les enchaînements viennent de l'exemple « bonbons » et de la page job-i « ILE ». Valeurs de paramètres non citées ici : à vérifier avec F4 (non vérifié).
+
+### Compiler et lier
+
+| Commande | Rôle | Syntaxe minimale |
+|---|---|---|
+| [`CRTSQLRPGI`](https://job-i.fr/commandes-ibm-i/crtsqlrpgi) | précompile le SQL puis compile ; `OBJTYPE(*PGM \| *SRVPGM \| *MODULE)` (voir la fiche 07) | `CRTSQLRPGI OBJ(BIB01/BONBONDAO) SRCFILE(BIB01/WEBSERVICE) SRCMBR(BONBONDAO) OBJTYPE(*MODULE) COMMIT(*NONE)` |
+| [`CRTRPGMOD`](https://job-i.fr/commandes-ibm-i/crtrpgmod) | module RPG sans SQL (`DBGVIEW(*SOURCE)` pour déboguer) | `CRTRPGMOD MODULE(BIB01/GET_BONBON) SRCFILE(BIB01/WEBSERVICE)` |
+| [`CRTBNDRPG`](https://job-i.fr/commandes-ibm-i/crtbndrpg) | compile et lie en un programme (module temporaire) ; `DFTACTGRP(*YES)` interdit `ACTGRP` / `BNDDIR` | `CRTBNDRPG PGM(BIB01/MONPGM) SRCFILE(BIB01/QRPGLESRC)` |
+| [`CRTCLMOD`](https://job-i.fr/commandes-ibm-i/crtclmod) | module CL | `CRTCLMOD MODULE(BIB01/MONCL) SRCFILE(BIB01/QCLSRC)` |
+| [`CRTPGM`](https://job-i.fr/commandes-ibm-i/crtpgm) | lie des modules (par copie) en un programme ; `ENTMOD` = module d'entrée | `CRTPGM PGM(BIB01/MONPGM) MODULE(BIB01/MOD1 BIB01/MOD2) ENTMOD(BIB01/MOD1)` |
+| [`CRTSRVPGM`](https://job-i.fr/commandes-ibm-i/crtsrvpgm) | programme de service ; `EXPORT(*ALL)` ou `*SRCFILE` (+ `SRCFILE`, défaut `QSRVSRC`, `SRCMBR`) ; `ACTGRP(*CALLER)` ou nom ; `BNDDIR`, `BNDSRVPGM` | `CRTSRVPGM SRVPGM(BIB01/WSBONBON) MODULE(BIB01/BONBONDAO BIB01/GET_BONBON) EXPORT(*ALL) ACTGRP(*CALLER)` |
+| [`UPDSRVPGM`](https://job-i.fr/commandes-ibm-i/updsrvpgm) | remplace un ou plusieurs modules d'un programme de service sans le recréer | `UPDSRVPGM SRVPGM(BIB01/WSBONBON) MODULE(BIB01/BONBONDAO)` |
+| [`UPDPGM`](https://job-i.fr/commandes-ibm-i/updpgm) | idem pour un programme lié **par copie** | `UPDPGM PGM(BIB01/MONPGM) MODULE(BIB01/MOD1)` |
+| [`CRTBNDDIR`](https://job-i.fr/commandes-ibm-i/crtbnddir) | crée un répertoire de liage | `CRTBNDDIR BNDDIR(BIB01/MONREP)` |
+| [`ADDBNDDIRE`](https://job-i.fr/commandes-ibm-i/addbnddire) | ajoute un poste (module ou programme de service) | `ADDBNDDIRE BNDDIR(BIB01/MONREP) OBJ((BIB01/WSBONBON *SRVPGM))` |
+
+### Inspecter
+
+| Commande | Rôle | Syntaxe minimale |
+|---|---|---|
+| [`DSPSRVPGM`](https://job-i.fr/commandes-ibm-i/dspsrvpgm) | infos sur un programme de service ; `DETAIL(*PROCEXP)` = procédures exportées (signature courante), aussi `*MODULE`, `*SRVPGM`, `*DTAEXP`, `*SIGNATURE`, `*ALL`… | `DSPSRVPGM SRVPGM(BIB01/WSBONBON) DETAIL(*PROCEXP)` |
+| [`DSPPGM`](https://job-i.fr/commandes-ibm-i/dsppgm) | infos sur un programme ; `DETAIL(*MODULE)` = modules et langage (exemple job-i) | `DSPPGM PGM(BIB01/MONPGM) DETAIL(*MODULE)` |
+| [`DSPMOD`](https://job-i.fr/commandes-ibm-i/dspmod) | infos sur un module (compilateur, source d'origine) | `DSPMOD MODULE(BIB01/GET_BONBON)` |
+| [`DSPBNDDIR`](https://job-i.fr/commandes-ibm-i/dspbnddir) | contenu d'un répertoire de liage | `DSPBNDDIR BNDDIR(BIB01/MONREP)` |
+| [`RTVBNDSRC`](https://job-i.fr/commandes-ibm-i/rtvbndsrc) | extrait les exports de modules / programmes de service en source de liage | `RTVBNDSRC SRVPGM(BIB01/WSBONBON) SRCFILE(BIB01/QSRVSRC)` (paramètres exacts : F4) |
+| [`DSPOBJD`](https://job-i.fr/commandes-ibm-i/dspobjd) | description d'objet (dates de création, source) | `DSPOBJD OBJ(BIB01/WSBONBON) OBJTYPE(*SRVPGM)` |
+| [`DSPOBJAUT`](https://job-i.fr/commandes-ibm-i/dspobjaut) | liste des utilisateurs autorisés et leurs droits | `DSPOBJAUT OBJ(BIB01/WSBONBON) OBJTYPE(*SRVPGM)` |
+| [`CHKOBJ`](https://job-i.fr/commandes-ibm-i/chkobj) | vérifie l'existence d'un objet et les droits de l'utilisateur | `CHKOBJ OBJ(BIB01/WSBONBON) OBJTYPE(*SRVPGM)` |
+
+### Droits et nettoyage
+
+| Commande | Rôle | Syntaxe minimale |
+|---|---|---|
+| [`GRTOBJAUT`](https://job-i.fr/commandes-ibm-i/grtobjaut) | accorde des droits sur des objets à un utilisateur ou groupe | `GRTOBJAUT OBJ(BIB01/WSBONBON) OBJTYPE(*SRVPGM) USER(QWSERVICE) AUT(*USE)` (paramètres `USER` et `AUT` : F4) |
+| [`DLTSRVPGM`](https://job-i.fr/commandes-ibm-i/dltsrvpgm) | supprime un programme de service | `DLTSRVPGM SRVPGM(BIB01/WSBONBON)` |
+| [`DLTMOD`](https://job-i.fr/commandes-ibm-i/dltmod) | supprime un module | `DLTMOD MODULE(BIB01/GET_BONBON)` |
+
+### Environnement et sources
+
+| Commande | Rôle | Syntaxe minimale |
+|---|---|---|
+| [`CRTLIB`](https://job-i.fr/commandes-ibm-i/crtlib) | crée une bibliothèque | `CRTLIB LIB(BIB01)` |
+| [`CRTSRCPF`](https://job-i.fr/commandes-ibm-i/crtsrcpf) | crée un fichier source (`RCDLEN`) | `CRTSRCPF FILE(BIB01/WEBSERVICE)` |
+| [`ADDPFM`](https://job-i.fr/commandes-ibm-i/addpfm) | ajoute un membre à un fichier physique | `ADDPFM FILE(BIB01/WEBSERVICE) MBR(BONBONDAO)` |
+| [`CPYFRMSTMF`](https://job-i.fr/commandes-ibm-i/cpyfrmstmf) | copie un fichier STREAM (IFS) vers un membre source | `CPYFRMSTMF FROMSTMF('/tmp/src.rpgle') TOMBR('/QSYS.LIB/BIB01.LIB/WEBSERVICE.FILE/BONBONDAO.MBR')` (chemin : à vérifier) |
+| [`ADDLIBLE`](https://job-i.fr/commandes-ibm-i/addlible) / [`DSPLIBL`](https://job-i.fr/commandes-ibm-i/dsplibl) | ajoute une bibliothèque à la liste / affiche la liste | `ADDLIBLE LIB(BIB01)` ; `DSPLIBL` |
+
+### Serveur IWS et exploitation
+
+| Commande | Rôle | Syntaxe minimale |
+|---|---|---|
+| [`STRTCPSVR`](https://job-i.fr/commandes-ibm-i/strtcpsvr) / [`ENDTCPSVR`](https://job-i.fr/commandes-ibm-i/endtcpsvr) | démarre / arrête les serveurs d'application TCP/IP ; `ENDTCPSVR` a des paramètres `SERVER`, `HTTPSVR`, `DNSSVR`… | `STRTCPSVR SERVER(...)` ; valeurs pour le serveur HTTP / IWS : F4 (non vérifié) |
+| [`WRKACTJOB`](https://job-i.fr/commandes-ibm-i/wrkactjob) | travaux actifs ; l'utilisateur consulte le sous-système `QHTTPSVR` pour les travaux du serveur (option 5 puis 10 : non vérifié) | `WRKACTJOB` |
+| [`DSPJOBLOG`](https://job-i.fr/commandes-ibm-i/dspjoblog) | historique d'un travail (messages d'erreur du service) | `DSPJOBLOG` |
+| [`DSPJOB`](https://job-i.fr/commandes-ibm-i/dspjob) / [`WRKJOB`](https://job-i.fr/commandes-ibm-i/wrkjob) | état d'un travail / gestion d'un travail | `DSPJOB JOB(...)` |
+| [`WRKSPLF`](https://job-i.fr/commandes-ibm-i/wrksplf) | fichiers spoule | `WRKSPLF` |
+| [`STRDBG`](https://job-i.fr/commandes-ibm-i/strdbg) / [`ENDDBG`](https://job-i.fr/commandes-ibm-i/enddbg) | démarre / arrête le débogage (modules compilés avec `DBGVIEW(*SOURCE)`) | `STRDBG PGM(BIB01/MONPGM)` |
+
+### Enchaînements à retenir
+- **Après avoir changé le code d'un module** : recompiler le module (`CRTRPGMOD` / `CRTSQLRPGI … *MODULE`) puis `UPDSRVPGM` (programme de service) ; pour un programme lié par copie, `UPDPGM`.
+- **Si une signature de procédure change** : recompiler tous les modules appelants et recréer les programmes concernés (IBM, page « Signature »).
+- **Recréer un programme de service** (`DLTSRVPGM` puis `CRTSRVPGM`) : revérifier les droits (`DSPOBJAUT`, `GRTOBJAUT`) et, pour IWS, redéployer le service (hypothèse de la partie 2, non vérifiée).
+- **Vérifier ce qui est exposé** : `DSPSRVPGM … DETAIL(*PROCEXP)`.
+- **Savoir d'où vient un objet** : `DSPOBJD`, `DSPMOD`, `DSPPGM … DETAIL(*MODULE)`.
 
 
 === FICHIER : docs/ASSISTANT-ET-AUTOMATISATION.md ===

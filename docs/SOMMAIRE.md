@@ -122,6 +122,7 @@ JSON, écriture IFS, FETCH multi-lignes, architecture ILE (modules, programme de
   - [Partie 1 : modules, programme de service, source de liage](ILE-ET-SERVICES-WEB.md#partie-1--modules-programme-de-service-source-de-liage)
   - [Partie 2 : services web REST avec Integrated Web Services (IWS)](ILE-ET-SERVICES-WEB.md#partie-2--services-web-rest-avec-integrated-web-services-iws)
   - [Partie 3 : droits et exploitation d'un service IWS](ILE-ET-SERVICES-WEB.md#partie-3--droits-et-exploitation-dun-service-iws)
+  - [Partie 4 : mémo des commandes système (ILE, IWS, exploitation)](ILE-ET-SERVICES-WEB.md#partie-4--mémo-des-commandes-système-ile-iws-exploitation)
 
 ## Énoncés de TP
 
