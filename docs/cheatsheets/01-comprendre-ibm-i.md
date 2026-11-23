@@ -15,6 +15,7 @@
 - [Sécurité  (source)](#sécurité--source)
 - [PTF  (source)](#ptf--source)
 - [Performances  (source)](#performances--source)
+- [Navigator for i  (source)](#navigator-for-i--source)
 - [Mes exemples](#mes-exemples)
 <!-- TOC:END -->
 
@@ -69,6 +70,13 @@
 - Mesurer avant de régler : Collection Services, `ACTIVE_JOB_INFO`, `MEMORY_POOL_INFO`, `WRKSYSACT`.
 - Leviers : `OVRDBF ... SEQONLY(*YES 2000)`, éviter `ACTGRP(*NEW)` sur appels fréquents, `*INLR` seulement en fin, `SAVLIB DTACPR(*MEDIUM)`.
 - Valeurs : `QDYNPTYSCD`=1, `QDYNPTYADJ`=1, `QPFRADJ`=2.
+
+## Navigator for i  ([source](https://job-i.fr/navigator-for-i))
+- Interface web d'administration livrée avec IBM i (instance HTTP `*ADMIN`) : `http://<système>:2002/Navigator` (2003 en HTTPS une fois TLS configuré) ; connexion avec un profil IBM i.
+- Démarrer / arrêter : `STRTCPSVR SERVER(*HTTP) HTTPSVR(*ADMIN)` / `ENDTCPSVR SERVER(*HTTP) HTTPSVR(*ADMIN)` ; arrêter `*ADMIN` coupe aussi DCM (certificats).
+- Erreur de première connexion NAV_300068 (nom d'hôte complet introuvable) : pas de DNS ni d'entrée dans la table d'hôtes → `ADDTCPHTE` (IP + nom complet + nom court).
+- Chaque liste a un bouton SQL qui montre le service Db2 sous-jacent (ex. `QSYS2.ACTIVE_JOB_INFO`) ; 14 rubriques de menu, pas de rubrique Base de données. Rester en HTTP sur réseau ouvert expose profil et mot de passe.
+- Non vérifié ailleurs : page job-i seule consultée (relevés chiffrés sur une machine de formation 7.5 TR8).
 <!-- AUTO:END -->
 
 ## Mes exemples

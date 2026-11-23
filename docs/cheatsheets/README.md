@@ -1,6 +1,7 @@
 # Cheat sheets IBM i (d'après job-i.fr)
 
-Dernière mise à jour : 2026-11-19
+Dernière mise à jour : 2026-11-23
+- 2026-11-23 : fiche 01 : ajout de la nouvelle page job-i `/navigator-for-i` (IBM Navigator for i : ports, STRTCPSVR `*ADMIN`, NAV_300068). Fiche 05 : offres 176 → 144. Chiffres inchangés : commandes 1 830, messages 13 213 (107 fiches), services SQL 390, valeurs système 158, recettes 36, instructions RPG 54, fonctions 95, codes RPG III 79. Pas de nouvelle version RPG/IBM i annoncée par job-i (7.5 ; 7.6 mentionnée sur cycle GAP). Incohérences relevées sur job-i (non reprises) : performances 580/47 ms vs 544/45 ms, PTF HIPER 109→111→112, Node.js 118 vs 107 tests.
 - 2026-11-19 : fiche 06 mise à jour (job-i : concordance `MR` et erreur RPG1031, `*INZSR`, cycle toujours valable en 7.5 / 7.6) ; fiche 03 : apports `%LOWER` / `%UPPER` et tableaux `CTDATA` / `ALT` (vérifiés sur ibm.com, limites non vérifiées signalées).
 - Fiche 02 : messages 13 213 (107 fiches « Comment s'en sortir »). Fiche 03 : ajout de la page `/rpg-iii` (79 codes opération en 10 familles), chiffres site (54 instructions, 95 fonctions). Fiche 05 : offres 176. Fiches 01, 04, 06 : aucun changement détecté (commandes 1 830, services SQL 390, valeurs système 158, recettes 36 inchangés).
 
