@@ -1,12 +1,12 @@
 # Wiki IBM i : contexte complet pour un assistant
 
-Genere le 2026-11-19 13:26 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Genere le 2026-11-23 11:59 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
 Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
 
-ATTENTION : ce fichier fait environ 200 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
+ATTENTION : ce fichier fait environ 220 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
 Table des matieres (ordre du fichier) :
 - README.md (15 Ko)
-- docs/SOMMAIRE.md (15 Ko)
+- docs/SOMMAIRE.md (17 Ko)
 - CLAUDE.md (18 Ko)
 - docs/cheatsheets/README.md (2 Ko)
 - docs/cheatsheets/01-comprendre-ibm-i.md (5 Ko)
@@ -15,7 +15,7 @@ Table des matieres (ordre du fichier) :
 - docs/cheatsheets/04-db2-for-i-et-sql.md (4 Ko)
 - docs/cheatsheets/05-emploi-et-formation.md (2 Ko)
 - docs/cheatsheets/06-cycle-rpg-et-sous-routines.md (16 Ko)
-- docs/cheatsheets/07-sql-embarque-en-rpg.md (5 Ko)
+- docs/cheatsheets/07-sql-embarque-en-rpg.md (6 Ko)
 - docs/cheatsheets/08-impression-et-printer-ibm-i.md (7 Ko)
 - docs/enonces/README.md (2 Ko)
 - docs/enonces/ANALYSE-ENONCES.md (4 Ko)
@@ -32,6 +32,8 @@ Table des matieres (ordre du fichier) :
 - docs/CYCLE-GAP-EXEMPLES.md (1 Ko)
 - docs/CYCLE-RPG.md (26 Ko)
 - docs/IMPRESSION-RPG.md (18 Ko)
+- docs/SQL-AVANCE.md (8 Ko)
+- docs/ILE-ET-SERVICES-WEB.md (10 Ko)
 - docs/ASSISTANT-ET-AUTOMATISATION.md (16 Ko)
 - contributions/README.md (4 Ko)
 - docs/apports/README.md (1 Ko)
@@ -128,6 +130,8 @@ cd wiki-ibm
 | Exemples du cycle RPG (fichier primaire, L1-L9, 1P, OF) | [docs/CYCLE-GAP-EXEMPLES.md](docs/CYCLE-GAP-EXEMPLES.md) |
 | Cours du cycle RPG III (7 étapes, ruptures, spéc. O, rapprochement) + exemples | [docs/CYCLE-RPG.md](docs/CYCLE-RPG.md#partie-1--cours-du-cycle-rpg-iii-et-exemples) |
 | Réécrire un état à cycle en full free (retour d'expérience, spool) | [docs/IMPRESSION-RPG.md](docs/IMPRESSION-RPG.md#partie-1--réécrire-un-état-à-cycle-en-full-free-retour-dexpérience) |
+| SQL avancé : JSON, IFS_WRITE_UTF8, FETCH multi-lignes | [docs/SQL-AVANCE.md](docs/SQL-AVANCE.md) |
+| Architecture ILE (modules, programme de service) et services REST IWS | [docs/ILE-ET-SERVICES-WEB.md](docs/ILE-ET-SERVICES-WEB.md) |
 | Cycle RPG III -> full free : table de correspondance | [docs/CYCLE-RPG.md](docs/CYCLE-RPG.md#partie-2--du-cycle-rpg-iii-au-full-free-table-de-correspondance) |
 | PRTCTL (contrôle d'impression RPG) : ce qui est documenté ou non | [docs/IMPRESSION-RPG.md](docs/IMPRESSION-RPG.md#partie-2--prtctl-contrôle-dynamique-dimpression) |
 | Tester que l'assistant applique les règles du wiki (prompts + grille) | [docs/ASSISTANT-ET-AUTOMATISATION.md](docs/ASSISTANT-ET-AUTOMATISATION.md#partie-2--tester-que-lassistant-applique-les-règles) |
@@ -325,6 +329,19 @@ Cours du cycle, passage au full free, impression et PRTCTL (sujets regroupés).
 - [Exemples de cycle dans le code des bibliothèques](CYCLE-GAP-EXEMPLES.md) : Sources avec fichier primaire, L1-L9, 1P, OF (généré).
 - [Dossier des exemples (RPG, DDS)](exemples-cycle/) : CYCLEQSYS (validé), CYCLEIMP + CYCLEPRT, CYCLEPRTCTL, CYCLETOTO, SQLIMPRIME (SQL embarqué), RUPT0 à RUPT2, et pesees/ (série CYC01 à CYC14 sur le cycle).
 
+## SQL avancé et services web
+
+JSON, écriture IFS, FETCH multi-lignes, architecture ILE (modules, programme de service) et services REST IWS.
+
+- [SQL avancé : JSON, IFS, SQL embarqué](SQL-AVANCE.md) : JSON_OBJECT, JSON_ARRAYAGG, QSYS2.IFS_WRITE_UTF8, FETCH multi-lignes (vérifié sur ibm.com 7.5).
+  - [Partie 1 : SQL JSON (Db2 for i 7.5)](SQL-AVANCE.md#partie-1--sql-json-db2-for-i-75)
+  - [Partie 2 : écrire dans l'IFS depuis SQL (`QSYS2.IFS_WRITE_UTF8`)](SQL-AVANCE.md#partie-2--écrire-dans-lifs-depuis-sql-qsys2ifs_write_utf8)
+  - [Partie 3 : SQL embarqué en RPG (FETCH multi-lignes et options)](SQL-AVANCE.md#partie-3--sql-embarqué-en-rpg-fetch-multi-lignes-et-options)
+- [Architecture ILE et services REST (IWS)](ILE-ET-SERVICES-WEB.md) : Modules NOMAIN, programme de service, source de liage, IWS REST (tutoriels 2015), droits.
+  - [Partie 1 : modules, programme de service, source de liage](ILE-ET-SERVICES-WEB.md#partie-1--modules-programme-de-service-source-de-liage)
+  - [Partie 2 : services web REST avec Integrated Web Services (IWS)](ILE-ET-SERVICES-WEB.md#partie-2--services-web-rest-avec-integrated-web-services-iws)
+  - [Partie 3 : droits et exploitation d'un service IWS](ILE-ET-SERVICES-WEB.md#partie-3--droits-et-exploitation-dun-service-iws)
+
 ## Énoncés de TP
 
 Résumés anonymisés d'énoncés et d'examens.
@@ -368,9 +385,9 @@ Ce que le wiki vérifie automatiquement et ce qui lui manque.
 
 - [Manques des fiches](MANQUES.md) : Termes utilisés dans le code et absents des fiches (généré).
   - [Commandes CL : 60 manquants sur 104 utilises](MANQUES.md#commandes-cl--60-manquants-sur-104-utilises)
-  - [Instructions / fonctions RPG (reconnues par job-i) : 41 manquants sur 102 utilises](MANQUES.md#instructions--fonctions-rpg-reconnues-par-job-i--41-manquants-sur-102-utilises)
+  - [Instructions / fonctions RPG (reconnues par job-i) : 39 manquants sur 102 utilises](MANQUES.md#instructions--fonctions-rpg-reconnues-par-job-i--39-manquants-sur-102-utilises)
   - [Messages (MONMSG, SQLCODE...) : 60 manquants sur 68 utilises](MANQUES.md#messages-monmsg-sqlcode--60-manquants-sur-68-utilises)
-  - [Services SQL (QSYS2, SYSTOOLS) : 25 manquants sur 28 utilises](MANQUES.md#services-sql-qsys2-systools--25-manquants-sur-28-utilises)
+  - [Services SQL (QSYS2, SYSTOOLS) : 24 manquants sur 28 utilises](MANQUES.md#services-sql-qsys2-systools--24-manquants-sur-28-utilises)
   - [Mots-cles DDS / ecran : 84 manquants sur 102 utilises](MANQUES.md#mots-cles-dds--ecran--84-manquants-sur-102-utilises)
   - [Sources par type et bibliotheque](MANQUES.md#sources-par-type-et-bibliotheque)
 - [Vérification du code contre job-i.fr](VERIFICATION-JOB-I.md) : Commandes et instructions reconnues ou à contrôler (généré).
@@ -836,6 +853,7 @@ SELECT OBJNAME, OBJTYPE, OBJSIZE FROM TABLE(QSYS2.OBJECT_STATISTICS('MABIB','*AL
 - **DDS de fichiers logiques / physiques** : voir `sources/DDS/` ([index](../INDEX-SOURCES.md)).
 - **SQL examen** : fichiers `Sans titre 1.sql` et `sqlexamen.sql` dans `Documents` (à déposer dans `docs/apports/`).
 - **Création de fichier client** : [CLIENTCRT](../../sources/CL/CL-procedural/BIB06/CLIENTCRT.md), [CLIENTINS](../../sources/CL/CL-procedural/BIB06/CLIENTINS.md).
+- **JSON en SQL et écriture dans l'IFS** (vérifié sur ibm.com, 7.5) : `JSON_OBJECT`, `JSON_ARRAYAGG` et `QSYS2.IFS_WRITE_UTF8` (défauts : CCSID 1208, `OVERWRITE` = `APPEND`, fin de ligne `CRLF`) : voir [SQL-AVANCE](../SQL-AVANCE.md).
 
 
 === FICHIER : docs/cheatsheets/05-emploi-et-formation.md ===
@@ -1111,6 +1129,7 @@ NOUVEL UNIVERS
 - **Notions SQL présentes dans votre code et absentes des fiches** : `COALESCE`, `GROUP BY`, `DISTINCT`, `CURRENT DATE - n MONTHS`, jointures externes ; voir [MANQUES](../MANQUES.md) et [ANALYSE-ENONCES](../enonces/ANALYSE-ENONCES.md). Les services SQL et les recettes d'exploitation restent dans la [fiche 04](04-db2-for-i-et-sql.md).
 - **À confirmer** : le type de membre source à utiliser (`SQLRPGLE`) et la commande exacte utilisée par votre éditeur pour compiler (CRTSQLRPGI ci-dessus) ; la page job-i ne parle pas de la convention de nommage du type.
 - **Curseur + impression avec rupture** (proposé, non compilé) : [SQLIMPRIME.sqlrpgle](../exemples-cycle/SQLIMPRIME.sqlrpgle), détaillé dans [IMPRESSION-RPG](../IMPRESSION-RPG.md#9-variante-sql-embarqué--liste-par-univers-avec-rupture).
+- **FETCH multi-lignes** (`FETCH … FOR n ROWS INTO` tableau de structures, `SQLERRD(3)` = lignes lues ; vérifié sur ibm.com 7.5) et `FETCH INTO` d'une structure hôte : voir [SQL-AVANCE](../SQL-AVANCE.md#partie-3--sql-embarqué-en-rpg-fetch-multi-lignes-et-options). Architecture modules / programme de service et services REST : [ILE-ET-SERVICES-WEB](../ILE-ET-SERVICES-WEB.md).
 
 
 === FICHIER : docs/cheatsheets/08-impression-et-printer-ibm-i.md ===
@@ -1362,7 +1381,7 @@ Chaîne de restauration rapide fictive ; l'épreuve se déroule dans un environn
 === FICHIER : docs/MANQUES.md ===
 # Ce qui manque dans les fiches (utilise dans le code, absent des fiches)
 
-Genere le 2026-11-17 10:12 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
+Genere le 2026-11-23 11:59 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
 
 
 ## Commandes CL : 60 manquants sur 104 utilises
@@ -1415,7 +1434,7 @@ Genere le 2026-11-17 10:12 a partir de 1082 sources. Un terme est 'manquant' s'i
 | ADDRTGE | 2 | 2 |
 | CRTCLS | 2 | 2 |
 
-## Instructions / fonctions RPG (reconnues par job-i) : 41 manquants sur 102 utilises
+## Instructions / fonctions RPG (reconnues par job-i) : 39 manquants sur 102 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
@@ -1446,13 +1465,11 @@ Genere le 2026-11-17 10:12 a partir de 1082 sources. Un terme est 'manquant' s'i
 | %STATUS | 5 | 3 |
 | %SUBARR | 5 | 3 |
 | %TIMESTAMP | 4 | 1 |
-| %UPPER | 4 | 3 |
 | %XFOOT | 3 | 1 |
 | READPE | 3 | 2 |
 | %ALLOC | 2 | 1 |
 | %EQUAL | 2 | 1 |
 | %LIST | 2 | 2 |
-| %LOWER | 2 | 2 |
 | %TARGET | 2 | 1 |
 | DCL-ENUM | 2 | 2 |
 | %CHECKR | 1 | 1 |
@@ -1511,14 +1528,13 @@ Genere le 2026-11-17 10:12 a partir de 1082 sources. Un terme est 'manquant' s'i
 | SQL7064 | 2 | 1 |
 | CPF1008 | 1 | 1 |
 
-## Services SQL (QSYS2, SYSTOOLS) : 25 manquants sur 28 utilises
+## Services SQL (QSYS2, SYSTOOLS) : 24 manquants sur 28 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
 | QSYS2.BASE64_ENCODE | 5 | 2 |
 | QSYS2.BOUND_MODULE_INFO | 5 | 3 |
 | QSYS2.HTTP_GET | 5 | 2 |
-| QSYS2.IFS_WRITE_UTF8 | 5 | 1 |
 | QSYS2.SYSPARTITIONSTAT | 4 | 3 |
 | SYSTOOLS.BASE64ENCODE | 4 | 1 |
 | SYSTOOLS.HTTPPOSTCLOB | 4 | 2 |
@@ -2082,6 +2098,174 @@ Le premier programme déclarait **quatre sous-zones `CHAR(3)`** (c'est la dispos
 - Variante étendue (sans `*COMPAT`) : non écrite ; la déclaration de la section 2 bis suffit, avec `PRTCTL(prtCtl)`.
 - Version **validée** sans `PRTCTL` : [CYCLEQSYS.rpgle](exemples-cycle/CYCLEQSYS.rpgle).
 - Version avec `PRTCTL` corrigé : [CYCLEPRTCTL.rpgle](exemples-cycle/CYCLEPRTCTL.rpgle) (**non compilée ni testée**).
+
+
+=== FICHIER : docs/SQL-AVANCE.md ===
+# SQL avancé : JSON, écriture dans l'IFS, SQL embarqué (FETCH multi-lignes)
+
+> Pages **lues en entier sur ibm.com le 2026-11-23** (IBM Documentation, IBM i 7.5, versions françaises traduites automatiquement sauf FETCH, en anglais). Synthèse personnelle, pas de copie longue. Chaque partie commence par son tableau `Élément | Statut | Source`. **Aucun exemple n'a été exécuté** : ils sont à tester sur la machine.
+
+
+## Partie 1 : SQL JSON (Db2 for i 7.5)
+
+| Élément | Statut | Source |
+|---|---|---|
+| `JSON_OBJECT` : paires `KEY … VALUE …` ou `'clé' : valeur`, `NULL ON NULL` (défaut) / `ABSENT ON NULL`, `WITH` / `WITHOUT UNIQUE KEYS` (défaut sans), `RETURNING` (défaut `CLOB(2G) CCSID 1208`) | vérifié | [JSON_OBJECT, 7.5](https://www.ibm.com/docs/fr/i/7.5?topic=functions-json-object) |
+| `JSON_ARRAYAGG` : tableau JSON à partir d'un ensemble de valeurs, `ORDER BY` interne, `ABSENT ON NULL` (défaut) / `NULL ON NULL`, résultat `NULL` si l'ensemble est vide | vérifié | [JSON_ARRAYAGG, 7.5](https://www.ibm.com/docs/fr/i/7.5?topic=functions-json-arrayagg) |
+| `FORMAT JSON` : sans lui, une chaîne est mise entre guillemets et ses caractères spéciaux sont échappés ; avec lui (ou si l'expression est elle-même un `JSON_OBJECT` / `JSON_ARRAYAGG`…), elle est traitée comme du JSON déjà formé | vérifié | pages `JSON_OBJECT` et `JSON_ARRAYAGG` |
+| Exemple `JSON_ARRAYAGG(JSON_OBJECT(…) ORDER BY …)` avec `GROUP BY` | vérifié (existence de la forme) | exemple de la page `JSON_ARRAYAGG` |
+| `CAST(… AS VARCHAR(30000))` d'un résultat `CLOB` | **non vérifié** | page `CAST` non lue |
+| Identifiant `"NUMBER"` entre guillemets | **non vérifié** | règles des identifiants non lues |
+| Exemple ci-dessous | **non exécuté** | — |
+
+### Points à retenir
+- **`JSON_OBJECT`** : `JSON_OBJECT('prenom' : 'Jean', 'ville' : 'Lyon')` ou `JSON_OBJECT(KEY 'prenom' VALUE 'Jean', …)`. Avec la forme `:` (deux-points), le nom de clé doit être un **littéral** chaîne. Le nom de clé ne peut pas être `NULL`. La valeur peut être de tout type intégré sauf `XML`, `ROWID`, `DATALINK` (et pas de `CHAR`/`VARCHAR` binaire).
+- **`NULL ON NULL`** (défaut de `JSON_OBJECT`) écrit `null` pour une valeur nulle ; `ABSENT ON NULL` omet la paire. Pour `JSON_ARRAYAGG` c'est l'inverse : **`ABSENT ON NULL` est le défaut**.
+- **Taille du résultat** : `CLOB(2G) CCSID 1208` par défaut. Pour récupérer le texte dans une variable RPG, il faut un type compatible ; la conversion `CAST` n'est pas vérifiée ici.
+- **Imbrication** : mettre un `JSON_OBJECT` dans un `JSON_ARRAYAGG` ne l'échappe pas (le format est celui de la clause `RETURNING` de la fonction interne). Pour y mettre un texte **déjà JSON**, ajouter `FORMAT JSON` ; sinon le texte est traité comme une simple chaîne (guillemets et caractères échappés).
+- **Résultat nul** : `JSON_ARRAYAGG` renvoie `NULL` sur un ensemble vide : prévoir un indicateur de nullité en SQL embarqué.
+
+### Exemple (proposé, non exécuté)
+```sql
+SELECT CAST(JSON_ARRAYAGG(JSON_OBJECT('nom' : TRIM(nom), 'prix' : prix)
+                          ORDER BY "NUMBER") AS VARCHAR(30000))
+  INTO :w_json :ind_json
+  FROM BIBnn.bonbon;
+```
+Remplacer `BIBnn` par ta bibliothèque. Trois points à valider : la conversion `CAST` en `VARCHAR`, la longueur 30000 (un tableau plus long est tronqué ou provoque une erreur, non vérifié), et l'identifiant `"NUMBER"`.
+
+## Partie 2 : écrire dans l'IFS depuis SQL (`QSYS2.IFS_WRITE_UTF8`)
+
+| Élément | Statut | Source |
+|---|---|---|
+| Schéma `QSYS2` ; paramètres `PATH_NAME`, `LINE`, `FILE_CCSID`, `OVERWRITE`, `END_OF_LINE` | vérifié | [IFS_WRITE, IFS_WRITE_BINARY, IFS_WRITE_UTF8, 7.5](https://www.ibm.com/docs/fr/i/7.5.0?topic=is-ifs-write-ifs-write-binary-ifs-write-utf8-procedures) |
+| `FILE_CCSID` : défaut **1208** pour `IFS_WRITE_UTF8` (0 = CCSID du travail pour `IFS_WRITE` et `IFS_WRITE_BINARY`) ; ignoré si on ajoute à un fichier existant | vérifié | idem |
+| `OVERWRITE` : `APPEND` (défaut, crée le fichier s'il n'existe pas), `REPLACE` (supprime et recrée, le CCSID peut changer), `NONE` (échec si le fichier existe) | vérifié | idem |
+| `END_OF_LINE` : `CR`, `CRLF` (défaut de `IFS_WRITE` et `IFS_WRITE_UTF8`), `LF`, `LFCR`, `NONE` (défaut de `IFS_WRITE_BINARY`) | vérifié | idem |
+| Droits : `*X` sur chaque répertoire du chemin, `*W` sur le fichier existant, `*WX` sur le répertoire parent pour créer ou remplacer | vérifié (hors `QSYS.LIB`) | idem |
+| Taille : jusqu'à 2 Go par appel | vérifié | idem |
+
+### Points à retenir
+- `IFS_WRITE_UTF8` reçoit une chaîne **UTF-8** ; si le fichier n'est pas en UTF-8, elle est convertie au CCSID du fichier.
+- Les trois procédures s'appellent par `CALL QSYS2.IFS_WRITE_UTF8(PATH_NAME => '…', LINE => '…', OVERWRITE => 'REPLACE', END_OF_LINE => 'LF')`.
+- **Piège** : le défaut est `APPEND` et la fin de ligne par défaut est **`CRLF`** : pour un fichier texte Unix, passer `END_OF_LINE => 'LF'`.
+- Un fichier créé reprend les droits par défaut de son répertoire parent.
+- `QSYS2.IFS_READ` relit le fichier généré (cité par l'exemple de la page).
+- Le wiki ne citait ce service que comme « utilisé mais absent des fiches » (`docs/MANQUES.md`).
+
+## Partie 3 : SQL embarqué en RPG (FETCH multi-lignes et options)
+
+| Élément | Statut | Source |
+|---|---|---|
+| `FETCH … FOR n ROWS INTO tableau-de-structures-hôtes` (n entier ou variable numérique d'échelle zéro, sans indicateur) | vérifié | [FETCH, 7.5](https://www.ibm.com/docs/en/i/7.5.0?topic=statements-fetch) |
+| Le nombre de lignes demandé doit être inférieur ou égal à la dimension du tableau ; taille totale des lignes (hors LOB) < 16 M | vérifié | idem |
+| `SQLERRD(3)` = nombre de lignes lues ; `SQLERRD(5)` = +100 si la dernière ligne a été lue (peut ne pas l'être quand le nombre de lignes lues égale le nombre demandé) | vérifié | idem |
+| Multi-lignes interdit si une colonne est un LOB ou si la connexion est distante | vérifié | idem |
+| `FETCH … INTO` d'une structure hôte (une ligne) : une structure équivaut à la liste de ses variables | vérifié | idem (single-fetch) |
+| Colonne `NULL` : indicateur obligatoire ; erreur de calcul ou de conversion = valeur nulle et indicateur à -2 | vérifié | idem |
+| Chaîne trop courte : avertissement SQLSTATE 01004 (`SQLWARN1` = `W`), longueur réelle dans l'indicateur s'il y en a un | vérifié | idem |
+| Boucle `WHILE (SQLCODE == 0)` suivie d'un `FETCH` ; condition « not found » quand il n'y a plus de ligne | vérifié (forme de l'exemple 1) | idem |
+| `SQLCODE` 100 et `-501` (curseur non ouvert) | **non vérifié** (seulement des sources non officielles) | — |
+| `SET OPTION COMMIT = *NONE`, `CLOSQLCSR = *ENDMOD` dans un module `NOMAIN` | **non vérifié** | page `SET OPTION` non lue |
+| `CLEAR` sur un tableau `*VARSIZE` ; `CLOSE` avant `OPEN` | **non vérifié** | — |
+
+### Forme (d'après la syntaxe officielle, non exécutée)
+```rpgle
+DCL-DS article QUALIFIED TEMPLATE;
+  nom  CHAR(30);
+  prix PACKED(7:2);
+END-DS;
+DCL-DS lignes LIKEDS(article) DIM(100);
+DCL-S nb INT(10);
+
+EXEC SQL FETCH NEXT FROM c1 FOR 100 ROWS INTO :lignes;
+nb = SQLERRD(3);        // nombre de lignes réellement lues (nom de la zone SQLCA en RPG : à confirmer à la compilation)
+```
+- L'ordre et les types des zones de la structure doivent suivre ceux des colonnes du `SELECT`.
+- Utiliser `nb` (et non la dimension du tableau) pour parcourir le résultat.
+- Le `FETCH` d'une structure simple (une ligne) suit la même règle : `FETCH c1 INTO :uneStructure`.
+- Les points non vérifiés ci-dessus (voir le tableau) doivent être contrôlés avant d'être présentés comme acquis.
+
+
+=== FICHIER : docs/ILE-ET-SERVICES-WEB.md ===
+# Architecture ILE et services web REST : modules, programme de service, IWS
+
+> Fiche pédagogique. Sources lues en entier le 2026-11-23 : fiches `job-i.fr` des commandes (CRTSRVPGM : début de page seulement, voir le tableau) et deux tutoriels IBM de **2015** sur les services REST d'IBM i (à revalider pour 7.5). Rien n'a été compilé ni déployé. Les noms d'objets sont fictifs (`BIB01`, `ARTICLE…`) ; aucun nom réel de bibliothèque, de profil ou de personne n'est publié.
+
+
+## Partie 1 : modules, programme de service, source de liage
+
+| Élément | Statut | Source |
+|---|---|---|
+| `CRTSRVPGM` : crée un programme de service lié à partir de modules et de répertoires de liage | vérifié | [job-i CRTSRVPGM](https://job-i.fr/commandes-ibm-i/crtsrvpgm) |
+| `MODULE` (jusqu'à 300), `EXPORT(*SRCFILE` ou `*ALL)`, `SRCFILE` (défaut `QSRVSRC`), `SRCMBR` (défaut `*SRVPGM`), `SRCSTMF` (pas avec `SRCFILE`/`SRCMBR`, pas avant V7R3M0), `BNDDIR`, `BNDSRVPGM`, `ACTGRP` (nom ou `*CALLER`), `REPLACE`, `AUT`, `TGTRLS` | vérifié (tableau des paramètres) | idem |
+| `EXPORT(*ALL)` exporte aussi tout ce que les modules exportent ; `EXPORT(*SRCFILE)` lit les instructions d'export du membre | vérifié | idem |
+| Un membre de liage peut être placé dans un fichier source **autre** que `QSRVSRC` (paramètre `SRCFILE`) | vérifié | idem |
+| Droits requis : `*READ` + `*ADD` sur la bibliothèque, `*USE` sur modules / programmes de service / répertoires de liage | vérifié | idem (début de page) |
+| `CRTSQLRPGI … OBJTYPE(*MODULE)` | vérifié (valeurs `*PGM`, `*SRVPGM`, `*MODULE`) | [fiche 07](cheatsheets/07-sql-embarque-en-rpg.md) |
+| `RTVBNDSRC` : extrait les exportations de modules ou d'un programme de service dans un fichier, avec les instructions de langage de liage | vérifié | [job-i RTVBNDSRC](https://job-i.fr/commandes-ibm-i/rtvbndsrc) |
+| `DSPSRVPGM DETAIL(*PROCEXP)` : liste les procédures exportées définies en langage de liage (signature courante seulement) | vérifié | [job-i DSPSRVPGM](https://job-i.fr/commandes-ibm-i/dspsrvpgm) |
+| `GRTOBJAUT`, `DLTSRVPGM`, `DSPOBJD`, `DSPOBJAUT` : commandes existantes | vérifié (existence de la fiche) | job-i `/commandes-ibm-i/<commande>` |
+| `STRPGMEXP`, `ENDPGMEXP`, `EXPORT SYMBOL` (langage de liage) | **non vérifié** : pas de fiche job-i (`STRPGMEXP` donne une page introuvable) ; référence IBM du langage de liage non lue | — |
+| Nom de membre limité à 10 caractères | **non vérifié** (règle générale des noms d'objets IBM i) | — |
+| Longueur d'enregistrement minimale du fichier source pour du `**FREE` ; syntaxe `/COPY bibliothèque/fichier,membre` | **non vérifié** | — |
+
+### Les quatre pièces
+1. **Modules `NOMAIN`** (un par responsabilité) : p. ex. un module d'accès aux données (`ARTICLEDAO`) et un module point d'entrée. Un module `NOMAIN` n'a pas de cycle : il exporte des procédures.
+2. **Copybooks (`/COPY`)** : prototypes (`DCL-PR`) et constantes partagés entre les modules et les appelants (`ARTICLE_H`).
+3. **Programme de service** (`WSARTICLE`) : regroupe les modules (`CRTSRVPGM MODULE(...)`). Avec `EXPORT(*ALL)`, tout ce qui est exporté par les modules l'est aussi ; avec `EXPORT(*SRCFILE)`, un **source de liage** liste précisément les procédures (et la signature).
+4. **Source de liage** : membre contenant `STRPGMEXP`, `EXPORT SYMBOL(...)`, `ENDPGMEXP` (non vérifié, voir tableau) ; on peut le générer avec `RTVBNDSRC`. `DSPSRVPGM DETAIL(*PROCEXP)` contrôle ce qui est réellement exporté.
+
+### Commandes de la chaîne (à tester)
+```
+CRTSQLRPGI OBJ(BIB01/ARTICLEDAO) SRCFILE(BIB01/QRPGLESRC) SRCMBR(ARTICLEDAO) OBJTYPE(*MODULE) COMMIT(*NONE)
+CRTSRVPGM SRVPGM(BIB01/WSARTICLE) MODULE(BIB01/ARTICLEDAO BIB01/ARTICLE_API) EXPORT(*ALL) ACTGRP(*CALLER)
+DSPSRVPGM SRVPGM(BIB01/WSARTICLE) DETAIL(*PROCEXP)
+```
+`CRTRPGMOD` (module sans SQL), `CRTBNDDIR` / `ADDBNDDIRE` (répertoire de liage) existent sur job-i. Pour la suppression et la recréation : `DLTSRVPGM` puis `CRTSRVPGM` (les droits sont à redonner, voir la partie 3).
+
+### À fournir
+L'exemple complet (code des modules, copybooks, source de liage) n'est **pas** dans ce dépôt : il faut le fournir pour qu'il soit publié, avec des noms anonymisés (aucun prénom, nom de profil ou nom de bibliothèque réel).
+
+## Partie 2 : services web REST avec Integrated Web Services (IWS)
+
+> Sources : [Part 2](https://developer.ibm.com/tutorials/i-rest-web-services-server2/) et [Part 3](https://developer.ibm.com/tutorials/i-rest-web-services-server3/) du tutoriel IBM « Building a REST service with integrated web services server for IBM i » (publiées le 7 mai 2015, lues en entier). **Âge du texte : 2015** (IBM i 7.1 / 7.2) : à revalider pour 7.5.
+
+| Élément | Statut | Source |
+|---|---|---|
+| Serveur de services web **version 2.6 minimum** pour le REST ; assistant dans `http://hôte:2001/HTTPAdmin` (`https://hôte:2010/HTTPAdmin` si SSL) | vérifié (2015) | tutoriel Part 2 |
+| Autorités `*ALLOBJ` et `*IOSYSCFG` pour créer le serveur (ou autorisation donnée, 6.1 et suivants) | vérifié (2015) | Part 2 |
+| Profil d'exécution par défaut `QWSERVICE` ; tout profil indiqué doit être activé (`*ENABLED`) avec un mot de passe différent de `*NONE` ; il doit avoir les droits sur les objets utilisés | vérifié (2015) | Parts 2 et 3 |
+| `PGMINFO(*PCML:*MODULE)` dans la spécification de contrôle du module (forme `h`), `*DCLCASE` pour garder la casse des noms (PTF SI55340 en 7.1, SI55442 en 7.2) | vérifié (2015) | Part 3 |
+| Prérequis PTF : groupe HTTP SF99713 niveau 6 (7.2), SF99368 niveau 32 (7.1) | vérifié (2015), **périmé pour 7.5** | Parts 2 et 3 |
+| Méthodes HTTP `GET`, `POST`, `PUT`, `DELETE` ; chemin par défaut `/web/services/<ressource>` ; modèle de chemin avec variable et expression régulière (ex. `\w{9}`) ; entrée `*PATH_PARAM` | vérifié (2015) | Parts 2 et 3 |
+| Paramètre `int(10)` désigné dans l'assistant comme **code de réponse HTTP** (`httpStatus` dans l'exemple) ; codes cités : 200, 201, 204, 404, 409, 500 | vérifié (2015) | Part 3 |
+| En-têtes HTTP en sortie : paramètre `100a DIM(10)` (ex. `Cache-Control: no-cache, no-store`, `LOCATION: …`) | vérifié (2015) | Part 3 |
+| Tableau de sortie `DIM(n)` avec `OPTIONS(*VARSIZE)` : sans paramètre de **nombre d'éléments** (`10i 0`) désigné dans l'assistant, la réponse contient les éléments vides | vérifié (2015) | Part 3 |
+| Informations de transport passées par variables d'environnement : `REMOTE_ADDR`, `HTTP_<EN-TÊTE>` en majuscules | vérifié (2015) | Parts 2 et 3 |
+| Bibliothèques de la liste en début ou en fin de partie utilisateur | vérifié (2015) | Parts 2 et 3 |
+| Paramètres `varchar`, packed et zoned ; `PGMINFO` en `CTL-OPT` (format libre) ; échappement d'une chaîne JSON dans un `varchar` de sortie ; texte du statut HTTP (reason phrase) | **non vérifié** (non couvert par les pages) | — |
+| IWS 3.0 (annonce d'octobre 2025) | **non vérifié** (issu d'une recherche, page non lue) | — |
+| PDF « IWS-Building-REST-Service-Part-2 » | **non lu** (texte non extrait) | à lire localement avant de le citer |
+
+### Ce que montrent les deux exemples
+- **Part 2** : une procédure exportée de programme de service (conversion de température) mappée sur `GET /web/services/ftoc/{temp}`, réponse JSON, aucun en-tête ni code de statut personnalisé.
+- **Part 3** : un programme de service CRUD (5 procédures `getAll`, `getByID`, `create`, `update`, `remove`) avec une structure `QUALIFIED TEMPLATE` pour les zones de la table (pour contrôler la casse des noms JSON), un paramètre `httpStatus`, un tableau de sortie avec son compteur et des en-têtes HTTP.
+- Dans les deux cas, l'assistant « Deploy New Service » permet de désigner chaque paramètre comme entrée, sortie, statut HTTP, en-têtes, chemin ou compteur.
+
+### Retour d'expérience (hypothèse non confirmée)
+Le message « Response data corresponding to field 'x' is not valid. The field may not be initialized. » apparaît avec un tableau de sortie non initialisé ou sans paramètre de nombre d'éléments, ou quand IWS garde l'ancienne description des paramètres après un changement de signature (supprimer le service, redémarrer le serveur, redéployer). **À vérifier** dans la documentation IBM avant de passer en « vérifié ».
+
+## Partie 3 : droits et exploitation d'un service IWS
+
+| Élément | Statut | Source |
+|---|---|---|
+| Le profil d'exécution doit avoir les droits sur les bibliothèques, bases de données et fichiers utilisés | vérifié (2015, formulation générale) | Parts 2 et 3 |
+| `*USE` pour `QWSERVICE` sur la table, la bibliothèque et le programme de service suffit | **non vérifié** (constat à confirmer dans la documentation) | — |
+| Après `DLTSRVPGM` puis `CRTSRVPGM`, les droits sont à redonner (`GRTOBJAUT`) | **non vérifié** (la commande existe sur job-i, le comportement n'est pas documenté ici) | [job-i GRTOBJAUT](https://job-i.fr/commandes-ibm-i/grtobjaut) |
+| Journal du serveur : `WRKACTJOB SBS(QHTTPSVR)`, option 5 puis 10 | **non vérifié** | — |
+
+Rien n'est à publier de plus tant que ces points ne sont pas confirmés dans la documentation IBM (référence IWS et droits).
 
 
 === FICHIER : docs/ASSISTANT-ET-AUTOMATISATION.md ===

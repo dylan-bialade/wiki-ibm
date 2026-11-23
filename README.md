@@ -104,6 +104,8 @@ cd wiki-ibm
 | Exemples du cycle RPG (fichier primaire, L1-L9, 1P, OF) | [docs/CYCLE-GAP-EXEMPLES.md](docs/CYCLE-GAP-EXEMPLES.md) |
 | Cours du cycle RPG III (7 étapes, ruptures, spéc. O, rapprochement) + exemples | [docs/CYCLE-RPG.md](docs/CYCLE-RPG.md#partie-1--cours-du-cycle-rpg-iii-et-exemples) |
 | Réécrire un état à cycle en full free (retour d'expérience, spool) | [docs/IMPRESSION-RPG.md](docs/IMPRESSION-RPG.md#partie-1--réécrire-un-état-à-cycle-en-full-free-retour-dexpérience) |
+| SQL avancé : JSON, IFS_WRITE_UTF8, FETCH multi-lignes | [docs/SQL-AVANCE.md](docs/SQL-AVANCE.md) |
+| Architecture ILE (modules, programme de service) et services REST IWS | [docs/ILE-ET-SERVICES-WEB.md](docs/ILE-ET-SERVICES-WEB.md) |
 | Cycle RPG III -> full free : table de correspondance | [docs/CYCLE-RPG.md](docs/CYCLE-RPG.md#partie-2--du-cycle-rpg-iii-au-full-free-table-de-correspondance) |
 | PRTCTL (contrôle d'impression RPG) : ce qui est documenté ou non | [docs/IMPRESSION-RPG.md](docs/IMPRESSION-RPG.md#partie-2--prtctl-contrôle-dynamique-dimpression) |
 | Tester que l'assistant applique les règles du wiki (prompts + grille) | [docs/ASSISTANT-ET-AUTOMATISATION.md](docs/ASSISTANT-ET-AUTOMATISATION.md#partie-2--tester-que-lassistant-applique-les-règles) |

@@ -25,6 +25,11 @@
       { "fichier": "docs/CYCLE-GAP-EXEMPLES.md", "titre": "Exemples de cycle dans le code des bibliothèques", "description": "Sources avec fichier primaire, L1-L9, 1P, OF (généré).", "sections": false },
       { "fichier": "docs/exemples-cycle/", "titre": "Dossier des exemples (RPG, DDS)", "description": "CYCLEQSYS (validé), CYCLEIMP + CYCLEPRT, CYCLEPRTCTL, CYCLETOTO, SQLIMPRIME (SQL embarqué), RUPT0 à RUPT2, et pesees/ (série CYC01 à CYC14 sur le cycle).", "sections": false }
     ] },
+  { "titre": "SQL avancé et services web", "intro": "JSON, écriture IFS, FETCH multi-lignes, architecture ILE (modules, programme de service) et services REST IWS.",
+    "entrees": [
+      { "fichier": "docs/SQL-AVANCE.md", "titre": "SQL avancé : JSON, IFS, SQL embarqué", "description": "JSON_OBJECT, JSON_ARRAYAGG, QSYS2.IFS_WRITE_UTF8, FETCH multi-lignes (vérifié sur ibm.com 7.5).", "sections": true },
+      { "fichier": "docs/ILE-ET-SERVICES-WEB.md", "titre": "Architecture ILE et services REST (IWS)", "description": "Modules NOMAIN, programme de service, source de liage, IWS REST (tutoriels 2015), droits.", "sections": true }
+    ] },
   { "titre": "Énoncés de TP", "intro": "Résumés anonymisés d'énoncés et d'examens.",
     "entrees": [
       { "fichier": "docs/enonces/README.md", "titre": "Index des énoncés", "description": "Un résumé par énoncé, id d'exercice, solutions du dépôt.", "sections": true },
