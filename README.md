@@ -83,6 +83,7 @@ cd wiki-ibm
 
 | Je cherche… | Fichier / dossier |
 |---|---|
+| Le plan de la formation (un fichier par grande partie, 14 parties) | [docs/formation/README.md](docs/formation/README.md) |
 | Une fiche mémo (commande, syntaxe, concept IBM i) | [docs/cheatsheets/README.md](docs/cheatsheets/README.md) |
 | Concepts : objets, ILE, travaux, profils, sécurité, PTF, performances | [docs/cheatsheets/01-comprendre-ibm-i.md](docs/cheatsheets/01-comprendre-ibm-i.md) |
 | Commandes CL, messages CPF/MCH, valeurs système | [docs/cheatsheets/02-reference-systeme.md](docs/cheatsheets/02-reference-systeme.md) |

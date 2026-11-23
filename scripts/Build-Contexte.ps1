@@ -4,7 +4,7 @@
 param([string]$Root)
 if (-not $Root) { $Root = Split-Path -Parent $PSScriptRoot }
 . (Join-Path $PSScriptRoot 'Contrib-Common.ps1')
-$list = @('README.md','docs/SOMMAIRE.md','CLAUDE.md','docs/cheatsheets/README.md')
+$list = @('README.md','docs/SOMMAIRE.md','docs/formation/README.md','CLAUDE.md','docs/cheatsheets/README.md')
 foreach ($f in (Sort-By @(Get-ChildItem (Join-Path $Root 'docs/cheatsheets') -Filter '0*.md') { $_.Name })) { $list += 'docs/cheatsheets/' + $f.Name }
 $list += 'docs/enonces/README.md'
 foreach ($f in (Sort-By @(Get-ChildItem (Join-Path $Root 'docs/enonces') -Filter '*.md' | Where-Object { $_.Name -ne 'README.md' }) { $_.Name })) { $list += 'docs/enonces/' + $f.Name }

@@ -35,6 +35,26 @@ Installer le wiki, le donner à un assistant, vérifier qu'il applique les règl
   - [7. Interdits](../CLAUDE.md#7-interdits)
   - [8. Remontée automatique au wiki (sans attendre qu'on te le demande)](../CLAUDE.md#8-remontée-automatique-au-wiki-sans-attendre-quon-te-le-demande)
 
+## Formation (plan en 14 parties)
+
+Le dépôt suit le plan de la formation : un fichier Markdown par grande partie.
+
+- [Index de la formation (14 parties)](formation/README.md) : Un fichier par grande partie ; sections et sujets, avec accès par mot-clé.
+- [Partie 01 : Organisation de l'IBM i : objets, travaux, impressions, sécurité, sauvegardes](formation/01-organisation-ibm-i.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 02 : Db2 for i : PF, LF, contraintes, RCAC, journalisation](formation/02-db2-for-i.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 03 : Outils traditionnels (SEU, PDM, SDA...) et modernes (RDi, VS Code)](formation/03-outils-de-developpement.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 04 : Langage de contrôle CL](formation/04-langage-de-controle-cl.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 05 : SQL sur IBM i](formation/05-sql.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 06 : RPG III : spécifications, cycle, codes opérations, fichiers, sous-fichiers](formation/06-rpg-iii.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 07 : RPG IV : spécifications, types, BIF, erreurs](formation/07-rpg-iv.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 08 : RPG full free : syntaxe, conversion, données modernes](formation/08-rpg-free.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 09 : SQL embarqué en RPG](formation/09-sql-embarque.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 10 : ILE : modules, programmes de service, débogage, journalisation](formation/10-ile.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 11 : Modernisation et maintenance de code existant](formation/11-modernisation-et-maintenance.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 12 : IA et assistants de développement](formation/12-ia-et-assistants.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 13 : Web services et API (REST, JSON, XML, IWS)](formation/13-web-services-et-api.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 14 : Projet en immersion](formation/14-projet-en-immersion.md) : Plan détaillé, pages job-i, pistes IBM.
+
 ## Fiches mémo (source : job-i.fr)
 
 Syntaxe, commandes et concepts IBM i, avec une zone « Mes exemples » par fiche.

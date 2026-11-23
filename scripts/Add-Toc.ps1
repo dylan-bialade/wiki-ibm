@@ -29,7 +29,7 @@ function Get-Headings([string[]]$lines) {
 }
 $targets = New-Object System.Collections.ArrayList
 [void]$targets.Add((Join-Path $Root 'README.md'))
-foreach ($d in 'docs', 'docs/cheatsheets', 'docs/enonces', 'docs/apports', 'contributions') {
+foreach ($d in 'docs', 'docs/cheatsheets', 'docs/enonces', 'docs/apports', 'docs/formation', 'contributions') {
   $p = Join-Path $Root $d
   if (Test-Path $p) { foreach ($f in (Get-ChildItem $p -Filter '*.md' -File)) { if ($f.Name -ne 'SOMMAIRE.md') { [void]$targets.Add($f.FullName) } } }
 }
