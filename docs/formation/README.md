@@ -23,6 +23,18 @@
   - [Partie 14 : Projet en immersion](#partie-14--projet-en-immersion)
 - [Recherche par mot-clé](#recherche-par-mot-clé)
 - [Sujets sans page job-i dédiée (0 sujets, dont 0 sans page wiki liée)](#sujets-sans-page-job-i-dédiée-0-sujets-dont-0-sans-page-wiki-liée)
+- [Sujets sans page job-i dédiée (60 sujets, dont 54 sans page wiki liée)](#sujets-sans-page-job-i-dédiée-60-sujets-dont-54-sans-page-wiki-liée)
+  - [Partie 02 : Architecture et concepts de DB2 for i](#partie-02--architecture-et-concepts-de-db2-for-i-1)
+  - [Partie 03 : Outils de développement : traditionnels et modernes](#partie-03--outils-de-développement--traditionnels-et-modernes-1)
+  - [Partie 05 : Le langage SQL sur IBM i](#partie-05--le-langage-sql-sur-ibm-i-1)
+  - [Partie 07 : RPG IV (ILE RPG, format fixe étendu)](#partie-07--rpg-iv-ile-rpg-format-fixe-étendu-1)
+  - [Partie 08 : RPG full free](#partie-08--rpg-full-free-1)
+  - [Partie 09 : SQL embarqué en RPG](#partie-09--sql-embarqué-en-rpg-1)
+  - [Partie 10 : ILE : modules, programmes de service, tests et journalisation](#partie-10--ile--modules-programmes-de-service-tests-et-journalisation-1)
+  - [Partie 11 : Modernisation d'application et maintenance de code existant](#partie-11--modernisation-dapplication-et-maintenance-de-code-existant-1)
+  - [Partie 12 : Intelligence artificielle et assistants de développement](#partie-12--intelligence-artificielle-et-assistants-de-développement-1)
+  - [Partie 13 : Web services et API (REST, SOAP, JSON, XML, IWS)](#partie-13--web-services-et-api-rest-soap-json-xml-iws-1)
+  - [Partie 14 : Projet en immersion](#partie-14--projet-en-immersion-1)
 <!-- TOC:END -->
 
 ## Les 14 parties
@@ -173,3 +185,122 @@
 ## Sujets sans page job-i dédiée (0 sujets, dont 0 sans page wiki liée)
 
 Ces sujets du plan n'ont pas de page job-i trouvée par la recherche du 2026-11-23 : la source est à chercher sur ibm.com (voir les « Pistes IBM » de chaque partie). La colonne « Page wiki liée » indique si le dépôt contient déjà du contenu pour la section concernée.
+
+## Sujets sans page job-i dédiée (60 sujets, dont 54 sans page wiki liée)
+
+Ces sujets du plan n'ont pas de page job-i trouvée par la recherche du 2026-11-23 : la source est à chercher sur ibm.com (voir les « Pistes IBM » de chaque partie). La colonne « Page wiki liée » indique si le dépôt contient déjà du contenu pour le sujet.
+
+### Partie 02 : Architecture et concepts de DB2 for i
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| Sécurité et journalisation | Les RCAC, sécurité sur les lignes et les colonnes | non : à documenter |
+
+### Partie 03 : Outils de développement : traditionnels et modernes
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| Le développement moderne | RDi | non : à documenter |
+| Le développement moderne | VS Code et Code for IBM i | non : à documenter |
+
+### Partie 05 : Le langage SQL sur IBM i
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| La définition des objets | Création et modification des objets | non : à documenter |
+| Les objets programmables | Les procédures stockées | non : à documenter |
+| Les objets programmables | Les fonctions | non : à documenter |
+
+### Partie 07 : RPG IV (ILE RPG, format fixe étendu)
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| Les types et structures de données | Dates, heures et horodatages | non : à documenter |
+| Expressions et structures de contrôle | La réduction progressive des indicateurs | non : à documenter |
+
+### Partie 08 : RPG full free
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| La conversion vers le full free | CVTRPGFREE et ses limites | non : à documenter |
+
+### Partie 09 : SQL embarqué en RPG
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| Le SQL embarqué | Les variables hôtes et les structures d'accueil | non : à documenter |
+| Le SQL embarqué | SQLCODE, SQLSTATE et la gestion des diagnostics | oui |
+| Le SQL embarqué | Les curseurs, DECLARE, OPEN, FETCH, CLOSE | oui |
+| Le SQL embarqué | Les mises à jour positionnées et ensemblistes | non : à documenter |
+| Le SQL embarqué | Le SQL dynamique, PREPARE et EXECUTE | non : à documenter |
+| De l'accès natif à l'accès SQL | Comparaison accès natif et accès SQL | non : à documenter |
+| De l'accès natif à l'accès SQL | Les cas où le SQL est plus performant | non : à documenter |
+| De l'accès natif à l'accès SQL | Les bonnes pratiques d'écriture | non : à documenter |
+
+### Partie 10 : ILE : modules, programmes de service, tests et journalisation
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| Tests, débogage et dumps | Le débogage d'un programme de service, service entry point | non : à documenter |
+| Tests, débogage et dumps | Stratégie de tests unitaires et fonctionnels | non : à documenter |
+
+### Partie 11 : Modernisation d'application et maintenance de code existant
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| Les principes de la modernisation d'application | Les limites du code historique et les enjeux de la modernisation | non : à documenter |
+| Les principes de la modernisation d'application | La conversion vers RPG Free | non : à documenter |
+| Les principes de la modernisation d'application | Les standards modernes, SQL, erreurs centralisées, logs, constantes globales, validations | non : à documenter |
+| Les principes de la modernisation d'application | Les outils modernes, RDi, VS Code, Git, JSON_TABLE, webservices REST | non : à documenter |
+| Développer une nouvelle application | L'architecture d'une application IBM i (PF/LF, DSPF, RPG Free, SQL, ILE) | non : à documenter |
+| Développer une nouvelle application | La séparation des traitements métier et du visuel | non : à documenter |
+| Développer une nouvelle application | Le SQL embarqué dans une application moderne | non : à documenter |
+| Les écrans standards | Validation des données et messages de contrôle | non : à documenter |
+| Les sous-fichiers | Les sous-fichiers statiques et dynamiques | non : à documenter |
+| Les sous-fichiers | L'intégration d'un CRUD complet en RPG et SQL | non : à documenter |
+| Mises en situation réelles de maintenance de code | Lecture et analyse d'un programme RPG ancienne génération | non : à documenter |
+| Mises en situation réelles de maintenance de code | Modification d'un code existant sans dégrader la production | non : à documenter |
+| Mises en situation réelles de maintenance de code | Dette technique et élaboration de correctifs testés et documentés | non : à documenter |
+
+### Partie 12 : Intelligence artificielle et assistants de développement
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| Les concepts fondamentaux | Qu'est-ce que l'IA, les trois ères | non : à documenter |
+| Les concepts fondamentaux | Les LLM, les tokens et les limites de contexte | non : à documenter |
+| Les concepts fondamentaux | Glossaire essentiel, hallucination, température, prompt engineering, fine-tuning, RAG | non : à documenter |
+| Le prompting | Les règles du prompting efficace | non : à documenter |
+| Le prompting | Construction d'un prompt complet | non : à documenter |
+| Les modes d'utilisation | Discussions, Projets, Agents, Workflows | non : à documenter |
+| Les modes d'utilisation | L'utilisation de l'assistant BOB | non : à documenter |
+| Cadre d'usage et responsabilité | Confidentialité, RGPD, anonymisation des prompts | non : à documenter |
+| Cadre d'usage et responsabilité | Limitations de l'IA, éthique et responsabilité, débat | non : à documenter |
+| Mise en situation | Mise en situation sur un cas IBM i | non : à documenter |
+
+### Partie 13 : Web services et API (REST, SOAP, JSON, XML, IWS)
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| Introduction et généralités sur les Web Services / API | API, REST, SOAP, URI, endpoints, stateless | non : à documenter |
+| Introduction et généralités sur les Web Services / API | Web Services simples, RESTful, SOAP, HTTP / HTTPS | non : à documenter |
+| Introduction et généralités sur les Web Services / API | Les méthodes HTTP (GET, POST, PUT, DELETE) | oui |
+| Introduction et généralités sur les Web Services / API | Les en-têtes HTTP | oui |
+| Les formats d'échanges XML et JSON | Le XML, hiérarchie, attributs, namespaces | non : à documenter |
+| Les formats d'échanges XML et JSON | Le JSON, objets, tableaux, types | non : à documenter |
+| Les formats d'échanges XML et JSON | Les utilitaires | oui |
+| Consommer des API en SQL et en RPGLE | En SQL, QSYS2.HTTP_GET / HTTP_POST / HTTP_PUT / HTTP_DELETE | non : à documenter |
+| Consommer des API en SQL et en RPGLE | Extraction des données via JSON_TABLE et XMLTABLE | non : à documenter |
+| Consommer des API en SQL et en RPGLE | En RPGLE, HTTPAPI, utilitaires QHTTPSVR, sockets | non : à documenter |
+| IWS, créer un web service en RPGLE / SQLRPGLE et le déployer | Conception d'un Web Service RPGLE / SQLRPGLE et création d'un endpoint REST | non : à documenter |
+| IWS, créer un web service en RPGLE / SQLRPGLE et le déployer | Structuration des données de sortie (JSON / XML) | non : à documenter |
+| IWS, créer un web service en RPGLE / SQLRPGLE et le déployer | Gestion des erreurs, des logs et des codes HTTP | oui |
+| IWS, créer un web service en RPGLE / SQLRPGLE et le déployer | Sécurité, endpoints et documentation automatique (WSDL / OpenAPI) | non : à documenter |
+| Gérer des fichiers en XML et JSON | DATA-INTO pour lire JSON / XML en RPG Free | non : à documenter |
+| Gérer des fichiers en XML et JSON | Sérialisation de structures RPG en JSON | non : à documenter |
+| Gérer des fichiers en XML et JSON | Base64, UTF-8, CCSID et flux binaires | non : à documenter |
+
+### Partie 14 : Projet en immersion
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| Projet | Réalisation d'un projet en immersion, intégrant l'ensemble des notions vues durant les semaines précédentes (IBM i, DB2, CL, SQL, RPG, IA, PHL Web, Web Services) | non : à documenter |
