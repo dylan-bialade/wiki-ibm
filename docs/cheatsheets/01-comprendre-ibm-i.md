@@ -65,6 +65,11 @@
 ## PTF  ([source](https://job-i.fr/installer-ptf-ibm-i))
 - Installer par groupes ; microcode côté B ; jamais `INSTYP(*DLYALL)`.
 - Séquence : `CRTIMGCLG` → `VFYIMGCLG` → `INSPTF ... INSTYP(*IMMDLY)` → `PWRDWNSYS OPTION(*CNTRLD) DELAY(600) RESTART(*YES) IPLSRC(B)` → `APYPTF ... APY(*PERM)` après quelques semaines. SQL : `QSYS2.GROUP_PTF_INFO`.
+- Types : PTF **immédiate** (à chaud) ou **différée** (au prochain IPL ; le microcode 5770999 est toujours différé). Microcode en deux copies : **côté B** = copie de travail, côté A = secours.
+- Groupes cités pour 7.5 : `SF99959` (HIPER), `SF99958` (sécurité), `SF99957` (Technology Refresh, IPL planifié + sauvegarde). Niveaux à lire sur Fix Central, pas de mémoire ; lire le PSP `SF98750` avant de commander.
+- État des lieux sans rien modifier : `QSYS2.GROUP_PTF_INFO`, `QSYS2.SOFTWARE_PRODUCT_INFO`, `SYSTOOLS.GROUP_PTF_CURRENCY`. Contrôles : `DSPPTF LICPGM(5770999)` doit indiquer le côté B, aucune PTF en statut LOADED avant installation.
+- Unité optique virtuelle : type 632B (`CRTDEVOPT RSRCNAME(*VRT)`, `VRYCFG`), ne pas toucher à la 632C. Catalogue : `CRTIMGCLG TYPE(*OPT)`, `ADDIMGCLGE`, `LODIMGCLG`, `VFYIMGCLG TYPE(*PTF) SORT(*YES)`.
+- Pièges (selon la page) : `RESTART(*NO)` avec `INSPTF` → CPF0006 ; application permanente trop tôt → CPF3575 ; relancer les services après l'IPL (`STRTCPSVR`, `STRSBS`) ; vérifier le numéro de série (`DSPSYSVAL QSRLNBR`). La page repose sur une seule campagne en machine de formation : chiffres et noms de groupes à revérifier avant intervention.
 
 ## Performances  ([source](https://job-i.fr/performances-ibm-i))
 - Mesurer avant de régler : Collection Services, `ACTIVE_JOB_INFO`, `MEMORY_POOL_INFO`, `WRKSYSACT`.
