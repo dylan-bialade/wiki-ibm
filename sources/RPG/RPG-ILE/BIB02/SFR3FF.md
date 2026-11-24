@@ -21,7 +21,7 @@ ACTGRP(*CALLER) DATFMT(*ISO) TIMFMT(*ISO);
 // Date      - 23/02/2022
 // IMPORTANT !!- CHANGEZ LE OPTIMIZE(*FULL) EN *NONE POUR DEBUG
 // POUR DEBUGGER
-// Copyright - ARMONIE
+// Copyright - ORGFORM
 //*****************************************************************
 
 //**********************************************************************//

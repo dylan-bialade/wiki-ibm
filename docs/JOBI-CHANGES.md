@@ -1,9 +1,9 @@
 # Changements detectes sur job-i.fr
 
-Verifie le 2026-11-22 13:08.
+Verifie le 2026-11-23 14:24.
 
 - Contenu mis a jour : sitemap-instructions.xml, lastmod 2026-10-23 -> 2026-11-17
-- Liste modifiee : sitemap-pages.xml, lastmod 2026-11-17 -> 2026-11-22
+- Liste modifiee : sitemap-pages.xml, lastmod 2026-11-17 -> 2026-11-23
 - Page modifiee : https://job-i.fr/api-systeme-ibm-i
 - Page modifiee : https://job-i.fr/as400-vs-ibm-i
 - Page modifiee : https://job-i.fr/coder-rpg-iii
@@ -15,6 +15,7 @@ Verifie le 2026-11-22 13:08.
 - Page modifiee : https://job-i.fr/instructions-rpg/begsr
 - Page modifiee : https://job-i.fr/messages-ibm-i
 - Page modifiee : https://job-i.fr/mots-edition-rpg
+- Page source ajoutee au suivi : https://job-i.fr/navigator-for-i
 - Page modifiee : https://job-i.fr/nodejs-ibm-i
 - Page modifiee : https://job-i.fr/objets-ibm-i
 - Page modifiee : https://job-i.fr/outq-ibm-i

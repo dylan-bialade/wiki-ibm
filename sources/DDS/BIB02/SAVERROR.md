@@ -14,7 +14,7 @@ modifie: 2026-11-16
      A          R SAVERR
      A*------------------------------------------------------------------------
      A*-ERREUR DES CPYF SAVDATA
-     A* ARMONIE - Sylvain BIB02
+     A* ORGFORM - Sylvain BIB02
      A*------------------------------------------------------------------------
      A*
      A            NOMPF         10A

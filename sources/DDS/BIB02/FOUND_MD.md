@@ -19,7 +19,7 @@ modifie: 2026-11-16
        // Programme : FOUND_MD
        // BIB02 SYLVAIN - PGM POUR TROUVER PGM DE MODULE
        // Date      - 10/11/2022
-       // Copyright - ARMONIE
+       // Copyright - ORGFORM
        //*****************************************************************
 
        //**********************************************************************//

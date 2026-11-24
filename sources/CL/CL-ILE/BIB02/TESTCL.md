@@ -15,7 +15,7 @@ modifie: 2026-11-16
 /* Libellé   : CLLE                                                           *//*----------------------------------------------------------------------------*/
 /* Projet    : BIB02                                                         *//* Auteur    : Sylvain BIB02                                                 */
 /* Date      : 09/04/2023                                                     *//*----------------------------------------------------------------------------*/
-             PGM                                                                             COPYRIGHT  TEXT('(C) ARMONIE 2023.')
+             PGM                                                                             COPYRIGHT  TEXT('(C) ORGFORM 2023.')
              DCL        VAR(&SAVF) TYPE(*CHAR) LEN(10) VALUE(SVENT)                          DCL        VAR(&BIB) TYPE(*CHAR) LEN(10) VALUE(BORG)
                                                                                              ADDLIBLE   LIB(&BIB) POSITION(*LAST)
              CPYF       FROMFILE(BIB02/ENTREPOT) TOFILE(BIB02/ENTREPOT2) +                              MBROPT(*ADD) CRTFILE(*YES)

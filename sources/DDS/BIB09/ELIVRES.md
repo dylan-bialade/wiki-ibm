@@ -11,7 +11,7 @@ modifie: 2026-11-16
 # BIB09/QSOURCES/ELIVRES
 
 ```text
-     A*%%TS  SD  20250211  EXERCICE NOTOS - GESTION LIVRES
+     A*%%TS  SD  20250211  EXERCICE ORGFORM - GESTION LIVRES
      A                                      DSPSIZ(24 80 *DS3)
      A                                      CF03(03 'Quitter')
      A                                      REF(LIVRES)

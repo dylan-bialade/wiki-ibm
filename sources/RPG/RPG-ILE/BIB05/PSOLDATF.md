@@ -17,7 +17,7 @@ CTL-OPT DFTACTGRP(*NO) ACTGRP(*CALLER) OPTION(*SRCSTMT : *NODEBUGIO);
 
 //=============================================================================
 // PROGRAMME : PSOLDATF
-// AUTEUR    : Sylvain BIB02 - Notos (Modernisé en RPG Full Free SQL)
+// AUTEUR    : Sylvain BIB02 - ORGFORM (Modernisé en RPG Full Free SQL)
 // DATE      : 15/12/2025
 // VERSION   : 2.0
 // DESCRIPTION :

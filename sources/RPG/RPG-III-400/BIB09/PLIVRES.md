@@ -20,7 +20,7 @@ Repere de colonnes :
 ```text
      H*
      H* PLIVRES - Gestion d'une base de livres
-     H* Exercice NOTOS - RPG 400
+     H* Exercice ORGFORM - RPG 400
      H*
      F* ============================================
      F* DECLARATION DES FICHIERS
