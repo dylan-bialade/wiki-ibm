@@ -65,6 +65,9 @@
 ## PTF  ([source](https://job-i.fr/installer-ptf-ibm-i))
 - Installer par groupes ; microcode côté B ; jamais `INSTYP(*DLYALL)`.
 - Séquence : `CRTIMGCLG` → `VFYIMGCLG` → `INSPTF ... INSTYP(*IMMDLY)` → `PWRDWNSYS OPTION(*CNTRLD) DELAY(600) RESTART(*YES) IPLSRC(B)` → `APYPTF ... APY(*PERM)` après quelques semaines. SQL : `QSYS2.GROUP_PTF_INFO`.
+- État des lieux avant commande : `QSYS2.GROUP_PTF_INFO`, `QSYS2.SOFTWARE_PRODUCT_INFO`, `SYSTOOLS.GROUP_PTF_CURRENCY` (si accès Internet). Commande Fix Central : série `DSPSYSVAL QSRLNBR`, type `WRKHDWRSC TYPE(*PRC)`.
+- Avant installation : machine côté B (`DSPPTF LICPGM(5770999)`), aucune PTF en statut LOADED, `SAVSYS` avant une Technology Refresh. Images copiées dans un sous-répertoire IFS dédié (sans option UTF-8 d'ACS), puis `VFYIMGCLG TYPE(*PTF) SORT(*YES)`.
+- Précautions : toujours IPL sur le côté B, lire le PSP avant de commander ; groupes HIPER et Sécurité changent plusieurs fois par mois ; numéros de groupes différents en 7.4 / 7.6 (synthèse job-i, non recoupée avec ibm.com).
 
 ## Performances  ([source](https://job-i.fr/performances-ibm-i))
 - Mesurer avant de régler : Collection Services, `ACTIVE_JOB_INFO`, `MEMORY_POOL_INFO`, `WRKSYSACT`.
