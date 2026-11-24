@@ -1,6 +1,6 @@
 # Ce qui manque dans les fiches (utilise dans le code, absent des fiches)
 
-Genere le 2026-11-21 13:17 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
+Genere le 2026-11-23 14:23 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
 
 <!-- TOC:START -->
 **Sommaire** (retour : [sommaire general](SOMMAIRE.md))
@@ -8,7 +8,7 @@ Genere le 2026-11-21 13:17 a partir de 1082 sources. Un terme est 'manquant' s'i
 - [Commandes CL : 60 manquants sur 104 utilises](#commandes-cl--60-manquants-sur-104-utilises)
 - [Instructions / fonctions RPG (reconnues par job-i) : 39 manquants sur 102 utilises](#instructions--fonctions-rpg-reconnues-par-job-i--39-manquants-sur-102-utilises)
 - [Messages (MONMSG, SQLCODE...) : 60 manquants sur 68 utilises](#messages-monmsg-sqlcode--60-manquants-sur-68-utilises)
-- [Services SQL (QSYS2, SYSTOOLS) : 25 manquants sur 28 utilises](#services-sql-qsys2-systools--25-manquants-sur-28-utilises)
+- [Services SQL (QSYS2, SYSTOOLS) : 24 manquants sur 28 utilises](#services-sql-qsys2-systools--24-manquants-sur-28-utilises)
 - [Mots-cles DDS / ecran : 84 manquants sur 102 utilises](#mots-cles-dds--ecran--84-manquants-sur-102-utilises)
 - [Sources par type et bibliotheque](#sources-par-type-et-bibliotheque)
 <!-- TOC:END -->
@@ -157,14 +157,13 @@ Genere le 2026-11-21 13:17 a partir de 1082 sources. Un terme est 'manquant' s'i
 | SQL7064 | 2 | 1 |
 | CPF1008 | 1 | 1 |
 
-## Services SQL (QSYS2, SYSTOOLS) : 25 manquants sur 28 utilises
+## Services SQL (QSYS2, SYSTOOLS) : 24 manquants sur 28 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
 | QSYS2.BASE64_ENCODE | 5 | 2 |
 | QSYS2.BOUND_MODULE_INFO | 5 | 3 |
 | QSYS2.HTTP_GET | 5 | 2 |
-| QSYS2.IFS_WRITE_UTF8 | 5 | 1 |
 | QSYS2.SYSPARTITIONSTAT | 4 | 3 |
 | SYSTOOLS.BASE64ENCODE | 4 | 1 |
 | SYSTOOLS.HTTPPOSTCLOB | 4 | 2 |

@@ -33,7 +33,7 @@ mail char(100) const;
                                             end-pr;
 
 
-                        dsply checkMail('toto@armonie.group');
+                        dsply checkMail('adresse@exemple.invalid');
 
 
     dsply checkSecu('85485475fhgfheyfg89548654fd');

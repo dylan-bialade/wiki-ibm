@@ -14,7 +14,7 @@ modifie: 2026-11-16
      A*==========================================================
      A* ÉCRAN : ECNREAP
      A* Consultation des réapprovisionnements produits
-     A* Auteur : Sylvain BIB02 - NOTOS / Armonie
+     A* Auteur : Sylvain BIB02 - ORGFORM / ORGFORM
      A*==========================================================
      A* CRTDSPF FILE(BIBLIO/ECNREAP) SRCFILE(BIBLIO/QDDSSRC)
      A*==========================================================

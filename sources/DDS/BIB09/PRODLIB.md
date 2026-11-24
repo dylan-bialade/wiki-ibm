@@ -14,7 +14,7 @@ modifie: 2026-11-16
      A*==========================================================
      A* FICHIER LOGIQUE : PRODLIB
      A* Vue sur PRODUIT triée par libellé produit (LIBPRO)
-     A* Auteur : Sylvain BIB02 - NOTOS / Armonie
+     A* Auteur : Sylvain BIB02 - ORGFORM / ORGFORM
      A*==========================================================
      A* CRTLF FILE(BIBLIO/PRODLIB) SRCFILE(BIBLIO/QDDSSRC)
      A*==========================================================

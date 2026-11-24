@@ -14,7 +14,7 @@ modifie: 2026-11-16
 **FREE
 ctl-opt dftactgrp(*no);
 
-dcl-pr VX100 extpgm('TPVIN/VX100');
+dcl-pr VX100 extpgm('BIB24/VX100');
    P1 char(6);
    P2 date(*ISO);
    P3 int(10);

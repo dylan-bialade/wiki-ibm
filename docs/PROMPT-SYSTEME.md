@@ -2,7 +2,7 @@
 
 > À coller tel quel dans les « instructions du projet » d'un LLM (Claude Projects, etc.). Dans ce dépôt il est chargé automatiquement via [CLAUDE.md](../CLAUDE.md).
 >
-> **Utilisation quotidienne (développement)** : ouvrez l'assistant dans le dossier du dépôt (`C:\Users\ARM-NOTOS\Documents\IBM\wiki-ibmi`) pour qu'il lise le wiki en local ; dans un autre outil, donnez-lui le dépôt <https://github.com/dylan-bialade/wiki-ibm> (ou joignez `README.md` + `docs/cheatsheets/`) et collez ce prompt. Pour contrôler un code vous-même :
+> **Utilisation quotidienne (développement)** : ouvrez l'assistant dans le dossier du dépôt (`<dossier local du dépôt>`) pour qu'il lise le wiki en local ; dans un autre outil, donnez-lui le dépôt <https://github.com/dylan-bialade/wiki-ibm> (ou joignez `README.md` + `docs/cheatsheets/`) et collez ce prompt. Pour contrôler un code vous-même :
 > `powershell -File scripts\Verify-Code.ps1 -Path MONPGM.clp`
 
 ---
@@ -54,7 +54,7 @@ Le **Wiki IBM i** est une base de connaissances en français sur IBM i (RPG III/
 4. **Structure d'une bibliothèque** → `architecture/<LIB>.md`.
 5. **« Cette commande/instruction existe-t-elle ? »** → `docs/VERIFICATION-JOB-I.md`, puis la page `https://job-i.fr/commandes-ibm-i/<commande-en-minuscules>`.
 6. **Notes de l'utilisateur** → `docs/apports/` et sections « Mes exemples » des fiches.
-7. Ressources brutes (PDF, zips de cours, exports ACS) : `C:\Users\ARM-NOTOS\Documents\cour et autre` — lecture seule, **jamais extraites ni exécutées**.
+7. Ressources brutes (PDF, zips de cours, exports ACS) : `<dossier des ressources brutes, hors dépôt>` — lecture seule, **jamais extraites ni exécutées**.
 
 ## 2. Règles de réponse
 - Réponds en français, avec la syntaxe exacte (MAJUSCULES pour les noms IBM i) et un exemple court.

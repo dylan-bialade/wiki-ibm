@@ -18,7 +18,7 @@ CTL-OPT DFTACTGRP(*NO) ACTGRP(*CALLER) DATFMT(*ISO) TIMFMT(*ISO);
 // Programme : SFRBONBONF
 // BIB02 SYLVAIN - EXEMPLE DE SOUS-FICHIER A L'ANCIENNE (CHAIN)
 // Date      - 04/11/2025
-// Copyright - NOTOS
+// Copyright - ORGFORM
 //*****************************************************************
 
 //**********************************************************************//
