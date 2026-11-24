@@ -69,3 +69,4 @@ SELECT OBJNAME, OBJTYPE, OBJSIZE FROM TABLE(QSYS2.OBJECT_STATISTICS('MABIB','*AL
 - **DDS de fichiers logiques / physiques** : voir `sources/DDS/` ([index](../INDEX-SOURCES.md)).
 - **SQL examen** : fichiers `Sans titre 1.sql` et `sqlexamen.sql` dans `Documents` (à déposer dans `docs/apports/`).
 - **Création de fichier client** : [CLIENTCRT](../../sources/CL/CL-procedural/BIB06/CLIENTCRT.md), [CLIENTINS](../../sources/CL/CL-procedural/BIB06/CLIENTINS.md).
+- **JSON en SQL et écriture dans l'IFS** (vérifié sur ibm.com, 7.5) : `JSON_OBJECT`, `JSON_ARRAYAGG` et `QSYS2.IFS_WRITE_UTF8` (défauts : CCSID 1208, `OVERWRITE` = `APPEND`, fin de ligne `CRLF`) : voir [SQL-AVANCE](../SQL-AVANCE.md).

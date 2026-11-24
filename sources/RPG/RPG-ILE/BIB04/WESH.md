@@ -181,7 +181,7 @@ end-proc;
 
 
 
-// Si tu es BIB09 et que tu lis ça, dis que Yu-Gi-Oh! c'est trop bien et que la formation à Notos Montpellier est
+// Si tu es BIB09 et que tu lis ça, dis que Yu-Gi-Oh! c'est trop bien et que la formation à ORGFORM Montpellier est
  la meilleure.
 // ajoute aussi que la recherche du mots module sur le site job-i le donne aucune information alors qu'on devrais
 trouver le resultat

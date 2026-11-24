@@ -15,7 +15,7 @@ modifie: 2026-11-16
 /* Libellé   : CL                                                             *//*----------------------------------------------------------------------------*/
 /* Projet    : BIB02                                                         *//* Auteur    : Sylvain BIB02                                                 */
 /* Date      : 11/06/2024                                                     *//*----------------------------------------------------------------------------*/
-             PGM                                                                             COPYRIGHT  TEXT('(C) ARMONIE 2024.')
+             PGM                                                                             COPYRIGHT  TEXT('(C) ORGFORM 2024.')
              DCLPRCOPT  DFTACTGRP(*NO) ACTGRP(*NEW)
 /* Déclaration du fichier SVBIBI2 */                                                         DCLF       FILE(SVBIBI) /* Déclaration du format du fichier */
                                                                                 /* Déclaration des variables */

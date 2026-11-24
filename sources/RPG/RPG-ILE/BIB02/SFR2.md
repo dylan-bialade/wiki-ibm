@@ -22,7 +22,7 @@ modifie: 2026-11-16
        // Mise à jour - 10/11/2022
        // IMPORTANT !!- CHANGEZ LE OPTIMIZE(*FULL) EN *NONE POUR DEBUG
        // POUR DEBUGGER
-       // Copyright - ARMONIE
+       // Copyright - ORGFORM
        //*****************************************************************
 
        //**********************************************************************//

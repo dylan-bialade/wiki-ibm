@@ -6,6 +6,25 @@
       { "fichier": "docs/PROMPT-SYSTEME.md", "titre": "Prompt système du projet", "description": "Règles de lecture, de vérification et de mise à jour appliquées par l'assistant.", "sections": true },
       { "fichier": "CLAUDE.md", "titre": "CLAUDE.md : instructions chargées par Claude Code", "description": "Workflow obligatoire, rigueur de lecture, sources (wiki, job-i.fr, ibm.com), remontée automatique.", "sections": true }
     ] },
+  { "titre": "Formation (plan en 14 parties)", "intro": "Le dépôt suit le plan de la formation : un fichier Markdown par grande partie.",
+    "entrees": [
+      { "fichier": "docs/formation/README.md", "titre": "Index de la formation (14 parties)", "description": "Un fichier par grande partie ; sections et sujets, avec accès par mot-clé.", "sections": false },
+      { "fichier": "docs/formation/01-organisation-ibm-i.md", "titre": "Partie 01 : Organisation de l'IBM i : objets, travaux, impressions, sécurité, sauvegardes", "description": "Plan détaillé, pages job-i, pistes IBM.", "sections": false },
+      { "fichier": "docs/formation/02-db2-for-i.md", "titre": "Partie 02 : Db2 for i : PF, LF, contraintes, RCAC, journalisation", "description": "Plan détaillé, pages job-i, pistes IBM.", "sections": false },
+      { "fichier": "docs/formation/03-outils-de-developpement.md", "titre": "Partie 03 : Outils traditionnels (SEU, PDM, SDA...) et modernes (RDi, VS Code)", "description": "Plan détaillé, pages job-i, pistes IBM.", "sections": false },
+      { "fichier": "docs/formation/04-langage-de-controle-cl.md", "titre": "Partie 04 : Langage de contrôle CL", "description": "Plan détaillé, pages job-i, pistes IBM.", "sections": false },
+      { "fichier": "docs/formation/05-sql.md", "titre": "Partie 05 : SQL sur IBM i", "description": "Plan détaillé, pages job-i, pistes IBM.", "sections": false },
+      { "fichier": "docs/formation/06-rpg-iii.md", "titre": "Partie 06 : RPG III : spécifications, cycle, codes opérations, fichiers, sous-fichiers", "description": "Plan détaillé, pages job-i, pistes IBM.", "sections": false },
+      { "fichier": "docs/formation/07-rpg-iv.md", "titre": "Partie 07 : RPG IV : spécifications, types, BIF, erreurs", "description": "Plan détaillé, pages job-i, pistes IBM.", "sections": false },
+      { "fichier": "docs/formation/08-rpg-free.md", "titre": "Partie 08 : RPG full free : syntaxe, conversion, données modernes", "description": "Plan détaillé, pages job-i, pistes IBM.", "sections": false },
+      { "fichier": "docs/formation/09-sql-embarque.md", "titre": "Partie 09 : SQL embarqué en RPG", "description": "Plan détaillé, pages job-i, pistes IBM.", "sections": false },
+      { "fichier": "docs/formation/10-ile.md", "titre": "Partie 10 : ILE : modules, programmes de service, débogage, journalisation", "description": "Plan détaillé, pages job-i, pistes IBM.", "sections": false },
+      { "fichier": "docs/formation/11-modernisation-et-maintenance.md", "titre": "Partie 11 : Modernisation et maintenance de code existant", "description": "Plan détaillé, pages job-i, pistes IBM.", "sections": false },
+      { "fichier": "docs/formation/12-ia-et-assistants.md", "titre": "Partie 12 : IA et assistants de développement", "description": "Plan détaillé, pages job-i, pistes IBM.", "sections": false },
+      { "fichier": "docs/formation/13-web-services-et-api.md", "titre": "Partie 13 : Web services et API (REST, JSON, XML, IWS)", "description": "Plan détaillé, pages job-i, pistes IBM.", "sections": false },
+      { "fichier": "docs/formation/14-projet-en-immersion.md", "titre": "Partie 14 : Projet en immersion", "description": "Plan détaillé, pages job-i, pistes IBM.", "sections": false }
+    ] },
+
   { "titre": "Fiches mémo (source : job-i.fr)", "intro": "Syntaxe, commandes et concepts IBM i, avec une zone « Mes exemples » par fiche.",
     "entrees": [
       { "fichier": "docs/cheatsheets/README.md", "titre": "Index des fiches", "description": "Liste des fiches et correspondance avec job-i.fr.", "sections": false },
@@ -24,6 +43,11 @@
       { "fichier": "docs/IMPRESSION-RPG.md", "titre": "Impression en RPG : état à cycle et PRTCTL", "description": "Retour d'expérience (spools mesurés), version validée, dispositions PRTCTL officielles.", "sections": true },
       { "fichier": "docs/CYCLE-GAP-EXEMPLES.md", "titre": "Exemples de cycle dans le code des bibliothèques", "description": "Sources avec fichier primaire, L1-L9, 1P, OF (généré).", "sections": false },
       { "fichier": "docs/exemples-cycle/", "titre": "Dossier des exemples (RPG, DDS)", "description": "CYCLEQSYS (validé), CYCLEIMP + CYCLEPRT, CYCLEPRTCTL, CYCLETOTO, SQLIMPRIME (SQL embarqué), RUPT0 à RUPT2, et pesees/ (série CYC01 à CYC14 sur le cycle).", "sections": false }
+    ] },
+  { "titre": "SQL avancé et services web", "intro": "JSON, écriture IFS, FETCH multi-lignes, architecture ILE (modules, programme de service) et services REST IWS.",
+    "entrees": [
+      { "fichier": "docs/SQL-AVANCE.md", "titre": "SQL avancé : JSON, IFS, SQL embarqué", "description": "JSON_OBJECT, JSON_ARRAYAGG, QSYS2.IFS_WRITE_UTF8, FETCH multi-lignes (vérifié sur ibm.com 7.5).", "sections": true },
+      { "fichier": "docs/ILE-ET-SERVICES-WEB.md", "titre": "Architecture ILE et services REST (IWS)", "description": "Modules NOMAIN, programme de service, source de liage, IWS REST (tutoriels 2015), droits.", "sections": true }
     ] },
   { "titre": "Énoncés de TP", "intro": "Résumés anonymisés d'énoncés et d'examens.",
     "entrees": [

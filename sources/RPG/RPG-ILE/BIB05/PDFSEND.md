@@ -16,7 +16,7 @@ modifie: 2026-11-16
 //  PGM    : PDFSEND
 //  Role   : Lire un PDF sur IFS, l'encoder Base64,
 //           l'envoyer en JSON via HTTP POST
-//  Auteur : Sylvain BIB02 - NOTOS
+//  Auteur : Sylvain BIB02 - ORGFORM
 //------------------------------------------------------------
 ctl-opt dftactgrp(*no) actgrp(*caller)
         option(*nodebugio:*srcstmt)

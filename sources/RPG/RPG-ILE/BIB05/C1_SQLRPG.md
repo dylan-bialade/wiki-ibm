@@ -12,14 +12,14 @@ modifie: 2026-11-16
 
 ```rpg
 **free
-CTL-OPT COPYRIGHT('(C) ARMONIE 2025.')
+CTL-OPT COPYRIGHT('(C) ORGFORM 2025.')
 OPTION(*SRCSTMT) DFTACTGRP(*NO)
 ACTGRP(*CALLER) DATFMT(*ISO);
 
 //*****************************************************************
 // Programme : C1_SQLRPG
 // Formation SQL dans RPGLE
-// Copyright - ARMONIE
+// Copyright - ORGFORM
 //*****************************************************************
 
 dcl-s nom char(20);

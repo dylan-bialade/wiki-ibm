@@ -17,7 +17,7 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 ```text
       * PROGRAMME : PSOLDAT
-      * AUTEUR    : Sylvain BIB02 - Notos
+      * AUTEUR    : Sylvain BIB02 - ORGFORM
       * DATE      : [22/10/2025]
       * VERSION   : 1.0
       * DESCRIPTION :
@@ -129,7 +129,7 @@ Le Soldat à été créé
 
 ```text
       * PROGRAMME : PSOLDAT
-      * AUTEUR    : Geoffrey GAMBÉE - Notos
+      * AUTEUR    : Geoffrey BIB20 - ORGFORM
       * DATE      : [22/10/2025]
       * VERSION   : 1.0
       * DESCRIPTION :

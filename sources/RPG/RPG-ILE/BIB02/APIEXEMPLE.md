@@ -22,7 +22,7 @@ modifie: 2026-11-16
        // CECI EST UN EXEMPLE POUR LES API INTERNE EN RPG
        // Date Création  - 25/05/2022
        // Mise à jour    - 14/11/2022
-       // Copyright - ARMONIE
+       // Copyright - ORGFORM
        //*****************************************************************
 
        //**********************************************************************//

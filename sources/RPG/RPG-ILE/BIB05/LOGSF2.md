@@ -12,7 +12,7 @@ modifie: 2026-11-16
 
 ```rpg
 **free
-ctl-opt copyright('(C) ARMONIE 2025.') dftactgrp(*no) actgrp(*caller)
+ctl-opt copyright('(C) ORGFORM 2025.') dftactgrp(*no) actgrp(*caller)
 option(*nodebugio:*srcstmt) datfmt(*iso) timfmt(*iso) bnddir('BNDOUTILS') ;
 
 // **********************************************************************//

@@ -15,10 +15,10 @@ modifie: 2026-11-16
 // **********************************************************************//
 // Programme: ABOCLAUDE
 // Description: Gestion des abonnés par sous-fichier
-// Auteur: NOTOS/ARMONIE (généré par Agent RPG v3.1)
+// Auteur: ORGFORM/ORGFORM (généré par Agent RPG v3.1)
 // Date: 2026-01-05
 // **********************************************************************//
-ctl-opt copyright('(C) ARMONIE 2026.') dftactgrp(*no) actgrp(*caller)
+ctl-opt copyright('(C) ORGFORM 2026.') dftactgrp(*no) actgrp(*caller)
 option(*nodebugio:*srcstmt) datfmt(*iso) timfmt(*iso) bnddir('BNDOUTILS');
 
 // **********************************************************************//

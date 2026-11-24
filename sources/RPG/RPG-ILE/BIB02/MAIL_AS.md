@@ -29,7 +29,7 @@ modifie: 2026-11-16
        DCL-PROC send_mail;
 
          // Mail de la personne qui va recevoir le fichier txt en pj
-         mailconf = 'saktepe@armonie.group';
+         mailconf = 'adresse@exemple.invalid';
 
          // Commande SNDDST
          pr_cmdstr ='SNDDST TYPE(*DOC) TOINTNET(('''+%trim(mailconf)+''')) '+

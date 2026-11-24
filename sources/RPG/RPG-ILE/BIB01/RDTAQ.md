@@ -30,7 +30,7 @@ modifie: 2026-11-16
 //  data_queue_library => 'MAX');
 // -------------------------------------------------------------------
 
-Ctl-Opt COPYRIGHT('(C) ARMONIE 2023.') USRPRF(*OWNER) OPTIMIZE(*none)
+Ctl-Opt COPYRIGHT('(C) ORGFORM 2023.') USRPRF(*OWNER) OPTIMIZE(*none)
 DFTACTGRP(*NO) ACTGRP(*CALLER) DATFMT(*ISO) TIMFMT(*ISO)
 ALLOC(*STGMDL) STGMDL(*INHERIT) THREAD(*SERIALIZE);
 
