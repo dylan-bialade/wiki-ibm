@@ -1,9 +1,9 @@
 # Wiki IBM i : contexte complet pour un assistant
 
-Genere le 2026-11-23 15:45 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Genere le 2026-11-24 09:46 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
 Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
 
-ATTENTION : ce fichier fait environ 278 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
+ATTENTION : ce fichier fait environ 281 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
 Table des matieres (ordre du fichier) :
 - README.md (16 Ko)
 - docs/SOMMAIRE.md (19 Ko)
@@ -34,7 +34,7 @@ Table des matieres (ordre du fichier) :
 - docs/CYCLE-RPG.md (26 Ko)
 - docs/IMPRESSION-RPG.md (18 Ko)
 - docs/SQL-AVANCE.md (8 Ko)
-- docs/ILE-ET-SERVICES-WEB.md (29 Ko)
+- docs/ILE-ET-SERVICES-WEB.md (31 Ko)
 - docs/ASSISTANT-ET-AUTOMATISATION.md (16 Ko)
 - contributions/README.md (4 Ko)
 - docs/apports/README.md (1 Ko)
@@ -1691,7 +1691,7 @@ Chaîne de restauration rapide fictive ; l'épreuve se déroule dans un environn
 === FICHIER : docs/MANQUES.md ===
 # Ce qui manque dans les fiches (utilise dans le code, absent des fiches)
 
-Genere le 2026-11-23 15:45 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
+Genere le 2026-11-23 14:23 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
 
 
 ## Commandes CL : 60 manquants sur 104 utilises
@@ -1940,7 +1940,7 @@ Genere le 2026-11-23 15:45 a partir de 1082 sources. Un terme est 'manquant' s'i
 === FICHIER : docs/CYCLE-GAP-EXEMPLES.md ===
 # Exemples du cycle RPG (cycle GAP) dans les bibliotheques
 
-Genere le 2026-11-23 15:45. Detection : un fichier **primaire** (IP) ou **secondaire** (IS) en specification F dans un source en colonnes. Explication du cycle : [fiche 03](cheatsheets/03-rpg-par-version.md) et [job-i.fr](https://job-i.fr/cycle-gap-rpg). Detection heuristique : a confirmer en ouvrant le source.
+Genere le 2026-11-23 14:23. Detection : un fichier **primaire** (IP) ou **secondaire** (IS) en specification F dans un source en colonnes. Explication du cycle : [fiche 03](cheatsheets/03-rpg-par-version.md) et [job-i.fr](https://job-i.fr/cycle-gap-rpg). Detection heuristique : a confirmer en ouvrant le source.
 
 | Bibliotheque | Membre | Type | Lignes | Primaire (IP) | Secondaire (IS) | Niveaux (L1-L9) | 1P | OF | Source |
 |---|---|---|---|---|---|---|---|---|---|
@@ -2765,6 +2765,19 @@ Le message « Response data corresponding to field 'x' is not valid. The field m
 | Journal du serveur : `WRKACTJOB SBS(QHTTPSVR)`, option 5 puis 10 | **non vérifié** | — |
 
 Rien n'est à publier de plus tant que ces points ne sont pas confirmés dans la documentation IBM (référence IWS et droits).
+
+### Constats d'un cours PDF IWS (2026-11-24, document fourni, **non vérifié** sur ibm.com / job-i.fr)
+Synthèse d'un document de formation de 4 pages ; ne pas le présenter comme acquis. Détail : [apport du 2026-11-24](apports/2026-11-24-iws-cours-pdf-service-program-wrapping-p.md).
+
+| Constat du document | Statut | Source |
+|---|---|---|
+| `PGMINFO(*PCML:*MODULE:*DCLCASE:*V7)` ; module par `CRTSQLRPGI OBJTYPE(*MODULE)` (ou `CRTRPGMOD` sans SQL) ; source de liage `STRPGMEXP` / `EXPORT SYMBOL` / `ENDPGMEXP`, nouvelles procédures ajoutées à la fin ; `CRTSRVPGM … EXPORT(*SRCFILE) ACTGRP(*CALLER)` | non vérifié (`*V7` : voir le lien PGMINFO 7.2 plus haut, valeur citée dans l'URL mais non lue) | cours PDF fourni |
+| `int(3)` / `uns(3)` : pas d'équivalent PCML, erreur `RNF0320` (gravité 30), module non créé ; pointeur refusé | non vérifié (`RNF0320` : page job-i 404 le 2026-11-24) | cours PDF fourni |
+| « Wrap output parameter » décoché : le corps est le JSON du RPG ; coché : JSON du RPG en chaîne échappée dans un objet. Erreur `ZUI_54441` si plusieurs sorties restent comptées sans wrapping : désigner `http_code` (code retour HTTP, `int(10)`) et `http_text` (erreur) | non vérifié ; **répond au point « JSON brut ou échappé » laissé ouvert**, à confirmer par un test | cours PDF fourni |
+| Jobs `QZRCSRVS` (sous-système `QUSRWRK`) réutilisés : réinitialiser toutes les sorties en début de procédure ; recompilation sans changement de paramètres = arrêter/redémarrer le service, sinon redéployer | non vérifié | cours PDF fourni |
+| `500` + `CPF9801` / `SQL0204` : liste de bibliothèques du service ; `500` + `CPF9802` / `SQL0551` : droits du profil d'exécution ; JSON tronqué : paramètre de corps trop court | non vérifié | cours PDF fourni |
+| Droits : `*EXECUTE` sur la bibliothèque, `*USE` sur le `*SRVPGM` et les fichiers pour `QWSERVICE` | non vérifié (confirme l'hypothèse de la partie 3, sans la vérifier) | cours PDF fourni |
+| Où regarder : job log du job `QZRCSRVS`, `messages.log` du serveur IWS, `STRSRVJOB` + `STRDBG` ; `listWebServices.sh -server <serveur>` | non vérifié | cours PDF fourni |
 
 ## Partie 4 : mémo des commandes système (ILE, IWS, exploitation)
 
