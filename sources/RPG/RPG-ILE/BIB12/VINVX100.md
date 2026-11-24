@@ -23,7 +23,7 @@ dcl-s p7 char(3);
 dcl-s p8 char(2);
 dcl-s p9 char(40);
 
-dcl-pr vx100 extpgm('TPVIN/VX100');
+dcl-pr vx100 extpgm('BIB24/VX100');
     p1 char(6) const;
     p2 date(*iso)const;
     p3 int(10)const;

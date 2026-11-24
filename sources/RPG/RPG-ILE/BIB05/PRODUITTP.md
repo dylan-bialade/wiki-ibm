@@ -16,7 +16,7 @@ modifie: 2026-11-16
 // Programme : LSTPRODUITS
 // Objet     : Lire les noms de produits en SQL et les afficher (DSPLY)
 // Auteur    : Sylvain BIB02                              Version : 1.0
-// Société   : NOTOS                                       Date   : 2025-11-05
+// Société   : ORGFORM                                       Date   : 2025-11-05
 // IBM i     : V7R5
 // Base      : Table PRODUIT avec colonne NOMPRO
 // Remarque  : Exemple simple dutilisation dun CURSOR SQL en RPG Free SQL
@@ -24,7 +24,7 @@ modifie: 2026-11-16
 //             on affiche chaque nom puis on ferme le curseur.
 //
 
-ctl-opt copyright('(C) NOTOS 2025.')
+ctl-opt copyright('(C) ORGFORM 2025.')
         dftactgrp(*no)               // Programme ILE (pas dans *DFTACTGRP)
         actgrp(*caller)              // Sexécute dans le groupe dactivation de lappelant
         datfmt(*iso) timfmt(*iso)    // Formats date/heure ISO

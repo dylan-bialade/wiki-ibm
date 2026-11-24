@@ -1,0 +1,236 @@
+      * CYC14 - Bilan mensuel de la collecte
+      * 50 connue 51 sans tournee 52 sans pesee 53/54 ecart hors +/-10 %
+      * 90 secteur absent du referentiel 91 population connue
+     H            D/J
+     FTOURNEE IP  E           K        DISK
+     FPESEE   IS  E           K        DISK
+     FSECTEUR IF  E           K        DISK
+     FBILTRN  O   E                    DISK
+     FQSYSPRT O   F     132     OF     PRINTER
+     E                    FLX     1   6  3
+     E                    LIB     1   6 20
+     E                    COU     1   6  5 2
+     E                    NBF         6  5 0
+     E                    TONF        6  9 0
+     E                    COUF        6 11 2
+     ITOURNEER    01
+     I                                              TRNSECL2
+     I                                              TRNCODL1M1
+     IPESEER      02
+     I                                              PSSEC L2
+     I                                              PSTRN L1M1
+      * Nouveau groupe tournee
+     C   L1                SETOF                     505152
+      * Enregistrement TOURNEE
+     C   01                SETON                     50
+     C   01                MOVE TRNCOD    CODT    4
+     C   01                MOVE TRNSEC    SECW    2
+     C   01NMR             SETON                     52
+      * Enregistrement PESEE
+     C   02                MOVE PSTRN     CODT
+     C   02                MOVE PSSEC     SECW
+     C   02                MOVE PSCAM     CAMW    9
+     C   02NMR             SETON                     51
+      * Nouveau secteur : referentiel
+     C   L2      SECW      CHAINSECTEUR              90
+     C   L2 90             MOVEL'Inconnu' SECNOM    P
+     C   L2 90             Z-ADD0         SECPOP
+      * Poids net de la pesee
+     C   02      PSBRU     SUB  PSTAR     NET     60
+      * Referentiel des flux : rang IX (6 = hors referentiel)
+     C   02                Z-ADD1         X       20
+     C   02      PSFLX     LOKUPFLX,X                    40
+     C   02N40             Z-ADD6         X
+      * Cout de traitement : net (kg) x cout a la tonne / 1000
+     C   02      NET       MULT COU,X     WCOUT  112
+     C   02      WCOUT     DIV  1000      COUT    72H
+     C   02                MOVELPSDAT     MOIS    60
+     C   02      1         ADD  NBP1      NBP1    50
+     C   02      NET       ADD  REA1      REA1    90
+     C   02      COUT      ADD  COU1      COU1   112
+     C   02      1         ADD  NBF,X     NBF,X
+     C   02      NET       ADD  TONF,X    TONF,X
+     C   02      COUT      ADD  COUF,X    COUF,X
+      * Temps total tournee : prevu / realise / ecart
+     CL1                   Z-ADD0         PRV1    70
+     CL1 50                Z-ADDTRNPRV    PRV1
+     CL1         REA1      SUB  PRV1      ECA1    70
+     CL1                   Z-ADD0         PCT1    51
+     CL1                   SETOF                     5354
+     CL1         PRV1      COMP 0                    55
+     CL1 55      ECA1      MULT 100       W      110
+     CL1 55      W         DIV  PRV1      PCT1      H
+     CL1 55      PCT1      COMP 10                   53
+     CL1 55      PCT1      COMP -10                    54
+     CL1         PRV1      ADD  PRV2      PRV2    90
+     CL1         REA1      ADD  REA2      REA2    90
+     CL1         NBP1      ADD  NBP2      NBP2    50
+     CL1 52      1         ADD  NBNC      NBNC    30
+     CL1 51      NBP1      ADD  NBOR      NBOR    30
+     CL1         COU1      ADD  COU2      COU2   112
+      * Bilan de la tournee dans BILTRN
+     CL1                   Z-ADDMOIS      BTMOIS
+     CL1                   MOVE CODT      BTTRN
+     CL1                   MOVE SECW      BTSEC
+     CL1                   MOVE *BLANK    BTFLX
+     CL1 50                MOVE TRNFLX    BTFLX
+     CL1                   Z-ADDNBP1      BTNBP
+     CL1                   Z-ADDPRV1      BTPRV
+     CL1                   Z-ADDREA1      BTREA
+     CL1                   Z-ADDECA1      BTECA
+     CL1                   Z-ADDCOU1      BTCOU
+     CL1                   MOVE ' '       BTSTA
+     CL1 52                MOVE 'N'       BTSTA
+     CL1 51                MOVE 'I'       BTSTA
+     CL1                   WRITEBILTRNR
+      * Lignes de total de la tournee (sorties d'exception)
+     CL1                   EXCPTTOT1
+      * Temps total secteur
+     CL2         REA2      SUB  PRV2      ECA2    90
+     CL2         ECA2      MULT 100       W
+     CL2         W         DIV  PRV2      PCT2    51H
+     CL2         PRV2      ADD  PRVG      PRVG    90
+     CL2         REA2      ADD  REAG      REAG    90
+     CL2         NBP2      ADD  NBPG      NBPG    50
+     CL2         COU2      ADD  COUG      COUG   112
+     CL2                   Z-ADD0         KGH2    72
+     CL2                   Z-ADD0         EUH2    72
+     CL2         SECPOP    COMP 0                    91
+     CL2 91      REA2      DIV  SECPOP    KGH2      H
+     CL2 91      COU2      DIV  SECPOP    EUH2      H
+     CL2         SECPOP    ADD  POPG      POPG    70
+     CL2                   EXCPTTOT2
+      * Fin de fichier
+     CLR         REAG      SUB  PRVG      ECAG    90
+     CLR         ECAG      MULT 100       W
+     CLR         W         DIV  PRVG      PCTG    51H
+     CLR         REAG      DIV  POPG      KGHG    72H
+     CLR         COUG      DIV  POPG      EUHG    72H
+     CLR                   EXCPTTOTG
+      * Recapitulatif par flux, apres le total general
+     CLR                   EXCPTTITF
+     CLR         1         DO   6         I       20
+     CLR         TONF,I    MULT 100       W
+     CLR         W         DIV  REAG      PCT     41H
+     CLR                   EXCPTDETF
+     CLR                   END
+     CLR                   EXCPTTOTF
+     OQSYSPRT H  101   1P
+     O       OR        OF
+     O                                   24 'SYNDICAT DE COLLECTE SUD'
+     O                                   72 'BILAN MENSUEL'
+     O                                  109 'Édité le'
+     O                         UDATE Y  118
+     O                                  125 'Page'
+     O                         PAGE  Z  130
+     OQSYSPRT H  2     1P
+     O       OR        OF
+     O                                   23 'Pont-bascule de site A1'
+     OQSYSPRT H  2     1P
+     O       OR        OF
+     O                                    7 'Tournée'
+     O                                   12 'Flux'
+     O                                   34 'Chauffeur'
+     O                                   46 'Prévu kg'
+     O                                   58 'Réalisé kg'
+     O                                   66 'Pesées'
+     O                                   77 'Écart kg'
+     O                                   86 'Écart %'
+     O                                   99 'Coût €'
+     O                                  118 'Observation'
+     OQSYSPRT EF 1             TOT1
+     O                         CODT       6
+     O                 50      TRNFLX    11
+     O                 50      TRNCHF    34
+     O                 51      CAMW      34
+     O                         PRV1  3   46
+     O                         REA1  3B  58
+     O                         NBP1  3B  66
+     O                         ECA1  L   77
+     O                 55      PCT1  L   86
+     O                         COU1  3B  99
+     O                 52               118 'NON COLLECTÉE'
+     O                 51               121 'TOURNÉE INCONNUE'
+     O                 53N51N52         120 'ÉCART > +10 %'
+     O                 54N51N52         120 'ÉCART < -10 %'
+     OQSYSPRT EF11             TOT2
+     O                                   10 'SECTEUR'
+     O                         SECW      13
+     O                         SECNOM    34
+     O                         PRV2  3B  46
+     O                         REA2  3B  58
+     O                         NBP2  3B  66
+     O                         ECA2  L   77
+     O                         PCT2  L   86
+     O                         COU2  3B  99
+     OQSYSPRT EF 2             TOT2
+     O                                   23 'Habitants'
+     O                         SECPOP3   32
+     O                                   46 'kg / habitant'
+     O                         KGH2  3   58
+     O                                   91 '€ / habitant'
+     O                         EUH2  3   99
+     OQSYSPRT EF 1             TOTG
+     O                                   18 'TOTAL GÉNÉRAL'
+     O                         PRVG  3   46
+     O                         REAG  3   58
+     O                         NBPG  3   66
+     O                         ECAG  L   77
+     O                         PCTG  L   86
+     O                         COUG  3   99
+     OQSYSPRT EF 1             TOTG
+     O                                   23 'Habitants'
+     O                         POPG  3   32
+     O                                   46 'kg / habitant'
+     O                         KGHG  3   58
+     O                                   91 '€ / habitant'
+     O                         EUHG  3   99
+     OQSYSPRT EF 1             TOTG
+     O                                   30 'Tournées non collectées'
+     O                         NBNC  3   36
+     OQSYSPRT EF 1             TOTG
+     O                                   30 'Pesées sans tournée'
+     O                         NBOR  3   36
+     OQSYSPRT EF22             TITF
+     O                                   30 'RÉCAPITULATIF PAR FLUX'
+     OQSYSPRT EF 1             TITF
+     O                                    4 'Flux'
+     O                                   25 'Libellé'
+     O                                   39 'Pesées'
+     O                                   54 'Tonnage kg'
+     O                                   64 'Part %'
+     O                                   80 'Coût €'
+     OQSYSPRT EF 1             DETF
+     O                         FLX,I      3
+     O                         LIB,I     25
+     O                         NBF,I 3   39
+     O                         TONF,I3   54
+     O                         PCT   3   64
+     O                         COUF,I3   80
+     OQSYSPRT EF11             TOTF
+     O                                   19 'TOTAL'
+     O                         NBPG  3   39
+     O                         REAG  3   54
+     O                                   64 '100,0'
+     O                         COUG  3   80
+**
+OMR
+EMB
+VER
+BIO
+ENC
+***
+**
+Ordures ménagères
+Emballages
+Verre
+Biodéchets
+Encombrants
+Hors référentiel
+**
+14200
+09850
+01200
+06100
+16500
+00000

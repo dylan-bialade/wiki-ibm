@@ -68,13 +68,13 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 // ============================================================
 // Programme : LSTCLIENT
 // Objet     : Liste les clients de la table DEMOGIT.CLIENT
-// Auteur    : Sylvain BIB02  NOTOS (Groupe Armonie)
+// Auteur    : Sylvain BIB02  ORGFORM (Groupe ORGFORM)
 // Date      : Mars 2026
 // Compil    : CRTSQLRPGI OBJ(DEMOGIT/LSTCLIENT)
-//             SRCSTMF('/home/SAKTEPE/demo-rpg-ibmi/qrpglesrc/lstclient.sqlrpgle')
+//             SRCSTMF('/home/NOM01/demo-rpg-ibmi/qrpglesrc/lstclient.sqlrpgle')
 //             COMMIT(*NONE) DBGVIEW(*SOURCE)
 // ============================================================
-CTL-OPT COPYRIGHT('(C) ARMONIE 2026.')
+CTL-OPT COPYRIGHT('(C) ORGFORM 2026.')
         OPTION(*SRCSTMT)
         DFTACTGRP(*NO)
         ACTGRP(*CALLER)

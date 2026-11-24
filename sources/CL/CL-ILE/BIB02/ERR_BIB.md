@@ -17,7 +17,7 @@ modifie: 2026-11-16
 KTEPE                                                         *//* Auteur    : Sylvain BIB02
                               *//* Date      : 18/11/2022                                                     */
 /*----------------------------------------------------------------------------*/             PGM        PARM(&LI
-B)                                                           COPYRIGHT  TEXT('(C) ARMONIE 2023.')
+B)                                                           COPYRIGHT  TEXT('(C) ORGFORM 2023.')
                              DCLPRCOPT  USRPRF(*OWNER) DFTACTGRP(*NO) ACTGRP(*CALLER)
 
                                              DCL        VAR(&LIB) TYPE(*CHAR) LEN(10)

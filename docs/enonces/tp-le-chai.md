@@ -1,7 +1,7 @@
 # tp-le-chai : réception des vendanges (SQL embarqué en RPG ILE full free)
 
 - **Contexte** : cave coopérative fictive ; un programme compilé `VX100` dont le **source a disparu** doit être compris, puis un programme `CHAI` doit traiter en fin de journée les lots de raisin en attente.
-- **Environnement** : tables dans une bibliothèque commune au groupe (toujours qualifiées, ex. `TPVIN.APPORTS`), programmes fournis compilés `VX100` et `VERIFVX` (à ne pas modifier), table de prédictions pour les essais, script `INIT` de remise à zéro lancé par `RUNSQLSTM` (**avant chaque campagne de tests** ; les tables sont partagées : prévenir le groupe).
+- **Environnement** : tables dans une bibliothèque commune au groupe (toujours qualifiées, ex. `BIB24.APPORTS`), programmes fournis compilés `VX100` et `VERIFVX` (à ne pas modifier), table de prédictions pour les essais, script `INIT` de remise à zéro lancé par `RUNSQLSTM` (**avant chaque campagne de tests** ; les tables sont partagées : prévenir le groupe).
 - **Tables** : appellations, cépages, cépages autorisés par appellation, parcelles, cuves, apports (lots), journal d'encuvage, registre de chaptalisation (obligatoire), alertes, bilan (une ligne par exécution).
 - **Mission 1 – l'enquête** : deviner ce que fait `VX100` par **boîte noire** (hypothèses → vérificateur fourni → score), puis produire les prédictions et la description.
 - **Mission 2 – le programme `CHAI`** : parcourir les lots en attente ; règles par lot : contrôle sanitaire, classement (appellation / déclassement), chaptalisation, choix de la cuve, encuvage, registres, alertes ; **« tout ou rien »** par lot (transaction : `COMMIT` / `ROLLBACK`) ; fin de traitement : ligne de bilan. Facultatif : tableau de bord des vendanges.

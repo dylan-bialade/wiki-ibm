@@ -1,0 +1,61 @@
+      * CYC04 - Pesees en anomalie uniquement
+      * 21 tare absente / 22 surcharge / 23 refus > 25 %
+     H            D/J
+     FPESEE   IP  E           K        DISK
+     FQSYSPRT O   F     132     OF     PRINTER
+     IPESEER      01
+     I                                              PSTAR           21
+      * Poids net de la pesee
+     C   01      PSBRU     SUB  PSTAR     NET     60
+      * Date AAAAMMJJ -> JJMMAAAA
+     C   01                MOVE PSDAT     WMMJJ   40
+     C   01                MOVELPSDAT     WAAAA   40
+     C   01                MOVE WMMJJ     WJJ     20
+     C   01                MOVELWMMJJ     WMM     20
+     C   01      WJJ       MULT 1000000   DATJMA  80
+     C   01      WMM       MULT 10000     W8      80
+     C   01                ADD  W8        DATJMA
+     C   01                ADD  WAAAA     DATJMA
+      * Anomalies : 22 surcharge, 23 refus eleve, 24 au moins une
+     C   01      NET       COMP 19000                22
+     C   01      PSREF     COMP 25                   23
+     C                     SETOF                     24
+     C   01 21             SETON                     24
+     C   01 22             SETON                     24
+     C   01 23             SETON                     24
+     OQSYSPRT H  101   1P
+     O       OR        OF
+     O                                   24 'SYNDICAT DE COLLECTE SUD'
+     O                                   72 'PESÉES EN ANOMALIE'
+     O                                  109 'Édité le'
+     O                         UDATE Y  118
+     O                                  125 'Page'
+     O                         PAGE  Z  130
+     OQSYSPRT H  2     1P
+     O       OR        OF
+     O                                   23 'Pont-bascule de site A1'
+     OQSYSPRT H  2     1P
+     O       OR        OF
+     O                                    6 'Ticket'
+     O                                   15 'Tournée'
+     O                                   26 'Date'
+     O                                   33 'Heure'
+     O                                   45 'Camion'
+     O                                   51 'Flux'
+     O                                   61 'Brut kg'
+     O                                   71 'Tare kg'
+     O                                   81 'Net kg'
+     O                                   96 'Observations'
+     OQSYSPRT D  1     01 24
+     O                         PSTKT      6
+     O                         PSTRN     13
+     O                         DATJMA    26 '0  /  /    '
+     O                         PSHEU     33 '  :  '
+     O                         PSCAM     45
+     O                         PSFLX     50
+     O                         PSBRU 3   61
+     O                         PSTAR 3   71
+     O                         NET   3   81
+     O                 21                96 'TARE ABSENTE'
+     O                 22               106 'SURCHARGE'
+     O                 23               119 'REFUS > 25 %'

@@ -1,0 +1,80 @@
+      * CYC08 - Etat de synthese par tournee (sans detail)
+      * 31 nouvelle plus forte pesee / 32 tournee d'emballages
+     H            D/J
+     FPESEE   IP  E           K        DISK
+     FQSYSPRT O   F     132     OF     PRINTER
+     IPESEER      01
+     I                                              PSSEC L2
+     I                                              PSTRN L1
+      * Poids net de la pesee
+     C   01      PSBRU     SUB  PSTAR     NET     60
+      * Date AAAAMMJJ -> JJMMAAAA
+     C   01                MOVE PSDAT     WMMJJ   40
+     C   01                MOVELPSDAT     WAAAA   40
+     C   01                MOVE WMMJJ     WJJ     20
+     C   01                MOVELWMMJJ     WMM     20
+     C   01      WJJ       MULT 1000000   DATJMA  80
+     C   01      WMM       MULT 10000     W8      80
+     C   01                ADD  W8        DATJMA
+     C   01                ADD  WAAAA     DATJMA
+      * Cumuls de la tournee
+     C   01      1         ADD  NBP1      NBP1    50
+     C   01      NET       ADD  NET1      NET1    90
+     C   01      PSREF     ADD  SREF      SREF    51
+      * Plus forte pesee de la tournee
+     C   01      NET       COMP MAXN                 31
+     C   01 31             Z-ADDNET       MAXN    60
+     C   01 31             Z-ADDDATJMA    DATMX   80
+      * Temps total tournee
+     CL1         NET1      DIV  NBP1      MOY1    70H
+     CL1         PSFLX     COMP 'EMB'                    32
+     CL1 32      SREF      DIV  NBP1      MREF    41H
+     CL1                   Z-ADD0         SREF
+     CL1         NBP1      ADD  NBP2      NBP2    50
+     CL1         NET1      ADD  NET2      NET2    90
+      * Temps total secteur
+     CL2         NET2      DIV  NBP2      MOY2    70H
+     CL2         NBP2      ADD  NBPG      NBPG    50
+     CL2         NET2      ADD  NETG      NETG    90
+     CLR         NETG      DIV  NBPG      MOYG    70H
+     OQSYSPRT H  101   1P
+     O       OR        OF
+     O                                   24 'SYNDICAT DE COLLECTE SUD'
+     O                                   72 'SYNTHÈSE PAR TOURNÉE'
+     O                                  109 'Édité le'
+     O                         UDATE Y  118
+     O                                  125 'Page'
+     O                         PAGE  Z  130
+     OQSYSPRT H  2     1P
+     O       OR        OF
+     O                                   23 'Pont-bascule de site A1'
+     OQSYSPRT H  2     1P
+     O       OR        OF
+     O                                    7 'Tournée'
+     O                                   13 'Flux'
+     O                                   22 'Pesées'
+     O                                   35 'Net kg'
+     O                                   50 'Net moyen kg'
+     O                                   65 'Plus forte kg'
+     O                                   77 'le'
+     O                                   93 'Refus moyen %'
+     OQSYSPRT T  1     L1
+     O                         PSTRN      6
+     O                         PSFLX     12
+     O                         NBP1  3B  22
+     O                         NET1  3B  35
+     O                         MOY1  3   50
+     O                         MAXN  3B  65
+     O                         DATMX  B  79 '0  /  /    '
+     O                 32      MREF  3   93
+     OQSYSPRT T 12     L2
+     O                                   13 'Secteur'
+     O                         PSSEC     16
+     O                         NBP2  3B  22
+     O                         NET2  3B  35
+     O                         MOY2  3   50
+     OQSYSPRT T  1     LR
+     O                                   15 'TOTAL GÉNÉRAL'
+     O                         NBPG  3   22
+     O                         NETG  3   35
+     O                         MOYG  3   50

@@ -1,0 +1,134 @@
+      * CYC13 - Journal du pont-bascule (fichier decrit par programme)
+      * 01 ouverture 02 pesee 03 annulation 04 cloture
+      * 61 annulation non conforme 62 ecart a la cloture 63 cloture conforme
+     H            D/J
+     FBASCUL  IP  F      80            DISK
+     FQSYSPRT O   F     132     OF     PRINTER
+     IBASCUL  AA  01   1 CO
+     I                                        2   90JDAT  L1
+     I                                       10  130HEUO
+     I                                       14  33 OPER
+     IBASCUL  AB  02   1 CP
+     I                                        2   90JDAT  L1
+     I                                       10  130HEUP
+     I                                       14  190TKT
+     I                                       20  23 TRN
+     I                                       24  32 CAM
+     I                                       33  35 FLX
+     I                                       36  410BRU
+     I                                       42  470TAR
+     IBASCUL  AC  03   1 CA
+     I                                        2   90JDAT  L1
+     I                                       10  130HEUA
+     I                                       14  190TKTA
+     I                                       20  59 MOTIF
+     IBASCUL  AD  04   1 CC
+     I                                        2   90JDAT  L1
+     I                                       10  130HEUC
+     I                                       14  160DECL
+      * Nouvelle journee
+     C   L1                SETOF                     616263
+      * Date AAAAMMJJ -> JJMMAAAA
+     C   L1                MOVE JDAT      WMMJJ   40
+     C   L1                MOVELJDAT      WAAAA   40
+     C   L1                MOVE WMMJJ     WJJ     20
+     C   L1                MOVELWMMJJ     WMM     20
+     C   L1      WJJ       MULT 1000000   DATJ    80
+     C   L1      WMM       MULT 10000     W8      80
+     C   L1                ADD  W8        DATJ
+     C   L1                ADD  WAAAA     DATJ
+      * Pesee
+     C   02      BRU       SUB  TAR       NETP    60
+     C   02      1         ADD  NBV1      NBV1    30
+     C   02      NETP      ADD  NET1      NET1    90
+     C   02                Z-ADDNETP      DERN    60
+     C   02                Z-ADDTKT       DERT    60
+      * Annulation : porte sur la pesee precedente
+     C   03      NBV1      SUB  1         NBV1
+     C   03      NET1      SUB  DERN      NET1
+     C   03      1         ADD  NBA1      NBA1    30
+     C   03      TKTA      COMP DERT                 6161
+      * Cloture : controle du nombre de pesees
+     C   04      DECL      COMP NBV1                 626263
+     C   04      DECL      SUB  NBV1      ECAC    30
+      * Temps total journee
+     CL1         1         ADD  NBJ       NBJ     30
+     CL1         NBV1      ADD  NBVG      NBVG    50
+     CL1         NBA1      ADD  NBAG      NBAG    50
+     CL1         NET1      ADD  NETG      NETG    90
+     CL1 62      1         ADD  NBEG      NBEG    30
+     OQSYSPRT H  101   1P
+     O       OR        OF
+     O                                   24 'SYNDICAT DE COLLECTE SUD'
+     O                                   72 'JOURNAL DU PONT-BASCULE'
+     O                                  109 'Édité le'
+     O                         UDATE Y  118
+     O                                  125 'Page'
+     O                         PAGE  Z  130
+     OQSYSPRT H  2     1P
+     O       OR        OF
+     O                                   23 'Pont-bascule de site A1'
+     OQSYSPRT H  2     1P
+     O       OR        OF
+     O                                   10 'Heure'
+     O                                   18 'Ticket'
+     O                                   27 'Tournée'
+     O                                   39 'Camion'
+     O                                   45 'Flux'
+     O                                   55 'Brut kg'
+     O                                   65 'Tare kg'
+     O                                   75 'Net kg'
+     OQSYSPRT D  2     01
+     O                                   10 'Journée du'
+     O                         DATJ      21 '0  /  /    '
+     O                                   34 'ouverture'
+     O                         HEUO      40 '  :  '
+     O                                   51 'opérateur'
+     O                         OPER      72
+     OQSYSPRT D  1     02
+     O                         HEUP      10 '  :  '
+     O                         TKT       18
+     O                         TRN       25
+     O                         CAM       39
+     O                         FLX       44
+     O                         BRU   3   55
+     O                         TAR   3   65
+     O                         NETP  3   75
+     OQSYSPRT D  1     03
+     O                         HEUA      10 '  :  '
+     O                         TKTA      18
+     O                                   30 'ANNULATION'
+     O                         MOTIF     71
+     O                 61               100 'NON CONFORME'
+     OQSYSPRT D 11     04
+     O                         HEUC      10 '  :  '
+     O                                   18 'Clôture'
+     O                                   38 'pesées déclarées'
+     O                         DECL  3   42
+     O                                   54 'validées'
+     O                         NBV1  3   58
+     O                 63                68 'CONFORME'
+     O                 62                66 'ÉCART'
+     O                 62      ECAC  L   71
+     OQSYSPRT T  2     L1
+     O                                   23 'Total journée'
+     O                         NBV1  3B  29
+     O                                   45 'pesées validées'
+     O                         NBA1  3B  50
+     O                                   60 'annulées'
+     O                         NET1  3B  75
+     O                                   78 'kg'
+     OQSYSPRT T 11     LR
+     O                                   23 'TOTAL DE LA PÉRIODE'
+     O                         NBVG  3   29
+     O                                   45 'pesées validées'
+     O                         NBAG  3   50
+     O                                   60 'annulées'
+     O                         NETG  3   75
+     O                                   78 'kg'
+     OQSYSPRT T  1     LR
+     O                                   23 'Journées traitées'
+     O                         NBJ   3   29
+     OQSYSPRT T  1     LR
+     O                                   23 'Journées en écart'
+     O                         NBEG  3   29

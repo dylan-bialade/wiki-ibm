@@ -28,7 +28,7 @@ modifie: 2026-11-16
 // **********************************************************************//
 // Dclaration des spcificit (carte H)                                    //
 // **********************************************************************//
-CTL-OPT COPYRIGHT('(C) ARMONIE 2023.') USRPRF(*OWNER) OPTIMIZE(*FULL) DFTACTGRP(*NO) ACTGRP(*CALLER) DATFMT(*ISO)
+CTL-OPT COPYRIGHT('(C) ORGFORM 2023.') USRPRF(*OWNER) OPTIMIZE(*FULL) DFTACTGRP(*NO) ACTGRP(*CALLER) DATFMT(*ISO)
 TIMFMT(*ISO) ALLOC(*STGMDL) STGMDL(*INHERIT) THREAD(*SERIALIZE);
 
 // **********************************************************************//

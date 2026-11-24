@@ -1,0 +1,26 @@
+      * CYC02 - Poids net, date et heure editees
+     H            D/J
+     FPESEE   IP  E           K        DISK
+     FQSYSPRT O   F     132            PRINTER
+     IPESEER      01
+      * Poids net de la pesee
+     C   01      PSBRU     SUB  PSTAR     NET     60
+      * Date AAAAMMJJ -> JJMMAAAA
+     C   01                MOVE PSDAT     WMMJJ   40
+     C   01                MOVELPSDAT     WAAAA   40
+     C   01                MOVE WMMJJ     WJJ     20
+     C   01                MOVELWMMJJ     WMM     20
+     C   01      WJJ       MULT 1000000   DATJMA  80
+     C   01      WMM       MULT 10000     W8      80
+     C   01                ADD  W8        DATJMA
+     C   01                ADD  WAAAA     DATJMA
+     OQSYSPRT D  1     01
+     O                         PSTKT      6
+     O                         PSTRN     13
+     O                         DATJMA    26 '0  /  /    '
+     O                         PSHEU     33 '  :  '
+     O                         PSCAM     45
+     O                         PSFLX     50
+     O                         PSBRU 3   61
+     O                         PSTAR 3   71
+     O                         NET   3   81

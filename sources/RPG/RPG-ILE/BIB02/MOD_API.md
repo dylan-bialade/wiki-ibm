@@ -16,7 +16,7 @@ modifie: 2026-11-16
 //Consignes de compilation                                              //
 //----------------------------------------------------------------------//
 
-CTL-OPT NOMAIN COPYRIGHT('(C) ARMONIE 2023.') OPTIMIZE(*NONE)
+CTL-OPT NOMAIN COPYRIGHT('(C) ORGFORM 2023.') OPTIMIZE(*NONE)
 DATFMT(*ISO) TIMFMT(*ISO)
 ALLOC(*STGMDL) STGMDL(*INHERIT) THREAD(*CONCURRENT)
 PGMINFO(*PCML:*DCLCASE:*MODULE:*V7);

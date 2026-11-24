@@ -35,6 +35,26 @@ Installer le wiki, le donner à un assistant, vérifier qu'il applique les règl
   - [7. Interdits](../CLAUDE.md#7-interdits)
   - [8. Remontée automatique au wiki (sans attendre qu'on te le demande)](../CLAUDE.md#8-remontée-automatique-au-wiki-sans-attendre-quon-te-le-demande)
 
+## Formation (plan en 14 parties)
+
+Le dépôt suit le plan de la formation : un fichier Markdown par grande partie.
+
+- [Index de la formation (14 parties)](formation/README.md) : Un fichier par grande partie ; sections et sujets, avec accès par mot-clé.
+- [Partie 01 : Organisation de l'IBM i : objets, travaux, impressions, sécurité, sauvegardes](formation/01-organisation-ibm-i.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 02 : Db2 for i : PF, LF, contraintes, RCAC, journalisation](formation/02-db2-for-i.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 03 : Outils traditionnels (SEU, PDM, SDA...) et modernes (RDi, VS Code)](formation/03-outils-de-developpement.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 04 : Langage de contrôle CL](formation/04-langage-de-controle-cl.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 05 : SQL sur IBM i](formation/05-sql.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 06 : RPG III : spécifications, cycle, codes opérations, fichiers, sous-fichiers](formation/06-rpg-iii.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 07 : RPG IV : spécifications, types, BIF, erreurs](formation/07-rpg-iv.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 08 : RPG full free : syntaxe, conversion, données modernes](formation/08-rpg-free.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 09 : SQL embarqué en RPG](formation/09-sql-embarque.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 10 : ILE : modules, programmes de service, débogage, journalisation](formation/10-ile.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 11 : Modernisation et maintenance de code existant](formation/11-modernisation-et-maintenance.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 12 : IA et assistants de développement](formation/12-ia-et-assistants.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 13 : Web services et API (REST, JSON, XML, IWS)](formation/13-web-services-et-api.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 14 : Projet en immersion](formation/14-projet-en-immersion.md) : Plan détaillé, pages job-i, pistes IBM.
+
 ## Fiches mémo (source : job-i.fr)
 
 Syntaxe, commandes et concepts IBM i, avec une zone « Mes exemples » par fiche.
@@ -49,6 +69,7 @@ Syntaxe, commandes et concepts IBM i, avec une zone « Mes exemples » par fiche
   - [Sécurité  (source)](cheatsheets/01-comprendre-ibm-i.md#sécurité--source)
   - [PTF  (source)](cheatsheets/01-comprendre-ibm-i.md#ptf--source)
   - [Performances  (source)](cheatsheets/01-comprendre-ibm-i.md#performances--source)
+  - [Navigator for i  (source)](cheatsheets/01-comprendre-ibm-i.md#navigator-for-i--source)
   - [Mes exemples](cheatsheets/01-comprendre-ibm-i.md#mes-exemples)
 - [02 Référence système](cheatsheets/02-reference-systeme.md) : Commandes CL, messages CPF/MCH, valeurs système.
   - [Commandes CL  (source) — 1 830 fiches](cheatsheets/02-reference-systeme.md#commandes-cl--source--1-830-fiches)
@@ -100,14 +121,29 @@ Syntaxe, commandes et concepts IBM i, avec une zone « Mes exemples » par fiche
 
 Cours du cycle, passage au full free, impression et PRTCTL (sujets regroupés).
 
-- [Cycle RPG III : cours, exemples, passage au full free](CYCLE-RPG.md) : 7 étapes, indicateurs, ruptures, spécification O, rapprochement, table de correspondance vers le full free.
+- [Cycle RPG III : cours, exemples, passage au full free](CYCLE-RPG.md) : 7 étapes, indicateurs, ruptures, spécification O, rapprochement, table de correspondance vers le full free, série de 14 programmes progressifs.
   - [Partie 1 : cours du cycle RPG III et exemples](CYCLE-RPG.md#partie-1--cours-du-cycle-rpg-iii-et-exemples)
   - [Partie 2 : du cycle RPG III au full free (table de correspondance)](CYCLE-RPG.md#partie-2--du-cycle-rpg-iii-au-full-free-table-de-correspondance)
+  - [Partie 3 : série de 14 programmes progressifs (corrigé, pesées de collecte)](CYCLE-RPG.md#partie-3--série-de-14-programmes-progressifs-corrigé-pesées-de-collecte)
 - [Impression en RPG : état à cycle et PRTCTL](IMPRESSION-RPG.md) : Retour d'expérience (spools mesurés), version validée, dispositions PRTCTL officielles.
   - [Partie 1 : réécrire un état à cycle en full free (retour d'expérience)](IMPRESSION-RPG.md#partie-1--réécrire-un-état-à-cycle-en-full-free-retour-dexpérience)
   - [Partie 2 : PRTCTL, contrôle dynamique d'impression](IMPRESSION-RPG.md#partie-2--prtctl-contrôle-dynamique-dimpression)
 - [Exemples de cycle dans le code des bibliothèques](CYCLE-GAP-EXEMPLES.md) : Sources avec fichier primaire, L1-L9, 1P, OF (généré).
-- [Dossier des exemples (RPG, DDS)](exemples-cycle/) : CYCLEQSYS (validé), CYCLEIMP + CYCLEPRT, CYCLEPRTCTL, CYCLETOTO, SQLIMPRIME (SQL embarqué), RUPT0 à RUPT2.
+- [Dossier des exemples (RPG, DDS)](exemples-cycle/) : CYCLEQSYS (validé), CYCLEIMP + CYCLEPRT, CYCLEPRTCTL, CYCLETOTO, SQLIMPRIME (SQL embarqué), RUPT0 à RUPT2, et pesees/ (série CYC01 à CYC14 sur le cycle).
+
+## SQL avancé et services web
+
+JSON, écriture IFS, FETCH multi-lignes, architecture ILE (modules, programme de service) et services REST IWS.
+
+- [SQL avancé : JSON, IFS, SQL embarqué](SQL-AVANCE.md) : JSON_OBJECT, JSON_ARRAYAGG, QSYS2.IFS_WRITE_UTF8, FETCH multi-lignes (vérifié sur ibm.com 7.5).
+  - [Partie 1 : SQL JSON (Db2 for i 7.5)](SQL-AVANCE.md#partie-1--sql-json-db2-for-i-75)
+  - [Partie 2 : écrire dans l'IFS depuis SQL (`QSYS2.IFS_WRITE_UTF8`)](SQL-AVANCE.md#partie-2--écrire-dans-lifs-depuis-sql-qsys2ifs_write_utf8)
+  - [Partie 3 : SQL embarqué en RPG (FETCH multi-lignes et options)](SQL-AVANCE.md#partie-3--sql-embarqué-en-rpg-fetch-multi-lignes-et-options)
+- [Architecture ILE et services REST (IWS)](ILE-ET-SERVICES-WEB.md) : Modules NOMAIN, programme de service, source de liage, IWS REST (tutoriels 2015), droits.
+  - [Partie 1 : modules, programme de service, source de liage](ILE-ET-SERVICES-WEB.md#partie-1--modules-programme-de-service-source-de-liage)
+  - [Partie 2 : services web REST avec Integrated Web Services (IWS)](ILE-ET-SERVICES-WEB.md#partie-2--services-web-rest-avec-integrated-web-services-iws)
+  - [Partie 3 : droits et exploitation d'un service IWS](ILE-ET-SERVICES-WEB.md#partie-3--droits-et-exploitation-dun-service-iws)
+  - [Partie 4 : mémo des commandes système (ILE, IWS, exploitation)](ILE-ET-SERVICES-WEB.md#partie-4--mémo-des-commandes-système-ile-iws-exploitation)
 
 ## Énoncés de TP
 
@@ -152,9 +188,9 @@ Ce que le wiki vérifie automatiquement et ce qui lui manque.
 
 - [Manques des fiches](MANQUES.md) : Termes utilisés dans le code et absents des fiches (généré).
   - [Commandes CL : 60 manquants sur 104 utilises](MANQUES.md#commandes-cl--60-manquants-sur-104-utilises)
-  - [Instructions / fonctions RPG (reconnues par job-i) : 41 manquants sur 102 utilises](MANQUES.md#instructions--fonctions-rpg-reconnues-par-job-i--41-manquants-sur-102-utilises)
+  - [Instructions / fonctions RPG (reconnues par job-i) : 39 manquants sur 102 utilises](MANQUES.md#instructions--fonctions-rpg-reconnues-par-job-i--39-manquants-sur-102-utilises)
   - [Messages (MONMSG, SQLCODE...) : 60 manquants sur 68 utilises](MANQUES.md#messages-monmsg-sqlcode--60-manquants-sur-68-utilises)
-  - [Services SQL (QSYS2, SYSTOOLS) : 25 manquants sur 28 utilises](MANQUES.md#services-sql-qsys2-systools--25-manquants-sur-28-utilises)
+  - [Services SQL (QSYS2, SYSTOOLS) : 24 manquants sur 28 utilises](MANQUES.md#services-sql-qsys2-systools--24-manquants-sur-28-utilises)
   - [Mots-cles DDS / ecran : 84 manquants sur 102 utilises](MANQUES.md#mots-cles-dds--ecran--84-manquants-sur-102-utilises)
   - [Sources par type et bibliotheque](MANQUES.md#sources-par-type-et-bibliotheque)
 - [Vérification du code contre job-i.fr](VERIFICATION-JOB-I.md) : Commandes et instructions reconnues ou à contrôler (généré).

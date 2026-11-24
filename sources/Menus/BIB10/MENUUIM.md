@@ -18,7 +18,7 @@ modifie: 2026-11-16
 :PNLGRP.
 
 :COPYR.
-© Copyright ARMONIE Limited 2023.
+© Copyright ORGFORM Limited 2023.
 
 :VAR  NAME=ZMENU.
 
@@ -105,7 +105,7 @@ F24=More Keys
       ENTER='MSG CPD9817 QCPFMSG'
       PANELID=ZMENU
       TOPSEP=SPACE.
-ARMONIE : Menu UIM
+ORGFORM : Menu UIM
 
 .*---------------------------------------------------------------------------*
 .* Define menu area                                                          *

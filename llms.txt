@@ -4,6 +4,21 @@
 
 ## Fiches memo
 - [Sommaire general](docs/SOMMAIRE.md): navigation par sujet avec les titres de chaque page
+- [Formation : index des 14 parties](docs/formation/README.md): un fichier par grande partie du plan, sections, sujets, mots-cles
+- [Formation partie 01](docs/formation/01-organisation-ibm-i.md): Organisation IBM i (objets, travaux, impressions, securite, sauvegardes, IPL)
+- [Formation partie 02](docs/formation/02-db2-for-i.md): Db2 for i (PF, LF, contraintes, RCAC, journalisation)
+- [Formation partie 03](docs/formation/03-outils-de-developpement.md): Outils (SEU, PDM, SDA, RLU, RDi, VS Code)
+- [Formation partie 04](docs/formation/04-langage-de-controle-cl.md): Langage CL (DCLF, OVRDBF, boucles, DTAARA, sous-routines)
+- [Formation partie 05](docs/formation/05-sql.md): SQL (SELECT, jointures, DML, DDL, performances, triggers, procedures)
+- [Formation partie 06](docs/formation/06-rpg-iii.md): RPG III (HFELICO, cycle, codes operations, fichiers, sous-fichiers)
+- [Formation partie 07](docs/formation/07-rpg-iv.md): RPG IV (H F D C P, types, BIF, MONITOR, CRTBNDRPG)
+- [Formation partie 08](docs/formation/08-rpg-free.md): RPG full free (CTL-OPT, DCL-*, conversion, LIKEDS, FOR-EACH)
+- [Formation partie 09](docs/formation/09-sql-embarque.md): SQL embarque (EXEC SQL, curseurs, SQLCODE, FETCH, SQL dynamique)
+- [Formation partie 10](docs/formation/10-ile.md): ILE (modules, srvpgm, BNDDIR, signature, groupes d activation, debogage)
+- [Formation partie 11](docs/formation/11-modernisation-et-maintenance.md): Modernisation et maintenance de code existant
+- [Formation partie 12](docs/formation/12-ia-et-assistants.md): IA et assistants (LLM, prompting, RGPD)
+- [Formation partie 13](docs/formation/13-web-services-et-api.md): Web services et API (REST, JSON, XML, IWS, HTTP_GET, DATA-INTO)
+- [Formation partie 14](docs/formation/14-projet-en-immersion.md): Projet en immersion
 - [Index des fiches](docs/cheatsheets/README.md)
 - [Comprendre IBM i](docs/cheatsheets/01-comprendre-ibm-i.md): objets, ILE, travaux, profils, securite, PTF, performances
 - [Reference systeme](docs/cheatsheets/02-reference-systeme.md): commandes CL, messages CPF/MCH, valeurs systeme
@@ -27,6 +42,8 @@
 - [Impression full free](docs/IMPRESSION-RPG.md#partie-1--réécrire-un-état-à-cycle-en-full-free-retour-dexpérience): réécrire un état à cycle, mesures de spool, piège PRTCTL, code CYCLETOTO.rpgle
 - [Cycle vers full free](docs/CYCLE-RPG.md#partie-2--du-cycle-rpg-iii-au-full-free-table-de-correspondance): correspondance L1, LR, 1P, OF, PAGE, spec O vers full free, avec statut validé / proposé / non vérifié
 - [PRTCTL](docs/IMPRESSION-RPG.md#partie-2--prtctl-contrôle-dynamique-dimpression): documenté ou non, constat de terrain
+- [SQL avance](docs/SQL-AVANCE.md): JSON_OBJECT, JSON_ARRAYAGG, QSYS2.IFS_WRITE_UTF8, FETCH multi-lignes (verifie sur ibm.com 7.5)
+- [ILE et services web](docs/ILE-ET-SERVICES-WEB.md): modules NOMAIN, programme de service, source de liage, IWS REST (tutoriels 2015), droits
 - [Test de l'assistant](docs/ASSISTANT-ET-AUTOMATISATION.md#partie-2--tester-que-lassistant-applique-les-règles): prompts de contrôle et grille de réussite
 - [Fiche 07](docs/cheatsheets/07-sql-embarque-en-rpg.md): SQL embarque en RPG, CRTSQLRPGI, RUNSQL, RUNSQLSTM
 - [Fiche 08](docs/cheatsheets/08-impression-et-printer-ibm-i.md): impression, fichier imprimante, spool, OUTQ, CRTPRTF, OVRPRTF, CPYSPLF

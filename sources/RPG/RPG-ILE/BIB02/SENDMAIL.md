@@ -31,7 +31,7 @@ dcl-s NULL char(1) inz(x'00');
 // Le troisième paramètre est l'adresse e-mail à laquelle le mail doit être envoyé
 QP2Shell('/usr/local/zendphp7/bin/php-cli' + NULL :      // Chemin vers l'exécutable PHP
          '/www/zendphp7/htdocs/sylvain_php/mail/sendmail.php' + NULL : // Script PHP à exécuter
-         'saktepe@armonie.group' + NULL);  // Adresse e-mail pour l'envoi
+         'adresse@exemple.invalid' + NULL);  // Adresse e-mail pour l'envoi
 
 
 *inlr = *on;

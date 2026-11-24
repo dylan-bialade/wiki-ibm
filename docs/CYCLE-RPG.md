@@ -1,6 +1,6 @@
 # Cycle RPG III : cours, exemples et passage au full free
 
-> Tout sur le cycle RPG (GAP) : le cours et ses exemples, puis la table de correspondance vers le full free. Voir aussi la [fiche 06](cheatsheets/06-cycle-rpg-et-sous-routines.md) et les [exemples du cycle](CYCLE-GAP-EXEMPLES.md).
+> Tout sur le cycle RPG (GAP) : le cours et ses exemples, puis la table de correspondance vers le full free. Partie 3 : série de 14 programmes progressifs (corrigé). Voir aussi la [fiche 06](cheatsheets/06-cycle-rpg-et-sous-routines.md) et les [exemples du cycle](CYCLE-GAP-EXEMPLES.md).
 
 <!-- TOC:START -->
 **Sommaire** (retour : [sommaire general](SOMMAIRE.md))
@@ -26,6 +26,10 @@
   - [4. Page, date, dépassement](#4-page-date-dépassement)
   - [5. Pièges propres au full free](#5-pièges-propres-au-full-free)
   - [6. Fichier vide](#6-fichier-vide)
+- [Partie 3 : série de 14 programmes progressifs (corrigé, pesées de collecte)](#partie-3--série-de-14-programmes-progressifs-corrigé-pesées-de-collecte)
+  - [Données supposées](#données-supposées)
+  - [Progression](#progression)
+  - [Points de spécification vus dans cette série (constat dans le code)](#points-de-spécification-vus-dans-cette-série-constat-dans-le-code)
 <!-- TOC:END -->
 
 ## Partie 1 : cours du cycle RPG III et exemples
@@ -275,3 +279,45 @@ Source IBM : [Detailed RPG IV Object Program Cycle (7.4)](https://www.ibm.com/su
 - **Fichier primaire vide** : non traité explicitement par la page ; cas le plus proche : étapes 15-16 (fin de fichier dès la première lecture). **Non vérifié** : lignes `1P` imprimées ou non (la page dit seulement que `1P` est éteint à l'étape 8).
 - Avec `CYCLEQSYS` : en-tête, puis `TOTAL UNIVERS` et `TOTAL GENERAL` avec zéros supprimés (analyse du code, non testé).
 - Test à faire : exécuter l'original RPG III et la version full free sur un fichier vide et comparer les spools.
+
+## Partie 3 : série de 14 programmes progressifs (corrigé, pesées de collecte)
+
+> Corrigé fourni par l'utilisateur (source : archive de programmes RPG III sur le cycle), **non compilé ici**. Les noms d'organisme et de site des en-têtes ont été remplacés par des textes fictifs de même longueur (`SYNDICAT DE COLLECTE SUD`, `Pont-bascule de site A1`) ; les positions des constantes sont inchangées. Fichiers : [docs/exemples-cycle/pesees/](exemples-cycle/pesees/). Les fichiers de données (`PESEE`, `TOURNEE`, `SECTEUR`, `BILTRN`, `BASCUL`) ne sont **pas fournis** : leurs zones sont déduites des programmes.
+
+### Données supposées
+
+| Fichier | Zones utilisées (déduites) |
+|---|---|
+| `PESEE` (primaire, clé) | `PSTKT` ticket, `PSTRN` tournée, `PSDAT` date AAAAMMJJ, `PSHEU` heure, `PSCAM` camion, `PSFLX` flux (3 lettres : OMR, EMB, VER, BIO, ENC), `PSBRU` brut, `PSTAR` tare, `PSSEC` secteur, `PSREF` refus en % |
+| `TOURNEE` | `TRNCOD`, `TRNSEC`, `TRNFLX`, `TRNJOU`, `TRNCHF`, `TRNPRV` (tonnage prévu) |
+| `SECTEUR` (clé `PSSEC`) | `SECNOM`, `SECRES`, `SECPOP` (habitants) |
+| `BILTRN` (sortie) | bilan par tournée (`BTMOIS`, `BTTRN`, `BTSEC`, `BTFLX`, `BTNBP`, `BTPRV`, `BTREA`, `BTECA`, `BTCOU`, `BTSTA`) |
+| `BASCUL` (décrit dans le programme, 80 car.) | journal : enregistrements `AA` ouverture, `AB` pesée, `AC` annulation, `AD` clôture |
+
+### Progression
+
+| Programme | Ce qu'il ajoute | Techniques à retenir |
+|---|---|---|
+| [CYC01](exemples-cycle/pesees/CYC01.rpg) | le cycle seul : liste brute des pesées | `IP` primaire externe, `I` avec indicateur d'enregistrement `01`, une ligne `D` |
+| [CYC02](exemples-cycle/pesees/CYC02.rpg) | poids net, date et heure éditées | `H D/J`, `SUB`, découpage de date par `MOVE`/`MOVEL` + `MULT`/`ADD`, **mot d'édition en constante** sur zone numérique (`'0  /  /    '`, `'  :  '`) |
+| [CYC03](exemples-cycle/pesees/CYC03.rpg) | en-tête sur chaque page | `OF`, lignes `H` conditionnées `1P` avec `OR OF`, `UDATE` (code `Y`), `PAGE` (code `Z`) |
+| [CYC04](exemples-cycle/pesees/CYC04.rpg) | pesées en anomalie seulement | **indicateur de zone** en `I` (col. 69-70, tare à zéro/blanc = 21), `COMP` avec indicateur haut, lignes `D` conditionnées par un indicateur résultat (24) |
+| [CYC05](exemples-cycle/pesees/CYC05.rpg) | total général | cumuls en calculs de détail, `CLR` (total `LR`), `DIV` avec arrondi (`H`), lignes `T` `LR` |
+| [CYC06](exemples-cycle/pesees/CYC06.rpg) | sous-total par tournée | zone de contrôle `L1`, code d'édition `3B` (le `B` remet la zone à blanc/zéro après impression) |
+| [CYC07](exemples-cycle/pesees/CYC07.rpg) | secteur / tournée, une page par secteur | `L2` + `L1`, en-têtes `H` sur `L2` (saut de page), indicateur `30` pour n'afficher le code tournée qu'en début de groupe ou de page |
+| [CYC08](exemples-cycle/pesees/CYC08.rpg) | synthèse sans détail | pas de ligne `D`, maximum et date du maximum, moyennes aux ruptures, ligne `T` sur `L1` conditionnée par un indicateur |
+| [CYC09](exemples-cycle/pesees/CYC09.rpg) | coût par pesée | tableaux **à la compilation** (spécification `E`, données après `**`), `LOKUP` avec indicateur, rang `X` (6 = hors référentiel), `MULT`/`DIV` avec arrondi |
+| [CYC10](exemples-cycle/pesees/CYC10.rpg) | récapitulatif par flux en fin de traitement | tableaux cumulés (`NBF`, `TONF`, `COUF`), boucle `DO`/`END` à `LR`, **`EXCPT`** + ligne `E` (étiquette `DETF`) |
+| [CYC11](exemples-cycle/pesees/CYC11.rpg) | synthèse par secteur, accès direct | second fichier `IF` lu par `CHAIN` dans le cycle sur `L1`, valeur par défaut si absent (`MOVEL ... P`), ratio par habitant avec test de division par zéro |
+| [CYC12](exemples-cycle/pesees/CYC12.rpg) | prévu / réalisé | **deux fichiers synchronisés** : `TOURNEE` en `IP`, `PESEE` en `IS`, rapprochement `M1` sur la tournée, `MR`/`NMR`, indicateurs 50-54, écarts en % |
+| [CYC13](exemples-cycle/pesees/CYC13.rpg) | journal du pont-bascule | fichier **décrit dans le programme** (`F`, 80 car.), enregistrements identifiés par position (`AA`..`AD`, codes `CO`/`CP`/`CA`/`CC`), annulation qui porte sur la pesée précédente |
+| [CYC14](exemples-cycle/pesees/CYC14.rpg) | bilan mensuel | tout ensemble : 2 fichiers + `CHAIN`, fichier de sortie `BILTRN` (`WRITE`), lignes `E` + `EXCPT` (`TOT1`, `TOT2`, `TOTG`, `TITF`, `DETF`, `TOTF`), récapitulatif par flux après le total général |
+
+### Points de spécification vus dans cette série (constat dans le code)
+- **Colonnes de la spécification O** : type en 15, espace avant/après en 17-18, saut avant en 19-20 (ex. `H  101   1P` = espace après 1, saut en ligne 01), indicateurs en 23-31, zone en 32-37, code d'édition en 38, `B` en 39, position de fin en 40-43, constante ou mot d'édition en 45-70.
+- **`L` en col. 38** (`ECA1  L   93`, `PCT1  L  102`) : code d'édition appliqué aux écarts qui peuvent être négatifs ; sa définition exacte n'est pas dans le wiki (voir `/mots-edition-rpg` sur job-i).
+- **`F` en col. 16 d'une ligne `E`** (`OQSYSPRT EF 1  TOT1`) : option de dépassement de page sur une ligne d'exception, **non vérifiée** dans le wiki ; à confirmer dans la documentation IBM avant de s'y fier.
+- **Indicateurs** : une zone utilisée comme indicateur (`C  SETOF  50`, `SETON 24`) est remise à zéro au début de chaque groupe (`C L1 SETOF`). Les indicateurs `01`/`02` identifient l'enregistrement lu (CYC12 et CYC14 : `01` tournée, `02` pesée).
+- **Totaux** : les calculs `CL1`, `CL2`, `CLR` s'exécutent avant le détail du groupe suivant ; ils cumulent vers le niveau supérieur (`NBP1` → `NBP2` → `NBPG`).
+- **Pièges** : le corrigé suppose des fichiers triés sur les zones de rupture (`PSSEC`, `PSTRN`) ; la division par le nombre d'habitants (`SECPOP`) est protégée par un test préalable (`COMP 0`, indicateur 91), et un secteur absent du référentiel reçoit des valeurs par défaut (indicateur 90).
+- **Test à faire** : compiler chaque programme avec `CRTRPGPGM` (fichiers de données à créer d'après les zones ci-dessus), puis comparer le spool au résultat attendu de l'énoncé.

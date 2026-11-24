@@ -25,7 +25,7 @@ modifie: 2026-11-16
 // 24/01/2025 | BIB01     | Création TOTO                                   //
 // --------------------------------------------------------------------------//
 
-CTL-OPT COPYRIGHT('(C) ARMONIE 2026.') USRPRF(*USER) OPTIMIZE(*NONE)
+CTL-OPT COPYRIGHT('(C) ORGFORM 2026.') USRPRF(*USER) OPTIMIZE(*NONE)
        DFTACTGRP(*NO) ACTGRP(*CALLER) DATFMT(*ISO) TIMFMT(*ISO)
        ALLOC(*STGMDL) STGMDL(*INHERIT) bnddir('BNDADRIEN');
 
