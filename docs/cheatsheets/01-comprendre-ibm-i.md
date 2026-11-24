@@ -65,6 +65,9 @@
 ## PTF  ([source](https://job-i.fr/installer-ptf-ibm-i))
 - Installer par groupes ; microcode côté B ; jamais `INSTYP(*DLYALL)`.
 - Séquence : `CRTIMGCLG` → `VFYIMGCLG` → `INSPTF ... INSTYP(*IMMDLY)` → `PWRDWNSYS OPTION(*CNTRLD) DELAY(600) RESTART(*YES) IPLSRC(B)` → `APYPTF ... APY(*PERM)` après quelques semaines. SQL : `QSYS2.GROUP_PTF_INFO`.
+- Détail (job-i, 7.5) : état des lieux `QSYS2.GROUP_PTF_INFO` / `SYSTOOLS.GROUP_PTF_CURRENCY` ; commande Fix Central avec `DSPSYSVAL QSRLNBR` et `WRKHDWRSC TYPE(*PRC)` ; dépôt des `.BIN` dans un sous-répertoire IFS ; contrôle `DSPPTF LICPGM(5770999)` (côté B).
+- Unité virtuelle : `CRTDEVOPT DEVD(OPTVRT01) RSRCNAME(*VRT) ONLINE(*YES)` ; catalogue : `CRTIMGCLG ... TYPE(*OPT)`, `ADDIMGCLGE`, `LODIMGCLG ... DEV(OPTVRT01)`, `VFYIMGCLG TYPE(*PTF) SORT(*YES)` ; si groupe HTTP : `ENDSBS SBS(QHTTPSVR) OPTION(*CNTRLD)`.
+- Avant l'IPL : `QSYS2.PTF_INFO` (statut LOADED). Après : `DSPPTF`, `STRTCPSVR`, `STRSBS`. Permanent : `APYPTF LICPGM(*ALL) SELECT(*ALL) APY(*PERM)` puis `DLTIMGCLG`. À éviter : `INSTYP(*DLYALL)`, IPL côté A, `DLTDEVD` sur l'unité 632C auto-créée.
 
 ## Performances  ([source](https://job-i.fr/performances-ibm-i))
 - Mesurer avant de régler : Collection Services, `ACTIVE_JOB_INFO`, `MEMORY_POOL_INFO`, `WRKSYSACT`.
