@@ -12,7 +12,7 @@ modifie: 2026-11-16
 
 ```text
       * PROGRAMME : PSOLDAT
-      * AUTEUR    : Geoffrey GAMBÉE - Notos
+      * AUTEUR    : Geoffrey BIB20 - ORGFORM
       * DATE      : [22/10/2025]
       * VERSION   : 1.0
       * DESCRIPTION :

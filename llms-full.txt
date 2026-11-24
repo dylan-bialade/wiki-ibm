@@ -1,21 +1,22 @@
 # Wiki IBM i : contexte complet pour un assistant
 
-Genere le 2026-11-20 13:53 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Genere le 2026-11-24 09:46 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
 Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
 
-ATTENTION : ce fichier fait environ 200 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
+ATTENTION : ce fichier fait environ 281 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
 Table des matieres (ordre du fichier) :
-- README.md (15 Ko)
-- docs/SOMMAIRE.md (15 Ko)
-- CLAUDE.md (18 Ko)
-- docs/cheatsheets/README.md (2 Ko)
-- docs/cheatsheets/01-comprendre-ibm-i.md (5 Ko)
+- README.md (16 Ko)
+- docs/SOMMAIRE.md (19 Ko)
+- docs/formation/README.md (32 Ko)
+- CLAUDE.md (19 Ko)
+- docs/cheatsheets/README.md (5 Ko)
+- docs/cheatsheets/01-comprendre-ibm-i.md (6 Ko)
 - docs/cheatsheets/02-reference-systeme.md (3 Ko)
 - docs/cheatsheets/03-rpg-par-version.md (10 Ko)
 - docs/cheatsheets/04-db2-for-i-et-sql.md (4 Ko)
 - docs/cheatsheets/05-emploi-et-formation.md (2 Ko)
 - docs/cheatsheets/06-cycle-rpg-et-sous-routines.md (16 Ko)
-- docs/cheatsheets/07-sql-embarque-en-rpg.md (5 Ko)
+- docs/cheatsheets/07-sql-embarque-en-rpg.md (6 Ko)
 - docs/cheatsheets/08-impression-et-printer-ibm-i.md (7 Ko)
 - docs/enonces/README.md (2 Ko)
 - docs/enonces/ANALYSE-ENONCES.md (4 Ko)
@@ -32,6 +33,8 @@ Table des matieres (ordre du fichier) :
 - docs/CYCLE-GAP-EXEMPLES.md (1 Ko)
 - docs/CYCLE-RPG.md (26 Ko)
 - docs/IMPRESSION-RPG.md (18 Ko)
+- docs/SQL-AVANCE.md (8 Ko)
+- docs/ILE-ET-SERVICES-WEB.md (31 Ko)
 - docs/ASSISTANT-ET-AUTOMATISATION.md (16 Ko)
 - contributions/README.md (4 Ko)
 - docs/apports/README.md (1 Ko)
@@ -107,6 +110,7 @@ cd wiki-ibm
 
 | Je cherche… | Fichier / dossier |
 |---|---|
+| Le plan de la formation (un fichier par grande partie, 14 parties) | [docs/formation/README.md](docs/formation/README.md) |
 | Une fiche mémo (commande, syntaxe, concept IBM i) | [docs/cheatsheets/README.md](docs/cheatsheets/README.md) |
 | Concepts : objets, ILE, travaux, profils, sécurité, PTF, performances | [docs/cheatsheets/01-comprendre-ibm-i.md](docs/cheatsheets/01-comprendre-ibm-i.md) |
 | Commandes CL, messages CPF/MCH, valeurs système | [docs/cheatsheets/02-reference-systeme.md](docs/cheatsheets/02-reference-systeme.md) |
@@ -128,6 +132,8 @@ cd wiki-ibm
 | Exemples du cycle RPG (fichier primaire, L1-L9, 1P, OF) | [docs/CYCLE-GAP-EXEMPLES.md](docs/CYCLE-GAP-EXEMPLES.md) |
 | Cours du cycle RPG III (7 étapes, ruptures, spéc. O, rapprochement) + exemples | [docs/CYCLE-RPG.md](docs/CYCLE-RPG.md#partie-1--cours-du-cycle-rpg-iii-et-exemples) |
 | Réécrire un état à cycle en full free (retour d'expérience, spool) | [docs/IMPRESSION-RPG.md](docs/IMPRESSION-RPG.md#partie-1--réécrire-un-état-à-cycle-en-full-free-retour-dexpérience) |
+| SQL avancé : JSON, IFS_WRITE_UTF8, FETCH multi-lignes | [docs/SQL-AVANCE.md](docs/SQL-AVANCE.md) |
+| Architecture ILE (modules, programme de service) et services REST IWS | [docs/ILE-ET-SERVICES-WEB.md](docs/ILE-ET-SERVICES-WEB.md) |
 | Cycle RPG III -> full free : table de correspondance | [docs/CYCLE-RPG.md](docs/CYCLE-RPG.md#partie-2--du-cycle-rpg-iii-au-full-free-table-de-correspondance) |
 | PRTCTL (contrôle d'impression RPG) : ce qui est documenté ou non | [docs/IMPRESSION-RPG.md](docs/IMPRESSION-RPG.md#partie-2--prtctl-contrôle-dynamique-dimpression) |
 | Tester que l'assistant applique les règles du wiki (prompts + grille) | [docs/ASSISTANT-ET-AUTOMATISATION.md](docs/ASSISTANT-ET-AUTOMATISATION.md#partie-2--tester-que-lassistant-applique-les-règles) |
@@ -250,6 +256,26 @@ Installer le wiki, le donner à un assistant, vérifier qu'il applique les règl
   - [7. Interdits](../CLAUDE.md#7-interdits)
   - [8. Remontée automatique au wiki (sans attendre qu'on te le demande)](../CLAUDE.md#8-remontée-automatique-au-wiki-sans-attendre-quon-te-le-demande)
 
+## Formation (plan en 14 parties)
+
+Le dépôt suit le plan de la formation : un fichier Markdown par grande partie.
+
+- [Index de la formation (14 parties)](formation/README.md) : Un fichier par grande partie ; sections et sujets, avec accès par mot-clé.
+- [Partie 01 : Organisation de l'IBM i : objets, travaux, impressions, sécurité, sauvegardes](formation/01-organisation-ibm-i.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 02 : Db2 for i : PF, LF, contraintes, RCAC, journalisation](formation/02-db2-for-i.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 03 : Outils traditionnels (SEU, PDM, SDA...) et modernes (RDi, VS Code)](formation/03-outils-de-developpement.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 04 : Langage de contrôle CL](formation/04-langage-de-controle-cl.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 05 : SQL sur IBM i](formation/05-sql.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 06 : RPG III : spécifications, cycle, codes opérations, fichiers, sous-fichiers](formation/06-rpg-iii.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 07 : RPG IV : spécifications, types, BIF, erreurs](formation/07-rpg-iv.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 08 : RPG full free : syntaxe, conversion, données modernes](formation/08-rpg-free.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 09 : SQL embarqué en RPG](formation/09-sql-embarque.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 10 : ILE : modules, programmes de service, débogage, journalisation](formation/10-ile.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 11 : Modernisation et maintenance de code existant](formation/11-modernisation-et-maintenance.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 12 : IA et assistants de développement](formation/12-ia-et-assistants.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 13 : Web services et API (REST, JSON, XML, IWS)](formation/13-web-services-et-api.md) : Plan détaillé, pages job-i, pistes IBM.
+- [Partie 14 : Projet en immersion](formation/14-projet-en-immersion.md) : Plan détaillé, pages job-i, pistes IBM.
+
 ## Fiches mémo (source : job-i.fr)
 
 Syntaxe, commandes et concepts IBM i, avec une zone « Mes exemples » par fiche.
@@ -264,6 +290,7 @@ Syntaxe, commandes et concepts IBM i, avec une zone « Mes exemples » par fiche
   - [Sécurité  (source)](cheatsheets/01-comprendre-ibm-i.md#sécurité--source)
   - [PTF  (source)](cheatsheets/01-comprendre-ibm-i.md#ptf--source)
   - [Performances  (source)](cheatsheets/01-comprendre-ibm-i.md#performances--source)
+  - [Navigator for i  (source)](cheatsheets/01-comprendre-ibm-i.md#navigator-for-i--source)
   - [Mes exemples](cheatsheets/01-comprendre-ibm-i.md#mes-exemples)
 - [02 Référence système](cheatsheets/02-reference-systeme.md) : Commandes CL, messages CPF/MCH, valeurs système.
   - [Commandes CL  (source) — 1 830 fiches](cheatsheets/02-reference-systeme.md#commandes-cl--source--1-830-fiches)
@@ -325,6 +352,20 @@ Cours du cycle, passage au full free, impression et PRTCTL (sujets regroupés).
 - [Exemples de cycle dans le code des bibliothèques](CYCLE-GAP-EXEMPLES.md) : Sources avec fichier primaire, L1-L9, 1P, OF (généré).
 - [Dossier des exemples (RPG, DDS)](exemples-cycle/) : CYCLEQSYS (validé), CYCLEIMP + CYCLEPRT, CYCLEPRTCTL, CYCLETOTO, SQLIMPRIME (SQL embarqué), RUPT0 à RUPT2, et pesees/ (série CYC01 à CYC14 sur le cycle).
 
+## SQL avancé et services web
+
+JSON, écriture IFS, FETCH multi-lignes, architecture ILE (modules, programme de service) et services REST IWS.
+
+- [SQL avancé : JSON, IFS, SQL embarqué](SQL-AVANCE.md) : JSON_OBJECT, JSON_ARRAYAGG, QSYS2.IFS_WRITE_UTF8, FETCH multi-lignes (vérifié sur ibm.com 7.5).
+  - [Partie 1 : SQL JSON (Db2 for i 7.5)](SQL-AVANCE.md#partie-1--sql-json-db2-for-i-75)
+  - [Partie 2 : écrire dans l'IFS depuis SQL (`QSYS2.IFS_WRITE_UTF8`)](SQL-AVANCE.md#partie-2--écrire-dans-lifs-depuis-sql-qsys2ifs_write_utf8)
+  - [Partie 3 : SQL embarqué en RPG (FETCH multi-lignes et options)](SQL-AVANCE.md#partie-3--sql-embarqué-en-rpg-fetch-multi-lignes-et-options)
+- [Architecture ILE et services REST (IWS)](ILE-ET-SERVICES-WEB.md) : Modules NOMAIN, programme de service, source de liage, IWS REST (tutoriels 2015), droits.
+  - [Partie 1 : modules, programme de service, source de liage](ILE-ET-SERVICES-WEB.md#partie-1--modules-programme-de-service-source-de-liage)
+  - [Partie 2 : services web REST avec Integrated Web Services (IWS)](ILE-ET-SERVICES-WEB.md#partie-2--services-web-rest-avec-integrated-web-services-iws)
+  - [Partie 3 : droits et exploitation d'un service IWS](ILE-ET-SERVICES-WEB.md#partie-3--droits-et-exploitation-dun-service-iws)
+  - [Partie 4 : mémo des commandes système (ILE, IWS, exploitation)](ILE-ET-SERVICES-WEB.md#partie-4--mémo-des-commandes-système-ile-iws-exploitation)
+
 ## Énoncés de TP
 
 Résumés anonymisés d'énoncés et d'examens.
@@ -370,7 +411,7 @@ Ce que le wiki vérifie automatiquement et ce qui lui manque.
   - [Commandes CL : 60 manquants sur 104 utilises](MANQUES.md#commandes-cl--60-manquants-sur-104-utilises)
   - [Instructions / fonctions RPG (reconnues par job-i) : 39 manquants sur 102 utilises](MANQUES.md#instructions--fonctions-rpg-reconnues-par-job-i--39-manquants-sur-102-utilises)
   - [Messages (MONMSG, SQLCODE...) : 60 manquants sur 68 utilises](MANQUES.md#messages-monmsg-sqlcode--60-manquants-sur-68-utilises)
-  - [Services SQL (QSYS2, SYSTOOLS) : 25 manquants sur 28 utilises](MANQUES.md#services-sql-qsys2-systools--25-manquants-sur-28-utilises)
+  - [Services SQL (QSYS2, SYSTOOLS) : 24 manquants sur 28 utilises](MANQUES.md#services-sql-qsys2-systools--24-manquants-sur-28-utilises)
   - [Mots-cles DDS / ecran : 84 manquants sur 102 utilises](MANQUES.md#mots-cles-dds--ecran--84-manquants-sur-102-utilises)
   - [Sources par type et bibliotheque](MANQUES.md#sources-par-type-et-bibliotheque)
 - [Vérification du code contre job-i.fr](VERIFICATION-JOB-I.md) : Commandes et instructions reconnues ou à contrôler (généré).
@@ -387,6 +428,281 @@ Ajouter ses notes et exemples.
 - [Apports personnels](apports/README.md) : Format d'un apport et évaluation automatique.
   - [Format conseillé (un fichier .md par apport)](apports/README.md#format-conseillé-un-fichier-md-par-apport)
   - [Évaluation automatique](apports/README.md#évaluation-automatique)
+
+
+=== FICHIER : docs/formation/README.md ===
+# Plan de la formation IBM i : index en 14 parties
+
+> Le wiki suit l'architecture de la formation : **un fichier Markdown par grande partie** (ci-dessous). Chaque partie contient, dans l'ordre : où trouver quoi dans le wiki, rubriques des pages job-i de référence, pistes IBM, puis le plan détaillé (sections ###, sujets ####) avec les pages job-i qui les couvrent. Les sujets sans page job-i sont signalés pour être documentés. Retour au [sommaire général](../SOMMAIRE.md).
+
+
+## Les 14 parties
+
+| # | Partie | Contenu | Sujets (avec page job-i / total) |
+|---|---|---|---|
+| 01 | [Principes généraux et organisation de l'IBM i](01-organisation-ibm-i.md) | Objets et bibliothèques, commandes et aide, messages, travaux et sous-systèmes, impressions, profils et sécurité, unités et incidents, sauvegardes et IPL. | 21 / 21 |
+| 02 | [Architecture et concepts de DB2 for i](02-db2-for-i.md) | Base de données intégrée, DDS contre SQL, fichiers physiques et logiques, vues, contraintes, sécurité par ligne et colonne, journalisation. | 8 / 9 |
+| 03 | [Outils de développement : traditionnels et modernes](03-outils-de-developpement.md) | QRY, QMQRY, SEU, PDM, SDA, RLU, PNLGRP, DFU, écrans et états (DSPF, PRTF), puis RDi, VS Code et Code for IBM i. | 3 / 5 |
+| 04 | [Le langage de contrôle (CL)](04-langage-de-controle-cl.md) | Fondements du CL, fichiers et OVRDBF, structure d'un programme, boucles et conditions, chaînes, appels et paramètres, zones de données, sous-routines. | 10 / 10 |
+| 05 | [Le langage SQL sur IBM i](05-sql.md) | Présentation et interfaces SQL, interrogation (jointures, unions, sous-requêtes), manipulation, définition, performances, objets programmables (triggers, procédures, fonctions). | 8 / 11 |
+| 06 | [RPG III (RPG/400)](06-rpg-iii.md) | Historique, format colonné HFELICO, cycle RPG, codes opérations historiques, accès aux fichiers, sous-fichiers, maintenance du code existant. | 27 / 27 |
+| 07 | [RPG IV (ILE RPG, format fixe étendu)](07-rpg-iv.md) | Du RPG III au RPG IV, spécifications H, F, D, C, P, types et structures de données, expressions et structures de contrôle, fonctions intégrées, gestion des erreurs, compilation. | 23 / 25 |
+| 08 | [RPG full free](08-rpg-free.md) | Syntaxe full free, conversion depuis le format fixe, structures de données modernes, tableaux dynamiques, BIF récentes, FOR-EACH. | 11 / 12 |
+| 09 | [SQL embarqué en RPG](09-sql-embarque.md) | EXEC SQL, SQLRPGLE, variables hôtes, SQLCODE et SQLSTATE, curseurs, mises à jour positionnées et ensemblistes, SQL dynamique, accès natif contre SQL. | 1 / 9 |
+| 10 | [ILE : modules, programmes de service, tests et journalisation](10-ile.md) | OPM contre ILE, groupes d'activation, procédures et prototypes, modules et programmes de service, liage, signatures, conception modulaire, débogage, journalisation. | 21 / 23 |
+| 11 | [Modernisation d'application et maintenance de code existant](11-modernisation-et-maintenance.md) | Limites du code historique, conversion vers le full free, décomposition en modules, standards modernes, nouvelle application (écrans, sous-fichiers, CRUD), mises en situation de maintenance. | 4 / 17 |
+| 12 | [Intelligence artificielle et assistants de développement](12-ia-et-assistants.md) | Concepts de l'IA, LLM et tokens, prompting, modes d'utilisation, assistant BOB, cadre d'usage (confidentialité, RGPD), mise en situation IBM i. | 0 / 10 |
+| 13 | [Web services et API (REST, SOAP, JSON, XML, IWS)](13-web-services-et-api.md) | Généralités API, formats XML et JSON, consommer des API en SQL et RPG, créer un web service avec IWS, gérer des fichiers XML et JSON dans l'IFS. | 3 / 20 |
+| 14 | [Projet en immersion](14-projet-en-immersion.md) | Projet intégrant IBM i, DB2, CL, SQL, RPG, IA, PHL Web et Web Services. | 0 / 1 |
+
+## Sections de chaque partie (accès direct)
+
+### Partie 01 : Principes généraux et organisation de l'IBM i
+
+- [Architecture et organisation du système](01-organisation-ibm-i.md#architecture-et-organisation-du-système) : Les objets (*FILE, *PGM, *JOB, *USRPRF, etc.) et les bibliothèques ; Les commandes, organisation, recherche, aide F1 / F10 ; Les commandes essentielles (WRKOBJ, WRKJOB, WRKSPLF, DSPSYSVAL)
+- [Les messages](01-organisation-ibm-i.md#les-messages) : Principes généraux ; Les files d'attente de messages
+- [La gestion des travaux](01-organisation-ibm-i.md#la-gestion-des-travaux) : Travaux interactifs et travaux batchs ; Travaux à démarrage automatique et à démarrages anticipés ; Les sous-systèmes ; Les files d'attente de travaux et les descriptions de travail ; La liste de bibliothèques
+- [La gestion des impressions](01-organisation-ibm-i.md#la-gestion-des-impressions) : Les files d'attente de sortie ; La gestion des imprimantes
+- [Les profils utilisateurs, la sécurité et les droits](01-organisation-ibm-i.md#les-profils-utilisateurs-la-sécurité-et-les-droits) : Les profils utilisateurs, création et maintenance ; La sécurité IBM i et les droits sur les objets ; Les droits sur l'IFS
+- [La gestion des unités et des incidents](01-organisation-ibm-i.md#la-gestion-des-unités-et-des-incidents) : La gestion des unités (écrans, imprimantes, lecteurs de bandes) ; Les méthodes d'analyse d'incident ; Le log système et le log de l'opérateur système
+- [Les sauvegardes, les restaurations et l'IPL](01-organisation-ibm-i.md#les-sauvegardes-les-restaurations-et-lipl) : Principes généraux des sauvegardes et restaurations ; Les supports ; Le principe de l'IPL
+
+### Partie 02 : Architecture et concepts de DB2 for i
+
+- [Architecture et concepts de DB2 for i](02-db2-for-i.md#architecture-et-concepts-de-db2-for-i) : Les concepts de la base de données intégrée ; Différences entre la version « historique » DDS et SQL
+- [Les objets de données](02-db2-for-i.md#les-objets-de-données) : Les PF (tables) ; Les LF (index, vues) ; Les vues DDS et les vues SQL
+- [Les contraintes et l'intégrité](02-db2-for-i.md#les-contraintes-et-lintégrité) : Clés primaires et clés étrangères ; Contraintes unique et check
+- [Sécurité et journalisation](02-db2-for-i.md#sécurité-et-journalisation) : Les RCAC, sécurité sur les lignes et les colonnes ; La journalisation des tables
+
+### Partie 03 : Outils de développement : traditionnels et modernes
+
+- [Les outils traditionnels](03-outils-de-developpement.md#les-outils-traditionnels) : QRY, QMQRY, SEU, PDM ; SDA, RLU, PNLGRP, DFU ; Les écrans et les fichiers d'impression (DSPF et PRTF)
+- [Le développement moderne](03-outils-de-developpement.md#le-développement-moderne) : RDi ; VS Code et Code for IBM i
+
+### Partie 04 : Le langage de contrôle (CL)
+
+- [Les fondements du langage de contrôle](04-langage-de-controle-cl.md#les-fondements-du-langage-de-contrôle) : Le langage et le DCLPROPT ; L'utilisation des fichiers (base de données, écrans) ; Les OVRDBF
+- [Structurer un programme CL](04-langage-de-controle-cl.md#structurer-un-programme-cl) : Boucles et conditions ; Conditionnement d'invites ; Gestion des chaînes de caractères, switchs et indicateurs
+- [Appels, données et sous-routines](04-langage-de-controle-cl.md#appels-données-et-sous-routines) : Appels de programmes et passage de paramètres ; Récupération d'informations externes du système ; Les zones de données (DTAARA) ; Les sous-routines
+
+### Partie 05 : Le langage SQL sur IBM i
+
+- [Introduction](05-sql.md#introduction) : Présentation du langage SQL ; Les interfaces SQL sur l'IBM i
+- [Le langage et l'interrogation des données](05-sql.md#le-langage-et-linterrogation-des-données) : Les bases du langage ; Union et jointures ; Sous-requêtes
+- [La manipulation des données](05-sql.md#la-manipulation-des-données) : Insertion, mises à jour, modifications
+- [La définition des objets](05-sql.md#la-définition-des-objets) : Création et modification des objets
+- [Les performances](05-sql.md#les-performances) : Analyse et optimisation des requêtes
+- [Les objets programmables](05-sql.md#les-objets-programmables) : Les triggers ; Les procédures stockées ; Les fonctions
+
+### Partie 06 : RPG III (RPG/400)
+
+- [Historique et positionnement du RPG](06-rpg-iii.md#historique-et-positionnement-du-rpg) : Du RPG au RPG II puis au RPG III ; Le format colonné et les règles de saisie ; Les outils historiques, SEU et PDM
+- [Les spécifications](06-rpg-iii.md#les-spécifications) : Les spécifications de contrôle et de fichiers, H et F ; Les spécifications d'extension et d'entrée, E et I ; Les spécifications de calcul et de sortie, C et O ; Fichiers décrits en externe et décrits en programme
+- [Le cycle RPG](06-rpg-iii.md#le-cycle-rpg) : Le déroulement automatique du cycle ; Les indicateurs, LR, MR, indicateurs de niveau et de conditionnement ; Les ruptures de contrôle
+- [Les codes opérations historiques](06-rpg-iii.md#les-codes-opérations-historiques) : MOVE, MOVEL, Z-ADD, ADD, SUB, MULT, DIV ; COMP, CABxx, GOTO et TAG ; SCAN, SUBST, CAT, LOOKUP, XFOOT ; Les sous-routines, BEGSR, ENDSR, EXSR ; Les zones de données et les appels CALL / PARM
+- [L'accès aux fichiers](06-rpg-iii.md#laccès-aux-fichiers) : CHAIN, SETLL, SETGT, READ, READE, READP ; WRITE, UPDAT, DELET ; Les fichiers d'impression
+- [Les sous-fichiers](06-rpg-iii.md#les-sous-fichiers) : Le DDS d'un sous-fichier, SFL et SFLCTL ; Les mots-clés de contrôle, SFLDSP, SFLDSPCTL, SFLCLR, SFLEND ; Les sous-fichiers statiques, chargement complet ; Les sous-fichiers dynamiques avec rechargement de pages ; Le sous-fichier message ; Un CRUD complet avec navigation et validations
+- [Maintenance du code existant](06-rpg-iii.md#maintenance-du-code-existant) : Lecture et analyse d'un programme ancien ; Compilation et traitement des erreurs ; Modification sans régression
+
+### Partie 07 : RPG IV (ILE RPG, format fixe étendu)
+
+- [Du RPG III au RPG IV](07-rpg-iv.md#du-rpg-iii-au-rpg-iv) : Les apports du RPG IV ; La conversion CVTRPGSRC et ses limites ; Le format fixe étendu et la lisibilité du source
+- [Les spécifications du RPG IV](07-rpg-iv.md#les-spécifications-du-rpg-iv) : La spécification de contrôle H et ses mots-clés ; La spécification F et les mots-clés de fichiers ; La spécification D, déclaration des données ; Les spécifications C et P
+- [Les types et structures de données](07-rpg-iv.md#les-types-et-structures-de-données) : Types numériques, alphanumériques et varying ; Dates, heures et horodatages ; Structures de données et sous-zones ; Tableaux et tables ; Constantes nommées
+- [Expressions et structures de contrôle](07-rpg-iv.md#expressions-et-structures-de-contrôle) : EVAL, EVALR et les opérateurs ; IF, DOW, DOU, FOR, SELECT ; La réduction progressive des indicateurs
+- [Les fonctions intégrées](07-rpg-iv.md#les-fonctions-intégrées) : %TRIM, %SUBST, %SCAN, %REPLACE ; %CHAR, %DEC, %INT, %EDITC ; %FOUND, %EOF, %ERROR, %OPEN ; Les BIF de date, %DATE, %DIFF, %DAYS
+- [La gestion des erreurs](07-rpg-iv.md#la-gestion-des-erreurs) : MONITOR, ON-ERROR, ENDMON ; L'extension E et %ERROR / %STATUS ; Les routines d'erreur
+- [Compilation et mise au point](07-rpg-iv.md#compilation-et-mise-au-point) : CRTBNDRPG et CRTRPGMOD ; STRDBG, points d'arrêt et variables surveillées ; Lecture des erreurs de compilation
+
+### Partie 08 : RPG full free
+
+- [La syntaxe full free](08-rpg-free.md#la-syntaxe-full-free) : CTL-OPT et les options de contrôle ; DCL-F, DCL-S, DCL-C et DCL-DS ; DCL-PR, DCL-PI et DCL-PROC ; Les structures de contrôle en free ; Les règles de formatage et de lisibilité
+- [La conversion vers le full free](08-rpg-free.md#la-conversion-vers-le-full-free) : CVTRPGFREE et ses limites ; Le traitement des opcodes historiques restants ; La suppression des GOTO et des indicateurs
+- [Les données et les fonctions modernes](08-rpg-free.md#les-données-et-les-fonctions-modernes) : Les structures de données qualifiées, LIKEDS, LIKEREC, TEMPLATE ; Les tableaux DIM(*AUTO) et DIM(*CTDATA) ; Les BIF récentes, %SPLIT, %CONCAT, %LOOKUP, %MAXARR ; FOR-EACH et les listes
+
+### Partie 09 : SQL embarqué en RPG
+
+- [Le SQL embarqué](09-sql-embarque.md#le-sql-embarqué) : La syntaxe EXEC SQL et la compilation SQLRPGLE ; Les variables hôtes et les structures d'accueil ; SQLCODE, SQLSTATE et la gestion des diagnostics ; Les curseurs, DECLARE, OPEN, FETCH, CLOSE ; Les mises à jour positionnées et ensemblistes ; Le SQL dynamique, PREPARE et EXECUTE
+- [De l'accès natif à l'accès SQL](09-sql-embarque.md#de-laccès-natif-à-laccès-sql) : Comparaison accès natif et accès SQL ; Les cas où le SQL est plus performant ; Les bonnes pratiques d'écriture
+
+### Partie 10 : ILE : modules, programmes de service, tests et journalisation
+
+- [Les principes de l'ILE](10-ile.md#les-principes-de-lile) : OPM et ILE, ce qui change ; Les groupes d'activation et leur portée ; La pile d'appels et la durée de vie des ressources
+- [Procédures et prototypes](10-ile.md#procédures-et-prototypes) : La déclaration d'une procédure, DCL-PROC ; Prototypes et interfaces de procédure ; Le passage de paramètres, valeur, référence, CONST, OPTIONS ; Les procédures retournant une valeur ; Portée des variables, locales et globales
+- [Modules et programmes de service](10-ile.md#modules-et-programmes-de-service) : La compilation en module, CRTRPGMOD ; Le liage par copie, CRTPGM ; Les programmes de service, CRTSRVPGM ; Les modules NOMAIN et les sources /COPY ; Les répertoires de liage (BNDDIR) ; Signature, fichier de liage et gestion des versions
+- [Conception modulaire](10-ile.md#conception-modulaire) : Découpage fonctionnel d'une application ; Réutilisation et bibliothèques de procédures ; Centralisation des erreurs et des logs
+- [Tests, débogage et dumps](10-ile.md#tests-débogage-et-dumps) : STRISDB et STRDBG, breakpoints et watch variables ; Le débogage d'un programme de service, service entry point ; Lecture et interprétation d'un dump ; Stratégie de tests unitaires et fonctionnels
+- [La journalisation](10-ile.md#la-journalisation) : Journaux et récepteurs ; Analyse de l'activité via DSPJRN
+
+### Partie 11 : Modernisation d'application et maintenance de code existant
+
+- [Les principes de la modernisation d'application](11-modernisation-et-maintenance.md#les-principes-de-la-modernisation-dapplication) : Les limites du code historique et les enjeux de la modernisation ; La conversion vers RPG Free ; La décomposition d'un monolithe en modules et programmes de service ; Les standards modernes, SQL, erreurs centralisées, logs, constantes globales, validations ; Les outils modernes, RDi, VS Code, Git, JSON_TABLE, webservices REST
+- [Développer une nouvelle application](11-modernisation-et-maintenance.md#développer-une-nouvelle-application) : L'architecture d'une application IBM i (PF/LF, DSPF, RPG Free, SQL, ILE) ; La séparation des traitements métier et du visuel ; Le SQL embarqué dans une application moderne
+- [Les écrans standards](11-modernisation-et-maintenance.md#les-écrans-standards) : Menu, écrans de saisie, de consultation et d'erreur ; Validation des données et messages de contrôle
+- [Les sous-fichiers](11-modernisation-et-maintenance.md#les-sous-fichiers) : Les sous-fichiers statiques et dynamiques ; L'intégration d'un CRUD complet en RPG et SQL
+- [Mises en situation réelles de maintenance de code](11-modernisation-et-maintenance.md#mises-en-situation-réelles-de-maintenance-de-code) : Lecture et analyse d'un programme RPG ancienne génération ; Diagnostic de bug (SQL, logique métier, DSPF, data-area, journaux) ; Débogage, STRDBG et service entry point ; Modification d'un code existant sans dégrader la production ; Dette technique et élaboration de correctifs testés et documentés
+
+### Partie 12 : Intelligence artificielle et assistants de développement
+
+- [Les concepts fondamentaux](12-ia-et-assistants.md#les-concepts-fondamentaux) : Qu'est-ce que l'IA, les trois ères ; Les LLM, les tokens et les limites de contexte ; Glossaire essentiel, hallucination, température, prompt engineering, fine-tuning, RAG
+- [Le prompting](12-ia-et-assistants.md#le-prompting) : Les règles du prompting efficace ; Construction d'un prompt complet
+- [Les modes d'utilisation](12-ia-et-assistants.md#les-modes-dutilisation) : Discussions, Projets, Agents, Workflows ; L'utilisation de l'assistant BOB
+- [Cadre d'usage et responsabilité](12-ia-et-assistants.md#cadre-dusage-et-responsabilité) : Confidentialité, RGPD, anonymisation des prompts ; Limitations de l'IA, éthique et responsabilité, débat
+- [Mise en situation](12-ia-et-assistants.md#mise-en-situation) : Mise en situation sur un cas IBM i
+
+### Partie 13 : Web services et API (REST, SOAP, JSON, XML, IWS)
+
+- [Introduction et généralités sur les Web Services / API](13-web-services-et-api.md#introduction-et-généralités-sur-les-web-services--api) : API, REST, SOAP, URI, endpoints, stateless ; Web Services simples, RESTful, SOAP, HTTP / HTTPS ; Les méthodes HTTP (GET, POST, PUT, DELETE) ; Les en-têtes HTTP
+- [Les formats d'échanges XML et JSON](13-web-services-et-api.md#les-formats-déchanges-xml-et-json) : Le XML, hiérarchie, attributs, namespaces ; Le JSON, objets, tableaux, types ; Les utilitaires
+- [Consommer des API en SQL et en RPGLE](13-web-services-et-api.md#consommer-des-api-en-sql-et-en-rpgle) : En SQL, QSYS2.HTTP_GET / HTTP_POST / HTTP_PUT / HTTP_DELETE ; Extraction des données via JSON_TABLE et XMLTABLE ; En RPGLE, HTTPAPI, utilitaires QHTTPSVR, sockets
+- [IWS, créer un web service en RPGLE / SQLRPGLE et le déployer](13-web-services-et-api.md#iws-créer-un-web-service-en-rpgle--sqlrpgle-et-le-déployer) : Architecture et composants d'IWS ; Conception d'un Web Service RPGLE / SQLRPGLE et création d'un endpoint REST ; Structuration des données de sortie (JSON / XML) ; Gestion des erreurs, des logs et des codes HTTP ; Déploiement, démarrage et test via navigateur, Postman ou ACS ; Sécurité, endpoints et documentation automatique (WSDL / OpenAPI)
+- [Gérer des fichiers en XML et JSON](13-web-services-et-api.md#gérer-des-fichiers-en-xml-et-json) : Lire, écrire et modifier des fichiers dans l'IFS ; DATA-INTO pour lire JSON / XML en RPG Free ; Sérialisation de structures RPG en JSON ; Base64, UTF-8, CCSID et flux binaires
+
+### Partie 14 : Projet en immersion
+
+- [Projet](14-projet-en-immersion.md#projet) : Réalisation d'un projet en immersion, intégrant l'ensemble des notions vues durant les semaines précédentes (IBM i, DB2, CL, SQL, RPG, IA, PHL Web, Web Services)
+
+## Recherche par mot-clé
+
+| Partie | Mots-clés |
+|---|---|
+| [01](01-organisation-ibm-i.md) | objet, bibliothèque, *FILE, *PGM, *JOB, *USRPRF, WRKOBJ, WRKJOB, WRKSPLF, DSPSYSVAL, MSGQ, sous-système, JOBQ, JOBD, OUTQ, profil utilisateur, droits, IFS, QSYSOPR, SAVLIB, IPL |
+| [02](02-db2-for-i.md) | Db2 for i, PF, LF, DDS, SQL, table, index, vue, clé primaire, clé étrangère, contrainte, RCAC, journal, QSYS2 |
+| [03](03-outils-de-developpement.md) | QRY, QMQRY, SEU, PDM, SDA, RLU, PNLGRP, DFU, DSPF, PRTF, RDi, VS Code, Code for IBM i |
+| [04](04-langage-de-controle-cl.md) | CL, CLP, CLLE, DCLPROPT, DCLF, OVRDBF, IF, DOWHILE, GOTO, CHGVAR, CALL, DTAARA, SUBR |
+| [05](05-sql.md) | SQL, SELECT, JOIN, UNION, sous-requête, INSERT, UPDATE, DELETE, CREATE TABLE, ALTER, index, plan d'exécution, trigger, procédure stockée, fonction, QSYS2, services SQL, RUNSQLSTM, STRSQL, ACS |
+| [06](06-rpg-iii.md) | RPG III, RPG/400, HFELICO, cycle, IP, LR, L1, MR, MOVE, MOVEL, Z-ADD, CHAIN, SETLL, READ, WRITE, UPDAT, DELET, EXCPT, BEGSR, SFL, SFLCTL, SEU, PDM |
+| [07](07-rpg-iv.md) | RPG IV, ILE RPG, CVTRPGSRC, H, F, D, C, P, EVAL, IF, DOW, FOR, SELECT, %TRIM, %SUBST, %SCAN, MONITOR, CRTBNDRPG, CRTRPGMOD, STRDBG |
+| [08](08-rpg-free.md) | **FREE, CTL-OPT, DCL-F, DCL-S, DCL-C, DCL-DS, DCL-PR, DCL-PI, DCL-PROC, LIKEDS, LIKEREC, TEMPLATE, DIM(*AUTO), %SPLIT, %CONCAT, %LOOKUP, FOR-EACH, CVTRPGFREE |
+| [09](09-sql-embarque.md) | EXEC SQL, SQLRPGLE, CRTSQLRPGI, variable hôte, SQLCODE, SQLSTATE, GET DIAGNOSTICS, DECLARE CURSOR, OPEN, FETCH, CLOSE, PREPARE, EXECUTE, FOR n ROWS |
+| [10](10-ile.md) | ILE, OPM, groupe d'activation, DCL-PROC, DCL-PR, DCL-PI, CONST, OPTIONS, CRTRPGMOD, CRTPGM, CRTSRVPGM, BNDDIR, NOMAIN, /COPY, signature, STRDBG, STRISDB, dump, journal, DSPJRN |
+| [11](11-modernisation-et-maintenance.md) | modernisation, dette technique, full free, modules, programmes de service, RDi, VS Code, Git, JSON_TABLE, REST, DSPF, sous-fichier, CRUD, STRDBG, correctif |
+| [12](12-ia-et-assistants.md) | IA, LLM, token, contexte, hallucination, température, prompt engineering, fine-tuning, RAG, agents, workflows, BOB, RGPD, anonymisation |
+| [13](13-web-services-et-api.md) | API, REST, SOAP, URI, endpoint, GET, POST, PUT, DELETE, en-têtes HTTP, JSON, XML, HTTP_GET, JSON_TABLE, XMLTABLE, HTTPAPI, IWS, DATA-INTO, IFS, Base64, CCSID, UTF-8 |
+| [14](14-projet-en-immersion.md) | projet, immersion, IBM i, DB2, CL, SQL, RPG, IA, web services |
+
+## Sujets sans page job-i dédiée (0 sujets, dont 0 sans page wiki liée)
+
+Ces sujets du plan n'ont pas de page job-i trouvée par la recherche du 2026-11-23 : la source est à chercher sur ibm.com (voir les « Pistes IBM » de chaque partie). La colonne « Page wiki liée » indique si le dépôt contient déjà du contenu pour la section concernée.
+
+## Sujets sans page job-i dédiée (60 sujets, dont 54 sans page wiki liée)
+
+Ces sujets du plan n'ont pas de page job-i trouvée par la recherche du 2026-11-23 : la source est à chercher sur ibm.com (voir les « Pistes IBM » de chaque partie). La colonne « Page wiki liée » indique si le dépôt contient déjà du contenu pour le sujet.
+
+### Partie 02 : Architecture et concepts de DB2 for i
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| Sécurité et journalisation | Les RCAC, sécurité sur les lignes et les colonnes | non : à documenter |
+
+### Partie 03 : Outils de développement : traditionnels et modernes
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| Le développement moderne | RDi | non : à documenter |
+| Le développement moderne | VS Code et Code for IBM i | non : à documenter |
+
+### Partie 05 : Le langage SQL sur IBM i
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| La définition des objets | Création et modification des objets | non : à documenter |
+| Les objets programmables | Les procédures stockées | non : à documenter |
+| Les objets programmables | Les fonctions | non : à documenter |
+
+### Partie 07 : RPG IV (ILE RPG, format fixe étendu)
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| Les types et structures de données | Dates, heures et horodatages | non : à documenter |
+| Expressions et structures de contrôle | La réduction progressive des indicateurs | non : à documenter |
+
+### Partie 08 : RPG full free
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| La conversion vers le full free | CVTRPGFREE et ses limites | non : à documenter |
+
+### Partie 09 : SQL embarqué en RPG
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| Le SQL embarqué | Les variables hôtes et les structures d'accueil | non : à documenter |
+| Le SQL embarqué | SQLCODE, SQLSTATE et la gestion des diagnostics | oui |
+| Le SQL embarqué | Les curseurs, DECLARE, OPEN, FETCH, CLOSE | oui |
+| Le SQL embarqué | Les mises à jour positionnées et ensemblistes | non : à documenter |
+| Le SQL embarqué | Le SQL dynamique, PREPARE et EXECUTE | non : à documenter |
+| De l'accès natif à l'accès SQL | Comparaison accès natif et accès SQL | non : à documenter |
+| De l'accès natif à l'accès SQL | Les cas où le SQL est plus performant | non : à documenter |
+| De l'accès natif à l'accès SQL | Les bonnes pratiques d'écriture | non : à documenter |
+
+### Partie 10 : ILE : modules, programmes de service, tests et journalisation
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| Tests, débogage et dumps | Le débogage d'un programme de service, service entry point | non : à documenter |
+| Tests, débogage et dumps | Stratégie de tests unitaires et fonctionnels | non : à documenter |
+
+### Partie 11 : Modernisation d'application et maintenance de code existant
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| Les principes de la modernisation d'application | Les limites du code historique et les enjeux de la modernisation | non : à documenter |
+| Les principes de la modernisation d'application | La conversion vers RPG Free | non : à documenter |
+| Les principes de la modernisation d'application | Les standards modernes, SQL, erreurs centralisées, logs, constantes globales, validations | non : à documenter |
+| Les principes de la modernisation d'application | Les outils modernes, RDi, VS Code, Git, JSON_TABLE, webservices REST | non : à documenter |
+| Développer une nouvelle application | L'architecture d'une application IBM i (PF/LF, DSPF, RPG Free, SQL, ILE) | non : à documenter |
+| Développer une nouvelle application | La séparation des traitements métier et du visuel | non : à documenter |
+| Développer une nouvelle application | Le SQL embarqué dans une application moderne | non : à documenter |
+| Les écrans standards | Validation des données et messages de contrôle | non : à documenter |
+| Les sous-fichiers | Les sous-fichiers statiques et dynamiques | non : à documenter |
+| Les sous-fichiers | L'intégration d'un CRUD complet en RPG et SQL | non : à documenter |
+| Mises en situation réelles de maintenance de code | Lecture et analyse d'un programme RPG ancienne génération | non : à documenter |
+| Mises en situation réelles de maintenance de code | Modification d'un code existant sans dégrader la production | non : à documenter |
+| Mises en situation réelles de maintenance de code | Dette technique et élaboration de correctifs testés et documentés | non : à documenter |
+
+### Partie 12 : Intelligence artificielle et assistants de développement
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| Les concepts fondamentaux | Qu'est-ce que l'IA, les trois ères | non : à documenter |
+| Les concepts fondamentaux | Les LLM, les tokens et les limites de contexte | non : à documenter |
+| Les concepts fondamentaux | Glossaire essentiel, hallucination, température, prompt engineering, fine-tuning, RAG | non : à documenter |
+| Le prompting | Les règles du prompting efficace | non : à documenter |
+| Le prompting | Construction d'un prompt complet | non : à documenter |
+| Les modes d'utilisation | Discussions, Projets, Agents, Workflows | non : à documenter |
+| Les modes d'utilisation | L'utilisation de l'assistant BOB | non : à documenter |
+| Cadre d'usage et responsabilité | Confidentialité, RGPD, anonymisation des prompts | non : à documenter |
+| Cadre d'usage et responsabilité | Limitations de l'IA, éthique et responsabilité, débat | non : à documenter |
+| Mise en situation | Mise en situation sur un cas IBM i | non : à documenter |
+
+### Partie 13 : Web services et API (REST, SOAP, JSON, XML, IWS)
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| Introduction et généralités sur les Web Services / API | API, REST, SOAP, URI, endpoints, stateless | non : à documenter |
+| Introduction et généralités sur les Web Services / API | Web Services simples, RESTful, SOAP, HTTP / HTTPS | non : à documenter |
+| Introduction et généralités sur les Web Services / API | Les méthodes HTTP (GET, POST, PUT, DELETE) | oui |
+| Introduction et généralités sur les Web Services / API | Les en-têtes HTTP | oui |
+| Les formats d'échanges XML et JSON | Le XML, hiérarchie, attributs, namespaces | non : à documenter |
+| Les formats d'échanges XML et JSON | Le JSON, objets, tableaux, types | non : à documenter |
+| Les formats d'échanges XML et JSON | Les utilitaires | oui |
+| Consommer des API en SQL et en RPGLE | En SQL, QSYS2.HTTP_GET / HTTP_POST / HTTP_PUT / HTTP_DELETE | non : à documenter |
+| Consommer des API en SQL et en RPGLE | Extraction des données via JSON_TABLE et XMLTABLE | non : à documenter |
+| Consommer des API en SQL et en RPGLE | En RPGLE, HTTPAPI, utilitaires QHTTPSVR, sockets | non : à documenter |
+| IWS, créer un web service en RPGLE / SQLRPGLE et le déployer | Conception d'un Web Service RPGLE / SQLRPGLE et création d'un endpoint REST | non : à documenter |
+| IWS, créer un web service en RPGLE / SQLRPGLE et le déployer | Structuration des données de sortie (JSON / XML) | non : à documenter |
+| IWS, créer un web service en RPGLE / SQLRPGLE et le déployer | Gestion des erreurs, des logs et des codes HTTP | oui |
+| IWS, créer un web service en RPGLE / SQLRPGLE et le déployer | Sécurité, endpoints et documentation automatique (WSDL / OpenAPI) | non : à documenter |
+| Gérer des fichiers en XML et JSON | DATA-INTO pour lire JSON / XML en RPG Free | non : à documenter |
+| Gérer des fichiers en XML et JSON | Sérialisation de structures RPG en JSON | non : à documenter |
+| Gérer des fichiers en XML et JSON | Base64, UTF-8, CCSID et flux binaires | non : à documenter |
+
+### Partie 14 : Projet en immersion
+
+| Section | Sujet | Page wiki liée |
+|---|---|---|
+| Projet | Réalisation d'un projet en immersion, intégrant l'ensemble des notions vues durant les semaines précédentes (IBM i, DB2, CL, SQL, RPG, IA, PHL Web, Web Services) | non : à documenter |
 
 
 === FICHIER : CLAUDE.md ===
@@ -422,6 +738,7 @@ Tu es l'**assistant de développement IBM i** de l'utilisateur, au quotidien : t
 5. **Si job-i.fr n'a pas l'information, cherche sur ibm.com** (documentation officielle, IBM Documentation : `https://www.ibm.com/docs/fr/i/7.5.0?topic=...`, référence ILE RPG, DDS, CL, SQL ; recherche web restreinte à ibm.com ou `site:ibm.com` en dernier recours). Cite l'URL et la **version** d'IBM i (7.5 / 7.6). Une page IBM lue partiellement ou résumée par un outil compte comme **non vérifiée** tant que le tableau ou le passage exact n'a pas été lu en entier (demande à l'utilisateur de coller la page si l'accès échoue). Forums et blogs (IBM Ideas, midrange.com, Stack Overflow) = source **non officielle**, à signaler comme telle et à ne jamais présenter comme acquise. Ordre de recherche : wiki, job-i.fr, ibm.com, puis (non officiel) communauté.
 6. **Si tu ne peux pas vérifier** (pas d'accès à job-i.fr, lecture impossible), dis-le au début de la réponse et réduis le code livré au strict nécessaire.
 ## 1. Où lire (dans cet ordre)
+0 bis. **Le plan de la formation** : `docs/formation/README.md` (14 fichiers, un par grande partie : organisation IBM i, Db2, outils, CL, SQL, RPG III, RPG IV, full free, SQL embarqué, ILE, modernisation, IA, web services, projet). **Pour une question de cours, ouvre d'abord la partie concernée** (mots-clés et sections dans l'index) : elle renvoie aux pages du wiki, aux pages job-i et aux pistes IBM. Les sujets marqués « aucune page dédiée » sont des manques à documenter (remonter via la section 8).
 0. **docs/SOMMAIRE.md** : navigation par sujet avec les titres de chaque page ; chaque page a son sommaire en tête (bloc <!-- TOC:START -->, généré par scripts/Add-Toc.ps1, ne pas l'éditer à la main).
    **Organisation** : un sujet = un seul fichier Markdown (parties ## Partie N, sections en ###). Avant de créer une page, cherche si un fichier traite déjà le sujet et complète-le ; si tu crées vraiment une page, ajoute-la à scripts/sommaire.json, puis lance scripts/Add-Toc.ps1 et scripts/Build-Sommaire.ps1 (ou scripts/Run-All.ps1 -SansConversion).
 1. `README.md` (racine) : carte « je cherche → je vais là » et conventions. `llms.txt` : même carte, format minimal.
@@ -507,7 +824,10 @@ Dès que tu détectes, **pendant n'importe quelle tâche**, une information qui 
 === FICHIER : docs/cheatsheets/README.md ===
 # Cheat sheets IBM i (d'après job-i.fr)
 
-Dernière mise à jour : 2026-11-19
+Dernière mise à jour : 2026-11-23
+- 2026-11-23 (comparaison de texte, limites) : l'ancien texte des pages n'est pas conservé (le suivi ne garde que des empreintes) et aucun instantané d'archive n'existe : un **avant/après exact est impossible**. Contrôles faits à la place : (1) date de modification par page dans `sitemap-pages.xml` : 22 pages sources ont été modifiées le **2026-11-22** (api-systeme, as400-vs-ibm-i, coder-rpg-iii, cycle-gap-rpg, fichier-physique-pf, ile, installer-ptf, mots-edition, navigator-for-i, nodejs, objets, outq, performances, profils-utilisateurs, prototypes-rpg-pr-pi, securite, se-former, sous-fichier-rpg, travaux, zone-de-donnees-dtaara) ; `commandes-ibm-i` (2026-09-29) et `messages-ibm-i` (2026-09-30) n'ont pas de modification récente, `recettes-sql`, `services-sql` et `valeurs-systeme` n'ont pas de date dans ce sitemap ; (2) deux lectures successives du même jour donnent des pages identiques (pas de contenu qui varie à chaque lecture) ; (3) **les termes techniques entre accents graves cités dans les blocs AUTO** (commandes, paramètres, fonctions, services SQL) ont été cherchés dans les pages : tous présents, **aucune affirmation de fiche contredite ou retirée au niveau des termes** ; (4) la couverture des titres de sections n'est pas un indicateur de changement (les fiches résument, elles ne reprennent pas chaque section). **Non contrôlé** : reformulation du sens d'un paragraphe, nouveaux paragraphes non cités dans les fiches.
+- 2026-11-23 (relecture après la détection `Check-JobIUpdates` : 25 pages signalées modifiées depuis le 17/11) : tous les nombres des blocs AUTO des fiches 01, 02, 03, 04, 06 et 08 ont été recherchés dans le texte actuel de leurs pages job-i sources (34 pages relues) : **aucun nombre périmé** (hors exemples de code de la fiche 08 et règle de colonnes de la fiche 03, qui ne viennent pas d'une page). Fiche 05 : 133 offres localisées dans 30 départements relevées plus tard le même jour. **Non contrôlé** : les changements de texte sans nombre (reformulations, nouveaux paragraphes) : seul le contrôle des chiffres a été fait.
+- 2026-11-23 : fiche 01 : ajout de la nouvelle page job-i `/navigator-for-i` (IBM Navigator for i : ports, STRTCPSVR `*ADMIN`, NAV_300068). Fiche 05 : offres 176 → 144. Chiffres inchangés : commandes 1 830, messages 13 213 (107 fiches), services SQL 390, valeurs système 158, recettes 36, instructions RPG 54, fonctions 95, codes RPG III 79. Pas de nouvelle version RPG/IBM i annoncée par job-i (7.5 ; 7.6 mentionnée sur cycle GAP). Incohérences relevées sur job-i (non reprises) : performances 580/47 ms vs 544/45 ms, PTF HIPER 109→111→112, Node.js 118 vs 107 tests.
 - 2026-11-19 : fiche 06 mise à jour (job-i : concordance `MR` et erreur RPG1031, `*INZSR`, cycle toujours valable en 7.5 / 7.6) ; fiche 03 : apports `%LOWER` / `%UPPER` et tableaux `CTDATA` / `ALT` (vérifiés sur ibm.com, limites non vérifiées signalées).
 - Fiche 02 : messages 13 213 (107 fiches « Comment s'en sortir »). Fiche 03 : ajout de la page `/rpg-iii` (79 codes opération en 10 familles), chiffres site (54 instructions, 95 fonctions). Fiche 05 : offres 176. Fiches 01, 04, 06 : aucun changement détecté (commandes 1 830, services SQL 390, valeurs système 158, recettes 36 inchangés).
 
@@ -588,6 +908,13 @@ Dernière mise à jour : 2026-11-19
 - Mesurer avant de régler : Collection Services, `ACTIVE_JOB_INFO`, `MEMORY_POOL_INFO`, `WRKSYSACT`.
 - Leviers : `OVRDBF ... SEQONLY(*YES 2000)`, éviter `ACTGRP(*NEW)` sur appels fréquents, `*INLR` seulement en fin, `SAVLIB DTACPR(*MEDIUM)`.
 - Valeurs : `QDYNPTYSCD`=1, `QDYNPTYADJ`=1, `QPFRADJ`=2.
+
+## Navigator for i  ([source](https://job-i.fr/navigator-for-i))
+- Interface web d'administration livrée avec IBM i (instance HTTP `*ADMIN`) : `http://<système>:2002/Navigator` (2003 en HTTPS une fois TLS configuré) ; connexion avec un profil IBM i.
+- Démarrer / arrêter : `STRTCPSVR SERVER(*HTTP) HTTPSVR(*ADMIN)` / `ENDTCPSVR SERVER(*HTTP) HTTPSVR(*ADMIN)` ; arrêter `*ADMIN` coupe aussi DCM (certificats).
+- Erreur de première connexion NAV_300068 (nom d'hôte complet introuvable) : pas de DNS ni d'entrée dans la table d'hôtes → `ADDTCPHTE` (IP + nom complet + nom court).
+- Chaque liste a un bouton SQL qui montre le service Db2 sous-jacent (ex. `QSYS2.ACTIVE_JOB_INFO`) ; 14 rubriques de menu, pas de rubrique Base de données. Rester en HTTP sur réseau ouvert expose profil et mot de passe.
+- Non vérifié ailleurs : page job-i seule consultée (relevés chiffrés sur une machine de formation 7.5 TR8).
 <!-- AUTO:END -->
 
 ## Mes exemples
@@ -836,6 +1163,7 @@ SELECT OBJNAME, OBJTYPE, OBJSIZE FROM TABLE(QSYS2.OBJECT_STATISTICS('MABIB','*AL
 - **DDS de fichiers logiques / physiques** : voir `sources/DDS/` ([index](../INDEX-SOURCES.md)).
 - **SQL examen** : fichiers `Sans titre 1.sql` et `sqlexamen.sql` dans `Documents` (à déposer dans `docs/apports/`).
 - **Création de fichier client** : [CLIENTCRT](../../sources/CL/CL-procedural/BIB06/CLIENTCRT.md), [CLIENTINS](../../sources/CL/CL-procedural/BIB06/CLIENTINS.md).
+- **JSON en SQL et écriture dans l'IFS** (vérifié sur ibm.com, 7.5) : `JSON_OBJECT`, `JSON_ARRAYAGG` et `QSYS2.IFS_WRITE_UTF8` (défauts : CCSID 1208, `OVERWRITE` = `APPEND`, fin de ligne `CRLF`) : voir [SQL-AVANCE](../SQL-AVANCE.md).
 
 
 === FICHIER : docs/cheatsheets/05-emploi-et-formation.md ===
@@ -847,11 +1175,11 @@ SELECT OBJNAME, OBJTYPE, OBJSIZE FROM TABLE(QSYS2.OBJECT_STATISTICS('MABIB','*AL
 
 
 ## Offres d'emploi  ([toutes](https://job-i.fr/offres-emploi-ibm-i), [par département](https://job-i.fr/emploi-ibm-i))
-- Veille des offres IBM i en France (sources : API France Travail et Adzuna, sans scraping) ; 176 offres au 2026-11-17 (page de liste : ~24 offres récentes, surtout Nord, Ille-et-Vilaine, Mayenne, Paris ; CDI majoritaires, salaires publiés ~30-60 k€/an ou 220-400 €/j en freelance).
+- Veille des offres IBM i en France (sources : API France Travail et Adzuna, sans scraping) ; 144 offres au 2026-11-23 en début d'après-midi, puis **133 offres localisées dans 30 départements** sur la page « par département » relevée plus tard le même jour (le nombre varie : mises à jour plusieurs fois par jour) ; 176 le 2026-11-17 ; page de liste : 24 offres du 17 au 22/11, départements les plus fournis : Paris, Hauts-de-Seine, Rhône, Loire-Atlantique, Ille-et-Vilaine ; CDI majoritaires, salaires publiés ~36-60 k€/an ou 400-450 €/j en freelance).
 - Profils recherchés : RPG, CL, SQL, COBOL ; relève des développeurs historiques.
 
 ## Se former  ([source](https://job-i.fr/se-former-ibm-i))
-- NOTOS (Montpellier, groupe Armonie) : alternance RNCP niveau 6 sans prérequis IBM i ; POEI France Travail ; formations courtes.
+- Un centre de formation de Montpellier (nom masqué) : alternance RNCP niveau 6 sans prérequis IBM i ; POEI France Travail ; formations courtes.
 - Autres : OCSI Academy (bootcamp consultant IBM i), Volubis (formation continue), CFD Innovation (PHP, Node.js, DB2 Web Query).
 - Étapes : identifier le statut/financement → consulter les programmes → candidater.
 
@@ -1111,6 +1439,7 @@ NOUVEL UNIVERS
 - **Notions SQL présentes dans votre code et absentes des fiches** : `COALESCE`, `GROUP BY`, `DISTINCT`, `CURRENT DATE - n MONTHS`, jointures externes ; voir [MANQUES](../MANQUES.md) et [ANALYSE-ENONCES](../enonces/ANALYSE-ENONCES.md). Les services SQL et les recettes d'exploitation restent dans la [fiche 04](04-db2-for-i-et-sql.md).
 - **À confirmer** : le type de membre source à utiliser (`SQLRPGLE`) et la commande exacte utilisée par votre éditeur pour compiler (CRTSQLRPGI ci-dessus) ; la page job-i ne parle pas de la convention de nommage du type.
 - **Curseur + impression avec rupture** (proposé, non compilé) : [SQLIMPRIME.sqlrpgle](../exemples-cycle/SQLIMPRIME.sqlrpgle), détaillé dans [IMPRESSION-RPG](../IMPRESSION-RPG.md#9-variante-sql-embarqué--liste-par-univers-avec-rupture).
+- **FETCH multi-lignes** (`FETCH … FOR n ROWS INTO` tableau de structures, `SQLERRD(3)` = lignes lues ; vérifié sur ibm.com 7.5) et `FETCH INTO` d'une structure hôte : voir [SQL-AVANCE](../SQL-AVANCE.md#partie-3--sql-embarqué-en-rpg-fetch-multi-lignes-et-options). Architecture modules / programme de service et services REST : [ILE-ET-SERVICES-WEB](../ILE-ET-SERVICES-WEB.md).
 
 
 === FICHIER : docs/cheatsheets/08-impression-et-printer-ibm-i.md ===
@@ -1283,7 +1612,7 @@ Chaîne de restauration rapide fictive ; l'épreuve se déroule dans un environn
 # tp-le-chai : réception des vendanges (SQL embarqué en RPG ILE full free)
 
 - **Contexte** : cave coopérative fictive ; un programme compilé `VX100` dont le **source a disparu** doit être compris, puis un programme `CHAI` doit traiter en fin de journée les lots de raisin en attente.
-- **Environnement** : tables dans une bibliothèque commune au groupe (toujours qualifiées, ex. `TPVIN.APPORTS`), programmes fournis compilés `VX100` et `VERIFVX` (à ne pas modifier), table de prédictions pour les essais, script `INIT` de remise à zéro lancé par `RUNSQLSTM` (**avant chaque campagne de tests** ; les tables sont partagées : prévenir le groupe).
+- **Environnement** : tables dans une bibliothèque commune au groupe (toujours qualifiées, ex. `BIB24.APPORTS`), programmes fournis compilés `VX100` et `VERIFVX` (à ne pas modifier), table de prédictions pour les essais, script `INIT` de remise à zéro lancé par `RUNSQLSTM` (**avant chaque campagne de tests** ; les tables sont partagées : prévenir le groupe).
 - **Tables** : appellations, cépages, cépages autorisés par appellation, parcelles, cuves, apports (lots), journal d'encuvage, registre de chaptalisation (obligatoire), alertes, bilan (une ligne par exécution).
 - **Mission 1 – l'enquête** : deviner ce que fait `VX100` par **boîte noire** (hypothèses → vérificateur fourni → score), puis produire les prédictions et la description.
 - **Mission 2 – le programme `CHAI`** : parcourir les lots en attente ; règles par lot : contrôle sanitaire, classement (appellation / déclassement), chaptalisation, choix de la cuve, encuvage, registres, alertes ; **« tout ou rien »** par lot (transaction : `COMMIT` / `ROLLBACK`) ; fin de traitement : ligne de bilan. Facultatif : tableau de bord des vendanges.
@@ -1362,7 +1691,7 @@ Chaîne de restauration rapide fictive ; l'épreuve se déroule dans un environn
 === FICHIER : docs/MANQUES.md ===
 # Ce qui manque dans les fiches (utilise dans le code, absent des fiches)
 
-Genere le 2026-11-20 13:53 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
+Genere le 2026-11-23 14:23 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
 
 
 ## Commandes CL : 60 manquants sur 104 utilises
@@ -1509,14 +1838,13 @@ Genere le 2026-11-20 13:53 a partir de 1082 sources. Un terme est 'manquant' s'i
 | SQL7064 | 2 | 1 |
 | CPF1008 | 1 | 1 |
 
-## Services SQL (QSYS2, SYSTOOLS) : 25 manquants sur 28 utilises
+## Services SQL (QSYS2, SYSTOOLS) : 24 manquants sur 28 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
 | QSYS2.BASE64_ENCODE | 5 | 2 |
 | QSYS2.BOUND_MODULE_INFO | 5 | 3 |
 | QSYS2.HTTP_GET | 5 | 2 |
-| QSYS2.IFS_WRITE_UTF8 | 5 | 1 |
 | QSYS2.SYSPARTITIONSTAT | 4 | 3 |
 | SYSTOOLS.BASE64ENCODE | 4 | 1 |
 | SYSTOOLS.HTTPPOSTCLOB | 4 | 2 |
@@ -1612,7 +1940,7 @@ Genere le 2026-11-20 13:53 a partir de 1082 sources. Un terme est 'manquant' s'i
 === FICHIER : docs/CYCLE-GAP-EXEMPLES.md ===
 # Exemples du cycle RPG (cycle GAP) dans les bibliotheques
 
-Genere le 2026-11-20 13:53. Detection : un fichier **primaire** (IP) ou **secondaire** (IS) en specification F dans un source en colonnes. Explication du cycle : [fiche 03](cheatsheets/03-rpg-par-version.md) et [job-i.fr](https://job-i.fr/cycle-gap-rpg). Detection heuristique : a confirmer en ouvrant le source.
+Genere le 2026-11-23 14:23. Detection : un fichier **primaire** (IP) ou **secondaire** (IS) en specification F dans un source en colonnes. Explication du cycle : [fiche 03](cheatsheets/03-rpg-par-version.md) et [job-i.fr](https://job-i.fr/cycle-gap-rpg). Detection heuristique : a confirmer en ouvrant le source.
 
 | Bibliotheque | Membre | Type | Lignes | Primaire (IP) | Secondaire (IS) | Niveaux (L1-L9) | 1P | OF | Source |
 |---|---|---|---|---|---|---|---|---|---|
@@ -2080,6 +2408,444 @@ Le premier programme déclarait **quatre sous-zones `CHAR(3)`** (c'est la dispos
 - Variante étendue (sans `*COMPAT`) : non écrite ; la déclaration de la section 2 bis suffit, avec `PRTCTL(prtCtl)`.
 - Version **validée** sans `PRTCTL` : [CYCLEQSYS.rpgle](exemples-cycle/CYCLEQSYS.rpgle).
 - Version avec `PRTCTL` corrigé : [CYCLEPRTCTL.rpgle](exemples-cycle/CYCLEPRTCTL.rpgle) (**non compilée ni testée**).
+
+
+=== FICHIER : docs/SQL-AVANCE.md ===
+# SQL avancé : JSON, écriture dans l'IFS, SQL embarqué (FETCH multi-lignes)
+
+> Pages **lues en entier sur ibm.com le 2026-11-23** (IBM Documentation, IBM i 7.5, versions françaises traduites automatiquement sauf FETCH, en anglais). Synthèse personnelle, pas de copie longue. Chaque partie commence par son tableau `Élément | Statut | Source`. **Aucun exemple n'a été exécuté** : ils sont à tester sur la machine.
+
+
+## Partie 1 : SQL JSON (Db2 for i 7.5)
+
+| Élément | Statut | Source |
+|---|---|---|
+| `JSON_OBJECT` : paires `KEY … VALUE …` ou `'clé' : valeur`, `NULL ON NULL` (défaut) / `ABSENT ON NULL`, `WITH` / `WITHOUT UNIQUE KEYS` (défaut sans), `RETURNING` (défaut `CLOB(2G) CCSID 1208`) | vérifié | [JSON_OBJECT, 7.5](https://www.ibm.com/docs/fr/i/7.5?topic=functions-json-object) |
+| `JSON_ARRAYAGG` : tableau JSON à partir d'un ensemble de valeurs, `ORDER BY` interne, `ABSENT ON NULL` (défaut) / `NULL ON NULL`, résultat `NULL` si l'ensemble est vide | vérifié | [JSON_ARRAYAGG, 7.5](https://www.ibm.com/docs/fr/i/7.5?topic=functions-json-arrayagg) |
+| `FORMAT JSON` : sans lui, une chaîne est mise entre guillemets et ses caractères spéciaux sont échappés ; avec lui (ou si l'expression est elle-même un `JSON_OBJECT` / `JSON_ARRAYAGG`…), elle est traitée comme du JSON déjà formé | vérifié | pages `JSON_OBJECT` et `JSON_ARRAYAGG` |
+| Exemple `JSON_ARRAYAGG(JSON_OBJECT(…) ORDER BY …)` avec `GROUP BY` | vérifié (existence de la forme) | exemple de la page `JSON_ARRAYAGG` |
+| `CAST(… AS VARCHAR(30000))` d'un résultat `CLOB` | **compilé** (confirmé par l'utilisateur, exemple de la page ILE) ; résultat à l'exécution non confirmé ; page `CAST` non lue | [ILE-ET-SERVICES-WEB](ILE-ET-SERVICES-WEB.md) |
+| Identifiant `"NUMBER"` entre guillemets | **compilé** (confirmé par l'utilisateur) ; règles des identifiants non lues | idem |
+| Exemple ci-dessous | **non exécuté** | — |
+
+### Points à retenir
+- **`JSON_OBJECT`** : `JSON_OBJECT('prenom' : 'Jean', 'ville' : 'Lyon')` ou `JSON_OBJECT(KEY 'prenom' VALUE 'Jean', …)`. Avec la forme `:` (deux-points), le nom de clé doit être un **littéral** chaîne. Le nom de clé ne peut pas être `NULL`. La valeur peut être de tout type intégré sauf `XML`, `ROWID`, `DATALINK` (et pas de `CHAR`/`VARCHAR` binaire).
+- **`NULL ON NULL`** (défaut de `JSON_OBJECT`) écrit `null` pour une valeur nulle ; `ABSENT ON NULL` omet la paire. Pour `JSON_ARRAYAGG` c'est l'inverse : **`ABSENT ON NULL` est le défaut**.
+- **Taille du résultat** : `CLOB(2G) CCSID 1208` par défaut. Pour récupérer le texte dans une variable RPG, il faut un type compatible ; la conversion `CAST` n'est pas vérifiée ici.
+- **Imbrication** : mettre un `JSON_OBJECT` dans un `JSON_ARRAYAGG` ne l'échappe pas (le format est celui de la clause `RETURNING` de la fonction interne). Pour y mettre un texte **déjà JSON**, ajouter `FORMAT JSON` ; sinon le texte est traité comme une simple chaîne (guillemets et caractères échappés).
+- **Résultat nul** : `JSON_ARRAYAGG` renvoie `NULL` sur un ensemble vide : prévoir un indicateur de nullité en SQL embarqué.
+
+### Exemple (proposé, non exécuté)
+```sql
+SELECT CAST(JSON_ARRAYAGG(JSON_OBJECT('nom' : TRIM(nom), 'prix' : prix)
+                          ORDER BY "NUMBER") AS VARCHAR(30000))
+  INTO :w_json :ind_json
+  FROM BIBnn.bonbon;
+```
+Remplacer `BIBnn` par ta bibliothèque. Trois points à valider : la conversion `CAST` en `VARCHAR`, la longueur 30000 (un tableau plus long est tronqué ou provoque une erreur, non vérifié), et l'identifiant `"NUMBER"`.
+
+## Partie 2 : écrire dans l'IFS depuis SQL (`QSYS2.IFS_WRITE_UTF8`)
+
+| Élément | Statut | Source |
+|---|---|---|
+| Schéma `QSYS2` ; paramètres `PATH_NAME`, `LINE`, `FILE_CCSID`, `OVERWRITE`, `END_OF_LINE` | vérifié | [IFS_WRITE, IFS_WRITE_BINARY, IFS_WRITE_UTF8, 7.5](https://www.ibm.com/docs/fr/i/7.5.0?topic=is-ifs-write-ifs-write-binary-ifs-write-utf8-procedures) |
+| `FILE_CCSID` : défaut **1208** pour `IFS_WRITE_UTF8` (0 = CCSID du travail pour `IFS_WRITE` et `IFS_WRITE_BINARY`) ; ignoré si on ajoute à un fichier existant | vérifié | idem |
+| `OVERWRITE` : `APPEND` (défaut, crée le fichier s'il n'existe pas), `REPLACE` (supprime et recrée, le CCSID peut changer), `NONE` (échec si le fichier existe) | vérifié | idem |
+| `END_OF_LINE` : `CR`, `CRLF` (défaut de `IFS_WRITE` et `IFS_WRITE_UTF8`), `LF`, `LFCR`, `NONE` (défaut de `IFS_WRITE_BINARY`) | vérifié | idem |
+| Droits : `*X` sur chaque répertoire du chemin, `*W` sur le fichier existant, `*WX` sur le répertoire parent pour créer ou remplacer | vérifié (hors `QSYS.LIB`) | idem |
+| Taille : jusqu'à 2 Go par appel | vérifié | idem |
+
+### Points à retenir
+- `IFS_WRITE_UTF8` reçoit une chaîne **UTF-8** ; si le fichier n'est pas en UTF-8, elle est convertie au CCSID du fichier.
+- Les trois procédures s'appellent par `CALL QSYS2.IFS_WRITE_UTF8(PATH_NAME => '…', LINE => '…', OVERWRITE => 'REPLACE', END_OF_LINE => 'LF')`.
+- **Piège** : le défaut est `APPEND` et la fin de ligne par défaut est **`CRLF`** : pour un fichier texte Unix, passer `END_OF_LINE => 'LF'`.
+- Un fichier créé reprend les droits par défaut de son répertoire parent.
+- `QSYS2.IFS_READ` relit le fichier généré (cité par l'exemple de la page).
+- Le wiki ne citait ce service que comme « utilisé mais absent des fiches » (`docs/MANQUES.md`).
+
+## Partie 3 : SQL embarqué en RPG (FETCH multi-lignes et options)
+
+| Élément | Statut | Source |
+|---|---|---|
+| `FETCH … FOR n ROWS INTO tableau-de-structures-hôtes` (n entier ou variable numérique d'échelle zéro, sans indicateur) | vérifié | [FETCH, 7.5](https://www.ibm.com/docs/en/i/7.5.0?topic=statements-fetch) |
+| Le nombre de lignes demandé doit être inférieur ou égal à la dimension du tableau ; taille totale des lignes (hors LOB) < 16 M | vérifié | idem |
+| `SQLERRD(3)` = nombre de lignes lues ; `SQLERRD(5)` = +100 si la dernière ligne a été lue (peut ne pas l'être quand le nombre de lignes lues égale le nombre demandé) | vérifié | idem |
+| Multi-lignes interdit si une colonne est un LOB ou si la connexion est distante | vérifié | idem |
+| `FETCH … INTO` d'une structure hôte (une ligne) : une structure équivaut à la liste de ses variables | vérifié | idem (single-fetch) |
+| Colonne `NULL` : indicateur obligatoire ; erreur de calcul ou de conversion = valeur nulle et indicateur à -2 | vérifié | idem |
+| Chaîne trop courte : avertissement SQLSTATE 01004 (`SQLWARN1` = `W`), longueur réelle dans l'indicateur s'il y en a un | vérifié | idem |
+| Boucle `WHILE (SQLCODE == 0)` suivie d'un `FETCH` ; condition « not found » quand il n'y a plus de ligne | vérifié (forme de l'exemple 1) | idem |
+| `SQLCODE` 100 et `-501` (curseur non ouvert) | **non vérifié** (seulement des sources non officielles) | — |
+| `SET OPTION COMMIT = *NONE`, `CLOSQLCSR = *ENDMOD` dans un module `NOMAIN` | **non vérifié** | page `SET OPTION` non lue |
+| `CLEAR` sur un tableau `*VARSIZE` ; `CLOSE` avant `OPEN` | **non vérifié** | — |
+
+### Forme (d'après la syntaxe officielle, non exécutée)
+```rpgle
+DCL-DS article QUALIFIED TEMPLATE;
+  nom  CHAR(30);
+  prix PACKED(7:2);
+END-DS;
+DCL-DS lignes LIKEDS(article) DIM(100);
+DCL-S nb INT(10);
+
+EXEC SQL FETCH NEXT FROM c1 FOR 100 ROWS INTO :lignes;
+nb = SQLERRD(3);        // nombre de lignes réellement lues (nom de la zone SQLCA en RPG : à confirmer à la compilation)
+```
+- L'ordre et les types des zones de la structure doivent suivre ceux des colonnes du `SELECT`.
+- Utiliser `nb` (et non la dimension du tableau) pour parcourir le résultat.
+- Le `FETCH` d'une structure simple (une ligne) suit la même règle : `FETCH c1 INTO :uneStructure`.
+- Les points non vérifiés ci-dessus (voir le tableau) doivent être contrôlés avant d'être présentés comme acquis.
+
+
+=== FICHIER : docs/ILE-ET-SERVICES-WEB.md ===
+# Architecture ILE et services web REST : modules, programme de service, IWS
+
+> Fiche pédagogique. Sources lues en entier le 2026-11-23 : la page job-i « ILE » (exemple testé sur IBM i 7.5), les fiches job-i des commandes (CRTSRVPGM : début de page seulement), les pages IBM sur le langage de liage, la signature et les groupes d'activation (IBM i 7.2 à 7.4) et deux tutoriels IBM de **2015** sur les services REST. **L'exemple de la partie 1 a été compilé par l'utilisateur** ; rien n'a été déployé ni exécuté à notre connaissance. Les noms d'objets de la partie 1 sont fictifs (`BIB01`, `ARTICLE…`, `BONBON…`) ; aucun nom réel de bibliothèque, de profil ou de personne n'est publié.
+
+
+## Partie 1 : modules, programme de service, source de liage
+
+| Élément | Statut | Source |
+|---|---|---|
+| `CRTSRVPGM` : crée un programme de service lié à partir de modules et de répertoires de liage | vérifié | [job-i CRTSRVPGM](https://job-i.fr/commandes-ibm-i/crtsrvpgm) |
+| `MODULE` (jusqu'à 300), `EXPORT(*SRCFILE` ou `*ALL)`, `SRCFILE` (défaut `QSRVSRC`), `SRCMBR` (défaut `*SRVPGM`), `SRCSTMF` (pas avec `SRCFILE`/`SRCMBR`, pas avant V7R3M0), `BNDDIR`, `BNDSRVPGM`, `ACTGRP` (nom ou `*CALLER`), `REPLACE`, `AUT`, `TGTRLS` | vérifié (tableau des paramètres) | idem |
+| `EXPORT(*ALL)` exporte aussi tout ce que les modules exportent ; `EXPORT(*SRCFILE)` lit les instructions d'export du membre | vérifié | idem |
+| Un membre de liage peut être placé dans un fichier source **autre** que `QSRVSRC` (paramètre `SRCFILE`) | vérifié | idem |
+| Droits requis : `*READ` + `*ADD` sur la bibliothèque, `*USE` sur modules / programmes de service / répertoires de liage | vérifié | idem (début de page) |
+| `CRTSQLRPGI … OBJTYPE(*MODULE)` | vérifié (valeurs `*PGM`, `*SRVPGM`, `*MODULE`) | [fiche 07](cheatsheets/07-sql-embarque-en-rpg.md) |
+| `RTVBNDSRC` : extrait les exportations de modules ou d'un programme de service dans un fichier, avec les instructions de langage de liage | vérifié | [job-i RTVBNDSRC](https://job-i.fr/commandes-ibm-i/rtvbndsrc) |
+| `DSPSRVPGM DETAIL(*PROCEXP)` : liste les procédures exportées définies en langage de liage (signature courante seulement) | vérifié | [job-i DSPSRVPGM](https://job-i.fr/commandes-ibm-i/dspsrvpgm) |
+| `GRTOBJAUT`, `DLTSRVPGM`, `DSPOBJD`, `DSPOBJAUT` : commandes existantes | vérifié (existence de la fiche) | job-i `/commandes-ibm-i/<commande>` |
+| `STRPGMEXP PGMLVL(*CURRENT)`, `EXPORT SYMBOL(...)`, `ENDPGMEXP` (langage de liage) : liste d'export d'un programme de service ; `RTVBNDSRC` génère ce source ; `LVLCHK`, `PGMLVL(*PRV)` pour garder les anciennes interfaces | vérifié | [job-i ILE](https://job-i.fr/ile-ibm-i) (exemple testé en 7.5), [Binder Language, IBM i 7.4](https://www.ibm.com/docs/en/i/7.4.0?topic=concepts-binder-language) |
+| Nom de membre limité à 10 caractères | **non vérifié** (règle générale des noms d'objets IBM i) | — |
+| Longueur d'enregistrement minimale du fichier source pour du `**FREE` ; syntaxe `/COPY bibliothèque/fichier,membre` | **non vérifié** | — |
+
+### Concepts ILE (job-i et IBM)
+Sources : [job-i « ILE »](https://job-i.fr/ile-ibm-i) (lue en entier ; exemple construit et exécuté sur IBM i 7.5), [Binder Language, 7.4](https://www.ibm.com/docs/en/i/7.4.0?topic=concepts-binder-language), [Signature, 7.3](https://www.ibm.com/docs/en/i/7.3.0?topic=language-signature), [Service Programs and Activation Groups, 7.2](https://www.ibm.com/docs/en/i/7.2.0?topic=management-service-programs-activation-groups), [Activation Group, 7.2](https://www.ibm.com/docs/en/i/7.2.0?topic=concepts-activation-group) (toutes lues en entier). Les pages IBM sont d'éditions 7.2 à 7.4 : à revalider pour 7.5.
+
+| Objet | Rôle | Statut |
+|---|---|---|
+| `*MODULE` | résultat d'un compilateur ILE (`CRTRPGMOD`, `CRTCMOD`, `CRTCLMOD`) ; contient des procédures, ne s'exécute pas seul | vérifié (job-i) |
+| `*PGM` | modules liés dont un porte la procédure d'entrée (`ENTMOD`) ; s'appelle par `CALL` | vérifié (job-i) |
+| `*SRVPGM` | modules liés **sans** procédure d'entrée : boîte à outils de procédures partagée | vérifié (job-i) |
+| `*BNDDIR` | répertoire de liage : liste de modules et de programmes de service où le binder cherche les procédures appelées | vérifié (job-i) |
+| groupe d'activation | partie du travail où s'exécute un programme ILE (variables statiques, mémoire dynamique, fichiers ouverts, curseurs SQL locaux, définitions de validation) ; pas un objet | vérifié (job-i, IBM 7.2) |
+
+**Liage par copie ou par référence**
+
+| | Par copie (`CRTPGM MODULE(...)`) | Par référence (programme de service) |
+|---|---|---|
+| Où est le code | recopié dans chaque programme | une seule fois, dans le `*SRVPGM` |
+| Changer une procédure | recompiler le module puis `UPDPGM` pour chaque programme | `UPDSRVPGM` une fois pour tous |
+| À livrer | le programme | le programme et le programme de service |
+| Pour quoi | modules propres à un programme | procédures partagées |
+
+(job-i : dans l'exemple, après `UPDSRVPGM` le programme lié par référence voit le nouveau code, celui lié par copie garde l'ancien jusqu'à `UPDPGM`.)
+
+**Source de liage et signature** (IBM)
+- Le langage de liage est un petit jeu de commandes non exécutables : `STRPGMEXP` (début de la liste d'exports), `EXPORT SYMBOL(...)` (un symbole), `ENDPGMEXP` (fin). Les symboles du bloc `PGMLVL(*CURRENT)` définissent l'interface publique, représentée par une **signature**.
+- **Ne jamais retirer ni réordonner** les noms existants ; les nouveaux symboles s'ajoutent **à la fin** de la liste. Un retrait n'est pas compatible avec les programmes déjà liés.
+- Sans signature explicite, le binder en génère une à partir des noms et de leur ordre : il faut alors **ajouter un nouveau bloc** d'export à chaque ajout (l'ancien bloc passe en `PGMLVL(*PRV)`). Avec une signature explicite, un seul bloc suffit.
+- La signature ne valide **pas** l'interface d'une procédure : si les paramètres d'une procédure changent, recompiler tous les modules appelants et recréer les programmes et programmes de service qui les contiennent (`CRTPGM` / `CRTSRVPGM`).
+- `CRTSRVPGM` utilise ce source avec `EXPORT(*SRCFILE)` (et non le défaut `*ALL`) ; `RTVBNDSRC` génère un source de départ.
+
+**Groupes d'activation et programmes de service** (IBM 7.2 ; job-i)
+- `ACTGRP(*CALLER)` : le programme de service s'active dans le groupe de l'appelant ; appels liés optimisés, données externes et fichiers ouverts partagés, validation / annulation qui touche les autres programmes du groupe ; **pas de frontière de contrôle** (une exception non traitée remonte au client, un verbe de fin peut supprimer le groupe du client).
+- `ACTGRP(nom)` : espace séparé pour les variables, fichiers ouverts et définitions de validation séparés, partage accidentel évité ; il faut gérer l'état pour plusieurs clients.
+- Tous les programmes d'un même groupe forment « une seule application coopérative » ; à la suppression d'un groupe, les ressources sont rendues (fichiers fermés, mémoire libérée).
+- job-i : avec `ACTGRP(*ENTMOD)` (défaut de `CRTPGM`), un module d'entrée RPGLE fait tourner le programme dans le groupe `QILE` ; à privilégier, un groupe **nommé** par application plutôt que `*NEW`.
+- RPG : `ctl-opt dftactgrp(*no) actgrp('NOM') bnddir('MONREP');` ; avec `DFTACTGRP(*YES)` (compatibilité OPM), `ACTGRP` et `BNDDIR` sont interdits et un appel de procédure liée fait échouer la compilation (job-i).
+- `EXTPROC('nom')` impose la casse du nom de procédure (important pour une fonction C) ; sans lui, le nom du prototype en majuscules (job-i).
+
+**Bonnes pratiques** (job-i) : sortir du mode compatible (`DFTACTGRP(*NO)`), regrouper les procédures partagées en programmes de service par domaine, un répertoire de liage par application cité dans le `CTL-OPT`, un groupe d'activation nommé par application, noms exacts.
+### Les quatre pièces
+1. **Modules `NOMAIN`** (un par responsabilité) : p. ex. un module d'accès aux données (`ARTICLEDAO`) et un module point d'entrée. Un module `NOMAIN` n'a pas de cycle : il exporte des procédures.
+2. **Copybooks (`/COPY`)** : prototypes (`DCL-PR`) et constantes partagés entre les modules et les appelants (`ARTICLE_H`).
+3. **Programme de service** (`WSARTICLE`) : regroupe les modules (`CRTSRVPGM MODULE(...)`). Avec `EXPORT(*ALL)`, tout ce qui est exporté par les modules l'est aussi ; avec `EXPORT(*SRCFILE)`, un **source de liage** liste précisément les procédures (et la signature).
+4. **Source de liage** : membre contenant `STRPGMEXP`, `EXPORT SYMBOL(...)`, `ENDPGMEXP` (voir « Source de liage et signature » ci-dessous) ; on peut le générer avec `RTVBNDSRC`. `DSPSRVPGM DETAIL(*PROCEXP)` contrôle ce qui est réellement exporté.
+
+### Commandes de la chaîne (à tester)
+```
+CRTSQLRPGI OBJ(BIB01/ARTICLEDAO) SRCFILE(BIB01/QRPGLESRC) SRCMBR(ARTICLEDAO) OBJTYPE(*MODULE) COMMIT(*NONE)
+CRTSRVPGM SRVPGM(BIB01/WSARTICLE) MODULE(BIB01/ARTICLEDAO BIB01/ARTICLE_API) EXPORT(*ALL) ACTGRP(*CALLER)
+DSPSRVPGM SRVPGM(BIB01/WSARTICLE) DETAIL(*PROCEXP)
+```
+`CRTRPGMOD` (module sans SQL), `CRTBNDDIR` / `ADDBNDDIRE` (répertoire de liage) : voir le mémo des commandes (partie 4). Pour la suppression et la recréation : `DLTSRVPGM` puis `CRTSRVPGM` (les droits sont à vérifier, voir la partie 3 et le mémo de la partie 4).
+
+### Exemple complet : liste de bonbons en JSON, exposée en service REST
+> Code fourni par l'utilisateur (4 membres, ordre de création : `BONBON_H`, `BONBONDAO`, `GETBON_H`, `GET_BONBON`), **anonymisé** : bibliothèque `BIB01`, point d'entrée et copybook renommés (`GET_BONBON`, `GETBON_H`). **Compilé par l'utilisateur (les quatre membres et le programme de service)** ; l'exécution et le déploiement IWS ne sont pas confirmés. Table et colonnes (`BONBON` : `"NUMBER"`, `NOM`, `MARQUE`, `COULEUR`, `PRIX`) supposées d'après le code.
+
+**1. `BONBON_H`** (copybook : codes retour et prototype de l'accès aux données)
+```rpgle
+**free
+// Acces BONBON : constantes et prototype
+dcl-c BONBON_OK     0;
+dcl-c BONBON_VIDE   1;
+dcl-c BONBON_ERREUR -1;
+
+dcl-pr bonbon_list_json int(10);
+  json      varchar(30000);
+  p_sqlcode int(10);
+end-pr;
+```
+
+**2. `BONBONDAO`** (module `NOMAIN`, accès aux données avec SQL)
+```rpgle
+**free
+
+ctl-opt nomain option(*srcstmt);
+
+exec sql set option commit = *none, closqlcsr = *endmod;
+
+/copy BIB01/WEBSERVICE,BONBON_H
+
+dcl-proc bonbon_list_json export;
+
+  dcl-pi *n int(10);
+    json      varchar(30000);
+    p_sqlcode int(10);
+  end-pi;
+
+  dcl-s w_json   varchar(30000);
+  dcl-s ind_json int(5);
+
+  // Sorties toujours initialisees
+  json = '[]';
+  p_sqlcode = 0;
+  w_json = '';
+  ind_json = 0;
+
+  exec sql
+    select cast(
+             json_arrayagg(
+               json_object(
+                 'number'  : "NUMBER",
+                 'nom'     : trim(nom),
+                 'marque'  : trim(marque),
+                 'couleur' : trim(couleur),
+                 'prix'    : prix
+               )
+               order by "NUMBER"
+             ) as varchar(30000))
+      into :w_json :ind_json
+      from BIB01.bonbon;
+
+  p_sqlcode = sqlcode;
+
+  select;
+    when p_sqlcode < 0;
+      return BONBON_ERREUR;
+    when ind_json < 0;
+      return BONBON_VIDE;
+    other;
+      json = w_json;
+      return BONBON_OK;
+  endsl;
+
+end-proc;
+```
+
+**3. `GETBON_H`** (copybook du point d'entrée du service)
+```rpgle
+**free
+// Endpoint IWS GET_BONBON
+dcl-c HTTP_OK        200;
+dcl-c HTTP_NOT_FOUND 404;
+dcl-c HTTP_ERROR     500;
+
+dcl-pr get_bonbon;
+  httpStatus int(10);
+  json       varchar(30000);
+end-pr;
+```
+
+**4. `GET_BONBON`** (module `NOMAIN`, point d'entrée REST, interface PCML dans le module)
+```rpgle
+**free
+
+ctl-opt nomain option(*srcstmt) pgminfo(*pcml:*module:*dclcase);
+
+/copy BIB01/WEBSERVICE,BONBON_H
+/copy BIB01/WEBSERVICE,GETBON_H
+
+dcl-proc get_bonbon export;
+
+  dcl-pi *n;
+    httpStatus int(10);
+    json       varchar(30000);
+  end-pi;
+
+  dcl-s w_sqlcode int(10);
+  dcl-s w_rc      int(10);
+
+  // Sorties toujours initialisees
+  httpStatus = HTTP_OK;
+  json = '[]';
+
+  w_rc = bonbon_list_json(json: w_sqlcode);
+
+  select;
+    when w_rc = BONBON_OK;
+      httpStatus = HTTP_OK;
+    when w_rc = BONBON_VIDE;
+      httpStatus = HTTP_NOT_FOUND;
+      json = '[]';
+    other;
+      httpStatus = HTTP_ERROR;
+      json = '[]';
+  endsl;
+
+  return;
+
+end-proc;
+```
+
+**Chaîne de création et de déploiement (à tester)**
+```
+CRTSQLRPGI OBJ(BIB01/BONBONDAO) SRCFILE(BIB01/WEBSERVICE) SRCMBR(BONBONDAO) OBJTYPE(*MODULE) COMMIT(*NONE)
+CRTRPGMOD  MODULE(BIB01/GET_BONBON) SRCFILE(BIB01/WEBSERVICE) SRCMBR(GET_BONBON)
+CRTSRVPGM  SRVPGM(BIB01/WSBONBON) MODULE(BIB01/BONBONDAO BIB01/GET_BONBON) EXPORT(*ALL) ACTGRP(*CALLER)
+DSPSRVPGM  SRVPGM(BIB01/WSBONBON) DETAIL(*PROCEXP)
+```
+Puis déployer `WSBONBON` avec l'assistant IWS (partie 2) : `get_bonbon` en `GET`, `httpStatus` désigné comme code de réponse, sortie JSON.
+
+| Élément | Statut | Source |
+|---|---|---|
+| Ordre : copybook `BONBON_H`, module `BONBONDAO`, copybook `GETBON_H`, module `GET_BONBON`, puis programme de service | constat (fourni par l'utilisateur) | — |
+| `PGMINFO(*PCML:*MODULE:*DCLCASE)` : 1er paramètre `*PCML` + au moins un autre ; `*MODULE` place l'interface dans le module (lisible par l'API `QBNRPII`) ; `*DCLCASE` conserve la casse déclarée ; mot-clé de spécification de contrôle (donc valable en `CTL-OPT`) ; l'emporte sur les paramètres `PGMINFO` / `INFOSTMF` de `CRTRPGMOD` / `CRTBNDRPG` | vérifié (IBM i 7.2) | [PGMINFO, 7.2](https://www.ibm.com/docs/en/i/7.2.0?topic=keywords-pgminfopcml-no-dclcase-module-v6-v7) |
+| PCML 6.0 par défaut pour une édition cible V7R2M0 / V7R3M0 (7.0 ensuite) ; en 7.0, les champs de **longueur variable** (`varchar`) sont traités autrement qu'en 6.0 (en 6.0, générés comme structures) ; variable `QIBM_RPG_PCML_VERSION` | vérifié (IBM i 7.2) | idem |
+| Effet de cette version PCML sur un paramètre `varchar(30000)` vu par IWS | **non vérifié** | — |
+| `json_arrayagg` avec `json_object` imbriqué, `order by` interne ; résultat `NULL` si aucune ligne (d'où `ind_json < 0` = `BONBON_VIDE`) | vérifié | [SQL-AVANCE, partie 1](SQL-AVANCE.md#partie-1--sql-json-db2-for-i-75) |
+| `CAST(… AS VARCHAR(30000))` ; `"NUMBER"` entre guillemets ; `SELECT INTO :var :indicateur` | **compilé** (confirmé par l'utilisateur) ; résultat à l'exécution non confirmé | — |
+| `SET OPTION COMMIT = *NONE, CLOSQLCSR = *ENDMOD` en tête d'un module `NOMAIN` | **compilé** (confirmé par l'utilisateur) | — |
+| `**free` en première ligne d'un membre `/COPY` | **compilé** (confirmé par l'utilisateur) | — |
+| Chaînes de 30000 caractères : le résultat JSON plus long serait tronqué ou en erreur | **non vérifié** | — |
+| Le JSON placé dans un paramètre `varchar` de sortie est-il renvoyé tel quel ou comme chaîne échappée par IWS ? | **non vérifié** (point à tester en premier) | — |
+| Codes HTTP 200 / 404 / 500 | vérifié (2015) | [tutoriel IWS Part 3](https://developer.ibm.com/tutorials/i-rest-web-services-server3/) |
+| 404 pour une liste vide | **choix de conception** : le tutoriel IBM renvoie 200 avec un tableau vide pour « tous les étudiants » | tutoriel Part 3 |
+| Sorties toujours initialisées (`json = '[]'`, `httpStatus` posé dès l'entrée) | bonne pratique cohérente avec l'hypothèse « champ non initialisé » de la partie 2 | partie 2 |
+
+## Partie 2 : services web REST avec Integrated Web Services (IWS)
+
+> Sources : [Part 2](https://developer.ibm.com/tutorials/i-rest-web-services-server2/) et [Part 3](https://developer.ibm.com/tutorials/i-rest-web-services-server3/) du tutoriel IBM « Building a REST service with integrated web services server for IBM i » (publiées le 7 mai 2015, lues en entier). **Âge du texte : 2015** (IBM i 7.1 / 7.2) : à revalider pour 7.5.
+
+| Élément | Statut | Source |
+|---|---|---|
+| Serveur de services web **version 2.6 minimum** pour le REST ; assistant dans `http://hôte:2001/HTTPAdmin` (`https://hôte:2010/HTTPAdmin` si SSL) | vérifié (2015) | tutoriel Part 2 |
+| Autorités `*ALLOBJ` et `*IOSYSCFG` pour créer le serveur (ou autorisation donnée, 6.1 et suivants) | vérifié (2015) | Part 2 |
+| Profil d'exécution par défaut `QWSERVICE` ; tout profil indiqué doit être activé (`*ENABLED`) avec un mot de passe différent de `*NONE` ; il doit avoir les droits sur les objets utilisés | vérifié (2015) | Parts 2 et 3 |
+| `PGMINFO(*PCML:*MODULE)` dans la spécification de contrôle du module (forme `h`), `*DCLCASE` pour garder la casse des noms (PTF SI55340 en 7.1, SI55442 en 7.2) | vérifié (2015) | Part 3 |
+| Prérequis PTF : groupe HTTP SF99713 niveau 6 (7.2), SF99368 niveau 32 (7.1) | vérifié (2015), **périmé pour 7.5** | Parts 2 et 3 |
+| Méthodes HTTP `GET`, `POST`, `PUT`, `DELETE` ; chemin par défaut `/web/services/<ressource>` ; modèle de chemin avec variable et expression régulière (ex. `\w{9}`) ; entrée `*PATH_PARAM` | vérifié (2015) | Parts 2 et 3 |
+| Paramètre `int(10)` désigné dans l'assistant comme **code de réponse HTTP** (`httpStatus` dans l'exemple) ; codes cités : 200, 201, 204, 404, 409, 500 | vérifié (2015) | Part 3 |
+| En-têtes HTTP en sortie : paramètre `100a DIM(10)` (ex. `Cache-Control: no-cache, no-store`, `LOCATION: …`) | vérifié (2015) | Part 3 |
+| Tableau de sortie `DIM(n)` avec `OPTIONS(*VARSIZE)` : sans paramètre de **nombre d'éléments** (`10i 0`) désigné dans l'assistant, la réponse contient les éléments vides | vérifié (2015) | Part 3 |
+| Informations de transport passées par variables d'environnement : `REMOTE_ADDR`, `HTTP_<EN-TÊTE>` en majuscules | vérifié (2015) | Parts 2 et 3 |
+| Bibliothèques de la liste en début ou en fin de partie utilisateur | vérifié (2015) | Parts 2 et 3 |
+| Paramètres `varchar`, packed et zoned dans IWS ; échappement d'une chaîne JSON dans un `varchar` de sortie ; texte du statut HTTP (reason phrase) ; paramètre en chaîne de requête (`?numero=`) | **non vérifié** (non couvert par les pages) | — |
+| `PGMINFO` en `CTL-OPT` (format libre) | **vérifié** (IBM i 7.2, mot-clé de spécification de contrôle : voir la ligne `PGMINFO(*PCML:*MODULE:*DCLCASE)` plus haut) ; corrigé le 2026-11-23, cette ligne le donnait encore non vérifié | [PGMINFO, 7.2](https://www.ibm.com/docs/en/i/7.2.0?topic=keywords-pgminfopcml-no-dclcase-module-v6-v7) |
+| IWS 3.0 (annonce d'octobre 2025) | **non vérifié** (issu d'une recherche, page non lue) | — |
+| PDF « IWS-Building-REST-Service-Part-2 » | **non lu** (texte non extrait) | à lire localement avant de le citer |
+
+### Ce que montrent les deux exemples
+- **Part 2** : une procédure exportée de programme de service (conversion de température) mappée sur `GET /web/services/ftoc/{temp}`, réponse JSON, aucun en-tête ni code de statut personnalisé.
+- **Part 3** : un programme de service CRUD (5 procédures `getAll`, `getByID`, `create`, `update`, `remove`) avec une structure `QUALIFIED TEMPLATE` pour les zones de la table (pour contrôler la casse des noms JSON), un paramètre `httpStatus`, un tableau de sortie avec son compteur et des en-têtes HTTP.
+- Dans les deux cas, l'assistant « Deploy New Service » permet de désigner chaque paramètre comme entrée, sortie, statut HTTP, en-têtes, chemin ou compteur.
+
+### Retour d'expérience (hypothèse non confirmée)
+Le message « Response data corresponding to field 'x' is not valid. The field may not be initialized. » apparaît avec un tableau de sortie non initialisé ou sans paramètre de nombre d'éléments, ou quand IWS garde l'ancienne description des paramètres après un changement de signature (supprimer le service, redémarrer le serveur, redéployer). **À vérifier** dans la documentation IBM avant de passer en « vérifié ».
+
+## Partie 3 : droits et exploitation d'un service IWS
+
+| Élément | Statut | Source |
+|---|---|---|
+| Le profil d'exécution doit avoir les droits sur les bibliothèques, bases de données et fichiers utilisés | vérifié (2015, formulation générale) | Parts 2 et 3 |
+| `*USE` pour `QWSERVICE` sur la table, la bibliothèque et le programme de service suffit | **non vérifié** (constat à confirmer dans la documentation) | — |
+| Après `DLTSRVPGM` puis `CRTSRVPGM`, les droits sont à redonner (`GRTOBJAUT`) | **non vérifié** (la commande existe sur job-i, le comportement n'est pas documenté ici) | [job-i GRTOBJAUT](https://job-i.fr/commandes-ibm-i/grtobjaut) |
+| Journal du serveur : `WRKACTJOB SBS(QHTTPSVR)`, option 5 puis 10 | **non vérifié** | — |
+
+Rien n'est à publier de plus tant que ces points ne sont pas confirmés dans la documentation IBM (référence IWS et droits).
+
+### Constats d'un cours PDF IWS (2026-11-24, document fourni, **non vérifié** sur ibm.com / job-i.fr)
+Synthèse d'un document de formation de 4 pages ; ne pas le présenter comme acquis. Détail : [apport du 2026-11-24](apports/2026-11-24-iws-cours-pdf-service-program-wrapping-p.md).
+
+| Constat du document | Statut | Source |
+|---|---|---|
+| `PGMINFO(*PCML:*MODULE:*DCLCASE:*V7)` ; module par `CRTSQLRPGI OBJTYPE(*MODULE)` (ou `CRTRPGMOD` sans SQL) ; source de liage `STRPGMEXP` / `EXPORT SYMBOL` / `ENDPGMEXP`, nouvelles procédures ajoutées à la fin ; `CRTSRVPGM … EXPORT(*SRCFILE) ACTGRP(*CALLER)` | non vérifié (`*V7` : voir le lien PGMINFO 7.2 plus haut, valeur citée dans l'URL mais non lue) | cours PDF fourni |
+| `int(3)` / `uns(3)` : pas d'équivalent PCML, erreur `RNF0320` (gravité 30), module non créé ; pointeur refusé | non vérifié (`RNF0320` : page job-i 404 le 2026-11-24) | cours PDF fourni |
+| « Wrap output parameter » décoché : le corps est le JSON du RPG ; coché : JSON du RPG en chaîne échappée dans un objet. Erreur `ZUI_54441` si plusieurs sorties restent comptées sans wrapping : désigner `http_code` (code retour HTTP, `int(10)`) et `http_text` (erreur) | non vérifié ; **répond au point « JSON brut ou échappé » laissé ouvert**, à confirmer par un test | cours PDF fourni |
+| Jobs `QZRCSRVS` (sous-système `QUSRWRK`) réutilisés : réinitialiser toutes les sorties en début de procédure ; recompilation sans changement de paramètres = arrêter/redémarrer le service, sinon redéployer | non vérifié | cours PDF fourni |
+| `500` + `CPF9801` / `SQL0204` : liste de bibliothèques du service ; `500` + `CPF9802` / `SQL0551` : droits du profil d'exécution ; JSON tronqué : paramètre de corps trop court | non vérifié | cours PDF fourni |
+| Droits : `*EXECUTE` sur la bibliothèque, `*USE` sur le `*SRVPGM` et les fichiers pour `QWSERVICE` | non vérifié (confirme l'hypothèse de la partie 3, sans la vérifier) | cours PDF fourni |
+| Où regarder : job log du job `QZRCSRVS`, `messages.log` du serveur IWS, `STRSRVJOB` + `STRDBG` ; `listWebServices.sh -server <serveur>` | non vérifié | cours PDF fourni |
+
+## Partie 4 : mémo des commandes système (ILE, IWS, exploitation)
+
+> Toutes ces commandes ont une fiche sur job-i (vérifiée le 2026-11-23, syntaxe minimale reprise de la fiche). Dans une session 5250 : taper la commande puis **F4** pour l'invite, **F1** sur un paramètre pour l'aide. Les enchaînements viennent de l'exemple « bonbons » et de la page job-i « ILE ». Valeurs de paramètres non citées ici : à vérifier avec F4 (non vérifié).
+
+### Compiler et lier
+
+| Commande | Rôle | Syntaxe minimale |
+|---|---|---|
+| [`CRTSQLRPGI`](https://job-i.fr/commandes-ibm-i/crtsqlrpgi) | précompile le SQL puis compile ; `OBJTYPE(*PGM \| *SRVPGM \| *MODULE)` (voir la fiche 07) | `CRTSQLRPGI OBJ(BIB01/BONBONDAO) SRCFILE(BIB01/WEBSERVICE) SRCMBR(BONBONDAO) OBJTYPE(*MODULE) COMMIT(*NONE)` |
+| [`CRTRPGMOD`](https://job-i.fr/commandes-ibm-i/crtrpgmod) | module RPG sans SQL (`DBGVIEW(*SOURCE)` pour déboguer) | `CRTRPGMOD MODULE(BIB01/GET_BONBON) SRCFILE(BIB01/WEBSERVICE)` |
+| [`CRTBNDRPG`](https://job-i.fr/commandes-ibm-i/crtbndrpg) | compile et lie en un programme (module temporaire) ; `DFTACTGRP(*YES)` interdit `ACTGRP` / `BNDDIR` | `CRTBNDRPG PGM(BIB01/MONPGM) SRCFILE(BIB01/QRPGLESRC)` |
+| [`CRTCLMOD`](https://job-i.fr/commandes-ibm-i/crtclmod) | module CL | `CRTCLMOD MODULE(BIB01/MONCL) SRCFILE(BIB01/QCLSRC)` |
+| [`CRTPGM`](https://job-i.fr/commandes-ibm-i/crtpgm) | lie des modules (par copie) en un programme ; `ENTMOD` = module d'entrée | `CRTPGM PGM(BIB01/MONPGM) MODULE(BIB01/MOD1 BIB01/MOD2) ENTMOD(BIB01/MOD1)` |
+| [`CRTSRVPGM`](https://job-i.fr/commandes-ibm-i/crtsrvpgm) | programme de service ; `EXPORT(*ALL)` ou `*SRCFILE` (+ `SRCFILE`, défaut `QSRVSRC`, `SRCMBR`) ; `ACTGRP(*CALLER)` ou nom ; `BNDDIR`, `BNDSRVPGM` | `CRTSRVPGM SRVPGM(BIB01/WSBONBON) MODULE(BIB01/BONBONDAO BIB01/GET_BONBON) EXPORT(*ALL) ACTGRP(*CALLER)` |
+| [`UPDSRVPGM`](https://job-i.fr/commandes-ibm-i/updsrvpgm) | remplace un ou plusieurs modules d'un programme de service sans le recréer | `UPDSRVPGM SRVPGM(BIB01/WSBONBON) MODULE(BIB01/BONBONDAO)` |
+| [`UPDPGM`](https://job-i.fr/commandes-ibm-i/updpgm) | idem pour un programme lié **par copie** | `UPDPGM PGM(BIB01/MONPGM) MODULE(BIB01/MOD1)` |
+| [`CRTBNDDIR`](https://job-i.fr/commandes-ibm-i/crtbnddir) | crée un répertoire de liage | `CRTBNDDIR BNDDIR(BIB01/MONREP)` |
+| [`ADDBNDDIRE`](https://job-i.fr/commandes-ibm-i/addbnddire) | ajoute un poste (module ou programme de service) | `ADDBNDDIRE BNDDIR(BIB01/MONREP) OBJ((BIB01/WSBONBON *SRVPGM))` |
+
+### Inspecter
+
+| Commande | Rôle | Syntaxe minimale |
+|---|---|---|
+| [`DSPSRVPGM`](https://job-i.fr/commandes-ibm-i/dspsrvpgm) | infos sur un programme de service ; `DETAIL(*PROCEXP)` = procédures exportées (signature courante), aussi `*MODULE`, `*SRVPGM`, `*DTAEXP`, `*SIGNATURE`, `*ALL`… | `DSPSRVPGM SRVPGM(BIB01/WSBONBON) DETAIL(*PROCEXP)` |
+| [`DSPPGM`](https://job-i.fr/commandes-ibm-i/dsppgm) | infos sur un programme ; `DETAIL(*MODULE)` = modules et langage (exemple job-i) | `DSPPGM PGM(BIB01/MONPGM) DETAIL(*MODULE)` |
+| [`DSPMOD`](https://job-i.fr/commandes-ibm-i/dspmod) | infos sur un module (compilateur, source d'origine) | `DSPMOD MODULE(BIB01/GET_BONBON)` |
+| [`DSPBNDDIR`](https://job-i.fr/commandes-ibm-i/dspbnddir) | contenu d'un répertoire de liage | `DSPBNDDIR BNDDIR(BIB01/MONREP)` |
+| [`RTVBNDSRC`](https://job-i.fr/commandes-ibm-i/rtvbndsrc) | extrait les exports de modules / programmes de service en source de liage | `RTVBNDSRC SRVPGM(BIB01/WSBONBON) SRCFILE(BIB01/QSRVSRC)` (paramètres exacts : F4) |
+| [`DSPOBJD`](https://job-i.fr/commandes-ibm-i/dspobjd) | description d'objet (dates de création, source) | `DSPOBJD OBJ(BIB01/WSBONBON) OBJTYPE(*SRVPGM)` |
+| [`DSPOBJAUT`](https://job-i.fr/commandes-ibm-i/dspobjaut) | liste des utilisateurs autorisés et leurs droits | `DSPOBJAUT OBJ(BIB01/WSBONBON) OBJTYPE(*SRVPGM)` |
+| [`CHKOBJ`](https://job-i.fr/commandes-ibm-i/chkobj) | vérifie l'existence d'un objet et les droits de l'utilisateur | `CHKOBJ OBJ(BIB01/WSBONBON) OBJTYPE(*SRVPGM)` |
+
+### Droits et nettoyage
+
+| Commande | Rôle | Syntaxe minimale |
+|---|---|---|
+| [`GRTOBJAUT`](https://job-i.fr/commandes-ibm-i/grtobjaut) | accorde des droits sur des objets à un utilisateur ou groupe | `GRTOBJAUT OBJ(BIB01/WSBONBON) OBJTYPE(*SRVPGM) USER(QWSERVICE) AUT(*USE)` (paramètres `USER` et `AUT` : F4) |
+| [`DLTSRVPGM`](https://job-i.fr/commandes-ibm-i/dltsrvpgm) | supprime un programme de service | `DLTSRVPGM SRVPGM(BIB01/WSBONBON)` |
+| [`DLTMOD`](https://job-i.fr/commandes-ibm-i/dltmod) | supprime un module | `DLTMOD MODULE(BIB01/GET_BONBON)` |
+
+### Environnement et sources
+
+| Commande | Rôle | Syntaxe minimale |
+|---|---|---|
+| [`CRTLIB`](https://job-i.fr/commandes-ibm-i/crtlib) | crée une bibliothèque | `CRTLIB LIB(BIB01)` |
+| [`CRTSRCPF`](https://job-i.fr/commandes-ibm-i/crtsrcpf) | crée un fichier source (`RCDLEN`) | `CRTSRCPF FILE(BIB01/WEBSERVICE)` |
+| [`ADDPFM`](https://job-i.fr/commandes-ibm-i/addpfm) | ajoute un membre à un fichier physique | `ADDPFM FILE(BIB01/WEBSERVICE) MBR(BONBONDAO)` |
+| [`CPYFRMSTMF`](https://job-i.fr/commandes-ibm-i/cpyfrmstmf) | copie un fichier STREAM (IFS) vers un membre source | `CPYFRMSTMF FROMSTMF('/tmp/src.rpgle') TOMBR('/QSYS.LIB/BIB01.LIB/WEBSERVICE.FILE/BONBONDAO.MBR')` (chemin : à vérifier) |
+| [`ADDLIBLE`](https://job-i.fr/commandes-ibm-i/addlible) / [`DSPLIBL`](https://job-i.fr/commandes-ibm-i/dsplibl) | ajoute une bibliothèque à la liste / affiche la liste | `ADDLIBLE LIB(BIB01)` ; `DSPLIBL` |
+
+### Serveur IWS et exploitation
+
+| Commande | Rôle | Syntaxe minimale |
+|---|---|---|
+| [`STRTCPSVR`](https://job-i.fr/commandes-ibm-i/strtcpsvr) / [`ENDTCPSVR`](https://job-i.fr/commandes-ibm-i/endtcpsvr) | démarre / arrête les serveurs d'application TCP/IP ; `ENDTCPSVR` a des paramètres `SERVER`, `HTTPSVR`, `DNSSVR`… | `STRTCPSVR SERVER(...)` ; valeurs pour le serveur HTTP / IWS : F4 (non vérifié) |
+| [`WRKACTJOB`](https://job-i.fr/commandes-ibm-i/wrkactjob) | travaux actifs ; l'utilisateur consulte le sous-système `QHTTPSVR` pour les travaux du serveur (option 5 puis 10 : non vérifié) | `WRKACTJOB` |
+| [`DSPJOBLOG`](https://job-i.fr/commandes-ibm-i/dspjoblog) | historique d'un travail (messages d'erreur du service) | `DSPJOBLOG` |
+| [`DSPJOB`](https://job-i.fr/commandes-ibm-i/dspjob) / [`WRKJOB`](https://job-i.fr/commandes-ibm-i/wrkjob) | état d'un travail / gestion d'un travail | `DSPJOB JOB(...)` |
+| [`WRKSPLF`](https://job-i.fr/commandes-ibm-i/wrksplf) | fichiers spoule | `WRKSPLF` |
+| [`STRDBG`](https://job-i.fr/commandes-ibm-i/strdbg) / [`ENDDBG`](https://job-i.fr/commandes-ibm-i/enddbg) | démarre / arrête le débogage (modules compilés avec `DBGVIEW(*SOURCE)`) | `STRDBG PGM(BIB01/MONPGM)` |
+
+### Enchaînements à retenir
+- **Après avoir changé le code d'un module** : recompiler le module (`CRTRPGMOD` / `CRTSQLRPGI … *MODULE`) puis `UPDSRVPGM` (programme de service) ; pour un programme lié par copie, `UPDPGM`.
+- **Si une signature de procédure change** : recompiler tous les modules appelants et recréer les programmes concernés (IBM, page « Signature »).
+- **Recréer un programme de service** (`DLTSRVPGM` puis `CRTSRVPGM`) : revérifier les droits (`DSPOBJAUT`, `GRTOBJAUT`) et, pour IWS, redéployer le service (hypothèse de la partie 2, non vérifiée).
+- **Vérifier ce qui est exposé** : `DSPSRVPGM … DETAIL(*PROCEXP)`.
+- **Savoir d'où vient un objet** : `DSPOBJD`, `DSPMOD`, `DSPPGM … DETAIL(*MODULE)`.
 
 
 === FICHIER : docs/ASSISTANT-ET-AUTOMATISATION.md ===

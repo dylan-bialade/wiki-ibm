@@ -14,7 +14,7 @@ modifie: 2026-11-16
      A*==========================================================
      A* FICHIER PHYSIQUE : PRODUIT
      A* Référentiel des produits System V
-     A* Auteur : Sylvain BIB02 - NOTOS / Armonie
+     A* Auteur : Sylvain BIB02 - ORGFORM / ORGFORM
      A*==========================================================
      A* CRTPF FILE(BIBLIO/PRODUIT) SRCFILE(BIBLIO/QDDSSRC)
      A*==========================================================

@@ -15,7 +15,7 @@ modifie: 2026-11-16
       //*****************************************************************
       // Programme : SFRPG4
       // Formation RPG4 - Sous fichier semi dynamique en RPG4
-      // Copyright - ARMONIE
+      // Copyright - ORGFORM
       //
       // Indicateurs utilisés :
       // -----------------------

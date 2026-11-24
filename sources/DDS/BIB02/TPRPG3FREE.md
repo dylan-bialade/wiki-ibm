@@ -11,7 +11,7 @@ modifie: 2026-11-16
 # BIB02/QDDSRC/TPRPG3FREE
 
 ```text
-       ctl-opt copyright('(C) ARMONIE 2024.') dftactgrp(*no)
+       ctl-opt copyright('(C) ORGFORM 2024.') dftactgrp(*no)
          actgrp(*caller) ;
 
        Dcl-F saisagn WORKSTN;

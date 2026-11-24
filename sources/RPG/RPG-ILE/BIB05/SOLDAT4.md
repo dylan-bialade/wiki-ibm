@@ -12,7 +12,7 @@ modifie: 2026-11-16
 
 ```text
       * PROGRAMME : PSOLDAT
-      * AUTEUR    : Sylvain BIB02 - Notos
+      * AUTEUR    : Sylvain BIB02 - ORGFORM
       * DATE      : [22/10/2025]
       * VERSION   : 1.0
       * DESCRIPTION :

@@ -12,7 +12,7 @@ modifie: 2026-11-16
 
 ```cl
              PGM
-             COPYRIGHT  TEXT('(C) ARMONIE 2023.')
+             COPYRIGHT  TEXT('(C) ORGFORM 2023.')
 
              STRSBS     ACMSCTL/ALDONDMI
 

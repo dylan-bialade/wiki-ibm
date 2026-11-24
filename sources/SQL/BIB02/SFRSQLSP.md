@@ -11,7 +11,7 @@ modifie: 2026-11-16
 # BIB02/QSQLSRC/SFRSQLSP
 
 ```sql
-       CTL-OPT COPYRIGHT('(C) ARMONIE 2023.') USRPRF(*OWNER)
+       CTL-OPT COPYRIGHT('(C) ORGFORM 2023.') USRPRF(*OWNER)
        OPTION(*SRCSTMT) DFTACTGRP(*NO) OPTIMIZE(*FULL)
        ACTGRP(*CALLER) DATFMT(*ISO) TIMFMT(*ISO) ALLOC(*STGMDL)
        STGMDL(*INHERIT) THREAD(*SERIALIZE);
@@ -23,7 +23,7 @@ modifie: 2026-11-16
        // Mise à jour - 18/01/2023
        // IMPORTANT !!- CHANGEZ LE OPTIMIZE(*FULL) EN *NONE POUR DEBUG
        // POUR DEBUGGER   !!!!!!!!!
-       // Copyright - ARMONIE
+       // Copyright - ORGFORM
        //*****************************************************************
 
        //**********************************************************************//

@@ -12,7 +12,7 @@ modifie: 2026-11-16
 
 ```rpg
 **FREE
-ctl-opt copyright('(C) ARMONIE 2024.') dftactgrp(*no) optimize(*full)
+ctl-opt copyright('(C) ORGFORM 2024.') dftactgrp(*no) optimize(*full)
 actgrp(*caller) datfmt(*iso) timfmt(*iso) alloc(*stgmdl)
 stgmdl(*inherit) thread(*serialize);
 
