@@ -14,6 +14,7 @@
   - [Ce que montrent les deux exemples](#ce-que-montrent-les-deux-exemples)
   - [Retour d'expérience (hypothèse non confirmée)](#retour-dexpérience-hypothèse-non-confirmée)
 - [Partie 3 : droits et exploitation d'un service IWS](#partie-3--droits-et-exploitation-dun-service-iws)
+  - [Constats d'un cours PDF IWS (2026-11-24, document fourni, **non vérifié** sur ibm.com / job-i.fr)](#constats-dun-cours-pdf-iws-2026-11-24-document-fourni-non-vérifié-sur-ibmcom--job-ifr)
 - [Partie 4 : mémo des commandes système (ILE, IWS, exploitation)](#partie-4--mémo-des-commandes-système-ile-iws-exploitation)
   - [Compiler et lier](#compiler-et-lier)
   - [Inspecter](#inspecter)
@@ -285,6 +286,19 @@ Le message « Response data corresponding to field 'x' is not valid. The field m
 | Journal du serveur : `WRKACTJOB SBS(QHTTPSVR)`, option 5 puis 10 | **non vérifié** | — |
 
 Rien n'est à publier de plus tant que ces points ne sont pas confirmés dans la documentation IBM (référence IWS et droits).
+
+### Constats d'un cours PDF IWS (2026-11-24, document fourni, **non vérifié** sur ibm.com / job-i.fr)
+Synthèse d'un document de formation de 4 pages ; ne pas le présenter comme acquis. Détail : [apport du 2026-11-24](apports/2026-11-24-iws-cours-pdf-service-program-wrapping-p.md).
+
+| Constat du document | Statut | Source |
+|---|---|---|
+| `PGMINFO(*PCML:*MODULE:*DCLCASE:*V7)` ; module par `CRTSQLRPGI OBJTYPE(*MODULE)` (ou `CRTRPGMOD` sans SQL) ; source de liage `STRPGMEXP` / `EXPORT SYMBOL` / `ENDPGMEXP`, nouvelles procédures ajoutées à la fin ; `CRTSRVPGM … EXPORT(*SRCFILE) ACTGRP(*CALLER)` | non vérifié (`*V7` : voir le lien PGMINFO 7.2 plus haut, valeur citée dans l'URL mais non lue) | cours PDF fourni |
+| `int(3)` / `uns(3)` : pas d'équivalent PCML, erreur `RNF0320` (gravité 30), module non créé ; pointeur refusé | non vérifié (`RNF0320` : page job-i 404 le 2026-11-24) | cours PDF fourni |
+| « Wrap output parameter » décoché : le corps est le JSON du RPG ; coché : JSON du RPG en chaîne échappée dans un objet. Erreur `ZUI_54441` si plusieurs sorties restent comptées sans wrapping : désigner `http_code` (code retour HTTP, `int(10)`) et `http_text` (erreur) | non vérifié ; **répond au point « JSON brut ou échappé » laissé ouvert**, à confirmer par un test | cours PDF fourni |
+| Jobs `QZRCSRVS` (sous-système `QUSRWRK`) réutilisés : réinitialiser toutes les sorties en début de procédure ; recompilation sans changement de paramètres = arrêter/redémarrer le service, sinon redéployer | non vérifié | cours PDF fourni |
+| `500` + `CPF9801` / `SQL0204` : liste de bibliothèques du service ; `500` + `CPF9802` / `SQL0551` : droits du profil d'exécution ; JSON tronqué : paramètre de corps trop court | non vérifié | cours PDF fourni |
+| Droits : `*EXECUTE` sur la bibliothèque, `*USE` sur le `*SRVPGM` et les fichiers pour `QWSERVICE` | non vérifié (confirme l'hypothèse de la partie 3, sans la vérifier) | cours PDF fourni |
+| Où regarder : job log du job `QZRCSRVS`, `messages.log` du serveur IWS, `STRSRVJOB` + `STRDBG` ; `listWebServices.sh -server <serveur>` | non vérifié | cours PDF fourni |
 
 ## Partie 4 : mémo des commandes système (ILE, IWS, exploitation)
 

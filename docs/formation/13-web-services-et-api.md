@@ -150,6 +150,7 @@ Le détail (tutoriels IBM de 2015, lus en entier, avec les points non vérifiés
 |---|---|---|
 | IWS : serveur 2.6, port 2001, profil `QWSERVICE`, PGMINFO, code HTTP, en-têtes, tableau + compteur | vérifié (2015) ; périmé possible pour 7.5 | [ILE-ET-SERVICES-WEB](../ILE-ET-SERVICES-WEB.md) |
 | STRTCPSVR : rôle et paramètres | vérifié (début de l'aide) | [job-i : STRTCPSVR](https://job-i.fr/commandes-ibm-i/strtcpsvr) |
+| Cours PDF IWS (2026-11-24) : source de liage, `*V7`, `RNF0320`, `ZUI_54441`, wrapping, jobs `QZRCSRVS` réutilisés | **non vérifié** (document fourni) | [ILE-ET-SERVICES-WEB](../ILE-ET-SERVICES-WEB.md) |
 | Droits `QWSERVICE` (`*USE` suffit ?), `GRTOBJAUT` après recréation, journal du serveur | **non vérifié** | [ILE-ET-SERVICES-WEB, partie 3](../ILE-ET-SERVICES-WEB.md#partie-3--droits-et-exploitation-dun-service-iws) |
 | Sécurité, WSDL, OpenAPI, XML en sortie | **non vérifié** | à sourcer |
 | IWS en 7.5 (documentation actuelle) | **non lue** | à chercher sur ibm.com |
