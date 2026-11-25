@@ -1,4 +1,4 @@
-# CLIENTS : 5 versions differentes dans 5 bibliotheques
+# CLIENTS : 6 versions differentes dans 7 bibliotheques
 
 Meme nom de membre, code different : facons de faire ou de penser differentes. Similarite = part de lignes (normalisees) en commun avec la premiere version. Retour : [index des comparaisons](../COMPARAISON-BIBLIOTHEQUES.md).
 
@@ -9,6 +9,8 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 | BIB09 | QSOURCES | DDS | 11 | 0 % | DDS (R/K/PFILE) | [CLIENTS.md](../../sources/DDS/BIB09/CLIENTS.md) |
 | BIB10 | QDDSSRC | DDS | 5 | 11 % |  | [CLIENTS.md](../../sources/DDS/BIB10/CLIENTS.md) |
 | BIB17 | QDDSSRC | DDS | 5 | 0 % |  | [CLIENTS.md](../../sources/DDS/BIB17/CLIENTS.md) |
+| BIB25 | QDDSSRC | DDS | 7 | 0 % |  | [CLIENTS.md](../../sources/DDS/BIB25/CLIENTS.md) |
+| BIB27 | QDDSSRC | DDS | 7 | 0 % |  | [CLIENTS.md](../../sources/DDS/BIB27/CLIENTS.md) |
 
 ## Differences
 
@@ -71,4 +73,28 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
                   NOMCLI        20A
                   PRECLI        20A
                   AGE            3P
+```
+
+### BIB25 (DDS, 7 lignes)
+
+```text
+                                            UNIQUE
+                R FRTCLI
+                  NUM_CLI        6S         COLHDG('NUMÉRO CLIENT')
+                  NOM           20A         COLHDG('NOM DU CLIENT')
+                  PRENOM        20A         COLHDG('PRENOM DU CLIENT')
+                  VILLE         50A         COLHDG('VILLE RESIDENCE')
+                K NUM_CLI
+```
+
+### BIB27 (DDS, 7 lignes)
+
+```text
+                                            UNIQUE
+                R FRTCLI
+                  NUM_CLI        6S         COLHDG('NUMÉRO CLIENT')
+                  NOM           20A         COLHDG('NOM DU CLIENT')
+                  PRENOM        20A         COLHDG('PRENOM DU CLIENT')
+                  VILLE         50A         COLHDG('VILLE RESIDENCE')
+                K NUM_CLI
 ```

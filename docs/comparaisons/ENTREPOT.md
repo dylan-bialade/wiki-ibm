@@ -1,4 +1,4 @@
-# ENTREPOT : 2 versions differentes dans 2 bibliotheques
+# ENTREPOT : 2 versions differentes dans 3 bibliotheques
 
 Meme nom de membre, code different : facons de faire ou de penser differentes. Similarite = part de lignes (normalisees) en commun avec la premiere version. Retour : [index des comparaisons](../COMPARAISON-BIBLIOTHEQUES.md).
 
@@ -6,8 +6,10 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 |---|---|---|---|---|---|---|
 | BIB02 | QDDSRC | DDS | 5 | 100 % |  | [ENTREPOT.md](../../sources/DDS/BIB02/ENTREPOT.md) |
 | BIB17 | QDDSSRC | DDS | 6 | 10 % |  | [ENTREPOT.md](../../sources/DDS/BIB17/ENTREPOT.md) |
+| BIB27 | QDDSLESRC | DDS | 5 | 100 % |  | [ENTREPOT.md](../../sources/DDS/BIB27/ENTREPOT.md) |
 
 ## Differences
+
 
 ## Codes
 
@@ -30,4 +32,14 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
                   QUANTSTOCK     3S 0       COLHDG('QUANTITE_EN_STOCK')
                   DINVDATE        L         DATFMT(*ISO)
                                             COLHDG('DTE_DERNIER_INVENT')
+```
+
+### BIB27 (DDS, 5 lignes)
+
+```text
+                R ENTREPOTF
+                  CODPRO         5          COLHDG('CODE PRODUIT')
+                  NMPRO         30          COLHDG('NOM PRODUIT')
+                  QTPRO          3S 0       COLHDG('QUANTIOTE')
+                  DTDINV          L         COLHDG('DATE DERNIER INV.')
 ```

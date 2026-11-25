@@ -1,33 +1,16 @@
-# Index des sources
+﻿# Index des sources
 
-Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis).
+Genere le 2026-11-25 09:51 - 1519 sources, 1143 membres de donnees (non convertis).
 
-<!-- TOC:START -->
-**Sommaire** (retour : [sommaire general](SOMMAIRE.md))
-
-- [Autres\Aide (1)](#autresaide-1)
-- [Autres\Commandes (4)](#autrescommandes-4)
-- [Autres\Panneaux-UIM (1)](#autrespanneaux-uim-1)
-- [Autres\Service-programs (14)](#autresservice-programs-14)
-- [Autres\Web (5)](#autresweb-5)
-- [CL\CL-ILE (50)](#clcl-ile-50)
-- [CL\CL-procedural (128)](#clcl-procedural-128)
-- [COBOL (26)](#cobol-26)
-- [DDS (382)](#dds-382)
-- [Menus (14)](#menus-14)
-- [RPG\Copy (11)](#rpgcopy-11)
-- [RPG\RPG-III-400 (124)](#rpgrpg-iii-400-124)
-- [RPG\RPG-ILE (291)](#rpgrpg-ile-291)
-- [SQL (31)](#sql-31)
-<!-- TOC:END -->
-
-## Autres\Aide (1)
+## Autres\Aide (3)
 
 | Bibliotheque | Membre | Lignes | Document |
 |---|---|---|---|
 | BIB20 | BONBONHLP | 27 | [BONBONHLP](../sources/Autres/Aide/BIB20/BONBONHLP.md) |
+| BIB25 | HELPFINAL | 30 | [HELPFINAL](../sources/Autres/Aide/BIB25/HELPFINAL.md) |
+| BIB25 | POKEHLP | 23 | [POKEHLP](../sources/Autres/Aide/BIB25/POKEHLP.md) |
 
-## Autres\Commandes (4)
+## Autres\Commandes (5)
 
 | Bibliotheque | Membre | Lignes | Document |
 |---|---|---|---|
@@ -35,6 +18,7 @@ Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis
 | BIB02 | RECMBR | 11 | [RECMBR](../sources/Autres/Commandes/BIB02/RECMBR.md) |
 | BIB19 | ENDIDBG | 3 | [ENDIDBG](../sources/Autres/Commandes/BIB19/ENDIDBG.md) |
 | BIB19 | STRIDBG | 29 | [STRIDBG](../sources/Autres/Commandes/BIB19/STRIDBG.md) |
+| BIB25 | CRTMNUUIM | 1 | [CRTMNUUIM](../sources/Autres/Commandes/BIB25/CRTMNUUIM.md) |
 
 ## Autres\Panneaux-UIM (1)
 
@@ -42,7 +26,7 @@ Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis
 |---|---|---|---|
 | BIB19 | STRIDBGH | 115 | [STRIDBGH](../sources/Autres/Panneaux-UIM/BIB19/STRIDBGH.md) |
 
-## Autres\Service-programs (14)
+## Autres\Service-programs (25)
 
 | Bibliotheque | Membre | Lignes | Document |
 |---|---|---|---|
@@ -60,8 +44,19 @@ Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis
 | BIB17 | ANZSRV | 9 | [ANZSRV](../sources/Autres/Service-programs/BIB17/ANZSRV.md) |
 | BIB17 | PRETSRV | 22 | [PRETSRV](../sources/Autres/Service-programs/BIB17/PRETSRV.md) |
 | BIB18 | TP3SRV | 12 | [TP3SRV](../sources/Autres/Service-programs/BIB18/TP3SRV.md) |
+| BIB25 | APPEL_TP2 | 20 | [APPEL_TP2](../sources/Autres/Service-programs/BIB25/APPEL_TP2.md) |
+| BIB25 | APPEL_TP2B | 34 | [APPEL_TP2B](../sources/Autres/Service-programs/BIB25/APPEL_TP2B.md) |
+| BIB25 | BND_TP2 | 7 | [BND_TP2](../sources/Autres/Service-programs/BIB25/BND_TP2.md) |
+| BIB25 | MOD_TP2 | 80 | [MOD_TP2](../sources/Autres/Service-programs/BIB25/MOD_TP2.md) |
+| BIB25 | SIGN_SRV1H | 5 | [SIGN_SRV1H](../sources/Autres/Service-programs/BIB25/SIGN_SRV1H.md) |
+| BIB25 | SIGN_SRV2 | 13 | [SIGN_SRV2](../sources/Autres/Service-programs/BIB25/SIGN_SRV2.md) |
+| BIB25 | SIGN_SRVTP | 13 | [SIGN_SRVTP](../sources/Autres/Service-programs/BIB25/SIGN_SRVTP.md) |
+| BIB25 | SIGN1 | 3 | [SIGN1](../sources/Autres/Service-programs/BIB25/SIGN1.md) |
+| BIB25 | SIGN2 | 3 | [SIGN2](../sources/Autres/Service-programs/BIB25/SIGN2.md) |
+| BIB27 | TEST | 28 | [TEST](../sources/Autres/Service-programs/BIB27/TEST.md) |
+| BIB27 | TESTMODULE | 19 | [TESTMODULE](../sources/Autres/Service-programs/BIB27/TESTMODULE.md) |
 
-## Autres\Web (5)
+## Autres\Web (12)
 
 | Bibliotheque | Membre | Lignes | Document |
 |---|---|---|---|
@@ -70,8 +65,15 @@ Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis
 | BIB05 | DB1W3FM | 129 | [DB1W3FM](../sources/Autres/Web/BIB05/DB1W3FM.md) |
 | BIB05 | NEW_4 | 129 | [NEW_4](../sources/Autres/Web/BIB05/NEW_4.md) |
 | BIB05 | POKEDEX | 91 | [POKEDEX](../sources/Autres/Web/BIB05/POKEDEX.md) |
+| BIB25 | CHK_API_F | 622 | [CHK_API_F](../sources/Autres/Web/BIB25/CHK_API_F.md) |
+| BIB25 | CHK_APIEXO | 631 | [CHK_APIEXO](../sources/Autres/Web/BIB25/CHK_APIEXO.md) |
+| BIB25 | MOD_API | 863 | [MOD_API](../sources/Autres/Web/BIB25/MOD_API.md) |
+| BIB25 | MOD_API_F | 869 | [MOD_API_F](../sources/Autres/Web/BIB25/MOD_API_F.md) |
+| BIB25 | PSSR_FRE_D | 56 | [PSSR_FRE_D](../sources/Autres/Web/BIB25/PSSR_FRE_D.md) |
+| BIB25 | RPG_API | 107 | [RPG_API](../sources/Autres/Web/BIB25/RPG_API.md) |
+| BIB25 | TEST_API | 53 | [TEST_API](../sources/Autres/Web/BIB25/TEST_API.md) |
 
-## CL\CL-ILE (50)
+## CL\CL-ILE (70)
 
 | Bibliotheque | Membre | Lignes | Document |
 |---|---|---|---|
@@ -125,8 +127,28 @@ Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis
 | BIB20 | CLMSG | 4 | [CLMSG](../sources/CL/CL-ILE/BIB20/CLMSG.md) |
 | BIB20 | RTVINFOPGM | 16 | [RTVINFOPGM](../sources/CL/CL-ILE/BIB20/RTVINFOPGM.md) |
 | BIB20 | TSTADRIEN | 49 | [TSTADRIEN](../sources/CL/CL-ILE/BIB20/TSTADRIEN.md) |
+| BIB25 | ADDFILM | 40 | [ADDFILM](../sources/CL/CL-ILE/BIB25/ADDFILM.md) |
+| BIB25 | ALERT | 28 | [ALERT](../sources/CL/CL-ILE/BIB25/ALERT.md) |
+| BIB25 | ALERTLOG | 4 | [ALERTLOG](../sources/CL/CL-ILE/BIB25/ALERTLOG.md) |
+| BIB25 | ANALYSE | 23 | [ANALYSE](../sources/CL/CL-ILE/BIB25/ANALYSE.md) |
+| BIB25 | CALCUL | 25 | [CALCUL](../sources/CL/CL-ILE/BIB25/CALCUL.md) |
+| BIB25 | CAPTUREPOK | 4 | [CAPTUREPOK](../sources/CL/CL-ILE/BIB25/CAPTUREPOK.md) |
+| BIB25 | CRTTABLE | 12 | [CRTTABLE](../sources/CL/CL-ILE/BIB25/CRTTABLE.md) |
+| BIB25 | DLTFILM | 6 | [DLTFILM](../sources/CL/CL-ILE/BIB25/DLTFILM.md) |
+| BIB25 | DLTPOKE | 24 | [DLTPOKE](../sources/CL/CL-ILE/BIB25/DLTPOKE.md) |
+| BIB25 | ECRAN | 9 | [ECRAN](../sources/CL/CL-ILE/BIB25/ECRAN.md) |
+| BIB25 | EXO_PERSO | 9 | [EXO_PERSO](../sources/CL/CL-ILE/BIB25/EXO_PERSO.md) |
+| BIB25 | FILE | 8 | [FILE](../sources/CL/CL-ILE/BIB25/FILE.md) |
+| BIB25 | INFOUSERCL | 31 | [INFOUSERCL](../sources/CL/CL-ILE/BIB25/INFOUSERCL.md) |
+| BIB25 | IZI7SQL | 19 | [IZI7SQL](../sources/CL/CL-ILE/BIB25/IZI7SQL.md) |
+| BIB25 | LIBINFO | 27 | [LIBINFO](../sources/CL/CL-ILE/BIB25/LIBINFO.md) |
+| BIB25 | MENUCL | 9 | [MENUCL](../sources/CL/CL-ILE/BIB25/MENUCL.md) |
+| BIB25 | PGMCL | 39 | [PGMCL](../sources/CL/CL-ILE/BIB25/PGMCL.md) |
+| BIB25 | START | 6 | [START](../sources/CL/CL-ILE/BIB25/START.md) |
+| BIB25 | TPFINAL | 22 | [TPFINAL](../sources/CL/CL-ILE/BIB25/TPFINAL.md) |
+| BIB27 | DLTPOKE | 24 | [DLTPOKE](../sources/CL/CL-ILE/BIB27/DLTPOKE.md) |
 
-## CL\CL-procedural (128)
+## CL\CL-procedural (172)
 
 | Bibliotheque | Membre | Lignes | Document |
 |---|---|---|---|
@@ -258,8 +280,52 @@ Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis
 | BIB20 | CLPRF | 30 | [CLPRF](../sources/CL/CL-procedural/BIB20/CLPRF.md) |
 | BIB20 | TESTCO | 102 | [TESTCO](../sources/CL/CL-procedural/BIB20/TESTCO.md) |
 | BIB21 | LANCEDEMO | 333 | [LANCEDEMO](../sources/CL/CL-procedural/BIB21/LANCEDEMO.md) |
+| BIB25 | CL2 | 9 | [CL2](../sources/CL/CL-procedural/BIB25/CL2.md) |
+| BIB25 | CLDATE | 18 | [CLDATE](../sources/CL/CL-procedural/BIB25/CLDATE.md) |
+| BIB25 | CLFACT | 19 | [CLFACT](../sources/CL/CL-procedural/BIB25/CLFACT.md) |
+| BIB25 | CLSPE_CL | 41 | [CLSPE_CL](../sources/CL/CL-procedural/BIB25/CLSPE_CL.md) |
+| BIB25 | CV1 | 15 | [CV1](../sources/CL/CL-procedural/BIB25/CV1.md) |
+| BIB25 | OBJDCL | 43 | [OBJDCL](../sources/CL/CL-procedural/BIB25/OBJDCL.md) |
+| BIB25 | TPDDS_LG1 | 8 | [TPDDS_LG1](../sources/CL/CL-procedural/BIB25/TPDDS_LG1.md) |
+| BIB25 | TPF_CL | 4 | [TPF_CL](../sources/CL/CL-procedural/BIB25/TPF_CL.md) |
+| BIB25 | TRG_CLI_01 | 8 | [TRG_CLI_01](../sources/CL/CL-procedural/BIB25/TRG_CLI_01.md) |
+| BIB25 | TSTCL1 | 4 | [TSTCL1](../sources/CL/CL-procedural/BIB25/TSTCL1.md) |
+| BIB27 | ADDFILM | 40 | [ADDFILM](../sources/CL/CL-procedural/BIB27/ADDFILM.md) |
+| BIB27 | ANALYSE | 23 | [ANALYSE](../sources/CL/CL-procedural/BIB27/ANALYSE.md) |
+| BIB27 | BIBOBJ | 25 | [BIBOBJ](../sources/CL/CL-procedural/BIB27/BIBOBJ.md) |
+| BIB27 | CALCUL | 25 | [CALCUL](../sources/CL/CL-procedural/BIB27/CALCUL.md) |
+| BIB27 | CAPTUREPOK | 4 | [CAPTUREPOK](../sources/CL/CL-procedural/BIB27/CAPTUREPOK.md) |
+| BIB27 | CL_SF | 31 | [CL_SF](../sources/CL/CL-procedural/BIB27/CL_SF.md) |
+| BIB27 | CMDBIBINFO | 3 | [CMDBIBINFO](../sources/CL/CL-procedural/BIB27/CMDBIBINFO.md) |
+| BIB27 | CMDSRC | 5 | [CMDSRC](../sources/CL/CL-procedural/BIB27/CMDSRC.md) |
+| BIB27 | CRTTABLE | 12 | [CRTTABLE](../sources/CL/CL-procedural/BIB27/CRTTABLE.md) |
+| BIB27 | DLTFILM | 6 | [DLTFILM](../sources/CL/CL-procedural/BIB27/DLTFILM.md) |
+| BIB27 | DLTPOKE | 24 | [DLTPOKE](../sources/CL/CL-procedural/BIB27/DLTPOKE.md) |
+| BIB27 | ECRAN1 | 27 | [ECRAN1](../sources/CL/CL-procedural/BIB27/ECRAN1.md) |
+| BIB27 | ECRAN2 | 27 | [ECRAN2](../sources/CL/CL-procedural/BIB27/ECRAN2.md) |
+| BIB27 | EFILM | 39 | [EFILM](../sources/CL/CL-procedural/BIB27/EFILM.md) |
+| BIB27 | EXO_PERSO | 9 | [EXO_PERSO](../sources/CL/CL-procedural/BIB27/EXO_PERSO.md) |
+| BIB27 | INFOUSER | 29 | [INFOUSER](../sources/CL/CL-procedural/BIB27/INFOUSER.md) |
+| BIB27 | INFOUSERCL | 31 | [INFOUSERCL](../sources/CL/CL-procedural/BIB27/INFOUSERCL.md) |
+| BIB27 | LIBINFO | 27 | [LIBINFO](../sources/CL/CL-procedural/BIB27/LIBINFO.md) |
+| BIB27 | LOG_HST | 8 | [LOG_HST](../sources/CL/CL-procedural/BIB27/LOG_HST.md) |
+| BIB27 | MENU1 | 42 | [MENU1](../sources/CL/CL-procedural/BIB27/MENU1.md) |
+| BIB27 | MENU1QQ | 4 | [MENU1QQ](../sources/CL/CL-procedural/BIB27/MENU1QQ.md) |
+| BIB27 | MENUCL | 9 | [MENUCL](../sources/CL/CL-procedural/BIB27/MENUCL.md) |
+| BIB27 | PF_ANA | 3 | [PF_ANA](../sources/CL/CL-procedural/BIB27/PF_ANA.md) |
+| BIB27 | POKEMON | 36 | [POKEMON](../sources/CL/CL-procedural/BIB27/POKEMON.md) |
+| BIB27 | POKEMONSQL | 19 | [POKEMONSQL](../sources/CL/CL-procedural/BIB27/POKEMONSQL.md) |
+| BIB27 | POKETP | 24 | [POKETP](../sources/CL/CL-procedural/BIB27/POKETP.md) |
+| BIB27 | PRTSRC | 22 | [PRTSRC](../sources/CL/CL-procedural/BIB27/PRTSRC.md) |
+| BIB27 | QSTRUP | 73 | [QSTRUP](../sources/CL/CL-procedural/BIB27/QSTRUP.md) |
+| BIB27 | START | 6 | [START](../sources/CL/CL-procedural/BIB27/START.md) |
+| BIB27 | TEST | 26 | [TEST](../sources/CL/CL-procedural/BIB27/TEST.md) |
+| BIB27 | TEST_01 | 19 | [TEST_01](../sources/CL/CL-procedural/BIB27/TEST_01.md) |
+| BIB27 | TESTCL | 11 | [TESTCL](../sources/CL/CL-procedural/BIB27/TESTCL.md) |
+| BIB27 | TPFINAL | 22 | [TPFINAL](../sources/CL/CL-procedural/BIB27/TPFINAL.md) |
+| BIB27 | TPFINALSQL | 26 | [TPFINALSQL](../sources/CL/CL-procedural/BIB27/TPFINALSQL.md) |
 
-## COBOL (26)
+## COBOL (38)
 
 | Bibliotheque | Membre | Lignes | Document |
 |---|---|---|---|
@@ -289,8 +355,20 @@ Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis
 | BIB20 | STATCBL002 | 245 | [STATCBL002](../sources/COBOL/BIB20/STATCBL002.md) |
 | BIB20 | USRFORMCBL | 38 | [USRFORMCBL](../sources/COBOL/BIB20/USRFORMCBL.md) |
 | BIB20 | USRFORMD | 47 | [USRFORMD](../sources/COBOL/BIB20/USRFORMD.md) |
+| BIB27 | COBOL | 166 | [COBOL](../sources/COBOL/BIB27/COBOL.md) |
+| BIB27 | COBOL1 | 35 | [COBOL1](../sources/COBOL/BIB27/COBOL1.md) |
+| BIB27 | EVALUATE01 | 25 | [EVALUATE01](../sources/COBOL/BIB27/EVALUATE01.md) |
+| BIB27 | INIT_COBOL | 89 | [INIT_COBOL](../sources/COBOL/BIB27/INIT_COBOL.md) |
+| BIB27 | SFL001CBLD | 132 | [SFL001CBLD](../sources/COBOL/BIB27/SFL001CBLD.md) |
+| BIB27 | SFL001LF | 2 | [SFL001LF](../sources/COBOL/BIB27/SFL001LF.md) |
+| BIB27 | SFL001PF | 5 | [SFL001PF](../sources/COBOL/BIB27/SFL001PF.md) |
+| BIB27 | STATCBL001 | 12 | [STATCBL001](../sources/COBOL/BIB27/STATCBL001.md) |
+| BIB27 | STATCBL002 | 246 | [STATCBL002](../sources/COBOL/BIB27/STATCBL002.md) |
+| BIB27 | SYNTHCOBOL | 99 | [SYNTHCOBOL](../sources/COBOL/BIB27/SYNTHCOBOL.md) |
+| BIB27 | TEST_CB | 45 | [TEST_CB](../sources/COBOL/BIB27/TEST_CB.md) |
+| BIB27 | TEST1 | 23 | [TEST1](../sources/COBOL/BIB27/TEST1.md) |
 
-## DDS (382)
+## DDS (499)
 
 | Bibliotheque | Membre | Lignes | Document |
 |---|---|---|---|
@@ -324,6 +402,7 @@ Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis
 | BIB02 | AGENCET | 32 | [AGENCET](../sources/DDS/BIB02/AGENCET.md) |
 | BIB02 | AGENCETMA | 10 | [AGENCETMA](../sources/DDS/BIB02/AGENCETMA.md) |
 | BIB02 | AGENCETP4 | 9 | [AGENCETP4](../sources/DDS/BIB02/AGENCETP4.md) |
+| BIB02 | ALIM | 11 | [ALIM](../sources/DDS/BIB02/ALIM.md) |
 | BIB02 | ANIMAUXDTL | 3 | [ANIMAUXDTL](../sources/DDS/BIB02/ANIMAUXDTL.md) |
 | BIB02 | ANIMAUXNUL | 3 | [ANIMAUXNUL](../sources/DDS/BIB02/ANIMAUXNUL.md) |
 | BIB02 | ANIMAUXPF | 8 | [ANIMAUXPF](../sources/DDS/BIB02/ANIMAUXPF.md) |
@@ -336,11 +415,12 @@ Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis
 | BIB02 | APPARTMNQQ | 2 | [APPARTMNQQ](../sources/DDS/BIB02/APPARTMNQQ.md) |
 | BIB02 | AUTO | 20 | [AUTO](../sources/DDS/BIB02/AUTO.md) |
 | BIB02 | BONBON | 6 | [BONBON](../sources/DDS/BIB02/BONBON.md) |
-| BIB02 | BONBONLF | 2 | [BONBONLF](../sources/DDS/BIB02/BONBONLF.md) |
 | BIB02 | BONBONLF | 2 | [BONBONLF](../sources/DDS/BIB02/BONBONLF~QSOURCE.md) |
+| BIB02 | BONBONLF | 2 | [BONBONLF](../sources/DDS/BIB02/BONBONLF.md) |
 | BIB02 | BONBONLF2 | 4 | [BONBONLF2](../sources/DDS/BIB02/BONBONLF2.md) |
 | BIB02 | CLAGENCED | 6 | [CLAGENCED](../sources/DDS/BIB02/CLAGENCED.md) |
 | BIB02 | CORSEL | 18 | [CORSEL](../sources/DDS/BIB02/CORSEL.md) |
+| BIB02 | CPU | 12 | [CPU](../sources/DDS/BIB02/CPU.md) |
 | BIB02 | CR6055 | 306 | [CR6055](../sources/DDS/BIB02/CR6055.md) |
 | BIB02 | CR6055V | 307 | [CR6055V](../sources/DDS/BIB02/CR6055V.md) |
 | BIB02 | CR6LE | 144 | [CR6LE](../sources/DDS/BIB02/CR6LE.md) |
@@ -386,12 +466,13 @@ Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis
 | BIB02 | EXOALGO6 | 41 | [EXOALGO6](../sources/DDS/BIB02/EXOALGO6.md) |
 | BIB02 | EXOALGO7 | 28 | [EXOALGO7](../sources/DDS/BIB02/EXOALGO7.md) |
 | BIB02 | EXOCL3 | 70 | [EXOCL3](../sources/DDS/BIB02/EXOCL3.md) |
-| BIB02 | FMDSPF | 95 | [FMDSPF](../sources/DDS/BIB02/FMDSPF.md) |
 | BIB02 | FMDSPF | 99 | [FMDSPF](../sources/DDS/BIB02/FMDSPF~QDSPFSRC.md) |
+| BIB02 | FMDSPF | 95 | [FMDSPF](../sources/DDS/BIB02/FMDSPF.md) |
 | BIB02 | FORMA | 9 | [FORMA](../sources/DDS/BIB02/FORMA.md) |
 | BIB02 | FORMATEUR | 7 | [FORMATEUR](../sources/DDS/BIB02/FORMATEUR.md) |
 | BIB02 | FOUND_MD | 270 | [FOUND_MD](../sources/DDS/BIB02/FOUND_MD.md) |
 | BIB02 | FPDSPF | 95 | [FPDSPF](../sources/DDS/BIB02/FPDSPF.md) |
+| BIB02 | GPU | 12 | [GPU](../sources/DDS/BIB02/GPU.md) |
 | BIB02 | INFOLIB_D | 60 | [INFOLIB_D](../sources/DDS/BIB02/INFOLIB_D.md) |
 | BIB02 | INVENDSP | 27 | [INVENDSP](../sources/DDS/BIB02/INVENDSP.md) |
 | BIB02 | INVENLF | 2 | [INVENLF](../sources/DDS/BIB02/INVENLF.md) |
@@ -420,8 +501,8 @@ Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis
 | BIB02 | PROPRIOF | 4 | [PROPRIOF](../sources/DDS/BIB02/PROPRIOF.md) |
 | BIB02 | PRTFSQLRDO | 27 | [PRTFSQLRDO](../sources/DDS/BIB02/PRTFSQLRDO.md) |
 | BIB02 | RACECTL | 5 | [RACECTL](../sources/DDS/BIB02/RACECTL.md) |
-| BIB02 | RACED | 313 | [RACED](../sources/DDS/BIB02/RACED.md) |
 | BIB02 | RACED | 278 | [RACED](../sources/DDS/BIB02/RACED~QILE.md) |
+| BIB02 | RACED | 313 | [RACED](../sources/DDS/BIB02/RACED.md) |
 | BIB02 | RACEHLP | 24 | [RACEHLP](../sources/DDS/BIB02/RACEHLP.md) |
 | BIB02 | RACEJ1 | 17 | [RACEJ1](../sources/DDS/BIB02/RACEJ1.md) |
 | BIB02 | RACEL1 | 2 | [RACEL1](../sources/DDS/BIB02/RACEL1.md) |
@@ -676,8 +757,122 @@ Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis
 | BIB21 | ANIMEDSP | 55 | [ANIMEDSP](../sources/DDS/BIB21/ANIMEDSP.md) |
 | BIB21 | FILMCAST | 30 | [FILMCAST](../sources/DDS/BIB21/FILMCAST.md) |
 | BIB21 | PRTFEX | 20 | [PRTFEX](../sources/DDS/BIB21/PRTFEX.md) |
+| BIB25 | ACTEURP | 8 | [ACTEURP](../sources/DDS/BIB25/ACTEURP.md) |
+| BIB25 | AHGLF1 | 3 | [AHGLF1](../sources/DDS/BIB25/AHGLF1.md) |
+| BIB25 | AHGLF2 | 8 | [AHGLF2](../sources/DDS/BIB25/AHGLF2.md) |
+| BIB25 | AHGPF1 | 12 | [AHGPF1](../sources/DDS/BIB25/AHGPF1.md) |
+| BIB25 | AHGPF2 | 8 | [AHGPF2](../sources/DDS/BIB25/AHGPF2.md) |
+| BIB25 | BIKE_IMP | 7 | [BIKE_IMP](../sources/DDS/BIB25/BIKE_IMP.md) |
+| BIB25 | CAR_IMP | 6 | [CAR_IMP](../sources/DDS/BIB25/CAR_IMP.md) |
+| BIB25 | CLIENTS | 7 | [CLIENTS](../sources/DDS/BIB25/CLIENTS.md) |
+| BIB25 | CLIENTS1 | 15 | [CLIENTS1](../sources/DDS/BIB25/CLIENTS1.md) |
+| BIB25 | CLIENTS2 | 15 | [CLIENTS2](../sources/DDS/BIB25/CLIENTS2.md) |
+| BIB25 | CLIENTS2 | 15 | [CLIENTS2](../sources/DDS/BIB25/CLIENTS2~QF_PFLF.md) |
+| BIB25 | CLIENTSL1 | 2 | [CLIENTSL1](../sources/DDS/BIB25/CLIENTSL1.md) |
+| BIB25 | COMMANDE | 16 | [COMMANDE](../sources/DDS/BIB25/COMMANDE.md) |
+| BIB25 | COMMANDEL2 | 11 | [COMMANDEL2](../sources/DDS/BIB25/COMMANDEL2.md) |
+| BIB25 | COMMANDEL3 | 12 | [COMMANDEL3](../sources/DDS/BIB25/COMMANDEL3.md) |
+| BIB25 | COMMANDEL8 | 4 | [COMMANDEL8](../sources/DDS/BIB25/COMMANDEL8.md) |
+| BIB25 | CPYF_PF3 | 8 | [CPYF_PF3](../sources/DDS/BIB25/CPYF_PF3.md) |
+| BIB25 | CYCLO_IMP | 4 | [CYCLO_IMP](../sources/DDS/BIB25/CYCLO_IMP.md) |
+| BIB25 | E_FINALCUT | 105 | [E_FINALCUT](../sources/DDS/BIB25/E_FINALCUT.md) |
+| BIB25 | E_SFNBA | 115 | [E_SFNBA](../sources/DDS/BIB25/E_SFNBA.md) |
+| BIB25 | E_SFPOKE | 139 | [E_SFPOKE](../sources/DDS/BIB25/E_SFPOKE.md) |
+| BIB25 | E_SFPOKE1 | 51 | [E_SFPOKE1](../sources/DDS/BIB25/E_SFPOKE1.md) |
+| BIB25 | E_STUDENT | 114 | [E_STUDENT](../sources/DDS/BIB25/E_STUDENT.md) |
+| BIB25 | ECRAN01 | 22 | [ECRAN01](../sources/DDS/BIB25/ECRAN01.md) |
+| BIB25 | ECRAN2 | 27 | [ECRAN2](../sources/DDS/BIB25/ECRAN2.md) |
+| BIB25 | ECRAN9 | 55 | [ECRAN9](../sources/DDS/BIB25/ECRAN9.md) |
+| BIB25 | ECRANDATE | 26 | [ECRANDATE](../sources/DDS/BIB25/ECRANDATE.md) |
+| BIB25 | EFILM | 39 | [EFILM](../sources/DDS/BIB25/EFILM.md) |
+| BIB25 | EMENUCL | 27 | [EMENUCL](../sources/DDS/BIB25/EMENUCL.md) |
+| BIB25 | IZI6 | 6 | [IZI6](../sources/DDS/BIB25/IZI6.md) |
+| BIB25 | K7P | 10 | [K7P](../sources/DDS/BIB25/K7P.md) |
+| BIB25 | LVLF_PGM | 14 | [LVLF_PGM](../sources/DDS/BIB25/LVLF_PGM.md) |
+| BIB25 | MENU_L | 43 | [MENU_L](../sources/DDS/BIB25/MENU_L.md) |
+| BIB25 | MENU_L1 | 40 | [MENU_L1](../sources/DDS/BIB25/MENU_L1.md) |
+| BIB25 | MENU_L1QQ | 2 | [MENU_L1QQ](../sources/DDS/BIB25/MENU_L1QQ.md) |
+| BIB25 | MENU_LQQ | 3 | [MENU_LQQ](../sources/DDS/BIB25/MENU_LQQ.md) |
+| BIB25 | MENU_TST | 42 | [MENU_TST](../sources/DDS/BIB25/MENU_TST.md) |
+| BIB25 | MENU_TSTQQ | 3 | [MENU_TSTQQ](../sources/DDS/BIB25/MENU_TSTQQ.md) |
+| BIB25 | MENU1 | 37 | [MENU1](../sources/DDS/BIB25/MENU1.md) |
+| BIB25 | MENU1QQ | 1 | [MENU1QQ](../sources/DDS/BIB25/MENU1QQ.md) |
+| BIB25 | MENUIZI6 | 42 | [MENUIZI6](../sources/DDS/BIB25/MENUIZI6.md) |
+| BIB25 | MENUIZI6QQ | 3 | [MENUIZI6QQ](../sources/DDS/BIB25/MENUIZI6QQ.md) |
+| BIB25 | MODDSPF | 12 | [MODDSPF](../sources/DDS/BIB25/MODDSPF.md) |
+| BIB25 | MONMENU | 61 | [MONMENU](../sources/DDS/BIB25/MONMENU.md) |
+| BIB25 | PAYSL2 | 2 | [PAYSL2](../sources/DDS/BIB25/PAYSL2.md) |
+| BIB25 | PF_1 | 6 | [PF_1](../sources/DDS/BIB25/PF_1.md) |
+| BIB25 | PRDT | 7 | [PRDT](../sources/DDS/BIB25/PRDT.md) |
+| BIB25 | PRDTL1 | 3 | [PRDTL1](../sources/DDS/BIB25/PRDTL1.md) |
+| BIB25 | PRDTL2 | 3 | [PRDTL2](../sources/DDS/BIB25/PRDTL2.md) |
+| BIB25 | PRETBD | 107 | [PRETBD](../sources/DDS/BIB25/PRETBD.md) |
+| BIB25 | PROD_ORD | 3 | [PROD_ORD](../sources/DDS/BIB25/PROD_ORD.md) |
+| BIB25 | REPERT | 11 | [REPERT](../sources/DDS/BIB25/REPERT.md) |
+| BIB25 | SALARIES | 7 | [SALARIES](../sources/DDS/BIB25/SALARIES.md) |
+| BIB25 | SFDSPSQL | 185 | [SFDSPSQL](../sources/DDS/BIB25/SFDSPSQL.md) |
+| BIB25 | SFLF | 103 | [SFLF](../sources/DDS/BIB25/SFLF.md) |
+| BIB25 | SQLTST | 3 | [SQLTST](../sources/DDS/BIB25/SQLTST.md) |
+| BIB25 | STOCK | 5 | [STOCK](../sources/DDS/BIB25/STOCK.md) |
+| BIB25 | TESTPARIS2 | 2 | [TESTPARIS2](../sources/DDS/BIB25/TESTPARIS2.md) |
+| BIB25 | TP1DSPF | 31 | [TP1DSPF](../sources/DDS/BIB25/TP1DSPF.md) |
+| BIB25 | TP2DSPF | 33 | [TP2DSPF](../sources/DDS/BIB25/TP2DSPF.md) |
+| BIB25 | TP3DSPF | 39 | [TP3DSPF](../sources/DDS/BIB25/TP3DSPF.md) |
+| BIB25 | TP4 | 94 | [TP4](../sources/DDS/BIB25/TP4.md) |
+| BIB25 | TPF_ECR | 92 | [TPF_ECR](../sources/DDS/BIB25/TPF_ECR.md) |
+| BIB25 | TPFINALSQL | 26 | [TPFINALSQL](../sources/DDS/BIB25/TPFINALSQL.md) |
+| BIB25 | WSARTE | 116 | [WSARTE](../sources/DDS/BIB25/WSARTE.md) |
+| BIB27 | ACTEURP | 8 | [ACTEURP](../sources/DDS/BIB27/ACTEURP.md) |
+| BIB27 | ALGOIMPOTD | 141 | [ALGOIMPOTD](../sources/DDS/BIB27/ALGOIMPOTD.md) |
+| BIB27 | BIKE_IMP | 7 | [BIKE_IMP](../sources/DDS/BIB27/BIKE_IMP.md) |
+| BIB27 | CAR_IMP | 6 | [CAR_IMP](../sources/DDS/BIB27/CAR_IMP.md) |
+| BIB27 | CLI_TRI_NM | 2 | [CLI_TRI_NM](../sources/DDS/BIB27/CLI_TRI_NM.md) |
+| BIB27 | CLIENTS | 7 | [CLIENTS](../sources/DDS/BIB27/CLIENTS.md) |
+| BIB27 | COBOLDSPF | 41 | [COBOLDSPF](../sources/DDS/BIB27/COBOLDSPF.md) |
+| BIB27 | CTL_PLANET | 21 | [CTL_PLANET](../sources/DDS/BIB27/CTL_PLANET.md) |
+| BIB27 | CYCLO_IMP | 4 | [CYCLO_IMP](../sources/DDS/BIB27/CYCLO_IMP.md) |
+| BIB27 | DNBA | 53 | [DNBA](../sources/DDS/BIB27/DNBA.md) |
+| BIB27 | E_EXO1 | 10 | [E_EXO1](../sources/DDS/BIB27/E_EXO1.md) |
+| BIB27 | E_EXO2 | 37 | [E_EXO2](../sources/DDS/BIB27/E_EXO2.md) |
+| BIB27 | E_EXO5 | 40 | [E_EXO5](../sources/DDS/BIB27/E_EXO5.md) |
+| BIB27 | E_FINALCUT | 105 | [E_FINALCUT](../sources/DDS/BIB27/E_FINALCUT.md) |
+| BIB27 | E_FRUITCOR | 19 | [E_FRUITCOR](../sources/DDS/BIB27/E_FRUITCOR.md) |
+| BIB27 | E_FRUITS | 119 | [E_FRUITS](../sources/DDS/BIB27/E_FRUITS.md) |
+| BIB27 | E_LEGUME | 56 | [E_LEGUME](../sources/DDS/BIB27/E_LEGUME.md) |
+| BIB27 | E_SFPOKE | 139 | [E_SFPOKE](../sources/DDS/BIB27/E_SFPOKE~QSFSRC.md) |
+| BIB27 | E_SFPOKE | 65 | [E_SFPOKE](../sources/DDS/BIB27/E_SFPOKE.md) |
+| BIB27 | E_SFPOKE1 | 51 | [E_SFPOKE1](../sources/DDS/BIB27/E_SFPOKE1~QSFSRC.md) |
+| BIB27 | E_SFPOKE1 | 51 | [E_SFPOKE1](../sources/DDS/BIB27/E_SFPOKE1.md) |
+| BIB27 | E_TP0 | 5 | [E_TP0](../sources/DDS/BIB27/E_TP0.md) |
+| BIB27 | E_TP1 | 22 | [E_TP1](../sources/DDS/BIB27/E_TP1.md) |
+| BIB27 | E_TPFINAL | 98 | [E_TPFINAL](../sources/DDS/BIB27/E_TPFINAL.md) |
+| BIB27 | ENTREPOT | 5 | [ENTREPOT](../sources/DDS/BIB27/ENTREPOT.md) |
+| BIB27 | FORMATION | 8 | [FORMATION](../sources/DDS/BIB27/FORMATION.md) |
+| BIB27 | FRUITS | 11 | [FRUITS](../sources/DDS/BIB27/FRUITS.md) |
+| BIB27 | FRUITS1 | 6 | [FRUITS1](../sources/DDS/BIB27/FRUITS1.md) |
+| BIB27 | K7P | 10 | [K7P](../sources/DDS/BIB27/K7P.md) |
+| BIB27 | LF_EXO4 | 2 | [LF_EXO4](../sources/DDS/BIB27/LF_EXO4.md) |
+| BIB27 | PKMNDSPF | 84 | [PKMNDSPF](../sources/DDS/BIB27/PKMNDSPF.md) |
+| BIB27 | PLANETE | 76 | [PLANETE](../sources/DDS/BIB27/PLANETE.md) |
+| BIB27 | POKEDSPF | 30 | [POKEDSPF](../sources/DDS/BIB27/POKEDSPF.md) |
+| BIB27 | POKEHLP | 23 | [POKEHLP](../sources/DDS/BIB27/POKEHLP.md) |
+| BIB27 | PRD_STOCK | 3 | [PRD_STOCK](../sources/DDS/BIB27/PRD_STOCK.md) |
+| BIB27 | PRDPX | 3 | [PRDPX](../sources/DDS/BIB27/PRDPX.md) |
+| BIB27 | PRDT | 7 | [PRDT](../sources/DDS/BIB27/PRDT.md) |
+| BIB27 | PROD_FOURN | 9 | [PROD_FOURN](../sources/DDS/BIB27/PROD_FOURN.md) |
+| BIB27 | PROD_ORD | 5 | [PROD_ORD](../sources/DDS/BIB27/PROD_ORD.md) |
+| BIB27 | REPERT | 11 | [REPERT](../sources/DDS/BIB27/REPERT.md) |
+| BIB27 | SFDSPSQL | 185 | [SFDSPSQL](../sources/DDS/BIB27/SFDSPSQL.md) |
+| BIB27 | SFLF | 52 | [SFLF](../sources/DDS/BIB27/SFLF.md) |
+| BIB27 | SFPOKE | 274 | [SFPOKE](../sources/DDS/BIB27/SFPOKE.md) |
+| BIB27 | SFRDSP | 43 | [SFRDSP](../sources/DDS/BIB27/SFRDSP.md) |
+| BIB27 | SFUSERDSPF | 157 | [SFUSERDSPF](../sources/DDS/BIB27/SFUSERDSPF.md) |
+| BIB27 | TEST_PUSH | 14 | [TEST_PUSH](../sources/DDS/BIB27/TEST_PUSH.md) |
+| BIB27 | TEST1 | 6 | [TEST1](../sources/DDS/BIB27/TEST1.md) |
+| BIB27 | TEST8SPLIT | 2 | [TEST8SPLIT](../sources/DDS/BIB27/TEST8SPLIT.md) |
+| BIB27 | TOPSCORE | 4 | [TOPSCORE](../sources/DDS/BIB27/TOPSCORE.md) |
 
-## Menus (14)
+## Menus (16)
 
 | Bibliotheque | Membre | Lignes | Document |
 |---|---|---|---|
@@ -695,6 +890,8 @@ Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis
 | BIB17 | MENUUIM | 524 | [MENUUIM](../sources/Menus/BIB17/MENUUIM.md) |
 | BIB17 | MNUTEST | 67 | [MNUTEST](../sources/Menus/BIB17/MNUTEST.md) |
 | BIB17 | MNUTESTQQ | 8 | [MNUTESTQQ](../sources/Menus/BIB17/MNUTESTQQ.md) |
+| BIB27 | MENUTEST | 66 | [MENUTEST](../sources/Menus/BIB27/MENUTEST.md) |
+| BIB27 | MENUTESTQQ | 3 | [MENUTESTQQ](../sources/Menus/BIB27/MENUTESTQQ.md) |
 
 ## RPG\Copy (11)
 
@@ -712,7 +909,7 @@ Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis
 | BIB17 | PRETIMMOP | 56 | [PRETIMMOP](../sources/RPG/Copy/BIB17/PRETIMMOP.md) |
 | BIB18 | TP3MODP | 29 | [TP3MODP](../sources/RPG/Copy/BIB18/TP3MODP.md) |
 
-## RPG\RPG-III-400 (124)
+## RPG\RPG-III-400 (184)
 
 | Bibliotheque | Membre | Lignes | Document |
 |---|---|---|---|
@@ -840,8 +1037,68 @@ Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis
 | BIB20 | TESTPSDT | 24 | [TESTPSDT](../sources/RPG/RPG-III-400/BIB20/TESTPSDT.md) |
 | BIB21 | FILMCASI | 42 | [FILMCASI](../sources/RPG/RPG-III-400/BIB21/FILMCASI.md) |
 | BIB21 | FILMCYC | 186 | [FILMCYC](../sources/RPG/RPG-III-400/BIB21/FILMCYC.md) |
+| BIB25 | BNDRPG | 15 | [BNDRPG](../sources/RPG/RPG-III-400/BIB25/BNDRPG.md) |
+| BIB25 | BNDTOOLS | 3 | [BNDTOOLS](../sources/RPG/RPG-III-400/BIB25/BNDTOOLS.md) |
+| BIB25 | CALCUL_AGE | 11 | [CALCUL_AGE](../sources/RPG/RPG-III-400/BIB25/CALCUL_AGE.md) |
+| BIB25 | CALLER | 7 | [CALLER](../sources/RPG/RPG-III-400/BIB25/CALLER.md) |
+| BIB25 | CHG_DEVISE | 9 | [CHG_DEVISE](../sources/RPG/RPG-III-400/BIB25/CHG_DEVISE.md) |
+| BIB25 | ENTRY | 5 | [ENTRY](../sources/RPG/RPG-III-400/BIB25/ENTRY.md) |
+| BIB25 | EXMOD | 48 | [EXMOD](../sources/RPG/RPG-III-400/BIB25/EXMOD.md) |
+| BIB25 | EXMODPGM | 32 | [EXMODPGM](../sources/RPG/RPG-III-400/BIB25/EXMODPGM.md) |
+| BIB25 | GAP | 32 | [GAP](../sources/RPG/RPG-III-400/BIB25/GAP.md) |
+| BIB25 | GAP1 | 41 | [GAP1](../sources/RPG/RPG-III-400/BIB25/GAP1.md) |
+| BIB25 | ILE_SRV | 38 | [ILE_SRV](../sources/RPG/RPG-III-400/BIB25/ILE_SRV.md) |
+| BIB25 | LFGAP | 2 | [LFGAP](../sources/RPG/RPG-III-400/BIB25/LFGAP.md) |
+| BIB25 | LFGAP1 | 3 | [LFGAP1](../sources/RPG/RPG-III-400/BIB25/LFGAP1.md) |
+| BIB25 | MODBND | 23 | [MODBND](../sources/RPG/RPG-III-400/BIB25/MODBND.md) |
+| BIB25 | MODPGM1 | 16 | [MODPGM1](../sources/RPG/RPG-III-400/BIB25/MODPGM1.md) |
+| BIB25 | MODPGM2 | 12 | [MODPGM2](../sources/RPG/RPG-III-400/BIB25/MODPGM2.md) |
+| BIB25 | MODULE1 | 13 | [MODULE1](../sources/RPG/RPG-III-400/BIB25/MODULE1.md) |
+| BIB25 | MODULE2 | 13 | [MODULE2](../sources/RPG/RPG-III-400/BIB25/MODULE2.md) |
+| BIB25 | OUTIL_BND | 9 | [OUTIL_BND](../sources/RPG/RPG-III-400/BIB25/OUTIL_BND.md) |
+| BIB25 | PFGAP | 5 | [PFGAP](../sources/RPG/RPG-III-400/BIB25/PFGAP.md) |
+| BIB25 | PFGAP1 | 6 | [PFGAP1](../sources/RPG/RPG-III-400/BIB25/PFGAP1.md) |
+| BIB25 | PGMIMPOT1 | 20 | [PGMIMPOT1](../sources/RPG/RPG-III-400/BIB25/PGMIMPOT1.md) |
+| BIB25 | PROTOTYPES | 11 | [PROTOTYPES](../sources/RPG/RPG-III-400/BIB25/PROTOTYPES.md) |
+| BIB25 | RPGFACT | 91 | [RPGFACT](../sources/RPG/RPG-III-400/BIB25/RPGFACT.md) |
+| BIB25 | STUDENT | 5 | [STUDENT](../sources/RPG/RPG-III-400/BIB25/STUDENT.md) |
+| BIB25 | TEST_ILE | 27 | [TEST_ILE](../sources/RPG/RPG-III-400/BIB25/TEST_ILE.md) |
+| BIB25 | TEST_ILE1 | 24 | [TEST_ILE1](../sources/RPG/RPG-III-400/BIB25/TEST_ILE1.md) |
+| BIB25 | TEST_OPM | 25 | [TEST_OPM](../sources/RPG/RPG-III-400/BIB25/TEST_OPM.md) |
+| BIB25 | TEST1605 | 9 | [TEST1605](../sources/RPG/RPG-III-400/BIB25/TEST1605.md) |
+| BIB25 | TESTCALL | 22 | [TESTCALL](../sources/RPG/RPG-III-400/BIB25/TESTCALL.md) |
+| BIB25 | TESTCALL1 | 25 | [TESTCALL1](../sources/RPG/RPG-III-400/BIB25/TESTCALL1.md) |
+| BIB25 | TP1C | 5 | [TP1C](../sources/RPG/RPG-III-400/BIB25/TP1C.md) |
+| BIB25 | TP1E | 1 | [TP1E](../sources/RPG/RPG-III-400/BIB25/TP1E.md) |
+| BIB25 | TP2C | 10 | [TP2C](../sources/RPG/RPG-III-400/BIB25/TP2C.md) |
+| BIB25 | TP3 | 8 | [TP3](../sources/RPG/RPG-III-400/BIB25/TP3.md) |
+| BIB25 | TP3C | 35 | [TP3C](../sources/RPG/RPG-III-400/BIB25/TP3C.md) |
+| BIB27 | ALGOIMPOTP | 374 | [ALGOIMPOTP](../sources/RPG/RPG-III-400/BIB27/ALGOIMPOTP.md) |
+| BIB27 | CONVERT | 44 | [CONVERT](../sources/RPG/RPG-III-400/BIB27/CONVERT.md) |
+| BIB27 | CONVERT1 | 19 | [CONVERT1](../sources/RPG/RPG-III-400/BIB27/CONVERT1.md) |
+| BIB27 | E_SFCNT | 44 | [E_SFCNT](../sources/RPG/RPG-III-400/BIB27/E_SFCNT.md) |
+| BIB27 | E_SFDB | 25 | [E_SFDB](../sources/RPG/RPG-III-400/BIB27/E_SFDB.md) |
+| BIB27 | E_SFNBA | 115 | [E_SFNBA](../sources/RPG/RPG-III-400/BIB27/E_SFNBA.md) |
+| BIB27 | E_STUDENT | 114 | [E_STUDENT](../sources/RPG/RPG-III-400/BIB27/E_STUDENT.md) |
+| BIB27 | ECRANSF | 49 | [ECRANSF](../sources/RPG/RPG-III-400/BIB27/ECRANSF.md) |
+| BIB27 | NBAPRTF | 50 | [NBAPRTF](../sources/RPG/RPG-III-400/BIB27/NBAPRTF.md) |
+| BIB27 | POKEMONL1 | 2 | [POKEMONL1](../sources/RPG/RPG-III-400/BIB27/POKEMONL1.md) |
+| BIB27 | PRTFSTUD | 29 | [PRTFSTUD](../sources/RPG/RPG-III-400/BIB27/PRTFSTUD.md) |
+| BIB27 | RPGTP5 | 74 | [RPGTP5](../sources/RPG/RPG-III-400/BIB27/RPGTP5.md) |
+| BIB27 | SF_CNT | 91 | [SF_CNT](../sources/RPG/RPG-III-400/BIB27/SF_CNT.md) |
+| BIB27 | SF_NBA | 134 | [SF_NBA](../sources/RPG/RPG-III-400/BIB27/SF_NBA.md) |
+| BIB27 | SF_STUDENT | 124 | [SF_STUDENT](../sources/RPG/RPG-III-400/BIB27/SF_STUDENT.md) |
+| BIB27 | SFD_BONBON | 70 | [SFD_BONBON](../sources/RPG/RPG-III-400/BIB27/SFD_BONBON.md) |
+| BIB27 | SFTEST | 32 | [SFTEST](../sources/RPG/RPG-III-400/BIB27/SFTEST.md) |
+| BIB27 | STUDENTDSP | 60 | [STUDENTDSP](../sources/RPG/RPG-III-400/BIB27/STUDENTDSP.md) |
+| BIB27 | TEST | 1 | [TEST](../sources/RPG/RPG-III-400/BIB27/TEST.md) |
+| BIB27 | TP1 | 23 | [TP1](../sources/RPG/RPG-III-400/BIB27/TP1.md) |
+| BIB27 | TP2 | 14 | [TP2](../sources/RPG/RPG-III-400/BIB27/TP2.md) |
+| BIB27 | TP3 | 17 | [TP3](../sources/RPG/RPG-III-400/BIB27/TP3.md) |
+| BIB27 | TP4 | 94 | [TP4](../sources/RPG/RPG-III-400/BIB27/TP4.md) |
+| BIB27 | TP4RPG | 50 | [TP4RPG](../sources/RPG/RPG-III-400/BIB27/TP4RPG.md) |
 
-## RPG\RPG-ILE (291)
+## RPG\RPG-ILE (437)
 
 | Bibliotheque | Membre | Lignes | Document |
 |---|---|---|---|
@@ -896,7 +1153,9 @@ Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis
 | BIB02 | MODFC | 24 | [MODFC](../sources/RPG/RPG-ILE/BIB02/MODFC.md) |
 | BIB02 | MODULE1 | 32 | [MODULE1](../sources/RPG/RPG-ILE/BIB02/MODULE1.md) |
 | BIB02 | MODULE1_P | 13 | [MODULE1_P](../sources/RPG/RPG-ILE/BIB02/MODULE1_P.md) |
+| BIB02 | MOYENNE | 12 | [MOYENNE](../sources/RPG/RPG-ILE/BIB02/MOYENNE.md) |
 | BIB02 | MWRTRACEP | 60 | [MWRTRACEP](../sources/RPG/RPG-ILE/BIB02/MWRTRACEP.md) |
+| BIB02 | NOTE | 24 | [NOTE](../sources/RPG/RPG-ILE/BIB02/NOTE.md) |
 | BIB02 | PGM | 8 | [PGM](../sources/RPG/RPG-ILE/BIB02/PGM.md) |
 | BIB02 | PGM1TP | 24 | [PGM1TP](../sources/RPG/RPG-ILE/BIB02/PGM1TP.md) |
 | BIB02 | PGM2TP | 15 | [PGM2TP](../sources/RPG/RPG-ILE/BIB02/PGM2TP.md) |
@@ -912,11 +1171,12 @@ Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis
 | BIB02 | PROGFORMA | 202 | [PROGFORMA](../sources/RPG/RPG-ILE/BIB02/PROGFORMA~QTESTSRC.md) |
 | BIB02 | PROGFORMA | 202 | [PROGFORMA](../sources/RPG/RPG-ILE/BIB02/PROGFORMA.md) |
 | BIB02 | PROGFRMT | 209 | [PROGFRMT](../sources/RPG/RPG-ILE/BIB02/PROGFRMT.md) |
-| BIB02 | PROGPART | 228 | [PROGPART](../sources/RPG/RPG-ILE/BIB02/PROGPART~QTESTSRC.md) |
 | BIB02 | PROGPART | 228 | [PROGPART](../sources/RPG/RPG-ILE/BIB02/PROGPART.md) |
+| BIB02 | PROGPART | 228 | [PROGPART](../sources/RPG/RPG-ILE/BIB02/PROGPART~QTESTSRC.md) |
 | BIB02 | PROT_MOD | 10 | [PROT_MOD](../sources/RPG/RPG-ILE/BIB02/PROT_MOD.md) |
 | BIB02 | RACERILE | 355 | [RACERILE](../sources/RPG/RPG-ILE/BIB02/RACERILE.md) |
 | BIB02 | RACERPROC | 23 | [RACERPROC](../sources/RPG/RPG-ILE/BIB02/RACERPROC.md) |
+| BIB02 | RPG7FF | 95 | [RPG7FF](../sources/RPG/RPG-ILE/BIB02/RPG7FF.md) |
 | BIB02 | RPGGPT | 47 | [RPGGPT](../sources/RPG/RPG-ILE/BIB02/RPGGPT.md) |
 | BIB02 | SCHT | 540 | [SCHT](../sources/RPG/RPG-ILE/BIB02/SCHT.md) |
 | BIB02 | SENDMAIL | 24 | [SENDMAIL](../sources/RPG/RPG-ILE/BIB02/SENDMAIL.md) |
@@ -1025,6 +1285,7 @@ Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis
 | BIB05 | PSOLDAT | 293 | [PSOLDAT](../sources/RPG/RPG-ILE/BIB05/PSOLDAT.md) |
 | BIB05 | PSOLDAT2 | 126 | [PSOLDAT2](../sources/RPG/RPG-ILE/BIB05/PSOLDAT2.md) |
 | BIB05 | PSOLDATF | 245 | [PSOLDATF](../sources/RPG/RPG-ILE/BIB05/PSOLDATF.md) |
+| BIB05 | QUIZQST | 1796 | [QUIZQST](../sources/RPG/RPG-ILE/BIB05/QUIZQST.md) |
 | BIB05 | RPGF | 711 | [RPGF](../sources/RPG/RPG-ILE/BIB05/RPGF.md) |
 | BIB05 | SFBONBONF | 224 | [SFBONBONF](../sources/RPG/RPG-ILE/BIB05/SFBONBONF.md) |
 | BIB05 | SFICHIERAL | 400 | [SFICHIERAL](../sources/RPG/RPG-ILE/BIB05/SFICHIERAL.md) |
@@ -1032,10 +1293,10 @@ Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis
 | BIB05 | SOLDAT4 | 107 | [SOLDAT4](../sources/RPG/RPG-ILE/BIB05/SOLDAT4.md) |
 | BIB05 | SOLDIER | 171 | [SOLDIER](../sources/RPG/RPG-ILE/BIB05/SOLDIER.md) |
 | BIB05 | SQUELLEFRE | 7 | [SQUELLEFRE](../sources/RPG/RPG-ILE/BIB05/SQUELLEFRE.md) |
-| BIB05 | SQUELLETTE | 7 | [SQUELLETTE](../sources/RPG/RPG-ILE/BIB05/SQUELLETTE.md) |
-| BIB05 | SQUELLETTE | 25 | [SQUELLETTE](../sources/RPG/RPG-ILE/BIB05/SQUELLETTE~QRPGLESRC.md) |
 | BIB05 | SQUELLETTE | 5 | [SQUELLETTE](../sources/RPG/RPG-ILE/BIB05/SQUELLETTE~QRPGLESRC3.md) |
+| BIB05 | SQUELLETTE | 25 | [SQUELLETTE](../sources/RPG/RPG-ILE/BIB05/SQUELLETTE~QRPGLESRC.md) |
 | BIB05 | SQUELLETTE | 5 | [SQUELLETTE](../sources/RPG/RPG-ILE/BIB05/SQUELLETTE~QRPGLESRC2.md) |
+| BIB05 | SQUELLETTE | 7 | [SQUELLETTE](../sources/RPG/RPG-ILE/BIB05/SQUELLETTE.md) |
 | BIB05 | TEST | 67 | [TEST](../sources/RPG/RPG-ILE/BIB05/TEST.md) |
 | BIB05 | TP2 | 14 | [TP2](../sources/RPG/RPG-ILE/BIB05/TP2.md) |
 | BIB05 | TP3 | 35 | [TP3](../sources/RPG/RPG-ILE/BIB05/TP3.md) |
@@ -1136,8 +1397,150 @@ Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis
 | BIB20 | TESTPOEIII | 4 | [TESTPOEIII](../sources/RPG/RPG-ILE/BIB20/TESTPOEIII.md) |
 | BIB20 | TESTTPSYL | 75 | [TESTTPSYL](../sources/RPG/RPG-ILE/BIB20/TESTTPSYL.md) |
 | BIB20 | TPBONBON | 418 | [TPBONBON](../sources/RPG/RPG-ILE/BIB20/TPBONBON.md) |
+| BIB25 | APPELANT | 16 | [APPELANT](../sources/RPG/RPG-ILE/BIB25/APPELANT.md) |
+| BIB25 | APPELE | 10 | [APPELE](../sources/RPG/RPG-ILE/BIB25/APPELE.md) |
+| BIB25 | APPELE01 | 10 | [APPELE01](../sources/RPG/RPG-ILE/BIB25/APPELE01.md) |
+| BIB25 | APPELE02 | 10 | [APPELE02](../sources/RPG/RPG-ILE/BIB25/APPELE02.md) |
+| BIB25 | ARTPGM | 152 | [ARTPGM](../sources/RPG/RPG-ILE/BIB25/ARTPGM.md) |
+| BIB25 | ARTPGME | 95 | [ARTPGME](../sources/RPG/RPG-ILE/BIB25/ARTPGME.md) |
+| BIB25 | ASYNTAX4 | 230 | [ASYNTAX4](../sources/RPG/RPG-ILE/BIB25/ASYNTAX4.md) |
+| BIB25 | CALCULOAN | 57 | [CALCULOAN](../sources/RPG/RPG-ILE/BIB25/CALCULOAN.md) |
+| BIB25 | CEEDATERPG | 26 | [CEEDATERPG](../sources/RPG/RPG-ILE/BIB25/CEEDATERPG.md) |
+| BIB25 | CONSCRUD | 117 | [CONSCRUD](../sources/RPG/RPG-ILE/BIB25/CONSCRUD.md) |
+| BIB25 | CV2 | 100 | [CV2](../sources/RPG/RPG-ILE/BIB25/CV2.md) |
+| BIB25 | CV3 | 19 | [CV3](../sources/RPG/RPG-ILE/BIB25/CV3.md) |
+| BIB25 | CVTP1_1 | 26 | [CVTP1_1](../sources/RPG/RPG-ILE/BIB25/CVTP1_1.md) |
+| BIB25 | CVTP1_2 | 31 | [CVTP1_2](../sources/RPG/RPG-ILE/BIB25/CVTP1_2.md) |
+| BIB25 | CYCLELF | 2 | [CYCLELF](../sources/RPG/RPG-ILE/BIB25/CYCLELF.md) |
+| BIB25 | CYCLEO | 3 | [CYCLEO](../sources/RPG/RPG-ILE/BIB25/CYCLEO.md) |
+| BIB25 | CYCLEPF | 9 | [CYCLEPF](../sources/RPG/RPG-ILE/BIB25/CYCLEPF.md) |
+| BIB25 | CYCLERPG | 34 | [CYCLERPG](../sources/RPG/RPG-ILE/BIB25/CYCLERPG.md) |
+| BIB25 | DECALREXEM | 136 | [DECALREXEM](../sources/RPG/RPG-ILE/BIB25/DECALREXEM.md) |
+| BIB25 | ERR | 55 | [ERR](../sources/RPG/RPG-ILE/BIB25/ERR.md) |
+| BIB25 | ERREUR | 10 | [ERREUR](../sources/RPG/RPG-ILE/BIB25/ERREUR.md) |
+| BIB25 | FINALCUT | 484 | [FINALCUT](../sources/RPG/RPG-ILE/BIB25/FINALCUT.md) |
+| BIB25 | FRM3006 | 15 | [FRM3006](../sources/RPG/RPG-ILE/BIB25/FRM3006.md) |
+| BIB25 | GETERRSQL | 40 | [GETERRSQL](../sources/RPG/RPG-ILE/BIB25/GETERRSQL.md) |
+| BIB25 | LILLETP1 | 18 | [LILLETP1](../sources/RPG/RPG-ILE/BIB25/LILLETP1.md) |
+| BIB25 | MOD1 | 27 | [MOD1](../sources/RPG/RPG-ILE/BIB25/MOD1.md) |
+| BIB25 | MOD2 | 11 | [MOD2](../sources/RPG/RPG-ILE/BIB25/MOD2.md) |
+| BIB25 | MODABDE | 14 | [MODABDE](../sources/RPG/RPG-ILE/BIB25/MODABDE.md) |
+| BIB25 | MODAPI | 61 | [MODAPI](../sources/RPG/RPG-ILE/BIB25/MODAPI.md) |
+| BIB25 | MODTEST1 | 10 | [MODTEST1](../sources/RPG/RPG-ILE/BIB25/MODTEST1.md) |
+| BIB25 | MODTEST2 | 10 | [MODTEST2](../sources/RPG/RPG-ILE/BIB25/MODTEST2.md) |
+| BIB25 | MODULE1 | 11 | [MODULE1](../sources/RPG/RPG-ILE/BIB25/MODULE1.md) |
+| BIB25 | MODULE2 | 20 | [MODULE2](../sources/RPG/RPG-ILE/BIB25/MODULE2.md) |
+| BIB25 | OBJDTPRPG | 94 | [OBJDTPRPG](../sources/RPG/RPG-ILE/BIB25/OBJDTPRPG.md) |
+| BIB25 | PF1 | 6 | [PF1](../sources/RPG/RPG-ILE/BIB25/PF1.md) |
+| BIB25 | PGM_1 | 29 | [PGM_1](../sources/RPG/RPG-ILE/BIB25/PGM_1.md) |
+| BIB25 | PGM1 | 39 | [PGM1](../sources/RPG/RPG-ILE/BIB25/PGM1.md) |
+| BIB25 | PGM1ABDE | 17 | [PGM1ABDE](../sources/RPG/RPG-ILE/BIB25/PGM1ABDE.md) |
+| BIB25 | PGM2 | 10 | [PGM2](../sources/RPG/RPG-ILE/BIB25/PGM2.md) |
+| BIB25 | PGM3006 | 13 | [PGM3006](../sources/RPG/RPG-ILE/BIB25/PGM3006.md) |
+| BIB25 | PGMAPI | 39 | [PGMAPI](../sources/RPG/RPG-ILE/BIB25/PGMAPI.md) |
+| BIB25 | PGMGRP1 | 18 | [PGMGRP1](../sources/RPG/RPG-ILE/BIB25/PGMGRP1.md) |
+| BIB25 | PGMGRP2 | 9 | [PGMGRP2](../sources/RPG/RPG-ILE/BIB25/PGMGRP2.md) |
+| BIB25 | POSTARM | 57 | [POSTARM](../sources/RPG/RPG-ILE/BIB25/POSTARM.md) |
+| BIB25 | POSTARM | 104 | [POSTARM](../sources/RPG/RPG-ILE/BIB25/POSTARM~QWEBSRV.md) |
+| BIB25 | PRET_MOD | 190 | [PRET_MOD](../sources/RPG/RPG-ILE/BIB25/PRET_MOD.md) |
+| BIB25 | PROC2 | 15 | [PROC2](../sources/RPG/RPG-ILE/BIB25/PROC2.md) |
+| BIB25 | SF_NBA | 134 | [SF_NBA](../sources/RPG/RPG-ILE/BIB25/SF_NBA.md) |
+| BIB25 | SF_STUDENT | 124 | [SF_STUDENT](../sources/RPG/RPG-ILE/BIB25/SF_STUDENT.md) |
+| BIB25 | SFPOKE | 274 | [SFPOKE](../sources/RPG/RPG-ILE/BIB25/SFPOKE.md) |
+| BIB25 | SIGN_FINAL | 9 | [SIGN_FINAL](../sources/RPG/RPG-ILE/BIB25/SIGN_FINAL.md) |
+| BIB25 | SIGN_MOD | 20 | [SIGN_MOD](../sources/RPG/RPG-ILE/BIB25/SIGN_MOD.md) |
+| BIB25 | SOUPRC | 239 | [SOUPRC](../sources/RPG/RPG-ILE/BIB25/SOUPRC.md) |
+| BIB25 | TEST_BALAS | 4 | [TEST_BALAS](../sources/RPG/RPG-ILE/BIB25/TEST_BALAS.md) |
+| BIB25 | TEST_ILE | 6 | [TEST_ILE](../sources/RPG/RPG-ILE/BIB25/TEST_ILE.md) |
+| BIB25 | TEST3006 | 9 | [TEST3006](../sources/RPG/RPG-ILE/BIB25/TEST3006.md) |
+| BIB25 | TESTLAMY | 1 | [TESTLAMY](../sources/RPG/RPG-ILE/BIB25/TESTLAMY.md) |
+| BIB25 | TESTLOAN | 93 | [TESTLOAN](../sources/RPG/RPG-ILE/BIB25/TESTLOAN.md) |
+| BIB25 | TESTPGMR1 | 18 | [TESTPGMR1](../sources/RPG/RPG-ILE/BIB25/TESTPGMR1.md) |
+| BIB25 | TESTPGMR2 | 18 | [TESTPGMR2](../sources/RPG/RPG-ILE/BIB25/TESTPGMR2.md) |
+| BIB25 | TP_PRET | 178 | [TP_PRET](../sources/RPG/RPG-ILE/BIB25/TP_PRET.md) |
+| BIB25 | TP1 | 29 | [TP1](../sources/RPG/RPG-ILE/BIB25/TP1.md) |
+| BIB25 | TP1 | 23 | [TP1](../sources/RPG/RPG-ILE/BIB25/TP1~QRPGLESRC.md) |
+| BIB25 | TP1_MOD | 42 | [TP1_MOD](../sources/RPG/RPG-ILE/BIB25/TP1_MOD.md) |
+| BIB25 | TP1ILE | 58 | [TP1ILE](../sources/RPG/RPG-ILE/BIB25/TP1ILE.md) |
+| BIB25 | TP1MOD | 82 | [TP1MOD](../sources/RPG/RPG-ILE/BIB25/TP1MOD.md) |
+| BIB25 | TP1MODV1 | 67 | [TP1MODV1](../sources/RPG/RPG-ILE/BIB25/TP1MODV1.md) |
+| BIB25 | TP1MODV2 | 82 | [TP1MODV2](../sources/RPG/RPG-ILE/BIB25/TP1MODV2.md) |
+| BIB25 | TP1PRO | 15 | [TP1PRO](../sources/RPG/RPG-ILE/BIB25/TP1PRO.md) |
+| BIB25 | TP1PROV3 | 15 | [TP1PROV3](../sources/RPG/RPG-ILE/BIB25/TP1PROV3.md) |
+| BIB25 | TP2 | 14 | [TP2](../sources/RPG/RPG-ILE/BIB25/TP2.md) |
+| BIB25 | TP2ILE | 22 | [TP2ILE](../sources/RPG/RPG-ILE/BIB25/TP2ILE.md) |
+| BIB25 | TP3 | 17 | [TP3](../sources/RPG/RPG-ILE/BIB25/TP3.md) |
+| BIB25 | TP3ILE | 23 | [TP3ILE](../sources/RPG/RPG-ILE/BIB25/TP3ILE.md) |
+| BIB25 | TP4 | 50 | [TP4](../sources/RPG/RPG-ILE/BIB25/TP4.md) |
+| BIB25 | TPF_MOD1 | 52 | [TPF_MOD1](../sources/RPG/RPG-ILE/BIB25/TPF_MOD1.md) |
+| BIB25 | TPF_PGM | 179 | [TPF_PGM](../sources/RPG/RPG-ILE/BIB25/TPF_PGM.md) |
+| BIB25 | TPF_PRO | 13 | [TPF_PRO](../sources/RPG/RPG-ILE/BIB25/TPF_PRO.md) |
+| BIB25 | TRG_PRD | 63 | [TRG_PRD](../sources/RPG/RPG-ILE/BIB25/TRG_PRD.md) |
+| BIB25 | TSTPGM1 | 9 | [TSTPGM1](../sources/RPG/RPG-ILE/BIB25/TSTPGM1.md) |
+| BIB25 | WSARTAPL | 413 | [WSARTAPL](../sources/RPG/RPG-ILE/BIB25/WSARTAPL.md) |
+| BIB25 | WSARTAPPR | 60 | [WSARTAPPR](../sources/RPG/RPG-ILE/BIB25/WSARTAPPR.md) |
+| BIB25 | WSARTCRUD | 596 | [WSARTCRUD](../sources/RPG/RPG-ILE/BIB25/WSARTCRUD.md) |
+| BIB25 | WSARTGES | 360 | [WSARTGES](../sources/RPG/RPG-ILE/BIB25/WSARTGES.md) |
+| BIB25 | WSARTPR | 53 | [WSARTPR](../sources/RPG/RPG-ILE/BIB25/WSARTPR.md) |
+| BIB25 | WSARTREG | 167 | [WSARTREG](../sources/RPG/RPG-ILE/BIB25/WSARTREG.md) |
+| BIB27 | CHK_API_F | 622 | [CHK_API_F](../sources/RPG/RPG-ILE/BIB27/CHK_API_F.md) |
+| BIB27 | CHK_APIEXO | 631 | [CHK_APIEXO](../sources/RPG/RPG-ILE/BIB27/CHK_APIEXO.md) |
+| BIB27 | DTAARA_T | 40 | [DTAARA_T](../sources/RPG/RPG-ILE/BIB27/DTAARA_T.md) |
+| BIB27 | E_SQLTEST | 27 | [E_SQLTEST](../sources/RPG/RPG-ILE/BIB27/E_SQLTEST.md) |
+| BIB27 | E_STUD | 114 | [E_STUD](../sources/RPG/RPG-ILE/BIB27/E_STUD.md) |
+| BIB27 | E_TPJEUX | 94 | [E_TPJEUX](../sources/RPG/RPG-ILE/BIB27/E_TPJEUX.md) |
+| BIB27 | E_TPSOLDAT | 141 | [E_TPSOLDAT](../sources/RPG/RPG-ILE/BIB27/E_TPSOLDAT.md) |
+| BIB27 | E_TPTEST | 23 | [E_TPTEST](../sources/RPG/RPG-ILE/BIB27/E_TPTEST.md) |
+| BIB27 | EXO1 | 67 | [EXO1](../sources/RPG/RPG-ILE/BIB27/EXO1.md) |
+| BIB27 | EXO1_C | 37 | [EXO1_C](../sources/RPG/RPG-ILE/BIB27/EXO1_C.md) |
+| BIB27 | EXO2 | 61 | [EXO2](../sources/RPG/RPG-ILE/BIB27/EXO2.md) |
+| BIB27 | EXO2 | 61 | [EXO2](../sources/RPG/RPG-ILE/BIB27/EXO2~QSQLRPGLE.md) |
+| BIB27 | EXO3 | 57 | [EXO3](../sources/RPG/RPG-ILE/BIB27/EXO3.md) |
+| BIB27 | EXO4 | 19 | [EXO4](../sources/RPG/RPG-ILE/BIB27/EXO4.md) |
+| BIB27 | EXO5 | 53 | [EXO5](../sources/RPG/RPG-ILE/BIB27/EXO5.md) |
+| BIB27 | F52W1 | 49 | [F52W1](../sources/RPG/RPG-ILE/BIB27/F52W1.md) |
+| BIB27 | FINALCUT | 484 | [FINALCUT](../sources/RPG/RPG-ILE/BIB27/FINALCUT.md) |
+| BIB27 | FRUIT_CORR | 155 | [FRUIT_CORR](../sources/RPG/RPG-ILE/BIB27/FRUIT_CORR.md) |
+| BIB27 | LEGUMESF | 199 | [LEGUMESF](../sources/RPG/RPG-ILE/BIB27/LEGUMESF.md) |
+| BIB27 | MOD_API | 863 | [MOD_API](../sources/RPG/RPG-ILE/BIB27/MOD_API.md) |
+| BIB27 | MOD_API_F | 869 | [MOD_API_F](../sources/RPG/RPG-ILE/BIB27/MOD_API_F.md) |
+| BIB27 | MODINV | 28 | [MODINV](../sources/RPG/RPG-ILE/BIB27/MODINV.md) |
+| BIB27 | MODULE | 16 | [MODULE](../sources/RPG/RPG-ILE/BIB27/MODULE.md) |
+| BIB27 | MULTIMBR | 46 | [MULTIMBR](../sources/RPG/RPG-ILE/BIB27/MULTIMBR.md) |
+| BIB27 | P_FRUITS | 197 | [P_FRUITS](../sources/RPG/RPG-ILE/BIB27/P_FRUITS.md) |
+| BIB27 | PGM_CALL | 62 | [PGM_CALL](../sources/RPG/RPG-ILE/BIB27/PGM_CALL.md) |
+| BIB27 | PGM_STUD | 129 | [PGM_STUD](../sources/RPG/RPG-ILE/BIB27/PGM_STUD.md) |
+| BIB27 | PLANETE | 140 | [PLANETE](../sources/RPG/RPG-ILE/BIB27/PLANETE.md) |
+| BIB27 | POKEAPI | 36 | [POKEAPI](../sources/RPG/RPG-ILE/BIB27/POKEAPI.md) |
+| BIB27 | PROC_T1 | 52 | [PROC_T1](../sources/RPG/RPG-ILE/BIB27/PROC_T1.md) |
+| BIB27 | PRTF | 29 | [PRTF](../sources/RPG/RPG-ILE/BIB27/PRTF.md) |
+| BIB27 | PSSR_FRE_D | 57 | [PSSR_FRE_D](../sources/RPG/RPG-ILE/BIB27/PSSR_FRE_D.md) |
+| BIB27 | RANDOMEX | 4 | [RANDOMEX](../sources/RPG/RPG-ILE/BIB27/RANDOMEX.md) |
+| BIB27 | RPG_API | 107 | [RPG_API](../sources/RPG/RPG-ILE/BIB27/RPG_API.md) |
+| BIB27 | RPGFACTL1 | 57 | [RPGFACTL1](../sources/RPG/RPG-ILE/BIB27/RPGFACTL1.md) |
+| BIB27 | RPGNBA | 31 | [RPGNBA](../sources/RPG/RPG-ILE/BIB27/RPGNBA.md) |
+| BIB27 | S_NOMBRE | 35 | [S_NOMBRE](../sources/RPG/RPG-ILE/BIB27/S_NOMBRE.md) |
+| BIB27 | SF_DYN | 3 | [SF_DYN](../sources/RPG/RPG-ILE/BIB27/SF_DYN.md) |
+| BIB27 | SFPOKE | 274 | [SFPOKE](../sources/RPG/RPG-ILE/BIB27/SFPOKE.md) |
+| BIB27 | SFPOKEMON | 156 | [SFPOKEMON](../sources/RPG/RPG-ILE/BIB27/SFPOKEMON.md) |
+| BIB27 | SOUPRC | 236 | [SOUPRC](../sources/RPG/RPG-ILE/BIB27/SOUPRC.md) |
+| BIB27 | SQLTEST | 45 | [SQLTEST](../sources/RPG/RPG-ILE/BIB27/SQLTEST.md) |
+| BIB27 | TEST_API | 53 | [TEST_API](../sources/RPG/RPG-ILE/BIB27/TEST_API.md) |
+| BIB27 | TEST_DATE | 29 | [TEST_DATE](../sources/RPG/RPG-ILE/BIB27/TEST_DATE.md) |
+| BIB27 | TEST_PUSH | 23 | [TEST_PUSH](../sources/RPG/RPG-ILE/BIB27/TEST_PUSH.md) |
+| BIB27 | TEST_RPG | 29 | [TEST_RPG](../sources/RPG/RPG-ILE/BIB27/TEST_RPG.md) |
+| BIB27 | TEST_TP | 5 | [TEST_TP](../sources/RPG/RPG-ILE/BIB27/TEST_TP.md) |
+| BIB27 | TEST1 | 14 | [TEST1](../sources/RPG/RPG-ILE/BIB27/TEST1.md) |
+| BIB27 | TESTINV | 36 | [TESTINV](../sources/RPG/RPG-ILE/BIB27/TESTINV.md) |
+| BIB27 | TP0 | 21 | [TP0](../sources/RPG/RPG-ILE/BIB27/TP0.md) |
+| BIB27 | TP1 | 23 | [TP1](../sources/RPG/RPG-ILE/BIB27/TP1~QRPGLESRC.md) |
+| BIB27 | TP1 | 25 | [TP1](../sources/RPG/RPG-ILE/BIB27/TP1.md) |
+| BIB27 | TPFINAL | 268 | [TPFINAL](../sources/RPG/RPG-ILE/BIB27/TPFINAL.md) |
+| BIB27 | TPJEUX | 154 | [TPJEUX](../sources/RPG/RPG-ILE/BIB27/TPJEUX.md) |
+| BIB27 | TPSOLDAT | 103 | [TPSOLDAT](../sources/RPG/RPG-ILE/BIB27/TPSOLDAT.md) |
+| BIB27 | USERAPI | 320 | [USERAPI](../sources/RPG/RPG-ILE/BIB27/USERAPI.md) |
 
-## SQL (31)
+## SQL (46)
 
 | Bibliotheque | Membre | Lignes | Document |
 |---|---|---|---|
@@ -1172,3 +1575,20 @@ Genere le 2026-11-23 14:23 - 1082 sources, 815 membres de donnees (non convertis
 | BIB17 | SALAIRE | 83 | [SALAIRE](../sources/SQL/BIB17/SALAIRE.md) |
 | BIB17 | TP_QUINCA | 395 | [TP_QUINCA](../sources/SQL/BIB17/TP_QUINCA.md) |
 | BIB17 | VUES | 34 | [VUES](../sources/SQL/BIB17/VUES.md) |
+| BIB25 | LOGPRD | 7 | [LOGPRD](../sources/SQL/BIB25/LOGPRD.md) |
+| BIB25 | MOY_SAL_HA | 5 | [MOY_SAL_HA](../sources/SQL/BIB25/MOY_SAL_HA.md) |
+| BIB25 | PRODUITS | 7 | [PRODUITS](../sources/SQL/BIB25/PRODUITS.md) |
+| BIB25 | SALAIRES | 5 | [SALAIRES](../sources/SQL/BIB25/SALAIRES.md) |
+| BIB25 | SALAIRES_H | 6 | [SALAIRES_H](../sources/SQL/BIB25/SALAIRES_H.md) |
+| BIB25 | SQL | 15 | [SQL](../sources/SQL/BIB25/SQL.md) |
+| BIB25 | TEST | 1 | [TEST](../sources/SQL/BIB25/TEST.md) |
+| BIB25 | TEST_SQL | 41 | [TEST_SQL](../sources/SQL/BIB25/TEST_SQL.md) |
+| BIB25 | TEST1 | 1 | [TEST1](../sources/SQL/BIB25/TEST1.md) |
+| BIB25 | TP_PROC2 | 63 | [TP_PROC2](../sources/SQL/BIB25/TP_PROC2.md) |
+| BIB25 | TRG_TP1_1 | 93 | [TRG_TP1_1](../sources/SQL/BIB25/TRG_TP1_1.md) |
+| BIB25 | TRG_TP1_2 | 23 | [TRG_TP1_2](../sources/SQL/BIB25/TRG_TP1_2.md) |
+| BIB25 | TRG01SQL | 125 | [TRG01SQL](../sources/SQL/BIB25/TRG01SQL.md) |
+| BIB27 | DLTPOLE | 1 | [DLTPOLE](../sources/SQL/BIB27/DLTPOLE.md) |
+| BIB27 | EMPLOYE | 7 | [EMPLOYE](../sources/SQL/BIB27/EMPLOYE.md) |
+
+

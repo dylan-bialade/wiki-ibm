@@ -1,0 +1,39 @@
+---
+bibliotheque: BIB27
+fichier_source: QCLSRC
+membre: CALCUL
+type: CL/CL-procedural
+longueur_enregistrement: 80
+lignes: 25
+modifie: 2026-11-25
+---
+
+# BIB27/QCLSRC/CALCUL
+
+```cl
+             PGM
+             DCLF       FILE(ECRAN2)
+ BOUCLE:     SNDRCVF    RCDFMT(FMT2)
+             IF         COND(&OPE *EQ '*') THEN(CHGVAR VAR(&RESULT) +
+                          VALUE(&FACT1 * &FACT2))
+             IF         COND(&OPE *EQ '+') THEN(CHGVAR VAR(&RESULT) +
+                          VALUE(&FACT1 + &FACT2))
+             IF         COND(&OPE *EQ '/') THEN(CHGVAR VAR(&RESULT) +
+                          VALUE(&FACT1 / &FACT2))
+             IF         COND(&OPE *EQ '-') THEN(CHGVAR VAR(&RESULT) +
+                          VALUE(&FACT1 - &FACT2))
+             IF         COND(&OPE *NE 'x' *AND OPE *NE '-' *AND &OPE +
+                          *NE '/' *AND &OPE *NE '+') THEN(CHGVAR +
+                          VAR(&MSGE) VALUE('les opérateurs doivent +
+                          être + / - x'))
+             IF         COND(&IN03 *EQ '1') THEN(GOTO CMDLBL(FIN))
+             IF         COND(&IN06 *EQ '1') THEN(DO)
+             CHGVAR     VAR(&FACT1) VALUE(0)
+             CHGVAR     VAR(&FACT2) VALUE(0)
+             CHGVAR     VAR(&RESULT) VALUE(0)
+             CHGVAR     VAR(&OPE) VALUE(' ')
+             CHGVAR     VAR(&MSGE) VALUE(' ')
+             ENDDO
+             GOTO       CMDLBL(BOUCLE)
+  FIN:       ENDPGM
+```

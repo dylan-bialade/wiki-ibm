@@ -1,9 +1,9 @@
 # Wiki IBM i : contexte complet pour un assistant
 
-Genere le 2026-11-24 09:46 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Genere le 2026-11-25 09:32 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
 Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
 
-ATTENTION : ce fichier fait environ 281 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
+ATTENTION : ce fichier fait environ 282 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
 Table des matieres (ordre du fichier) :
 - README.md (16 Ko)
 - docs/SOMMAIRE.md (19 Ko)
@@ -29,8 +29,8 @@ Table des matieres (ordre du fichier) :
 - docs/enonces/tp-logistock.md (1 Ko)
 - docs/enonces/tp-the-big-one.md (3 Ko)
 - docs/enonces/tp-wesh-alors.md (2 Ko)
-- docs/MANQUES.md (6 Ko)
-- docs/CYCLE-GAP-EXEMPLES.md (1 Ko)
+- docs/MANQUES.md (7 Ko)
+- docs/CYCLE-GAP-EXEMPLES.md (2 Ko)
 - docs/CYCLE-RPG.md (26 Ko)
 - docs/IMPRESSION-RPG.md (18 Ko)
 - docs/SQL-AVANCE.md (8 Ko)
@@ -381,20 +381,20 @@ Résumés anonymisés d'énoncés et d'examens.
 Code converti, comparaisons entre bibliothèques et contributions.
 
 - [Index de toutes les sources](INDEX-SOURCES.md) : Un tableau par type de source (généré).
-  - [Autres\Aide (1)](INDEX-SOURCES.md#autresaide-1)
-  - [Autres\Commandes (4)](INDEX-SOURCES.md#autrescommandes-4)
+  - [Autres\Aide (3)](INDEX-SOURCES.md#autresaide-3)
+  - [Autres\Commandes (5)](INDEX-SOURCES.md#autrescommandes-5)
   - [Autres\Panneaux-UIM (1)](INDEX-SOURCES.md#autrespanneaux-uim-1)
-  - [Autres\Service-programs (14)](INDEX-SOURCES.md#autresservice-programs-14)
-  - [Autres\Web (5)](INDEX-SOURCES.md#autresweb-5)
-  - [CL\CL-ILE (50)](INDEX-SOURCES.md#clcl-ile-50)
-  - [CL\CL-procedural (128)](INDEX-SOURCES.md#clcl-procedural-128)
-  - [COBOL (26)](INDEX-SOURCES.md#cobol-26)
-  - [DDS (382)](INDEX-SOURCES.md#dds-382)
-  - [Menus (14)](INDEX-SOURCES.md#menus-14)
+  - [Autres\Service-programs (25)](INDEX-SOURCES.md#autresservice-programs-25)
+  - [Autres\Web (12)](INDEX-SOURCES.md#autresweb-12)
+  - [CL\CL-ILE (70)](INDEX-SOURCES.md#clcl-ile-70)
+  - [CL\CL-procedural (172)](INDEX-SOURCES.md#clcl-procedural-172)
+  - [COBOL (38)](INDEX-SOURCES.md#cobol-38)
+  - [DDS (499)](INDEX-SOURCES.md#dds-499)
+  - [Menus (16)](INDEX-SOURCES.md#menus-16)
   - [RPG\Copy (11)](INDEX-SOURCES.md#rpgcopy-11)
-  - [RPG\RPG-III-400 (124)](INDEX-SOURCES.md#rpgrpg-iii-400-124)
-  - [RPG\RPG-ILE (291)](INDEX-SOURCES.md#rpgrpg-ile-291)
-  - [SQL (31)](INDEX-SOURCES.md#sql-31)
+  - [RPG\RPG-III-400 (184)](INDEX-SOURCES.md#rpgrpg-iii-400-184)
+  - [RPG\RPG-ILE (437)](INDEX-SOURCES.md#rpgrpg-ile-437)
+  - [SQL (46)](INDEX-SOURCES.md#sql-46)
 - [Comparaison des bibliothèques](COMPARAISON-BIBLIOTHEQUES.md) : Membres communs, différents ou identiques (généré).
 - [Variantes des collaborateurs](VARIANTES.md) : Plusieurs solutions pour un même exercice (généré).
 - [Contribuer avec sa bibliothèque](../contributions/README.md) : Fork, Pull Request, contribution.json.
@@ -408,11 +408,11 @@ Code converti, comparaisons entre bibliothèques et contributions.
 Ce que le wiki vérifie automatiquement et ce qui lui manque.
 
 - [Manques des fiches](MANQUES.md) : Termes utilisés dans le code et absents des fiches (généré).
-  - [Commandes CL : 60 manquants sur 104 utilises](MANQUES.md#commandes-cl--60-manquants-sur-104-utilises)
-  - [Instructions / fonctions RPG (reconnues par job-i) : 39 manquants sur 102 utilises](MANQUES.md#instructions--fonctions-rpg-reconnues-par-job-i--39-manquants-sur-102-utilises)
-  - [Messages (MONMSG, SQLCODE...) : 60 manquants sur 68 utilises](MANQUES.md#messages-monmsg-sqlcode--60-manquants-sur-68-utilises)
-  - [Services SQL (QSYS2, SYSTOOLS) : 24 manquants sur 28 utilises](MANQUES.md#services-sql-qsys2-systools--24-manquants-sur-28-utilises)
-  - [Mots-cles DDS / ecran : 84 manquants sur 102 utilises](MANQUES.md#mots-cles-dds--ecran--84-manquants-sur-102-utilises)
+  - [Commandes CL : 70 manquants sur 115 utilises](MANQUES.md#commandes-cl--70-manquants-sur-115-utilises)
+  - [Instructions / fonctions RPG (reconnues par job-i) : 45 manquants sur 113 utilises](MANQUES.md#instructions--fonctions-rpg-reconnues-par-job-i--45-manquants-sur-113-utilises)
+  - [Messages (MONMSG, SQLCODE...) : 66 manquants sur 82 utilises](MANQUES.md#messages-monmsg-sqlcode--66-manquants-sur-82-utilises)
+  - [Services SQL (QSYS2, SYSTOOLS) : 80 manquants sur 91 utilises](MANQUES.md#services-sql-qsys2-systools--80-manquants-sur-91-utilises)
+  - [Mots-cles DDS / ecran : 87 manquants sur 105 utilises](MANQUES.md#mots-cles-dds--ecran--87-manquants-sur-105-utilises)
   - [Sources par type et bibliotheque](MANQUES.md#sources-par-type-et-bibliotheque)
 - [Vérification du code contre job-i.fr](VERIFICATION-JOB-I.md) : Commandes et instructions reconnues ou à contrôler (généré).
   - [Commandes CL utilisees](VERIFICATION-JOB-I.md#commandes-cl-utilisees)
@@ -1691,129 +1691,137 @@ Chaîne de restauration rapide fictive ; l'épreuve se déroule dans un environn
 === FICHIER : docs/MANQUES.md ===
 # Ce qui manque dans les fiches (utilise dans le code, absent des fiches)
 
-Genere le 2026-11-23 14:23 a partir de 1082 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
+Genere le 2026-11-25 09:32 a partir de 1519 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
 
 
-## Commandes CL : 60 manquants sur 104 utilises
+## Commandes CL : 70 manquants sur 115 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
-| CHGVAR | 310 | 13 |
-| ENDPGM | 142 | 14 |
-| GOTO | 94 | 9 |
+| CHGVAR | 400 | 15 |
+| ENDPGM | 190 | 16 |
+| GOTO | 135 | 11 |
 | WHEN | 92 | 4 |
-| SNDPGMMSG | 73 | 9 |
-| SNDRCVF | 53 | 8 |
+| SNDPGMMSG | 85 | 11 |
+| SNDRCVF | 77 | 10 |
+| RCVF | 52 | 8 |
 | DLTOVR | 44 | 6 |
-| RCVF | 38 | 6 |
 | DSPATR | 33 | 1 |
 | LEAVE | 28 | 1 |
-| ELSE | 22 | 7 |
-| STRSEU | 14 | 2 |
-| RTVJOBA | 13 | 9 |
-| CHGCURLIB | 11 | 5 |
+| ELSE | 24 | 8 |
+| STRSEU | 15 | 3 |
+| RTVJOBA | 14 | 10 |
+| CLRPFM | 13 | 7 |
+| CHGCURLIB | 12 | 6 |
 | CLOF | 10 | 4 |
-| CLRPFM | 10 | 5 |
 | RCVMSG | 10 | 6 |
 | CPYSRCF | 9 | 3 |
 | DCLPRCOPT | 9 | 1 |
+| DOWHILE | 9 | 3 |
 | FTP | 9 | 5 |
 | OPNQRYF | 8 | 4 |
 | RTVOBJD | 8 | 4 |
+| RTVUSRPRF | 8 | 7 |
 | COPYRIGHT | 7 | 1 |
+| CRTDIR | 7 | 5 |
 | RMVDIR | 7 | 6 |
 | CPYTOSTMF | 6 | 5 |
 | ENDMOD | 6 | 1 |
-| RTVUSRPRF | 6 | 5 |
 | CRTCLPGM | 5 | 3 |
-| CRTDIR | 5 | 4 |
 | DOUNTIL | 5 | 4 |
 | RMVLIBLE | 5 | 4 |
 | RTVMBRD | 5 | 2 |
 | STRSBS | 5 | 3 |
+| CALLPRC | 4 | 1 |
 | CALLSUBR | 4 | 3 |
 | DLYJOB | 4 | 2 |
 | ENDSUBR | 4 | 3 |
 | ITERATE | 4 | 3 |
 | RCLRSC | 4 | 3 |
+| RTVSYSVAL | 4 | 3 |
 | SUBR | 4 | 3 |
 | CRTDSPF | 3 | 3 |
+| SNDMSG | 3 | 2 |
 | STRPCCMD | 3 | 1 |
-| ADDENVVAR | 2 | 1 |
-| ADDJOBQE | 2 | 2 |
-| ADDRTGE | 2 | 2 |
-| CRTCLS | 2 | 2 |
 
-## Instructions / fonctions RPG (reconnues par job-i) : 39 manquants sur 102 utilises
+## Instructions / fonctions RPG (reconnues par job-i) : 45 manquants sur 113 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
-| LEAVE | 475 | 12 |
-| ELSE | 414 | 15 |
-| %ADDR | 190 | 9 |
-| DCL-C | 161 | 11 |
-| WORKSTN | 158 | 13 |
-| DELETE | 134 | 7 |
-| ITER | 114 | 11 |
-| PARM | 105 | 6 |
-| %TRIMR | 85 | 5 |
-| %ERROR | 43 | 2 |
-| QUALIFIED | 41 | 8 |
-| SND-MSG | 26 | 8 |
-| OVERLAY | 24 | 5 |
+| LEAVE | 617 | 14 |
+| ELSE | 566 | 17 |
+| WORKSTN | 218 | 15 |
+| %ADDR | 214 | 10 |
+| DCL-C | 208 | 13 |
+| DELETE | 191 | 9 |
+| ITER | 180 | 13 |
+| PARM | 146 | 8 |
+| %TRIMR | 99 | 7 |
+| %ERROR | 89 | 4 |
+| QUALIFIED | 57 | 9 |
+| OVERLAY | 46 | 7 |
+| %XLATE | 40 | 3 |
+| SND-MSG | 28 | 9 |
+| %SCANRPL | 21 | 6 |
 | BASED | 21 | 9 |
-| %SCANRPL | 16 | 3 |
-| %XLATE | 14 | 1 |
-| %DIV | 13 | 2 |
-| %DECH | 10 | 4 |
-| READP | 10 | 2 |
-| %DAYS | 8 | 1 |
-| UNLOCK | 8 | 1 |
-| SETGT | 7 | 2 |
+| %DIV | 15 | 3 |
+| %DAYS | 13 | 4 |
+| READP | 13 | 4 |
+| %DECH | 11 | 5 |
+| SETGT | 11 | 4 |
+| UNLOCK | 10 | 3 |
+| %TIMESTAMP | 7 | 3 |
+| %EQUAL | 6 | 1 |
+| %OPEN | 6 | 4 |
+| %STATUS | 6 | 4 |
 | %STR | 6 | 1 |
-| %OPEN | 5 | 3 |
-| %STATUS | 5 | 3 |
+| %MIN | 5 | 2 |
 | %SUBARR | 5 | 3 |
-| %TIMESTAMP | 4 | 1 |
+| %TARGET | 4 | 2 |
+| READPE | 4 | 3 |
+| SORTA | 4 | 1 |
+| %TRIML | 3 | 1 |
 | %XFOOT | 3 | 1 |
-| READPE | 3 | 2 |
 | %ALLOC | 2 | 1 |
-| %EQUAL | 2 | 1 |
 | %LIST | 2 | 2 |
-| %TARGET | 2 | 1 |
+| %PASSED | 2 | 1 |
 | DCL-ENUM | 2 | 2 |
+| ON-EXIT | 2 | 1 |
 | %CHECKR | 1 | 1 |
 | %FIELDS | 1 | 1 |
-| %MIN | 1 | 1 |
+| %PARMNUM | 1 | 1 |
+| %SUBDT | 1 | 1 |
+| %TIME | 1 | 1 |
 | RESET | 1 | 1 |
-| SORTA | 1 | 1 |
 
-## Messages (MONMSG, SQLCODE...) : 60 manquants sur 68 utilises
+## Messages (MONMSG, SQLCODE...) : 66 manquants sur 82 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
-| CPF0000 | 82 | 11 |
-| CPF0864 | 47 | 7 |
-| CPF2103 | 20 | 7 |
-| CPF9897 | 20 | 5 |
-| CPF9898 | 16 | 5 |
+| CPF0000 | 102 | 13 |
+| CPF0864 | 61 | 9 |
+| CPF9897 | 36 | 7 |
+| CPD0084 | 26 | 3 |
+| CPF2103 | 22 | 7 |
+| CPF2551 | 22 | 4 |
+| CPD0071 | 18 | 4 |
+| CPF9898 | 18 | 6 |
+| CPD0172 | 17 | 4 |
 | MCH0000 | 14 | 5 |
 | EDT9007 | 13 | 2 |
 | EDT0223 | 12 | 1 |
-| CPD0071 | 10 | 2 |
 | CPF9812 | 9 | 5 |
+| CPF2111 | 8 | 5 |
 | CPF5813 | 8 | 2 |
-| CPD0084 | 6 | 1 |
-| CPF2551 | 6 | 2 |
-| CPF2817 | 6 | 2 |
+| CPF2817 | 7 | 3 |
 | CPF3CF2 | 6 | 2 |
+| CPFA0A0 | 6 | 5 |
 | SQL0000 | 6 | 5 |
 | CPD0000 | 5 | 4 |
-| CPD0172 | 5 | 2 |
-| CPF2111 | 5 | 3 |
+| SQL0901 | 5 | 3 |
 | CPD9817 | 4 | 4 |
 | CPF1697 | 4 | 2 |
-| CPFA0A0 | 4 | 4 |
+| CPF2110 | 4 | 4 |
 | CPFA0A9 | 4 | 2 |
 | CPF0801 | 3 | 2 |
 | CPF3012 | 3 | 3 |
@@ -1824,94 +1832,113 @@ Genere le 2026-11-23 14:23 a partir de 1082 sources. Un terme est 'manquant' s'i
 | IWS4010 | 3 | 1 |
 | CPC1221 | 2 | 1 |
 | CPF1064 | 2 | 2 |
+| CPF1164 | 2 | 1 |
 | CPF1621 | 2 | 2 |
 | CPF1696 | 2 | 2 |
 | CPF2104 | 2 | 2 |
-| CPF2110 | 2 | 2 |
 | CPF2292 | 2 | 2 |
 | CPF2816 | 2 | 1 |
 | CPF3323 | 2 | 2 |
 | CPF3353 | 2 | 2 |
 | CPF4520 | 2 | 2 |
 | CPFA097 | 2 | 1 |
-| SQL0952 | 2 | 1 |
-| SQL7064 | 2 | 1 |
-| CPF1008 | 1 | 1 |
+| RNF5409 | 2 | 1 |
 
-## Services SQL (QSYS2, SYSTOOLS) : 24 manquants sur 28 utilises
+## Services SQL (QSYS2, SYSTOOLS) : 80 manquants sur 91 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
-| QSYS2.BASE64_ENCODE | 5 | 2 |
+| QSYS2.BASE64_ENCODE | 21 | 4 |
+| SYSTOOLS.BASE64ENCODE | 20 | 3 |
+| SYSTOOLS.HTTPGETCLOB | 15 | 4 |
+| QSYS2.HTTP_GET | 11 | 4 |
+| SYSTOOLS.HTTPPOSTCLOB | 9 | 4 |
+| QSYS2.HTTP_POST_VERBOSE | 6 | 4 |
+| QSYS2.HTTP_POST | 6 | 4 |
+| QSYS2.HTTP_PUT | 6 | 4 |
+| SYSTOOLS.HTTPDELETECLOB | 6 | 3 |
+| SYSTOOLS.HTTPPUTCLOB | 6 | 4 |
 | QSYS2.BOUND_MODULE_INFO | 5 | 3 |
-| QSYS2.HTTP_GET | 5 | 2 |
+| QSYS2.HTTP_DELETE | 5 | 3 |
+| QSYS2.HTTP_GET_VERBOSE | 4 | 1 |
 | QSYS2.SYSPARTITIONSTAT | 4 | 3 |
-| SYSTOOLS.BASE64ENCODE | 4 | 1 |
-| SYSTOOLS.HTTPPOSTCLOB | 4 | 2 |
-| QSYS2.HTTP_POST_VERBOSE | 3 | 3 |
-| SYSTOOLS.HTTPGETCLOB | 3 | 2 |
 | QSYS2.BOUND_SRVPGM_INFO | 2 | 2 |
-| QSYS2.HTTP_POST | 2 | 2 |
-| QSYS2.HTTP_PUT | 2 | 2 |
 | QSYS2.SEND_DATA_QUEUE | 2 | 1 |
 | QSYS2.SEND_MESSAGE | 2 | 1 |
 | QSYS2.STACK_INFO | 2 | 1 |
-| SYSTOOLS.HTTPPUTCLOB | 2 | 2 |
-| QSYS2.HTTP_DELETE | 1 | 1 |
+| SYSTOOLS.PING | 2 | 1 |
+| SYSTOOLS.SQLCODE_INFO | 2 | 1 |
+| QSYS2.DISPLAY_JOURNAL | 1 | 1 |
+| QSYS2.DNS_LOOKUP | 1 | 1 |
+| QSYS2.DSPLIBL | 1 | 1 |
+| QSYS2.DSPOBJD | 1 | 1 |
+| QSYS2.ERRORS | 1 | 1 |
+| QSYS2.EXEC_CMD | 1 | 1 |
+| QSYS2.FE | 1 | 1 |
+| QSYS2.FI | 1 | 1 |
+| QSYS2.GET_LOG | 1 | 1 |
+| QSYS2.HOST_IP | 1 | 1 |
+| QSYS2.HTTP_DELETE_VERBOSE | 1 | 1 |
+| QSYS2.HTTP_PUT_VERBOSE | 1 | 1 |
 | QSYS2.IFS_READ_BINARY | 1 | 1 |
 | QSYS2.IFS_REMOVE_FILE | 1 | 1 |
 | QSYS2.JOB_INFO | 1 | 1 |
+| QSYS2.JOB_LOG | 1 | 1 |
+| QSYS2.JOB_QUEUE | 1 | 1 |
+| QSYS2.JRN_INFO | 1 | 1 |
+| QSYS2.LIBL | 1 | 1 |
+| QSYS2.LIBRARY_LIST_INFO | 1 | 1 |
+| QSYS2.NETS | 1 | 1 |
+| QSYS2.OUTQ_ENTRIES | 1 | 1 |
+| QSYS2.PASSWORD_INFO | 1 | 1 |
 | QSYS2.PROGRAM_EXPORT_IMPORT_INFO | 1 | 1 |
-| QSYS2.RECEIVE_DATA_QUEUE | 1 | 1 |
-| QSYS2.SYSROUTINES | 1 | 1 |
-| SYSTOOLS.HTTPDELETECLOBVERBOSE | 1 | 1 |
-| SYSTOOLS.HTTPDELETECLOB | 1 | 1 |
+| QSYS2.PTF_LIST | 1 | 1 |
 
-## Mots-cles DDS / ecran : 84 manquants sur 102 utilises
+## Mots-cles DDS / ecran : 87 manquants sur 105 utilises
 
 | Terme | Occurrences | Bibliotheques |
 |---|---|---|
-| COLOR | 2152 | 14 |
-| DSPATR | 1017 | 11 |
-| CHECK | 185 | 9 |
-| DSPSIZ | 178 | 16 |
-| CA03 | 102 | 12 |
-| CF03 | 100 | 9 |
-| OVERLAY | 84 | 13 |
-| CA12 | 83 | 10 |
-| CF23 | 71 | 8 |
-| ERRMSG | 61 | 8 |
+| COLOR | 2994 | 16 |
+| DSPATR | 1280 | 13 |
+| DSPSIZ | 253 | 18 |
+| CHECK | 234 | 12 |
+| CA03 | 142 | 14 |
+| OVERLAY | 139 | 15 |
+| CF03 | 137 | 11 |
+| CA12 | 111 | 12 |
+| CF23 | 100 | 10 |
+| ERRMSG | 76 | 10 |
+| WINDOW | 59 | 12 |
 | SFLCOLUMN | 58 | 1 |
-| CF12 | 52 | 7 |
-| WINDOW | 40 | 10 |
-| INDARA | 39 | 9 |
-| CA06 | 37 | 6 |
-| SFLCR | 37 | 2 |
-| REFFLD | 30 | 4 |
-| CF06 | 29 | 7 |
-| CHGINPDFT | 26 | 8 |
-| CA05 | 20 | 6 |
-| CF05 | 19 | 7 |
-| CF10 | 17 | 5 |
+| CF12 | 57 | 9 |
+| INDARA | 49 | 11 |
+| CF06 | 47 | 9 |
+| CA06 | 45 | 8 |
+| SFLCR | 39 | 3 |
+| REFFLD | 37 | 5 |
+| CHGINPDFT | 34 | 10 |
+| CA05 | 33 | 8 |
+| CF05 | 33 | 9 |
+| CF08 | 22 | 6 |
+| CF10 | 20 | 7 |
+| CF02 | 19 | 9 |
+| CF21 | 19 | 7 |
 | CF11 | 17 | 5 |
-| CF21 | 15 | 5 |
+| CF07 | 16 | 8 |
+| CF22 | 16 | 7 |
+| CA01 | 15 | 4 |
 | SFLMAX | 14 | 2 |
-| CF02 | 13 | 7 |
-| CA08 | 12 | 2 |
-| CF07 | 12 | 6 |
+| CA08 | 13 | 3 |
+| CF04 | 12 | 6 |
 | CF24 | 12 | 5 |
-| CA01 | 11 | 2 |
 | EDTWRD | 11 | 3 |
 | SFLDROP | 11 | 4 |
 | SFLLIN | 11 | 2 |
-| CF08 | 10 | 4 |
 | CF09 | 10 | 5 |
-| CF22 | 10 | 5 |
+| CF15 | 10 | 5 |
 | SFLLCK | 10 | 1 |
 | SFLOPT | 10 | 1 |
-| CF04 | 9 | 4 |
 | CF13 | 9 | 4 |
-| CF15 | 9 | 4 |
 | CF20 | 9 | 4 |
 | CF14 | 8 | 3 |
 | CF16 | 8 | 3 |
@@ -1921,26 +1948,26 @@ Genere le 2026-11-23 14:23 a partir de 1082 sources. Un terme est 'manquant' s'i
 
 | Type | Sources |
 |---|---|
-| DDS | 382 |
-| RPG/RPG-ILE | 291 |
-| CL/CL-procedural | 128 |
-| RPG/RPG-III-400 | 124 |
-| CL/CL-ILE | 50 |
-| SQL | 31 |
-| COBOL | 26 |
-| Autres/Service-programs | 14 |
-| Menus | 14 |
+| DDS | 499 |
+| RPG/RPG-ILE | 437 |
+| RPG/RPG-III-400 | 184 |
+| CL/CL-procedural | 172 |
+| CL/CL-ILE | 70 |
+| SQL | 46 |
+| COBOL | 38 |
+| Autres/Service-programs | 25 |
+| Menus | 16 |
+| Autres/Web | 12 |
 | RPG/Copy | 11 |
-| Autres/Web | 5 |
-| Autres/Commandes | 4 |
-| Autres/Aide | 1 |
+| Autres/Commandes | 5 |
+| Autres/Aide | 3 |
 | Autres/Panneaux-UIM | 1 |
 
 
 === FICHIER : docs/CYCLE-GAP-EXEMPLES.md ===
 # Exemples du cycle RPG (cycle GAP) dans les bibliotheques
 
-Genere le 2026-11-23 14:23. Detection : un fichier **primaire** (IP) ou **secondaire** (IS) en specification F dans un source en colonnes. Explication du cycle : [fiche 03](cheatsheets/03-rpg-par-version.md) et [job-i.fr](https://job-i.fr/cycle-gap-rpg). Detection heuristique : a confirmer en ouvrant le source.
+Genere le 2026-11-25 09:32. Detection : un fichier **primaire** (IP) ou **secondaire** (IS) en specification F dans un source en colonnes. Explication du cycle : [fiche 03](cheatsheets/03-rpg-par-version.md) et [job-i.fr](https://job-i.fr/cycle-gap-rpg). Detection heuristique : a confirmer en ouvrant le source.
 
 | Bibliotheque | Membre | Type | Lignes | Primaire (IP) | Secondaire (IS) | Niveaux (L1-L9) | 1P | OF | Source |
 |---|---|---|---|---|---|---|---|---|---|
@@ -1949,6 +1976,9 @@ Genere le 2026-11-23 14:23. Detection : un fichier **primaire** (IP) ou **second
 | BIB01 | SYNTAX3 | RPG/RPG-III-400 | 98 | oui | - |  | - | - | [SYNTAX3.md](../sources/RPG/RPG-III-400/BIB01/SYNTAX3.md) |
 | BIB20 | CYCDEMO | RPG/RPG-III-400 | 183 | oui | oui | L1 L2 | oui | oui | [CYCDEMO.md](../sources/RPG/RPG-III-400/BIB20/CYCDEMO.md) |
 | BIB21 | FILMCYC | RPG/RPG-III-400 | 186 | oui | - | L1 L2 L3 | - | oui | [FILMCYC.md](../sources/RPG/RPG-III-400/BIB21/FILMCYC.md) |
+| BIB25 | CYCLERPG | RPG/RPG-ILE | 34 | oui | - | L1 | - | - | [CYCLERPG.md](../sources/RPG/RPG-ILE/BIB25/CYCLERPG.md) |
+| BIB25 | GAP1 | RPG/RPG-III-400 | 41 | oui | - | L1 L2 | oui | - | [GAP1.md](../sources/RPG/RPG-III-400/BIB25/GAP1.md) |
+| BIB25 | GAP | RPG/RPG-III-400 | 32 | oui | - | L1 | oui | - | [GAP.md](../sources/RPG/RPG-III-400/BIB25/GAP.md) |
 
 
 === FICHIER : docs/CYCLE-RPG.md ===

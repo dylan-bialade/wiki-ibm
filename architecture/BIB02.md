@@ -1,16 +1,16 @@
-# Bibliotheque BIB02
+﻿# Bibliotheque BIB02
 
-- Sources converties : 334
-- Membres de donnees / non-source : 402
+- Sources converties : 340
+- Membres de donnees / non-source : 396
 
 ## Repartition par type
 
 | Type | Nombre |
 |---|---|
-| RPG\RPG-ILE | 99 |
+| RPG\RPG-ILE | 102 |
 | Autres\Service-programs | 4 |
 | COBOL | 9 |
-| DDS | 162 |
+| DDS | 165 |
 | CL\CL-ILE | 28 |
 | CL\CL-procedural | 5 |
 | Autres\Commandes | 1 |
@@ -81,9 +81,6 @@
 - **PTFAGRION** : PTFAGRION
 - **QCLLESRC** : TESTCLP
 - **QILE** : DDDD
-- **QKYLE** : RPG7FF
-- **QPARMFOR** : MOYENNE, NOTE
-- **QSAVE** : ALIM, CPU, GPU
 - **QSOURCE** : BONBON
 - **QSRC** : EXCEL_S, HLP
 - **RACEP** : RACEP
@@ -104,3 +101,4 @@
 - **VOITURESV** : VOITURE
 - **VSCODE** : RPGLINT
 - **WRKCTR** : WRKCTR
+

@@ -160,20 +160,20 @@ Résumés anonymisés d'énoncés et d'examens.
 Code converti, comparaisons entre bibliothèques et contributions.
 
 - [Index de toutes les sources](INDEX-SOURCES.md) : Un tableau par type de source (généré).
-  - [Autres\Aide (1)](INDEX-SOURCES.md#autresaide-1)
-  - [Autres\Commandes (4)](INDEX-SOURCES.md#autrescommandes-4)
+  - [Autres\Aide (3)](INDEX-SOURCES.md#autresaide-3)
+  - [Autres\Commandes (5)](INDEX-SOURCES.md#autrescommandes-5)
   - [Autres\Panneaux-UIM (1)](INDEX-SOURCES.md#autrespanneaux-uim-1)
-  - [Autres\Service-programs (14)](INDEX-SOURCES.md#autresservice-programs-14)
-  - [Autres\Web (5)](INDEX-SOURCES.md#autresweb-5)
-  - [CL\CL-ILE (50)](INDEX-SOURCES.md#clcl-ile-50)
-  - [CL\CL-procedural (128)](INDEX-SOURCES.md#clcl-procedural-128)
-  - [COBOL (26)](INDEX-SOURCES.md#cobol-26)
-  - [DDS (382)](INDEX-SOURCES.md#dds-382)
-  - [Menus (14)](INDEX-SOURCES.md#menus-14)
+  - [Autres\Service-programs (25)](INDEX-SOURCES.md#autresservice-programs-25)
+  - [Autres\Web (12)](INDEX-SOURCES.md#autresweb-12)
+  - [CL\CL-ILE (70)](INDEX-SOURCES.md#clcl-ile-70)
+  - [CL\CL-procedural (172)](INDEX-SOURCES.md#clcl-procedural-172)
+  - [COBOL (38)](INDEX-SOURCES.md#cobol-38)
+  - [DDS (499)](INDEX-SOURCES.md#dds-499)
+  - [Menus (16)](INDEX-SOURCES.md#menus-16)
   - [RPG\Copy (11)](INDEX-SOURCES.md#rpgcopy-11)
-  - [RPG\RPG-III-400 (124)](INDEX-SOURCES.md#rpgrpg-iii-400-124)
-  - [RPG\RPG-ILE (291)](INDEX-SOURCES.md#rpgrpg-ile-291)
-  - [SQL (31)](INDEX-SOURCES.md#sql-31)
+  - [RPG\RPG-III-400 (184)](INDEX-SOURCES.md#rpgrpg-iii-400-184)
+  - [RPG\RPG-ILE (437)](INDEX-SOURCES.md#rpgrpg-ile-437)
+  - [SQL (46)](INDEX-SOURCES.md#sql-46)
 - [Comparaison des bibliothèques](COMPARAISON-BIBLIOTHEQUES.md) : Membres communs, différents ou identiques (généré).
 - [Variantes des collaborateurs](VARIANTES.md) : Plusieurs solutions pour un même exercice (généré).
 - [Contribuer avec sa bibliothèque](../contributions/README.md) : Fork, Pull Request, contribution.json.
@@ -187,11 +187,11 @@ Code converti, comparaisons entre bibliothèques et contributions.
 Ce que le wiki vérifie automatiquement et ce qui lui manque.
 
 - [Manques des fiches](MANQUES.md) : Termes utilisés dans le code et absents des fiches (généré).
-  - [Commandes CL : 60 manquants sur 104 utilises](MANQUES.md#commandes-cl--60-manquants-sur-104-utilises)
-  - [Instructions / fonctions RPG (reconnues par job-i) : 39 manquants sur 102 utilises](MANQUES.md#instructions--fonctions-rpg-reconnues-par-job-i--39-manquants-sur-102-utilises)
-  - [Messages (MONMSG, SQLCODE...) : 60 manquants sur 68 utilises](MANQUES.md#messages-monmsg-sqlcode--60-manquants-sur-68-utilises)
-  - [Services SQL (QSYS2, SYSTOOLS) : 24 manquants sur 28 utilises](MANQUES.md#services-sql-qsys2-systools--24-manquants-sur-28-utilises)
-  - [Mots-cles DDS / ecran : 84 manquants sur 102 utilises](MANQUES.md#mots-cles-dds--ecran--84-manquants-sur-102-utilises)
+  - [Commandes CL : 70 manquants sur 115 utilises](MANQUES.md#commandes-cl--70-manquants-sur-115-utilises)
+  - [Instructions / fonctions RPG (reconnues par job-i) : 45 manquants sur 113 utilises](MANQUES.md#instructions--fonctions-rpg-reconnues-par-job-i--45-manquants-sur-113-utilises)
+  - [Messages (MONMSG, SQLCODE...) : 66 manquants sur 82 utilises](MANQUES.md#messages-monmsg-sqlcode--66-manquants-sur-82-utilises)
+  - [Services SQL (QSYS2, SYSTOOLS) : 80 manquants sur 91 utilises](MANQUES.md#services-sql-qsys2-systools--80-manquants-sur-91-utilises)
+  - [Mots-cles DDS / ecran : 87 manquants sur 105 utilises](MANQUES.md#mots-cles-dds--ecran--87-manquants-sur-105-utilises)
   - [Sources par type et bibliotheque](MANQUES.md#sources-par-type-et-bibliotheque)
 - [Vérification du code contre job-i.fr](VERIFICATION-JOB-I.md) : Commandes et instructions reconnues ou à contrôler (généré).
   - [Commandes CL utilisees](VERIFICATION-JOB-I.md#commandes-cl-utilisees)

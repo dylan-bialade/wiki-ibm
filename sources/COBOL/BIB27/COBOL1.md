@@ -1,0 +1,49 @@
+---
+bibliotheque: BIB27
+fichier_source: QCOBOLSRC
+membre: COBOL1
+type: COBOL
+longueur_enregistrement: 80
+lignes: 35
+modifie: 2026-11-25
+---
+
+# BIB27/QCOBOLSRC/COBOL1
+
+```text
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. TEST_COBOL1.
+
+
+       ENVIRONMENT DIVISION.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT PLAYERNBA-FILE ASSIGN TO 'PLAYERNBA'
+           ORGANIZATION IS INDEXED
+           ACCESS MODE IS DYNAMIC
+           RECORD KEY IS JOUEUR-NOM.
+
+
+       DATA DIVISION.
+       LINKAGE SECTION.
+       01  PARA1 PIC X(50).
+
+       FILE SECTION.
+
+       FD  PLAYERNBA-FILE.
+       01  PLAYERNBA-RECORD.
+           05 JOUEUR-ID PIC 9(2) COMP.
+           05 JOUEUR-PRENOM PIC X(50).
+           05 JOUEUR-NOM PIC X(50).
+           05 JOUEUR-TAILLE PIC S9(3) COMP.
+           05 JOUEUR-TEAM PIC X(50).
+           05 JOUEUR-TITLE PIC 9(1) COMP.
+           05 JOUEUR-AGE PIC 9(2) COMP.
+
+
+
+       PROCEDURE DIVISION USING PARA1.
+       MAIN-PROCEDURE.
+           DISPLAY PARA1
+           EXIT PROGRAM.
+```

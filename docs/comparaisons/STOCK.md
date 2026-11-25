@@ -1,4 +1,4 @@
-# STOCK : 2 versions differentes dans 2 bibliotheques
+# STOCK : 3 versions differentes dans 3 bibliotheques
 
 Meme nom de membre, code different : facons de faire ou de penser differentes. Similarite = part de lignes (normalisees) en commun avec la premiere version. Retour : [index des comparaisons](../COMPARAISON-BIBLIOTHEQUES.md).
 
@@ -6,10 +6,12 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 |---|---|---|---|---|---|---|
 | BIB02 | QBNDSRC | Autres/Service-programs | 97 | 100 % | ecran (WORKSTN), CHAIN, boucle DOW/DOU/FOR, procedures (dcl-proc), prototypes (dcl-pr), indicateurs *INxx | [STOCK.md](../../sources/Autres/Service-programs/BIB02/STOCK.md) |
 | BIB20 | QDDSSRC | DDS | 5 | 0 % |  | [STOCK.md](../../sources/DDS/BIB20/STOCK.md) |
+| BIB25 | QF_PFLF | DDS | 5 | 0 % | DDS (R/K/PFILE) | [STOCK.md](../../sources/DDS/BIB25/STOCK.md) |
 
 ## Differences
 
 - **BIB02** en propre : ecran (WORKSTN), CHAIN, boucle DOW/DOU/FOR, procedures (dcl-proc), prototypes (dcl-pr), indicateurs *INxx
+- **BIB25** en propre : DDS (R/K/PFILE)
 - Langages / types differents : Autres/Service-programs, DDS
 
 ## Codes
@@ -39,6 +41,7 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
          EXFMT FMT1;
 
+
          // Selon cas
          SELECT;
 
@@ -60,6 +63,7 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
            *inlr=*on;
 
          ENDSL;
+
 
          // récupère un enregistrement à partir de entrepotlf
          chain scodpro entrepotlf;
@@ -87,6 +91,7 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
          ENDIF;
 
        ENDDO;
+
 
        *INLR = *ON;
 
@@ -121,4 +126,14 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
                   ID_PRODUIT     6P 0
                   QUANTITE       6P 0
                   DATE_MOUVE      L         DATFMT(*EUR)
+```
+
+### BIB25 (DDS, 5 lignes)
+
+```text
+     A          R FSTOCK
+     A            ID             6S 0
+     A            ID_PRODUIT     6S 0
+     A            QUANTITE       6S 0
+     A            DATE_M          L         DATFMT(*EUR)
 ```

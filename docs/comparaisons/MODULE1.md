@@ -1,16 +1,21 @@
-# MODULE1 : 2 versions differentes dans 2 bibliotheques
+# MODULE1 : 4 versions differentes dans 3 bibliotheques
 
 Meme nom de membre, code different : facons de faire ou de penser differentes. Similarite = part de lignes (normalisees) en commun avec la premiere version. Retour : [index des comparaisons](../COMPARAISON-BIBLIOTHEQUES.md).
 
 | Bibliotheque | Fichier source | Type | Lignes | Similarite | Techniques | Source |
 |---|---|---|---|---|---|---|
-| BIB02 | QMOD | RPG/RPG-ILE | 32 | 100 % | procedures (dcl-proc), prototypes (dcl-pr) | [MODULE1.md](../../sources/RPG/RPG-ILE/BIB02/MODULE1.md) |
-| BIB20 | QILESRC | RPG/RPG-ILE | 53 | 7 % | full free, SQL embarque, procedures (dcl-proc), prototypes (dcl-pr) | [MODULE1.md](../../sources/RPG/RPG-ILE/BIB20/MODULE1.md) |
+| BIB02 | QMOD | RPG/RPG-ILE | 32 | 15 % | procedures (dcl-proc), prototypes (dcl-pr) | [MODULE1.md](../../sources/RPG/RPG-ILE/BIB02/MODULE1.md) |
+| BIB20 | QILESRC | RPG/RPG-ILE | 53 | 8 % | full free, SQL embarque, procedures (dcl-proc), prototypes (dcl-pr) | [MODULE1.md](../../sources/RPG/RPG-ILE/BIB20/MODULE1.md) |
+| BIB25 | QRPGSRC | RPG/RPG-III-400 | 13 | 100 % | full free, procedures (dcl-proc), prototypes (dcl-pr) | [MODULE1.md](../../sources/RPG/RPG-III-400/BIB25/MODULE1.md) |
+| BIB25 | QILESRC | RPG/RPG-ILE | 11 | 45 % | full free, procedures (dcl-proc), prototypes (dcl-pr) | [MODULE1.md](../../sources/RPG/RPG-ILE/BIB25/MODULE1.md) |
 
 ## Differences
 
 - Techniques communes : procedures (dcl-proc), prototypes (dcl-pr)
 - **BIB20** en propre : full free, SQL embarque
+- **BIB25** en propre : full free
+- **BIB25** en propre : full free
+- Langages / types differents : RPG/RPG-III-400, RPG/RPG-ILE
 
 ## Codes
 
@@ -78,6 +83,7 @@ THEN true
 
                                                                                                 end-proc;
 
+
                 dcl-proc checkSecu EXPORT; // Vérifie le numéro de sécu
                                     dcl-pi *n ind; // *ON ou *OFF
                                                         secu char(100) const;
@@ -92,6 +98,7 @@ e ind;
                                                                         reponse = *off;
                                                                                     endif;
 
+
     return reponse;
 
                                 end-proc;
@@ -105,4 +112,38 @@ tva calculé                                                                    
                                     return nb * 0.10;
 
                                                                 end-proc;
+```
+
+### BIB25 (RPG/RPG-III-400, 13 lignes)
+
+```text
+**free
+// Module Addition
+
+CTL-OPT NOMAIN;
+
+DCL-PROC addition EXPORT;
+  DCL-PI *N packed(6:0);
+    num1 packed(4:0);
+    num2 packed(4:0);
+  END-PI;
+  // Retourne l'Addition
+  return num1 + num2;
+END-PROC;
+```
+
+### BIB25 (RPG/RPG-ILE, 11 lignes)
+
+```text
+**free
+CTL-OPT NOMAIN;
+
+dcl-proc Addition EXPORT;
+  dcl-pi *n packed(5:0);
+    num1 packed(5:0);
+    num2 packed(5:0);
+  END-PI;
+
+  return num1 + num2;
+END-PROC;
 ```

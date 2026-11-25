@@ -1,0 +1,21 @@
+---
+bibliotheque: BIB27
+fichier_source: QDDSSRC
+membre: PRDT
+type: DDS
+longueur_enregistrement: 80
+lignes: 7
+modifie: 2026-11-25
+---
+
+# BIB27/QDDSSRC/PRDT
+
+```text
+                                            UNIQUE
+                R FRTPRDT
+                  CODE_PRDT      6S 0       COLHDG('CODE PRODUIT')
+                  LIBELLE       50A         COLHDG('LIBELLE DU PRODUIT')
+                  P_U            6S 2       COLHDG('PRIX UNITAIRE')
+                  STOCK          4S 0       COLHDG('STOCK')
+                K CODE_PRDT
+```

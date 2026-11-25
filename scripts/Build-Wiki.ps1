@@ -45,11 +45,14 @@ foreach ($n in $real) { if (-not $alias.ContainsKey($n)) { $alias[$n] = ('BIB' +
 $ordered = [ordered]@{}; foreach ($k in ($alias.Keys | Sort-Object)) { $ordered[$k] = $alias[$k] }
 [IO.File]::WriteAllText($aliasFile, ($ordered | ConvertTo-Json), (New-Object Text.UTF8Encoding($false)))
 $libs = Get-ChildItem $Source -Directory -Filter *.LIB | ForEach-Object { $r = ($_.Name -replace '\.LIB$',''); [pscustomobject]@{ BaseName = $alias[$r]; Real = $r; FullName = $_.FullName } }
-$realRx = '(?i)(?<![A-Z0-9_#@$])(' + (($real | Sort-Object Length -Descending | ForEach-Object { [regex]::Escape($_) }) -join '|') + ')(?![A-Z0-9_#@$])'
+$orgKeys = @($alias.GetEnumerator() | Where-Object { $_.Value -eq "ORGFORM" } | ForEach-Object { $_.Key })   # noms de l'organisme (table privee) : masques meme a l'interieur d'un identifiant
+$maskKeys = @($alias.Keys | Sort-Object Length -Descending)   # TOUTES les cles de la table privee (bibliotheques, mais aussi organisme, noms de personnes, bibliotheques referencees non exportees) : sinon une regeneration reintroduit ce qui a ete masque
+$realRx = '(?i)(?<![A-Z0-9_#@$])(' + (($maskKeys | ForEach-Object { [regex]::Escape($_) }) -join '|') + ')(?![A-Z0-9_#@$])'
+$emailRx = New-Object Text.RegularExpressions.Regex('[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}', 'Compiled')   # adresses e-mail : toujours remplacees (meme convention que le depot)
 $script:aliasMap = $alias
 $realRxC = New-Object Text.RegularExpressions.Regex($realRx, 'Compiled')
 $maskEval = [Text.RegularExpressions.MatchEvaluator]{ param($m) $script:aliasMap[$m.Value.ToUpper()] }
-function Mask([string]$s) { if ($s.Length -lt 4) { return $s }; $realRxC.Replace($s, $maskEval) }
+function Mask([string]$s) { if ($s.Length -lt 4) { return $s }; $s = $emailRx.Replace($s, 'adresse@exemple.invalid'); foreach ($ok in $orgKeys) { $s = $s -replace ('(?i)' + [regex]::Escape($ok)), 'ORGFORM' }; $realRxC.Replace($s, $maskEval) }
 
 # --- Type d'un fichier source : par son nom (QRPGLESRC, QRPGLESRC2, QSQLRPGLE, QCBLLESRC...) ou, pour les fichiers "fourre-tout" (QSRC...), par le contenu
 function Get-NameType([string]$f) {
@@ -71,7 +74,7 @@ function Get-NameType([string]$f) {
   }
   return $null
 }
-$mixedRx = '^(QSRC|QSOURCES?|QVSRC|QILESRC|QILE|QEXOSRC|QTESTSRC|QTPSRC|QAPI|QCHATGPT|QVINCI|QVSCODE|QTMABUG|QMOD|QERROR|QSRCRACE|HINTSRC\d*|RPGLESRCNO|\w*SRC\w*)$'
+$mixedRx = '^(QSRC|QSOURCES?|QVSRC|QILESRC|QILE|QEXOSRC|QTESTSRC|QTPSRC|QAPI|QCHATGPT|QVINCI|QVSCODE|QTMABUG|QMOD|QERROR|QSRCRACE|HINTSRC\d*|RPGLESRCNO|\w*SRC\w*|Q\w+)$'   # Q\w+ : fichiers sources aux noms libres (QILETP, QWEBSRVTP, QTEST, QMEP, QF_PFLF, QRPG3...) ; le type est deduit du contenu, sinon le membre reste "donnee"
 function Get-ContentType($lines) {
   $t = ($lines -join "`n"); $n = [Math]::Max(1, @($lines).Count)
   if ($t -match '(?im)^\s*\*\*free|\bdcl-(s|ds|f|pr|pi|proc)\b|\bctl-opt\b') { return 'RPG\RPG-ILE' }
@@ -148,7 +151,7 @@ foreach ($lib in $libs) {
   $mine | Group-Object Type | ForEach-Object { [void]$sb.AppendLine("| $($_.Name) | $($_.Count) |") }
   [void]$sb.AppendLine("`n## Fichiers de donnees / objets (membres non-source)`n")
   if ($dat) { $dat | Group-Object File | ForEach-Object { [void]$sb.AppendLine("- **$($_.Name)** : $((($_.Group | Select -Expand Member) -join ', '))") } } else { [void]$sb.AppendLine("_aucun_") }
-  $sb.ToString() | Set-Content (Join-Path $arch "$n.md") -Encoding utf8
+  (Mask $sb.ToString()) | Set-Content (Join-Path $arch "$n.md") -Encoding utf8
 }
 $rows | Export-Csv (Join-Path $Wiki "docs/sources.csv") -NoTypeInformation -Encoding utf8
 "OK : $($rows.Count) sources converties, $($data.Count) membres non-source, $(@($libs).Count) bibliotheques."

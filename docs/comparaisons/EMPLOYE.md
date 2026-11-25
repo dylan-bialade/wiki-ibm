@@ -1,4 +1,4 @@
-# EMPLOYE : 2 versions differentes dans 2 bibliotheques
+# EMPLOYE : 3 versions differentes dans 3 bibliotheques
 
 Meme nom de membre, code different : facons de faire ou de penser differentes. Similarite = part de lignes (normalisees) en commun avec la premiere version. Retour : [index des comparaisons](../COMPARAISON-BIBLIOTHEQUES.md).
 
@@ -6,10 +6,12 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 |---|---|---|---|---|---|---|
 | BIB02 | QSQLSRC | SQL | 8 | 0 % | CREATE TABLE/VIEW | [EMPLOYE.md](../../sources/SQL/BIB02/EMPLOYE.md) |
 | BIB20 | QDDSSRC | DDS | 3 | 100 % |  | [EMPLOYE.md](../../sources/DDS/BIB20/EMPLOYE.md) |
+| BIB27 | QSQLSRC | SQL | 7 | 0 % | CREATE TABLE/VIEW | [EMPLOYE.md](../../sources/SQL/BIB27/EMPLOYE.md) |
 
 ## Differences
 
 - **BIB02** en propre : CREATE TABLE/VIEW
+- **BIB27** en propre : CREATE TABLE/VIEW
 - Langages / types differents : DDS, SQL
 
 ## Codes
@@ -33,4 +35,16 @@ CREATE TABLE BIBO.EMPLOYE1 (
                 R EMPLOYE
                   NOMEMP       100A
                   AGEEMP         3P 0
+```
+
+### BIB27 (SQL, 7 lignes)
+
+```text
+CREATE TABLE EMPLOYE (
+    ID NUMERIC(5, 0) GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)
+    Nom VARCHAR(50),
+    Prenom VARCHAR(50),
+    Age NUMERIC(3, 0),
+    Poste VARCHAR(50)
+);
 ```

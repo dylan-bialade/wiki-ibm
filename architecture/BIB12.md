@@ -1,4 +1,4 @@
-# Bibliotheque BIB12
+﻿# Bibliotheque BIB12
 
 - Sources converties : 19
 - Membres de donnees / non-source : 15
@@ -15,3 +15,4 @@
 - **EVFEVENT** : ANIME, ANIMERPG, ANIMERPGSD, ANIMESD, ANIMEV2, ANIMEV3, ANIMEV4, ANIPRT, EXO1, HELLOW, SQL1, TST, VINVX100
 - **PERSO** : PERSO
 - **UNIVERS** : UNIVERS
+

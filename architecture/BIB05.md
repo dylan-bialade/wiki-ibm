@@ -1,7 +1,7 @@
-# Bibliotheque BIB05
+﻿# Bibliotheque BIB05
 
-- Sources converties : 153
-- Membres de donnees / non-source : 88
+- Sources converties : 154
+- Membres de donnees / non-source : 87
 
 ## Repartition par type
 
@@ -9,7 +9,7 @@
 |---|---|
 | CL\CL-ILE | 2 |
 | CL\CL-procedural | 25 |
-| RPG\RPG-ILE | 79 |
+| RPG\RPG-ILE | 80 |
 | DDS | 6 |
 | RPG\RPG-III-400 | 36 |
 | Autres\Web | 5 |
@@ -44,10 +44,10 @@
 - **PLANT2** : PLANT, PLANTL1, PLANTL2, PLANTL3, PLANTL4
 - **QAUOOPT** : QAUOOPT
 - **QUIZJOU** : QUIZJOU
-- **QUIZQST** : QUIZQST
 - **QUIZREP** : QUIZREP
 - **RACECHIEN** : RACECHIEN
 - **SOLDAT** : SOLDAT
 - **SQLRPGLE** : REQUETTE
 - **UNIVERS** : UNIVERS
 - **VX** : VX, VXR
+
