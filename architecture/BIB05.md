@@ -1,4 +1,4 @@
-﻿# Bibliotheque BIB05
+# Bibliotheque BIB05
 
 - Sources converties : 154
 - Membres de donnees / non-source : 87
@@ -50,4 +50,3 @@
 - **SQLRPGLE** : REQUETTE
 - **UNIVERS** : UNIVERS
 - **VX** : VX, VXR
-

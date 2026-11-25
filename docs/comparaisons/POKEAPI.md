@@ -21,7 +21,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
        ACTGRP(*CALLER) DATFMT(*ISO) TIMFMT(*ISO) ALLOC(*STGMDL)
        STGMDL(*INHERIT) THREAD(*SERIALIZE);
 
-
        DCL-S url varchar(99) inz('https://pokeapi.co/api/v2/pokemon/+
        charizard');
        DCL-S nompkmn varchar(50);
@@ -45,9 +44,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
                  basestat VARCHAR(99) PATH '$.stats[3].base_stat'
                )) ;
 
-
-
-
        DSPLY nompkmn  '' reponse;
        DSPLY atkspe '' reponse;
        *inlr = *on;
@@ -59,12 +55,9 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 **free
 CTL-OPT OPTION(*SRCSTMT) DFTACTGRP(*NO) ACTGRP(*CALLER) OPTIMIZE(*NONE);
 
-
-
 DCL-S url varchar(255) inz('https://pokeapi.co/api/v2/pokemon/pikachu');
 DCL-S nom varchar(50);      // Nom du pokemon
 DCL-S attaque varchar(50);  // La puissance d'attaque du Pokémon
-
 
 // Initialisation du commit en sql
 Exec SQL
@@ -83,10 +76,7 @@ select  * into :nom , :attaque from  json_table( systools.HTTPGETCLOB (
                 )
                );
 
-
-
 //**Coder ici **
-
 
 DSPLY  nom ;
 DSPLY  attaque;

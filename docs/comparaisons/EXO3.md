@@ -47,8 +47,6 @@ dcl-s i int(3);
 dcl-s p int(3);
 dcl-s temp packed(3:0);
 
-
-
 array(1)=12;
 array(2)=58;
 array(3)=-6;
@@ -71,8 +69,6 @@ dou *in50 = *off;
   ENDFOR;
 ENDDO;
 
-
-
 //for p=1 to 9;
 //  for i=1 to 8;
 //    if array(i) > array(i+1);
@@ -82,7 +78,6 @@ ENDDO;
 //    ENDIF;
 //  ENDFOR;
 //ENDFOR;
-
 
 dsply ('start new programme');
 dsply array(1);
