@@ -42,14 +42,11 @@ prefix(prod_);
 //**********************************************************************//
 DCL-C SflPag    CONST(12);   // Nombre de ligne à afficher par page ...
 
-
 //**********************************************************************//
 // Déclaration des variables                                            //
 //**********************************************************************//
 DCL-S LAST_RANG ZONED(4:0) INZ(*ZERO);    // Dernier rrn écrit avant pagination
 DCL-S i         ZONED(4:0) INZ(*ZERO);
-
-
 
 // A- Initialisation du sous-fichier
 EXSR Initialisation_sous_fichier;
@@ -58,7 +55,6 @@ EXSR Initialisation_sous_fichier;
 
 // C - Fabrication du sous-fichier
 EXSR Fabrication_sous_fichier;
-
 
 DOU *IN03;  // Sortie si touches F3
   WRITE Fkey1;
@@ -86,7 +82,6 @@ BEGSR Initialisation_sous_fichier;
   *In90 = *OFF;   // Désactivat° de l'indic de vidage de SFL (Associé au mot clé
   i = 1;
 ENDSR;
-
 
 //************************************************************************
 // Fabrication de sous fichier

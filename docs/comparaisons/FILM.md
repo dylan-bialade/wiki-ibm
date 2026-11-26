@@ -73,7 +73,6 @@ SELECT *
           AND LOWER(r.nom) = 'schmidt'
           AND LOWER(r.prenom) = 'lucas';
 
-
 SELECT a.nom,
        c.personnage
     FROM qf_sql.acteurs a
@@ -85,7 +84,6 @@ SELECT a.nom,
              ON r.ID_REALISATEUR = f.ID_REALISATEUR
     WHERE LOWER(r.nom) = 'tanaka'
           AND LOWER(r.prenom) = 'lena';
-
 
 SELECT *
     FROM qf_sql.realisateurs r
@@ -120,8 +118,6 @@ SELECT DISTINCT r.*
              ON r.nom = a.nom
                  AND r.prenom = a.prenom
                  AND r.date_naissance = a.date_naissance;
-
-
 
 SELECT COUNT(ID_casting) Nombre_acteurs,
        f.titre

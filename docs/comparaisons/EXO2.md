@@ -52,18 +52,15 @@ endif;
 
 ctl-opt alwnull(*usrctl);
 
-
 // déclaratives
 
 dcl-f e_exo2 workstn;
 dcl-f lf_exo2 usage(*update) keyed;
 
-
 ////////// debut du prog
 // *in70 === gestion blanks dans e_name
 // *in71 === pokemon non trouvé
 // *in60 === zone protégé (name , pokenum , id , type1 , type2)
-
 
 dow *in03 = *off;
   *in60 = *on;
@@ -120,7 +117,6 @@ ENDDO;
 
 dcl-f e_exo2 workstn;
 
-
 // debut du programme
 
 // *in70 === gestion blanks dans e_name
@@ -130,7 +126,6 @@ dcl-f e_exo2 workstn;
 // obligatoire !! permet de ne pas avoir une logique transctionnelle (banques ...)
 exec SQL
 SET OPTION COMMIT=*NONE;
-
 
 // boucle sur le f3
 dow *in03 = *off;
@@ -170,7 +165,6 @@ dow *in03 = *off;
   ENDIF;
 
 ENDDO;
-
 
 // sortie du programme
 

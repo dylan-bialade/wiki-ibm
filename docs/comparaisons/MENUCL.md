@@ -35,8 +35,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
              IF         COND(&OPT *GT 5) THEN(CHGVAR VAR(&IN99) +
                           VALUE('1'))
 
-
-
              IF         COND(&IN03 *EQ '1') THEN(GOTO CMDLBL(FIN))
              GOTO       CMDLBL(DEBUT)
 
@@ -62,8 +60,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
              IF         COND(&OPT *EQ 5) THEN(WRKUSRJOB)
              IF         COND(&OPT *GT 5) THEN(CHGVAR VAR(&IN99) +
                           VALUE('1'))
-
-
 
              IF         COND(&IN03 *EQ '1') THEN(GOTO CMDLBL(FIN))
              GOTO       CMDLBL(DEBUT)

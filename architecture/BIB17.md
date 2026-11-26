@@ -1,4 +1,4 @@
-﻿# Bibliotheque BIB17
+# Bibliotheque BIB17
 
 - Sources converties : 135
 - Membres de donnees / non-source : 63
@@ -55,4 +55,3 @@
 - **SOLDAT** : SOLDAT
 - **TEST_JRN** : TEST_JRN
 - **UNIVERS** : UNIVERS
-

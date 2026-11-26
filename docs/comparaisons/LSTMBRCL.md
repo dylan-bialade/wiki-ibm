@@ -59,8 +59,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
                          DLTF       FILE(&POUTLIB/&POUTFILE)
                          MONMSG     MSGID(CPF2105)
 
-
-
           /*Create Table                                      */
              CHGVAR     VAR(&CRTTBL) VALUE('CREATE TABLE' *BCAT +
                           &POUTLIB *TCAT '.' *TCAT &POUTFILE *BCAT +
