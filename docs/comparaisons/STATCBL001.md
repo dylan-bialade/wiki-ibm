@@ -10,7 +10,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 ## Differences
 
-
 ## Codes
 
 ### BIB01 (COBOL, 12 lignes)

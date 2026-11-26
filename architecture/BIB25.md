@@ -1,4 +1,4 @@
-﻿# Bibliotheque BIB25
+# Bibliotheque BIB25
 
 - Sources converties : 248
 - Membres de donnees / non-source : 182
@@ -128,4 +128,3 @@
 - **WSARTICLE** : WSARTICLE
 - **WSLOG** : WSLOG
 - **W_CLIENTS** : CLIENTS
-

@@ -1,6 +1,14 @@
-﻿# Verification par rapport a job-i.fr
+# Verification par rapport a job-i.fr
 
-Genere le 2026-11-25 09:51. Reference : 1830 commandes CL, 196 termes RPG.
+Genere le 2026-11-25 15:22. Reference : 1830 commandes CL, 196 termes RPG.
+
+<!-- TOC:START -->
+**Sommaire** (retour : [sommaire general](SOMMAIRE.md))
+
+- [Commandes CL utilisees](#commandes-cl-utilisees)
+  - [A controler manuellement (absentes de la liste job-i : variable, label, objet utilisateur ?)](#a-controler-manuellement-absentes-de-la-liste-job-i--variable-label-objet-utilisateur-)
+- [Instructions / fonctions RPG reconnues](#instructions--fonctions-rpg-reconnues)
+<!-- TOC:END -->
 
 ## Commandes CL utilisees
 
@@ -236,4 +244,3 @@ ADDFILM, AFFOBJDCL, AFFOBJDFM, AFFSPOOL, AFFTAPYCST, AFFUSRDCL, AFFUSRDFM, ALERT
 | WRITE | 642 |
 | WRKSPLF | 10 |
 | Z-ADD | 239 |
-

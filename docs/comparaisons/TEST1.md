@@ -74,16 +74,11 @@ select * from sd;
 ```text
 **free
 
-
 dcl-f BONBON disk usage(*input: *output:*UPDATE);
-
 
 dcl-f test1 workstn;
 
-
 exfmt fmt1;
-
-
 
 *inlr = *on;
 ```
