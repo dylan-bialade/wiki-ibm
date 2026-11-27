@@ -14,7 +14,7 @@
 <!-- TOC:END -->
 
 ## Offres d'emploi  ([toutes](https://job-i.fr/offres-emploi-ibm-i), [par département](https://job-i.fr/emploi-ibm-i))
-- Veille des offres IBM i en France (sources : API France Travail et Adzuna, sans scraping) ; 144 offres au 2026-11-23 en début d'après-midi, puis **133 offres localisées dans 30 départements** sur la page « par département » relevée plus tard le même jour (le nombre varie : mises à jour plusieurs fois par jour) ; 176 le 2026-11-17 ; page de liste : 24 offres du 17 au 22/11, départements les plus fournis : Paris, Hauts-de-Seine, Rhône, Loire-Atlantique, Ille-et-Vilaine ; CDI majoritaires, salaires publiés ~36-60 k€/an ou 400-450 €/j en freelance).
+- Veille des offres IBM i en France (sources : API France Travail et Adzuna, sans scraping) ; **114 offres dans 28 départements** au 2026-11-27 (page « par département » : Paris 16, Rhône 15, Loire-Atlantique 14, Hauts-de-Seine 12, Nord et Ille-et-Vilaine 6 chacun, Isère 5) ; 144 offres le 2026-11-23, puis 133 plus tard le même jour (le nombre varie : mises à jour plusieurs fois par jour) ; 176 le 2026-11-17 ; page de liste : 24 offres du 17 au 22/11, départements les plus fournis : Paris, Hauts-de-Seine, Rhône, Loire-Atlantique, Ille-et-Vilaine ; CDI majoritaires, salaires publiés ~36-60 k€/an ou 400-450 €/j en freelance).
 - Profils recherchés : RPG, CL, SQL, COBOL ; relève des développeurs historiques.
 
 ## Se former  ([source](https://job-i.fr/se-former-ibm-i))

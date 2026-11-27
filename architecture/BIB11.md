@@ -1,4 +1,4 @@
-﻿# Bibliotheque BIB11
+# Bibliotheque BIB11
 
 - Sources converties : 2
 - Membres de donnees / non-source : 1
@@ -12,4 +12,3 @@
 ## Fichiers de donnees / objets (membres non-source)
 
 - **EVFEVENT** : WESH
-

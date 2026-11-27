@@ -68,23 +68,11 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
              CHGVAR     VAR(&REQUETE) VALUE(&REQBASE)
 
-
              CHGVAR     VAR(&REQUETE) VALUE(&REQUETE *TCAT &VALUES)
 
              CHGVAR     VAR(&REQUETE) VALUE(&REQUETE)
 
-
-
              RUNSQL     SQL(&REQUETE)
-
-
-
-
-
-
-
-
-
 
              ENDPGM
 ```

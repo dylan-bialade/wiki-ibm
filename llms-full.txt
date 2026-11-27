@@ -1,16 +1,16 @@
 # Wiki IBM i : contexte complet pour un assistant
 
-Genere le 2026-11-25 09:32 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
+Genere le 2026-11-26 14:48 a partir du depot https://github.com/dylan-bialade/wiki-ibm (public). Source de verite : le depot ; ce fichier n'en est qu'un extrait lisible d'un seul tenant.
 Usage : donne ce fichier a l'assistant (instructions de projet, piece jointe, ou URL brute https://raw.githubusercontent.com/dylan-bialade/wiki-ibm/main/llms-full.txt). Les sources de code converties (sources/) et les index detailles ne sont PAS inclus : voir llms.txt et docs/INDEX-SOURCES.md dans le depot.
 
-ATTENTION : ce fichier fait environ 282 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
+ATTENTION : ce fichier fait environ 283 Ko. LIS-LE EN ENTIER (par morceaux si ta lecture est tronquee) ou cherche chaque mot-cle technique avant de repondre ; ne dis jamais que le wiki ne contient rien sans avoir cherche. Les derniers fichiers (cours du cycle, manques) comptent autant que les premiers.
 Table des matieres (ordre du fichier) :
 - README.md (16 Ko)
 - docs/SOMMAIRE.md (19 Ko)
 - docs/formation/README.md (32 Ko)
 - CLAUDE.md (19 Ko)
 - docs/cheatsheets/README.md (5 Ko)
-- docs/cheatsheets/01-comprendre-ibm-i.md (6 Ko)
+- docs/cheatsheets/01-comprendre-ibm-i.md (7 Ko)
 - docs/cheatsheets/02-reference-systeme.md (3 Ko)
 - docs/cheatsheets/03-rpg-par-version.md (10 Ko)
 - docs/cheatsheets/04-db2-for-i-et-sql.md (4 Ko)
@@ -903,6 +903,9 @@ Dernière mise à jour : 2026-11-23
 ## PTF  ([source](https://job-i.fr/installer-ptf-ibm-i))
 - Installer par groupes ; microcode côté B ; jamais `INSTYP(*DLYALL)`.
 - Séquence : `CRTIMGCLG` → `VFYIMGCLG` → `INSPTF ... INSTYP(*IMMDLY)` → `PWRDWNSYS OPTION(*CNTRLD) DELAY(600) RESTART(*YES) IPLSRC(B)` → `APYPTF ... APY(*PERM)` après quelques semaines. SQL : `QSYS2.GROUP_PTF_INFO`.
+- État des lieux avant commande : `QSYS2.GROUP_PTF_INFO`, `QSYS2.SOFTWARE_PRODUCT_INFO`, `SYSTOOLS.GROUP_PTF_CURRENCY` (si accès Internet). Commande Fix Central : série `DSPSYSVAL QSRLNBR`, type `WRKHDWRSC TYPE(*PRC)`.
+- Avant installation : machine côté B (`DSPPTF LICPGM(5770999)`), aucune PTF en statut LOADED, `SAVSYS` avant une Technology Refresh. Images copiées dans un sous-répertoire IFS dédié (sans option UTF-8 d'ACS), puis `VFYIMGCLG TYPE(*PTF) SORT(*YES)`.
+- Précautions : toujours IPL sur le côté B, lire le PSP avant de commander ; groupes HIPER et Sécurité changent plusieurs fois par mois ; numéros de groupes différents en 7.4 / 7.6 (synthèse job-i, non recoupée avec ibm.com).
 
 ## Performances  ([source](https://job-i.fr/performances-ibm-i))
 - Mesurer avant de régler : Collection Services, `ACTIVE_JOB_INFO`, `MEMORY_POOL_INFO`, `WRKSYSACT`.
@@ -1691,7 +1694,7 @@ Chaîne de restauration rapide fictive ; l'épreuve se déroule dans un environn
 === FICHIER : docs/MANQUES.md ===
 # Ce qui manque dans les fiches (utilise dans le code, absent des fiches)
 
-Genere le 2026-11-25 09:32 a partir de 1519 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
+Genere le 2026-11-26 14:48 a partir de 1519 sources. Un terme est 'manquant' s'il n'apparait dans aucune fiche 01-05. Les comptes sont des occurrences dans le code ; voir 'Bibliotheques' pour la dispersion. Heuristique : verifier chaque terme sur job-i.fr avant d'ecrire la fiche.
 
 
 ## Commandes CL : 70 manquants sur 115 utilises
@@ -1967,7 +1970,7 @@ Genere le 2026-11-25 09:32 a partir de 1519 sources. Un terme est 'manquant' s'i
 === FICHIER : docs/CYCLE-GAP-EXEMPLES.md ===
 # Exemples du cycle RPG (cycle GAP) dans les bibliotheques
 
-Genere le 2026-11-25 09:32. Detection : un fichier **primaire** (IP) ou **secondaire** (IS) en specification F dans un source en colonnes. Explication du cycle : [fiche 03](cheatsheets/03-rpg-par-version.md) et [job-i.fr](https://job-i.fr/cycle-gap-rpg). Detection heuristique : a confirmer en ouvrant le source.
+Genere le 2026-11-26 14:48. Detection : un fichier **primaire** (IP) ou **secondaire** (IS) en specification F dans un source en colonnes. Explication du cycle : [fiche 03](cheatsheets/03-rpg-par-version.md) et [job-i.fr](https://job-i.fr/cycle-gap-rpg). Detection heuristique : a confirmer en ouvrant le source.
 
 | Bibliotheque | Membre | Type | Lignes | Primaire (IP) | Secondaire (IS) | Niveaux (L1-L9) | 1P | OF | Source |
 |---|---|---|---|---|---|---|---|---|---|

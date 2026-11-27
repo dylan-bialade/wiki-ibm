@@ -1,4 +1,4 @@
-﻿# Bibliotheque BIB02
+# Bibliotheque BIB02
 
 - Sources converties : 340
 - Membres de donnees / non-source : 396
@@ -101,4 +101,3 @@
 - **VOITURESV** : VOITURE
 - **VSCODE** : RPGLINT
 - **WRKCTR** : WRKCTR
-
