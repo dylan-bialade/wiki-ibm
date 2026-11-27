@@ -1,4 +1,4 @@
-﻿# Bibliotheque BIB26
+# Bibliotheque BIB26
 
 - Sources converties : 0
 - Membres de donnees / non-source : 1
@@ -11,4 +11,3 @@
 ## Fichiers de donnees / objets (membres non-source)
 
 - **SYNTHAXE** : ASYNTAX2
-

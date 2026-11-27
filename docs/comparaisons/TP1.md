@@ -50,8 +50,6 @@ DSClients = ReturnInfoClients(id);
 
 dsply DSClients.nom;
 
-
-
 return;
 ```
 
