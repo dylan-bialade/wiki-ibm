@@ -14,7 +14,7 @@
 <!-- TOC:END -->
 
 ## Offres d'emploi  ([toutes](https://job-i.fr/offres-emploi-ibm-i), [par département](https://job-i.fr/emploi-ibm-i))
-- Veille des offres IBM i en France (sources : API France Travail et Adzuna, sans scraping) ; 144 offres au 2026-11-23 en début d'après-midi, puis **133 offres localisées dans 30 départements** sur la page « par département » relevée plus tard le même jour (le nombre varie : mises à jour plusieurs fois par jour) ; 176 le 2026-11-17 ; page de liste : 24 offres du 17 au 22/11, départements les plus fournis : Paris, Hauts-de-Seine, Rhône, Loire-Atlantique, Ille-et-Vilaine ; CDI majoritaires, salaires publiés ~36-60 k€/an ou 400-450 €/j en freelance).
+- Veille des offres IBM i en France (sources agrégées : France Travail, Adzuna et Jooble, sans scraping) ; relevé du 2026-11-28 : classement par département totalisant **137 offres dans 24 départements** (133 dans 30 départements le 2026-11-23 ; 176 le 2026-11-17 : le nombre varie, mises à jour plusieurs fois par jour) ; la page de liste affiche 24 annonces récentes (25-28/11), surtout Nord, Paris/Île-de-France, Hauts-de-Seine, Bas-Rhin, Rhône ; postes : développeur RPG/AS400, exploitation/support N1-N2, chef de projet, architecte avant-vente IBM Power, COBOL/EGL ; CDI majoritaires, salaire souvent non précisé. La sitemap-pages compte 76 URL (73 le 23/11), pages départementales mises à jour le 2026-11-28.
 - Profils recherchés : RPG, CL, SQL, COBOL ; relève des développeurs historiques.
 
 ## Se former  ([source](https://job-i.fr/se-former-ibm-i))
