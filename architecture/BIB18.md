@@ -1,4 +1,4 @@
-﻿# Bibliotheque BIB18
+# Bibliotheque BIB18
 
 - Sources converties : 10
 - Membres de donnees / non-source : 13
@@ -18,4 +18,3 @@
 - **CLIENT** : CLIENT
 - **EVFEVENT** : TP2MAIN, TP2MOD, TP3MAIN, TP3MOD, TVAMAIN, TVAMOD, TVAPROTO
 - **EVFTEMPF01** : TP2MOD, TP3MOD, TVAMAIN
-

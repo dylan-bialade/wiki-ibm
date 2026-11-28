@@ -24,14 +24,12 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
        DCL-F entrepotlf disk USAGE(*UPDATE : *DELETE : *OUTPUT) keyed
        prefix(ent_);
 
-
        DCL-C SflPag CONST(15);   // Nombre de ligne à afficher par page ...
        DCL-S LAST_RANG packed(4:0) INZ(0);     // Dernier rrn écrit avant pagination ...
        DCL-S i packed(4:0) INZ(0);
        DCL-S nom char(2);
        dcl-pr entretpfr3 extpgm('BIB02/ENTRETPFR3');    // TOI METTREE MAJJJ
        end-pr;
-
 
        *Inlr = *On ;
 
@@ -50,7 +48,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
          Write Fkey1;
 
          Exfmt Sf1ctl;
-
 
          // Et là, on se pose la question : Qu'à fait l'utilisateur ?
          Select;
@@ -72,7 +69,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
            Fabrication_sous_fichier();
            clear codpro;
 
-
          WHEN CODPRO = ' ';
            setll *loval entrepotlf;
            Initialisation_sous_fichier();
@@ -81,7 +77,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
            clear codpro;
 
          ENDSL;
-
 
        Enddo;
 
@@ -94,8 +89,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
          *In32 = *Off;   // Désactivat° de l'indic de vidage de SFL (Associé au mot clé SFLDSP)
          *In90 = *Off;   // Désactivat° de l'indic de vidage de SFL (Associé au mot clé SFLEND)
        End-proc;
-
-
 
        //************************************************************************
        // Fabrication de sous fichier

@@ -4,6 +4,7 @@ titre: IWS : cours PDF (service program, wrapping, pieges PCML)
 type: manque
 statut: non verifie
 source: docs/ILE-ET-SERVICES-WEB.md
+integre: oui
 origine: remontee automatique par l assistant
 date: 2026-11-24
 ---

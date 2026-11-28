@@ -1,6 +1,25 @@
-﻿# Index des sources
+# Index des sources
 
 Genere le 2026-11-25 09:51 - 1519 sources, 1143 membres de donnees (non convertis).
+
+<!-- TOC:START -->
+**Sommaire** (retour : [sommaire general](SOMMAIRE.md))
+
+- [Autres\Aide (3)](#autresaide-3)
+- [Autres\Commandes (5)](#autrescommandes-5)
+- [Autres\Panneaux-UIM (1)](#autrespanneaux-uim-1)
+- [Autres\Service-programs (25)](#autresservice-programs-25)
+- [Autres\Web (12)](#autresweb-12)
+- [CL\CL-ILE (70)](#clcl-ile-70)
+- [CL\CL-procedural (172)](#clcl-procedural-172)
+- [COBOL (38)](#cobol-38)
+- [DDS (499)](#dds-499)
+- [Menus (16)](#menus-16)
+- [RPG\Copy (11)](#rpgcopy-11)
+- [RPG\RPG-III-400 (184)](#rpgrpg-iii-400-184)
+- [RPG\RPG-ILE (437)](#rpgrpg-ile-437)
+- [SQL (46)](#sql-46)
+<!-- TOC:END -->
 
 ## Autres\Aide (3)
 
@@ -1590,5 +1609,3 @@ Genere le 2026-11-25 09:51 - 1519 sources, 1143 membres de donnees (non converti
 | BIB25 | TRG01SQL | 125 | [TRG01SQL](../sources/SQL/BIB25/TRG01SQL.md) |
 | BIB27 | DLTPOLE | 1 | [DLTPOLE](../sources/SQL/BIB27/DLTPOLE.md) |
 | BIB27 | EMPLOYE | 7 | [EMPLOYE](../sources/SQL/BIB27/EMPLOYE.md) |
-
-
