@@ -42,9 +42,7 @@ DCL-S ATTAQUE varchar(50);
 // Déclaration Url API                                            //
 // ***************************************************************//
 
-
 DCL-C UrlFull CONST('https://pokeapi.co/api/v2/pokemon/pikachu');
-
 
 //****************************************************************//
 // Traitement Principal                                           //
@@ -64,10 +62,8 @@ EXEC SQL
          )
         );
 
-
 dsply NAME;
 dsply ATTAQUE;
-
 
 *inlr=*on;
 ```
@@ -100,9 +96,7 @@ DCL-S ATTAQUE varchar(50);
 // Déclaration Url API                                            //
 // ***************************************************************//
 
-
 DCL-C UrlFull CONST('https://pokeapi.co/api/v2/pokemon/pikachu');
-
 
 //****************************************************************//
 // Traitement Principal                                           //
@@ -122,10 +116,8 @@ EXEC SQL
          )
         );
 
-
 dsply NAME;
 dsply ATTAQUE;
-
 
 *inlr=*on;
 ```

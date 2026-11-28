@@ -1,4 +1,4 @@
-﻿# Bibliotheque BIB16
+# Bibliotheque BIB16
 
 - Sources converties : 3
 - Membres de donnees / non-source : 1
@@ -14,4 +14,3 @@
 ## Fichiers de donnees / objets (membres non-source)
 
 - **EVFEVENT** : WESH
-

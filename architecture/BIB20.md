@@ -1,4 +1,4 @@
-﻿# Bibliotheque BIB20
+# Bibliotheque BIB20
 
 - Sources converties : 131
 - Membres de donnees / non-source : 66
@@ -41,4 +41,3 @@
 - **STOCK_BKP** : STOCK_BKP
 - **TP1010** : ECR_CALC, PGM_CALC
 - **VILLE** : VILLE
-
