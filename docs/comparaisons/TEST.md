@@ -152,12 +152,6 @@ Return;
                           /attendances') PAUSE(*NO)
              ADDLIBLE   LIB(BIB17)
 
-
-
-
-
-
-
              ENDPGM
 ```
 
@@ -196,7 +190,6 @@ dcl-s result packed(4:0);
 dcl-s result1 packed(7:0);
 dcl-s nbr1 packed(4:0) inz(52);
 dcl-s nbr2 packed(4:0) inz(15);
-
 
 result = soustraction(nbr1:nbr2);
 

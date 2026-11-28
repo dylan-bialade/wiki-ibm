@@ -50,8 +50,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
              IF         COND(&COP *EQ '/') THEN(CHGVAR VAR(&RESULT) +
                           VALUE(&FAC1 / &FAC2))
 
-
-
              GOTO       CMDLBL(DEBUT)
 
 /* FIN DE TRAITEMENT                          */
@@ -93,8 +91,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
                           VALUE(&FAC1 * &FAC2))
              IF         COND(&COP *EQ '/') THEN(CHGVAR VAR(&RESULT) +
                           VALUE(&FAC1 / &FAC2))
-
-
 
              GOTO       CMDLBL(DEBUT)
 

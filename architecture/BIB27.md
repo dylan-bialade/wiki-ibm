@@ -1,4 +1,4 @@
-﻿# Bibliotheque BIB27
+# Bibliotheque BIB27
 
 - Sources converties : 182
 - Membres de donnees / non-source : 152
@@ -95,4 +95,3 @@
 - **TEST_TP2** : TEST_TP
 - **TOPSCORE** : TOPSCORE
 - **VENTES** : VENTES
-

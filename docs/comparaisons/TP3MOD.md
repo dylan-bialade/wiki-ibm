@@ -183,7 +183,6 @@ dcl-proc creditDispo export;
     return cli.plafond - cli.encours;
 end-proc;
 
-
 dcl-proc peutCommander export;
     dcl-pi *n ind;
         num packed(5:0) const;
@@ -193,11 +192,9 @@ dcl-proc peutCommander export;
     dcl-s credDisp packed(9:2);
     credDisp = creditDispo(num);
 
-
     return montant <= credDisp ;
 
 end-proc;
-
 
 dcl-proc villeClient export;
     dcl-pi *n  varchar(20);

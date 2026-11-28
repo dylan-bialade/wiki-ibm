@@ -134,7 +134,6 @@ PGM
 TESTE:        DSPFD      FILE(&PBIB/&PFIC) TYPE(*MBR) +
                     OUTPUT(*OUTFILE) OUTFILE(QTEMP/MBRF)
 
-
               MONMSG     MSGID(CPF9801 CPF3064) EXEC(DO)
 
               CHGVAR     VAR(&IN90) VALUE('1')
@@ -150,7 +149,6 @@ TESTE:        DSPFD      FILE(&PBIB/&PFIC) TYPE(*MBR) +
              CHGVAR VAR(&IN92) VALUE('1')
              GOTO       CMDLBL(FMT1)
              ENDDO
-
 
               CHGVAR     VAR(&FILE_PATH) VALUE('/HOME/' *TCAT +
                            &USER *TCAT '/' *TCAT &PFIC)
@@ -201,12 +199,10 @@ FMT2:       SNDRCVF    RCDFMT(FMT2)
              GOTO       CMDLBL(STRFMT1)
              ENDDO
 
-
              CHGVAR     VAR(&IN91) VALUE('0')
              CHKOBJ     OBJ(&PBIB/&PFIC) OBJTYPE(*FILE)
              MONMSG     MSGID(CPF9812 CPF9801) EXEC(CHGVAR VAR(&IN91) +
                           VALUE('1'))
-
 
              IF         COND(&IN90 *EQ '1' *OR &IN91 *EQ '1') +
                           THEN(GOTO CMDLBL(STRFMT1))

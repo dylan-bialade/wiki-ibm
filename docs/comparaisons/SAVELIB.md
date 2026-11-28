@@ -10,7 +10,6 @@ Meme nom de membre, code different : facons de faire ou de penser differentes. S
 
 ## Differences
 
-
 ## Codes
 
 ### BIB05 (CL/CL-procedural, 3 lignes)
